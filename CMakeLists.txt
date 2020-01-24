@@ -56,7 +56,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind main.cpp GameRunner.cpp GameRunner.h Robot.cpp Robot.h GridMap.cpp GridMap.h Map.h)
+add_executable(hivemind main.cpp Robot.cpp Robot.h GridMap.cpp GridMap.h Map.h)
 target_link_libraries(hivemind
         ${ALL_LIBS}
         )

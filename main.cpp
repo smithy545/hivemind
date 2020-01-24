@@ -26,7 +26,7 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
-    GLFWwindow* window = glfwCreateWindow( 1024, 768, "Hivemind", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(1024, 768, "Hivemind", nullptr, nullptr);
     if( window == nullptr ){
         std::cerr <<"Failed to open GLFW window" << std::endl;
         glfwTerminate();

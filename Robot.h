@@ -12,15 +12,15 @@
 
 class Robot {
 public:
-    Robot(Map::MapNode position);
+    explicit Robot(Map::MapNode position);
 
     const std::queue<Map::MapNode> &Path() const;
-    const std::shared_ptr<Map::MapNode> &Position() const;
+    const Map::MapNode::Ptr &Position() const;
 
     void update();
 protected:
     std::queue<Map::MapNode> path;
-    std::shared_ptr<Map::MapNode> position;
+    Map::MapNode::Ptr position;
 };
 
 

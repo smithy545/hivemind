@@ -20,6 +20,6 @@ const std::queue<Map::MapNode> &Robot::Path() const {
     return path;
 }
 
-const std::shared_ptr<Map::MapNode> &Robot::Position() const {
+const Map::MapNode::Ptr &Robot::Position() const {
     return position;
 }

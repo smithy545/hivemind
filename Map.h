@@ -11,6 +11,7 @@ class Map {
 public:
     class MapNode {
         public:
+            typedef std::shared_ptr<MapNode> Ptr;
             MapNode(double x, double y) : x(x), y(y) {}
             const double x;
             const double y;
