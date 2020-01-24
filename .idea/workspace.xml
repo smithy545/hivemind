@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="hivemind" targetName="msaa" />
+      <config projectName="hivemind" targetName="zlib" />
+      <config projectName="hivemind" targetName="windows" />
+      <config projectName="hivemind" targetName="heightmap" />
+      <config projectName="hivemind" targetName="splitview" />
+      <config projectName="hivemind" targetName="assimp" />
+      <config projectName="hivemind" targetName="events" />
+      <config projectName="hivemind" targetName="gamma" />
+      <config projectName="hivemind" targetName="ANTTWEAKBAR_116_OGLCORE_GLFW" />
+      <config projectName="hivemind" targetName="LinearMath" />
+      <config projectName="hivemind" targetName="boing" />
+      <config projectName="hivemind" targetName="hivemind" />
+      <config projectName="hivemind" targetName="sharing" />
+      <config projectName="hivemind" targetName="joysticks" />
+      <config projectName="hivemind" targetName="BulletSoftBody" />
+      <config projectName="hivemind" targetName="BulletCollision" />
+      <config projectName="hivemind" targetName="empty" />
+      <config projectName="hivemind" targetName="GLEW_1130" />
+      <config projectName="hivemind" targetName="iconify" />
+      <config projectName="hivemind" targetName="reopen" />
+      <config projectName="hivemind" targetName="uninstall" />
+      <config projectName="hivemind" targetName="monitors" />
+      <config projectName="hivemind" targetName="gears" />
+      <config projectName="hivemind" targetName="particles" />
+      <config projectName="hivemind" targetName="title" />
+      <config projectName="hivemind" targetName="threads" />
+      <config projectName="hivemind" targetName="tearing" />
+      <config projectName="hivemind" targetName="glfw" />
+      <config projectName="hivemind" targetName="BulletDynamics" />
+      <config projectName="hivemind" targetName="simple" />
+      <config projectName="hivemind" targetName="clipboard" />
+      <config projectName="hivemind" targetName="glfwinfo" />
+      <config projectName="hivemind" targetName="cursor" />
+      <config projectName="hivemind" targetName="wave" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1Wd1k7Z94oROTlgTnKh9yUoPpXp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/endless-sky-master" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager" selected="CMake Application.hivemind">
+    <configuration name="ANTTWEAKBAR_116_OGLCORE_GLFW" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ANTTWEAKBAR_116_OGLCORE_GLFW" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletCollision" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="BulletCollision" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletDynamics" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="BulletDynamics" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletSoftBody" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="BulletSoftBody" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GLEW_1130" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="GLEW_1130" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinearMath" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="LinearMath" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="assimp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="assimp" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="boing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="boing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="boing">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clipboard" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="clipboard" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="clipboard">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cursor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="cursor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="cursor">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="empty" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="empty" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="empty">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="events" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="events" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="events">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gamma" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="gamma" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="gamma">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gears" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="gears" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="gears">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="glfw" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="glfwinfo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="glfwinfo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="glfwinfo">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="heightmap" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="heightmap" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="heightmap">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="hivemind" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="hivemind" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="hivemind">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="iconify" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="iconify" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="iconify">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="joysticks" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="joysticks" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="joysticks">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="monitors" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="monitors" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="monitors">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="msaa" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="msaa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="msaa">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="particles" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="particles" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="particles">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="reopen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="reopen" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="reopen">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sharing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="sharing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="sharing">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="simple" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="simple" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="simple">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="splitview" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="splitview" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="splitview">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tearing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="tearing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="tearing">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="threads" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="threads" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="threads">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="title" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="title" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="title">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="uninstall" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="wave" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="wave" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="wave">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="windows" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="windows" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="windows">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="zlib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="zlib" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.hivemind" />
+      <item itemvalue="CMake Application.ANTTWEAKBAR_116_OGLCORE_GLFW" />
+      <item itemvalue="CMake Application.GLEW_1130" />
+      <item itemvalue="CMake Application.assimp" />
+      <item itemvalue="CMake Application.zlib" />
+      <item itemvalue="CMake Application.BulletCollision" />
+      <item itemvalue="CMake Application.BulletDynamics" />
+      <item itemvalue="CMake Application.BulletSoftBody" />
+      <item itemvalue="CMake Application.LinearMath" />
+      <item itemvalue="CMake Application.uninstall" />
+      <item itemvalue="CMake Application.boing" />
+      <item itemvalue="CMake Application.gears" />
+      <item itemvalue="CMake Application.heightmap" />
+      <item itemvalue="CMake Application.particles" />
+      <item itemvalue="CMake Application.simple" />
+      <item itemvalue="CMake Application.splitview" />
+      <item itemvalue="CMake Application.wave" />
+      <item itemvalue="CMake Application.glfw" />
+      <item itemvalue="CMake Application.clipboard" />
+      <item itemvalue="CMake Application.cursor" />
+      <item itemvalue="CMake Application.empty" />
+      <item itemvalue="CMake Application.events" />
+      <item itemvalue="CMake Application.gamma" />
+      <item itemvalue="CMake Application.glfwinfo" />
+      <item itemvalue="CMake Application.iconify" />
+      <item itemvalue="CMake Application.joysticks" />
+      <item itemvalue="CMake Application.monitors" />
+      <item itemvalue="CMake Application.msaa" />
+      <item itemvalue="CMake Application.reopen" />
+      <item itemvalue="CMake Application.sharing" />
+      <item itemvalue="CMake Application.tearing" />
+      <item itemvalue="CMake Application.threads" />
+      <item itemvalue="CMake Application.title" />
+      <item itemvalue="CMake Application.windows" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="" />
+      <created>1579464797549</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579464797549</updated>
+      <workItem from="1579464798837" duration="8000" />
+      <workItem from="1579464820240" duration="554000" />
+      <workItem from="1579476528708" duration="2961000" />
+      <workItem from="1579543541266" duration="1801000" />
+      <workItem from="1579548001276" duration="695000" />
+      <workItem from="1579548869479" duration="1457000" />
+      <workItem from="1579552210495" duration="1365000" />
+      <workItem from="1579733987727" duration="53000" />
+      <workItem from="1579734066661" duration="197000" />
+      <workItem from="1579734284243" duration="4347000" />
+      <workItem from="1579809535530" duration="1154000" />
+      <workItem from="1579819674905" duration="8232000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl" timestamp="1579836594399">
+      <screen x="0" y="0" width="3440" height="1440" />
+    </state>
+    <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl/0.0.3440.1440@0.0.3440.1440" timestamp="1579836594399" />
+    <state x="1259" y="154" key="SettingsEditor" timestamp="1579734759232">
+      <screen x="0" y="0" width="5360" height="1440" />
+    </state>
+    <state x="809" y="172" key="SettingsEditor/0.0.3440.1440@0.0.3440.1440" timestamp="1579734034868" />
+    <state x="1259" y="154" key="SettingsEditor/0.0.5360.1440@0.0.5360.1440" timestamp="1579734759232" />
+    <state x="3894" y="156" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@3440.0.1920.1080" timestamp="1579542378989" />
+  </component>
+</project>
