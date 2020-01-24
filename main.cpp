@@ -1,5 +1,4 @@
 // Include standard headers
-#include <stdio.h>
 #include <iostream>
 
 // Include GLEW
@@ -7,20 +6,16 @@
 
 // Include GLFW
 #include <GLFW/glfw3.h>
-GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
 using namespace glm;
 
-int main()
-{
+int main() {
     std::cout << "Hello, World!" << std::endl;
     // Initialise GLFW
-    if( !glfwInit() )
-    {
-        fprintf( stderr, "Failed to initialize GLFW\n" );
-        getchar();
+    if(!glfwInit()) {
+        std::cerr << "Failed to initialize GLFW" << std::endl;
         return -1;
     }
 
@@ -31,10 +26,9 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL);
-    if( window == NULL ){
-        fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-        getchar();
+    GLFWwindow* window = glfwCreateWindow( 1024, 768, "Hivemind", nullptr, nullptr);
+    if( window == nullptr ){
+        std::cerr <<"Failed to open GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
@@ -42,8 +36,7 @@ int main()
 
     // Initialize GLEW
     if (glewInit() != GLEW_OK) {
-        fprintf(stderr, "Failed to initialize GLEW\n");
-        getchar();
+        std::cerr <<"Failed to initialize GLEW" << std::endl;
         glfwTerminate();
         return -1;
     }
@@ -58,8 +51,7 @@ int main()
         // Clear the screen. It's not mentioned before Tutorial 02, but it can cause flickering, so it's there nonetheless.
         glClear( GL_COLOR_BUFFER_BIT );
 
-        // Draw nothing, see you in tutorial 2 !
-
+        // Draw nothing
 
         // Swap buffers
         glfwSwapBuffers(window);
