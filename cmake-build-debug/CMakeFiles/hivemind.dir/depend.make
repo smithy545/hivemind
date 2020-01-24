@@ -5,6 +5,10 @@ CMakeFiles/hivemind.dir/GridMap.cpp.o: ../GridMap.cpp
 CMakeFiles/hivemind.dir/GridMap.cpp.o: ../GridMap.h
 CMakeFiles/hivemind.dir/GridMap.cpp.o: ../Map.h
 
+CMakeFiles/hivemind.dir/Pather.cpp.o: ../Map.h
+CMakeFiles/hivemind.dir/Pather.cpp.o: ../Pather.cpp
+CMakeFiles/hivemind.dir/Pather.cpp.o: ../Pather.h
+
 CMakeFiles/hivemind.dir/Robot.cpp.o: ../Map.h
 CMakeFiles/hivemind.dir/Robot.cpp.o: ../Robot.cpp
 CMakeFiles/hivemind.dir/Robot.cpp.o: ../Robot.h

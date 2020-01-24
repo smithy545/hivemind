@@ -13,6 +13,7 @@ using namespace glm;
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
+
     // Initialise GLFW
     if(!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -48,7 +49,7 @@ int main() {
     glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
     do{
-        // Clear the screen. It's not mentioned before Tutorial 02, but it can cause flickering, so it's there nonetheless.
+        // Clear the screen
         glClear( GL_COLOR_BUFFER_BIT );
 
         // Draw nothing

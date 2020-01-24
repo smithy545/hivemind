@@ -12,17 +12,19 @@
 
 class GridMap : public Map {
 public:
+    typedef std::shared_ptr<GridMap> Ptr;
+
     GridMap(int width, int height);
 
-    std::vector<MapNode> getNeighbors(MapNode position);
-    std::vector<MapNode> getNodes();
+    std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr position) override;
+    std::vector<MapNode::Ptr> getNodes();
 
     const int &Width() const;
     const int &Height() const;
 private:
     const int width;
     const int height;
-    std::vector<MapNode> nodes;
+    std::vector<MapNode::Ptr> nodes;
 };
 
 

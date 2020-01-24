@@ -625,6 +625,33 @@ GridMap.cpp.s:
 	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/GridMap.cpp.s
 .PHONY : GridMap.cpp.s
 
+Pather.o: Pather.cpp.o
+
+.PHONY : Pather.o
+
+# target to build an object file
+Pather.cpp.o:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Pather.cpp.o
+.PHONY : Pather.cpp.o
+
+Pather.i: Pather.cpp.i
+
+.PHONY : Pather.i
+
+# target to preprocess a source file
+Pather.cpp.i:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Pather.cpp.i
+.PHONY : Pather.cpp.i
+
+Pather.s: Pather.cpp.s
+
+.PHONY : Pather.s
+
+# target to generate assembly for a file
+Pather.cpp.s:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Pather.cpp.s
+.PHONY : Pather.cpp.s
+
 Robot.o: Robot.cpp.o
 
 .PHONY : Robot.o
@@ -728,6 +755,9 @@ help:
 	@echo "... GridMap.o"
 	@echo "... GridMap.i"
 	@echo "... GridMap.s"
+	@echo "... Pather.o"
+	@echo "... Pather.i"
+	@echo "... Pather.s"
 	@echo "... Robot.o"
 	@echo "... Robot.i"
 	@echo "... Robot.s"

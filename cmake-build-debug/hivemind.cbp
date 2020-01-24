@@ -2177,6 +2177,12 @@
 		<Unit filename="/home/philip/Documents/projects/hivemind/Map.h">
 			<Option target="hivemind"/>
 		</Unit>
+		<Unit filename="/home/philip/Documents/projects/hivemind/Pather.cpp">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="/home/philip/Documents/projects/hivemind/Pather.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="/home/philip/Documents/projects/hivemind/Robot.cpp">
 			<Option target="hivemind"/>
 		</Unit>

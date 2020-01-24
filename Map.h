@@ -5,10 +5,13 @@
 #ifndef HIVEMIND_MAP_H
 #define HIVEMIND_MAP_H
 
+#include <memory>
 #include <vector>
 
 class Map {
 public:
+    typedef std::shared_ptr<Map> Ptr;
+
     class MapNode {
         public:
             typedef std::shared_ptr<MapNode> Ptr;
@@ -16,8 +19,7 @@ public:
             const double x;
             const double y;
     };
-protected:
-    virtual std::vector<MapNode> getNeighbors(MapNode position) = 0;
+    virtual std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr position) = 0;
 };
 
 #endif //HIVEMIND_MAP_H

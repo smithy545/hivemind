@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hivemind.dir/GridMap.cpp.o"
+  "CMakeFiles/hivemind.dir/Pather.cpp.o"
   "CMakeFiles/hivemind.dir/Robot.cpp.o"
   "CMakeFiles/hivemind.dir/main.cpp.o"
   "hivemind"
