@@ -33,7 +33,7 @@ std::vector<Map::MapNode::Ptr> Pather::genAStarPath(const Map::Ptr &map, const M
                     parent = parent->previous;
                 }
                 return path;
-            } else {
+            } else if(neighbor->passable) {
                 double g = parent->g + distanceEuclid(neighbor, parent->position);
                 double h = distanceEuclid(neighbor, end);
 

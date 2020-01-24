@@ -4,8 +4,7 @@
 
 #include "GridMap.h"
 
-GridMap::GridMap(int width, int height)  :  width(width),
-                                            height(height) {
+GridMap::GridMap(int width, int height) : width(width), height(height) {
     for(int y = 0; y < height; y++) {
         for(int x = 0; x < width; x++) {
             nodes.push_back(std::make_shared<MapNode>(x, y));

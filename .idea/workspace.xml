@@ -44,47 +44,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="Add a* pathing">
-      <change afterPath="$PROJECT_DIR$/Pather.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pather.h" afterDir="false" />
+    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GridMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GridMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/GridMap.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Map.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/Robot.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/Robot.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/hivemind" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hivemind" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/hivemind.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hivemind.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pather.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Pather.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +320,7 @@
       <workItem from="1579734066661" duration="197000" />
       <workItem from="1579734284243" duration="4347000" />
       <workItem from="1579809535530" duration="1154000" />
-      <workItem from="1579819674905" duration="13364000" />
+      <workItem from="1579819674905" duration="13842000" />
     </task>
     <task id="LOCAL-00001" summary="Personalize boilerplate">
       <created>1579837981301</created>
@@ -379,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579838311976</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add a* pathing">
+      <created>1579842403484</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579842403484</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,10 +367,10 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="2173" y="353" width="804" height="667" key="#Notifications/0.0.3440.1440@0.0.3440.1440" timestamp="1579838001945" />
-    <state x="1472" y="251" width="799" height="797" key="CommitChangelistDialog2" timestamp="1579842360896">
+    <state x="1470" y="233" width="799" height="797" key="CommitChangelistDialog2" timestamp="1579842403307">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
-    <state x="1472" y="251" width="799" height="797" key="CommitChangelistDialog2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842360896" />
+    <state x="1470" y="233" width="799" height="797" key="CommitChangelistDialog2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842403307" />
     <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl" timestamp="1579836594399">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
@@ -426,9 +397,9 @@
     <state x="809" y="172" key="SettingsEditor/0.0.3440.1440@0.0.3440.1440" timestamp="1579734034868" />
     <state x="1259" y="154" key="SettingsEditor/0.0.5360.1440@0.0.5360.1440" timestamp="1579734759232" />
     <state x="3894" y="156" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@3440.0.1920.1080" timestamp="1579542378989" />
-    <state x="2167" y="374" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1579838316118">
+    <state x="2165" y="356" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1579842411245">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
-    <state x="2167" y="374" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.3440.1440@0.0.3440.1440" timestamp="1579838316118" />
+    <state x="2165" y="356" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842411245" />
   </component>
 </project>

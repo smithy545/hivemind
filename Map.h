@@ -15,9 +15,11 @@ public:
     class MapNode {
         public:
             typedef std::shared_ptr<MapNode> Ptr;
-            MapNode(double x, double y) : x(x), y(y) {}
+            MapNode(double x, double y) : MapNode(x, y, true) {}
+            MapNode(double x, double y, bool passable) : x(x), y(y), passable(passable) {}
             const double x;
             const double y;
+            bool passable;
     };
     virtual std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr position) = 0;
 };
