@@ -2168,13 +2168,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/philip/Documents/projects/hivemind/GameRunner.cpp">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="/home/philip/Documents/projects/hivemind/GameRunner.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="/home/philip/Documents/projects/hivemind/GridMap.cpp">
 			<Option target="hivemind"/>
 		</Unit>
 		<Unit filename="/home/philip/Documents/projects/hivemind/GridMap.h">
 			<Option target="hivemind"/>
 		</Unit>
-		<Unit filename="/home/philip/Documents/projects/hivemind/Map.h">
+		<Unit filename="/home/philip/Documents/projects/hivemind/MapNode.h">
 			<Option target="hivemind"/>
 		</Unit>
 		<Unit filename="/home/philip/Documents/projects/hivemind/Pather.cpp">

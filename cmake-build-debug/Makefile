@@ -598,6 +598,33 @@ LinearMath/fast:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build
 .PHONY : LinearMath/fast
 
+GameRunner.o: GameRunner.cpp.o
+
+.PHONY : GameRunner.o
+
+# target to build an object file
+GameRunner.cpp.o:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/GameRunner.cpp.o
+.PHONY : GameRunner.cpp.o
+
+GameRunner.i: GameRunner.cpp.i
+
+.PHONY : GameRunner.i
+
+# target to preprocess a source file
+GameRunner.cpp.i:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/GameRunner.cpp.i
+.PHONY : GameRunner.cpp.i
+
+GameRunner.s: GameRunner.cpp.s
+
+.PHONY : GameRunner.s
+
+# target to generate assembly for a file
+GameRunner.cpp.s:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/GameRunner.cpp.s
+.PHONY : GameRunner.cpp.s
+
 GridMap.o: GridMap.cpp.o
 
 .PHONY : GridMap.o
@@ -752,6 +779,9 @@ help:
 	@echo "... BulletCollision"
 	@echo "... BulletDynamics"
 	@echo "... LinearMath"
+	@echo "... GameRunner.o"
+	@echo "... GameRunner.i"
+	@echo "... GameRunner.s"
 	@echo "... GridMap.o"
 	@echo "... GridMap.i"
 	@echo "... GridMap.s"

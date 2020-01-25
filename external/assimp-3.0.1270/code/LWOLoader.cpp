@@ -974,7 +974,7 @@ void LWOImporter::LoadLWO2VertexMap(unsigned int length, bool perPoly)
 	case AI_LWO_RGB:
 	case AI_LWO_RGBA:
 		if (dims != 3 && dims != 4)	{
-			DefaultLogger::get()->warn("LWO2: Skipping Color Map \'" 
+			DefaultLogger::get()->warn("LWO2: Skipping Color MapNode \'"
 			+ name + "\' with a dimension > 4 or < 3"); 
 			return;
 		}

@@ -197,7 +197,7 @@ LWO::Texture* LWOImporter::SetupNewTextureLWOB(LWO::TextureList& list,unsigned i
 	GetS0(type,size);
 	const char* s = type.c_str();
 
-	if(strstr(s, "Image Map"))
+	if(strstr(s, "Image MapNode"))
 	{
 		// Determine mapping type
 		if(strstr(s, "Planar"))

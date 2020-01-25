@@ -5,21 +5,21 @@
 #include "Robot.h"
 
 
-Robot::Robot(Map::MapNode position)
-        : position(std::make_shared<Map::MapNode>(position.x, position.y)),
+Robot::Robot(MapNode position)
+        : position(std::make_shared<MapNode>(position.x, position.y)),
           path() {}
 
 void Robot::update() {
     // set position to next in path
-    Map::MapNode nextPos = path.front();
-    position = std::make_shared<Map::MapNode>(nextPos.x, nextPos.y);
+    MapNode nextPos = path.front();
+    position = std::make_shared<MapNode>(nextPos.x, nextPos.y);
     path.pop();
 }
 
-const std::queue<Map::MapNode> &Robot::Path() const {
+const std::queue<MapNode> &Robot::Path() const {
     return path;
 }
 
-const Map::MapNode::Ptr &Robot::Position() const {
+const MapNode::Ptr &Robot::Position() const {
     return position;
 }

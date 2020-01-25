@@ -10,7 +10,7 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include "Map.h"
+#include "MapNode.h"
 
 
 class Pather {
@@ -19,23 +19,23 @@ public:
     public:
         typedef std::shared_ptr<PathingNode> Ptr;
 
-        PathingNode(Map::MapNode::Ptr pos, double g, double h, Ptr prev)
+        PathingNode(MapNode::Ptr pos, double g, double h, Ptr prev)
             : position(std::move(pos)), g(g), h(h), previous(std::move(prev)) {}
 
         double getF() {
             return g + h;
         }
 
-        Map::MapNode::Ptr position;
+        MapNode::Ptr position;
         double g;
         double h;
         Ptr previous;
     };
 
-    std::vector<Map::MapNode::Ptr> genAStarPath(const Map::Ptr &map, const Map::MapNode::Ptr &start, const Map::MapNode::Ptr &end);
+    std::vector<MapNode::Ptr> genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end);
 private:
-    std::string genKey(const Map::MapNode::Ptr &pos);
-    double distanceEuclid(const Map::MapNode::Ptr &a, const Map::MapNode::Ptr &b);
+    std::string genKey(const MapNode::Ptr &pos);
+    double distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b);
 };
 
 

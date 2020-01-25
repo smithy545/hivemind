@@ -195,7 +195,7 @@ struct MeshInstance
 	///< ID of the mesh or controller to be instanced
 	std::string mMeshOrController;
 
-	///< Map of materials by the subgroup ID they're applied to
+	///< MapNode of materials by the subgroup ID they're applied to
 	std::map<std::string, SemanticMappingTable> mMaterials;
 };
 

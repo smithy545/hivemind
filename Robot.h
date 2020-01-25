@@ -8,19 +8,19 @@
 
 #include <queue>
 #include <memory>
-#include "Map.h"
+#include "MapNode.h"
 
 class Robot {
 public:
-    explicit Robot(Map::MapNode position);
+    explicit Robot(MapNode position);
 
-    const std::queue<Map::MapNode> &Path() const;
-    const Map::MapNode::Ptr &Position() const;
+    const std::queue<MapNode> &Path() const;
+    const MapNode::Ptr &Position() const;
 
     void update();
 protected:
-    std::queue<Map::MapNode> path;
-    Map::MapNode::Ptr position;
+    std::queue<MapNode> path;
+    MapNode::Ptr position;
 };
 
 

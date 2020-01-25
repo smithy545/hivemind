@@ -250,7 +250,7 @@ static void createKeyTables(void)
             memcpy(name, desc->names->keys[scancode].name, XkbKeyNameLength);
             name[XkbKeyNameLength] = '\0';
 
-            // Map the key name to a GLFW key code. Note: We only map printable
+            // MapNode the key name to a GLFW key code. Note: We only map printable
             // keys here, and we use the US keyboard layout. The rest of the
             // keys (function keys) are mapped using traditional KeySym
             // translations.

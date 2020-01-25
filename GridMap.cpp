@@ -7,39 +7,41 @@
 GridMap::GridMap(int width, int height) : width(width), height(height) {
     for(int y = 0; y < height; y++) {
         for(int x = 0; x < width; x++) {
-            nodes.push_back(std::make_shared<MapNode>(x, y));
+            MapNode::Ptr node = std::make_shared<MapNode>(x, y);
+            const bool xgt0 = x > 0;
+            const bool ygt0 = y > 0;
+            const bool xltw = x < width - 1;
+            const bool ylth = y < height - 1;
+            if(xgt0)
+                node->neighbors.push_back(nodes[y*width + x - 1]);
+            if(xltw)
+                node->neighbors.push_back(nodes[y*width + x + 1]);
+            if(ygt0)
+                node->neighbors.push_back(nodes[(y - 1)*width + x]);
+            if(ylth)
+                node->neighbors.push_back(nodes[(y + 1)*width + x]);
+            if(xgt0 && ygt0)
+                node->neighbors.push_back(nodes[(y - 1)*width + x - 1]);
+            if(xltw && ylth)
+                node->neighbors.push_back(nodes[(y + 1)*width + x + 1]);
+            if(xgt0 && ylth)
+                node->neighbors.push_back(nodes[(y + 1)*width + x - 1]);
+            if(xltw && ygt0)
+                node->neighbors.push_back(nodes[(y - 1)*width + x + 1]);
+            nodes.push_back(node);
         }
     }
 }
 
-std::vector<Map::MapNode::Ptr> GridMap::getNeighbors(MapNode::Ptr position) {
-    std::vector<MapNode::Ptr> neighbors;
-    const bool xgt0 = position->x > 0;
-    const bool ygt0 = position->y > 0;
-    const bool xltw = position->x < width;
-    const bool ylth = position->y < height;
-    if(xgt0)
-        neighbors.push_back(nodes[position->y*width + position->x - 1]);
-    if(ygt0)
-        neighbors.push_back(nodes[(position->y-1)*width + position->x]);
-    if(xltw)
-        neighbors.push_back(nodes[position->y*width + position->x + 1]);
-    if(ylth)
-        neighbors.push_back(nodes[(position->y+1)*width + position->x]);
-    if(xgt0 && ygt0)
-        neighbors.push_back(nodes[(position->y-1)*width + position->x - 1]);
-    if(xgt0 && ylth)
-        neighbors.push_back(nodes[(position->y+1)*width + position->x - 1]);
-    if(xltw && ygt0)
-        neighbors.push_back(nodes[(position->y-1)*width + position->x + 1]);
-    if(xltw && ylth)
-        neighbors.push_back(nodes[(position->y+1)*width + position->x + 1]);
-
-    return neighbors;
+std::vector<MapNode::MapNode::Ptr> GridMap::getNodes() {
+    return nodes;
 }
 
-std::vector<Map::MapNode::Ptr> GridMap::getNodes() {
-    return nodes;
+MapNode::Ptr GridMap::getNode(int x, int y) {
+    int index = y*width + x;
+    if(index < 0 || index > nodes.size())
+        return nullptr;
+    return nodes[index];
 }
 
 const int &GridMap::Width() const {

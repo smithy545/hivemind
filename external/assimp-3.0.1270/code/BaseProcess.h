@@ -177,7 +177,7 @@ private:
 
 private:
 
-	//! Map of all stored properties
+	//! MapNode of all stored properties
 	PropertyMap pmap;
 };
 

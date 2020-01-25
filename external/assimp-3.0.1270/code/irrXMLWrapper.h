@@ -78,7 +78,7 @@ public:
 		, t (0)
 	{
 
-		// Map the buffer into memory and convert it to UTF8. IrrXML provides its
+		// MapNode the buffer into memory and convert it to UTF8. IrrXML provides its
 		// own conversion, which is merely a cast from uintNN_t to uint8_t. Thus,
 		// it is not suitable for our purposes and we have to do it BEFORE IrrXML
 		// gets the buffer. Sadly, this forces as to map the whole file into

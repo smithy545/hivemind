@@ -32,14 +32,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-/* Map height updates */
+/* MapNode height updates */
 #define MAX_CIRCLE_SIZE (5.0f)
 #define MAX_DISPLACEMENT (1.0f)
 #define DISPLACEMENT_SIGN_LIMIT (0.3f)
 #define MAX_ITER (200)
 #define NUM_ITER_AT_A_TIME (1)
 
-/* Map general information */
+/* MapNode general information */
 #define MAP_SIZE (10.0f)
 #define MAP_NUM_VERTICES (80)
 #define MAP_NUM_TOTAL_VERTICES (MAP_NUM_VERTICES*MAP_NUM_VERTICES)
