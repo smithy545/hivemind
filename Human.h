@@ -2,17 +2,17 @@
 // Created by philip on 1/23/20.
 //
 
-#ifndef HIVEMIND_ROBOT_H
-#define HIVEMIND_ROBOT_H
+#ifndef HIVEMIND_HUMAN_H
+#define HIVEMIND_HUMAN_H
 
 
 #include <queue>
 #include <memory>
 #include "MapNode.h"
 
-class Robot {
+class Human {
 public:
-    explicit Robot(MapNode position);
+    explicit Human(const MapNode& position);
 
     const std::queue<MapNode> &Path() const;
     const MapNode::Ptr &Position() const;
@@ -24,4 +24,4 @@ protected:
 };
 
 
-#endif //HIVEMIND_ROBOT_H
+#endif //HIVEMIND_HUMAN_H

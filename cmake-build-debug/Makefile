@@ -652,6 +652,33 @@ GridMap.cpp.s:
 	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/GridMap.cpp.s
 .PHONY : GridMap.cpp.s
 
+Human.o: Human.cpp.o
+
+.PHONY : Human.o
+
+# target to build an object file
+Human.cpp.o:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Human.cpp.o
+.PHONY : Human.cpp.o
+
+Human.i: Human.cpp.i
+
+.PHONY : Human.i
+
+# target to preprocess a source file
+Human.cpp.i:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Human.cpp.i
+.PHONY : Human.cpp.i
+
+Human.s: Human.cpp.s
+
+.PHONY : Human.s
+
+# target to generate assembly for a file
+Human.cpp.s:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Human.cpp.s
+.PHONY : Human.cpp.s
+
 Pather.o: Pather.cpp.o
 
 .PHONY : Pather.o
@@ -679,32 +706,32 @@ Pather.cpp.s:
 	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Pather.cpp.s
 .PHONY : Pather.cpp.s
 
-Robot.o: Robot.cpp.o
+SparseMap.o: SparseMap.cpp.o
 
-.PHONY : Robot.o
+.PHONY : SparseMap.o
 
 # target to build an object file
-Robot.cpp.o:
-	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Robot.cpp.o
-.PHONY : Robot.cpp.o
+SparseMap.cpp.o:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/SparseMap.cpp.o
+.PHONY : SparseMap.cpp.o
 
-Robot.i: Robot.cpp.i
+SparseMap.i: SparseMap.cpp.i
 
-.PHONY : Robot.i
+.PHONY : SparseMap.i
 
 # target to preprocess a source file
-Robot.cpp.i:
-	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Robot.cpp.i
-.PHONY : Robot.cpp.i
+SparseMap.cpp.i:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/SparseMap.cpp.i
+.PHONY : SparseMap.cpp.i
 
-Robot.s: Robot.cpp.s
+SparseMap.s: SparseMap.cpp.s
 
-.PHONY : Robot.s
+.PHONY : SparseMap.s
 
 # target to generate assembly for a file
-Robot.cpp.s:
-	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/Robot.cpp.s
-.PHONY : Robot.cpp.s
+SparseMap.cpp.s:
+	$(MAKE) -f CMakeFiles/hivemind.dir/build.make CMakeFiles/hivemind.dir/SparseMap.cpp.s
+.PHONY : SparseMap.cpp.s
 
 main.o: main.cpp.o
 
@@ -785,12 +812,15 @@ help:
 	@echo "... GridMap.o"
 	@echo "... GridMap.i"
 	@echo "... GridMap.s"
+	@echo "... Human.o"
+	@echo "... Human.i"
+	@echo "... Human.s"
 	@echo "... Pather.o"
 	@echo "... Pather.i"
 	@echo "... Pather.s"
-	@echo "... Robot.o"
-	@echo "... Robot.i"
-	@echo "... Robot.s"
+	@echo "... SparseMap.o"
+	@echo "... SparseMap.i"
+	@echo "... SparseMap.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-bool* GameRunner::keys = new bool[256];
+bool* GameRunner::keys;
 GLFWwindow* GameRunner::window = nullptr;
 
 void GameRunner::loop() {
@@ -43,7 +43,8 @@ void GameRunner::loop() {
 
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
+    // Setup keyboard inputs
+    keys = new bool[256];
     glfwSetKeyCallback(window, [](GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (action) {
             case GLFW_PRESS:
@@ -54,6 +55,8 @@ void GameRunner::loop() {
                 break;
             case GLFW_REPEAT:
                 break;
+            default:
+                std::cerr << "Key action \"" << action << "\" not handled" << std::endl;
         }
     });
 
@@ -61,7 +64,8 @@ void GameRunner::loop() {
         // Clear the screen
         glClear( GL_COLOR_BUFFER_BIT );
 
-        // Draw nothing
+        render();
+        update();
 
         // Swap buffers
         glfwSwapBuffers(window);
@@ -74,3 +78,10 @@ void GameRunner::loop() {
     glfwTerminate();
 }
 
+void GameRunner::render() {
+
+}
+
+void GameRunner::update() {
+
+}

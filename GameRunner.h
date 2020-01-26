@@ -16,15 +16,20 @@
 
 // Include GLM
 #include <glm/glm.hpp>
+#include "GridMap.h"
+
 using namespace glm;
 
 
 class GameRunner {
 public:
     static void loop();
+    static void render();
+    static void update();
 private:
     static GLFWwindow* window;
     static bool* keys;
+    static GridMap::Ptr map;
 };
 
 

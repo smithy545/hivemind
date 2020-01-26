@@ -96,18 +96,6 @@ iokit_joystick.h
 nsgl_context.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/nsgl_context.h
 
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/context.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-stdio.h
--
-string.h
--
-limits.h
--
-stdio.h
--
-
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/egl_context.h
 dlfcn.h
 -
@@ -116,43 +104,11 @@ EGL/egl.h
 ../deps/EGL/eglext.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/deps/EGL/eglext.h
 
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/glx_context.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-string.h
--
-stdlib.h
--
-assert.h
--
-dlfcn.h
--
-
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/glx_context.h
 GL/glx.h
 -
 ../deps/GL/glxext.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/deps/GL/glxext.h
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/init.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-string.h
--
-stdlib.h
--
-stdio.h
--
-stdarg.h
--
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/input.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-stdlib.h
--
-malloc.h
--
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
 glfw_config.h
@@ -182,32 +138,6 @@ IOKit/hid/IOHIDLib.h
 IOKit/hid/IOHIDKeys.h
 -
 
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/linux_joystick.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-linux/joystick.h
--
-sys/types.h
--
-sys/stat.h
--
-sys/inotify.h
--
-fcntl.h
--
-errno.h
--
-dirent.h
--
-stdio.h
--
-stdlib.h
--
-string.h
--
-unistd.h
--
-
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/linux_joystick.h
 regex.h
 -
@@ -230,37 +160,11 @@ xkb_unicode.h
 egl_context.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/egl_context.h
 
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/monitor.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-math.h
--
-float.h
--
-string.h
--
-stdlib.h
--
-limits.h
--
-
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/nsgl_context.h
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/posix_time.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-sys/time.h
--
-time.h
--
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/posix_time.h
 stdint.h
 -
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/posix_tls.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/posix_tls.h
 pthread.h
@@ -289,14 +193,6 @@ egl_context.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/egl_context.h
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/win32_tls.h
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/window.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-string.h
--
-stdlib.h
--
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/winmm_joystick.h
 
@@ -330,16 +226,6 @@ limits.h
 stdio.h
 -
 locale.h
--
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/x11_monitor.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-limits.h
--
-stdlib.h
--
-string.h
 -
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/x11_platform.h
@@ -379,32 +265,6 @@ glx_context.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/glx_context.h
 egl_context.h
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/egl_context.h
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/x11_window.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
-X11/cursorfont.h
--
-X11/Xmd.h
--
-sys/select.h
--
-string.h
--
-stdio.h
--
-stdlib.h
--
-limits.h
--
-errno.h
--
-assert.h
--
-
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/xkb_unicode.c
-internal.h
-/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/internal.h
 
 /home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/xkb_unicode.h
 

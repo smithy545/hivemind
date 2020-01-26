@@ -15,11 +15,11 @@
 
 class Pather {
 public:
-    class PathingNode {
+    class PathNode {
     public:
-        typedef std::shared_ptr<PathingNode> Ptr;
+        typedef std::shared_ptr<PathNode> Ptr;
 
-        PathingNode(MapNode::Ptr pos, double g, double h, Ptr prev)
+        PathNode(MapNode::Ptr pos, double g, double h, Ptr prev)
             : position(std::move(pos)), g(g), h(h), previous(std::move(prev)) {}
 
         double getF() {
@@ -32,10 +32,10 @@ public:
         Ptr previous;
     };
 
-    std::vector<MapNode::Ptr> genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end);
+    static std::vector<MapNode::Ptr> genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end);
 private:
-    std::string genKey(const MapNode::Ptr &pos);
-    double distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b);
+    static std::string genKey(const MapNode::Ptr &pos);
+    static double distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b);
 };
 
 

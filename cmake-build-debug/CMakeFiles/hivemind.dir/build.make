@@ -70,18 +70,18 @@ CMakeFiles/hivemind.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hivemind.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/philip/Documents/projects/hivemind/main.cpp -o CMakeFiles/hivemind.dir/main.cpp.s
 
-CMakeFiles/hivemind.dir/Robot.cpp.o: CMakeFiles/hivemind.dir/flags.make
-CMakeFiles/hivemind.dir/Robot.cpp.o: ../Robot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/philip/Documents/projects/hivemind/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hivemind.dir/Robot.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hivemind.dir/Robot.cpp.o -c /home/philip/Documents/projects/hivemind/Robot.cpp
+CMakeFiles/hivemind.dir/Human.cpp.o: CMakeFiles/hivemind.dir/flags.make
+CMakeFiles/hivemind.dir/Human.cpp.o: ../Human.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/philip/Documents/projects/hivemind/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hivemind.dir/Human.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hivemind.dir/Human.cpp.o -c /home/philip/Documents/projects/hivemind/Human.cpp
 
-CMakeFiles/hivemind.dir/Robot.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hivemind.dir/Robot.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/philip/Documents/projects/hivemind/Robot.cpp > CMakeFiles/hivemind.dir/Robot.cpp.i
+CMakeFiles/hivemind.dir/Human.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hivemind.dir/Human.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/philip/Documents/projects/hivemind/Human.cpp > CMakeFiles/hivemind.dir/Human.cpp.i
 
-CMakeFiles/hivemind.dir/Robot.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hivemind.dir/Robot.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/philip/Documents/projects/hivemind/Robot.cpp -o CMakeFiles/hivemind.dir/Robot.cpp.s
+CMakeFiles/hivemind.dir/Human.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hivemind.dir/Human.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/philip/Documents/projects/hivemind/Human.cpp -o CMakeFiles/hivemind.dir/Human.cpp.s
 
 CMakeFiles/hivemind.dir/GridMap.cpp.o: CMakeFiles/hivemind.dir/flags.make
 CMakeFiles/hivemind.dir/GridMap.cpp.o: ../GridMap.cpp
@@ -122,22 +122,37 @@ CMakeFiles/hivemind.dir/GameRunner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hivemind.dir/GameRunner.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/philip/Documents/projects/hivemind/GameRunner.cpp -o CMakeFiles/hivemind.dir/GameRunner.cpp.s
 
+CMakeFiles/hivemind.dir/SparseMap.cpp.o: CMakeFiles/hivemind.dir/flags.make
+CMakeFiles/hivemind.dir/SparseMap.cpp.o: ../SparseMap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/philip/Documents/projects/hivemind/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/hivemind.dir/SparseMap.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hivemind.dir/SparseMap.cpp.o -c /home/philip/Documents/projects/hivemind/SparseMap.cpp
+
+CMakeFiles/hivemind.dir/SparseMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hivemind.dir/SparseMap.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/philip/Documents/projects/hivemind/SparseMap.cpp > CMakeFiles/hivemind.dir/SparseMap.cpp.i
+
+CMakeFiles/hivemind.dir/SparseMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hivemind.dir/SparseMap.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/philip/Documents/projects/hivemind/SparseMap.cpp -o CMakeFiles/hivemind.dir/SparseMap.cpp.s
+
 # Object files for target hivemind
 hivemind_OBJECTS = \
 "CMakeFiles/hivemind.dir/main.cpp.o" \
-"CMakeFiles/hivemind.dir/Robot.cpp.o" \
+"CMakeFiles/hivemind.dir/Human.cpp.o" \
 "CMakeFiles/hivemind.dir/GridMap.cpp.o" \
 "CMakeFiles/hivemind.dir/Pather.cpp.o" \
-"CMakeFiles/hivemind.dir/GameRunner.cpp.o"
+"CMakeFiles/hivemind.dir/GameRunner.cpp.o" \
+"CMakeFiles/hivemind.dir/SparseMap.cpp.o"
 
 # External object files for target hivemind
 hivemind_EXTERNAL_OBJECTS =
 
 hivemind: CMakeFiles/hivemind.dir/main.cpp.o
-hivemind: CMakeFiles/hivemind.dir/Robot.cpp.o
+hivemind: CMakeFiles/hivemind.dir/Human.cpp.o
 hivemind: CMakeFiles/hivemind.dir/GridMap.cpp.o
 hivemind: CMakeFiles/hivemind.dir/Pather.cpp.o
 hivemind: CMakeFiles/hivemind.dir/GameRunner.cpp.o
+hivemind: CMakeFiles/hivemind.dir/SparseMap.cpp.o
 hivemind: CMakeFiles/hivemind.dir/build.make
 hivemind: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 hivemind: /usr/lib/x86_64-linux-gnu/libGLX.so
@@ -164,7 +179,7 @@ hivemind: /usr/lib/x86_64-linux-gnu/libXi.so
 hivemind: /usr/lib/x86_64-linux-gnu/libXxf86vm.so
 hivemind: /usr/lib/x86_64-linux-gnu/libXcursor.so
 hivemind: CMakeFiles/hivemind.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/philip/Documents/projects/hivemind/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable hivemind"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/philip/Documents/projects/hivemind/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable hivemind"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hivemind.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

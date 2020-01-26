@@ -2,24 +2,24 @@
 // Created by philip on 1/23/20.
 //
 
-#include "Robot.h"
+#include "Human.h"
 
 
-Robot::Robot(MapNode position)
+Human::Human(const MapNode& position)
         : position(std::make_shared<MapNode>(position.x, position.y)),
           path() {}
 
-void Robot::update() {
+void Human::update() {
     // set position to next in path
     MapNode nextPos = path.front();
     position = std::make_shared<MapNode>(nextPos.x, nextPos.y);
     path.pop();
 }
 
-const std::queue<MapNode> &Robot::Path() const {
+const std::queue<MapNode> &Human::Path() const {
     return path;
 }
 
-const MapNode::Ptr &Robot::Position() const {
+const MapNode::Ptr &Human::Position() const {
     return position;
 }

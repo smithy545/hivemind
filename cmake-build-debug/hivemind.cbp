@@ -2180,6 +2180,15 @@
 		<Unit filename="/home/philip/Documents/projects/hivemind/GridMap.h">
 			<Option target="hivemind"/>
 		</Unit>
+		<Unit filename="/home/philip/Documents/projects/hivemind/Human.cpp">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="/home/philip/Documents/projects/hivemind/Human.h">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="/home/philip/Documents/projects/hivemind/Map.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="/home/philip/Documents/projects/hivemind/MapNode.h">
 			<Option target="hivemind"/>
 		</Unit>
@@ -2189,10 +2198,10 @@
 		<Unit filename="/home/philip/Documents/projects/hivemind/Pather.h">
 			<Option target="hivemind"/>
 		</Unit>
-		<Unit filename="/home/philip/Documents/projects/hivemind/Robot.cpp">
+		<Unit filename="/home/philip/Documents/projects/hivemind/SparseMap.cpp">
 			<Option target="hivemind"/>
 		</Unit>
-		<Unit filename="/home/philip/Documents/projects/hivemind/Robot.h">
+		<Unit filename="/home/philip/Documents/projects/hivemind/SparseMap.h">
 			<Option target="hivemind"/>
 		</Unit>
 		<Unit filename="/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/glfw_config.h">

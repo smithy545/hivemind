@@ -33,7 +33,7 @@ GridMap::GridMap(int width, int height) : width(width), height(height) {
     }
 }
 
-std::vector<MapNode::MapNode::Ptr> GridMap::getNodes() {
+std::vector<MapNode::Ptr> GridMap::getNodes() {
     return nodes;
 }
 
@@ -44,10 +44,10 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
     return nodes[index];
 }
 
-const int &GridMap::Width() const {
+int GridMap::getWidth() const {
     return width;
 }
 
-const int &GridMap::Height() const {
+int GridMap::getHeight() const {
     return height;
 }
