@@ -1,15 +1,15 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/zlib.dir/adler32.c.o"
-  "CMakeFiles/zlib.dir/compress.c.o"
-  "CMakeFiles/zlib.dir/crc32.c.o"
-  "CMakeFiles/zlib.dir/deflate.c.o"
-  "CMakeFiles/zlib.dir/inffast.c.o"
-  "CMakeFiles/zlib.dir/inflate.c.o"
-  "CMakeFiles/zlib.dir/inftrees.c.o"
-  "CMakeFiles/zlib.dir/trees.c.o"
-  "CMakeFiles/zlib.dir/zutil.c.o"
-  "libz.a"
-  "libz.pdb"
+  "CMakeFiles/zlib.dir/adler32.c.obj"
+  "CMakeFiles/zlib.dir/compress.c.obj"
+  "CMakeFiles/zlib.dir/crc32.c.obj"
+  "CMakeFiles/zlib.dir/deflate.c.obj"
+  "CMakeFiles/zlib.dir/inffast.c.obj"
+  "CMakeFiles/zlib.dir/inflate.c.obj"
+  "CMakeFiles/zlib.dir/inftrees.c.obj"
+  "CMakeFiles/zlib.dir/trees.c.obj"
+  "CMakeFiles/zlib.dir/zutil.c.obj"
+  "zlibd.lib"
+  "zlibd.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

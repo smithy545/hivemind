@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cursor.dir/cursor.c.o"
-  "cursor"
+  "CMakeFiles/cursor.dir/cursor.c.obj"
+  "cursor.exe"
+  "cursor.exe.manifest"
+  "cursor.lib"
   "cursor.pdb"
 )
 

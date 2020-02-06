@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/wave.dir/wave.c.o"
-  "wave"
+  "CMakeFiles/wave.dir/wave.c.obj"
+  "wave.exe"
+  "wave.exe.manifest"
+  "wave.lib"
   "wave.pdb"
 )
 

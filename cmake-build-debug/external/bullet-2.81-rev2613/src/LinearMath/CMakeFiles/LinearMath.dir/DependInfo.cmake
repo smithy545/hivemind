@@ -4,16 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btAlignedAllocator.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btAlignedAllocator.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btConvexHull.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btConvexHull.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btConvexHullComputer.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btConvexHullComputer.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btGeometryUtil.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btGeometryUtil.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btPolarDecomposition.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btPolarDecomposition.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btQuickprof.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btQuickprof.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btSerializer.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btSerializer.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btVector3.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btVector3.cpp.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btAlignedAllocator.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btAlignedAllocator.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btConvexHull.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btConvexHull.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btConvexHullComputer.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btConvexHullComputer.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btGeometryUtil.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btGeometryUtil.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btPolarDecomposition.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btPolarDecomposition.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btQuickprof.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btQuickprof.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btSerializer.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btSerializer.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/bullet-2.81-rev2613/src/LinearMath/btVector3.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/btVector3.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
@@ -23,7 +23,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "TW_NO_LIB_PRAGMA"
   "TW_STATIC"
   "_CRT_SECURE_NO_WARNINGS"
-  "_UNIX"
+  "_WINDOWS"
   )
 
 # The include file search paths:

@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libz.a"
+  "zlibd.lib"
 )

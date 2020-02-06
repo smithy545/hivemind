@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/deps/getopt.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/__/deps/getopt.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/tests/gamma.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/gamma.c.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/deps/getopt.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/__/deps/getopt.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/tests/gamma.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/gamma.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
@@ -26,7 +26,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

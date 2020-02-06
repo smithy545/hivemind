@@ -28,7 +28,7 @@ public:
     static void update();
 private:
     static GLFWwindow* window;
-    static bool* keys;
+    static bool keys[256];
     static GridMap::Ptr map;
 };
 

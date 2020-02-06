@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwEventGLFW.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwEventGLFW.c.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwEventGLFW.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwEventGLFW.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
@@ -17,7 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
   "TW_NO_LIB_PRAGMA"
   "TW_STATIC"
   "_CRT_SECURE_NO_WARNINGS"
-  "_UNIX"
+  "_WINDOWS"
   )
 
 # The include file search paths:
@@ -29,17 +29,17 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../external/bullet-2.81-rev2613/src"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/LoadOGL.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/LoadOGL.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/LoadOGLCore.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/LoadOGLCore.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwBar.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwBar.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwColors.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwColors.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwFonts.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwFonts.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwMgr.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwMgr.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwOpenGL.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwOpenGL.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwOpenGLCore.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwOpenGLCore.cpp.o"
-  "/home/philip/Documents/projects/hivemind/external/AntTweakBar-1.16/src/TwPrecomp.cpp" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwPrecomp.cpp.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/LoadOGL.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/LoadOGL.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/LoadOGLCore.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/LoadOGLCore.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwBar.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwBar.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwColors.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwColors.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwFonts.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwFonts.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwMgr.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwMgr.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwOpenGL.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwOpenGL.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwOpenGLCore.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwOpenGLCore.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/src/TwPrecomp.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/AntTweakBar-1.16/src/TwPrecomp.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
@@ -49,7 +49,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "TW_NO_LIB_PRAGMA"
   "TW_STATIC"
   "_CRT_SECURE_NO_WARNINGS"
-  "_UNIX"
+  "_WINDOWS"
   )
 
 # The include file search paths:

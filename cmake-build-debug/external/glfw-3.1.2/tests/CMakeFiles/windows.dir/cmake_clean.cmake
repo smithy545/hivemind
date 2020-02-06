@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/windows.dir/windows.c.o"
-  "windows"
+  "CMakeFiles/windows.dir/windows.c.obj"
+  "windows.exe"
+  "windows.exe.manifest"
+  "windows.lib"
   "windows.pdb"
 )
 

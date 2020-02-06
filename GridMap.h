@@ -12,6 +12,7 @@
 #include "Map.h"
 #include "MapNode.h"
 
+
 class GridMap : public Map {
 public:
     typedef std::shared_ptr<GridMap> Ptr;
@@ -21,8 +22,8 @@ public:
     std::vector<MapNode::Ptr> getNodes() override;
     MapNode::Ptr getNode(int x, int y) override;
 
-    int getWidth() const;
-    int getHeight() const;
+    const int &Width() const;
+    const int &Height() const;
 private:
     const int width;
     const int height;

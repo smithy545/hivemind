@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/clipboard.dir/__/deps/getopt.c.o"
-  "CMakeFiles/clipboard.dir/clipboard.c.o"
-  "clipboard"
+  "CMakeFiles/clipboard.dir/__/deps/getopt.c.obj"
+  "CMakeFiles/clipboard.dir/clipboard.c.obj"
+  "clipboard.exe"
+  "clipboard.exe.manifest"
+  "clipboard.lib"
   "clipboard.pdb"
 )
 

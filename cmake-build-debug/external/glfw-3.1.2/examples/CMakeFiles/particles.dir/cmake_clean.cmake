@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/particles.dir/__/deps/getopt.c.o"
-  "CMakeFiles/particles.dir/__/deps/tinycthread.c.o"
-  "CMakeFiles/particles.dir/particles.c.o"
-  "particles"
+  "CMakeFiles/particles.dir/__/deps/getopt.c.obj"
+  "CMakeFiles/particles.dir/__/deps/tinycthread.c.obj"
+  "CMakeFiles/particles.dir/particles.c.obj"
+  "particles.exe"
+  "particles.exe.manifest"
+  "particles.lib"
   "particles.pdb"
 )
 

@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/empty.dir/__/deps/tinycthread.c.o"
-  "CMakeFiles/empty.dir/empty.c.o"
-  "empty"
+  "CMakeFiles/empty.dir/__/deps/tinycthread.c.obj"
+  "CMakeFiles/empty.dir/empty.c.obj"
+  "empty.exe"
+  "empty.exe.manifest"
+  "empty.lib"
   "empty.pdb"
 )
 

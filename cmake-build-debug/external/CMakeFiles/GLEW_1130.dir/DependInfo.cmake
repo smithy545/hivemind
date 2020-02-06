@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/philip/Documents/projects/hivemind/external/glew-1.13.0/src/glew.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/glew-1.13.0/src/glew.c.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glew-1.13.0/src/glew.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/glew-1.13.0/src/glew.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
@@ -16,7 +16,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
   "TW_NO_LIB_PRAGMA"
   "TW_STATIC"
   "_CRT_SECURE_NO_WARNINGS"
-  "_UNIX"
+  "_WINDOWS"
   )
 
 # The include file search paths:

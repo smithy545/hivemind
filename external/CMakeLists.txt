@@ -11,8 +11,10 @@ add_definitions(
 	-D_CRT_SECURE_NO_WARNINGS
 )
 
-### GLFW ###
+### Add string formatting lib ###
+add_subdirectory(fmt-master)
 
+### GLFW ###
 add_subdirectory (glfw-3.1.2)
 
 include_directories(

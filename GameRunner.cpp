@@ -6,7 +6,8 @@
 
 #include <iostream>
 
-bool* GameRunner::keys;
+
+bool GameRunner::keys[];
 GLFWwindow* GameRunner::window = nullptr;
 
 void GameRunner::loop() {
@@ -44,7 +45,6 @@ void GameRunner::loop() {
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
-    keys = new bool[256];
     glfwSetKeyCallback(window, [](GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (action) {
             case GLFW_PRESS:
@@ -62,10 +62,10 @@ void GameRunner::loop() {
 
     do {
         // Clear the screen
-        glClear( GL_COLOR_BUFFER_BIT );
+        glClear(GL_COLOR_BUFFER_BIT);
 
-        render();
         update();
+        render();
 
         // Swap buffers
         glfwSwapBuffers(window);
@@ -78,10 +78,6 @@ void GameRunner::loop() {
     glfwTerminate();
 }
 
-void GameRunner::render() {
+void GameRunner::render() {}
 
-}
-
-void GameRunner::update() {
-
-}
+void GameRunner::update() {}

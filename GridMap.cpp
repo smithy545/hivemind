@@ -4,10 +4,12 @@
 
 #include "GridMap.h"
 
-GridMap::GridMap(int width, int height) : width(width), height(height) {
+
+GridMap::GridMap(int width, int height) : width(width), height(height), nodes(width*height) {
     for(int y = 0; y < height; y++) {
-        for(int x = 0; x < width; x++) {
-            MapNode::Ptr node = std::make_shared<MapNode>(x, y);
+        for (int x = 0; x < width; x++) {
+            nodes[y*width + x] = std::make_shared<MapNode>(x, y);
+            MapNode::Ptr node = nodes[y*width + x];
             const bool xgt0 = x > 0;
             const bool ygt0 = y > 0;
             const bool xltw = x < width - 1;
@@ -28,7 +30,6 @@ GridMap::GridMap(int width, int height) : width(width), height(height) {
                 node->neighbors.push_back(nodes[(y + 1)*width + x - 1]);
             if(xltw && ygt0)
                 node->neighbors.push_back(nodes[(y - 1)*width + x + 1]);
-            nodes.push_back(node);
         }
     }
 }
@@ -44,10 +45,10 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
     return nodes[index];
 }
 
-int GridMap::getWidth() const {
+const int &GridMap::Width() const {
     return width;
 }
 
-int GridMap::getHeight() const {
+const int &GridMap::Height() const {
     return height;
 }

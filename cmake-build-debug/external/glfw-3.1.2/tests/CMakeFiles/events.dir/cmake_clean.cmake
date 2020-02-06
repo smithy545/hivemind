@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/events.dir/__/deps/getopt.c.o"
-  "CMakeFiles/events.dir/events.c.o"
-  "events"
+  "CMakeFiles/events.dir/__/deps/getopt.c.obj"
+  "CMakeFiles/events.dir/events.c.obj"
+  "events.exe"
+  "events.exe.manifest"
+  "events.lib"
   "events.pdb"
 )
 

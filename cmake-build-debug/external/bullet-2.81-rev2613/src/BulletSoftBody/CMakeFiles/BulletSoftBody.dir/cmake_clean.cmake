@@ -1,14 +1,14 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/BulletSoftBody.dir/btDefaultSoftBodySolver.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftBody.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftBodyConcaveCollisionAlgorithm.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftBodyHelpers.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftBodyRigidBodyCollisionConfiguration.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftRigidCollisionAlgorithm.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftRigidDynamicsWorld.cpp.o"
-  "CMakeFiles/BulletSoftBody.dir/btSoftSoftCollisionAlgorithm.cpp.o"
-  "libBulletSoftBody.a"
-  "libBulletSoftBody.pdb"
+  "BulletSoftBody.lib"
+  "BulletSoftBody.pdb"
+  "CMakeFiles/BulletSoftBody.dir/btDefaultSoftBodySolver.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftBody.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftBodyConcaveCollisionAlgorithm.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftBodyHelpers.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftBodyRigidBodyCollisionConfiguration.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftRigidCollisionAlgorithm.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftRigidDynamicsWorld.cpp.obj"
+  "CMakeFiles/BulletSoftBody.dir/btSoftSoftCollisionAlgorithm.cpp.obj"
 )
 
 # Per-language clean rules from dependency scanning.

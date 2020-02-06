@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/deps/tinycthread.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/tests/threads.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/threads.c.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/deps/tinycthread.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/tests/threads.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/threads.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
@@ -26,7 +26,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -1,18 +1,21 @@
 
+#include <iostream>
+
 #include "GameRunner.h"
 
-#include <iostream>
+#include "GridMap.h"
+#include "SparseMap.h"
 
 int main() {
     GameRunner gr;
 
     std::cout << "Starting main thread." << std::endl;
 
-    std::thread main(GameRunner::loop);
+    std::thread main_thread(GameRunner::loop);
 
-    std::cout << "Waiting for main thread to join..." << std::endl;
+    std::cout << "Waiting for main thread " << main_thread.get_id() << " to join..." << std::endl;
 
-    main.join();
+    main_thread.join();
 
     std::cout << "Ending." << std::endl;
 

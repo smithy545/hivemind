@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/splitview.dir/splitview.c.o"
-  "splitview"
+  "CMakeFiles/splitview.dir/splitview.c.obj"
+  "splitview.exe"
+  "splitview.exe.manifest"
+  "splitview.lib"
   "splitview.pdb"
 )
 

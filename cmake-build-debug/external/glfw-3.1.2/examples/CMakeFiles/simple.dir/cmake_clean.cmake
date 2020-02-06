@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/simple.dir/simple.c.o"
-  "simple"
+  "CMakeFiles/simple.dir/simple.c.obj"
+  "simple.exe"
+  "simple.exe.manifest"
+  "simple.lib"
   "simple.pdb"
 )
 

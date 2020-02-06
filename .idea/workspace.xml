@@ -2,40 +2,41 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="hivemind" targetName="msaa" />
-      <config projectName="hivemind" targetName="zlib" />
-      <config projectName="hivemind" targetName="windows" />
-      <config projectName="hivemind" targetName="heightmap" />
-      <config projectName="hivemind" targetName="splitview" />
-      <config projectName="hivemind" targetName="assimp" />
-      <config projectName="hivemind" targetName="events" />
-      <config projectName="hivemind" targetName="gamma" />
-      <config projectName="hivemind" targetName="ANTTWEAKBAR_116_OGLCORE_GLFW" />
-      <config projectName="hivemind" targetName="LinearMath" />
-      <config projectName="hivemind" targetName="boing" />
       <config projectName="hivemind" targetName="sharing" />
-      <config projectName="hivemind" targetName="hivemind" />
-      <config projectName="hivemind" targetName="joysticks" />
+      <config projectName="hivemind" targetName="windows" />
       <config projectName="hivemind" targetName="BulletSoftBody" />
-      <config projectName="hivemind" targetName="BulletCollision" />
-      <config projectName="hivemind" targetName="empty" />
-      <config projectName="hivemind" targetName="GLEW_1130" />
-      <config projectName="hivemind" targetName="iconify" />
+      <config projectName="hivemind" targetName="msaa" />
       <config projectName="hivemind" targetName="reopen" />
-      <config projectName="hivemind" targetName="uninstall" />
+      <config projectName="hivemind" targetName="assimp" />
+      <config projectName="hivemind" targetName="heightmap" />
+      <config projectName="hivemind" targetName="BulletCollision" />
+      <config projectName="hivemind" targetName="gamma" />
+      <config projectName="hivemind" targetName="joysticks" />
+      <config projectName="hivemind" targetName="events" />
+      <config projectName="hivemind" targetName="fmt" />
       <config projectName="hivemind" targetName="monitors" />
-      <config projectName="hivemind" targetName="particles" />
-      <config projectName="hivemind" targetName="gears" />
-      <config projectName="hivemind" targetName="title" />
-      <config projectName="hivemind" targetName="threads" />
-      <config projectName="hivemind" targetName="tearing" />
-      <config projectName="hivemind" targetName="glfw" />
-      <config projectName="hivemind" targetName="BulletDynamics" />
-      <config projectName="hivemind" targetName="simple" />
-      <config projectName="hivemind" targetName="clipboard" />
       <config projectName="hivemind" targetName="glfwinfo" />
-      <config projectName="hivemind" targetName="cursor" />
+      <config projectName="hivemind" targetName="hivemind" />
+      <config projectName="hivemind" targetName="BulletDynamics" />
+      <config projectName="hivemind" targetName="tearing" />
+      <config projectName="hivemind" targetName="uninstall" />
+      <config projectName="hivemind" targetName="particles" />
+      <config projectName="hivemind" targetName="threads" />
+      <config projectName="hivemind" targetName="glfw" />
+      <config projectName="hivemind" targetName="gears" />
+      <config projectName="hivemind" targetName="splitview" />
+      <config projectName="hivemind" targetName="GLEW_1130" />
+      <config projectName="hivemind" targetName="boing" />
       <config projectName="hivemind" targetName="wave" />
+      <config projectName="hivemind" targetName="iconify" />
+      <config projectName="hivemind" targetName="zlib" />
+      <config projectName="hivemind" targetName="title" />
+      <config projectName="hivemind" targetName="simple" />
+      <config projectName="hivemind" targetName="ANTTWEAKBAR_116_OGLCORE_GLFW" />
+      <config projectName="hivemind" targetName="cursor" />
+      <config projectName="hivemind" targetName="empty" />
+      <config projectName="hivemind" targetName="LinearMath" />
+      <config projectName="hivemind" targetName="clipboard" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -45,52 +46,490 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="Minor style fixes and what not and add SparseMap skeleton">
-      <change afterPath="$PROJECT_DIR$/Map.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SparseMap.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SparseMap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GameRunner.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/Pather.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VisionMap.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VisionMap.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/.clang-format" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/.github/pull_request_template.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/ChangeLog.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/LICENSE.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/README.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_static/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_static/breathe.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_static/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_static/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_static/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_static/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/_templates/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/api.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/basic-bootstrap/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/basic-bootstrap/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/basic-bootstrap/theme.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/alerts.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/badges.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/bootstrap.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/breadcrumbs.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/button-groups.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/buttons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/carousel.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/close.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/code.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/component-animations.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/dropdowns.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/forms.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/glyphicons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/grid.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/input-groups.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/jumbotron.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/labels.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/list-group.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/media.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/alerts.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/background-variant.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/border-radius.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/buttons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/center-block.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/clearfix.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/forms.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/gradients.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/grid-framework.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/grid.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/hide-text.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/image.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/labels.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/list-group.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/nav-divider.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/nav-vertical-align.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/opacity.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/pagination.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/panels.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/progress-bar.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/reset-filter.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/resize.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/responsive-visibility.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/size.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/tab-focus.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/table-row.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/text-emphasis.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/text-overflow.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/mixins/vendor-prefixes.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/modals.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/navbar.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/navs.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/normalize.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/pager.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/pagination.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/panels.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/popovers.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/print.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/progress-bars.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/responsive-embed.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/responsive-utilities.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/scaffolding.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/tables.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/theme.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/thumbnails.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/tooltip.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/type.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/utilities.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/variables.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/bootstrap/wells.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/contents.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/fmt.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/python-license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/syntax.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/doc/usage.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/chrono.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/color.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/compile.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/core.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/format-inl.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/format.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/locale.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/os.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/ostream.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/posix.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/printf.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/include/fmt/ranges.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/src/format.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/src/os.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/Android.mk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/C++.sublime-syntax" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/Vagrantfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/appveyor-build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/appveyor.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/cmake/FindSetEnv.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/cmake/cxx14.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/cmake/fmt-config.cmake.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/cmake/fmt.pc.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/compute-powers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/docopt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/fmt.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/rst2md.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/rtd/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/rtd/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/rtd/theme/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/rtd/theme/theme.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/travis-build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/support/update-coverity-branch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/add-subdirectory-test/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/add-subdirectory-test/main.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/assert-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/chrono-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/color-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/compile-error-test/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/compile-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/core-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/cuda-test/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/cuda-test/cpp14.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/cuda-test/cuda-cpp14.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/custom-formatter-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/find-package-test/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/find-package-test/main.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/format" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/format-impl-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/format-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/chrono_duration.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/fuzzer_common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/named_arg.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/one_arg.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/sprintf.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/fuzzing/two_args.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gmock-gtest-all.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gmock/gmock.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/grisu-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gtest-extra-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gtest-extra.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gtest-extra.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gtest/gtest-spi.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/gtest/gtest.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/header-only-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/header-only-test2.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/locale-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/mock-allocator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/os-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/ostream-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/posix-mock-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/posix-mock.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/printf-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/ranges-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/scan-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/scan.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/std-format-test.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/test-assert.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/test-main.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/util.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external/fmt-master/test/util.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameRunner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GameRunner.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameRunner.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameRunner.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GridMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GridMap.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GridMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/GridMap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Human.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human.h" beforeDir="false" afterPath="$PROJECT_DIR$/Human.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Map.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MapNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/MapNode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pather.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Pather.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pather.h" beforeDir="false" afterPath="$PROJECT_DIR$/Pather.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Robot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Human.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Robot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Human.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SparseMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SparseMap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SparseMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/SparseMap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeError.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeError.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CheckTypeSize/OFF64_T.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/Robot.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GameRunner.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/Pather.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/main.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/CMakeFiles/GLEW_1130.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/code/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletCollision/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletDynamics/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/BulletSoftBody/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/bullet-2.81-rev2613/src/LinearMath/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/CMakeFiles/Export/lib/cmake/glfw/glfwTargets-debug.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/CMakeFiles/Export/lib/cmake/glfw/glfwTargets-debug.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/CMakeFiles/uninstall.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/CMakeFiles/uninstall.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/GLFW.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/GLFW.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/cmake_uninstall.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/cmake_uninstall.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/docs/Doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/docs/Doxyfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/boing.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/gears.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/particles.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/simple.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/splitview.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/CMakeFiles/wave.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/examples/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/cmake_clean_target.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/cmake_clean_target.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw3.pc" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw3.pc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw3Config.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw3Config.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw3ConfigVersion.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw3ConfigVersion.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw_config.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/src/glfw_config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/empty.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/events.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/hivemind" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hivemind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/reopen.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/threads.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/title.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/CMakeFiles/windows.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/external/glfw-3.1.2/tests/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/hivemind.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hivemind.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/external/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,15 +553,21 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC&#10;Oracle" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/endless-sky-master" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
-  <component name="RunManager" selected="CMake Application.hivemind">
+  <component name="RunManager" selected="CMake Application.Build All">
     <configuration name="ANTTWEAKBAR_116_OGLCORE_GLFW" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ANTTWEAKBAR_116_OGLCORE_GLFW" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="hivemind" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="hivemind">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -178,6 +623,11 @@
       </method>
     </configuration>
     <configuration name="events" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="events" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="events">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="fmt" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="fmt" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -294,11 +744,13 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.ANTTWEAKBAR_116_OGLCORE_GLFW" />
+      <item itemvalue="CMake Application.Build All" />
       <item itemvalue="CMake Application.BulletCollision" />
       <item itemvalue="CMake Application.BulletDynamics" />
       <item itemvalue="CMake Application.BulletSoftBody" />
       <item itemvalue="CMake Application.GLEW_1130" />
       <item itemvalue="CMake Application.LinearMath" />
+      <item itemvalue="CMake Application.fmt" />
       <item itemvalue="CMake Application.assimp" />
       <item itemvalue="CMake Application.boing" />
       <item itemvalue="CMake Application.clipboard" />
@@ -365,6 +817,16 @@
       <workItem from="1579819674905" duration="18850000" />
       <workItem from="1579914719895" duration="1262000" />
       <workItem from="1579918896987" duration="14837000" />
+      <workItem from="1580521181170" duration="7717000" />
+      <workItem from="1580556853948" duration="45000" />
+      <workItem from="1580556966525" duration="60000" />
+      <workItem from="1580557352111" duration="257000" />
+      <workItem from="1580594352664" duration="801000" />
+      <workItem from="1580595989175" duration="19000" />
+      <workItem from="1580859564414" duration="14000" />
+      <workItem from="1580860421184" duration="24000" />
+      <workItem from="1580861061218" duration="7454000" />
+      <workItem from="1581024976391" duration="551000" />
     </task>
     <task id="LOCAL-00001" summary="Personalize boilerplate">
       <created>1579837981301</created>
@@ -415,6 +877,7 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Personalize boilerplate" />
     <MESSAGE value="Remove GameRunner for now and add Ptr typdef" />
     <MESSAGE value="Add a* pathing" />
@@ -424,6 +887,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="Minor style fixes and what not and add SparseMap skeleton" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="4119" y="614" key="#Build_All" timestamp="1581025321628">
+      <screen x="3440" y="372" width="1920" height="1040" />
+    </state>
+    <state x="4119" y="614" key="#Build_All/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025321628" />
+    <state x="811" y="214" key="#Build_All/0.0.2293.920/3440.373.1920.1040@0.0.2293.920" timestamp="1580862470441" />
+    <state x="4119" y="615" key="#Build_All/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557759980" />
+    <state x="3992" y="552" key="#New_File_Extensions" timestamp="1580522743231">
+      <screen x="3440" y="373" width="1920" height="1040" />
+    </state>
+    <state x="3992" y="552" key="#New_File_Extensions/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580522743231" />
     <state x="2173" y="353" width="804" height="667" key="#Notifications" timestamp="1579838001945">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
@@ -437,29 +910,38 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl/0.0.3440.1440@0.0.3440.1440" timestamp="1579836594399" />
-    <state width="3390" height="381" key="GridCell.Tab.0.bottom" timestamp="1580074111006">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1581025532027">
+      <screen x="3440" y="372" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025532027" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773729" />
     <state width="2047" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928044" />
     <state width="3390" height="381" key="GridCell.Tab.0.bottom/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state width="3390" height="381" key="GridCell.Tab.0.center" timestamp="1580074111006">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1581025532027">
+      <screen x="3440" y="372" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025532027" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773728" />
     <state width="2047" height="273" key="GridCell.Tab.0.center/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="3390" height="381" key="GridCell.Tab.0.center/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state width="3390" height="381" key="GridCell.Tab.0.left" timestamp="1580074111006">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1581025532027">
+      <screen x="3440" y="372" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025532027" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773726" />
     <state width="2047" height="273" key="GridCell.Tab.0.left/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="3390" height="381" key="GridCell.Tab.0.left/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state width="3390" height="381" key="GridCell.Tab.0.right" timestamp="1580074111006">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1581025532027">
+      <screen x="3440" y="372" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025532027" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773729" />
     <state width="2047" height="273" key="GridCell.Tab.0.right/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="3390" height="381" key="GridCell.Tab.0.right/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state x="803" y="118" key="SettingsEditor" timestamp="1579919306071">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state x="535" y="75" key="SettingsEditor" timestamp="1580862070213">
+      <screen x="0" y="0" width="2293" height="920" />
     </state>
+    <state x="535" y="75" key="SettingsEditor/0.0.2293.920/3440.373.1920.1040@0.0.2293.920" timestamp="1580862070213" />
     <state x="807" y="154" key="SettingsEditor/0.0.3440.1440@0.0.3440.1440" timestamp="1579843254410" />
     <state x="1259" y="154" key="SettingsEditor/0.0.5360.1440@0.0.5360.1440" timestamp="1579734759232" />
     <state x="803" y="118" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579919306071" />
@@ -473,5 +955,13 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="1397" y="315" width="645" height="807" key="find.popup/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580073816771" />
+    <state x="4141" y="537" key="refactoring.ChangeSignatureDialog" timestamp="1580524018058">
+      <screen x="3440" y="373" width="1920" height="1040" />
+    </state>
+    <state x="4141" y="537" key="refactoring.ChangeSignatureDialog/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580524018058" />
+    <state x="1209" y="214" key="run.anything.popup" timestamp="1580862466985">
+      <screen x="0" y="0" width="2293" height="920" />
+    </state>
+    <state x="1209" y="214" key="run.anything.popup/0.0.2293.920/3440.373.1920.1040@0.0.2293.920" timestamp="1580862466985" />
   </component>
 </project>

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/joysticks.dir/joysticks.c.o"
-  "joysticks"
+  "CMakeFiles/joysticks.dir/joysticks.c.obj"
+  "joysticks.exe"
+  "joysticks.exe.manifest"
+  "joysticks.lib"
   "joysticks.pdb"
 )
 

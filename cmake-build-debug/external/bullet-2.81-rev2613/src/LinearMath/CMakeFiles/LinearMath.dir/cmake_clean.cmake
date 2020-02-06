@@ -1,14 +1,14 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/LinearMath.dir/btAlignedAllocator.cpp.o"
-  "CMakeFiles/LinearMath.dir/btConvexHull.cpp.o"
-  "CMakeFiles/LinearMath.dir/btConvexHullComputer.cpp.o"
-  "CMakeFiles/LinearMath.dir/btGeometryUtil.cpp.o"
-  "CMakeFiles/LinearMath.dir/btPolarDecomposition.cpp.o"
-  "CMakeFiles/LinearMath.dir/btQuickprof.cpp.o"
-  "CMakeFiles/LinearMath.dir/btSerializer.cpp.o"
-  "CMakeFiles/LinearMath.dir/btVector3.cpp.o"
-  "libLinearMath.a"
-  "libLinearMath.pdb"
+  "CMakeFiles/LinearMath.dir/btAlignedAllocator.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btConvexHull.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btConvexHullComputer.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btGeometryUtil.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btPolarDecomposition.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btQuickprof.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btSerializer.cpp.obj"
+  "CMakeFiles/LinearMath.dir/btVector3.cpp.obj"
+  "LinearMath.lib"
+  "LinearMath.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

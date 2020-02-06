@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/gamma.dir/__/deps/getopt.c.o"
-  "CMakeFiles/gamma.dir/gamma.c.o"
-  "gamma"
+  "CMakeFiles/gamma.dir/__/deps/getopt.c.obj"
+  "CMakeFiles/gamma.dir/gamma.c.obj"
+  "gamma.exe"
+  "gamma.exe.manifest"
+  "gamma.lib"
   "gamma.pdb"
 )
 

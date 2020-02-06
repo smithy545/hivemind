@@ -1,11 +1,14 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hivemind.dir/GameRunner.cpp.o"
-  "CMakeFiles/hivemind.dir/GridMap.cpp.o"
-  "CMakeFiles/hivemind.dir/Human.cpp.o"
-  "CMakeFiles/hivemind.dir/Pather.cpp.o"
-  "CMakeFiles/hivemind.dir/SparseMap.cpp.o"
-  "CMakeFiles/hivemind.dir/main.cpp.o"
-  "hivemind"
+  "CMakeFiles/hivemind.dir/GameRunner.cpp.obj"
+  "CMakeFiles/hivemind.dir/GridMap.cpp.obj"
+  "CMakeFiles/hivemind.dir/Human.cpp.obj"
+  "CMakeFiles/hivemind.dir/Pather.cpp.obj"
+  "CMakeFiles/hivemind.dir/SparseMap.cpp.obj"
+  "CMakeFiles/hivemind.dir/VisionMap.cpp.obj"
+  "CMakeFiles/hivemind.dir/main.cpp.obj"
+  "hivemind.exe"
+  "hivemind.exe.manifest"
+  "hivemind.lib"
   "hivemind.pdb"
 )
 

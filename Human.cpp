@@ -6,8 +6,7 @@
 
 
 Human::Human(const MapNode& position)
-        : position(std::make_shared<MapNode>(position.x, position.y)),
-          path() {}
+        : position(std::make_shared<MapNode>(position.x, position.y)) {}
 
 void Human::update() {
     // set position to next in path

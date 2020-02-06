@@ -1,8 +1,8 @@
-# Install script for directory: /home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code
+# Install script for directory: C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr/local")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/hivemind")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -27,18 +27,13 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
-endif()
-
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xlibassimp3.0-r1270-OGLtutsx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/assimp-3.0.1270/code/libassimp.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/assimp-3.0.1270/code/assimp.lib")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -51,45 +46,45 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
 file(INSTALL DESTINATION "/assimp" TYPE FILE FILES
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/anim.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/ai_assert.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/camera.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/color4.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/color4.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/config.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/defs.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/cfileio.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/light.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/material.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/material.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix3x3.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix3x3.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix4x4.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix4x4.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/mesh.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/postprocess.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/quaternion.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/quaternion.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/scene.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/texture.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/types.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector2.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector2.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector3.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector3.inl"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/version.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/cimport.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/importerdesc.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Importer.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/DefaultLogger.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/ProgressHandler.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/IOStream.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/IOSystem.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Logger.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/LogStream.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/NullLogger.hpp"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/cexport.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Exporter.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/anim.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/ai_assert.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/camera.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/color4.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/color4.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/config.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/defs.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/cfileio.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/light.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/material.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/material.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix3x3.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix3x3.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix4x4.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/matrix4x4.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/mesh.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/postprocess.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/quaternion.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/quaternion.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/scene.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/texture.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/types.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector2.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector2.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector3.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/vector3.inl"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/version.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/cimport.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/importerdesc.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Importer.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/DefaultLogger.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/ProgressHandler.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/IOStream.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/IOSystem.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Logger.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/LogStream.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/NullLogger.hpp"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/cexport.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Exporter.hpp"
     )
 endif()
 
@@ -103,9 +98,9 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
 file(INSTALL DESTINATION "/assimp/Compiler" TYPE FILE FILES
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Compiler/pushpack1.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Compiler/poppack1.h"
-    "/home/philip/Documents/projects/hivemind/external/assimp-3.0.1270/code/pstdint.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Compiler/pushpack1.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/../include/assimp/Compiler/poppack1.h"
+    "C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/code/pstdint.h"
     )
 endif()
 

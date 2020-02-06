@@ -8,6 +8,7 @@
 #include <memory>
 #include <vector>
 
+
 class MapNode {
 public:
     typedef std::shared_ptr<MapNode> Ptr;

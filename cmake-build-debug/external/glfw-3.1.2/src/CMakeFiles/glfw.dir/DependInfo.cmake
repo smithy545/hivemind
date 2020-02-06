@@ -4,21 +4,20 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/context.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/context.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/glx_context.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/glx_context.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/init.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/init.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/input.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/input.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/linux_joystick.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/monitor.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/monitor.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/posix_time.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/posix_time.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/posix_tls.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/posix_tls.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/window.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/window.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/x11_init.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/x11_init.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/x11_monitor.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/x11_window.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/x11_window.c.o"
-  "/home/philip/Documents/projects/hivemind/external/glfw-3.1.2/src/xkb_unicode.c" "/home/philip/Documents/projects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/context.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/context.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/init.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/init.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/input.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/input.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/monitor.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/monitor.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/wgl_context.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/wgl_context.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/win32_init.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/win32_init.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/win32_monitor.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/win32_monitor.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/win32_time.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/win32_time.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/win32_tls.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/win32_tls.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/win32_window.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/win32_window.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/window.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/window.c.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/src/winmm_joystick.c" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/src/CMakeFiles/glfw.dir/winmm_joystick.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C

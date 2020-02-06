@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/gears.dir/gears.c.o"
-  "gears"
+  "CMakeFiles/gears.dir/gears.c.obj"
+  "gears.exe"
+  "gears.exe.manifest"
+  "gears.lib"
   "gears.pdb"
 )
 
