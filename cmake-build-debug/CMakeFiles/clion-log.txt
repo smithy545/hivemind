@@ -1,34 +1,7 @@
 D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\Philip\CLionProjects\hivemind
--- The C compiler identification is MSVC 19.16.27034.0
--- The CXX compiler identification is MSVC 19.16.27034.0
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86/cl.exe
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86/cl.exe -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86/cl.exe
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86/cl.exe -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found OpenGL: opengl32   
 -- Version: 6.1.3
 -- Build type: Debug
 -- CXX_STANDARD: 14
--- Performing Test has_std_14_flag
--- Performing Test has_std_14_flag - Failed
--- Performing Test has_std_1y_flag
--- Performing Test has_std_1y_flag - Failed
--- Performing Test SUPPORTS_VARIADIC_TEMPLATES
--- Performing Test SUPPORTS_VARIADIC_TEMPLATES - Success
--- Performing Test SUPPORTS_USER_DEFINED_LITERALS
--- Performing Test SUPPORTS_USER_DEFINED_LITERALS - Success
--- Performing Test FMT_HAS_VARIANT
--- Performing Test FMT_HAS_VARIANT - Success
--- Looking for _strtod_l
--- Looking for _strtod_l - found
 CMake Deprecation Warning at external/glfw-3.1.2/CMakeLists.txt:8 (cmake_policy):
   The OLD behavior for policy CMP0042 will be removed from a future version
   of CMake.
@@ -39,24 +12,9 @@ CMake Deprecation Warning at external/glfw-3.1.2/CMakeLists.txt:8 (cmake_policy)
   behavior and not rely on setting a policy to OLD.
 
 
--- Looking for pthread.h
--- Looking for pthread.h - not found
--- Found Threads: TRUE  
 -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
 -- Using Win32 for window creation
 -- Using WGL for context creation
--- Looking for sys/types.h
--- Looking for sys/types.h - found
--- Looking for stdint.h
--- Looking for stdint.h - found
--- Looking for stddef.h
--- Looking for stddef.h - found
--- Check size of off64_t
--- Check size of off64_t - failed
--- Looking for fseeko
--- Looking for fseeko - not found
--- Looking for unistd.h
--- Looking for unistd.h - not found
 CMake Deprecation Warning at CMakeLists.txt:24 (cmake_policy):
   The OLD behavior for policy CMP0026 will be removed from a future version
   of CMake.

@@ -2,31 +2,35 @@
 // Created by philip on 1/24/20.
 //
 
+#include <iostream>
+
 #include "GameRunner.h"
 #include "MapActor.h"
 
-#include <iostream>
 
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 const char *vertexShaderSource = "#version 330 core\n"
-                                 "layout (location = 0) in vec3 aPos;\n"
+                                 "layout (location = 0) in vec2 aPos;\n"
                                  "void main()\n"
                                  "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+                                 "   gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0);\n"
                                  "}\0";
 const char *fragmentShaderSource = "#version 330 core\n"
                                    "out vec4 FragColor;\n"
                                    "void main()\n"
                                    "{\n"
-                                   "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+                                   "   FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);\n"
                                    "}\n\0";
 
 bool GameRunner::keys[];
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
+
+using namespace glm;
+
 
 void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // Initialise GLFW
@@ -78,7 +82,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         }
     });
 
-    camera = std::make_shared<Camera>(0, 0, 1000, 1000);
+    camera = std::make_shared<Camera>(0, 0, 800, 600);
 
     // build and compile our shader program
     // ------------------------------------
@@ -115,13 +119,15 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
+    float tw = 64.0 / SCR_WIDTH;
+    float th = 64.0 / SCR_HEIGHT;
     float vertices[] = {
-            0.5f, 0.5f, 0.0f,  // top right
-            0.5f, -0.5f, 0.0f,  // bottom right
-            -0.5f, -0.5f, 0.0f,  // bottom left
-            -0.5f, 0.5f, 0.0f   // top left
+            tw * 0.5f, th * 0.0f,  // top right
+            tw * 0.5f, th * -0.5f,  // bottom right
+            tw * 0.0f, th * -0.5f,  // bottom left
+            tw * 0.0f, th * 0.0f   // top left
     };
-    unsigned int indices[] = {  // note that we start from 0!
+    unsigned int indices[] = {
             0, 1, 3,  // first Triangle
             1, 2, 3   // second Triangle
     };
@@ -138,7 +144,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *) 0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
@@ -155,11 +161,12 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
     do {
 
         // render
         // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         // draw our first triangle
@@ -167,7 +174,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         glBindVertexArray(
                 VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
         //glDrawArrays(GL_TRIANGLES, 0, 6);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
         // glBindVertexArray(0); // no need to unbind it every time
 
         for (const GridMap::Ptr &map: loadedMaps) {
