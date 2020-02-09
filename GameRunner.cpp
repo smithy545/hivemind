@@ -4,20 +4,23 @@
 
 #include <iostream>
 
+#include "glm/ext.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 #include "GameRunner.h"
 #include "MapActor.h"
 
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const int SCR_WIDTH = 800;
+const int SCR_HEIGHT = 600;
 
 const char *vertexShaderSource = "#version 330 core\n"
                                  "layout (location = 0) in vec2 aPos;\n"
                                  "void main()\n"
                                  "{\n"
                                  "   gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0);\n"
-                                 "}\0";
+                                 "}\n\0";
 const char *fragmentShaderSource = "#version 330 core\n"
                                    "out vec4 FragColor;\n"
                                    "void main()\n"
@@ -28,8 +31,6 @@ const char *fragmentShaderSource = "#version 330 core\n"
 bool GameRunner::keys[];
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
-
-using namespace glm;
 
 
 void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
@@ -119,13 +120,13 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
-    float tw = 64.0 / SCR_WIDTH;
-    float th = 64.0 / SCR_HEIGHT;
+    float tw = 128.0 / SCR_WIDTH;
+    float th = 128.0 / SCR_HEIGHT;
     float vertices[] = {
-            tw * 0.5f, th * 0.0f,  // top right
-            tw * 0.5f, th * -0.5f,  // bottom right
-            tw * 0.0f, th * -0.5f,  // bottom left
-            tw * 0.0f, th * 0.0f   // top left
+            tw, 0,   // top right
+            tw, -th, // bottom right
+            0, -th, // bottom left
+            0, 0    // top left
     };
     unsigned int indices[] = {
             0, 1, 3,  // first Triangle
@@ -155,8 +156,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-    glBindVertexArray(0);
-
+    //glBindVertexArray(0);
 
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -171,6 +171,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
         // draw our first triangle
         glUseProgram(shaderProgram);
+
         glBindVertexArray(
                 VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
         //glDrawArrays(GL_TRIANGLES, 0, 6);

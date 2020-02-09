@@ -4,22 +4,26 @@ endif()
 
 
 add_definitions(
-	-DTW_STATIC
-	-DTW_NO_LIB_PRAGMA
-	-DTW_NO_DIRECT3D
-	-DGLEW_STATIC
-	-D_CRT_SECURE_NO_WARNINGS
+        -DTW_STATIC
+        -DTW_NO_LIB_PRAGMA
+        -DTW_NO_DIRECT3D
+        -DGLEW_STATIC
+        -D_CRT_SECURE_NO_WARNINGS
 )
+
+### GLM ###
+
+add_subdirectory(glm)
 
 ### Add string formatting lib ###
 add_subdirectory(fmt-master)
 
 ### GLFW ###
-add_subdirectory (glfw-3.1.2)
+add_subdirectory(glfw-3.1.2)
 
 include_directories(
-	glfw-3.1.2/include/GLFW/
-	glew-1.13.0/include/
+        glfw-3.1.2/include/GLFW/
+        glew-1.13.0/include/
 )
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")

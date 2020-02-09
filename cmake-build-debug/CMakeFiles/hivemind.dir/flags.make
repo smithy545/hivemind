@@ -6,5 +6,5 @@ CXX_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   -std:c++1
 
 CXX_DEFINES = -DFMT_LOCALE -DGLEW_STATIC -DTW_NO_DIRECT3D -DTW_NO_LIB_PRAGMA -DTW_STATIC -D_CRT_SECURE_NO_WARNINGS
 
-CXX_INCLUDES = -IC:\Users\Philip\CLionProjects\hivemind\external\AntTweakBar-1.16\include -IC:\Users\Philip\CLionProjects\hivemind\external\glfw-3.1.2\include -IC:\Users\Philip\CLionProjects\hivemind\external\glm-0.9.7.1 -IC:\Users\Philip\CLionProjects\hivemind\external\glew-1.13.0\include -IC:\Users\Philip\CLionProjects\hivemind\external\assimp-3.0.1270\include -IC:\Users\Philip\CLionProjects\hivemind\external\fmt-master\include -IC:\Users\Philip\CLionProjects\hivemind\external\bullet-2.81-rev2613\src -IC:\Users\Philip\CLionProjects\hivemind\. 
+CXX_INCLUDES = -IC:\Users\Philip\CLionProjects\hivemind\external\AntTweakBar-1.16\include -IC:\Users\Philip\CLionProjects\hivemind\external\glfw-3.1.2\include -IC:\Users\Philip\CLionProjects\hivemind\external\glm -IC:\Users\Philip\CLionProjects\hivemind\external\glew-1.13.0\include -IC:\Users\Philip\CLionProjects\hivemind\external\assimp-3.0.1270\include -IC:\Users\Philip\CLionProjects\hivemind\external\fmt-master\include -IC:\Users\Philip\CLionProjects\hivemind\external\bullet-2.81-rev2613\src -IC:\Users\Philip\CLionProjects\hivemind\. 
 

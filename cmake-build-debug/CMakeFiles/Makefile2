@@ -74,8 +74,8 @@ preinstall: external\preinstall
 # Target rules for target CMakeFiles/hivemind.dir
 
 # All Build rule for target.
-CMakeFiles\hivemind.dir\all: external\glfw-3.1.2\src\CMakeFiles\glfw.dir\all
 CMakeFiles\hivemind.dir\all: external\CMakeFiles\GLEW_1130.dir\all
+CMakeFiles\hivemind.dir\all: external\glfw-3.1.2\src\CMakeFiles\glfw.dir\all
 CMakeFiles\hivemind.dir\all: external\fmt-master\CMakeFiles\fmt.dir\all
 	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\depend
 	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\build
@@ -105,6 +105,7 @@ CMakeFiles\hivemind.dir\clean:
 # Recursive "all" directory target.
 external\all: external\CMakeFiles\GLEW_1130.dir\all
 external\all: external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.dir\all
+external\all: external\glm\all
 external\all: external\fmt-master\all
 external\all: external\glfw-3.1.2\all
 external\all: external\assimp-3.0.1270\contrib\zlib\all
@@ -119,6 +120,7 @@ external\all: external\bullet-2.81-rev2613\src\LinearMath\all
 # Recursive "clean" directory target.
 external\clean: external\CMakeFiles\GLEW_1130.dir\clean
 external\clean: external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.dir\clean
+external\clean: external\glm\clean
 external\clean: external\fmt-master\clean
 external\clean: external\glfw-3.1.2\clean
 external\clean: external\assimp-3.0.1270\contrib\zlib\clean
@@ -131,6 +133,7 @@ external\clean: external\bullet-2.81-rev2613\src\LinearMath\clean
 .PHONY : external\clean
 
 # Recursive "preinstall" directory target.
+external\preinstall: external\glm\preinstall
 external\preinstall: external\fmt-master\preinstall
 external\preinstall: external\glfw-3.1.2\preinstall
 external\preinstall: external\assimp-3.0.1270\contrib\zlib\preinstall
@@ -195,6 +198,42 @@ ANTTWEAKBAR_116_OGLCORE_GLFW: external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.d
 external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.dir\clean:
 	$(MAKE) -f external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.dir\build.make /nologo -$(MAKEFLAGS) external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.dir\clean
 .PHONY : external\CMakeFiles\ANTTWEAKBAR_116_OGLCORE_GLFW.dir\clean
+
+#=============================================================================
+# Directory level rules for directory external\glm
+
+# Recursive "all" directory target.
+external\glm\all: external\glm\glm\all
+
+.PHONY : external\glm\all
+
+# Recursive "clean" directory target.
+external\glm\clean: external\glm\glm\clean
+
+.PHONY : external\glm\clean
+
+# Recursive "preinstall" directory target.
+external\glm\preinstall: external\glm\glm\preinstall
+
+.PHONY : external\glm\preinstall
+
+#=============================================================================
+# Directory level rules for directory external\glm\glm
+
+# Recursive "all" directory target.
+external\glm\glm\all:
+
+.PHONY : external\glm\glm\all
+
+# Recursive "clean" directory target.
+external\glm\glm\clean:
+
+.PHONY : external\glm\glm\clean
+
+# Recursive "preinstall" directory target.
+external\glm\glm\preinstall:
+
+.PHONY : external\glm\glm\preinstall
 
 #=============================================================================
 # Directory level rules for directory external\fmt-master

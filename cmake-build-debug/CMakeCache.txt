@@ -136,6 +136,21 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=hivemind
 
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=0.9.9
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=9
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=9
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
+
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=C:/Program Files (x86)/Windows Kits/10/bin/10.0.17763.0/x86/rc.exe
 
@@ -290,6 +305,12 @@ VC10_STDINT_FIX:BOOL=OFF
 assimp_LIB_DEPENDS:STATIC=general;zlib;
 
 //Value Computed by CMake
+glm_BINARY_DIR:STATIC=C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glm
+
+//Value Computed by CMake
+glm_SOURCE_DIR:STATIC=C:/Users/Philip/CLionProjects/hivemind/external/glm
+
+//Value Computed by CMake
 hivemind_BINARY_DIR:STATIC=C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug
 
 //Value Computed by CMake
@@ -392,7 +413,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=13
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=15
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_RC_COMPILER

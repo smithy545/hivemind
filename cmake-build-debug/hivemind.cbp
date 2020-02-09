@@ -5,7 +5,7 @@
 		<Option title="hivemind"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="msvc8"/>
-		<Option virtualFolders="CMake Files\;CMake Files\external\;CMake Files\external\fmt-master\;CMake Files\external\fmt-master\support\;CMake Files\external\fmt-master\support\cmake\;CMake Files\external\glfw-3.1.2\;CMake Files\external\glfw-3.1.2\src\;CMake Files\external\glfw-3.1.2\docs\;CMake Files\external\glfw-3.1.2\examples\;CMake Files\external\glfw-3.1.2\tests\;CMake Files\external\rpavlik-cmake-modules-fe2273\;CMake Files\external\assimp-3.0.1270\;CMake Files\external\assimp-3.0.1270\contrib\;CMake Files\external\assimp-3.0.1270\contrib\zlib\;CMake Files\external\assimp-3.0.1270\code\;CMake Files\external\bullet-2.81-rev2613\;CMake Files\external\bullet-2.81-rev2613\src\;CMake Files\external\bullet-2.81-rev2613\src\BulletSoftBody\;CMake Files\external\bullet-2.81-rev2613\src\BulletCollision\;CMake Files\external\bullet-2.81-rev2613\src\BulletDynamics\;CMake Files\external\bullet-2.81-rev2613\src\LinearMath\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\external\;CMake Files\external\fmt-master\;CMake Files\external\fmt-master\support\;CMake Files\external\fmt-master\support\cmake\;CMake Files\external\glfw-3.1.2\;CMake Files\external\glfw-3.1.2\src\;CMake Files\external\glfw-3.1.2\docs\;CMake Files\external\glfw-3.1.2\examples\;CMake Files\external\glfw-3.1.2\tests\;CMake Files\external\glm\;CMake Files\external\glm\glm\;CMake Files\external\rpavlik-cmake-modules-fe2273\;CMake Files\external\assimp-3.0.1270\;CMake Files\external\assimp-3.0.1270\contrib\;CMake Files\external\assimp-3.0.1270\contrib\zlib\;CMake Files\external\assimp-3.0.1270\code\;CMake Files\external\bullet-2.81-rev2613\;CMake Files\external\bullet-2.81-rev2613\src\;CMake Files\external\bullet-2.81-rev2613\src\BulletSoftBody\;CMake Files\external\bullet-2.81-rev2613\src\BulletCollision\;CMake Files\external\bullet-2.81-rev2613\src\BulletDynamics\;CMake Files\external\bullet-2.81-rev2613\src\LinearMath\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug"/>
@@ -32,7 +32,7 @@
 					<Add option="-DFMT_LOCALE"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/include"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/include"/>
-					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glm-0.9.7.1"/>
+					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glm"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glew-1.13.0/include"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/include"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/fmt-master/include"/>
@@ -69,7 +69,7 @@
 					<Add option="-DFMT_LOCALE"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/AntTweakBar-1.16/include"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/include"/>
-					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glm-0.9.7.1"/>
+					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glm"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/glew-1.13.0/include"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/assimp-3.0.1270/include"/>
 					<Add directory="C:/Users/Philip/CLionProjects/hivemind/external/fmt-master/include"/>
@@ -4664,6 +4664,12 @@
 		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/external/glfw-3.1.2/tests/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\external\glfw-3.1.2\tests\"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/external/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glm\"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/external/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\glm\glm\"/>
 		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/external/rpavlik-cmake-modules-fe2273/CleanDirectoryList.cmake">
 			<Option virtualFolder="CMake Files\external\rpavlik-cmake-modules-fe2273\"/>

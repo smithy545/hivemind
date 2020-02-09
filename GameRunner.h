@@ -21,6 +21,8 @@
 #include "GridMap.h"
 #include "Camera.h"
 
+using namespace glm;
+
 
 class GameRunner {
 public:

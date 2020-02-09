@@ -30,6 +30,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../external/glfw-3.1.2/src/glfw3Config.cmake.in"
   "../external/glfw-3.1.2/src/glfw_config.h.in"
   "../external/glfw-3.1.2/tests/CMakeLists.txt"
+  "../external/glm/CMakeLists.txt"
+  "../external/glm/glm/CMakeLists.txt"
   "../external/rpavlik-cmake-modules-fe2273/CleanDirectoryList.cmake"
   "../external/rpavlik-cmake-modules-fe2273/CreateLaunchers.cmake"
   "../external/rpavlik-cmake-modules-fe2273/ListCombinations.cmake"
@@ -84,6 +86,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "external/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "external/glm/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "external/glm/glm/CMakeFiles/CMakeDirectoryInformation.cmake"
   "external/fmt-master/CMakeFiles/CMakeDirectoryInformation.cmake"
   "external/glfw-3.1.2/CMakeFiles/CMakeDirectoryInformation.cmake"
   "external/glfw-3.1.2/src/CMakeFiles/CMakeDirectoryInformation.cmake"

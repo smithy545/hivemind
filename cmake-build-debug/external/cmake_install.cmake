@@ -34,6 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glm/cmake_install.cmake")
   include("C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/fmt-master/cmake_install.cmake")
   include("C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/glfw-3.1.2/cmake_install.cmake")
   include("C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/external/assimp-3.0.1270/contrib/zlib/cmake_install.cmake")
