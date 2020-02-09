@@ -8,21 +8,18 @@
 
 #include <queue>
 #include <memory>
-#include "MapNode.h"
+
+#include "MapActor.h"
+#include "MapPosition.h"
 #include "VisionMap.h"
 
 
-class Human {
+class Human : public MapActor {
 public:
-    explicit Human(const MapNode& position);
+    explicit Human(MapPosition position);
 
-    const std::queue<MapNode> &Path() const;
-    const MapNode::Ptr &Position() const;
-
-    void update();
-protected:
-    std::queue<MapNode> path;
-    MapNode::Ptr position;
+    void update() override;
+private:
     VisionMap::Ptr visionMap;
 };
 

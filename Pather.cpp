@@ -6,8 +6,8 @@
 #include <cmath>
 #include "Pather.h"
 
-std::vector<MapNode::Ptr> Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end) {
-    std::vector<MapNode::Ptr> path;
+MapNode::MapPath Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end) {
+    MapNode::MapPath path;
 
     std::unordered_map<std::string, PathNode::Ptr> open;
     std::unordered_map<std::string, PathNode::Ptr> closed;

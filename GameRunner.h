@@ -7,6 +7,7 @@
 
 // Include standard headers
 #include <thread>
+#include <vector>
 
 // Include GLEW
 #include <GL/glew.h>
@@ -23,13 +24,12 @@ using namespace glm;
 
 class GameRunner {
 public:
-    static void loop();
+    static void loop(std::vector<GridMap::Ptr> loadedMaps);
     static void render();
-    static void update();
+    static void update(GridMap::Ptr map);
 private:
     static GLFWwindow* window;
     static bool keys[256];
-    static GridMap::Ptr map;
 };
 
 

@@ -86,17 +86,26 @@ CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\GameRunner.cpp
 CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\GameRunner.h
 CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\GridMap.h
 CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\Map.h
+CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\MapEntity.h
 CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\GameRunner.cpp.obj: ..\MapPosition.h
 
 CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\GridMap.cpp
 CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\GridMap.h
 CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\Map.h
+CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\MapEntity.h
 CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\GridMap.cpp.obj: ..\MapPosition.h
 
 CMakeFiles\hivemind.dir\Human.cpp.obj: ..\Human.cpp
 CMakeFiles\hivemind.dir\Human.cpp.obj: ..\Human.h
 CMakeFiles\hivemind.dir\Human.cpp.obj: ..\Map.h
+CMakeFiles\hivemind.dir\Human.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\Human.cpp.obj: ..\MapEntity.h
 CMakeFiles\hivemind.dir\Human.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\Human.cpp.obj: ..\MapPosition.h
 CMakeFiles\hivemind.dir\Human.cpp.obj: ..\VisionMap.h
 
 CMakeFiles\hivemind.dir\Pather.cpp.obj: ..\MapNode.h
@@ -107,12 +116,18 @@ CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\external\fmt-master\include\fmt\co
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\external\fmt-master\include\fmt\format-inl.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\external\fmt-master\include\fmt\format.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\Map.h
+CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\MapEntity.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\MapPosition.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\SparseMap.cpp
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\SparseMap.h
 
 CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\Map.h
+CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\MapEntity.h
 CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\MapPosition.h
 CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\VisionMap.cpp
 CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\VisionMap.h
 
@@ -200,7 +215,9 @@ CMakeFiles\hivemind.dir\main.cpp.obj: ..\external\glm-0.9.7.1\glm\vector_relatio
 CMakeFiles\hivemind.dir\main.cpp.obj: ..\GameRunner.h
 CMakeFiles\hivemind.dir\main.cpp.obj: ..\GridMap.h
 CMakeFiles\hivemind.dir\main.cpp.obj: ..\Map.h
+CMakeFiles\hivemind.dir\main.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\main.cpp.obj: ..\MapEntity.h
 CMakeFiles\hivemind.dir\main.cpp.obj: ..\MapNode.h
-CMakeFiles\hivemind.dir\main.cpp.obj: ..\SparseMap.h
+CMakeFiles\hivemind.dir\main.cpp.obj: ..\MapPosition.h
 CMakeFiles\hivemind.dir\main.cpp.obj: ..\main.cpp
 

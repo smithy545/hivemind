@@ -87,17 +87,26 @@ CMakeFiles/hivemind.dir/GameRunner.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/GameRunner.h
  C:/Users/Philip/CLionProjects/hivemind/GridMap.h
  C:/Users/Philip/CLionProjects/hivemind/Map.h
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
 CMakeFiles/hivemind.dir/GridMap.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/GridMap.cpp
  C:/Users/Philip/CLionProjects/hivemind/GridMap.h
  C:/Users/Philip/CLionProjects/hivemind/Map.h
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
 CMakeFiles/hivemind.dir/Human.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/Human.cpp
  C:/Users/Philip/CLionProjects/hivemind/Human.h
  C:/Users/Philip/CLionProjects/hivemind/Map.h
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
  C:/Users/Philip/CLionProjects/hivemind/VisionMap.h
 CMakeFiles/hivemind.dir/Pather.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
@@ -108,12 +117,18 @@ CMakeFiles/hivemind.dir/SparseMap.cpp.obj
  ../external/fmt-master/include/fmt/format-inl.h
  ../external/fmt-master/include/fmt/format.h
  C:/Users/Philip/CLionProjects/hivemind/Map.h
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
  C:/Users/Philip/CLionProjects/hivemind/SparseMap.cpp
  C:/Users/Philip/CLionProjects/hivemind/SparseMap.h
 CMakeFiles/hivemind.dir/VisionMap.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/Map.h
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
  C:/Users/Philip/CLionProjects/hivemind/VisionMap.cpp
  C:/Users/Philip/CLionProjects/hivemind/VisionMap.h
 CMakeFiles/hivemind.dir/main.cpp.obj
@@ -201,6 +216,8 @@ CMakeFiles/hivemind.dir/main.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/GameRunner.h
  C:/Users/Philip/CLionProjects/hivemind/GridMap.h
  C:/Users/Philip/CLionProjects/hivemind/Map.h
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
- C:/Users/Philip/CLionProjects/hivemind/SparseMap.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
  C:/Users/Philip/CLionProjects/hivemind/main.cpp

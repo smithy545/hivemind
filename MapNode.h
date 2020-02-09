@@ -12,6 +12,7 @@
 class MapNode {
 public:
     typedef std::shared_ptr<MapNode> Ptr;
+    typedef std::vector<Ptr> MapPath;
 
     MapNode(int x, int y) : MapNode(x, y, true, 8) {}
     MapNode(int x, int y, bool passable, int numNeighbors) : x(x), y(y), passable(passable), neighbors(numNeighbors) {}

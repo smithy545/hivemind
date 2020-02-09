@@ -7,6 +7,7 @@
 
 
 #include <memory>
+#include <queue>
 #include <string>
 #include <utility>
 #include <vector>
@@ -32,7 +33,7 @@ public:
         Ptr previous;
     };
 
-    static std::vector<MapNode::Ptr> genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end);
+    static MapNode::MapPath genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end);
 private:
     static std::string genKey(const MapNode::Ptr &pos);
     static double distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b);

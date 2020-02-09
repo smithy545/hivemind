@@ -3,6 +3,7 @@
 //
 
 #include "GameRunner.h"
+#include "MapActor.h"
 
 #include <iostream>
 
@@ -10,7 +11,7 @@
 bool GameRunner::keys[];
 GLFWwindow* GameRunner::window = nullptr;
 
-void GameRunner::loop() {
+void GameRunner::loop(std::vector<GridMap::Ptr> loadedMaps) {
     // Initialise GLFW
     if(!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -64,7 +65,8 @@ void GameRunner::loop() {
         // Clear the screen
         glClear(GL_COLOR_BUFFER_BIT);
 
-        update();
+        for(GridMap::Ptr map: loadedMaps)
+            update(map);
         render();
 
         // Swap buffers
@@ -80,4 +82,8 @@ void GameRunner::loop() {
 
 void GameRunner::render() {}
 
-void GameRunner::update() {}
+void GameRunner::update(GridMap::Ptr map) {
+    for(MapActor::Ptr actor: map->getActors()) {
+        actor->update();
+    }
+}

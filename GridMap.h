@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "Map.h"
+#include "MapActor.h"
 #include "MapNode.h"
 
 
@@ -19,14 +20,26 @@ public:
 
     GridMap(int width, int height);
 
-    std::vector<MapNode::Ptr> getNodes() override;
     MapNode::Ptr getNode(int x, int y) override;
 
-    const int &Width() const;
-    const int &Height() const;
+    std::vector<MapActor::Ptr> getActors() override {
+        return actors;
+    }
+
+    std::vector<MapNode::Ptr> getNodes() override {
+        return nodes;
+    }
+
+    const int &Width() const {
+        return width;
+    }
+    const int &Height() const {
+        return height;
+    }
 private:
     const int width;
     const int height;
+    std::vector<MapActor::Ptr> actors;
     std::vector<MapNode::Ptr> nodes;
 };
 

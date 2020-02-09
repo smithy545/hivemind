@@ -2247,7 +2247,16 @@
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Map.h">
 			<Option target="hivemind"/>
 		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/MapActor.h">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/MapEntity.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/MapNode.h">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/MapPosition.h">
 			<Option target="hivemind"/>
 		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Pather.cpp">

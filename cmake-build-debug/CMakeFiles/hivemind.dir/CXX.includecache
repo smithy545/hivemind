@@ -689,6 +689,8 @@ detail/func_vector_relational.hpp
 C:/Users/Philip/CLionProjects/hivemind/GameRunner.h
 thread
 -
+vector
+-
 GL/glew.h
 -
 GLFW/glfw3.h
@@ -705,6 +707,8 @@ memory
 -
 Map.h
 C:/Users/Philip/CLionProjects/hivemind/Map.h
+MapActor.h
+C:/Users/Philip/CLionProjects/hivemind/MapActor.h
 MapNode.h
 C:/Users/Philip/CLionProjects/hivemind/MapNode.h
 
@@ -717,34 +721,40 @@ vector
 -
 vector
 -
+MapActor.h
+C:/Users/Philip/CLionProjects/hivemind/MapActor.h
 MapNode.h
 C:/Users/Philip/CLionProjects/hivemind/MapNode.h
 
+C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+memory
+-
+MapEntity.h
+C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
+MapNode.h
+C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+
+C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
+memory
+-
+MapPosition.h
+C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
+
 C:/Users/Philip/CLionProjects/hivemind/MapNode.h
 memory
 -
 vector
 -
 
-C:/Users/Philip/CLionProjects/hivemind/SparseMap.h
+C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
 memory
 -
-string
--
-unordered_map
--
-vector
--
-Map.h
-C:/Users/Philip/CLionProjects/hivemind/Map.h
+MapNode.h
+C:/Users/Philip/CLionProjects/hivemind/MapNode.h
 
 C:/Users/Philip/CLionProjects/hivemind/main.cpp
 iostream
 -
 GameRunner.h
 C:/Users/Philip/CLionProjects/hivemind/GameRunner.h
-GridMap.h
-C:/Users/Philip/CLionProjects/hivemind/GridMap.h
-SparseMap.h
-C:/Users/Philip/CLionProjects/hivemind/SparseMap.h
 
