@@ -17,19 +17,27 @@
 
 // Include GLM
 #include <glm/glm.hpp>
+
 #include "GridMap.h"
+#include "Camera.h"
 
 using namespace glm;
 
 
 class GameRunner {
 public:
-    static void loop(std::vector<GridMap::Ptr> loadedMaps);
-    static void render();
-    static void update(GridMap::Ptr map);
+    static void loop(const std::vector<GridMap::Ptr> &loadedMaps);
+
 private:
-    static GLFWwindow* window;
+    static Camera camera;
+    static GLFWwindow *window;
     static bool keys[256];
+
+    static void render(const GridMap::Ptr &map);
+
+    static void update(const GridMap::Ptr &map);
+
+    static void resize(GLFWwindow *window, int width, int height);
 };
 
 

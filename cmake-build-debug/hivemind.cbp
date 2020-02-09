@@ -2226,6 +2226,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Camera.cpp">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Camera.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/GameRunner.cpp">
 			<Option target="hivemind"/>
 		</Unit>

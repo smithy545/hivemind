@@ -6,6 +6,7 @@
 #define HIVEMIND_VISIONMAP_H
 
 #include "Map.h"
+#include "MapActor.h"
 #include "MapNode.h"
 
 
@@ -13,9 +14,18 @@ class VisionMap : public Map {
 public:
     typedef std::shared_ptr<VisionMap> Ptr;
 
-    std::vector<MapNode::Ptr> getNodes() override;
     MapNode::Ptr getNode(int x, int y) override;
+
+    std::vector<MapActor::Ptr> VisionMap::getActors() override {
+        return actors;
+    }
+
+    std::vector<MapNode::Ptr> VisionMap::getNodes() override {
+        return nodes;
+    }
+
 private:
+    std::vector<MapActor::Ptr> actors;
     std::vector<MapNode::Ptr> nodes;
 };
 

@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/hivemind.dir/Camera.cpp.obj"
   "CMakeFiles/hivemind.dir/GameRunner.cpp.obj"
   "CMakeFiles/hivemind.dir/GridMap.cpp.obj"
   "CMakeFiles/hivemind.dir/Human.cpp.obj"

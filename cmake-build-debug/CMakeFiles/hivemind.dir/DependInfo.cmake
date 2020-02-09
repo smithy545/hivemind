@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/Philip/CLionProjects/hivemind/Camera.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/Camera.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/GameRunner.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/GameRunner.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/GridMap.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/Human.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/Human.cpp.obj"

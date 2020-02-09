@@ -18,8 +18,15 @@ public:
     typedef std::shared_ptr<SparseMap> Ptr;
 
     std::vector<MapNode::Ptr> getNodes() override;
+
     MapNode::Ptr getNode(int x, int y) override;
+
+    std::vector<MapActor::Ptr> getActors() override {
+        return actors;
+    }
+
 private:
+    std::vector<MapActor::Ptr> actors;
     std::unordered_map<std::string, MapNode::Ptr> nodes;
 
     std::string generateKey(int x, int y);

@@ -600,6 +600,33 @@ LinearMath\fast:
 	$(MAKE) -f external\bullet-2.81-rev2613\src\LinearMath\CMakeFiles\LinearMath.dir\build.make /nologo -$(MAKEFLAGS) external\bullet-2.81-rev2613\src\LinearMath\CMakeFiles\LinearMath.dir\build
 .PHONY : LinearMath\fast
 
+Camera.obj: Camera.cpp.obj
+
+.PHONY : Camera.obj
+
+# target to build an object file
+Camera.cpp.obj:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Camera.cpp.obj
+.PHONY : Camera.cpp.obj
+
+Camera.i: Camera.cpp.i
+
+.PHONY : Camera.i
+
+# target to preprocess a source file
+Camera.cpp.i:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Camera.cpp.i
+.PHONY : Camera.cpp.i
+
+Camera.s: Camera.cpp.s
+
+.PHONY : Camera.s
+
+# target to generate assembly for a file
+Camera.cpp.s:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Camera.cpp.s
+.PHONY : Camera.cpp.s
+
 GameRunner.obj: GameRunner.cpp.obj
 
 .PHONY : GameRunner.obj
@@ -835,6 +862,9 @@ help:
 	@echo ... BulletCollision
 	@echo ... BulletDynamics
 	@echo ... LinearMath
+	@echo ... Camera.obj
+	@echo ... Camera.i
+	@echo ... Camera.s
 	@echo ... GameRunner.obj
 	@echo ... GameRunner.i
 	@echo ... GameRunner.s

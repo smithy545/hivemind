@@ -191,6 +191,25 @@ CMakeFiles\hivemind.dir\VisionMap.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\hivemind.dir\VisionMap.cpp.s /c C:\Users\Philip\CLionProjects\hivemind\VisionMap.cpp
 <<
 
+CMakeFiles\hivemind.dir\Camera.cpp.obj: CMakeFiles\hivemind.dir\flags.make
+CMakeFiles\hivemind.dir\Camera.cpp.obj: ..\Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/hivemind.dir/Camera.cpp.obj"
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\hivemind.dir\Camera.cpp.obj /FdCMakeFiles\hivemind.dir\ /FS -c C:\Users\Philip\CLionProjects\hivemind\Camera.cpp
+<<
+
+CMakeFiles\hivemind.dir\Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hivemind.dir/Camera.cpp.i"
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\hivemind.dir\Camera.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Philip\CLionProjects\hivemind\Camera.cpp
+<<
+
+CMakeFiles\hivemind.dir\Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hivemind.dir/Camera.cpp.s"
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\hivemind.dir\Camera.cpp.s /c C:\Users\Philip\CLionProjects\hivemind\Camera.cpp
+<<
+
 # Object files for target hivemind
 hivemind_OBJECTS = \
 "CMakeFiles\hivemind.dir\main.cpp.obj" \
@@ -199,7 +218,8 @@ hivemind_OBJECTS = \
 "CMakeFiles\hivemind.dir\Pather.cpp.obj" \
 "CMakeFiles\hivemind.dir\GameRunner.cpp.obj" \
 "CMakeFiles\hivemind.dir\SparseMap.cpp.obj" \
-"CMakeFiles\hivemind.dir\VisionMap.cpp.obj"
+"CMakeFiles\hivemind.dir\VisionMap.cpp.obj" \
+"CMakeFiles\hivemind.dir\Camera.cpp.obj"
 
 # External object files for target hivemind
 hivemind_EXTERNAL_OBJECTS =
@@ -211,12 +231,13 @@ hivemind.exe: CMakeFiles\hivemind.dir\Pather.cpp.obj
 hivemind.exe: CMakeFiles\hivemind.dir\GameRunner.cpp.obj
 hivemind.exe: CMakeFiles\hivemind.dir\SparseMap.cpp.obj
 hivemind.exe: CMakeFiles\hivemind.dir\VisionMap.cpp.obj
+hivemind.exe: CMakeFiles\hivemind.dir\Camera.cpp.obj
 hivemind.exe: CMakeFiles\hivemind.dir\build.make
 hivemind.exe: external\fmt-master\fmtd.lib
 hivemind.exe: external\glfw-3.1.2\src\glfw3.lib
 hivemind.exe: external\GLEW_1130.lib
 hivemind.exe: CMakeFiles\hivemind.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable hivemind.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable hivemind.exe"
 	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\hivemind.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\hivemind.dir\objects1.rsp @<<
  /out:hivemind.exe /implib:hivemind.lib /pdb:C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\hivemind.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console opengl32.lib glu32.lib external\fmt-master\fmtd.lib external\glfw-3.1.2\src\glfw3.lib external\GLEW_1130.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
