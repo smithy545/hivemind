@@ -289,12 +289,6 @@ VC10_STDINT_FIX:BOOL=OFF
 //Dependencies for the target
 assimp_LIB_DEPENDS:STATIC=general;zlib;
 
-//The directory containing a CMake configuration file for fmt-master.
-fmt-master_DIR:PATH=fmt-master_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for fmt.
-fmt_DIR:PATH=fmt_DIR-NOTFOUND
-
 //Value Computed by CMake
 hivemind_BINARY_DIR:STATIC=C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug
 

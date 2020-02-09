@@ -1,9 +1,37 @@
+Performing C++ SOURCE FILE Test has_std_14_flag failed with the following output:
+Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_3cfc5\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_3cfc5.dir\build.make /nologo -L                  CMakeFiles\cmTC_3cfc5.dir\build
+Building CXX object CMakeFiles/cmTC_3cfc5.dir/src.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm903A.tmp
+cl : Command line warning D9002 : ignoring unknown option '-std=c++14'
+src.cxx
+Linking CXX executable cmTC_3cfc5.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_3cfc5.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_3cfc5.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm907A.tmp
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test has_std_1y_flag failed with the following output:
+Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_9de99\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_9de99.dir\build.make /nologo -L                  CMakeFiles\cmTC_9de99.dir\build
+Building CXX object CMakeFiles/cmTC_9de99.dir/src.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm923E.tmp
+cl : Command line warning D9002 : ignoring unknown option '-std=c++1y'
+src.cxx
+Linking CXX executable cmTC_9de99.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_9de99.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_9de99.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm927D.tmp
+
+
+Source file was:
+int main() { return 0; }
 Determining if the include file pthread.h exists failed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_3d958\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_3d958.dir\build.make /nologo -L                  CMakeFiles\cmTC_3d958.dir\build
-Building C object CMakeFiles/cmTC_3d958.dir/CheckIncludeFile.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm4F73.tmp
+Run Build Command(s):nmake /nologo cmTC_cae7f\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_cae7f.dir\build.make /nologo -L                  CMakeFiles\cmTC_cae7f.dir\build
+Building C object CMakeFiles/cmTC_cae7f.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9C40.tmp
 CheckIncludeFile.c
 C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'pthread.h': No such file or directory
 NMAKE : fatal error U1077: 'C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe' : return code '0x2'
@@ -16,9 +44,9 @@ Stop.
 Determining size of off64_t failed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_40993\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_40993.dir\build.make /nologo -L                  CMakeFiles\cmTC_40993.dir\build
-Building C object CMakeFiles/cmTC_40993.dir/OFF64_T.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm56D5.tmp
+Run Build Command(s):nmake /nologo cmTC_b582f\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_b582f.dir\build.make /nologo -L                  CMakeFiles\cmTC_b582f.dir\build
+Building C object CMakeFiles/cmTC_b582f.dir/OFF64_T.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmA2C8.tmp
 OFF64_T.c
 C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles\CheckTypeSize\OFF64_T.c(25): error C2065: 'off64_t': undeclared identifier
 C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles\CheckTypeSize\OFF64_T.c(26): error C2065: 'off64_t': undeclared identifier
@@ -83,16 +111,16 @@ int main(int argc, char *argv[])
 Determining if the function fseeko exists failed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_dfecb\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_dfecb.dir\build.make /nologo -L                  CMakeFiles\cmTC_dfecb.dir\build
-Building C object CMakeFiles/cmTC_dfecb.dir/CheckFunctionExists.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm5733.tmp
+Run Build Command(s):nmake /nologo cmTC_02efa\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_02efa.dir\build.make /nologo -L                  CMakeFiles\cmTC_02efa.dir\build
+Building C object CMakeFiles/cmTC_02efa.dir/CheckFunctionExists.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmA326.tmp
 CheckFunctionExists.c
-Linking C executable cmTC_dfecb.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_dfecb.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_dfecb.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm5772.tmp
-LINK Pass 1: command "C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_dfecb.dir\objects1.rsp /out:cmTC_dfecb.exe /implib:cmTC_dfecb.lib /pdb:C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles\CMakeTmp\cmTC_dfecb.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\cmTC_dfecb.dir/intermediate.manifest CMakeFiles\cmTC_dfecb.dir/manifest.res" failed (exit code 1120) with the following output:
+Linking C executable cmTC_02efa.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_02efa.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_02efa.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmA356.tmp
+LINK Pass 1: command "C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_02efa.dir\objects1.rsp /out:cmTC_02efa.exe /implib:cmTC_02efa.lib /pdb:C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles\CMakeTmp\cmTC_02efa.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\cmTC_02efa.dir/intermediate.manifest CMakeFiles\cmTC_02efa.dir/manifest.res" failed (exit code 1120) with the following output:
 CheckFunctionExists.c.obj : error LNK2019: unresolved external symbol _fseeko referenced in function _main
-cmTC_dfecb.exe : fatal error LNK1120: 1 unresolved externals
-NMAKE : fatal error U1077: '"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe"' : return code '0xffffffff'
+cmTC_02efa.exe : fatal error LNK1120: 1 unresolved externals
+NMAKE : fatal error U1077: 'D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe' : return code '0xffffffff'
 Stop.
 NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe"' : return code '0x2'
 Stop.
@@ -102,9 +130,9 @@ Stop.
 Determining if the include file unistd.h exists failed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_696f7\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_696f7.dir\build.make /nologo -L                  CMakeFiles\cmTC_696f7.dir\build
-Building C object CMakeFiles/cmTC_696f7.dir/CheckIncludeFile.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm581D.tmp
+Run Build Command(s):nmake /nologo cmTC_869dc\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_869dc.dir\build.make /nologo -L                  CMakeFiles\cmTC_869dc.dir\build
+Building C object CMakeFiles/cmTC_869dc.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmA3F1.tmp
 CheckIncludeFile.c
 C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'unistd.h': No such file or directory
 NMAKE : fatal error U1077: 'C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe' : return code '0x2'
@@ -114,31 +142,3 @@ Stop.
 
 
 
-Performing C++ SOURCE FILE Test has_std_14_flag failed with the following output:
-Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):nmake /nologo cmTC_bd48c\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_bd48c.dir\build.make /nologo -L                  CMakeFiles\cmTC_bd48c.dir\build
-Building CXX object CMakeFiles/cmTC_bd48c.dir/src.cxx.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmA6C8.tmp
-cl : Command line warning D9002 : ignoring unknown option '-std=c++14'
-src.cxx
-Linking CXX executable cmTC_bd48c.exe
-	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_bd48c.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_bd48c.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmA850.tmp
-
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test has_std_1y_flag failed with the following output:
-Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):nmake /nologo cmTC_8a99e\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_8a99e.dir\build.make /nologo -L                  CMakeFiles\cmTC_8a99e.dir\build
-Building CXX object CMakeFiles/cmTC_8a99e.dir/src.cxx.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmAA62.tmp
-cl : Command line warning D9002 : ignoring unknown option '-std=c++1y'
-src.cxx
-Linking CXX executable cmTC_8a99e.exe
-	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_8a99e.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_8a99e.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmAAA1.tmp
-
-
-Source file was:
-int main() { return 0; }

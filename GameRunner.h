@@ -29,14 +29,12 @@ public:
     static void loop(const std::vector<GridMap::Ptr> &loadedMaps);
 
 private:
-    static Camera camera;
+    static Camera::Ptr camera;
     static GLFWwindow *window;
     static bool keys[256];
 
     static void render(const GridMap::Ptr &map);
-
     static void update(const GridMap::Ptr &map);
-
     static void resize(GLFWwindow *window, int width, int height);
 };
 

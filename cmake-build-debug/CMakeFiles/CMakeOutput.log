@@ -50,96 +50,60 @@ The CXX compiler identification is MSVC, found in "C:/Users/Philip/CLionProjects
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_57e88\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_57e88.dir\build.make /nologo -L                  CMakeFiles\cmTC_57e88.dir\build
-Building C object CMakeFiles/cmTC_57e88.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm4476.tmp
+Run Build Command(s):nmake /nologo cmTC_d1ab6\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_d1ab6.dir\build.make /nologo -L                  CMakeFiles\cmTC_d1ab6.dir\build
+Building C object CMakeFiles/cmTC_d1ab6.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm8686.tmp
 testCCompiler.c
-Linking C executable cmTC_57e88.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_57e88.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_57e88.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm45BF.tmp
+Linking C executable cmTC_d1ab6.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_d1ab6.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_d1ab6.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm87BF.tmp
 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_ec12b\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_ec12b.dir\build.make /nologo -L                  CMakeFiles\cmTC_ec12b.dir\build
-Building C object CMakeFiles/cmTC_ec12b.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm4810.tmp
+Run Build Command(s):nmake /nologo cmTC_a6de3\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_a6de3.dir\build.make /nologo -L                  CMakeFiles\cmTC_a6de3.dir\build
+Building C object CMakeFiles/cmTC_a6de3.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm8993.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_ec12b.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_ec12b.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_ec12b.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm4840.tmp
+Linking C executable cmTC_a6de3.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_a6de3.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_a6de3.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm89D2.tmp
 
 
 
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_19364\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_19364.dir\build.make /nologo -L                  CMakeFiles\cmTC_19364.dir\build
-Building CXX object CMakeFiles/cmTC_19364.dir/testCXXCompiler.cxx.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm4A62.tmp
+Run Build Command(s):nmake /nologo cmTC_671b7\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_671b7.dir\build.make /nologo -L                  CMakeFiles\cmTC_671b7.dir\build
+Building CXX object CMakeFiles/cmTC_671b7.dir/testCXXCompiler.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm8BF4.tmp
 testCXXCompiler.cxx
-Linking CXX executable cmTC_19364.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_19364.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_19364.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm4AB1.tmp
+Linking CXX executable cmTC_671b7.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_671b7.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_671b7.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm8C82.tmp
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_b4058\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_b4058.dir\build.make /nologo -L                  CMakeFiles\cmTC_b4058.dir\build
-Building CXX object CMakeFiles/cmTC_b4058.dir/CMakeCXXCompilerABI.cpp.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm4D30.tmp
+Run Build Command(s):nmake /nologo cmTC_6f5d9\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_6f5d9.dir\build.make /nologo -L                  CMakeFiles\cmTC_6f5d9.dir\build
+Building CXX object CMakeFiles/cmTC_6f5d9.dir/CMakeCXXCompilerABI.cpp.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm8E46.tmp
 CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_b4058.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_b4058.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_b4058.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm4D70.tmp
-
-
-
-Determining if the include file sys/types.h exists passed with the following output:
-Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):nmake /nologo cmTC_5d207\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_5d207.dir\build.make /nologo -L                  CMakeFiles\cmTC_5d207.dir\build
-Building C object CMakeFiles/cmTC_5d207.dir/CheckIncludeFile.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm503E.tmp
-CheckIncludeFile.c
-Linking C executable cmTC_5d207.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_5d207.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_5d207.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm507D.tmp
-
-
-
-Determining if the include file stdint.h exists passed with the following output:
-Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):nmake /nologo cmTC_bcdab\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_bcdab.dir\build.make /nologo -L                  CMakeFiles\cmTC_bcdab.dir\build
-Building C object CMakeFiles/cmTC_bcdab.dir/CheckIncludeFile.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm5261.tmp
-CheckIncludeFile.c
-Linking C executable cmTC_bcdab.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_bcdab.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_bcdab.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm5290.tmp
-
-
-
-Determining if the include file stddef.h exists passed with the following output:
-Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):nmake /nologo cmTC_8fd65\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_8fd65.dir\build.make /nologo -L                  CMakeFiles\cmTC_8fd65.dir\build
-Building C object CMakeFiles/cmTC_8fd65.dir/CheckIncludeFile.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm5483.tmp
-CheckIncludeFile.c
-Linking C executable cmTC_8fd65.exe
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_8fd65.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_8fd65.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm54C3.tmp
+Linking CXX executable cmTC_6f5d9.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_6f5d9.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_6f5d9.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm8E76.tmp
 
 
 
 Performing C++ SOURCE FILE Test SUPPORTS_VARIADIC_TEMPLATES succeeded with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_9dd2e\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_9dd2e.dir\build.make /nologo -L                  CMakeFiles\cmTC_9dd2e.dir\build
-Building CXX object CMakeFiles/cmTC_9dd2e.dir/src.cxx.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmAC66.tmp
+Run Build Command(s):nmake /nologo cmTC_73665\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_73665.dir\build.make /nologo -L                  CMakeFiles\cmTC_73665.dir\build
+Building CXX object CMakeFiles/cmTC_73665.dir/src.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9432.tmp
 src.cxx
-Linking CXX executable cmTC_9dd2e.exe
-	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_9dd2e.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_9dd2e.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmACA5.tmp
+Linking CXX executable cmTC_73665.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_73665.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_73665.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm9481.tmp
 
 
 Source file was:
@@ -150,12 +114,12 @@ Source file was:
 Performing C++ SOURCE FILE Test SUPPORTS_USER_DEFINED_LITERALS succeeded with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_73b04\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_73b04.dir\build.make /nologo -L                  CMakeFiles\cmTC_73b04.dir\build
-Building CXX object CMakeFiles/cmTC_73b04.dir/src.cxx.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmAE69.tmp
+Run Build Command(s):nmake /nologo cmTC_6eeec\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_6eeec.dir\build.make /nologo -L                  CMakeFiles\cmTC_6eeec.dir\build
+Building CXX object CMakeFiles/cmTC_6eeec.dir/src.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9635.tmp
 src.cxx
-Linking CXX executable cmTC_73b04.exe
-	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_73b04.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_73b04.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmAEA9.tmp
+Linking CXX executable cmTC_6eeec.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_6eeec.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_6eeec.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm9684.tmp
 
 
 Source file was:
@@ -165,14 +129,14 @@ Source file was:
 Performing C++ SOURCE FILE Test FMT_HAS_VARIANT succeeded with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_82957\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_82957.dir\build.make /nologo -L                  CMakeFiles\cmTC_82957.dir\build
-Building CXX object CMakeFiles/cmTC_82957.dir/src.cxx.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmB06D.tmp
+Run Build Command(s):nmake /nologo cmTC_a9573\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_a9573.dir\build.make /nologo -L                  CMakeFiles\cmTC_a9573.dir\build
+Building CXX object CMakeFiles/cmTC_a9573.dir/src.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9829.tmp
 cl : Command line warning D9002 : ignoring unknown option '-std=c++1z'
 src.cxx
 class template variant is only available with C++17 or later.
-Linking CXX executable cmTC_82957.exe
-	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_82957.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_82957.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmB0AC.tmp
+Linking CXX executable cmTC_a9573.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_a9573.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_a9573.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm9888.tmp
 
 
 Source file was:
@@ -182,12 +146,12 @@ Source file was:
 Determining if the _strtod_l exist passed with the following output:
 Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_b159a\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_b159a.dir\build.make /nologo -L                  CMakeFiles\cmTC_b159a.dir\build
-Building C object CMakeFiles/cmTC_b159a.dir/CheckSymbolExists.c.obj
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmB29F.tmp
+Run Build Command(s):nmake /nologo cmTC_9f230\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_9f230.dir\build.make /nologo -L                  CMakeFiles\cmTC_9f230.dir\build
+Building C object CMakeFiles/cmTC_9f230.dir/CheckSymbolExists.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9A4C.tmp
 CheckSymbolExists.c
-Linking C executable cmTC_b159a.exe
-	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_b159a.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_b159a.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmB2DF.tmp
+Linking C executable cmTC_9f230.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_9f230.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_9f230.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm9A7C.tmp
 
 
 File C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
@@ -204,4 +168,40 @@ int main(int argc, char** argv)
   return 0;
 #endif
 }
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_45b92\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_45b92.dir\build.make /nologo -L                  CMakeFiles\cmTC_45b92.dir\build
+Building C object CMakeFiles/cmTC_45b92.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9CDC.tmp
+CheckIncludeFile.c
+Linking C executable cmTC_45b92.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_45b92.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_45b92.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm9D3B.tmp
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_b0325\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_b0325.dir\build.make /nologo -L                  CMakeFiles\cmTC_b0325.dir\build
+Building C object CMakeFiles/cmTC_b0325.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nm9EE0.tmp
+CheckIncludeFile.c
+Linking C executable cmTC_b0325.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_b0325.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_b0325.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nm9F20.tmp
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_5f6ce\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_5f6ce.dir\build.make /nologo -L                  CMakeFiles\cmTC_5f6ce.dir\build
+Building C object CMakeFiles/cmTC_5f6ce.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\Philip\AppData\Local\Temp\nmA0C4.tmp
+CheckIncludeFile.c
+Linking C executable cmTC_5f6ce.exe
+	D:\Apps\JetBrains\apps\CLion\ch-0\193.6015.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_5f6ce.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_5f6ce.dir\objects1.rsp @C:\Users\Philip\AppData\Local\Temp\nmA114.tmp
+
+
 
