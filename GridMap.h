@@ -20,6 +20,8 @@ public:
 
     GridMap(int width, int height);
 
+    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tilesize) override;
+
     MapNode::Ptr getNode(int x, int y) override;
 
     std::vector<MapActor::Ptr> getActors() override {
@@ -41,6 +43,7 @@ private:
     const int height;
     std::vector<MapActor::Ptr> actors;
     std::vector<MapNode::Ptr> nodes;
+    Mesh::Ptr mesh;
 };
 
 

@@ -2265,6 +2265,9 @@
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/MapPosition.h">
 			<Option target="hivemind"/>
 		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Mesh.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Pather.cpp">
 			<Option target="hivemind"/>
 		</Unit>

@@ -4,9 +4,6 @@
 
 #include <iostream>
 
-#include "glm/ext.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-
 #include "GameRunner.h"
 #include "MapActor.h"
 
@@ -116,13 +113,6 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    // set up vertex data (and buffer(s)) and configure vertex attributes
-    // ------------------------------------------------------------------
-    unsigned int VBO, VAO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
@@ -137,7 +127,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
-            render(map, VAO, VBO, EBO);
+            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2));
         }
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -148,73 +138,23 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
            glfwWindowShouldClose(window) == 0);
 
-
     glBindVertexArray(0);
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-    // optional: de-allocate all resources once they've outlived their purpose:
-    // ------------------------------------------------------------------------
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
     glfwTerminate();
 }
 
-void GameRunner::render(const GridMap::Ptr &map, int VAO, int VBO, int EBO) {
-    int N = map->getNodes().size();
-    auto *vertices = new float[8 * N];
-    auto *indices = new unsigned int[6 * N];
-    int i = 0;
-    int j = 0;
-    for (auto node: map->getNodes()) {
-        float th = 2;
-        float tw = 2;
-        float x = node->x * tw - camera->x - SCR_WIDTH;
-        float y = node->y * th - camera->y - SCR_HEIGHT;
-
-        // top right
-        vertices[i] = (x + tw) / SCR_WIDTH;
-        vertices[i + 1] = y / SCR_HEIGHT;
-        // bottom right
-        vertices[i + 2] = (x + tw) / SCR_WIDTH;
-        vertices[i + 3] = (y + th) / SCR_HEIGHT;
-        // bottom left
-        vertices[i + 4] = x / SCR_WIDTH;
-        vertices[i + 5] = (y + th) / SCR_HEIGHT;
-        // top left
-        vertices[i + 6] = x / SCR_WIDTH;
-        vertices[i + 7] = y / SCR_HEIGHT;
-
-        indices[j] = i / 2;
-        indices[j + 1] = i / 2 + 1;
-        indices[j + 2] = i / 2 + 3;
-        indices[j + 3] = i / 2 + 1;
-        indices[j + 4] = i / 2 + 2;
-        indices[j + 5] = i / 2 + 3;
-
-        i += 8;
-        j += 6;
-    }
-
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, 8 * N * sizeof(float), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * N * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
+void GameRunner::renderMesh(Mesh::Ptr mesh) {
     glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glDrawElements(GL_TRIANGLES, 6 * N, GL_UNSIGNED_INT, nullptr);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
+    glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_INT, nullptr);
 }
 
 void GameRunner::update(const GridMap::Ptr &map) {
