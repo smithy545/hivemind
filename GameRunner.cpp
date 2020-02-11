@@ -83,8 +83,6 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         }
     });
 
-    camera = std::make_shared<Camera>(0, 0, 800, 600);
-
     // build and compile our shader program
     // ------------------------------------
     // vertex shader
@@ -120,51 +118,16 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
-    float tw = 128.0 / SCR_WIDTH;
-    float th = 128.0 / SCR_HEIGHT;
-    float vertices[] = {
-            tw, 0,   // top right
-            tw, -th, // bottom right
-            0, -th, // bottom left
-            0, 0    // top left
-    };
-    unsigned int indices[] = {
-            0, 1, 3,  // first Triangle
-            1, 2, 3   // second Triangle
-    };
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
-    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
-    glEnableVertexAttribArray(0);
-
-    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    // remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
-    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-    //glBindVertexArray(0);
-
-    // uncomment this call to draw in wireframe polygons.
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-    do {
+    camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
 
+    do {
         // render
         // ------
         glClear(GL_COLOR_BUFFER_BIT);
@@ -172,15 +135,9 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         // draw our first triangle
         glUseProgram(shaderProgram);
 
-        glBindVertexArray(
-                VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-        //glDrawArrays(GL_TRIANGLES, 0, 6);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-        // glBindVertexArray(0); // no need to unbind it every time
-
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
-            render(map);
+            render(map, VAO, VBO, EBO);
         }
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -191,6 +148,11 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
            glfwWindowShouldClose(window) == 0);
 
+
+    glBindVertexArray(0);
+    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
@@ -203,12 +165,56 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     glfwTerminate();
 }
 
-void GameRunner::render(const GridMap::Ptr &map) {
-    for (const MapNode::Ptr &node: map->getNodes()) {
-        if (camera->inSight(node)) {
-            // render node
-        }
+void GameRunner::render(const GridMap::Ptr &map, int VAO, int VBO, int EBO) {
+    int N = map->getNodes().size();
+    auto *vertices = new float[8 * N];
+    auto *indices = new unsigned int[6 * N];
+    int i = 0;
+    int j = 0;
+    for (auto node: map->getNodes()) {
+        float th = 2;
+        float tw = 2;
+        float x = node->x * tw - camera->x - SCR_WIDTH;
+        float y = node->y * th - camera->y - SCR_HEIGHT;
+
+        // top right
+        vertices[i] = (x + tw) / SCR_WIDTH;
+        vertices[i + 1] = y / SCR_HEIGHT;
+        // bottom right
+        vertices[i + 2] = (x + tw) / SCR_WIDTH;
+        vertices[i + 3] = (y + th) / SCR_HEIGHT;
+        // bottom left
+        vertices[i + 4] = x / SCR_WIDTH;
+        vertices[i + 5] = (y + th) / SCR_HEIGHT;
+        // top left
+        vertices[i + 6] = x / SCR_WIDTH;
+        vertices[i + 7] = y / SCR_HEIGHT;
+
+        indices[j] = i / 2;
+        indices[j + 1] = i / 2 + 1;
+        indices[j + 2] = i / 2 + 3;
+        indices[j + 3] = i / 2 + 1;
+        indices[j + 4] = i / 2 + 2;
+        indices[j + 5] = i / 2 + 3;
+
+        i += 8;
+        j += 6;
     }
+
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, 8 * N * sizeof(float), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * N * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glDrawElements(GL_TRIANGLES, 6 * N, GL_UNSIGNED_INT, nullptr);
 }
 
 void GameRunner::update(const GridMap::Ptr &map) {

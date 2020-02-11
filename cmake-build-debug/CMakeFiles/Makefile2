@@ -74,9 +74,9 @@ preinstall: external\preinstall
 # Target rules for target CMakeFiles/hivemind.dir
 
 # All Build rule for target.
-CMakeFiles\hivemind.dir\all: external\CMakeFiles\GLEW_1130.dir\all
 CMakeFiles\hivemind.dir\all: external\glfw-3.1.2\src\CMakeFiles\glfw.dir\all
 CMakeFiles\hivemind.dir\all: external\fmt-master\CMakeFiles\fmt.dir\all
+CMakeFiles\hivemind.dir\all: external\CMakeFiles\GLEW_1130.dir\all
 	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\depend
 	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Philip\CLionProjects\hivemind\cmake-build-debug\CMakeFiles --progress-num=86,87 "Built target hivemind"

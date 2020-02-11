@@ -33,7 +33,8 @@ private:
     static GLFWwindow *window;
     static bool keys[256];
 
-    static void render(const GridMap::Ptr &map);
+    static void render(const GridMap::Ptr &map, int VAO, int VBO, int EBO);
+
     static void update(const GridMap::Ptr &map);
     static void resize(GLFWwindow *window, int width, int height);
 };
