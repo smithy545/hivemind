@@ -14,15 +14,18 @@ const int SCR_HEIGHT = 600;
 
 const char *vertexShaderSource = "#version 330 core\n"
                                  "layout (location = 0) in vec2 aPos;\n"
+                                 "out vec3 color;\n"
                                  "void main()\n"
                                  "{\n"
                                  "   gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0);\n"
+                                 "   color = vec3(1.0, aPos.x, aPos.y);\n"
                                  "}\n\0";
 const char *fragmentShaderSource = "#version 330 core\n"
+                                   "in vec3 color;\n"
                                    "out vec4 FragColor;\n"
                                    "void main()\n"
                                    "{\n"
-                                   "   FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);\n"
+                                   "   FragColor = vec4(color, 1.0f);\n"
                                    "}\n\0";
 
 bool GameRunner::keys[];

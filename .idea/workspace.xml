@@ -46,17 +46,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Mesh.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameRunner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GameRunner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameRunner.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameRunner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GridMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/GridMap.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Map.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/hivemind.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hivemind.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hivemind.dir/depend.make" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +369,7 @@
       <workItem from="1581213024489" duration="10603000" />
       <workItem from="1581365991882" duration="5133000" />
       <workItem from="1581383539651" duration="2325000" />
-      <workItem from="1581386805649" duration="2930000" />
+      <workItem from="1581386805649" duration="3149000" />
     </task>
     <task id="LOCAL-00001" summary="Personalize boilerplate">
       <created>1579837981301</created>
@@ -468,7 +462,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581385857064</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add basic map mesh">
+      <created>1581389777548</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1581389777548</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +505,8 @@
     <MESSAGE value="Normalize rectangle coords" />
     <MESSAGE value="Minor tweaks" />
     <MESSAGE value="Add framework for map drawing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add framework for map drawing" />
+    <MESSAGE value="Add basic map mesh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add basic map mesh" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -528,11 +530,11 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1869" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581213054942" />
-    <state x="1569" y="257" width="1185" height="838" key="CommitChangelistDialog2" timestamp="1581385856166">
+    <state x="1569" y="113" width="1185" height="982" key="CommitChangelistDialog2" timestamp="1581389776706">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="4255" y="475" key="CommitChangelistDialog2/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025568212" />
-    <state x="1569" y="257" width="1185" height="838" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581385856166" />
+    <state x="1569" y="113" width="1185" height="982" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389776706" />
     <state x="1468" y="215" width="799" height="797" key="CommitChangelistDialog2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842898202" />
     <state x="1460" y="143" width="1798" height="1175" key="CommitChangelistDialog2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074110996" />
     <state x="672" y="104" key="DiffContextDialog" timestamp="1581385781511">
@@ -543,36 +545,36 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl/0.0.3440.1440@0.0.3440.1440" timestamp="1579836594399" />
-    <state width="3397" height="327" key="GridCell.Tab.0.bottom" timestamp="1581389742139">
+    <state width="3397" height="327" key="GridCell.Tab.0.bottom" timestamp="1581389964009">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581029036142" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773729" />
-    <state width="3397" height="327" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389742139" />
+    <state width="3397" height="327" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389964009" />
     <state width="2047" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928044" />
     <state width="3390" height="381" key="GridCell.Tab.0.bottom/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state width="3397" height="327" key="GridCell.Tab.0.center" timestamp="1581389742139">
+    <state width="3397" height="327" key="GridCell.Tab.0.center" timestamp="1581389964009">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581029036142" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773728" />
-    <state width="3397" height="327" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389742139" />
+    <state width="3397" height="327" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389964009" />
     <state width="2047" height="273" key="GridCell.Tab.0.center/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="3390" height="381" key="GridCell.Tab.0.center/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state width="3397" height="327" key="GridCell.Tab.0.left" timestamp="1581389742139">
+    <state width="3397" height="327" key="GridCell.Tab.0.left" timestamp="1581389964008">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581029036141" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773726" />
-    <state width="3397" height="327" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389742139" />
+    <state width="3397" height="327" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389964008" />
     <state width="2047" height="273" key="GridCell.Tab.0.left/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="3390" height="381" key="GridCell.Tab.0.left/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
-    <state width="3397" height="327" key="GridCell.Tab.0.right" timestamp="1581389742139">
+    <state width="3397" height="327" key="GridCell.Tab.0.right" timestamp="1581389964009">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581029036142" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.2293.920/3440.373.1920.1040@3440.373.1920.1040" timestamp="1580557773729" />
-    <state width="3397" height="327" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389742139" />
+    <state width="3397" height="327" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389964009" />
     <state width="2047" height="273" key="GridCell.Tab.0.right/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="3390" height="381" key="GridCell.Tab.0.right/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1580074111006" />
     <state x="1734" y="226" key="SettingsEditor" timestamp="1581216708860">
@@ -588,11 +590,11 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581384413780" />
-    <state x="2161" y="311" width="487" height="375" key="Vcs.Push.Dialog.v2" timestamp="1581385859139">
+    <state x="2161" y="311" width="487" height="375" key="Vcs.Push.Dialog.v2" timestamp="1581389779045">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="4646" y="603" width="487" height="375" key="Vcs.Push.Dialog.v2/0.0.2293.920/3440.372.1920.1040@3440.372.1920.1040" timestamp="1581025572982" />
-    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581385859139" />
+    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1581389779045" />
     <state x="2163" y="338" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842899761" />
     <state x="2161" y="320" key="Vcs.Push.Dialog.v2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579924019835" />
     <state x="1456" y="100" width="1891" height="1207" key="dock-window-1" timestamp="1581216153940">
