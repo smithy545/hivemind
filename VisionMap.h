@@ -16,11 +16,11 @@ public:
 
     MapNode::Ptr getNode(int x, int y) override;
 
-    std::vector<MapActor::Ptr> VisionMap::getActors() override {
+    std::vector<MapActor::Ptr> getActors() override {
         return actors;
     }
 
-    std::vector<MapNode::Ptr> VisionMap::getNodes() override {
+    std::vector<MapNode::Ptr> getNodes() override {
         return nodes;
     }
 

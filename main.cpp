@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <memory>
-
 #include "GameRunner.h"
 
 
@@ -14,7 +13,7 @@ int main() {
     loadedMaps.push_back(std::make_shared<GridMap>(100, 100));
     std::cout << "Map loaded." << std::endl;
 
-    std::thread main_thread(std::bind(GameRunner::loop, loadedMaps));
+    std::thread main_thread([=] { return GameRunner::loop(loadedMaps); });
 
     std::cout << "Waiting for main thread " << main_thread.get_id() << " to join..." << std::endl;
 

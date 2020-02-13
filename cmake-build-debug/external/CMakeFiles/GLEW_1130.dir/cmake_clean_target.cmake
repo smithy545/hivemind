@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "GLEW_1130.lib"
-)
