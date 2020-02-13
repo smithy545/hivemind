@@ -2274,10 +2274,22 @@
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Pather.h">
 			<Option target="hivemind"/>
 		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Prop.cpp">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Prop.h">
+			<Option target="hivemind"/>
+		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/SparseMap.cpp">
 			<Option target="hivemind"/>
 		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/SparseMap.h">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Structure.cpp">
+			<Option target="hivemind"/>
+		</Unit>
+		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/Structure.h">
 			<Option target="hivemind"/>
 		</Unit>
 		<Unit filename="C:/Users/Philip/CLionProjects/hivemind/VisionMap.cpp">

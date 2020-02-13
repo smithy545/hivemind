@@ -20,7 +20,7 @@ public:
 
     GridMap(int width, int height);
 
-    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tilesize) override;
+    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
 
     MapNode::Ptr getNode(int x, int y) override;
 
@@ -32,12 +32,14 @@ public:
         return nodes;
     }
 
-    const int &Width() const {
+    int getWidth() const {
         return width;
     }
-    const int &Height() const {
+
+    int getHeight() const {
         return height;
     }
+
 private:
     const int width;
     const int height;

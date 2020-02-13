@@ -58,7 +58,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind main.cpp Human.cpp Human.h GridMap.cpp GridMap.h MapNode.h Pather.cpp Pather.h GameRunner.cpp GameRunner.h SparseMap.cpp SparseMap.h Map.h VisionMap.cpp VisionMap.h MapPosition.h MapEntity.h MapActor.h Camera.cpp Camera.h Mesh.h)
+add_executable(hivemind main.cpp Human.cpp Human.h GridMap.cpp GridMap.h MapNode.h Pather.cpp Pather.h GameRunner.cpp GameRunner.h SparseMap.cpp SparseMap.h Map.h VisionMap.cpp VisionMap.h MapPosition.h MapEntity.h MapActor.h Camera.cpp Camera.h Mesh.h Structure.cpp Structure.h Prop.cpp Prop.h)
 target_link_libraries(hivemind
         ${ALL_LIBS}
         )

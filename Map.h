@@ -20,7 +20,7 @@ public:
     typedef std::shared_ptr<Map> Ptr;
     typedef std::iterator<std::input_iterator_tag, MapNode::Ptr> MapStream;
 
-    virtual Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tilesize) = 0;
+    virtual Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) = 0;
 
     virtual std::vector<MapActor::Ptr> getActors() = 0;
     virtual std::vector<MapNode::Ptr> getNodes() = 0;

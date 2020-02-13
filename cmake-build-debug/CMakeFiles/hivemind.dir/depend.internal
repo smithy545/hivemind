@@ -194,6 +194,12 @@ CMakeFiles/hivemind.dir/Pather.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/MapNode.h
  C:/Users/Philip/CLionProjects/hivemind/Pather.cpp
  C:/Users/Philip/CLionProjects/hivemind/Pather.h
+CMakeFiles/hivemind.dir/Prop.cpp.obj
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
+ C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
+ C:/Users/Philip/CLionProjects/hivemind/Prop.cpp
+ C:/Users/Philip/CLionProjects/hivemind/Prop.h
 CMakeFiles/hivemind.dir/SparseMap.cpp.obj
  ../external/fmt-master/include/fmt/core.h
  ../external/fmt-master/include/fmt/format-inl.h
@@ -208,6 +214,13 @@ CMakeFiles/hivemind.dir/SparseMap.cpp.obj
  C:/Users/Philip/CLionProjects/hivemind/Mesh.h
  C:/Users/Philip/CLionProjects/hivemind/SparseMap.cpp
  C:/Users/Philip/CLionProjects/hivemind/SparseMap.h
+CMakeFiles/hivemind.dir/Structure.cpp.obj
+ C:/Users/Philip/CLionProjects/hivemind/MapActor.h
+ C:/Users/Philip/CLionProjects/hivemind/MapEntity.h
+ C:/Users/Philip/CLionProjects/hivemind/MapNode.h
+ C:/Users/Philip/CLionProjects/hivemind/MapPosition.h
+ C:/Users/Philip/CLionProjects/hivemind/Structure.cpp
+ C:/Users/Philip/CLionProjects/hivemind/Structure.h
 CMakeFiles/hivemind.dir/VisionMap.cpp.obj
  ../external/glew-1.13.0/include/GL/glew.h
  ../external/glfw-3.1.2/include/GLFW/glfw3.h

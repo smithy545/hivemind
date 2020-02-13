@@ -735,6 +735,33 @@ Pather.cpp.s:
 	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Pather.cpp.s
 .PHONY : Pather.cpp.s
 
+Prop.obj: Prop.cpp.obj
+
+.PHONY : Prop.obj
+
+# target to build an object file
+Prop.cpp.obj:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Prop.cpp.obj
+.PHONY : Prop.cpp.obj
+
+Prop.i: Prop.cpp.i
+
+.PHONY : Prop.i
+
+# target to preprocess a source file
+Prop.cpp.i:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Prop.cpp.i
+.PHONY : Prop.cpp.i
+
+Prop.s: Prop.cpp.s
+
+.PHONY : Prop.s
+
+# target to generate assembly for a file
+Prop.cpp.s:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Prop.cpp.s
+.PHONY : Prop.cpp.s
+
 SparseMap.obj: SparseMap.cpp.obj
 
 .PHONY : SparseMap.obj
@@ -761,6 +788,33 @@ SparseMap.s: SparseMap.cpp.s
 SparseMap.cpp.s:
 	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\SparseMap.cpp.s
 .PHONY : SparseMap.cpp.s
+
+Structure.obj: Structure.cpp.obj
+
+.PHONY : Structure.obj
+
+# target to build an object file
+Structure.cpp.obj:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Structure.cpp.obj
+.PHONY : Structure.cpp.obj
+
+Structure.i: Structure.cpp.i
+
+.PHONY : Structure.i
+
+# target to preprocess a source file
+Structure.cpp.i:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Structure.cpp.i
+.PHONY : Structure.cpp.i
+
+Structure.s: Structure.cpp.s
+
+.PHONY : Structure.s
+
+# target to generate assembly for a file
+Structure.cpp.s:
+	$(MAKE) -f CMakeFiles\hivemind.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\hivemind.dir\Structure.cpp.s
+.PHONY : Structure.cpp.s
 
 VisionMap.obj: VisionMap.cpp.obj
 
@@ -877,9 +931,15 @@ help:
 	@echo ... Pather.obj
 	@echo ... Pather.i
 	@echo ... Pather.s
+	@echo ... Prop.obj
+	@echo ... Prop.i
+	@echo ... Prop.s
 	@echo ... SparseMap.obj
 	@echo ... SparseMap.i
 	@echo ... SparseMap.s
+	@echo ... Structure.obj
+	@echo ... Structure.i
+	@echo ... Structure.s
 	@echo ... VisionMap.obj
 	@echo ... VisionMap.i
 	@echo ... VisionMap.s

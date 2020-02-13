@@ -194,6 +194,12 @@ CMakeFiles\hivemind.dir\Pather.cpp.obj: ..\MapNode.h
 CMakeFiles\hivemind.dir\Pather.cpp.obj: ..\Pather.cpp
 CMakeFiles\hivemind.dir\Pather.cpp.obj: ..\Pather.h
 
+CMakeFiles\hivemind.dir\Prop.cpp.obj: ..\MapEntity.h
+CMakeFiles\hivemind.dir\Prop.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\Prop.cpp.obj: ..\MapPosition.h
+CMakeFiles\hivemind.dir\Prop.cpp.obj: ..\Prop.cpp
+CMakeFiles\hivemind.dir\Prop.cpp.obj: ..\Prop.h
+
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\external\fmt-master\include\fmt\core.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\external\fmt-master\include\fmt\format-inl.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\external\fmt-master\include\fmt\format.h
@@ -207,6 +213,13 @@ CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\MapPosition.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\Mesh.h
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\SparseMap.cpp
 CMakeFiles\hivemind.dir\SparseMap.cpp.obj: ..\SparseMap.h
+
+CMakeFiles\hivemind.dir\Structure.cpp.obj: ..\MapActor.h
+CMakeFiles\hivemind.dir\Structure.cpp.obj: ..\MapEntity.h
+CMakeFiles\hivemind.dir\Structure.cpp.obj: ..\MapNode.h
+CMakeFiles\hivemind.dir\Structure.cpp.obj: ..\MapPosition.h
+CMakeFiles\hivemind.dir\Structure.cpp.obj: ..\Structure.cpp
+CMakeFiles\hivemind.dir\Structure.cpp.obj: ..\Structure.h
 
 CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\external\glew-1.13.0\include\GL\glew.h
 CMakeFiles\hivemind.dir\VisionMap.cpp.obj: ..\external\glfw-3.1.2\include\GLFW\glfw3.h

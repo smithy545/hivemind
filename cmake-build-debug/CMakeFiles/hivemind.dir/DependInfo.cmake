@@ -9,7 +9,9 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/Philip/CLionProjects/hivemind/GridMap.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/GridMap.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/Human.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/Human.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/Pather.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/Pather.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/Prop.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/Prop.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/SparseMap.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/SparseMap.cpp.obj"
+  "C:/Users/Philip/CLionProjects/hivemind/Structure.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/Structure.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/VisionMap.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/VisionMap.cpp.obj"
   "C:/Users/Philip/CLionProjects/hivemind/main.cpp" "C:/Users/Philip/CLionProjects/hivemind/cmake-build-debug/CMakeFiles/hivemind.dir/main.cpp.obj"
   )

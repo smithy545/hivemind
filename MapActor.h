@@ -17,13 +17,12 @@ public:
 
     virtual void update() = 0;
 
-    const MapNode::MapPath &Path() const {
+    MapNode::MapPath getPath() const {
         return path;
     }
 protected:
     MapNode::MapPath path;
 
-    MapActor(MapPosition position) : MapEntity(position) {}
     MapActor(MapPosition position, MapNode::MapPath path) : MapEntity(position), path(path) {}
 };
 

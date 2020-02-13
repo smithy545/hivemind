@@ -41,28 +41,28 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
     return nodes[index];
 }
 
-Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float tilesize) {
+Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float tileSize) {
     if (mesh == nullptr) {
         int N = nodes.size();
         mesh = std::make_shared<Mesh>(8 * N, 6 * N);
 
-        float *vertices = new float[mesh->numVertices];
-        unsigned int *indices = new unsigned int[mesh->numIndices];
+        auto *vertices = new float[mesh->numVertices];
+        auto *indices = new unsigned int[mesh->numIndices];
         int i = 0;
         int j = 0;
         for (const auto &node: nodes) {
-            float x = node->x * tilesize - screenWidth;
-            float y = node->y * tilesize - screenHeight;
+            float x = node->x * tileSize - screenWidth;
+            float y = node->y * tileSize - screenHeight;
 
             // top right
-            vertices[i] = (x - tilesize) / screenWidth;
+            vertices[i] = (x - tileSize) / screenWidth;
             vertices[i + 1] = y / screenHeight;
             // bottom right
-            vertices[i + 2] = (x - tilesize) / screenWidth;
-            vertices[i + 3] = (y - tilesize) / screenHeight;
+            vertices[i + 2] = (x - tileSize) / screenWidth;
+            vertices[i + 3] = (y - tileSize) / screenHeight;
             // bottom left
             vertices[i + 4] = x / screenWidth;
-            vertices[i + 5] = (y - tilesize) / screenHeight;
+            vertices[i + 5] = (y - tileSize) / screenHeight;
             // top left
             vertices[i + 6] = x / screenWidth;
             vertices[i + 7] = y / screenHeight;

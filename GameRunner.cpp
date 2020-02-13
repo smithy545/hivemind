@@ -130,7 +130,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
-            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2));
+            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 32));
         }
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
