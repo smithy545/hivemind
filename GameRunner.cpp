@@ -32,7 +32,6 @@ bool GameRunner::keys[];
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
 
-
 void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // Initialise GLFW
     if (!glfwInit()) {
@@ -133,7 +132,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
             renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 32));
         }
 
-        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+        // glfw: swap buffers and poll IO events
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -142,16 +141,17 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
            glfwWindowShouldClose(window) == 0);
 
     glBindVertexArray(0);
-    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound
+    // vertex buffer object so afterwards we can safely unbind
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-    // glfw: terminate, clearing all previously allocated GLFW resources.
+    // glfw: terminate, clearing all previously allocated GLFW resources
     // ------------------------------------------------------------------
     glfwTerminate();
 }
 
-void GameRunner::renderMesh(Mesh::Ptr mesh) {
+void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);

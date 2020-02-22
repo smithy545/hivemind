@@ -21,10 +21,10 @@ endif()
 add_subdirectory (external)
 
 # On Visual 2005 and above, this module can set the debug working directory
-cmake_policy(SET CMP0026 OLD)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/rpavlik-cmake-modules-fe2273")
-include(CreateLaunchers)
-include(MSVCMultipleProcessCompile) # /MP
+#cmake_policy(SET CMP0026 OLD)
+#list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/rpavlik-cmake-modules-fe2273")
+#include(CreateLaunchers)
+#include(MSVCMultipleProcessCompile) # /MP
 
 if(INCLUDE_DISTRIB)
     add_subdirectory(distrib)
@@ -58,7 +58,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind main.cpp Human.cpp Human.h GridMap.cpp GridMap.h MapNode.h Pather.cpp Pather.h GameRunner.cpp GameRunner.h SparseMap.cpp SparseMap.h Map.h VisionMap.cpp VisionMap.h MapPosition.h MapEntity.h MapActor.h Camera.cpp Camera.h Mesh.h Structure.cpp Structure.h Prop.cpp Prop.h)
+add_executable(hivemind main.cpp Human.cpp Human.h GridMap.cpp GridMap.h MapNode.h Pather.cpp Pather.h GameRunner.cpp GameRunner.h SparseMap.cpp SparseMap.h Map.h VisionMap.cpp VisionMap.h MapPosition.h MapEntity.h MapActor.h Camera.cpp Camera.h Mesh.h Structure.cpp Structure.h Prop.cpp Prop.h Institution.cpp Institution.h)
 target_link_libraries(hivemind
         ${ALL_LIBS}
         )
