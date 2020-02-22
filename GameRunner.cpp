@@ -39,7 +39,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         return;
     }
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #ifdef __APPLE__
@@ -152,11 +152,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
 }
 
 void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
-    glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
+    glBindVertexArray(mesh->vertexArrayId);
     glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_INT, nullptr);
 }
 

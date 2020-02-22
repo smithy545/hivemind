@@ -46,8 +46,8 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
         int N = nodes.size();
         mesh = std::make_shared<Mesh>(8 * N, 6 * N);
 
-        auto *vertices = new float[mesh->numVertices];
-        auto *indices = new unsigned int[mesh->numIndices];
+        vertices = new float[mesh->numVertices];
+        indices = new unsigned int[mesh->numIndices];
         int i = 0;
         int j = 0;
         for (const auto &node: nodes) {
@@ -55,18 +55,19 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
             float y = node->y * tileSize - screenHeight;
 
             // top right
-            vertices[i] = (x - tileSize) / screenWidth;
-            vertices[i + 1] = y / screenHeight;
+            vertices[i] = x / screenWidth;
+            vertices[i + 1] = (y + tileSize) / screenHeight;
             // bottom right
-            vertices[i + 2] = (x - tileSize) / screenWidth;
-            vertices[i + 3] = (y - tileSize) / screenHeight;
+            vertices[i + 2] = x / screenWidth;
+            vertices[i + 3] = y / screenHeight;
             // bottom left
-            vertices[i + 4] = x / screenWidth;
-            vertices[i + 5] = (y - tileSize) / screenHeight;
+            vertices[i + 4] = (x + tileSize) / screenWidth;
+            vertices[i + 5] = y / screenHeight;
             // top left
-            vertices[i + 6] = x / screenWidth;
-            vertices[i + 7] = y / screenHeight;
+            vertices[i + 6] = (x + tileSize) / screenWidth;
+            vertices[i + 7] = (y + tileSize) / screenHeight;
 
+            // two triangles that make a square at the given tile location
             indices[j] = i / 2;
             indices[j + 1] = i / 2 + 1;
             indices[j + 2] = i / 2 + 3;
@@ -78,14 +79,21 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
             j += 6;
         }
 
+        glBindVertexArray(mesh->vertexArrayId);
+        glEnableVertexAttribArray(0);
+
+        // load vertex data into buffer
         glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
         glBufferData(GL_ARRAY_BUFFER, mesh->numVertices * sizeof(float), vertices, GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
+        // load index data into buffer
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->numIndices * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
-        delete[] vertices;
-        delete[] indices;
+        // unbind cause why not
+        glBindVertexArray(0);
     }
+
     return mesh;
 }

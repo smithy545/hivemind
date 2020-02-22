@@ -46,6 +46,8 @@ private:
     std::vector<MapActor::Ptr> actors;
     std::vector<MapNode::Ptr> nodes;
     Mesh::Ptr mesh;
+    float* vertices;
+    unsigned int* indices;
 };
 
 

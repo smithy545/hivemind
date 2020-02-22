@@ -10,7 +10,7 @@ int main() {
     std::vector<GridMap::Ptr> loadedMaps;
 
     std::cout << "Loading first map..." << std::endl;
-    loadedMaps.push_back(std::make_shared<GridMap>(100, 100));
+    loadedMaps.push_back(std::make_shared<GridMap>(10, 10));
     std::cout << "Map loaded." << std::endl;
 
     std::thread main_thread([=] { return GameRunner::loop(loadedMaps); });
