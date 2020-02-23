@@ -6,6 +6,7 @@
 #define HIVEMIND_GAMERUNNER_H
 
 // Include standard headers
+#include <string>
 #include <thread>
 #include <vector>
 
