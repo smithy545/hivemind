@@ -36,6 +36,7 @@ private:
     static void renderMesh(const Mesh::Ptr& mesh);
     static void update(const GridMap::Ptr &map);
     static void resize(GLFWwindow *window, int width, int height);
+    static char* readShader(std::string path);
 };
 
 

@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 
 #include "GameRunner.h"
 #include "MapActor.h"
@@ -12,22 +13,7 @@
 const int SCR_WIDTH = 800;
 const int SCR_HEIGHT = 600;
 
-const char *vertexShaderSource = "#version 330 core\n"
-                                 "layout (location = 0) in vec2 aPos;\n"
-                                 "out vec3 color;\n"
-                                 "void main()\n"
-                                 "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0);\n"
-                                 "   color = vec3(1.0, aPos.x, aPos.y);\n"
-                                 "}\n\0";
-const char *fragmentShaderSource = "#version 330 core\n"
-                                   "in vec3 color;\n"
-                                   "out vec4 FragColor;\n"
-                                   "void main()\n"
-                                   "{\n"
-                                   "   FragColor = vec4(color, 1.0f);\n"
-                                   "}\n\0";
-
+// static members
 bool GameRunner::keys[];
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
@@ -85,6 +71,7 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // build and compile our shader program
     // ------------------------------------
     // vertex shader
+    const char *vertexShaderSource = readShader("vertex.shader");
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
@@ -95,6 +82,10 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
         std::cout << "Error on vertex compilation: " << infoLog << std::endl;
     }
+    delete[] vertexShaderSource;
+
+    // fragment shader
+    const char *fragmentShaderSource = readShader("fragment.shader");
     int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
     glCompileShader(fragmentShader);
@@ -103,6 +94,9 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         glGetShaderInfoLog(fragmentShader, 512, nullptr, infoLog);
         std::cout << "Error on fragment compilation: " << infoLog << std::endl;
     }
+    delete[] fragmentShaderSource;
+
+    // compile shader program
     int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
@@ -164,4 +158,33 @@ void GameRunner::update(const GridMap::Ptr &map) {
 
 void GameRunner::resize(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
+}
+
+char* GameRunner::readShader(std::string path) {
+    std::ifstream shaderStream("../res/" + path, std::ifstream::ate);
+    if(shaderStream) {
+        // get file length (ifstream::ate flag puts cursor at end of file)
+        int shaderLength = shaderStream.tellg();
+        shaderStream.seekg(0, shaderStream.beg);
+
+        // store in buffer
+        char* shaderBuffer = new char[shaderLength];
+        int count = 0;
+        while(shaderStream.read(shaderBuffer + count, shaderLength - count) || shaderStream.gcount() != 0) {
+            count += shaderStream.gcount();
+        }
+        shaderStream.close();
+
+        // null terminate because C++ fucking sucks
+        shaderBuffer[count] = '\0';
+
+        std::cout << "shader at " << path << std::endl;
+        std::cout << shaderBuffer << std::endl;
+
+        return shaderBuffer;
+    }
+
+    // open failed for some reason
+    std::cout << "Error opening shader at res/" << path << std::endl;
+    return nullptr;
 }
