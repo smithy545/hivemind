@@ -13,6 +13,7 @@ public:
     enum GroundType {
         SOIL,
         TILLED_SOIL,
+        PLANT,
         ROAD
     };
 

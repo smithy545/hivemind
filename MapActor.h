@@ -21,6 +21,7 @@ public:
     MapNode::MapPath getPath() const {
         return path;
     }
+
 protected:
     MapNode::MapPath path;
 

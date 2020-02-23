@@ -117,9 +117,12 @@ void GameRunner::loop() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     // setup non opengl entites
+
+    // map setup
     std::vector<GridMap::Ptr> loadedMaps;
     loadedMaps.push_back(std::make_shared<GridMap>(10, 10));
 
+    // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
 
     do {
@@ -207,9 +210,6 @@ char* GameRunner::readShader(const std::string& path) {
 
         // null terminate because C++ fucking sucks
         shaderBuffer[count] = '\0';
-
-        std::cout << "shader at " << path << std::endl;
-        std::cout << shaderBuffer << std::endl;
 
         return shaderBuffer;
     }
