@@ -15,6 +15,8 @@ const int SCR_HEIGHT = 600;
 
 // static members
 bool GameRunner::keys[];
+double GameRunner::mouseX = 0.0f;
+double GameRunner::mouseY = 0.0f;
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
 
@@ -53,20 +55,11 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
-    glfwSetKeyCallback(window, [](GLFWwindow *window, int key, int scancode, int action, int mods) {
-        switch (action) {
-            case GLFW_PRESS:
-                keys[key] = true;
-                break;
-            case GLFW_RELEASE:
-                keys[key] = false;
-                break;
-            case GLFW_REPEAT:
-                break;
-            default:
-                std::cerr << "Key action \"" << action << "\" not handled" << std::endl;
-        }
-    });
+    glfwSetKeyCallback(window, keyCallback);
+    // Setup mouse inputs
+    glfwSetCursorPosCallback(window, cursorPosCallback);
+    // Setup text input
+    glfwSetCharCallback(window, characterCallback);
 
     // build and compile our shader program
     // ------------------------------------
@@ -109,6 +102,18 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
+    // activate shader program and setup uniforms
+    glUseProgram(shaderProgram);
+    GLdouble mouseXUniform = glGetUniformLocation(shaderProgram, "mouseX");
+    GLdouble mouseYUniform = glGetUniformLocation(shaderProgram, "mouseY");
+    GLint widthUniform = glGetUniformLocation(shaderProgram, "width");
+    GLint heightUniform = glGetUniformLocation(shaderProgram, "height");
+
+    // set constant uniforms
+    glUniform1f(widthUniform, 32.0f/SCR_WIDTH);
+    glUniform1f(heightUniform, 32.0f/SCR_HEIGHT);
+
+    // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
@@ -118,9 +123,11 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
         // ------
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // draw our first triangle
-        glUseProgram(shaderProgram);
+        // update dynamic uniforms
+        glUniform1d(mouseXUniform, mouseX);
+        glUniform1d(mouseYUniform, mouseY);
 
+        // update and render all maps
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
             renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 32));
@@ -144,6 +151,28 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // ------------------------------------------------------------------
     glfwTerminate();
 }
+
+void GameRunner::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    switch (action) {
+        case GLFW_PRESS:
+            keys[key] = true;
+            break;
+        case GLFW_RELEASE:
+            keys[key] = false;
+            break;
+        case GLFW_REPEAT:
+            break;
+        default:
+            std::cerr << "Key action \"" << action << "\" not handled" << std::endl;
+    }
+}
+
+void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos) {
+    mouseX = xpos;
+    mouseY = ypos;
+}
+
+void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
 
 void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
     glBindVertexArray(mesh->vertexArrayId);

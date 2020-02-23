@@ -33,10 +33,22 @@ private:
     static Camera::Ptr camera;
     static GLFWwindow *window;
     static bool keys[256];
+    static double mouseX;
+    static double mouseY;
 
-    static void renderMesh(const Mesh::Ptr& mesh);
-    static void update(const GridMap::Ptr &map);
+    // input callbacks
+    static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+    static void cursorPosCallback(GLFWwindow* window, double xpos, double ypos);
+    static void characterCallback(GLFWwindow* window, unsigned int codepoint);
+
+    // window callbacks
     static void resize(GLFWwindow *window, int width, int height);
+
+    // game state functions
+    static void update(const GridMap::Ptr &map);
+
+    // render functions
+    static void renderMesh(const Mesh::Ptr& mesh);
     static char* readShader(std::string path);
 };
 

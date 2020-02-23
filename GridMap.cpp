@@ -55,7 +55,7 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
             float y = node->y * tileSize - screenHeight;
 
             // top right
-            vertices[i] = x / screenWidth;
+            vertices[i]     = x / screenWidth;
             vertices[i + 1] = (y + tileSize) / screenHeight;
             // bottom right
             vertices[i + 2] = x / screenWidth;
