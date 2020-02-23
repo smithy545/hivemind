@@ -20,7 +20,7 @@ public:
 protected:
     MapPosition position;
 
-    explicit MapEntity(MapPosition position) : position(position) {}
+    explicit MapEntity(const MapPosition& position) : position(position) {}
 };
 
 #endif //HIVEMIND_MAPENTITY_H

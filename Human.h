@@ -15,6 +15,7 @@
 #include "MapActor.h"
 #include "MapPosition.h"
 #include "VisionMap.h"
+#include "BaseRole.h"
 
 
 class Human : public MapActor {
@@ -41,11 +42,15 @@ public:
         Human::Ptr person;
     };
 
+    Human(const MapPosition& initialPosition);
+
     void update() override;
 
 private:
     VisionMap::Ptr visionMap;
     std::unordered_map<std::string, Relationship::Ptr> relationships;
+    BaseRole::Ptr role;
+    std::string currentTask;
 };
 
 

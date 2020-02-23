@@ -5,6 +5,7 @@
 #ifndef HIVEMIND_BASEROLE_H
 #define HIVEMIND_BASEROLE_H
 
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -15,6 +16,8 @@
 
 class BaseRole {
 public:
+    typedef std::shared_ptr<BaseRole> Ptr;
+
     virtual MapNode::Ptr getTaskDestination(std::string taskName) = 0;
     virtual std::vector<std::string> getAvailableTasks() = 0;
 

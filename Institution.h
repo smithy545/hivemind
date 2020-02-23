@@ -18,13 +18,13 @@ public:
         return name;
     }
 
-    const std::vector<BaseRole> &getRoles() const {
+    const std::vector<BaseRole::Ptr> &getRoles() const {
         return roles;
     }
 
 private:
     std::string name;
-    std::vector<BaseRole> roles;
+    std::vector<BaseRole::Ptr> roles;
 };
 
 

@@ -6,6 +6,7 @@
 #define HIVEMIND_MAPACTOR_H
 
 #include <memory>
+#include <utility>
 
 #include "MapEntity.h"
 #include "MapNode.h"
@@ -23,7 +24,8 @@ public:
 protected:
     MapNode::MapPath path;
 
-    MapActor(MapPosition position, MapNode::MapPath path) : MapEntity(position), path(path) {}
+    explicit MapActor(const MapPosition& position) : MapEntity(position) {}
+    MapActor(const MapPosition& position, MapNode::MapPath path) : MapEntity(position), path(std::move(path)) {}
 };
 
 #endif //HIVEMIND_MAPACTOR_H
