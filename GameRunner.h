@@ -27,7 +27,7 @@ using namespace glm;
 
 class GameRunner {
 public:
-    static void loop(const std::vector<GridMap::Ptr> &loadedMaps);
+    static void loop();
 
 private:
     static Camera::Ptr camera;
@@ -49,7 +49,7 @@ private:
 
     // render functions
     static void renderMesh(const Mesh::Ptr& mesh);
-    static char* readShader(std::string path);
+    static char* readShader(const std::string& path);
 };
 
 

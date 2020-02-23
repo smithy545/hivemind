@@ -20,7 +20,7 @@ double GameRunner::mouseY = 0.0f;
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
 
-void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
+void GameRunner::loop() {
     // Initialise GLFW
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -116,6 +116,10 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
+    // setup non opengl entites
+    std::vector<GridMap::Ptr> loadedMaps;
+    loadedMaps.push_back(std::make_shared<GridMap>(10, 10));
+
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
 
     do {
@@ -141,11 +145,8 @@ void GameRunner::loop(const std::vector<GridMap::Ptr> &loadedMaps) {
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
            glfwWindowShouldClose(window) == 0);
 
-    glBindVertexArray(0);
-    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound
-    // vertex buffer object so afterwards we can safely unbind
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    // clear maps to ensure explicit destruction of map meshes
+    loadedMaps.clear();
 
     // glfw: terminate, clearing all previously allocated GLFW resources
     // ------------------------------------------------------------------
@@ -189,12 +190,12 @@ void GameRunner::resize(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
 }
 
-char* GameRunner::readShader(std::string path) {
+char* GameRunner::readShader(const std::string& path) {
     std::ifstream shaderStream("../res/" + path, std::ifstream::ate);
     if(shaderStream) {
         // get file length (ifstream::ate flag puts cursor at end of file)
         int shaderLength = shaderStream.tellg();
-        shaderStream.seekg(0, shaderStream.beg);
+        shaderStream.seekg(0, std::ios_base::beg);
 
         // store in buffer
         char* shaderBuffer = new char[shaderLength];
