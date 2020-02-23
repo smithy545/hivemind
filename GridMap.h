@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 
+#include "GroundNode.h"
 #include "Map.h"
 #include "MapActor.h"
 #include "MapNode.h"
@@ -24,19 +25,19 @@ public:
 
     MapNode::Ptr getNode(int x, int y) override;
 
-    std::vector<MapActor::Ptr> getActors() override {
+    const std::vector<MapActor::Ptr> &getActors() override {
         return actors;
     }
 
-    std::vector<MapNode::Ptr> getNodes() override {
+    const std::vector<MapNode::Ptr> &getNodes() override {
         return nodes;
     }
 
-    int getWidth() const {
+    const int &getWidth() const {
         return width;
     }
 
-    int getHeight() const {
+    const int &getHeight() const {
         return height;
     }
 
@@ -46,8 +47,8 @@ private:
     std::vector<MapActor::Ptr> actors;
     std::vector<MapNode::Ptr> nodes;
     Mesh::Ptr mesh;
-    float* vertices;
-    unsigned int* indices;
+    float* vertices{nullptr};
+    unsigned int* indices{nullptr};
 };
 
 

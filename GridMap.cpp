@@ -8,7 +8,7 @@
 GridMap::GridMap(int width, int height) : width(width), height(height), nodes(width * height), mesh(nullptr) {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            nodes[y * width + x] = std::make_shared<MapNode>(x, y);
+            nodes[y * width + x] = std::make_shared<GroundNode>(x, y);
             MapNode::Ptr node = nodes[y * width + x];
             const bool xgt0 = x > 0;
             const bool ygt0 = y > 0;

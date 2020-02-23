@@ -18,13 +18,12 @@
 class Map {
 public:
     typedef std::shared_ptr<Map> Ptr;
-    typedef std::iterator<std::input_iterator_tag, MapNode::Ptr> MapStream;
+
+    virtual const std::vector<MapActor::Ptr> &getActors() = 0;
+    virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
+    virtual MapNode::Ptr getNode(int x, int y) = 0;
 
     virtual Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) = 0;
-
-    virtual std::vector<MapActor::Ptr> getActors() = 0;
-    virtual std::vector<MapNode::Ptr> getNodes() = 0;
-    virtual MapNode::Ptr getNode(int x, int y) = 0;
 };
 
 #endif //HIVEMIND_MAP_H

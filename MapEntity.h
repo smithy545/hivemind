@@ -14,7 +14,7 @@ class MapEntity {
 public:
     typedef std::shared_ptr<MapEntity> Ptr;
 
-    MapPosition getPosition() const {
+    const MapPosition &getPosition() const {
         return position;
     }
 protected:
