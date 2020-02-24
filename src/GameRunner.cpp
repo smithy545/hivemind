@@ -9,8 +9,6 @@
 #include <unordered_map>
 
 #include "MapNode.h"
-#include "MapEntity.h"
-#include "MapActor.h"
 #include "Human.h"
 #include "Pather.h"
 
@@ -155,9 +153,9 @@ void GameRunner::loop() {
         int gridX = ((int)(mouseX/ts)) < w ? ((int)(mouseX/ts)) : w-1;
         int gridY = ((int)(mouseY/ts)) < h ? ((int)(mouseY/ts)) : h-1;
         if(adam->getPath().empty()) {
-            MapNode::MapPath path = Pather::genAStarPath(adam->getPosition()->node,
+            MapNode::MapPath path = Pather::genAStarPath(adam->getMapNode(),
                                                          loadedMaps[0]->getNode(gridX, gridY));
-            for (auto step: path) {
+            for (const auto &step: path) {
                 adam->addToPath(step);
             }
         }
@@ -208,8 +206,8 @@ void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
 
 void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
-    glBindVertexArray(mesh->vertexArrayId);
-    glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_INT, nullptr);
+    glBindVertexArray(mesh->getVertexArrayId());
+    glDrawElements(GL_TRIANGLES, mesh->getNumIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 void GameRunner::update(const GridMap::Ptr &map) {

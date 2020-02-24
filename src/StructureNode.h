@@ -25,7 +25,7 @@ public:
     StructureNode(int x, int y, int width, int height, bool passable);
 
     // Construct and inject into map
-    StructureNode(const MapNode& position, bool passable);
+    StructureNode(const MapNode::Ptr &position, bool passable);
 
     // First node is used as "anchor" node
     explicit StructureNode(std::vector<MapNode::Ptr> nodes);

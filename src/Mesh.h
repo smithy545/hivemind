@@ -36,6 +36,35 @@ public:
             glDeleteBuffers(1, &elementBufferId);
     }
 
+    GLuint getVertexArrayId() const {
+        return vertexArrayId;
+    }
+
+    GLuint getVertexBufferId() const {
+        return vertexBufferId;
+    }
+
+    GLuint getElementBufferId() const {
+        return elementBufferId;
+    }
+
+    int getNumVertices() const {
+        return numVertices;
+    }
+
+    void setNumVertices(int numVertices) {
+        Mesh::numVertices = numVertices;
+    }
+
+    int getNumIndices() const {
+        return numIndices;
+    }
+
+    void setNumIndices(int numIndices) {
+        Mesh::numIndices = numIndices;
+    }
+
+private:
     GLuint vertexArrayId;
     GLuint vertexBufferId;
     GLuint elementBufferId;

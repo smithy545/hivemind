@@ -6,6 +6,7 @@
 #define HIVEMIND_MAPPOSITION_H
 
 #include <memory>
+#include <utility>
 
 #include "MapNode.h"
 
@@ -14,10 +15,37 @@ class MapPosition {
 public:
     typedef std::shared_ptr<MapPosition> Ptr;
 
-    MapPosition(MapNode::Ptr mapNode) : MapPosition(mapNode, 0, 0) {}
-    MapPosition(MapNode::Ptr mapNode, double subX, double subY) : node(mapNode), subPixelX(subX), subPixelY(subY) {}
+    explicit MapPosition(MapNode::Ptr mapNode) : MapPosition(std::move(mapNode), 0, 0) {}
 
-    MapNode::Ptr node;
+    MapPosition(MapNode::Ptr mapNode, double subX, double subY) : mapNode(std::move(mapNode)), subPixelX(subX),
+                                                                  subPixelY(subY) {}
+
+    MapNode::Ptr getNode() {
+        return mapNode;
+    }
+
+    void setNode(const MapNode::Ptr &node) {
+        this->mapNode = node;
+    }
+
+    double getSubPixelX() const {
+        return subPixelX;
+    }
+
+    void setSubPixelX(double subPixelX) {
+        this->subPixelX = subPixelX;
+    }
+
+    double getSubPixelY() const {
+        return subPixelY;
+    }
+
+    void setSubPixelY(double subPixelY) {
+        this->subPixelY = subPixelY;
+    }
+
+private:
+    MapNode::Ptr mapNode;
     double subPixelX;
     double subPixelY;
 };

@@ -18,8 +18,18 @@ public:
     };
 
     GroundNode(int x, int y) : GroundNode(x, y, SOIL) {}
+
     GroundNode(int x, int y, GroundType type) : MapNode(x, y), type(type) {}
 
+    GroundType getType() const {
+        return type;
+    }
+
+    void setType(GroundType type) {
+        this->type = type;
+    }
+
+private:
     GroundType type;
 };
 

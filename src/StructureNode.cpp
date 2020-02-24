@@ -12,31 +12,33 @@ StructureNode::StructureNode(int x, int y, int width, int height, bool passable)
 : MapNode(x, y, passable), width(width), height(height) {}
 
 // Construct and inject into map
-StructureNode::StructureNode(const MapNode& position, bool passable) : StructureNode(position.x, position.y) {
-    for(const auto& neighbor: position.neighbors)
-        neighbors.push_back(neighbor);
+StructureNode::StructureNode(const MapNode::Ptr &position, bool passable) : StructureNode(position->getX(),
+                                                                                          position->getY()) {
+    for (const auto &neighbor: position->getNeighbors())
+        getNeighbors().push_back(neighbor);
 }
 
 // First node is used as "anchor" node
 StructureNode::StructureNode(std::vector<MapNode::Ptr> nodes) : StructureNode(std::move(nodes), false) {}
+
 StructureNode::StructureNode(std::vector<MapNode::Ptr> nodes, bool passable)
-: MapNode(nodes[0]->x, nodes[0]->y, passable) {
-    int minX = x;
-    int minY = y;
-    int maxX = x;
-    int maxY = y;
-    for(const auto& node: nodes) {
-        if(minX > node->x) {
-            minX = node->x;
+        : MapNode(nodes[0]->getX(), nodes[0]->getY(), passable) {
+    int minX = getX();
+    int minY = getY();
+    int maxX = getX();
+    int maxY = getY();
+    for (const auto &node: nodes) {
+        if (minX > node->getX()) {
+            minX = node->getX();
         }
-        if(maxX < node->x) {
-            maxX = node->x;
+        if (maxX < node->getX()) {
+            maxX = node->getX();
         }
-        if(minY > node->y) {
-            minY = node->y;
+        if (minY > node->getY()) {
+            minY = node->getY();
         }
-        if(maxY < node->y) {
-            maxY = node->y;
+        if (maxY < node->getY()) {
+            maxY = node->getY();
         }
     }
     width = maxX - minX + 1;
@@ -44,13 +46,13 @@ StructureNode::StructureNode(std::vector<MapNode::Ptr> nodes, bool passable)
 
     // add neighbors
     for(const auto& node: nodes) {
-        for(auto neighbor: node->neighbors) {
-            if(isNeighbor(neighbor)) {
-                neighbors.push_back(neighbor);
+        for (const auto &neighbor: node->getNeighbors()) {
+            if (isNeighbor(neighbor)) {
+                getNeighbors().push_back(neighbor);
                 // replace neighbors reference to previous MapNode with this StructureNode
-                for(int i = 0; i < neighbor->neighbors.size(); i++) {
-                    if(neighbor->neighbors[i] == node) {
-                        neighbor->neighbors[i] = this->shared_from_this();
+                for (auto &i : neighbor->getNeighbors()) {
+                    if (i == node) {
+                        i = this->shared_from_this();
                         break;
                     }
                 }
@@ -60,5 +62,6 @@ StructureNode::StructureNode(std::vector<MapNode::Ptr> nodes, bool passable)
 }
 
 bool StructureNode::isNeighbor(const MapNode::Ptr& node) {
-    return node->x == x - 1 || node->x == x + width || node->y == y - 1 || node->y == y + height;
+    return node->getX() == getX() - 1 || node->getX() == getX() + width || node->getY() == getY() - 1 ||
+           node->getY() == getY() + height;
 }

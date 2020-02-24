@@ -21,15 +21,24 @@ public:
 
     void addToPath(MapNode::Ptr nextPos);
 
+    void addToPath(const MapNode::MapPath &next);
+
     const MapNode::MapPath &getPath() const {
         return path;
     }
 
+    void setPath(const MapNode::MapPath &path);
+
 protected:
     MapNode::MapPath path;
 
-    MapActor() : MapEntity() {}
-    explicit MapActor(MapNode::MapPath path) : MapEntity(), path(std::move(path)) {}
+    MapActor();
+
+    explicit MapActor(const MapNode::Ptr &initialLocation);
+
+    explicit MapActor(MapNode::MapPath initialPath);
+
+    MapActor(const MapNode::Ptr &initialLocation, MapNode::MapPath initialPath);
 };
 
 #endif //HIVEMIND_MAPACTOR_H

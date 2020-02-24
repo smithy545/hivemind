@@ -14,14 +14,31 @@ class Camera {
 public:
     typedef std::shared_ptr<Camera> Ptr;
 
+    Camera(double x, double y, double width, double height);
+
+    bool inSight(const MapNode::Ptr &node) const;
+
+    double getX() const;
+
+    void setX(double x);
+
+    double getY() const;
+
+    void setY(double y);
+
+    double getWidth() const;
+
+    void setWidth(double width);
+
+    double getHeight() const;
+
+    void setHeight(double height);
+
+private:
     double x;
     double y;
     double width;
     double height;
-
-    Camera(double x, double y, double width, double height);
-
-    bool inSight(const MapNode::Ptr &node);
 };
 
 

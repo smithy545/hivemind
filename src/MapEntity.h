@@ -9,6 +9,7 @@
 #include <string>
 #include <utility>
 
+#include "GroundNode.h"
 #include "MapPosition.h"
 
 
@@ -22,8 +23,12 @@ public:
         return position;
     }
 
-    void setPosition(MapPosition::Ptr nextPos) {
-        position = std::move(nextPos);
+    MapNode::Ptr getMapNode() {
+        return position->getNode();
+    }
+
+    void setMapNode(const MapNode::Ptr &nextPos) {
+        position->setNode(nextPos);
     }
 
     int getId() {
@@ -33,10 +38,15 @@ public:
     std::string getUId() {
         return std::to_string(id);
     }
+
 protected:
     MapPosition::Ptr position;
 
-    MapEntity() : position(nullptr), id(GLOBAL_ID++) {}
+    MapEntity() : MapEntity(nullptr) {}
+
+    explicit MapEntity(const MapNode::Ptr &initialLocation) : position(std::make_shared<MapPosition>(initialLocation)),
+                                                              id(GLOBAL_ID++) {}
+
 private:
     int id;
 };

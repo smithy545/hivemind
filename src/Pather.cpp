@@ -25,23 +25,23 @@ MapNode::MapPath Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::
 
         PathNode::Ptr parent = open[minKey];
         open.erase(minKey);
-        for(const MapNode::Ptr &neighbor: parent->position->neighbors) {
+        for (const MapNode::Ptr &neighbor: parent->position->getNeighbors()) {
             std::string key = genKey(neighbor);
-            if(closed.count(key) > 0)
+            if (closed.count(key) > 0)
                 continue;
-            if(end->x == neighbor->x && end->y == neighbor->y) {
+            if (end->getX() == neighbor->getX() && end->getY() == neighbor->getY()) {
                 path.push_front(end);
-                while(parent->previous != nullptr) {
+                while (parent->previous != nullptr) {
                     path.push_front(parent->position);
                     parent = parent->previous;
                 }
                 return path;
-            } else if(neighbor->passable) {
+            } else if (neighbor->isPassable()) {
                 double g = parent->g + distanceEuclid(neighbor, parent->position);
                 double h = distanceEuclid(neighbor, end);
 
-                if(open.count(key) > 0) {
-                    if(open[key]->getF() < g + h) {
+                if (open.count(key) > 0) {
+                    if (open[key]->getF() < g + h) {
                         continue;
                     } else {
                         open[key]->previous = parent;
@@ -58,11 +58,11 @@ MapNode::MapPath Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::
 }
 
 std::string Pather::genKey(const MapNode::Ptr &pos) {
-    return std::to_string(pos->x) + ":" + std::to_string(pos->y);
+    return std::to_string(pos->getX()) + ":" + std::to_string(pos->getY());
 }
 
 double Pather::distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b) {
-    double dx = a->x - b->x;
-    double dy = a->y - b->y;
-    return std::sqrt(dx*dx + dy*dy);
+    double dx = a->getX() - b->getX();
+    double dy = a->getY() - b->getY();
+    return std::sqrt(dx * dx + dy * dy);
 }

@@ -24,21 +24,21 @@ GridMap::GridMap(int width, int height) : width(width), height(height), mesh(nul
             const bool xltw = x < width - 1;
             const bool ylth = y < height - 1;
             if (xgt0)
-                node->neighbors.push_back(nodes[index - 1]);
+                node->getNeighbors().push_back(nodes[index - 1]);
             if(xltw)
-                node->neighbors.push_back(nodes[index + 1]);
+                node->getNeighbors().push_back(nodes[index + 1]);
             if(ygt0)
-                node->neighbors.push_back(nodes[index - width]);
+                node->getNeighbors().push_back(nodes[index - width]);
             if(ylth)
-                node->neighbors.push_back(nodes[index + width]);
+                node->getNeighbors().push_back(nodes[index + width]);
             if(xgt0 && ygt0)
-                node->neighbors.push_back(nodes[index - width - 1]);
+                node->getNeighbors().push_back(nodes[index - width - 1]);
             if(xltw && ylth)
-                node->neighbors.push_back(nodes[index + width + 1]);
+                node->getNeighbors().push_back(nodes[index + width + 1]);
             if(xgt0 && ylth)
-                node->neighbors.push_back(nodes[index + width - 1]);
+                node->getNeighbors().push_back(nodes[index + width - 1]);
             if(xltw && ygt0)
-                node->neighbors.push_back(nodes[index - width + 1]);
+                node->getNeighbors().push_back(nodes[index - width + 1]);
         }
     }
 }
@@ -57,23 +57,23 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
         // set size to max possible visible
         vertices = new float[8 * N];
         indices = new unsigned int[6 * N];
-        mesh = std::make_shared<Mesh>(8*N, 6*N);
+        mesh = std::make_shared<Mesh>(8 * N, 6 * N);
 
-        glBindVertexArray(mesh->vertexArrayId);
+        glBindVertexArray(mesh->getVertexArrayId());
         glEnableVertexAttribArray(0);
 
         // load vertex data into buffer
-        glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->getVertexBufferId());
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
         // load index data into buffer
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->getElementBufferId());
     }
     int i = 0;
     int j = 0;
     for (const MapActor::Ptr& actor: actors) {
-        float x = actor->getPosition()->node->x * tileSize - screenWidth;
-        float y = actor->getPosition()->node->y * tileSize - screenHeight;
+        float x = actor->getPosition()->getNode()->getX() * tileSize - screenWidth;
+        float y = actor->getPosition()->getNode()->getY() * tileSize - screenHeight;
 
         // top right
         vertices[i] = x / screenWidth;
@@ -99,62 +99,54 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
         i += 8;
         j += 6;
     }
-    mesh->numVertices = i;
-    mesh->numIndices = j;
+    mesh->setNumVertices(i);
+    mesh->setNumIndices(j);
 
     // TODO: selectively call glBufferSubdata on vertices that change, i.e. individual actor meshes
 
     // load vertex data into buffer
-    glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
-    glBufferData(GL_ARRAY_BUFFER, mesh->numVertices * sizeof(float), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, mesh->getVertexBufferId());
+    glBufferData(GL_ARRAY_BUFFER, mesh->getNumVertices() * sizeof(float), vertices, GL_STATIC_DRAW);
 
     // load index data into buffer
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->numIndices * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->getElementBufferId());
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->getNumIndices() * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
     return mesh;
 }
 
 void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
-    node->entities[actor->getUId()] = actor;
-    actor->setPosition(std::make_shared<MapPosition>(node));
+    node->addEntity(actor->getUId(), actor);
+    actor->setMapNode(node);
     actors.push_back(actor);
 }
 
-bool GridMap::moveActor(std::weak_ptr<MapActor> actor, MapNode::Ptr nextPos) {
-    // TODO: use weak_ptr for nextPos and move this null check out of moveActor
-    // AKA start coding properly at some point instead of hackily... lol
-    if(nextPos == nullptr)
-        return false;
+bool GridMap::moveActor(std::weak_ptr<MapActor> actorPtr, std::weak_ptr<MapNode> nextPosPtr) {
+    MapActor::Ptr actor = actorPtr.lock();
+    MapNode::Ptr nextPos = nextPosPtr.lock();
 
-    std::shared_ptr<MapActor> ptr = actor.lock();
-
-    // create MapPosition object for actor if it doesn't have one
-    if(ptr->getPosition() == nullptr) {
-        ptr->setPosition(std::make_shared<MapPosition>(nextPos));
-        nextPos->entities[ptr->getUId()] = ptr;
+    // create MapNode object for actor if it doesn't have one
+    if (actor->getMapNode() == nullptr) {
+        actor->setMapNode(nextPos);
+        nextPos->addEntity(actor->getUId(), actor);
 
         return true;
-    } else if(ptr->getPosition()->node != nullptr){
+    } else {
         // verify that we're moving the actor to neighboring location
-        for(MapNode::Ptr neighbor: ptr->getPosition()->node->neighbors) {
-            if(nextPos == neighbor) {
+        for (const MapNode::Ptr &neighbor: actor->getPosition()->getNode()->getNeighbors()) {
+            if (nextPos == neighbor) {
 
                 // unlink from existing node
-                ptr->getPosition()->node->entities.erase(ptr->getUId());
+                actor->getMapNode()->removeEntity(actor->getUId());
 
                 // link to next pos node
-                ptr->getPosition()->node = nextPos;
-                nextPos->entities[ptr->getUId()] = ptr;
+                actor->setMapNode(nextPos);
+                nextPos->addEntity(actor->getUId(), actor);
 
                 return true;
             }
         }
-    } else {
-        ptr->getPosition()->node = nextPos;
-        nextPos->entities[ptr->getUId()] = ptr;
-        return true;
     }
 
     return false;

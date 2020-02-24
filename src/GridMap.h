@@ -5,52 +5,58 @@
 #ifndef HIVEMIND_GRIDMAP_H
 #define HIVEMIND_GRIDMAP_H
 
-
-#include <vector>
 #include <memory>
+#include <vector>
 
-#include "GroundNode.h"
-#include "Map.h"
 #include "MapActor.h"
 #include "MapNode.h"
+#include "Mesh.h"
+#include "WorldMap.h"
 
 
-class GridMap : public Map {
+class GridMap : public WorldMap {
 public:
     typedef std::shared_ptr<GridMap> Ptr;
 
     GridMap(int width, int height);
 
-    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
+    // topology
+    std::vector<MapNode::Ptr> &getNodes() override {
+        return nodes;
+    }
+
     MapNode::Ptr getNode(int x, int y) override;
 
-    void addActor(MapActor::Ptr actor, int x, int y);
-    bool moveActor(std::weak_ptr<MapActor> actor, MapNode::Ptr nextPos) override;
+    int getWidth() {
+        return width;
+    }
 
+    int getHeight() {
+        return height;
+    }
+
+    // world interaction
     const std::vector<MapActor::Ptr> &getActors() override {
         return actors;
     }
 
-    const std::vector<MapNode::Ptr> &getNodes() override {
-        return nodes;
-    }
+    void addActor(MapActor::Ptr actor, int x, int y) override;
 
-    const int &getWidth() const {
-        return width;
-    }
+    bool moveActor(std::weak_ptr<MapActor> actor, std::weak_ptr<MapNode> nextPos) override;
 
-    const int &getHeight() const {
-        return height;
-    }
+    // rendering
+    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
 
 private:
     const int width;
     const int height;
-    std::vector<MapActor::Ptr> actors;
     std::vector<MapNode::Ptr> nodes;
+
+    std::vector<MapActor::Ptr> actors;
+
     Mesh::Ptr mesh;
-    float* vertices{nullptr};
-    unsigned int* indices{nullptr};
+    float *vertices{nullptr};
+    unsigned int *indices{nullptr};
 };
 
 

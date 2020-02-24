@@ -33,7 +33,7 @@ public:
             PLATONIC
         };
 
-        Relationship(Human::Ptr person) : person(std::move(person)) {}
+        explicit Relationship(Human::Ptr person) : person(std::move(person)) {}
 
     private:
         double transactionalStrength{0.0};
@@ -53,9 +53,19 @@ public:
 
     const std::unordered_map<std::string, Relationship::Ptr> &getRelationships() const;
 
-    const BaseRole::Ptr & getRole() const;
+    const BaseRole::Ptr &getRole() const;
 
     const std::string &getCurrentTask() const;
+
+    void setName(const std::string &name);
+
+    void setVisionMap(const VisionMap::Ptr &visionMap);
+
+    void setRelationships(const std::unordered_map<std::string, Relationship::Ptr> &relationships);
+
+    void setRole(const BaseRole::Ptr &role);
+
+    void setCurrentTask(const std::string &currentTask);
 
 private:
     std::string name;
