@@ -132,12 +132,6 @@ void GameRunner::loop() {
     Human::Ptr adam = std::make_shared<Human>("adam");
     loadedMaps[0]->addActor(adam, 1, 1);
 
-    // then he moved in a direction
-    MapNode::Ptr node = adam->getPosition()->node;
-    adam->addToPath(adam->getPosition()->node->neighbors[0]);
-    adam->addToPath(adam->getPosition()->node->neighbors[0]->neighbors[1]);
-    //adam->addToPath(loadedMaps[0]->getNodes()[26]);
-
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
 

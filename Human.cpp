@@ -25,6 +25,12 @@ void Human::update(GridMap::Ptr map) {
         }
     } else if (role != nullptr) {
         // determine next task from role here
+    } else {
+        // default behaviour here
+        if(position->node->x < map->getWidth() - 1)
+            addToPath(map->getNode(position->node->x + 1, position->node->y));
+        else if(position->node->y < map->getHeight() - 1)
+            addToPath(map->getNode(position->node->x, position->node->y + 1));
     }
 }
 

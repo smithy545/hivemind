@@ -45,7 +45,7 @@ GridMap::GridMap(int width, int height) : width(width), height(height), mesh(nul
 
 MapNode::Ptr GridMap::getNode(int x, int y) {
     unsigned int index = y * width + x;
-    if(index < 0 || index > nodes.size())
+    if(index < 0 || index >= nodes.size())
         return nullptr;
     return nodes[index];
 }
@@ -126,6 +126,11 @@ void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
 }
 
 bool GridMap::moveActor(std::weak_ptr<MapActor> actor, MapNode::Ptr nextPos) {
+    // TODO: use weak_ptr for nextPos and move this null check out of moveActor
+    // AKA start coding properly at some point instead of hackily... lol
+    if(nextPos == nullptr)
+        return false;
+
     std::shared_ptr<MapActor> ptr = actor.lock();
 
     // create MapPosition object for actor if it doesn't have one
