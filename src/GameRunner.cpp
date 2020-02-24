@@ -154,7 +154,6 @@ void GameRunner::loop() {
         int h = loadedMaps[0]->getHeight();
         int gridX = ((int)(mouseX/ts)) < w ? ((int)(mouseX/ts)) : w-1;
         int gridY = ((int)(mouseY/ts)) < h ? ((int)(mouseY/ts)) : h-1;
-
         if(adam->getPath().empty()) {
             MapNode::MapPath path = Pather::genAStarPath(adam->getPosition()->node,
                                                          loadedMaps[0]->getNode(gridX, gridY));
@@ -166,7 +165,8 @@ void GameRunner::loop() {
         // update and render all maps
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
-            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, ts));
+            // TODO: Figure out why tilesize has to be doubled to work properly
+            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2*ts));
         }
 
         // glfw: swap buffers and poll IO events

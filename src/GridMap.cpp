@@ -71,28 +71,22 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
     }
     int i = 0;
     int j = 0;
-
-
-    // TODO: why is this necessary? Is it just on 4k screens? wtf?
-    int ts = tileSize*2;
-
-
-    for (MapActor::Ptr actor: actors) {
-        float x = actor->getPosition()->node->x * ts - screenWidth;
-        float y = actor->getPosition()->node->y * ts - screenHeight;
+    for (const MapActor::Ptr& actor: actors) {
+        float x = actor->getPosition()->node->x * tileSize - screenWidth;
+        float y = actor->getPosition()->node->y * tileSize - screenHeight;
 
         // top right
         vertices[i] = x / screenWidth;
-        vertices[i + 1] = (y + ts) / screenHeight;
+        vertices[i + 1] = (y + tileSize) / screenHeight;
         // bottom right
         vertices[i + 2] = x / screenWidth;
         vertices[i + 3] = y / screenHeight;
         // bottom left
-        vertices[i + 4] = (x + ts) / screenWidth;
+        vertices[i + 4] = (x + tileSize) / screenWidth;
         vertices[i + 5] = y / screenHeight;
         // top left
-        vertices[i + 6] = (x + ts) / screenWidth;
-        vertices[i + 7] = (y + ts) / screenHeight;
+        vertices[i + 6] = (x + tileSize) / screenWidth;
+        vertices[i + 7] = (y + tileSize) / screenHeight;
 
         // two triangles that make a square at the given tile location
         indices[j] = i / 2;
@@ -108,7 +102,7 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
     mesh->numVertices = i;
     mesh->numIndices = j;
 
-    // TODO: selectively call glBufferSubdata only on vertices that change instead of bufferdata over whole verts
+    // TODO: selectively call glBufferSubdata on vertices that change, i.e. individual actor meshes
 
     // load vertex data into buffer
     glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
