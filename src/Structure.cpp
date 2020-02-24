@@ -4,6 +4,6 @@
 
 #include "Structure.h"
 
-void Structure::update(GridMap::Ptr map) {
+void Structure::update(std::shared_ptr<GridMap> map) {
 
 }

@@ -9,8 +9,10 @@
 #include <vector>
 
 #include "MapActor.h"
+#include "MapEntity.h"
 #include "MapNode.h"
 #include "Mesh.h"
+#include "Structure.h"
 #include "WorldMap.h"
 
 
@@ -36,13 +38,21 @@ public:
     }
 
     // world interaction
+    const std::vector<MapEntity::Ptr> &getEntities() override {
+        return entities;
+    }
+
     const std::vector<MapActor::Ptr> &getActors() override {
         return actors;
     }
 
+    void addEntity(MapEntity::Ptr entity, int x, int y) override;
+
     void addActor(MapActor::Ptr actor, int x, int y) override;
 
-    bool moveActor(std::weak_ptr<MapActor> actor, std::weak_ptr<MapNode> nextPos) override;
+    bool moveEntity(std::weak_ptr<MapEntity> entity, std::weak_ptr<MapNode> nextPos) override;
+
+    bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) override;
 
     // rendering
     Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
@@ -51,7 +61,7 @@ private:
     const int width;
     const int height;
     std::vector<MapNode::Ptr> nodes;
-
+    std::vector<MapEntity::Ptr> entities;
     std::vector<MapActor::Ptr> actors;
 
     Mesh::Ptr mesh;

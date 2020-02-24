@@ -8,15 +8,15 @@
 
 #include <memory>
 
-#include "GridMap.h"
 #include "MapActor.h"
 
+class GridMap;
 
 class Structure : public MapActor {
 public:
     typedef std::shared_ptr<Structure> Ptr;
 
-    void update(GridMap::Ptr map) override;
+    void update(std::shared_ptr<GridMap> map) override;
 };
 
 

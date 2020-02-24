@@ -115,39 +115,48 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
     return mesh;
 }
 
-void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
+void GridMap::addEntity(MapEntity::Ptr entity, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
-    node->addEntity(actor->getUId(), actor);
-    actor->setMapNode(node);
+    node->addEntity(entity->getUId(), entity);
+    entity->setMapNode(node);
+    entities.push_back(entity);
+}
+
+void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
+    addEntity(actor, x, y);
     actors.push_back(actor);
 }
 
-bool GridMap::moveActor(std::weak_ptr<MapActor> actorPtr, std::weak_ptr<MapNode> nextPosPtr) {
-    MapActor::Ptr actor = actorPtr.lock();
+bool GridMap::moveEntity(std::weak_ptr<MapEntity> entityPtr, std::weak_ptr<MapNode> nextPosPtr) {
+    MapEntity::Ptr entity = entityPtr.lock();
     MapNode::Ptr nextPos = nextPosPtr.lock();
 
     // create MapNode object for actor if it doesn't have one
-    if (actor->getMapNode() == nullptr) {
-        actor->setMapNode(nextPos);
-        nextPos->addEntity(actor->getUId(), actor);
+    if (entity->getMapNode() == nullptr) {
+        entity->setMapNode(nextPos);
+        nextPos->addEntity(entity->getUId(), entity);
 
         return true;
     } else {
         // verify that we're moving the actor to neighboring location
-        for (const MapNode::Ptr &neighbor: actor->getPosition()->getNode()->getNeighbors()) {
+        for (const MapNode::Ptr &neighbor: entity->getPosition()->getNode()->getNeighbors()) {
             if (nextPos == neighbor) {
 
                 // unlink from existing node
-                actor->getMapNode()->removeEntity(actor->getUId());
+                entity->getMapNode()->removeEntity(entity->getUId());
 
                 // link to next pos node
-                actor->setMapNode(nextPos);
-                nextPos->addEntity(actor->getUId(), actor);
+                entity->setMapNode(nextPos);
+                nextPos->addEntity(entity->getUId(), entity);
 
                 return true;
             }
         }
     }
 
+    return false;
+}
+
+bool GridMap::placeStructure(Structure::Ptr structure, int x, int y, int width, int height) {
     return false;
 }
