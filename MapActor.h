@@ -11,14 +11,15 @@
 #include "MapEntity.h"
 #include "MapNode.h"
 
+class GridMap;
 
-class MapActor : public MapEntity {
+class MapActor : public MapEntity, public std::enable_shared_from_this<MapActor> {
 public:
     typedef std::shared_ptr<MapActor> Ptr;
 
-    virtual void update() = 0;
+    virtual void update(std::shared_ptr<GridMap> map) = 0;
 
-    void addToPath(const MapNode::Ptr& nextPos);
+    void addToPath(MapNode::Ptr nextPos);
 
     const MapNode::MapPath &getPath() const {
         return path;
@@ -28,7 +29,7 @@ protected:
     MapNode::MapPath path;
 
     MapActor() : MapEntity() {}
-    MapActor(MapNode::MapPath path) : MapEntity(), path(std::move(path)) {}
+    explicit MapActor(MapNode::MapPath path) : MapEntity(), path(std::move(path)) {}
 };
 
 #endif //HIVEMIND_MAPACTOR_H

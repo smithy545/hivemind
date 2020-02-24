@@ -1,6 +1,7 @@
 //
 // Created by philip on 1/24/20.
 //
+
 #include "GameRunner.h"
 
 #include <iostream>
@@ -18,11 +19,11 @@ const int SCR_HEIGHT = 600;
 
 // static members
 bool GameRunner::keys[];
-double GameRunner::mouseX = 0.0f;
-double GameRunner::mouseY = 0.0f;
+float GameRunner::mouseX = 0.0f;
+float GameRunner::mouseY = 0.0f;
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
-int MapEntity::GLOBAL_ID = 0;
+int MapEntity::GLOBAL_ID = 1;
 
 
 void GameRunner::loop() {
@@ -133,7 +134,9 @@ void GameRunner::loop() {
 
     // then he moved in a direction
     MapNode::Ptr node = adam->getPosition()->node;
-    adam->addToPath(node->neighbors[0]);
+    adam->addToPath(adam->getPosition()->node->neighbors[0]);
+    adam->addToPath(adam->getPosition()->node->neighbors[0]->neighbors[1]);
+    //adam->addToPath(loadedMaps[0]->getNodes()[26]);
 
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
@@ -144,8 +147,8 @@ void GameRunner::loop() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // update dynamic uniforms
-        glUniform1d(mouseXUniform, mouseX);
-        glUniform1d(mouseYUniform, mouseY);
+        glUniform1f(mouseXUniform, mouseX);
+        glUniform1f(mouseYUniform, mouseY);
 
         // update and render all maps
         for (const GridMap::Ptr &map: loadedMaps) {
@@ -198,7 +201,7 @@ void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
 
 void GameRunner::update(const GridMap::Ptr &map) {
     for (const MapActor::Ptr &actor: map->getActors()) {
-        actor->update();
+        actor->update(map);
     }
 }
 

@@ -4,8 +4,8 @@ layout (location = 0) in vec2 aPos;
 
 uniform float width;
 uniform float height;
-uniform double mouseX;
-uniform double mouseY;
+uniform float mouseX;
+uniform float mouseY;
 
 out vec2 mousePos;
 

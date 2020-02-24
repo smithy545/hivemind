@@ -24,7 +24,7 @@ public:
     virtual MapNode::Ptr getNode(int x, int y) = 0;
 
     virtual void addActor(MapActor::Ptr actor, int x, int y) = 0;
-
+    virtual bool moveActor(std::weak_ptr<MapActor> actor, MapNode::Ptr nextPos) = 0;
 
     virtual Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) = 0;
 };

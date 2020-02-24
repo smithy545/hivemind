@@ -7,23 +7,24 @@
 #include <iostream>
 #include <utility>
 
-#include "MapEntity.h"
-
 
 Human::Human(std::string name) : MapActor(), name(std::move(name)) {}
 
-void Human::update() {
+void Human::update(GridMap::Ptr map) {
     if(!path.empty()) {
-        path.front()->entities[getUId()] = std::shared_ptr<Human>(this);
-        position->node->entities.erase(getUId());
-
-        // set node to next in path
-        position = std::make_shared<MapPosition>(path.front());
-        path.erase(path.begin(), path.begin()+1);
-    } else {
-        if (role != nullptr) {
-            // determine next task from role here
+        // move and if successful update path
+        if(map->moveActor(std::weak_ptr<MapActor>(this->shared_from_this()), path.back())) {
+            path.pop_back();
+        } else {
+            std::cout <<
+            "Could not move from (" <<
+                position->node->x << ", " << position->node->y
+            << ") to (" <<
+                path.back()->x << ", " << path.back()->y
+            << ")" << std::endl;
         }
+    } else if (role != nullptr) {
+        // determine next task from role here
     }
 }
 

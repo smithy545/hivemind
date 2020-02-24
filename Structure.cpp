@@ -4,6 +4,6 @@
 
 #include "Structure.h"
 
-void Structure::update() {
+void Structure::update(GridMap::Ptr map) {
 
 }

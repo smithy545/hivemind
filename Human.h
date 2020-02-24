@@ -16,6 +16,7 @@
 #include "MapPosition.h"
 #include "VisionMap.h"
 #include "BaseRole.h"
+#include "GridMap.h"
 
 
 class Human : public MapActor {
@@ -44,7 +45,7 @@ public:
 
     explicit Human(std::string name);
 
-    void update() override;
+    void update(GridMap::Ptr map) override;
 
     const std::string &getName() const;
 

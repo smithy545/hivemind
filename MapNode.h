@@ -6,6 +6,7 @@
 #define HIVEMIND_MAPNODE_H
 
 #include <memory>
+#include <deque>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -15,7 +16,7 @@ class MapEntity;
 class MapNode {
 public:
     typedef std::shared_ptr<MapNode> Ptr;
-    typedef std::vector<Ptr> MapPath;
+    typedef std::deque<Ptr> MapPath;
 
     MapNode(int x, int y) : MapNode(x, y, true) {}
     MapNode(int x, int y, bool passable) : x(x), y(y), passable(passable) {}

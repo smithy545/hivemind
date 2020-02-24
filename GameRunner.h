@@ -33,8 +33,8 @@ private:
     static Camera::Ptr camera;
     static GLFWwindow *window;
     static bool keys[256];
-    static double mouseX;
-    static double mouseY;
+    static float mouseX;
+    static float mouseY;
 
     // input callbacks
     static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);

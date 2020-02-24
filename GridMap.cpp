@@ -4,6 +4,8 @@
 
 #include "GridMap.h"
 
+#include <iostream>
+
 
 GridMap::GridMap(int width, int height) : width(width), height(height), mesh(nullptr) {
     // initialize
@@ -121,4 +123,37 @@ void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
     node->entities[actor->getUId()] = actor;
     actor->setPosition(std::make_shared<MapPosition>(node));
     actors.push_back(actor);
+}
+
+bool GridMap::moveActor(std::weak_ptr<MapActor> actor, MapNode::Ptr nextPos) {
+    std::shared_ptr<MapActor> ptr = actor.lock();
+
+    // create MapPosition object for actor if it doesn't have one
+    if(ptr->getPosition() == nullptr) {
+        ptr->setPosition(std::make_shared<MapPosition>(nextPos));
+        nextPos->entities[ptr->getUId()] = ptr;
+
+        return true;
+    } else if(ptr->getPosition()->node != nullptr){
+        // verify that we're moving the actor to neighboring location
+        for(MapNode::Ptr neighbor: ptr->getPosition()->node->neighbors) {
+            if(nextPos == neighbor) {
+
+                // unlink from existing node
+                ptr->getPosition()->node->entities.erase(ptr->getUId());
+
+                // link to next pos node
+                ptr->getPosition()->node = nextPos;
+                nextPos->entities[ptr->getUId()] = ptr;
+
+                return true;
+            }
+        }
+    } else {
+        ptr->getPosition()->node = nextPos;
+        nextPos->entities[ptr->getUId()] = ptr;
+        return true;
+    }
+
+    return false;
 }

@@ -22,10 +22,10 @@ public:
     GridMap(int width, int height);
 
     Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
-
     MapNode::Ptr getNode(int x, int y) override;
 
     void addActor(MapActor::Ptr actor, int x, int y);
+    bool moveActor(std::weak_ptr<MapActor> actor, MapNode::Ptr nextPos) override;
 
     const std::vector<MapActor::Ptr> &getActors() override {
         return actors;

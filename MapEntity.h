@@ -18,7 +18,7 @@ public:
 
     typedef std::shared_ptr<MapEntity> Ptr;
 
-    const MapPosition::Ptr &getPosition() const {
+    MapPosition::Ptr &getPosition() {
         return position;
     }
 

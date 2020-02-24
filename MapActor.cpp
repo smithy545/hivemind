@@ -6,6 +6,6 @@
 #include "MapActor.h"
 
 
-void MapActor::addToPath(const MapNode::Ptr& nextPos) {
-    path.push_back(nextPos);
+void MapActor::addToPath(MapNode::Ptr nextPos) {
+    path.push_front(std::move(nextPos));
 }
