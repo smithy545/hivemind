@@ -8,9 +8,11 @@
 #include <fstream>
 #include <unordered_map>
 
+#include "MapNode.h"
 #include "MapEntity.h"
 #include "MapActor.h"
 #include "Human.h"
+#include "Pather.h"
 
 
 // settings
@@ -115,15 +117,19 @@ void GameRunner::loop() {
     GLint widthUniform = glGetUniformLocation(shaderProgram, "width");
     GLint heightUniform = glGetUniformLocation(shaderProgram, "height");
 
+    // tile size in pixels
+    float ts = 32.0f;
+
     // set constant uniforms
-    glUniform1f(widthUniform, 32.0f/SCR_WIDTH);
-    glUniform1f(heightUniform, 32.0f/SCR_HEIGHT);
+    glUniform1f(widthUniform, ts/SCR_WIDTH);
+    glUniform1f(heightUniform, ts/SCR_HEIGHT);
 
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     // setup non opengl entites
 
+    // TODO: optimize everything, gets hella buggy with bigger maps
     // map setup
     std::vector<GridMap::Ptr> loadedMaps;
     loadedMaps.push_back(std::make_shared<GridMap>(10, 10));
@@ -144,10 +150,23 @@ void GameRunner::loop() {
         glUniform1f(mouseXUniform, mouseX);
         glUniform1f(mouseYUniform, mouseY);
 
+        // move adam to mouse pointer
+        int w = loadedMaps[0]->getWidth();
+        int h = loadedMaps[0]->getHeight();
+        int gridX = ((int)(mouseX / ts)) % w;
+        int gridY = ((int)(mouseY / ts)) % h;
+        if(adam->getPath().empty()) {
+            MapNode::MapPath path = Pather::genAStarPath(adam->getPosition()->node,
+                                                         loadedMaps[0]->getNode(gridX, gridY));
+            for (auto step: path) {
+                adam->addToPath(step);
+            }
+        }
+
         // update and render all maps
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
-            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 32));
+            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, ts));
         }
 
         // glfw: swap buffers and poll IO events
@@ -183,7 +202,7 @@ void GameRunner::keyCallback(GLFWwindow* window, int key, int scancode, int acti
 
 void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos) {
     mouseX = xpos;
-    mouseY = ypos;
+    mouseY = SCR_HEIGHT - ypos;
 }
 
 void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }

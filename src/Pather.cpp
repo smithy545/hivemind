@@ -2,9 +2,11 @@
 // Created by philip on 1/23/20.
 //
 
-#include <unordered_map>
-#include <cmath>
 #include "Pather.h"
+
+#include <cmath>
+#include <unordered_map>
+
 
 MapNode::MapPath Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end) {
     MapNode::MapPath path;
@@ -28,8 +30,9 @@ MapNode::MapPath Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::
             if(closed.count(key) > 0)
                 continue;
             if(end->x == neighbor->x && end->y == neighbor->y) {
-                while(parent != nullptr) {
-                    path.push_back(parent->position);
+                path.push_front(end);
+                while(parent->previous != nullptr) {
+                    path.push_front(parent->position);
                     parent = parent->previous;
                 }
                 return path;

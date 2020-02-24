@@ -13,7 +13,7 @@
 Human::Human(std::string name) : MapActor(), name(std::move(name)) {}
 
 void Human::update(GridMap::Ptr map) {
-    // assume pos set for now
+    // assume pos!=nullptr for now
 
     if(!path.empty()) {
         // move and if successful update path
