@@ -18,6 +18,7 @@ class BaseRole {
 public:
     typedef std::shared_ptr<BaseRole> Ptr;
 
+    virtual std::string getNextTask(std::string currentTask) = 0;
     virtual MapNode::Ptr getTaskDestination(std::string taskName) = 0;
     virtual std::vector<std::string> getAvailableTasks() = 0;
 

@@ -7,10 +7,14 @@
 #include <iostream>
 #include <utility>
 
+#include "Pather.h"
+
 
 Human::Human(std::string name) : MapActor(), name(std::move(name)) {}
 
 void Human::update(GridMap::Ptr map) {
+    // assume pos set for now
+
     if(!path.empty()) {
         // move and if successful update path
         if(map->moveActor(std::weak_ptr<MapActor>(this->shared_from_this()), path.back())) {
@@ -24,13 +28,17 @@ void Human::update(GridMap::Ptr map) {
             << ")" << std::endl;
         }
     } else if (role != nullptr) {
+        // do current task
+
         // determine next task from role here
+        currentTask = role->getNextTask(currentTask);
+        MapNode::Ptr nextPos = role->getTaskDestination(currentTask);
+
+        // path to next task if necessary
+        if(nextPos != this->getPosition()->node)
+            path = Pather::genAStarPath(position->node, nextPos);
     } else {
         // default behaviour here
-        if(position->node->x < map->getWidth() - 1)
-            addToPath(map->getNode(position->node->x + 1, position->node->y));
-        else if(position->node->y < map->getHeight() - 1)
-            addToPath(map->getNode(position->node->x, position->node->y + 1));
     }
 }
 
