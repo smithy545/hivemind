@@ -129,10 +129,9 @@ void GameRunner::loop() {
 
     // setup non opengl entites
 
-    // TODO: optimize everything, gets hella buggy with bigger maps
     // map setup
     std::vector<GridMap::Ptr> loadedMaps;
-    loadedMaps.push_back(std::make_shared<GridMap>(10, 10));
+    loadedMaps.push_back(std::make_shared<GridMap>(30, 20));
 
     // first there was adam and he was added to the map actors
     Human::Ptr adam = std::make_shared<Human>("adam");
@@ -153,8 +152,9 @@ void GameRunner::loop() {
         // move adam to mouse pointer
         int w = loadedMaps[0]->getWidth();
         int h = loadedMaps[0]->getHeight();
-        int gridX = ((int)(mouseX / ts)) % w;
-        int gridY = ((int)(mouseY / ts)) % h;
+        int gridX = ((int)(mouseX/ts)) < w ? ((int)(mouseX/ts)) : w-1;
+        int gridY = ((int)(mouseY/ts)) < h ? ((int)(mouseY/ts)) : h-1;
+
         if(adam->getPath().empty()) {
             MapNode::MapPath path = Pather::genAStarPath(adam->getPosition()->node,
                                                          loadedMaps[0]->getNode(gridX, gridY));

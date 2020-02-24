@@ -57,7 +57,6 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
         // set size to max possible visible
         vertices = new float[8 * N];
         indices = new unsigned int[6 * N];
-
         mesh = std::make_shared<Mesh>(8*N, 6*N);
 
         glBindVertexArray(mesh->vertexArrayId);
@@ -72,40 +71,44 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
     }
     int i = 0;
     int j = 0;
-    for (const auto &node: nodes) {
-        if(!node->entities.empty()) {
-            // TODO: selectively call glBufferSubdata on vertices that change, i.e. individual actor meshes
 
-            float x = node->x * tileSize - screenWidth;
-            float y = node->y * tileSize - screenHeight;
 
-            // top right
-            vertices[i] = x / screenWidth;
-            vertices[i + 1] = (y + tileSize) / screenHeight;
-            // bottom right
-            vertices[i + 2] = x / screenWidth;
-            vertices[i + 3] = y / screenHeight;
-            // bottom left
-            vertices[i + 4] = (x + tileSize) / screenWidth;
-            vertices[i + 5] = y / screenHeight;
-            // top left
-            vertices[i + 6] = (x + tileSize) / screenWidth;
-            vertices[i + 7] = (y + tileSize) / screenHeight;
+    // TODO: why is this necessary? Is it just on 4k screens? wtf?
+    int ts = tileSize*2;
 
-            // two triangles that make a square at the given tile location
-            indices[j] = i / 2;
-            indices[j + 1] = i / 2 + 1;
-            indices[j + 2] = i / 2 + 3;
-            indices[j + 3] = i / 2 + 1;
-            indices[j + 4] = i / 2 + 2;
-            indices[j + 5] = i / 2 + 3;
 
-            i += 8;
-            j += 6;
-        }
+    for (MapActor::Ptr actor: actors) {
+        float x = actor->getPosition()->node->x * ts - screenWidth;
+        float y = actor->getPosition()->node->y * ts - screenHeight;
+
+        // top right
+        vertices[i] = x / screenWidth;
+        vertices[i + 1] = (y + ts) / screenHeight;
+        // bottom right
+        vertices[i + 2] = x / screenWidth;
+        vertices[i + 3] = y / screenHeight;
+        // bottom left
+        vertices[i + 4] = (x + ts) / screenWidth;
+        vertices[i + 5] = y / screenHeight;
+        // top left
+        vertices[i + 6] = (x + ts) / screenWidth;
+        vertices[i + 7] = (y + ts) / screenHeight;
+
+        // two triangles that make a square at the given tile location
+        indices[j] = i / 2;
+        indices[j + 1] = i / 2 + 1;
+        indices[j + 2] = i / 2 + 3;
+        indices[j + 3] = i / 2 + 1;
+        indices[j + 4] = i / 2 + 2;
+        indices[j + 5] = i / 2 + 3;
+
+        i += 8;
+        j += 6;
     }
     mesh->numVertices = i;
     mesh->numIndices = j;
+
+    // TODO: selectively call glBufferSubdata only on vertices that change instead of bufferdata over whole verts
 
     // load vertex data into buffer
     glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
