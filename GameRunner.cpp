@@ -1,12 +1,15 @@
 //
 // Created by philip on 1/24/20.
 //
+#include "GameRunner.h"
 
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
 
-#include "GameRunner.h"
+#include "MapEntity.h"
 #include "MapActor.h"
+#include "Human.h"
 
 
 // settings
@@ -19,6 +22,8 @@ double GameRunner::mouseX = 0.0f;
 double GameRunner::mouseY = 0.0f;
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
+int MapEntity::GLOBAL_ID = 0;
+
 
 void GameRunner::loop() {
     // Initialise GLFW
@@ -121,6 +126,14 @@ void GameRunner::loop() {
     // map setup
     std::vector<GridMap::Ptr> loadedMaps;
     loadedMaps.push_back(std::make_shared<GridMap>(10, 10));
+
+    // first there was adam and he was added to the map actors
+    Human::Ptr adam = std::make_shared<Human>("adam");
+    loadedMaps[0]->addActor(adam, 1, 1);
+
+    // then he moved in a direction
+    MapNode::Ptr node = adam->getPosition()->node;
+    adam->addToPath(node->neighbors[0]);
 
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);

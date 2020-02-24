@@ -42,11 +42,22 @@ public:
         Human::Ptr person;
     };
 
-    Human(const MapPosition& initialPosition);
+    explicit Human(std::string name);
 
     void update() override;
 
+    const std::string &getName() const;
+
+    const VisionMap::Ptr &getVisionMap() const;
+
+    const std::unordered_map<std::string, Relationship::Ptr> &getRelationships() const;
+
+    const BaseRole::Ptr & getRole() const;
+
+    const std::string &getCurrentTask() const;
+
 private:
+    std::string name;
     VisionMap::Ptr visionMap;
     std::unordered_map<std::string, Relationship::Ptr> relationships;
     BaseRole::Ptr role;

@@ -14,10 +14,10 @@ class MapPosition {
 public:
     typedef std::shared_ptr<MapPosition> Ptr;
 
-    MapPosition(MapNode::Ptr position) : MapPosition(position, 0, 0) {}
-    MapPosition(MapNode::Ptr position, double subX, double subY) : position(position), subPixelX(subX), subPixelY(subY) {}
+    MapPosition(MapNode::Ptr mapNode) : MapPosition(mapNode, 0, 0) {}
+    MapPosition(MapNode::Ptr mapNode, double subX, double subY) : node(mapNode), subPixelX(subX), subPixelY(subY) {}
 
-    MapNode::Ptr position;
+    MapNode::Ptr node;
     double subPixelX;
     double subPixelY;
 };

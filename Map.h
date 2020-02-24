@@ -23,6 +23,9 @@ public:
     virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
     virtual MapNode::Ptr getNode(int x, int y) = 0;
 
+    virtual void addActor(MapActor::Ptr actor, int x, int y) = 0;
+
+
     virtual Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) = 0;
 };
 

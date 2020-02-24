@@ -51,18 +51,34 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
 Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float tileSize) {
     if (mesh == nullptr) {
         int N = nodes.size();
-        mesh = std::make_shared<Mesh>(8 * N, 6 * N);
 
-        vertices = new float[mesh->numVertices];
-        indices = new unsigned int[mesh->numIndices];
-        int i = 0;
-        int j = 0;
-        for (const auto &node: nodes) {
+        // set size to max possible visible
+        vertices = new float[8 * N];
+        indices = new unsigned int[6 * N];
+
+        mesh = std::make_shared<Mesh>(8*N, 6*N);
+
+        glBindVertexArray(mesh->vertexArrayId);
+        glEnableVertexAttribArray(0);
+
+        // load vertex data into buffer
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        // load index data into buffer
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
+    }
+    int i = 0;
+    int j = 0;
+    for (const auto &node: nodes) {
+        if(!node->entities.empty()) {
+            // TODO: selectively call glBufferSubdata on vertices that change, i.e. individual actor meshes
+
             float x = node->x * tileSize - screenWidth;
             float y = node->y * tileSize - screenHeight;
 
             // top right
-            vertices[i]     = x / screenWidth;
+            vertices[i] = x / screenWidth;
             vertices[i + 1] = (y + tileSize) / screenHeight;
             // bottom right
             vertices[i + 2] = x / screenWidth;
@@ -85,22 +101,24 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
             i += 8;
             j += 6;
         }
-
-        glBindVertexArray(mesh->vertexArrayId);
-        glEnableVertexAttribArray(0);
-
-        // load vertex data into buffer
-        glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
-        glBufferData(GL_ARRAY_BUFFER, mesh->numVertices * sizeof(float), vertices, GL_STATIC_DRAW);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
-
-        // load index data into buffer
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->numIndices * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
-        // unbind cause why not
-        glBindVertexArray(0);
     }
+    mesh->numVertices = i;
+    mesh->numIndices = j;
+
+    // load vertex data into buffer
+    glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBufferId);
+    glBufferData(GL_ARRAY_BUFFER, mesh->numVertices * sizeof(float), vertices, GL_STATIC_DRAW);
+
+    // load index data into buffer
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->elementBufferId);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->numIndices * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
     return mesh;
+}
+
+void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
+    MapNode::Ptr node = getNode(x, y);
+    node->entities[actor->getUId()] = actor;
+    actor->setPosition(std::make_shared<MapPosition>(node));
+    actors.push_back(actor);
 }

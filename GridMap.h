@@ -25,6 +25,8 @@ public:
 
     MapNode::Ptr getNode(int x, int y) override;
 
+    void addActor(MapActor::Ptr actor, int x, int y);
+
     const std::vector<MapActor::Ptr> &getActors() override {
         return actors;
     }

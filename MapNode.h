@@ -6,6 +6,8 @@
 #define HIVEMIND_MAPNODE_H
 
 #include <memory>
+#include <string>
+#include <unordered_map>
 #include <vector>
 
 class MapEntity;
@@ -22,7 +24,7 @@ public:
     const int y;
     bool passable;
     std::vector<Ptr> neighbors;
-    std::vector<std::shared_ptr<MapEntity>> entities;
+    std::unordered_map<std::string, std::shared_ptr<MapEntity>> entities;
 };
 
 #endif //HIVEMIND_MAPNODE_H

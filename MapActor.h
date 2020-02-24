@@ -18,15 +18,17 @@ public:
 
     virtual void update() = 0;
 
-    MapNode::MapPath getPath() const {
+    void addToPath(const MapNode::Ptr& nextPos);
+
+    const MapNode::MapPath &getPath() const {
         return path;
     }
 
 protected:
     MapNode::MapPath path;
 
-    explicit MapActor(const MapPosition& position) : MapEntity(position) {}
-    MapActor(const MapPosition& position, MapNode::MapPath path) : MapEntity(position), path(std::move(path)) {}
+    MapActor() : MapEntity() {}
+    MapActor(MapNode::MapPath path) : MapEntity(), path(std::move(path)) {}
 };
 
 #endif //HIVEMIND_MAPACTOR_H
