@@ -6,6 +6,7 @@
 #define HIVEMIND_STRUCTURENODE_H
 
 #include <algorithm>
+#include <memory>
 #include <utility>
 #include <vector>
 
@@ -13,7 +14,7 @@
 #include "Structure.h"
 
 
-class StructureNode : public MapNode {
+class StructureNode : public MapNode, public std::enable_shared_from_this<StructureNode> {
 public:
     Structure::Ptr structure;
 

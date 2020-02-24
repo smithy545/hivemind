@@ -50,7 +50,7 @@ StructureNode::StructureNode(std::vector<MapNode::Ptr> nodes, bool passable)
                 // replace neighbors reference to previous MapNode with this StructureNode
                 for(int i = 0; i < neighbor->neighbors.size(); i++) {
                     if(neighbor->neighbors[i] == node) {
-                        neighbor->neighbors[i] = std::shared_ptr<StructureNode>(this);
+                        neighbor->neighbors[i] = this->shared_from_this();
                         break;
                     }
                 }

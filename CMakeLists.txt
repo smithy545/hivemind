@@ -31,13 +31,13 @@ if(INCLUDE_DISTRIB)
 endif(INCLUDE_DISTRIB)
 
 include_directories(
-        external/AntTweakBar-1.16/include/
-        external/glfw-3.1.2/include/
-        external/glm/
-        external/glew-1.13.0/include/
-        external/assimp-3.0.1270/include/
-        external/fmt-master/include/
-        external/bullet-2.81-rev2613/src/
+        external/AntTweakBar-1.16/include
+        external/glfw-3.1.2/include
+        external/glm
+        external/glew-1.13.0/include
+        external/assimp-3.0.1270/include
+        external/fmt-master/include
+        external/bullet-2.81-rev2613/src
         .
 )
 
@@ -58,7 +58,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind main.cpp Human.cpp Human.h GridMap.cpp GridMap.h MapNode.h Pather.cpp Pather.h GameRunner.cpp GameRunner.h Map.h VisionMap.cpp VisionMap.h MapPosition.h MapEntity.h MapActor.h Camera.cpp Camera.h Mesh.h Structure.cpp Structure.h Prop.cpp Prop.h Institution.cpp Institution.h BaseRole.h GroundNode.h StructureNode.h StructureNode.cpp MapActor.cpp)
+add_executable(hivemind src/main.cpp src/Human.cpp src/Human.h src/GridMap.cpp src/GridMap.h src/MapNode.h src/Pather.cpp src/Pather.h src/GameRunner.cpp src/GameRunner.h src/Map.h src/VisionMap.cpp src/VisionMap.h src/MapPosition.h src/MapEntity.h src/MapActor.h src/Camera.cpp src/Camera.h src/Mesh.h src/Structure.cpp src/Structure.h src/Prop.cpp src/Prop.h src/Institution.cpp src/Institution.h src/BaseRole.h src/GroundNode.h src/StructureNode.h src/StructureNode.cpp src/MapActor.cpp)
 target_link_libraries(hivemind
         ${ALL_LIBS}
         )
