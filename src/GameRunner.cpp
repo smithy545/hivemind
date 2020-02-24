@@ -129,7 +129,7 @@ void GameRunner::loop() {
 
     // map setup
     std::vector<GridMap::Ptr> loadedMaps;
-    loadedMaps.push_back(std::make_shared<GridMap>(30, 20));
+    loadedMaps.push_back(std::make_shared<GridMap>(500, 500));
 
     // first there was adam and he was added to the map actors
     Human::Ptr adam = std::make_shared<Human>("adam");
@@ -152,7 +152,7 @@ void GameRunner::loop() {
         int h = loadedMaps[0]->getHeight();
         int gridX = ((int)(mouseX/ts)) < w ? ((int)(mouseX/ts)) : w-1;
         int gridY = ((int)(mouseY/ts)) < h ? ((int)(mouseY/ts)) : h-1;
-        if(adam->getPath().empty()) {
+        if ((gridX != adam->getMapNode()->getX() || gridY != adam->getMapNode()->getY()) && adam->getPath().empty()) {
             MapNode::MapPath path = Pather::genAStarPath(adam->getMapNode(),
                                                          loadedMaps[0]->getNode(gridX, gridY));
             for (const auto &step: path) {
