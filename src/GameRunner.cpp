@@ -139,7 +139,6 @@ void GameRunner::loop() {
     for (int i = 0; i < 10; i++)
         loadedMaps[0]->addActor(std::make_shared<Human>("steve" + std::to_string(i)), i + 1, i);
 
-
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT, ts);
 
@@ -173,8 +172,10 @@ void GameRunner::loop() {
             update(map);
             // TODO: Figure out why tilesize has to be doubled to work properly
             renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
-            renderMesh(ui->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
         }
+
+        // render ui
+        renderMesh(ui->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
 
         // glfw: swap buffers and poll IO events
         // -------------------------------------------------------------------------------
