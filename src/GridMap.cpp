@@ -51,6 +51,7 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
 }
 
 void GridMap::addEntity(MapEntity::Ptr entity, int x, int y) {
+    std::cout << "Adding entity " << entity->getUId() << std::endl;
     MapNode::Ptr node = getNode(x, y);
     node->addEntity(entity->getUId(), entity);
     node->setPassable(false);
