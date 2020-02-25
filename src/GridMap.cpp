@@ -50,18 +50,25 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
     return nodes[index];
 }
 
-void GridMap::addEntity(MapEntity::Ptr entity, int x, int y) {
-    std::cout << "Adding entity " << entity->getUId() << std::endl;
+bool GridMap::addEntity(MapEntity::Ptr entity, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
-    node->addEntity(entity->getUId(), entity);
-    node->setPassable(false);
-    entity->setMapNode(node);
-    entities.push_back(entity);
+    if (node != nullptr && node->isPassable()) {
+        std::cout << "Adding entity " << entity->getUId() << std::endl;
+        node->addEntity(entity->getUId(), entity);
+        node->setPassable(false);
+        entity->setMapNode(node);
+        entities.push_back(entity);
+        return true;
+    }
+    return false;
 }
 
-void GridMap::addActor(MapActor::Ptr actor, int x, int y) {
-    addEntity(actor, x, y);
-    actors.push_back(actor);
+bool GridMap::addActor(MapActor::Ptr actor, int x, int y) {
+    if (addEntity(actor, x, y)) {
+        actors.push_back(actor);
+        return true;
+    }
+    return false;
 }
 
 bool GridMap::moveEntity(std::weak_ptr<MapEntity> entityPtr, std::weak_ptr<MapNode> nextPosPtr) {

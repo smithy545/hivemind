@@ -21,11 +21,11 @@ public:
 
     virtual const std::vector<MapEntity::Ptr> &getEntities() = 0;
 
-    virtual void addEntity(MapEntity::Ptr entity, int x, int y) = 0;
+    virtual bool addEntity(MapEntity::Ptr entity, int x, int y) = 0;
 
     virtual bool moveEntity(std::weak_ptr<MapEntity> entity, std::weak_ptr<MapNode> nextPos) = 0;
 
-    virtual void addActor(MapActor::Ptr actor, int x, int y) = 0;
+    virtual bool addActor(MapActor::Ptr actor, int x, int y) = 0;
 
     virtual bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) = 0;
 };

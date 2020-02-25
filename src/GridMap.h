@@ -46,9 +46,9 @@ public:
         return actors;
     }
 
-    void addEntity(MapEntity::Ptr entity, int x, int y) override;
+    bool addEntity(MapEntity::Ptr entity, int x, int y) override;
 
-    void addActor(MapActor::Ptr actor, int x, int y) override;
+    bool addActor(MapActor::Ptr actor, int x, int y) override;
 
     bool moveEntity(std::weak_ptr<MapEntity> entity, std::weak_ptr<MapNode> nextPos) override;
 
