@@ -9,8 +9,9 @@
 #include <deque>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
-#include <vector>
+
 
 class MapEntity;
 
@@ -47,7 +48,7 @@ public:
         passable = val;
     }
 
-    std::vector<Ptr> &getNeighbors() {
+    std::unordered_set<Ptr> &getNeighbors() {
         return neighbors;
     }
 
@@ -71,7 +72,7 @@ private:
     int x;
     int y;
     bool passable;
-    std::vector<Ptr> neighbors;
+    std::unordered_set<Ptr> neighbors;
     std::unordered_map<std::string, std::shared_ptr<MapEntity>> entities;
 };
 

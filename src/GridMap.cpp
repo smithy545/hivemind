@@ -24,21 +24,21 @@ GridMap::GridMap(int width, int height) : width(width), height(height), mesh(nul
             const bool xltw = x < width - 1;
             const bool ylth = y < height - 1;
             if (xgt0)
-                node->getNeighbors().push_back(nodes[index - 1]);
+                node->getNeighbors().insert(nodes[index - 1]);
             if(xltw)
-                node->getNeighbors().push_back(nodes[index + 1]);
+                node->getNeighbors().insert(nodes[index + 1]);
             if(ygt0)
-                node->getNeighbors().push_back(nodes[index - width]);
+                node->getNeighbors().insert(nodes[index - width]);
             if(ylth)
-                node->getNeighbors().push_back(nodes[index + width]);
+                node->getNeighbors().insert(nodes[index + width]);
             if(xgt0 && ygt0)
-                node->getNeighbors().push_back(nodes[index - width - 1]);
+                node->getNeighbors().insert(nodes[index - width - 1]);
             if(xltw && ylth)
-                node->getNeighbors().push_back(nodes[index + width + 1]);
+                node->getNeighbors().insert(nodes[index + width + 1]);
             if(xgt0 && ylth)
-                node->getNeighbors().push_back(nodes[index + width - 1]);
+                node->getNeighbors().insert(nodes[index + width - 1]);
             if(xltw && ygt0)
-                node->getNeighbors().push_back(nodes[index - width + 1]);
+                node->getNeighbors().insert(nodes[index - width + 1]);
         }
     }
 }

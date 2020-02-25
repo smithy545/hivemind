@@ -12,10 +12,11 @@ StructureNode::StructureNode(int x, int y, int width, int height, bool passable)
 : MapNode(x, y, passable), width(width), height(height) {}
 
 // Construct and inject into map
+
 StructureNode::StructureNode(const MapNode::Ptr &position, bool passable) : StructureNode(position->getX(),
                                                                                           position->getY()) {
     for (const auto &neighbor: position->getNeighbors())
-        getNeighbors().push_back(neighbor);
+        getNeighbors().insert(neighbor);
 }
 
 // First node is used as "anchor" node
@@ -48,14 +49,9 @@ StructureNode::StructureNode(std::vector<MapNode::Ptr> nodes, bool passable)
     for(const auto& node: nodes) {
         for (const auto &neighbor: node->getNeighbors()) {
             if (isNeighbor(neighbor)) {
-                getNeighbors().push_back(neighbor);
                 // replace neighbors reference to previous MapNode with this StructureNode
-                for (auto &i : neighbor->getNeighbors()) {
-                    if (i == node) {
-                        i = this->shared_from_this();
-                        break;
-                    }
-                }
+                getNeighbors().insert(neighbor);
+                neighbor->getNeighbors().erase(node);
             }
         }
     }
