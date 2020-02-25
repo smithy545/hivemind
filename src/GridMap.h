@@ -12,11 +12,12 @@
 #include "MapEntity.h"
 #include "MapNode.h"
 #include "Mesh.h"
+#include "Renderable.h"
 #include "Structure.h"
 #include "WorldMap.h"
 
 
-class GridMap : public WorldMap {
+class GridMap : public WorldMap, public Renderable {
 public:
     typedef std::shared_ptr<GridMap> Ptr;
 
@@ -55,7 +56,7 @@ public:
     bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) override;
 
     // rendering
-    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
+    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
 
     void markForRendering(MapEntity::Ptr entity);
 

@@ -23,6 +23,7 @@ float GameRunner::mouseX = 0.0f;
 float GameRunner::mouseY = 0.0f;
 GLFWwindow *GameRunner::window = nullptr;
 Camera::Ptr GameRunner::camera = nullptr;
+UserInterface::Ptr GameRunner::ui = nullptr;
 int MapEntity::GLOBAL_ID = 1;
 
 
@@ -126,7 +127,6 @@ void GameRunner::loop() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     // setup non opengl entites
-
     // map setup
     std::vector<GridMap::Ptr> loadedMaps;
     loadedMaps.push_back(std::make_shared<GridMap>(500, 500));
@@ -137,11 +137,14 @@ void GameRunner::loop() {
     for (int i = 0; i < 10; i++)
         loadedMaps[0]->addActor(std::make_shared<Human>("eve" + std::to_string(i)), i, i);
     for (int i = 0; i < 10; i++)
-        loadedMaps[0]->addActor(std::make_shared<Human>("steve " + std::to_string(i)), i + 1, i);
+        loadedMaps[0]->addActor(std::make_shared<Human>("steve" + std::to_string(i)), i + 1, i);
 
 
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT, ts);
+
+    // ui setup
+    ui = std::make_shared<UserInterface>();
 
     do {
         // render
@@ -169,7 +172,8 @@ void GameRunner::loop() {
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
             // TODO: Figure out why tilesize has to be doubled to work properly
-            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2*ts));
+            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
+            renderMesh(ui->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
         }
 
         // glfw: swap buffers and poll IO events
@@ -211,6 +215,9 @@ void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
 
 void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
+    if (mesh == nullptr)
+        return;
+
     glBindVertexArray(mesh->getVertexArrayId());
     glDrawElements(GL_TRIANGLES, mesh->getNumIndices(), GL_UNSIGNED_INT, nullptr);
 }

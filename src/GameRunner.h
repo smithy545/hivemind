@@ -16,9 +16,9 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
 
-
-#include "GridMap.h"
 #include "Camera.h"
+#include "GridMap.h"
+#include "UserInterface.h"
 
 
 class GameRunner {
@@ -28,6 +28,7 @@ public:
 private:
     static Camera::Ptr camera;
     static GLFWwindow *window;
+    static UserInterface::Ptr ui;
     static bool keys[256];
     static float mouseX;
     static float mouseY;
