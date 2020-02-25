@@ -133,8 +133,12 @@ void GameRunner::loop() {
 
     // first there was adam and he was added to the map actors
     Human::Ptr adam = std::make_shared<Human>("adam");
-    loadedMaps[0]->addActor(adam, 1, 2);
-    loadedMaps[0]->addActor(std::make_shared<Human>("eve"), 1, 1);
+    loadedMaps[0]->addActor(adam, 0, 20);
+    for (int i = 0; i < 10; i++)
+        loadedMaps[0]->addActor(std::make_shared<Human>("eve" + i), i, i);
+    for (int i = 0; i < 10; i++)
+        loadedMaps[0]->addActor(std::make_shared<Human>("steve" + i), i + 1, i);
+
 
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
@@ -223,7 +227,7 @@ void GameRunner::update(const GridMap::Ptr &map) {
                 // do something I guess
                 break;
             case MapActor::IDLE:
-                std::cout << "Actor " << actor->getUId() << " idling" << std::endl;
+                // std::cout << "Actor " << actor->getUId() << " idling" << std::endl;
                 break;
         }
     }
