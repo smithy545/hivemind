@@ -141,7 +141,7 @@ void GameRunner::loop() {
 
 
     // camera setup (camera not currently used)
-    camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);
+    camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT, ts);
 
     do {
         // render
