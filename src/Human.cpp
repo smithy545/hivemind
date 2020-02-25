@@ -15,7 +15,7 @@ Human::Human(std::string name) : MapActor(), name(std::move(name)) {}
 MapActor::Action Human::update(GridMap::Ptr map) {
     if (!path.empty()) {
         // move and if successful update path
-        if (map->moveEntity(std::weak_ptr<MapEntity>(this->shared_from_this()), path.back())) {
+        if (map->moveEntity(this->shared_from_this(), path.back())) {
             path.pop_back();
             return MOVE;
         } else {
@@ -25,6 +25,7 @@ MapActor::Action Human::update(GridMap::Ptr map) {
                       << ") to (" <<
                       path.back()->getX() << ", " << path.back()->getY()
                       << ")" << std::endl;
+            path.clear();
         }
     } else if (role != nullptr) {
         // do current task

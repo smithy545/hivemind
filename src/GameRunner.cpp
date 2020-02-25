@@ -133,7 +133,8 @@ void GameRunner::loop() {
 
     // first there was adam and he was added to the map actors
     Human::Ptr adam = std::make_shared<Human>("adam");
-    loadedMaps[0]->addActor(adam, 1, 1);
+    loadedMaps[0]->addActor(adam, 1, 2);
+    loadedMaps[0]->addActor(std::make_shared<Human>("eve"), 1, 1);
 
     // camera setup (camera not currently used)
     camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT);

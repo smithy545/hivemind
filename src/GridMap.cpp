@@ -53,6 +53,7 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
 void GridMap::addEntity(MapEntity::Ptr entity, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
     node->addEntity(entity->getUId(), entity);
+    node->setPassable(false);
     entity->setMapNode(node);
     entities.push_back(entity);
 }
@@ -66,6 +67,9 @@ bool GridMap::moveEntity(std::weak_ptr<MapEntity> entityPtr, std::weak_ptr<MapNo
     MapEntity::Ptr entity = entityPtr.lock();
     MapNode::Ptr nextPos = nextPosPtr.lock();
 
+    if (!nextPos->isPassable())
+        return false;
+
     // create MapNode object for actor if it doesn't have one
     if (entity->getMapNode() == nullptr) {
         entity->setMapNode(nextPos);
@@ -78,11 +82,13 @@ bool GridMap::moveEntity(std::weak_ptr<MapEntity> entityPtr, std::weak_ptr<MapNo
             if (nextPos == neighbor) {
 
                 // unlink from existing node
+                entity->getMapNode()->setPassable(true);
                 entity->getMapNode()->removeEntity(entity->getUId());
 
                 // link to next pos node
                 entity->setMapNode(nextPos);
                 nextPos->addEntity(entity->getUId(), entity);
+                nextPos->setPassable(false);
 
                 return true;
             }
