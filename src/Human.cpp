@@ -10,7 +10,9 @@
 #include "Pather.h"
 
 
-Human::Human(std::string name) : MapActor(), name(std::move(name)) {}
+Human::Human(std::string name) : MapActor(), name(std::move(name)) {
+    std::cout << "Hi, I'm " << getName() << " and my id is " << getId() << std::endl;
+}
 
 MapActor::Action Human::update(GridMap::Ptr map) {
     if (!path.empty()) {
