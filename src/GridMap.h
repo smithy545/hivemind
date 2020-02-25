@@ -57,12 +57,16 @@ public:
     // rendering
     Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
 
+    void markForRendering(MapEntity::Ptr entity);
+
 private:
     const int width;
     const int height;
     std::vector<MapNode::Ptr> nodes;
     std::vector<MapEntity::Ptr> entities;
     std::vector<MapActor::Ptr> actors;
+
+    std::vector<MapEntity::Ptr> toRender;
 
     Mesh::Ptr mesh;
     float *vertices{nullptr};

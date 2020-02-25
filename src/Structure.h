@@ -12,11 +12,12 @@
 
 class GridMap;
 
+
 class Structure : public MapActor {
 public:
     typedef std::shared_ptr<Structure> Ptr;
 
-    void update(std::shared_ptr<GridMap> map) override;
+    Action update(std::shared_ptr<GridMap> map) override;
 };
 
 

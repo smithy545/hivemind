@@ -211,8 +211,20 @@ void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
 }
 
 void GameRunner::update(const GridMap::Ptr &map) {
+    for (const MapEntity::Ptr &entity: map->getEntities()) {
+        if (camera->inSight(entity->getMapNode())) {
+            map->markForRendering(entity);
+        }
+    }
     for (const MapActor::Ptr &actor: map->getActors()) {
-        actor->update(map);
+        switch (actor->update(map)) {
+            case MapActor::MOVE:
+                // do something I guess
+                break;
+            case MapActor::IDLE:
+                std::cout << "Actor " << actor->getUId() << " idling" << std::endl;
+                break;
+        }
     }
 }
 

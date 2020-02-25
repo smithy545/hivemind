@@ -45,7 +45,7 @@ public:
 
     explicit Human(std::string name);
 
-    void update(GridMap::Ptr map) override;
+    Action update(GridMap::Ptr map) override;
 
     const std::string &getName() const;
 

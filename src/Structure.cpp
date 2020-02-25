@@ -4,6 +4,6 @@
 
 #include "Structure.h"
 
-void Structure::update(std::shared_ptr<GridMap> map) {
-
+MapActor::Action Structure::update(std::shared_ptr<GridMap> map) {
+    return IDLE;
 }

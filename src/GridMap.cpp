@@ -50,71 +50,6 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
     return nodes[index];
 }
 
-Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float tileSize) {
-    if (mesh == nullptr) {
-        int N = nodes.size();
-
-        // set size to max possible visible
-        vertices = new float[8 * N];
-        indices = new unsigned int[6 * N];
-        mesh = std::make_shared<Mesh>(8 * N, 6 * N);
-
-        glBindVertexArray(mesh->getVertexArrayId());
-        glEnableVertexAttribArray(0);
-
-        // load vertex data into buffer
-        glBindBuffer(GL_ARRAY_BUFFER, mesh->getVertexBufferId());
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
-
-        // load index data into buffer
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->getElementBufferId());
-    }
-    int i = 0;
-    int j = 0;
-    for (const MapActor::Ptr& actor: actors) {
-        float x = actor->getPosition()->getNode()->getX() * tileSize - screenWidth;
-        float y = actor->getPosition()->getNode()->getY() * tileSize - screenHeight;
-
-        // top right
-        vertices[i] = x / screenWidth;
-        vertices[i + 1] = (y + tileSize) / screenHeight;
-        // bottom right
-        vertices[i + 2] = x / screenWidth;
-        vertices[i + 3] = y / screenHeight;
-        // bottom left
-        vertices[i + 4] = (x + tileSize) / screenWidth;
-        vertices[i + 5] = y / screenHeight;
-        // top left
-        vertices[i + 6] = (x + tileSize) / screenWidth;
-        vertices[i + 7] = (y + tileSize) / screenHeight;
-
-        // two triangles that make a square at the given tile location
-        indices[j] = i / 2;
-        indices[j + 1] = i / 2 + 1;
-        indices[j + 2] = i / 2 + 3;
-        indices[j + 3] = i / 2 + 1;
-        indices[j + 4] = i / 2 + 2;
-        indices[j + 5] = i / 2 + 3;
-
-        i += 8;
-        j += 6;
-    }
-    mesh->setNumVertices(i);
-    mesh->setNumIndices(j);
-
-    // TODO: selectively call glBufferSubdata on vertices that change, i.e. individual actor meshes
-
-    // load vertex data into buffer
-    glBindBuffer(GL_ARRAY_BUFFER, mesh->getVertexBufferId());
-    glBufferData(GL_ARRAY_BUFFER, mesh->getNumVertices() * sizeof(float), vertices, GL_STATIC_DRAW);
-
-    // load index data into buffer
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->getElementBufferId());
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->getNumIndices() * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
-    return mesh;
-}
-
 void GridMap::addEntity(MapEntity::Ptr entity, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
     node->addEntity(entity->getUId(), entity);
@@ -159,4 +94,77 @@ bool GridMap::moveEntity(std::weak_ptr<MapEntity> entityPtr, std::weak_ptr<MapNo
 
 bool GridMap::placeStructure(Structure::Ptr structure, int x, int y, int width, int height) {
     return false;
+}
+
+Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float tileSize) {
+    if (mesh == nullptr) {
+        int N = screenHeight * screenWidth / (tileSize * tileSize) + 1;
+        std::cout << "Allocating " << 8 * N << " vertices and " << 6 * N << " indices for map mesh" << std::endl;
+
+        // set size to max possible visible
+        vertices = new float[8 * N];
+        indices = new unsigned int[6 * N];
+        mesh = std::make_shared<Mesh>(8 * N, 6 * N);
+
+        glBindVertexArray(mesh->getVertexArrayId());
+        glEnableVertexAttribArray(0);
+
+        // load vertex data into buffer
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->getVertexBufferId());
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        // load index data into buffer
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->getElementBufferId());
+    }
+    int i = 0;
+    int j = 0;
+    for (const MapEntity::Ptr &entity: toRender) {
+        float x = entity->getPosition()->getNode()->getX() * tileSize - screenWidth;
+        float y = entity->getPosition()->getNode()->getY() * tileSize - screenHeight;
+
+        // top right
+        vertices[i] = x / screenWidth;
+        vertices[i + 1] = (y + tileSize) / screenHeight;
+        // bottom right
+        vertices[i + 2] = x / screenWidth;
+        vertices[i + 3] = y / screenHeight;
+        // bottom left
+        vertices[i + 4] = (x + tileSize) / screenWidth;
+        vertices[i + 5] = y / screenHeight;
+        // top left
+        vertices[i + 6] = (x + tileSize) / screenWidth;
+        vertices[i + 7] = (y + tileSize) / screenHeight;
+
+        // two triangles that make a square at the given tile location
+        indices[j] = i / 2;
+        indices[j + 1] = i / 2 + 1;
+        indices[j + 2] = i / 2 + 3;
+        indices[j + 3] = i / 2 + 1;
+        indices[j + 4] = i / 2 + 2;
+        indices[j + 5] = i / 2 + 3;
+
+        i += 8;
+        j += 6;
+    }
+    // clear toRender for next update
+    toRender.clear();
+
+    mesh->setNumVertices(i);
+    mesh->setNumIndices(j);
+
+    // TODO: selectively call glBufferSubdata on vertices that change, i.e. individual actor meshes
+
+    // load vertex data into buffer
+    glBindBuffer(GL_ARRAY_BUFFER, mesh->getVertexBufferId());
+    glBufferData(GL_ARRAY_BUFFER, mesh->getNumVertices() * sizeof(float), vertices, GL_STATIC_DRAW);
+
+    // load index data into buffer
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->getElementBufferId());
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->getNumIndices() * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+    return mesh;
+}
+
+void GridMap::markForRendering(MapEntity::Ptr entity) {
+    toRender.push_back(entity);
 }

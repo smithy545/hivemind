@@ -12,11 +12,12 @@
 
 Human::Human(std::string name) : MapActor(), name(std::move(name)) {}
 
-void Human::update(GridMap::Ptr map) {
-    if(!path.empty()) {
+MapActor::Action Human::update(GridMap::Ptr map) {
+    if (!path.empty()) {
         // move and if successful update path
         if (map->moveEntity(std::weak_ptr<MapEntity>(this->shared_from_this()), path.back())) {
             path.pop_back();
+            return MOVE;
         } else {
             std::cout <<
                       "Could not move from (" <<
@@ -35,9 +36,9 @@ void Human::update(GridMap::Ptr map) {
         // path to next task if necessary
         if (nextPos != this->getPosition()->getNode())
             path = Pather::genAStarPath(position->getNode(), nextPos);
-    } else {
-        // default behaviour here
     }
+    // default behaviour
+    return IDLE;
 }
 
 const std::string &Human::getName() const {
