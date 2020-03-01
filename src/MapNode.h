@@ -20,9 +20,18 @@ public:
     typedef std::shared_ptr<MapNode> Ptr;
     typedef std::deque<Ptr> MapPath;
 
+    enum Type {
+        GROUND,
+        NATURE,
+        ROAD,
+        STRUCTURE
+    };;
+
     MapNode(int x, int y) : MapNode(x, y, true) {}
 
-    MapNode(int x, int y, bool passable) : x(x), y(y), passable(passable) {}
+    MapNode(int x, int y, bool passable) : MapNode(x, y, passable, GROUND) {}
+
+    MapNode(int x, int y, bool passable, Type type) : x(x), y(y), passable(passable), type(type) {}
 
     int getX() const {
         return x;
@@ -68,9 +77,19 @@ public:
         entities.erase(id);
     }
 
+
+    Type getType() const {
+        return type;
+    }
+
+    void setType(Type type) {
+        MapNode::type = type;
+    }
+
 private:
     int x;
     int y;
+    Type type;
     bool passable;
     std::unordered_set<Ptr> neighbors;
     std::unordered_map<std::string, std::shared_ptr<MapEntity>> entities;

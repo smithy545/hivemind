@@ -7,11 +7,12 @@
 #include <iostream>
 
 
+
 GridMap::GridMap(int width, int height) : width(width), height(height), mesh(nullptr) {
     // initialize
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            nodes.push_back(std::make_shared<GroundNode>(x, y));
+            nodes.push_back(std::make_shared<MapNode>(x, y));
         }
     }
     // setup topology
@@ -107,7 +108,18 @@ bool GridMap::moveEntity(std::weak_ptr<MapEntity> entityPtr, std::weak_ptr<MapNo
 }
 
 bool GridMap::placeStructure(Structure::Ptr structure, int x, int y, int width, int height) {
-    return false;
+    for (int j = y; j < y + height; j++) {
+        for (int i = x; i < x + width; i++) {
+            auto node = getNode(i, j);
+            node->addEntity(structure->getUId(), structure);
+            node->setPassable(false);
+            node->setType(MapNode::STRUCTURE);
+        }
+    }
+    auto anchorNode = getNode(x, y);
+    structure->setMapNode(anchorNode);
+    entities.push_back(structure);
+    return true;
 }
 
 Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float tileSize) {
@@ -179,6 +191,6 @@ Mesh::Ptr GridMap::generateMesh(float screenWidth, float screenHeight, float til
     return mesh;
 }
 
-void GridMap::markForRendering(MapEntity::Ptr entity) {
+void GridMap::markForRendering(const MapEntity::Ptr &entity) {
     toRender.push_back(entity);
 }

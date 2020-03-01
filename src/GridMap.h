@@ -58,7 +58,7 @@ public:
     // rendering
     Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
 
-    void markForRendering(MapEntity::Ptr entity);
+    void markForRendering(const MapEntity::Ptr &entity);
 
 private:
     const int width;

@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "MapActor.h"
+#include "MapNode.h"
 
 class GridMap;
 
@@ -16,6 +17,8 @@ class GridMap;
 class Structure : public MapActor {
 public:
     typedef std::shared_ptr<Structure> Ptr;
+
+    explicit Structure(const MapNode::Ptr &node);
 
     Action update(std::shared_ptr<GridMap> map) override;
 };

@@ -9,7 +9,6 @@
 #include <string>
 #include <utility>
 
-#include "GroundNode.h"
 #include "MapPosition.h"
 
 
