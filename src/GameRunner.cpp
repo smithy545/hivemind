@@ -28,7 +28,9 @@ void GameRunner::loop() {
     float h = renderer.getHeight();
     float ts = renderer.getTileSize();
 
+    // init renderer and get created window
     GLFWwindow *window = renderer.init();
+
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
@@ -38,6 +40,7 @@ void GameRunner::loop() {
     // Setup text input
     glfwSetCharCallback(window, characterCallback);
 
+    // setup default shader and use for uniforms
     GLuint defaultShader = renderer.loadShaderProgram("default", "vertex.shader", "fragment.shader");
 
     // activate shader program and setup uniforms
@@ -153,6 +156,7 @@ void GameRunner::update(const GridMap::Ptr &map) {
         switch (actor->update(map)) {
             case MapActor::MOVE:
                 // do something I guess
+                std::cout << actor->getUId() << " moving" << std::endl;
                 break;
             case MapActor::IDLE:
                 // std::cout << "Actor " << actor->getUId() << " idling" << std::endl;

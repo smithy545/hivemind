@@ -108,7 +108,7 @@ void Renderer::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {
 }
 
 char *Renderer::readShader(const std::string &path) {
-    std::ifstream shaderStream("../res/" + path, std::ifstream::ate);
+    std::ifstream shaderStream("../res/shaders/" + path, std::ifstream::ate);
     if (shaderStream) {
         // get file length (ifstream::ate flag puts cursor at end of file)
         int shaderLength = shaderStream.tellg();
@@ -129,7 +129,7 @@ char *Renderer::readShader(const std::string &path) {
     }
 
     // open failed for some reason
-    std::cout << "Error opening shader at res/" << path << std::endl;
+    std::cout << "Error opening shader at res/shaders/" << path << std::endl;
     return nullptr;
 }
 

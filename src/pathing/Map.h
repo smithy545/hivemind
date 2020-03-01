@@ -5,14 +5,10 @@
 #ifndef HIVEMIND_MAP_H
 #define HIVEMIND_MAP_H
 
-#include <iterator>
 #include <memory>
 #include <vector>
-#include <vector>
 
-#include "src/world/MapActor.h"
 #include "MapNode.h"
-#include "src/render/Mesh.h"
 
 
 class Map {
