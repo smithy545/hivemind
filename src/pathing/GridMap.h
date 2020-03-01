@@ -8,16 +8,15 @@
 #include <memory>
 #include <vector>
 
-#include "MapActor.h"
-#include "MapEntity.h"
 #include "MapNode.h"
-#include "Mesh.h"
-#include "Renderable.h"
-#include "Structure.h"
-#include "WorldMap.h"
+#include "src/render/Mesh.h"
+#include "src/world/MapActor.h"
+#include "src/world/MapEntity.h"
+#include "src/world/Structure.h"
+#include "src/world/WorldMap.h"
 
 
-class GridMap : public WorldMap, public Renderable {
+class GridMap : public WorldMap {
 public:
     typedef std::shared_ptr<GridMap> Ptr;
 
@@ -56,7 +55,7 @@ public:
     bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) override;
 
     // rendering
-    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
+    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
 
     void markForRendering(const MapEntity::Ptr &entity);
 

@@ -16,9 +16,8 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
 
-#include "Camera.h"
-#include "GridMap.h"
-#include "UserInterface.h"
+#include "src/pathing/GridMap.h"
+#include "src/ui/UserInterface.h"
 
 
 class GameRunner {
@@ -26,8 +25,6 @@ public:
     static void loop();
 
 private:
-    static Camera::Ptr camera;
-    static GLFWwindow *window;
     static UserInterface::Ptr ui;
     static bool keys[256];
     static float mouseX;
@@ -38,15 +35,9 @@ private:
     static void cursorPosCallback(GLFWwindow* window, double xpos, double ypos);
     static void characterCallback(GLFWwindow* window, unsigned int codepoint);
 
-    // window callbacks
-    static void resize(GLFWwindow *window, int width, int height);
-
     // game state functions
     static void update(const GridMap::Ptr &map);
 
-    // render functions
-    static void renderMesh(const Mesh::Ptr& mesh);
-    static char* readShader(const std::string& path);
 };
 
 

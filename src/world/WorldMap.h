@@ -8,9 +8,9 @@
 #include <memory>
 #include <vector>
 
-#include "Map.h"
-#include "MapActor.h"
-#include "MapNode.h"
+#include "src/pathing/Map.h"
+#include "src/world/MapActor.h"
+#include "src/pathing/MapNode.h"
 #include "Structure.h"
 
 class WorldMap : public Map {

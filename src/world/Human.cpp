@@ -7,7 +7,7 @@
 #include <iostream>
 #include <utility>
 
-#include "Pather.h"
+#include "src/pathing/Pather.h"
 
 
 Human::Human(std::string name) : MapActor(), name(std::move(name)) {

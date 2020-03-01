@@ -5,9 +5,9 @@
 #ifndef HIVEMIND_VISIONMAP_H
 #define HIVEMIND_VISIONMAP_H
 
-#include "Map.h"
-#include "MapActor.h"
-#include "MapNode.h"
+#include "src/pathing/Map.h"
+#include "src/world/MapActor.h"
+#include "src/pathing/MapNode.h"
 
 
 class VisionMap : public Map {

@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "MapEntity.h"
-#include "MapNode.h"
+#include "src/pathing/MapNode.h"
 
 class GridMap;
 

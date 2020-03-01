@@ -7,14 +7,14 @@
 
 #include <memory>
 
-#include "Renderable.h"
+#include "src/render/Mesh.h"
 
 
-class UserInterface : public Renderable {
+class UserInterface {
 public:
     typedef std::shared_ptr<UserInterface> Ptr;
 
-    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize) override;
+    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
 };
 
 

@@ -12,11 +12,11 @@
 #include <unordered_map>
 #include <utility>
 
-#include "MapActor.h"
-#include "MapPosition.h"
-#include "VisionMap.h"
-#include "BaseRole.h"
-#include "GridMap.h"
+#include "src/world/MapActor.h"
+#include "src/pathing/MapPosition.h"
+#include "src/world/VisionMap.h"
+#include "src/society/BaseRole.h"
+#include "src/pathing/GridMap.h"
 
 
 class Human : public MapActor {

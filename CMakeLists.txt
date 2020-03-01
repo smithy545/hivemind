@@ -58,7 +58,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind src/main.cpp src/Human.cpp src/Human.h src/GridMap.cpp src/GridMap.h src/MapNode.h src/Pather.cpp src/Pather.h src/GameRunner.cpp src/GameRunner.h src/Map.h src/VisionMap.cpp src/VisionMap.h src/MapPosition.h src/MapEntity.h src/MapActor.h src/Camera.cpp src/Camera.h src/Mesh.h src/Structure.cpp src/Structure.h src/Prop.cpp src/Prop.h src/Institution.cpp src/Institution.h src/BaseRole.h src/MapActor.cpp src/WorldMap.h src/UserInterface.cpp src/UserInterface.h src/Renderable.h)
+add_executable(hivemind src/main.cpp src/world/Human.cpp src/world/Human.h src/pathing/GridMap.cpp src/pathing/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/VisionMap.cpp src/world/VisionMap.h src/pathing/MapPosition.h src/world/MapEntity.h src/world/MapActor.h src/render/Camera.cpp src/render/Camera.h src/render/Mesh.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.cpp src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/MapActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderable.h src/render/Renderer.cpp src/render/Renderer.h)
 target_link_libraries(hivemind
         ${ALL_LIBS}
         )

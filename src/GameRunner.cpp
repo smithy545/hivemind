@@ -8,57 +8,27 @@
 #include <fstream>
 #include <unordered_map>
 
-#include "MapNode.h"
-#include "Human.h"
-#include "Pather.h"
+#include "src/render/Renderer.h"
+#include "src/pathing/MapNode.h"
+#include "src/world/Human.h"
+#include "src/pathing/Pather.h"
 
-
-// settings
-const int SCR_WIDTH = 800;
-const int SCR_HEIGHT = 600;
 
 // static members
 bool GameRunner::keys[];
 float GameRunner::mouseX = 0.0f;
 float GameRunner::mouseY = 0.0f;
-GLFWwindow *GameRunner::window = nullptr;
-Camera::Ptr GameRunner::camera = nullptr;
 UserInterface::Ptr GameRunner::ui = nullptr;
 int MapEntity::GLOBAL_ID = 1;
 
 
 void GameRunner::loop() {
-    // Initialise GLFW
-    if (!glfwInit()) {
-        std::cerr << "Failed to initialize GLFW" << std::endl;
-        return;
-    }
+    Renderer renderer(800, 600, 32);
+    float w = renderer.getWidth();
+    float h = renderer.getHeight();
+    float ts = renderer.getTileSize();
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-#ifdef __APPLE__
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-#endif
-
-    // Open a window and create its OpenGL context
-    window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Hoovemind", nullptr, nullptr);
-    if (window == nullptr) {
-        std::cerr << "Failed to open GLFW window" << std::endl;
-        glfwTerminate();
-        return;
-    }
-    glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, GameRunner::resize);
-
-    // Initialize GLEW
-    glewExperimental = true; // Needed for core profile
-    if (glewInit() != GLEW_OK) {
-        std::cerr << "Failed to initialize GLEW" << std::endl;
-        glfwTerminate();
-        return;
-    }
-
+    GLFWwindow *window = renderer.init();
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
@@ -68,60 +38,18 @@ void GameRunner::loop() {
     // Setup text input
     glfwSetCharCallback(window, characterCallback);
 
-    // build and compile our shader program
-    // ------------------------------------
-    // vertex shader
-    const char *vertexShaderSource = readShader("vertex.shader");
-    int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
-    glCompileShader(vertexShader);
-    int success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
-        std::cout << "Error on vertex compilation: " << infoLog << std::endl;
-    }
-    delete[] vertexShaderSource;
-
-    // fragment shader
-    const char *fragmentShaderSource = readShader("fragment.shader");
-    int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
-    glCompileShader(fragmentShader);
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(fragmentShader, 512, nullptr, infoLog);
-        std::cout << "Error on fragment compilation: " << infoLog << std::endl;
-    }
-    delete[] fragmentShaderSource;
-
-    // compile shader program
-    int shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if (!success) {
-        glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
-        std::cout << "Error linking program: " << infoLog << std::endl;
-    }
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+    GLuint defaultShader = renderer.loadShaderProgram("default", "vertex.shader", "fragment.shader");
 
     // activate shader program and setup uniforms
-    glUseProgram(shaderProgram);
-    GLdouble mouseXUniform = glGetUniformLocation(shaderProgram, "mouseX");
-    GLdouble mouseYUniform = glGetUniformLocation(shaderProgram, "mouseY");
-    GLint widthUniform = glGetUniformLocation(shaderProgram, "width");
-    GLint heightUniform = glGetUniformLocation(shaderProgram, "height");
-
-    // tile size in pixels
-    float ts = 32.0f;
+    glUseProgram(defaultShader);
+    GLdouble mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
+    GLdouble mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
+    GLint widthUniform = glGetUniformLocation(defaultShader, "width");
+    GLint heightUniform = glGetUniformLocation(defaultShader, "height");
 
     // set constant uniforms
-    glUniform1f(widthUniform, ts/SCR_WIDTH);
-    glUniform1f(heightUniform, ts/SCR_HEIGHT);
+    glUniform1f(widthUniform, ts / w);
+    glUniform1f(heightUniform, ts / h);
 
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -139,9 +67,6 @@ void GameRunner::loop() {
     for (int i = 0; i < 10; i++)
         loadedMaps[0]->placeStructure(std::make_shared<Structure>(nullptr), i + 1, i, 1, 1);
 
-    // camera setup (camera not currently used)
-    camera = std::make_shared<Camera>(0, 0, SCR_WIDTH, SCR_HEIGHT, ts);
-
     // ui setup
     ui = std::make_shared<UserInterface>();
 
@@ -155,10 +80,12 @@ void GameRunner::loop() {
         glUniform1f(mouseYUniform, mouseY);
 
         // move adam to mouse pointer
-        int w = loadedMaps[0]->getWidth();
-        int h = loadedMaps[0]->getHeight();
-        int gridX = ((int)(mouseX/ts)) < w ? ((int)(mouseX/ts)) : w-1;
-        int gridY = ((int)(mouseY/ts)) < h ? ((int)(mouseY/ts)) : h-1;
+        int mx = mouseX / ts;
+        int my = (h - mouseY) / ts;
+        int gridWidth = loadedMaps[0]->getWidth();
+        int gridHeight = loadedMaps[0]->getHeight();
+        int gridX = mx < gridWidth ? mx : gridWidth - 1;
+        int gridY = my < gridHeight ? my : gridHeight - 1;
         if ((gridX != adam->getMapNode()->getX() || gridY != adam->getMapNode()->getY()) && adam->getPath().empty()) {
             MapNode::MapPath path = Pather::genAStarPath(adam->getMapNode(),
                                                          loadedMaps[0]->getNode(gridX, gridY));
@@ -170,12 +97,18 @@ void GameRunner::loop() {
         // update and render all maps
         for (const GridMap::Ptr &map: loadedMaps) {
             update(map);
-            // TODO: Figure out why tilesize has to be doubled to work properly
-            renderMesh(map->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
-        }
 
+            // determine which entities are visible
+            for (const MapEntity::Ptr &entity: map->getEntities()) {
+                if (renderer.getCamera()->inSight(entity->getMapNode())) {
+                    map->markForRendering(entity);
+                }
+            }
+            // TODO: Figure out why tilesize has to be doubled to work properly
+            Renderer::renderMesh(map->generateMesh(w, h, 2 * ts));
+        }
         // render ui
-        renderMesh(ui->generateMesh(SCR_WIDTH, SCR_HEIGHT, 2 * ts));
+        //Renderer::renderMesh(ui->generateMesh(w, h, 2 * ts));
 
         // glfw: swap buffers and poll IO events
         // -------------------------------------------------------------------------------
@@ -210,25 +143,12 @@ void GameRunner::keyCallback(GLFWwindow* window, int key, int scancode, int acti
 
 void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos) {
     mouseX = xpos;
-    mouseY = SCR_HEIGHT - ypos;
+    mouseY = ypos;
 }
 
 void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
 
-void GameRunner::renderMesh(const Mesh::Ptr& mesh) {
-    if (mesh == nullptr)
-        return;
-
-    glBindVertexArray(mesh->getVertexArrayId());
-    glDrawElements(GL_TRIANGLES, mesh->getNumIndices(), GL_UNSIGNED_INT, nullptr);
-}
-
 void GameRunner::update(const GridMap::Ptr &map) {
-    for (const MapEntity::Ptr &entity: map->getEntities()) {
-        if (camera->inSight(entity->getMapNode())) {
-            map->markForRendering(entity);
-        }
-    }
     for (const MapActor::Ptr &actor: map->getActors()) {
         switch (actor->update(map)) {
             case MapActor::MOVE:
@@ -239,34 +159,4 @@ void GameRunner::update(const GridMap::Ptr &map) {
                 break;
         }
     }
-}
-
-void GameRunner::resize(GLFWwindow *window, int width, int height) {
-    glViewport(0, 0, width, height);
-}
-
-char* GameRunner::readShader(const std::string& path) {
-    std::ifstream shaderStream("../res/" + path, std::ifstream::ate);
-    if(shaderStream) {
-        // get file length (ifstream::ate flag puts cursor at end of file)
-        int shaderLength = shaderStream.tellg();
-        shaderStream.seekg(0, std::ios_base::beg);
-
-        // store in buffer
-        char* shaderBuffer = new char[shaderLength];
-        int count = 0;
-        while(shaderStream.read(shaderBuffer + count, shaderLength - count) || shaderStream.gcount() != 0) {
-            count += shaderStream.gcount();
-        }
-        shaderStream.close();
-
-        // null terminate because C++ fucking sucks
-        shaderBuffer[count] = '\0';
-
-        return shaderBuffer;
-    }
-
-    // open failed for some reason
-    std::cout << "Error opening shader at res/" << path << std::endl;
-    return nullptr;
 }

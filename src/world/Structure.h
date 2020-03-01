@@ -8,8 +8,8 @@
 
 #include <memory>
 
-#include "MapActor.h"
-#include "MapNode.h"
+#include "src/world/MapActor.h"
+#include "src/pathing/MapNode.h"
 
 class GridMap;
 

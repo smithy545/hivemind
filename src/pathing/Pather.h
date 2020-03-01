@@ -11,7 +11,7 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include "MapNode.h"
+#include "src/pathing/MapNode.h"
 
 
 class Pather {

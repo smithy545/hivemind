@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include "MapNode.h"
+#include "src/pathing/MapNode.h"
 
 
 class Camera {

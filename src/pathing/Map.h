@@ -10,9 +10,9 @@
 #include <vector>
 #include <vector>
 
-#include "MapActor.h"
+#include "src/world/MapActor.h"
 #include "MapNode.h"
-#include "Mesh.h"
+#include "src/render/Mesh.h"
 
 
 class Map {

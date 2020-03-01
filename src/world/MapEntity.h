@@ -9,7 +9,7 @@
 #include <string>
 #include <utility>
 
-#include "MapPosition.h"
+#include "src/pathing/MapPosition.h"
 
 
 class MapEntity {
