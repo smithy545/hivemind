@@ -5,9 +5,10 @@
 #ifndef HIVEMIND_MESHOBJECT_H
 #define HIVEMIND_MESHOBJECT_H
 
-#include <glm/glm.hpp>
 #include <utility>
 #include <vector>
+
+#include <glm/glm.hpp>
 
 #include "Mesh.h"
 

@@ -5,16 +5,15 @@
 #ifndef HIVEMIND_HUMAN_H
 #define HIVEMIND_HUMAN_H
 
-
-#include <queue>
 #include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
 
-#include "src/world/WorldActor.h"
 #include "src/society/BaseRole.h"
+
 #include "GridMap.h"
+#include "WorldActor.h"
 
 
 class Human : public WorldActor {

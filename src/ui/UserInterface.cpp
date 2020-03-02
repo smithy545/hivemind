@@ -6,7 +6,8 @@
 
 #include <iostream>
 #include <utility>
-#include <src/pathing/Pather.h>
+
+#include "src/pathing/Pather.h"
 
 
 UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}

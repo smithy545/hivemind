@@ -9,9 +9,11 @@
 #include <vector>
 
 #include "src/pathing/Map.h"
-#include "src/world/WorldActor.h"
 #include "src/pathing/MapNode.h"
+
+#include "WorldActor.h"
 #include "Structure.h"
+
 
 class WorldMap : public Map {
 public:

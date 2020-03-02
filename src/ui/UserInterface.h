@@ -7,9 +7,9 @@
 
 #include <memory>
 
-#include <src/render/Mesh.h>
-#include <src/render/Renderer.h>
-#include <src/world/GridMap.h>
+#include "src/render/Mesh.h"
+#include "src/render/Renderer.h"
+#include "src/world/GridMap.h"
 
 
 class UserInterface {

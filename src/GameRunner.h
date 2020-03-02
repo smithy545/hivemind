@@ -5,19 +5,13 @@
 #ifndef HIVEMIND_GAMERUNNER_H
 #define HIVEMIND_GAMERUNNER_H
 
-// Include standard headers
-#include <string>
 #include <thread>
-#include <vector>
 
-// Include GLEW
 #include <GL/glew.h>
-
-// Include GLFW
 #include <GLFW/glfw3.h>
 
-#include "src/world/GridMap.h"
 #include "src/ui/UserInterface.h"
+#include "src/world/GridMap.h"
 
 
 class GameRunner {

@@ -4,9 +4,6 @@
 
 #include "RenderUtil.h"
 
-#include <fstream>
-#include <iostream>
-
 
 void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {
     Mesh::Ptr mesh = meshPtr.lock();

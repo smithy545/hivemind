@@ -4,11 +4,12 @@
 
 #include "Renderer.h"
 
-#include <glm/ext.hpp>
 #include <iostream>
 #include <utility>
-#include <src/util/FileUtil.h>
-#include <src/util/RenderUtil.h>
+
+#include "src/util/FileUtil.h"
+#include "src/util/MeshUtil.h"
+#include "src/util/RenderUtil.h"
 
 
 Renderer::Renderer(int width, int height, int tileSize) : camera(
@@ -17,7 +18,7 @@ Renderer::Renderer(int width, int height, int tileSize) : camera(
                                                           window(nullptr) {}
 
 
-GLFWwindow* Renderer::init() {
+GLFWwindow *Renderer::init() {
     // Initialise GLFW
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -49,28 +50,7 @@ GLFWwindow* Renderer::init() {
     }
 
     // create square mesh the size of one tile for general use
-    Mesh::Ptr tileMesh = std::make_shared<Mesh>();
-    tileMesh->vertices.push_back(0.f);
-    tileMesh->vertices.push_back(0.f);
-
-    tileMesh->vertices.push_back(tileSize);
-    tileMesh->vertices.push_back(0.f);
-
-    tileMesh->vertices.push_back(0.f);
-    tileMesh->vertices.push_back(tileSize);
-
-    tileMesh->vertices.push_back(tileSize);
-    tileMesh->vertices.push_back(tileSize);
-
-    tileMesh->indices.push_back(0);
-    tileMesh->indices.push_back(1);
-    tileMesh->indices.push_back(2);
-
-    tileMesh->indices.push_back(1);
-    tileMesh->indices.push_back(2);
-    tileMesh->indices.push_back(3);
-
-    tileMesh->reload();
+    Mesh::Ptr tileMesh = MeshUtil::generateTileMesh(tileSize);
 
     storeMesh("tile", tileMesh);
 

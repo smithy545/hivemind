@@ -5,14 +5,14 @@
 #ifndef HIVEMIND_STRUCTURE_H
 #define HIVEMIND_STRUCTURE_H
 
-
 #include <memory>
 
-#include "src/world/WorldActor.h"
 #include "src/pathing/MapNode.h"
 
-class GridMap;
+#include "WorldActor.h"
 
+
+class GridMap;
 
 class Structure : public WorldActor {
 public:

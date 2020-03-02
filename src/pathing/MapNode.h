@@ -10,7 +10,6 @@
 #include <unordered_set>
 
 
-
 class MapNode {
 public:
     typedef std::shared_ptr<MapNode> Ptr;

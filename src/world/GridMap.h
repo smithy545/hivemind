@@ -9,10 +9,11 @@
 #include <vector>
 
 #include "src/pathing/MapNode.h"
+
 #include "WorldActor.h"
 #include "WorldEntity.h"
-#include "Structure.h"
 #include "WorldMap.h"
+#include "Structure.h"
 
 
 class GridMap : public WorldMap {

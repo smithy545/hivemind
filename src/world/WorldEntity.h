@@ -5,11 +5,12 @@
 #ifndef HIVEMIND_WORLDENTITY_H
 #define HIVEMIND_WORLDENTITY_H
 
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
 #include <memory>
 #include <string>
 #include <utility>
+
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 #include "src/pathing/MapNode.h"
 

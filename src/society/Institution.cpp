@@ -4,6 +4,7 @@
 
 #include "Institution.h"
 
+
 Institution::Institution(std::string name) : name(std::move(name)) {
     // pass
 }

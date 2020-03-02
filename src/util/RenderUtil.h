@@ -6,7 +6,6 @@
 #define HIVEMIND_RENDERUTIL_H
 
 #include <memory>
-#include <string>
 
 #include "src/render/Mesh.h"
 

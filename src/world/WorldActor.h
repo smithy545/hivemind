@@ -8,8 +8,9 @@
 #include <memory>
 #include <utility>
 
-#include "WorldEntity.h"
 #include "src/pathing/MapNode.h"
+
+#include "WorldEntity.h"
 
 class GridMap;
 
