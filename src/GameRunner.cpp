@@ -10,7 +10,6 @@
 #include <glm/ext.hpp>
 
 #include "src/render/Renderer.h"
-#include "src/pathing/MapNode.h"
 #include "src/world/Human.h"
 #include "src/pathing/Pather.h"
 
@@ -68,7 +67,7 @@ void GameRunner::loop() {
     std::cout << "Misc" << std::endl;
 
     // ui setup
-    UserInterface::Ptr ui = std::make_shared<UserInterface>();
+    UserInterface::Ptr ui = std::make_shared<UserInterface>(worldMap);
 
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -112,6 +111,9 @@ void GameRunner::loop() {
         // update dynamic uniforms
         glUniform1f(mouseXUniform, mouseX);
         glUniform1f(mouseYUniform, mouseY);
+
+        // update ui
+        ui->update(mouseX, renderer.getHeight() - mouseY, ts);
 
         // add mesh model for each world entity
         defaultObj->models.clear();

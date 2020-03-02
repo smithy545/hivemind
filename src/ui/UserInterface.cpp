@@ -4,22 +4,28 @@
 
 #include "UserInterface.h"
 
+#include <utility>
+#include <src/pathing/Pather.h>
 
-UserInterface::UserInterface() {
-    /*
+
+UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}
+
+void UserInterface::update(float mouseX, float mouseY, float ts) {
     // move adam to mouse pointer
+    auto adam = map->getActors()[0];
     int mx = mouseX / (1.*ts);
-    int my = (h - mouseY) / (1.*ts);
-    int gridWidth = loadedMaps[0]->getWidth();
-    int gridHeight = loadedMaps[0]->getHeight();
+    int my = mouseY / (1.*ts);
+    int gridWidth = map->getWidth();
+    int gridHeight = map->getHeight();
     int gridX = mx < gridWidth ? mx : gridWidth - 1;
     int gridY = my < gridHeight ? my : gridHeight - 1;
     if ((gridX != adam->getPosition()->getX() || gridY != adam->getPosition()->getY()) && adam->getPath().empty()) {
         MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(),
-                                                     loadedMaps[0]->getNode(gridX, gridY));
+                                                     map->getNode(gridX, gridY));
         for (const auto &step: path) {
             adam->addToPath(step);
         }
     }
-     */
 }
+
+

@@ -7,14 +7,20 @@
 
 #include <memory>
 
-#include "src/render/Mesh.h"
+#include <src/render/Mesh.h>
+#include <src/world/GridMap.h>
 
 
 class UserInterface {
 public:
     typedef std::shared_ptr<UserInterface> Ptr;
 
-    UserInterface();
+    explicit UserInterface(GridMap::Ptr map);
+
+    void update(float mouseX, float mouseY, float ts);
+
+private:
+    GridMap::Ptr map;
 
 };
 
