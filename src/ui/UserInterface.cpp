@@ -33,27 +33,27 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float m
         camera->panDown();
     }
 
-    if (map->getActors().empty())
-        return;
+    if (mouseX >= 0 && mouseY >= 0) {
+        // load mouse tile
+        float scale = camera->getScale();
+        int mx = (renderer->getCamera()->getX() + scale * mouseX) / renderer->getTileSize();
+        int my = (renderer->getCamera()->getY() + scale * (renderer->getHeight() - mouseY)) / renderer->getTileSize();
+        int gridWidth = map->getWidth();
+        int gridHeight = map->getHeight();
+        int gridX = mx < gridWidth ? mx : gridWidth - 1;
+        int gridY = my < gridHeight ? my : gridHeight - 1;
+        auto node = map->getNode(gridX, gridY);
 
-    // move adam to mouse pointer
-    auto adam = map->getActors()[0];
-    float scale = camera->getScale();
-    int mx = (renderer->getCamera()->getX() + scale * mouseX) / renderer->getTileSize();
-    int my = (renderer->getCamera()->getY() + scale * (renderer->getHeight() - mouseY)) / renderer->getTileSize();
-    int gridWidth = map->getWidth();
-    int gridHeight = map->getHeight();
-    int gridX = mx < gridWidth ? mx : gridWidth - 1;
-    int gridY = my < gridHeight ? my : gridHeight - 1;
-    auto node = map->getNode(gridX, gridY);
-    if (node != nullptr
-        && (gridX != adam->getPosition()->getX() || gridY != adam->getPosition()->getY())
-        && adam->getPath().empty()) {
-        MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(), node);
-        for (const auto &step: path) {
-            adam->addToPath(step);
+        if (node == nullptr || map->getActors().empty())
+            return;
+
+        // move adam (first man) to mouse pointer
+        auto adam = map->getActors()[0];
+        if ((gridX != adam->getGridX() || gridY != adam->getGridY()) && adam->getPath().empty()) {
+            MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(), node);
+            for (const auto &step: path) {
+                adam->addToPath(step);
+            }
         }
     }
 }
-
-

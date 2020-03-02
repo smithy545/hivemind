@@ -21,22 +21,22 @@ bool Camera::inSight(const MapNode::Ptr &node) const {
 }
 
 void Camera::panLeft() {
-    pos.x -= 1;
+    pos.x -= scale;
     viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 void Camera::panRight() {
-    pos.x += 1;
+    pos.x += scale;
     viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 void Camera::panUp() {
-    pos.y += 1;
+    pos.y += scale;
     viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 void Camera::panDown() {
-    pos.y -= 1;
+    pos.y -= scale;
     viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 

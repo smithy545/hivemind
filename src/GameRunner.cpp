@@ -6,12 +6,9 @@
 
 #include <iostream>
 #include <memory>
-#include <unordered_map>
-#include <glm/ext.hpp>
 
 #include "src/render/Renderer.h"
 #include "src/world/Human.h"
-#include "src/pathing/Pather.h"
 
 
 // static members

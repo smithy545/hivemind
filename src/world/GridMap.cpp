@@ -56,7 +56,7 @@ GridMap::GridMap(int width, int height) : width(width), height(height) {
 
 MapNode::Ptr GridMap::getNode(int x, int y) {
     unsigned int index = y * width + x;
-    if (index < 0 || index >= nodes.size())
+    if (x >= width || y >= height || x < 0 || y < 0)
         return nullptr;
     return nodes[index];
 }
