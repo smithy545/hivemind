@@ -20,6 +20,14 @@ public:
 
     bool inSight(const MapNode::Ptr &node) const;
 
+    void panLeft();
+
+    void panRight();
+
+    void panUp();
+
+    void panDown();
+
     double getX() const;
 
     void setX(double x);

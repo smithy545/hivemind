@@ -18,6 +18,22 @@ bool Camera::inSight(const MapNode::Ptr &node) const {
            && node->getY() * tileSize < y + height;
 }
 
+void Camera::panLeft() {
+    x += 1;
+}
+
+void Camera::panRight() {
+    x -= 1;
+}
+
+void Camera::panUp() {
+    y -= 1;
+}
+
+void Camera::panDown() {
+    y += 1;
+}
+
 double Camera::getX() const {
     return x;
 }

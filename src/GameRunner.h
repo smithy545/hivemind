@@ -25,7 +25,7 @@ public:
     static void loop();
 
 private:
-    static bool keys[256];
+    static bool keys[GLFW_KEY_LAST];
     static float mouseX;
     static float mouseY;
 

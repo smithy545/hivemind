@@ -29,6 +29,9 @@ void GameRunner::loop() {
 
     std::cout << "Window init" << std::endl;
 
+    for (int i = 0; i < GLFW_KEY_LAST; i++)
+        keys[i] = false;
+
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
@@ -73,7 +76,7 @@ void GameRunner::loop() {
         glUniform1f(mouseYUniform, mouseY);
 
         // update ui
-        ui->update(mouseX, mouseY, renderer);
+        ui->update(keys, mouseX, mouseY, renderer);
 
         // update map
         updateMap(worldMap);

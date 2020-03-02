@@ -4,9 +4,8 @@
 
 #include "Renderer.h"
 
-#include <iostream>
-
 #include <glm/ext.hpp>
+#include <iostream>
 #include <utility>
 #include <src/util/FileUtil.h>
 #include <src/util/RenderUtil.h>
