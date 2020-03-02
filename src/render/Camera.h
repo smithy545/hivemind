@@ -32,21 +32,23 @@ public:
 
     void zoomOut();
 
+    void resize(int width, int height);
+
+    void resetProjectionMatrix();
+
+    void resetViewMatrix();
+
+    void setTileSize(double tileSize);
+
     float getX() const;
 
     float getY() const;
 
     float getWidth() const;
 
-    void setWidth(float width);
-
     float getHeight() const;
 
-    void setHeight(float height);
-
     float getTileSize() const;
-
-    void setTileSize(double tileSize);
 
     float getScale() const;
 

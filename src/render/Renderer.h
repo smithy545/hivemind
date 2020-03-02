@@ -29,6 +29,10 @@ public:
 
     void render(GLint mvpUniform);
 
+    void resize(int width, int height);
+
+    void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
+
     const Camera::Ptr &getCamera() const;
 
     int getWidth() const;
@@ -40,8 +44,6 @@ public:
     GLuint getShader(const std::string &name);
 
     MeshObject::Ptr getMeshObject(const std::string &name);
-
-    void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
 
 private:
     int width;

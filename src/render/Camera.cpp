@@ -22,32 +22,50 @@ bool Camera::inSight(const MapNode::Ptr &node) const {
 
 void Camera::panLeft() {
     pos.x -= scale;
-    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
+    resetViewMatrix();
 }
 
 void Camera::panRight() {
     pos.x += scale;
-    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
+    resetViewMatrix();
 }
 
 void Camera::panUp() {
     pos.y += scale;
-    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
+    resetViewMatrix();
 }
 
 void Camera::panDown() {
     pos.y -= scale;
-    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
+    resetViewMatrix();
 }
 
 void Camera::zoomIn() {
     scale *= 0.9;
-    projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height, -1.f, 1.f);
+    resetProjectionMatrix();
 }
 
 void Camera::zoomOut() {
     scale *= 1.1;
+    resetProjectionMatrix();
+}
+
+void Camera::resize(int width, int height) {
+    this->width = width;
+    this->height = height;
+    resetProjectionMatrix();
+}
+
+void Camera::setTileSize(double tileSize) {
+    this->tileSize = tileSize;
+}
+
+void Camera::resetProjectionMatrix() {
     projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height, -1.f, 1.f);
+}
+
+void Camera::resetViewMatrix() {
+    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 glm::mat4 Camera::getViewProjectionMatrix() {
@@ -66,24 +84,12 @@ float Camera::getWidth() const {
     return width;
 }
 
-void Camera::setWidth(float width) {
-    this->width = width;
-}
-
 float Camera::getHeight() const {
     return height;
 }
 
-void Camera::setHeight(float height) {
-    this->height = height;
-}
-
 float Camera::getTileSize() const {
     return tileSize;
-}
-
-void Camera::setTileSize(double tileSize) {
-    this->tileSize = tileSize;
 }
 
 float Camera::getScale() const {

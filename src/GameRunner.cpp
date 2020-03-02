@@ -13,16 +13,19 @@
 
 // static members
 bool GameRunner::keys[];
-float GameRunner::mouseX = 0.0f;
-float GameRunner::mouseY = 0.0f;
-float GameRunner::mouseScroll = 0.0f;
+int GameRunner::screenWidth = 800;
+int GameRunner::screenHeight = 600;
+float GameRunner::mouseX = 0;
+float GameRunner::mouseY = 0;
+float GameRunner::mouseScroll = 0;
+bool GameRunner::resized = false;
 unsigned int WorldEntity::GLOBAL_ID = 0;
 
 void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
 
     // instantiate renderer and get created window
-    Renderer::Ptr renderer = std::make_shared<Renderer>(800, 600, 32);
+    Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight, 32);
     GLFWwindow *window = renderer->init();
 
     std::cout << "Window init" << std::endl;
@@ -39,6 +42,8 @@ void GameRunner::loop() {
     glfwSetScrollCallback(window, scrollCallback);
     // Setup text input
     glfwSetCharCallback(window, characterCallback);
+    // Window resize
+    glfwSetFramebufferSizeCallback(window, resizeCallback);
 
 
     std::cout << "Shader init" << std::endl;
@@ -77,6 +82,12 @@ void GameRunner::loop() {
         // update ui
         ui->update(keys, mouseX, mouseY, mouseScroll, renderer);
 
+        // resize renderer/camera if necessary
+        if (GameRunner::resized) {
+            renderer->resize(screenWidth, screenHeight);
+            GameRunner::resized = false;
+        }
+
         // reset mouse wheel position
         mouseScroll = 0.0f;
 
@@ -107,7 +118,13 @@ void GameRunner::loop() {
     renderer->cleanup();
 }
 
-void GameRunner::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void GameRunner::updateMap(const GridMap::Ptr &map) {
+    for (const WorldActor::Ptr &actor: map->getActors()) {
+        WorldActor::Action act = actor->update(map);
+    }
+}
+
+void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     switch (action) {
         case GLFW_PRESS:
             keys[key] = true;
@@ -133,8 +150,9 @@ void GameRunner::scrollCallback(GLFWwindow *window, double xoffset, double yoffs
     mouseScroll = yoffset;
 }
 
-void GameRunner::updateMap(const GridMap::Ptr &map) {
-    for (const WorldActor::Ptr &actor: map->getActors()) {
-        WorldActor::Action act = actor->update(map);
-    }
+void GameRunner::resizeCallback(GLFWwindow *window, int width, int height) {
+    screenWidth = width;
+    screenHeight = height;
+    glViewport(0, 0, width, height);
+    GameRunner::resized = true;
 }
