@@ -45,7 +45,6 @@ void GameRunner::loop() {
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
-
     std::cout << "Shader init" << std::endl;
 
     // activate shader program and setup uniforms
