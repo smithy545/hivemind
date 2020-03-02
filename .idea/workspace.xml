@@ -1,7 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="society" targetName="empty" />
+      <config projectName="society" targetName="ContinuousStart" />
+      <config projectName="society" targetName="fmt" />
+      <config projectName="society" targetName="ContinuousBuild" />
+      <config projectName="society" targetName="simple" />
+      <config projectName="society" targetName="test-ubjson" />
+      <config projectName="society" targetName="test-element_access1" />
+      <config projectName="society" targetName="glfwinfo" />
+      <config projectName="society" targetName="test-udt" />
+      <config projectName="society" targetName="doctest_main" />
+      <config projectName="society" targetName="splitview" />
+      <config projectName="society" targetName="test-element_access2" />
+      <config projectName="society" targetName="test-inspection" />
+      <config projectName="society" targetName="test-json_pointer" />
+      <config projectName="society" targetName="test-pointer_access" />
+      <config projectName="society" targetName="threads" />
+      <config projectName="society" targetName="test-large_json" />
+      <config projectName="society" targetName="test-json_patch" />
+      <config projectName="society" targetName="NightlyTest" />
+      <config projectName="society" targetName="ContinuousCoverage" />
+      <config projectName="society" targetName="GLEW_1130" />
+      <config projectName="society" targetName="zlib" />
+      <config projectName="society" targetName="ExperimentalSubmit" />
+      <config projectName="society" targetName="test-modifiers" />
+      <config projectName="society" targetName="gamma" />
+      <config projectName="society" targetName="wave" />
+      <config projectName="society" targetName="ExperimentalStart" />
+      <config projectName="society" targetName="test-alt-string" />
+      <config projectName="society" targetName="test-algorithms" />
+      <config projectName="society" targetName="test-convenience" />
+      <config projectName="society" targetName="test-noexcept" />
+      <config projectName="society" targetName="society" />
+      <config projectName="society" targetName="test-bson" />
+      <config projectName="society" targetName="test-merge_patch" />
+      <config projectName="society" targetName="test-msgpack" />
+      <config projectName="society" targetName="sharing" />
+      <config projectName="society" targetName="test-allocator" />
+      <config projectName="society" targetName="test-wstring" />
+      <config projectName="society" targetName="joysticks" />
+      <config projectName="society" targetName="ExperimentalConfigure" />
+      <config projectName="society" targetName="ExperimentalBuild" />
+      <config projectName="society" targetName="test-items" />
+      <config projectName="society" targetName="reopen" />
+      <config projectName="society" targetName="test-iterators2" />
+      <config projectName="society" targetName="test-comparison" />
+      <config projectName="society" targetName="test-meta" />
+      <config projectName="society" targetName="tearing" />
+      <config projectName="society" targetName="test-iterators1" />
+      <config projectName="society" targetName="heightmap" />
+      <config projectName="society" targetName="windows" />
+      <config projectName="society" targetName="msaa" />
+      <config projectName="society" targetName="NightlyCoverage" />
+      <config projectName="society" targetName="clipboard" />
+      <config projectName="society" targetName="particles" />
+      <config projectName="society" targetName="events" />
+      <config projectName="society" targetName="test-concepts" />
+      <config projectName="society" targetName="test-conversions" />
+      <config projectName="society" targetName="gears" />
+      <config projectName="society" targetName="test-regression" />
+      <config projectName="society" targetName="NightlyStart" />
+      <config projectName="society" targetName="test-readme" />
+      <config projectName="society" targetName="uninstall" />
+      <config projectName="society" targetName="ContinuousTest" />
+      <config projectName="society" targetName="ContinuousSubmit" />
+      <config projectName="society" targetName="test-constructor2" />
+      <config projectName="society" targetName="test-constructor1" />
+      <config projectName="society" targetName="test-to_chars" />
+      <config projectName="society" targetName="iconify" />
+      <config projectName="society" targetName="boing" />
+      <config projectName="society" targetName="ExperimentalUpdate" />
+      <config projectName="society" targetName="ExperimentalTest" />
+      <config projectName="society" targetName="NightlyUpdate" />
+      <config projectName="society" targetName="test-capacity" />
+      <config projectName="society" targetName="test-serialization" />
+      <config projectName="society" targetName="ExperimentalCoverage" />
+      <config projectName="society" targetName="NightlyConfigure" />
+      <config projectName="society" targetName="title" />
+      <config projectName="society" targetName="ContinuousUpdate" />
+      <config projectName="society" targetName="ContinuousConfigure" />
+      <config projectName="society" targetName="Continuous" />
+      <config projectName="society" targetName="Nightly" />
+      <config projectName="society" targetName="NightlySubmit" />
+      <config projectName="society" targetName="NightlyMemCheck" />
+      <config projectName="society" targetName="ExperimentalMemCheck" />
+      <config projectName="society" targetName="test-class_const_iterator" />
+      <config projectName="society" targetName="test-class_lexer" />
+      <config projectName="society" targetName="cursor" />
+      <config projectName="society" targetName="glfw" />
+      <config projectName="society" targetName="test-class_iterator" />
+      <config projectName="society" targetName="test-reference_access" />
+      <config projectName="society" targetName="NightlyBuild" />
+      <config projectName="society" targetName="NightlyMemoryCheck" />
+      <config projectName="society" targetName="test-deserialization" />
+      <config projectName="society" targetName="test-unicode" />
+      <config projectName="society" targetName="Experimental" />
+      <config projectName="society" targetName="assimp" />
+      <config projectName="society" targetName="ContinuousMemCheck" />
+      <config projectName="society" targetName="test-cbor" />
+      <config projectName="society" targetName="test-class_parser" />
+      <config projectName="society" targetName="monitors" />
+      <config projectName="society" targetName="test-testsuites" />
+    </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -9,9 +111,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="Setup proper rendering on window resize">
+    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/external/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +124,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -718,14 +822,7 @@
       <workItem from="1583087089302" duration="19057000" />
       <workItem from="1583165790741" duration="5675000" />
       <workItem from="1583171484503" duration="14054000" />
-      <workItem from="1583185660895" duration="19000" />
-    </task>
-    <task id="LOCAL-00005" summary="Add passability to map nodes">
-      <created>1579842898262</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1579842898262</updated>
+      <workItem from="1583185660895" duration="370000" />
     </task>
     <task id="LOCAL-00006" summary="Add a buncha crap">
       <created>1579924018101</created>
@@ -1063,7 +1160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583185153952</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Rename">
+      <created>1583185779211</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1583185779211</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1074,7 +1178,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Mark certain entities for rendering" />
     <MESSAGE value="Add some collision" />
     <MESSAGE value="Add some folks" />
     <MESSAGE value="Add friendly debug logs" />
@@ -1099,7 +1202,8 @@
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Fix typo" />
     <MESSAGE value="Setup proper rendering on window resize" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup proper rendering on window resize" />
+    <MESSAGE value="Rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1127,13 +1231,13 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1450" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583099412780" />
-    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2" timestamp="1583185327198">
+    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2" timestamp="1583185778601">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="136" y="13" width="1297" height="811" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582354103768" />
     <state x="159" y="80" width="1353" height="810" key="CommitChangelistDialog2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331327023" />
     <state x="-6" y="39" width="3356" height="1349" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112115922" />
-    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185327198" />
+    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185778601" />
     <state x="1468" y="215" width="799" height="797" key="CommitChangelistDialog2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842898202" />
     <state x="1456" y="107" width="1798" height="1175" key="CommitChangelistDialog2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629622464" />
     <state x="672" y="223" width="1540" height="884" key="DiffContextDialog" timestamp="1583033801930">
@@ -1146,40 +1250,40 @@
     </state>
     <state x="1493" y="385" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1582573688177" />
     <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl/0.0.3440.1440@0.0.3440.1440" timestamp="1579836594399" />
-    <state width="2310" height="292" key="GridCell.Tab.0.bottom" timestamp="1583185557722">
+    <state width="2310" height="292" key="GridCell.Tab.0.bottom" timestamp="1583186054981">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557722" />
+    <state width="2310" height="292" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1583186054981" />
     <state width="2047" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928044" />
     <state width="1670" height="386" key="GridCell.Tab.0.bottom/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2310" height="292" key="GridCell.Tab.0.center" timestamp="1583185557721">
+    <state width="2310" height="292" key="GridCell.Tab.0.center" timestamp="1583186054981">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557721" />
+    <state width="2310" height="292" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1583186054981" />
     <state width="2047" height="273" key="GridCell.Tab.0.center/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.center/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2310" height="292" key="GridCell.Tab.0.left" timestamp="1583185557721">
+    <state width="2310" height="292" key="GridCell.Tab.0.left" timestamp="1583186054980">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557721" />
+    <state width="2310" height="292" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1583186054980" />
     <state width="2047" height="273" key="GridCell.Tab.0.left/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.left/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2310" height="292" key="GridCell.Tab.0.right" timestamp="1583185557722">
+    <state width="2310" height="292" key="GridCell.Tab.0.right" timestamp="1583186054981">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557722" />
+    <state width="2310" height="292" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1583186054981" />
     <state width="2047" height="273" key="GridCell.Tab.0.right/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.right/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
     <state x="1921" y="415" key="RollbackChangesDialog" timestamp="1582506470904">
@@ -1195,13 +1299,13 @@
     <state x="1259" y="154" key="SettingsEditor/0.0.5360.1440@0.0.5360.1440" timestamp="1579734759232" />
     <state x="803" y="118" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579919306071" />
     <state x="3894" y="156" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@3440.0.1920.1080" timestamp="1579542378989" />
-    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2" timestamp="1583185155322">
+    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2" timestamp="1583185780459">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="965" y="183" width="481" height="297" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582354106620" />
     <state x="1126" y="240" width="483" height="389" key="Vcs.Push.Dialog.v2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331330030" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112081176" />
-    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185155322" />
+    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185780459" />
     <state x="2163" y="338" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842899761" />
     <state x="2161" y="320" key="Vcs.Push.Dialog.v2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579924019835" />
     <state x="2071" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583185497957">

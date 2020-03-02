@@ -1,8 +1,3 @@
-if(MSVC AND NOT "${MSVC_VERSION}" LESS 1400)
-	add_definitions( "/MP" )
-endif()
-
-
 add_definitions(
         -DTW_STATIC
         -DTW_NO_LIB_PRAGMA
@@ -11,18 +6,16 @@ add_definitions(
         -D_CRT_SECURE_NO_WARNINGS
 )
 
-### JSON ###
-
+### JSON (json parser) ###
 add_subdirectory(json)
 
-### GLM ###
-
+### GLM (opengl math) ###
 add_subdirectory(glm)
 
-### Add string formatting lib ###
+### FMT (string formatting) ###
 add_subdirectory(fmt-master)
 
-### GLFW ###
+### GLFW (opengl window/input) ###
 add_subdirectory(glfw-3.1.2)
 
 include_directories(
@@ -45,15 +38,12 @@ set(OPENGL_LIBRARY
 )
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
-### GLEW ###
-
+### GLEW (opengl types) ###
 set(GLEW_SOURCE
 	glew-1.13.0/src/glew.c
 )
 
-set(GLEW_HEADERS
-)
-
+set(GLEW_HEADERS)
 
 add_library( GLEW_1130 STATIC
 	${GLEW_SOURCE}
@@ -65,8 +55,7 @@ target_link_libraries(GLEW_1130
 	${EXTRA_LIBS}
 )
 
-
-### ASSIMP ###
+### ASSIMP (model loading) ###
 # AssImp already has a CMakeLists.txt so let's use these
 
 # Compile built-in, modified version of Zlib
