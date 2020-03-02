@@ -10,11 +10,11 @@
 
 UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}
 
-void UserInterface::update(float mouseX, float mouseY, float ts) {
+void UserInterface::update(float mouseX, float mouseY, Renderer::Ptr renderer) {
     // move adam to mouse pointer
     auto adam = map->getActors()[0];
-    int mx = mouseX / (1.*ts);
-    int my = mouseY / (1.*ts);
+    int mx = mouseX / (1. * renderer->getTileSize());
+    int my = (renderer->getHeight() - mouseY) / (1. * renderer->getTileSize());
     int gridWidth = map->getWidth();
     int gridHeight = map->getHeight();
     int gridX = mx < gridWidth ? mx : gridWidth - 1;

@@ -8,6 +8,7 @@
 #include <memory>
 
 #include <src/render/Mesh.h>
+#include <src/render/Renderer.h>
 #include <src/world/GridMap.h>
 
 
@@ -17,7 +18,7 @@ public:
 
     explicit UserInterface(GridMap::Ptr map);
 
-    void update(float mouseX, float mouseY, float ts);
+    void update(float mouseX, float mouseY, Renderer::Ptr renderer);
 
 private:
     GridMap::Ptr map;

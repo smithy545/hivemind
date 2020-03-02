@@ -19,10 +19,11 @@
 
 class Renderer {
 public:
+    typedef std::shared_ptr<Renderer> Ptr;
+
     Renderer(int width, int height, int tileSize);
 
-
-    GLFWwindow* init();
+    GLFWwindow *init();
 
     void cleanup();
 
@@ -36,14 +37,9 @@ public:
 
     int getTileSize() const;
 
-    GLuint loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
-                             const std::string &fragmentShaderPath);
+    GLuint getShader(const std::string &name);
 
     MeshObject::Ptr getMeshObject(const std::string &name);
-
-    std::vector<MeshObject::Ptr> getMeshObjects();
-
-    void addMeshObj(const std::string &name, MeshObject::Ptr meshObj);
 
     void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
 
@@ -57,6 +53,11 @@ private:
     std::unordered_map<std::string, MeshObject::Ptr> loadedMeshes;
     std::unordered_map<std::string, GLuint> loadedShaders;
     glm::mat4 projectionMatrix;
+
+
+    GLuint loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
+                             const std::string &fragmentShaderPath);
+
 };
 
 

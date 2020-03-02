@@ -79,6 +79,13 @@ GLFWwindow* Renderer::init() {
 
     storeMesh("tile", tileMesh);
 
+    // setup default shader
+    loadShaderProgram(
+            "default",
+            "vertex.shader",
+            "fragment.shader"
+    );
+
     return window;
 }
 
@@ -110,19 +117,12 @@ void Renderer::render(GLint mvpUniform) {
     }
 }
 
-std::vector<MeshObject::Ptr> Renderer::getMeshObjects() {
-    std::vector<MeshObject::Ptr> meshObjs;
-    for (const auto &mo: loadedMeshes)
-        meshObjs.push_back(mo.second);
-    return meshObjs;
+GLuint Renderer::getShader(const std::string &name) {
+    return loadedShaders[name];
 }
 
 MeshObject::Ptr Renderer::getMeshObject(const std::string &name) {
     return loadedMeshes[name];
-}
-
-void Renderer::addMeshObj(const std::string &name, MeshObject::Ptr meshObj) {
-    loadedMeshes[name] = std::move(meshObj);
 }
 
 void Renderer::storeMesh(const std::string &name, const Mesh::Ptr &mesh) {
