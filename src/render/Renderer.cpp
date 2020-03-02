@@ -7,8 +7,9 @@
 #include <iostream>
 
 #include <glm/ext.hpp>
+#include <src/util/FileUtil.h>
+#include <src/util/RenderUtil.h>
 
-#include "RenderUtil.h"
 
 Renderer::Renderer(int width, int height, int tileSize) : camera(
         std::make_shared<Camera>(0, 0, width, height, tileSize)),
@@ -19,16 +20,8 @@ Renderer::Renderer(int width, int height, int tileSize) : camera(
                                                                   .0f, 1.f * height,
                                                                   -1.f, 1.f)) {}
 
-void Renderer::cleanup() {
-    for (auto &shaderProgram : shaderPrograms) {
-        glDeleteProgram(shaderProgram.second);
-    }
-    // glfw: terminate, clearing all previously allocated GLFW resources
-    // ------------------------------------------------------------------
-    glfwTerminate();
-}
 
-std::shared_ptr<GLFWwindow> Renderer::init() {
+GLFWwindow* Renderer::init() {
     // Initialise GLFW
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -43,13 +36,13 @@ std::shared_ptr<GLFWwindow> Renderer::init() {
 #endif
 
     // Open a window and create its OpenGL context
-    window = std::shared_ptr<GLFWwindow>(glfwCreateWindow(width, height, "Hoovemind", nullptr, nullptr));
+    window = glfwCreateWindow(width, height, "Hoovemind", nullptr, nullptr);
     if (window == nullptr) {
         std::cerr << "Failed to open GLFW window" << std::endl;
         glfwTerminate();
         return nullptr;
     }
-    glfwMakeContextCurrent(window.get());
+    glfwMakeContextCurrent(window);
 
     // Initialize GLEW
     glewExperimental = true; // Needed for core profile
@@ -62,9 +55,19 @@ std::shared_ptr<GLFWwindow> Renderer::init() {
     return window;
 }
 
+void Renderer::cleanup() {
+    for (auto &shaderProgram : shaderPrograms) {
+        glDeleteProgram(shaderProgram.second);
+    }
+    // glfw: terminate, clearing all previously allocated GLFW resources
+    // ------------------------------------------------------------------
+    glfwTerminate();
+}
+
 void Renderer::render(const std::vector<MeshObject::Ptr> &meshObjects, GLint mvpUniform) {
     //GLuint program = shaderPrograms["default"];
     //glUseProgram(program);
+
     glm::mat4 viewProj = projectionMatrix * camera->getViewMatrix();
 
     for (const MeshObject::Ptr &obj: meshObjects) {
@@ -82,7 +85,7 @@ GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &v
     // build and compile our shader program
     // ------------------------------------
     // vertex shader
-    const char *vertexShaderSource = RenderUtil::readShader(vertexShaderPath);
+    char *vertexShaderSource = FileUtil::readResourceFile("shaders/" + vertexShaderPath);
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
@@ -97,7 +100,7 @@ GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &v
     delete[] vertexShaderSource;
 
     // fragment shader
-    const char *fragmentShaderSource = RenderUtil::readShader(fragmentShaderPath);
+    char *fragmentShaderSource = FileUtil::readResourceFile("shaders/" + fragmentShaderPath);
     int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
     glCompileShader(fragmentShader);

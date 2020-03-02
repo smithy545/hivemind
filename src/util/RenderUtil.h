@@ -8,15 +8,12 @@
 #include <memory>
 #include <string>
 
-#include "Mesh.h"
+#include "src/render/Mesh.h"
 
 
 class RenderUtil {
 public:
     static void renderMesh(const std::weak_ptr<Mesh> &mesh);
-
-    static char *readShader(const std::string &path);
-
 };
 
 

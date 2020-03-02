@@ -25,7 +25,6 @@ public:
     static void loop();
 
 private:
-    static UserInterface::Ptr ui;
     static bool keys[256];
     static float mouseX;
     static float mouseY;

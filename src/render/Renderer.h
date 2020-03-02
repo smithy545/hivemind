@@ -22,7 +22,7 @@ public:
     Renderer(int width, int height, int tileSize);
 
 
-    std::shared_ptr<GLFWwindow> init();
+    GLFWwindow* init();
 
     void cleanup();
 
@@ -40,7 +40,7 @@ public:
                              const std::string &fragmentShaderPath);
 
 private:
-    std::shared_ptr<GLFWwindow> window;
+    GLFWwindow* window;
     Camera::Ptr camera;
     int width;
     int height;

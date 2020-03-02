@@ -7,7 +7,7 @@
 
 #include <glm/glm.hpp>
 
-#include "Mesh.h"
+#include "src/render/Mesh.h"
 
 
 class MeshUtil {
