@@ -72,37 +72,8 @@ void GameRunner::loop() {
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-    // create square mesh the size of one tile for general use
-    Mesh::Ptr mesh = std::make_shared<Mesh>();
-    float ts = renderer.getTileSize();
-    mesh->vertices.push_back(0.f);
-    mesh->vertices.push_back(0.f);
-
-    mesh->vertices.push_back(ts);
-    mesh->vertices.push_back(0.f);
-
-    mesh->vertices.push_back(0.f);
-    mesh->vertices.push_back(ts);
-
-    mesh->vertices.push_back(ts);
-    mesh->vertices.push_back(ts);
-
-    mesh->indices.push_back(0);
-    mesh->indices.push_back(1);
-    mesh->indices.push_back(2);
-
-    mesh->indices.push_back(1);
-    mesh->indices.push_back(2);
-    mesh->indices.push_back(3);
-
-    mesh->reload();
-
-    MeshObject::Ptr defaultObj = std::make_shared<MeshObject>(mesh);
-
-    std::vector<MeshObject::Ptr> MOs;
-    MOs.push_back(defaultObj);
-
     std::cout << "Loop" << std::endl;
+    float ts = renderer.getTileSize();
     do {
         // render
         // ------
@@ -118,10 +89,10 @@ void GameRunner::loop() {
         // update map
         updateMap(worldMap);
 
-        // add mesh model for each world entity
-        defaultObj->models.clear();
+        // add tile mesh model for each world entity
+        renderer.getMeshObject("tile")->models.clear();
         for (const auto &entity: worldMap->getEntities()) {
-            defaultObj->models.push_back(
+            renderer.getMeshObject("tile")->models.push_back(
                     glm::translate(
                             glm::mat4(1),
                             glm::vec3(
@@ -130,7 +101,7 @@ void GameRunner::loop() {
         }
 
         // render
-        renderer.render(MOs, mvpUniform);
+        renderer.render(mvpUniform);
 
         // glfw: swap buffers and poll IO events
         // -------------------------------------------------------------------------------

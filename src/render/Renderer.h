@@ -26,7 +26,7 @@ public:
 
     void cleanup();
 
-    void render(const std::vector<MeshObject::Ptr> &meshObjects, GLint mvpUniform);
+    void render(GLint mvpUniform);
 
     const Camera::Ptr &getCamera() const;
 
@@ -39,15 +39,24 @@ public:
     GLuint loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
                              const std::string &fragmentShaderPath);
 
+    MeshObject::Ptr getMeshObject(const std::string &name);
+
+    std::vector<MeshObject::Ptr> getMeshObjects();
+
+    void addMeshObj(const std::string &name, MeshObject::Ptr meshObj);
+
+    void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
+
 private:
-    GLFWwindow* window;
-    Camera::Ptr camera;
     int width;
     int height;
     int tileSize;
-    std::unordered_map<std::string, GLuint> shaderPrograms;
-    glm::mat4 projectionMatrix;
 
+    Camera::Ptr camera;
+    GLFWwindow *window;
+    std::unordered_map<std::string, MeshObject::Ptr> loadedMeshes;
+    std::unordered_map<std::string, GLuint> loadedShaders;
+    glm::mat4 projectionMatrix;
 };
 
 

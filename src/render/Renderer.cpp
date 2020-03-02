@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include <glm/ext.hpp>
+#include <utility>
 #include <src/util/FileUtil.h>
 #include <src/util/RenderUtil.h>
 
@@ -52,32 +53,80 @@ GLFWwindow* Renderer::init() {
         return nullptr;
     }
 
+    // create square mesh the size of one tile for general use
+    Mesh::Ptr tileMesh = std::make_shared<Mesh>();
+    tileMesh->vertices.push_back(0.f);
+    tileMesh->vertices.push_back(0.f);
+
+    tileMesh->vertices.push_back(tileSize);
+    tileMesh->vertices.push_back(0.f);
+
+    tileMesh->vertices.push_back(0.f);
+    tileMesh->vertices.push_back(tileSize);
+
+    tileMesh->vertices.push_back(tileSize);
+    tileMesh->vertices.push_back(tileSize);
+
+    tileMesh->indices.push_back(0);
+    tileMesh->indices.push_back(1);
+    tileMesh->indices.push_back(2);
+
+    tileMesh->indices.push_back(1);
+    tileMesh->indices.push_back(2);
+    tileMesh->indices.push_back(3);
+
+    tileMesh->reload();
+
+    storeMesh("tile", tileMesh);
+
     return window;
 }
 
 void Renderer::cleanup() {
-    for (auto &shaderProgram : shaderPrograms) {
+    // clear loaded meshes
+    loadedMeshes.clear();
+
+    // clear loaded shaders
+    for (auto &shaderProgram : loadedShaders) {
         glDeleteProgram(shaderProgram.second);
     }
+
     // glfw: terminate, clearing all previously allocated GLFW resources
-    // ------------------------------------------------------------------
     glfwTerminate();
 }
 
-void Renderer::render(const std::vector<MeshObject::Ptr> &meshObjects, GLint mvpUniform) {
-    //GLuint program = shaderPrograms["default"];
+void Renderer::render(GLint mvpUniform) {
+    //GLuint program = loadedShaders["default"];
     //glUseProgram(program);
 
     glm::mat4 viewProj = projectionMatrix * camera->getViewMatrix();
-
-    for (const MeshObject::Ptr &obj: meshObjects) {
-        for (auto model: obj->models) {
+    for (const auto &obj: loadedMeshes) {
+        for (auto model: obj.second->models) {
             glm::mat4 mvpMatrix = viewProj * model;
             glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
-            RenderUtil::renderMesh(obj->mesh);
+            RenderUtil::renderMesh(obj.second->mesh);
         }
     }
+}
+
+std::vector<MeshObject::Ptr> Renderer::getMeshObjects() {
+    std::vector<MeshObject::Ptr> meshObjs;
+    for (const auto &mo: loadedMeshes)
+        meshObjs.push_back(mo.second);
+    return meshObjs;
+}
+
+MeshObject::Ptr Renderer::getMeshObject(const std::string &name) {
+    return loadedMeshes[name];
+}
+
+void Renderer::addMeshObj(const std::string &name, MeshObject::Ptr meshObj) {
+    loadedMeshes[name] = std::move(meshObj);
+}
+
+void Renderer::storeMesh(const std::string &name, const Mesh::Ptr &mesh) {
+    loadedMeshes[name] = std::make_shared<MeshObject>(mesh);
 }
 
 GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
@@ -127,7 +176,7 @@ GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &v
     glDeleteShader(fragmentShader);
 
     // store shader locally
-    shaderPrograms[name] = shaderProgram;
+    loadedShaders[name] = shaderProgram;
 
     return shaderProgram;
 }
