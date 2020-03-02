@@ -1,109 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated>
-      <config projectName="hivemind" targetName="test-reference_access" />
-      <config projectName="hivemind" targetName="ExperimentalSubmit" />
-      <config projectName="hivemind" targetName="test-noexcept" />
-      <config projectName="hivemind" targetName="ExperimentalBuild" />
-      <config projectName="hivemind" targetName="ExperimentalCoverage" />
-      <config projectName="hivemind" targetName="threads" />
-      <config projectName="hivemind" targetName="particles" />
-      <config projectName="hivemind" targetName="events" />
-      <config projectName="hivemind" targetName="ContinuousCoverage" />
-      <config projectName="hivemind" targetName="test-class_const_iterator" />
-      <config projectName="hivemind" targetName="ContinuousConfigure" />
-      <config projectName="hivemind" targetName="msaa" />
-      <config projectName="hivemind" targetName="reopen" />
-      <config projectName="hivemind" targetName="test-comparison" />
-      <config projectName="hivemind" targetName="test-class_iterator" />
-      <config projectName="hivemind" targetName="test-large_json" />
-      <config projectName="hivemind" targetName="uninstall" />
-      <config projectName="hivemind" targetName="glfwinfo" />
-      <config projectName="hivemind" targetName="ExperimentalTest" />
-      <config projectName="hivemind" targetName="test-wstring" />
-      <config projectName="hivemind" targetName="test-bson" />
-      <config projectName="hivemind" targetName="ContinuousMemCheck" />
-      <config projectName="hivemind" targetName="test-serialization" />
-      <config projectName="hivemind" targetName="boing" />
-      <config projectName="hivemind" targetName="hivemind" />
-      <config projectName="hivemind" targetName="test-inspection" />
-      <config projectName="hivemind" targetName="NightlySubmit" />
-      <config projectName="hivemind" targetName="test-json_pointer" />
-      <config projectName="hivemind" targetName="cursor" />
-      <config projectName="hivemind" targetName="test-testsuites" />
-      <config projectName="hivemind" targetName="joysticks" />
-      <config projectName="hivemind" targetName="simple" />
-      <config projectName="hivemind" targetName="test-msgpack" />
-      <config projectName="hivemind" targetName="clipboard" />
-      <config projectName="hivemind" targetName="test-class_parser" />
-      <config projectName="hivemind" targetName="test-convenience" />
-      <config projectName="hivemind" targetName="test-concepts" />
-      <config projectName="hivemind" targetName="ExperimentalUpdate" />
-      <config projectName="hivemind" targetName="test-pointer_access" />
-      <config projectName="hivemind" targetName="test-meta" />
-      <config projectName="hivemind" targetName="test-element_access2" />
-      <config projectName="hivemind" targetName="test-element_access1" />
-      <config projectName="hivemind" targetName="splitview" />
-      <config projectName="hivemind" targetName="Nightly" />
-      <config projectName="hivemind" targetName="title" />
-      <config projectName="hivemind" targetName="NightlyConfigure" />
-      <config projectName="hivemind" targetName="test-constructor2" />
-      <config projectName="hivemind" targetName="test-constructor1" />
-      <config projectName="hivemind" targetName="test-conversions" />
-      <config projectName="hivemind" targetName="wave" />
-      <config projectName="hivemind" targetName="empty" />
-      <config projectName="hivemind" targetName="ContinuousSubmit" />
-      <config projectName="hivemind" targetName="windows" />
-      <config projectName="hivemind" targetName="ContinuousBuild" />
-      <config projectName="hivemind" targetName="GLEW_1130" />
-      <config projectName="hivemind" targetName="NightlyBuild" />
-      <config projectName="hivemind" targetName="assimp" />
-      <config projectName="hivemind" targetName="NightlyMemoryCheck" />
-      <config projectName="hivemind" targetName="test-items" />
-      <config projectName="hivemind" targetName="ExperimentalStart" />
-      <config projectName="hivemind" targetName="test-readme" />
-      <config projectName="hivemind" targetName="Experimental" />
-      <config projectName="hivemind" targetName="gears" />
-      <config projectName="hivemind" targetName="iconify" />
-      <config projectName="hivemind" targetName="test-to_chars" />
-      <config projectName="hivemind" targetName="test-iterators2" />
-      <config projectName="hivemind" targetName="test-iterators1" />
-      <config projectName="hivemind" targetName="NightlyCoverage" />
-      <config projectName="hivemind" targetName="NightlyUpdate" />
-      <config projectName="hivemind" targetName="test-algorithms" />
-      <config projectName="hivemind" targetName="test-merge_patch" />
-      <config projectName="hivemind" targetName="test-allocator" />
-      <config projectName="hivemind" targetName="heightmap" />
-      <config projectName="hivemind" targetName="test-class_lexer" />
-      <config projectName="hivemind" targetName="doctest_main" />
-      <config projectName="hivemind" targetName="NightlyStart" />
-      <config projectName="hivemind" targetName="gamma" />
-      <config projectName="hivemind" targetName="ContinuousUpdate" />
-      <config projectName="hivemind" targetName="test-deserialization" />
-      <config projectName="hivemind" targetName="ContinuousStart" />
-      <config projectName="hivemind" targetName="tearing" />
-      <config projectName="hivemind" targetName="test-modifiers" />
-      <config projectName="hivemind" targetName="sharing" />
-      <config projectName="hivemind" targetName="NightlyTest" />
-      <config projectName="hivemind" targetName="ExperimentalConfigure" />
-      <config projectName="hivemind" targetName="zlib" />
-      <config projectName="hivemind" targetName="test-udt" />
-      <config projectName="hivemind" targetName="glfw" />
-      <config projectName="hivemind" targetName="test-ubjson" />
-      <config projectName="hivemind" targetName="Continuous" />
-      <config projectName="hivemind" targetName="fmt" />
-      <config projectName="hivemind" targetName="NightlyMemCheck" />
-      <config projectName="hivemind" targetName="ExperimentalMemCheck" />
-      <config projectName="hivemind" targetName="test-alt-string" />
-      <config projectName="hivemind" targetName="test-unicode" />
-      <config projectName="hivemind" targetName="monitors" />
-      <config projectName="hivemind" targetName="test-json_patch" />
-      <config projectName="hivemind" targetName="test-capacity" />
-      <config projectName="hivemind" targetName="ContinuousTest" />
-      <config projectName="hivemind" targetName="test-cbor" />
-      <config projectName="hivemind" targetName="test-regression" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -111,14 +9,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
+    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="Setup proper rendering on window resize">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameRunner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameRunner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameRunner.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameRunner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Camera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,9 +21,9 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1Wd1k7Z94oROTlgTnKh9yUoPpXp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -147,7 +40,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC&#10;Oracle" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
@@ -159,541 +52,542 @@
       <recent name="C:\Users\Philip\CLionProjects\hivemind\src\world" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.hivemind">
-    <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
+  <component name="RunManager" selected="CMake Application.society">
+    <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousBuild" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousBuild" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousBuild">
+    <configuration name="ContinuousBuild" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousBuild" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousBuild">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousConfigure" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousConfigure" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousConfigure">
+    <configuration name="ContinuousConfigure" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousConfigure" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousConfigure">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousCoverage" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousCoverage" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousCoverage">
+    <configuration name="ContinuousCoverage" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousCoverage" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousCoverage">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousMemCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousMemCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousMemCheck">
+    <configuration name="ContinuousMemCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousMemCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousMemCheck">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousStart" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousStart" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousStart">
+    <configuration name="ContinuousStart" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousStart" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousStart">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousSubmit" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousSubmit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousSubmit">
+    <configuration name="ContinuousSubmit" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousSubmit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousSubmit">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousTest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousTest">
+    <configuration name="ContinuousTest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousTest">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContinuousUpdate" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ContinuousUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ContinuousUpdate">
+    <configuration name="ContinuousUpdate" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ContinuousUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ContinuousUpdate">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Experimental" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="Experimental" CONFIG_NAME="Debug">
+    <configuration name="Experimental" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="Experimental" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalBuild" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalBuild" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalBuild">
+    <configuration name="ExperimentalBuild" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalBuild" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalBuild">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalConfigure" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalConfigure" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalConfigure">
+    <configuration name="ExperimentalConfigure" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalConfigure" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalConfigure">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalCoverage" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalCoverage" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalCoverage">
+    <configuration name="ExperimentalCoverage" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalCoverage" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalCoverage">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalMemCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalMemCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalMemCheck">
+    <configuration name="ExperimentalMemCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalMemCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalMemCheck">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalStart" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalStart" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalStart">
+    <configuration name="ExperimentalStart" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalStart" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalStart">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalSubmit" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalSubmit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalSubmit">
+    <configuration name="ExperimentalSubmit" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalSubmit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalSubmit">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalTest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalTest">
+    <configuration name="ExperimentalTest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalTest">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentalUpdate" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="ExperimentalUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="ExperimentalUpdate">
+    <configuration name="ExperimentalUpdate" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="ExperimentalUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="ExperimentalUpdate">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GLEW_1130" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="GLEW_1130" CONFIG_NAME="Debug">
+    <configuration name="GLEW_1130" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="GLEW_1130" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Nightly" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="Nightly" CONFIG_NAME="Debug">
+    <configuration name="Nightly" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="Nightly" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyBuild" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyBuild" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyBuild">
+    <configuration name="NightlyBuild" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyBuild" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyBuild">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyConfigure" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyConfigure" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyConfigure">
+    <configuration name="NightlyConfigure" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyConfigure" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyConfigure">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyCoverage" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyCoverage" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyCoverage">
+    <configuration name="NightlyCoverage" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyCoverage" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyCoverage">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyMemCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyMemCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyMemCheck">
+    <configuration name="NightlyMemCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyMemCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyMemCheck">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyMemoryCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyMemoryCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyMemoryCheck">
+    <configuration name="NightlyMemoryCheck" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyMemoryCheck" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyMemoryCheck">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyStart" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyStart" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyStart">
+    <configuration name="NightlyStart" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyStart" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyStart">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlySubmit" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlySubmit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlySubmit">
+    <configuration name="NightlySubmit" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlySubmit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlySubmit">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyTest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyTest">
+    <configuration name="NightlyTest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyTest">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NightlyUpdate" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="NightlyUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="NightlyUpdate">
+    <configuration name="NightlyUpdate" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="NightlyUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="NightlyUpdate">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="assimp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="assimp" CONFIG_NAME="Debug">
+    <configuration name="assimp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="assimp" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="boing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="boing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="boing">
+    <configuration name="boing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="boing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="boing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="clipboard" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="clipboard" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="clipboard">
+    <configuration name="clipboard" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="clipboard" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="clipboard">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cursor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="cursor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="cursor">
+    <configuration name="cursor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="cursor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="cursor">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="doctest_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="doctest_main" CONFIG_NAME="Debug">
+    <configuration name="doctest_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="doctest_main" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="empty" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="empty" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="empty">
+    <configuration name="empty" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="empty" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="empty">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="events" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="events" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="events">
+    <configuration name="events" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="events" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="events">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="fmt" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="fmt" CONFIG_NAME="Debug">
+    <configuration name="fmt" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="fmt" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gamma" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="gamma" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="gamma">
+    <configuration name="gamma" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="gamma" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="gamma">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gears" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="gears" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="gears">
+    <configuration name="gears" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="gears" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="gears">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="glfw" CONFIG_NAME="Debug">
+    <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="glfw" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="glfwinfo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="glfwinfo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="glfwinfo">
+    <configuration name="glfwinfo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="glfwinfo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="glfwinfo">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="heightmap" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="heightmap" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="heightmap">
+    <configuration name="heightmap" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="heightmap" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="heightmap">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="hivemind" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="hivemind" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="hivemind">
+    <configuration name="iconify" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="iconify" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="iconify">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="iconify" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="iconify" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="iconify">
+    <configuration name="joysticks" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="joysticks" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="joysticks">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="joysticks" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="joysticks" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="joysticks">
+    <configuration name="monitors" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="monitors" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="monitors">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="monitors" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="monitors" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="monitors">
+    <configuration name="msaa" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="msaa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="msaa">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="msaa" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="msaa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="msaa">
+    <configuration name="particles" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="particles" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="particles">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="particles" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="particles" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="particles">
+    <configuration name="reopen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="reopen" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="reopen">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="reopen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="reopen" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="reopen">
+    <configuration name="sharing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="sharing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="sharing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="sharing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="sharing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="sharing">
+    <configuration name="simple" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="simple" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="simple">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="simple" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="simple" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="simple">
+    <configuration name="society" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="society" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="society">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="splitview" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="splitview" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="splitview">
+    <configuration name="splitview" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="splitview" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="splitview">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tearing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="tearing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="tearing">
+    <configuration name="tearing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="tearing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="tearing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-algorithms" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-algorithms" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-algorithms">
+    <configuration name="test-algorithms" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-algorithms" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-algorithms">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-allocator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-allocator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-allocator">
+    <configuration name="test-allocator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-allocator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-allocator">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-alt-string" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-alt-string" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-alt-string">
+    <configuration name="test-alt-string" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-alt-string" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-alt-string">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-bson" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-bson" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-bson">
+    <configuration name="test-bson" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-bson" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-bson">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-capacity" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-capacity" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-capacity">
+    <configuration name="test-capacity" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-capacity" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-capacity">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-cbor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-cbor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-cbor">
+    <configuration name="test-cbor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-cbor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-cbor">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-class_const_iterator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-class_const_iterator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-class_const_iterator">
+    <configuration name="test-class_const_iterator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-class_const_iterator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-class_const_iterator">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-class_iterator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-class_iterator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-class_iterator">
+    <configuration name="test-class_iterator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-class_iterator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-class_iterator">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-class_lexer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-class_lexer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-class_lexer">
+    <configuration name="test-class_lexer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-class_lexer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-class_lexer">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-class_parser" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-class_parser" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-class_parser">
+    <configuration name="test-class_parser" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-class_parser" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-class_parser">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-comparison" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-comparison" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-comparison">
+    <configuration name="test-comparison" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-comparison" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-comparison">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-concepts" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-concepts" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-concepts">
+    <configuration name="test-concepts" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-concepts" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-concepts">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-constructor1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-constructor1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-constructor1">
+    <configuration name="test-constructor1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-constructor1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-constructor1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-constructor2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-constructor2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-constructor2">
+    <configuration name="test-constructor2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-constructor2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-constructor2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-convenience" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-convenience" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-convenience">
+    <configuration name="test-convenience" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-convenience" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-convenience">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-conversions" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-conversions" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-conversions">
+    <configuration name="test-conversions" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-conversions" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-conversions">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-deserialization" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-deserialization" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-deserialization">
+    <configuration name="test-deserialization" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-deserialization" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-deserialization">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-element_access1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-element_access1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-element_access1">
+    <configuration name="test-element_access1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-element_access1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-element_access1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-element_access2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-element_access2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-element_access2">
+    <configuration name="test-element_access2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-element_access2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-element_access2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-inspection" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-inspection" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-inspection">
+    <configuration name="test-inspection" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-inspection" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-inspection">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-items" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-items" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-items">
+    <configuration name="test-items" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-items" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-items">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-iterators1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-iterators1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-iterators1">
+    <configuration name="test-iterators1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-iterators1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-iterators1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-iterators2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-iterators2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-iterators2">
+    <configuration name="test-iterators2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-iterators2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-iterators2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-json_patch" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-json_patch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-json_patch">
+    <configuration name="test-json_patch" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-json_patch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-json_patch">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-json_pointer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-json_pointer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-json_pointer">
+    <configuration name="test-json_pointer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-json_pointer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-json_pointer">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-large_json" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-large_json" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-large_json">
+    <configuration name="test-large_json" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-large_json" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-large_json">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-merge_patch" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-merge_patch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-merge_patch">
+    <configuration name="test-merge_patch" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-merge_patch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-merge_patch">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-meta" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-meta" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-meta">
+    <configuration name="test-meta" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-meta" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-meta">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-modifiers" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-modifiers" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-modifiers">
+    <configuration name="test-modifiers" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-modifiers" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-modifiers">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-msgpack" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-msgpack" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-msgpack">
+    <configuration name="test-msgpack" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-msgpack" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-msgpack">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-noexcept" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-noexcept" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-noexcept">
+    <configuration name="test-noexcept" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-noexcept" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-noexcept">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-pointer_access" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-pointer_access" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-pointer_access">
+    <configuration name="test-pointer_access" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-pointer_access" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-pointer_access">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-readme" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-readme" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-readme">
+    <configuration name="test-readme" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-readme" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-readme">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-reference_access" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-reference_access" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-reference_access">
+    <configuration name="test-reference_access" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-reference_access" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-reference_access">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-regression" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-regression" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-regression">
+    <configuration name="test-regression" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-regression" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-regression">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-serialization" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-serialization" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-serialization">
+    <configuration name="test-serialization" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-serialization" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-serialization">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-testsuites" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-testsuites" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-testsuites">
+    <configuration name="test-testsuites" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-testsuites" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-testsuites">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-to_chars" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-to_chars" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-to_chars">
+    <configuration name="test-to_chars" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-to_chars" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-to_chars">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-ubjson" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-ubjson" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-ubjson">
+    <configuration name="test-ubjson" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-ubjson" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-ubjson">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-udt" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-udt" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-udt">
+    <configuration name="test-udt" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-udt" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-udt">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-unicode" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-unicode" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-unicode">
+    <configuration name="test-unicode" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-unicode" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-unicode">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test-wstring" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="test-wstring" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="test-wstring">
+    <configuration name="test-wstring" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="test-wstring" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="test-wstring">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="threads" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="threads" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="threads">
+    <configuration name="threads" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="threads" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="threads">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="title" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="title" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="title">
+    <configuration name="title" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="title" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="title">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="uninstall" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="uninstall" CONFIG_NAME="Debug">
+    <configuration name="uninstall" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="uninstall" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="wave" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="wave" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="wave">
+    <configuration name="wave" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="wave" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="wave">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="windows" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="windows" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="hivemind" RUN_TARGET_NAME="windows">
+    <configuration name="windows" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="windows" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="society" RUN_TARGET_NAME="windows">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="zlib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="hivemind" TARGET_NAME="zlib" CONFIG_NAME="Debug">
+    <configuration name="zlib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="zlib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.GLEW_1130" />
-      <item itemvalue="CMake Application.assimp" />
       <item itemvalue="CMake Application.boing" />
+      <item itemvalue="CMake Application.fmt" />
+      <item itemvalue="CMake Application.gears" />
+      <item itemvalue="CMake Application.GLEW_1130" />
+      <item itemvalue="CMake Application.glfw" />
+      <item itemvalue="CMake Application.heightmap" />
+      <item itemvalue="CMake Application.particles" />
+      <item itemvalue="CMake Application.simple" />
+      <item itemvalue="CMake Application.society" />
+      <item itemvalue="CMake Application.splitview" />
+      <item itemvalue="CMake Application.uninstall" />
+      <item itemvalue="CMake Application.wave" />
+      <item itemvalue="CMake Application.assimp" />
+      <item itemvalue="CMake Application.zlib" />
       <item itemvalue="CMake Application.clipboard" />
       <item itemvalue="CMake Application.cursor" />
       <item itemvalue="CMake Application.empty" />
       <item itemvalue="CMake Application.events" />
-      <item itemvalue="CMake Application.fmt" />
       <item itemvalue="CMake Application.gamma" />
-      <item itemvalue="CMake Application.gears" />
-      <item itemvalue="CMake Application.glfw" />
       <item itemvalue="CMake Application.glfwinfo" />
-      <item itemvalue="CMake Application.heightmap" />
-      <item itemvalue="CMake Application.hivemind" />
       <item itemvalue="CMake Application.iconify" />
       <item itemvalue="CMake Application.joysticks" />
       <item itemvalue="CMake Application.monitors" />
       <item itemvalue="CMake Application.msaa" />
-      <item itemvalue="CMake Application.particles" />
       <item itemvalue="CMake Application.reopen" />
       <item itemvalue="CMake Application.sharing" />
-      <item itemvalue="CMake Application.simple" />
-      <item itemvalue="CMake Application.splitview" />
       <item itemvalue="CMake Application.tearing" />
       <item itemvalue="CMake Application.threads" />
       <item itemvalue="CMake Application.title" />
-      <item itemvalue="CMake Application.uninstall" />
-      <item itemvalue="CMake Application.wave" />
       <item itemvalue="CMake Application.windows" />
       <item itemvalue="CMake Application.Continuous" />
       <item itemvalue="CMake Application.ContinuousBuild" />
@@ -766,7 +660,6 @@
       <item itemvalue="CMake Application.test-udt" />
       <item itemvalue="CMake Application.test-unicode" />
       <item itemvalue="CMake Application.test-wstring" />
-      <item itemvalue="CMake Application.zlib" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -824,14 +717,8 @@
       <workItem from="1583031767433" duration="3758000" />
       <workItem from="1583087089302" duration="19057000" />
       <workItem from="1583165790741" duration="5675000" />
-      <workItem from="1583171484503" duration="13595000" />
-    </task>
-    <task id="LOCAL-00004" summary="Add a* pathing">
-      <created>1579842403484</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1579842403484</updated>
+      <workItem from="1583171484503" duration="14054000" />
+      <workItem from="1583185660895" duration="19000" />
     </task>
     <task id="LOCAL-00005" summary="Add passability to map nodes">
       <created>1579842898262</created>
@@ -1169,7 +1056,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583183754496</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Setup proper rendering on window resize">
+      <created>1583185153952</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1583185153952</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1180,7 +1074,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Turn MapNode neighbors into unordered_set" />
     <MESSAGE value="Mark certain entities for rendering" />
     <MESSAGE value="Add some collision" />
     <MESSAGE value="Add some folks" />
@@ -1205,7 +1098,8 @@
     <MESSAGE value="Fix panning to work with scale. Update map bounds checking." />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Fix typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix typo" />
+    <MESSAGE value="Setup proper rendering on window resize" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup proper rendering on window resize" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1215,11 +1109,11 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="2173" y="353" width="804" height="667" key="#Notifications/0.0.3440.1440@0.0.3440.1440" timestamp="1579838001945" />
-    <state x="1628" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582568132605">
+    <state x="1628" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583185721880">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1628" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1582511477970" />
-    <state x="1628" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1582568132605" />
+    <state x="1628" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1583185721880" />
     <state x="1464" y="504" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582345912629">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -1233,13 +1127,13 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1450" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583099412780" />
-    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2" timestamp="1583183753958">
+    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2" timestamp="1583185327198">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="136" y="13" width="1297" height="811" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582354103768" />
     <state x="159" y="80" width="1353" height="810" key="CommitChangelistDialog2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331327023" />
     <state x="-6" y="39" width="3356" height="1349" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112115922" />
-    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1583183753958" />
+    <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185327198" />
     <state x="1468" y="215" width="799" height="797" key="CommitChangelistDialog2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842898202" />
     <state x="1456" y="107" width="1798" height="1175" key="CommitChangelistDialog2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629622464" />
     <state x="672" y="223" width="1540" height="884" key="DiffContextDialog" timestamp="1583033801930">
@@ -1252,63 +1146,68 @@
     </state>
     <state x="1493" y="385" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1582573688177" />
     <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl/0.0.3440.1440@0.0.3440.1440" timestamp="1579836594399" />
-    <state width="2310" height="292" key="GridCell.Tab.0.bottom" timestamp="1583185115541">
+    <state width="2310" height="292" key="GridCell.Tab.0.bottom" timestamp="1583185557722">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1583185115541" />
+    <state width="2310" height="292" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557722" />
     <state width="2047" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928044" />
     <state width="1670" height="386" key="GridCell.Tab.0.bottom/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2310" height="292" key="GridCell.Tab.0.center" timestamp="1583185115541">
+    <state width="2310" height="292" key="GridCell.Tab.0.center" timestamp="1583185557721">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1583185115541" />
+    <state width="2310" height="292" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557721" />
     <state width="2047" height="273" key="GridCell.Tab.0.center/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.center/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2310" height="292" key="GridCell.Tab.0.left" timestamp="1583185115541">
+    <state width="2310" height="292" key="GridCell.Tab.0.left" timestamp="1583185557721">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1583185115541" />
+    <state width="2310" height="292" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557721" />
     <state width="2047" height="273" key="GridCell.Tab.0.left/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.left/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2310" height="292" key="GridCell.Tab.0.right" timestamp="1583185115541">
+    <state width="2310" height="292" key="GridCell.Tab.0.right" timestamp="1583185557722">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
     <state width="3397" height="294" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112661883" />
-    <state width="2310" height="292" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1583185115541" />
+    <state width="2310" height="292" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1583185557722" />
     <state width="2047" height="273" key="GridCell.Tab.0.right/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.right/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
     <state x="1921" y="415" key="RollbackChangesDialog" timestamp="1582506470904">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1921" y="415" key="RollbackChangesDialog/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1582506470904" />
-    <state x="803" y="115" key="SettingsEditor" timestamp="1582510285673">
+    <state x="803" y="115" key="SettingsEditor" timestamp="1583185507844">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="803" y="115" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1582510285673" />
+    <state x="803" y="115" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1583185507844" />
     <state x="807" y="154" key="SettingsEditor/0.0.3440.1440@0.0.3440.1440" timestamp="1579843254410" />
     <state x="1259" y="154" key="SettingsEditor/0.0.5360.1440@0.0.5360.1440" timestamp="1579734759232" />
     <state x="803" y="118" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579919306071" />
     <state x="3894" y="156" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@3440.0.1920.1080" timestamp="1579542378989" />
-    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2" timestamp="1583183755525">
+    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2" timestamp="1583185155322">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="965" y="183" width="481" height="297" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582354106620" />
     <state x="1126" y="240" width="483" height="389" key="Vcs.Push.Dialog.v2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331330030" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583112081176" />
-    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583183755525" />
+    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185155322" />
     <state x="2163" y="338" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842899761" />
     <state x="2161" y="320" key="Vcs.Push.Dialog.v2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579924019835" />
+    <state x="2071" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583185497957">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2071" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583185497957" />
     <state x="1397" y="306" width="645" height="785" key="find.popup" timestamp="1583033034321">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

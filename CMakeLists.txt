@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(hivemind)
+project(society)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -57,7 +57,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind src/main.cpp src/world/Human.cpp src/world/Human.h src/world/GridMap.cpp src/world/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/WorldEntity.h src/world/WorldActor.h src/render/Camera.cpp src/render/Camera.h src/render/Mesh.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.cpp src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/WorldActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderer.cpp src/render/Renderer.h src/util/RenderUtil.cpp src/util/RenderUtil.h src/util/MeshUtil.cpp src/util/MeshUtil.h src/render/MeshObject.h src/util/FileUtil.cpp src/util/FileUtil.h)
-target_link_libraries(hivemind
+add_executable(society src/main.cpp src/world/Human.cpp src/world/Human.h src/world/GridMap.cpp src/world/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/WorldEntity.h src/world/WorldActor.h src/render/Camera.cpp src/render/Camera.h src/render/Mesh.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.cpp src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/WorldActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderer.cpp src/render/Renderer.h src/util/RenderUtil.cpp src/util/RenderUtil.h src/util/MeshUtil.cpp src/util/MeshUtil.h src/render/MeshObject.h src/util/FileUtil.cpp src/util/FileUtil.h)
+target_link_libraries(society
         ${ALL_LIBS}
         )
