@@ -8,13 +8,13 @@
 
 #include <memory>
 
-#include "src/world/MapActor.h"
+#include "src/world/WorldActor.h"
 #include "src/pathing/MapNode.h"
 
 class GridMap;
 
 
-class Structure : public MapActor {
+class Structure : public WorldActor {
 public:
     typedef std::shared_ptr<Structure> Ptr;
 

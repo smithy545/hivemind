@@ -16,7 +16,7 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
 
-#include "src/pathing/GridMap.h"
+#include "src/world/GridMap.h"
 #include "src/ui/UserInterface.h"
 
 
@@ -37,7 +37,6 @@ private:
 
     // game state functions
     static void update(const GridMap::Ptr &map);
-
 };
 
 

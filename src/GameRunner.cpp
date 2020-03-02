@@ -5,8 +5,9 @@
 #include "GameRunner.h"
 
 #include <iostream>
-#include <fstream>
+#include <memory>
 #include <unordered_map>
+#include <glm/ext.hpp>
 
 #include "src/render/Renderer.h"
 #include "src/pathing/MapNode.h"
@@ -19,17 +20,13 @@ bool GameRunner::keys[];
 float GameRunner::mouseX = 0.0f;
 float GameRunner::mouseY = 0.0f;
 UserInterface::Ptr GameRunner::ui = nullptr;
-int MapEntity::GLOBAL_ID = 1;
-
+unsigned int WorldEntity::GLOBAL_ID = 0;
 
 void GameRunner::loop() {
     Renderer renderer(800, 600, 32);
-    float w = renderer.getWidth();
-    float h = renderer.getHeight();
-    float ts = renderer.getTileSize();
 
     // init renderer and get created window
-    GLFWwindow *window = renderer.init();
+    GLFWwindow *window = renderer.init().get();
 
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -41,38 +38,63 @@ void GameRunner::loop() {
     glfwSetCharCallback(window, characterCallback);
 
     // setup default shader and use for uniforms
-    GLuint defaultShader = renderer.loadShaderProgram("default", "vertex.shader", "fragment.shader");
+    GLuint defaultShader = renderer.loadShaderProgram(
+            "default",
+            "vertex.shader",
+            "fragment.shader"
+    );
 
     // activate shader program and setup uniforms
     glUseProgram(defaultShader);
+    GLint mvpUniform = glGetUniformLocation(defaultShader, "MVP");
     GLdouble mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
     GLdouble mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
-    GLint widthUniform = glGetUniformLocation(defaultShader, "width");
-    GLint heightUniform = glGetUniformLocation(defaultShader, "height");
 
-    // set constant uniforms
-    glUniform1f(widthUniform, ts / w);
-    glUniform1f(heightUniform, ts / h);
-
-    // set background to black
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-    // setup non opengl entites
     // map setup
-    std::vector<GridMap::Ptr> loadedMaps;
-    loadedMaps.push_back(std::make_shared<GridMap>(500, 500));
+    GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
 
     // first there was adam and he was added to the map actors
     Human::Ptr adam = std::make_shared<Human>("adam");
-    loadedMaps[0]->addActor(adam, 0, 20);
+    worldMap->addActor(adam, 0, 20);
     for (int i = 0; i < 10; i++)
-        loadedMaps[0]->addActor(std::make_shared<Human>("eve" + std::to_string(i)), i, i);
+        worldMap->addActor(std::make_shared<Human>("eve" + std::to_string(i)), i, i);
     for (int i = 0; i < 10; i++)
-        loadedMaps[0]->placeStructure(std::make_shared<Structure>(nullptr), i + 1, i, 1, 1);
+        worldMap->placeStructure(std::make_shared<Structure>(nullptr), i + 1, i, 1, 1);
 
     // ui setup
     ui = std::make_shared<UserInterface>();
 
+    // set background to black
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    Mesh::Ptr mesh = std::make_shared<Mesh>();
+    float ts = renderer.getTileSize();
+    mesh->vertices.push_back(0.f);
+    mesh->vertices.push_back(0.f);
+
+    mesh->vertices.push_back(ts);
+    mesh->vertices.push_back(0.f);
+
+    mesh->vertices.push_back(0.f);
+    mesh->vertices.push_back(ts);
+
+    mesh->vertices.push_back(ts);
+    mesh->vertices.push_back(ts);
+
+    mesh->indices.push_back(0);
+    mesh->indices.push_back(1);
+    mesh->indices.push_back(2);
+
+    mesh->indices.push_back(1);
+    mesh->indices.push_back(2);
+    mesh->indices.push_back(3);
+
+    mesh->reload();
+
+    MeshObject::Ptr defaultObj = std::make_shared<MeshObject>(mesh);
+
+    std::vector<MeshObject::Ptr> MOs;
+    MOs.push_back(defaultObj);
     do {
         // render
         // ------
@@ -82,36 +104,34 @@ void GameRunner::loop() {
         glUniform1f(mouseXUniform, mouseX);
         glUniform1f(mouseYUniform, mouseY);
 
+        float h = renderer.getHeight();
         // move adam to mouse pointer
-        int mx = mouseX / ts;
-        int my = (h - mouseY) / ts;
-        int gridWidth = loadedMaps[0]->getWidth();
-        int gridHeight = loadedMaps[0]->getHeight();
+        int mx = mouseX / (1. * ts);
+        int my = (h - mouseY) / (1. * ts);
+        int gridWidth = worldMap->getWidth();
+        int gridHeight = worldMap->getHeight();
         int gridX = mx < gridWidth ? mx : gridWidth - 1;
         int gridY = my < gridHeight ? my : gridHeight - 1;
-        if ((gridX != adam->getMapNode()->getX() || gridY != adam->getMapNode()->getY()) && adam->getPath().empty()) {
-            MapNode::MapPath path = Pather::genAStarPath(adam->getMapNode(),
-                                                         loadedMaps[0]->getNode(gridX, gridY));
+        if ((gridX != adam->getPosition()->getX() || gridY != adam->getPosition()->getY()) && adam->getPath().empty()) {
+            MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(),
+                                                         worldMap->getNode(gridX, gridY));
             for (const auto &step: path) {
                 adam->addToPath(step);
             }
         }
-
-        // update and render all maps
-        for (const GridMap::Ptr &map: loadedMaps) {
-            update(map);
-
-            // determine which entities are visible
-            for (const MapEntity::Ptr &entity: map->getEntities()) {
-                if (renderer.getCamera()->inSight(entity->getMapNode())) {
-                    map->markForRendering(entity);
-                }
-            }
-            // TODO: Figure out why tilesize has to be doubled to work properly
-            Renderer::renderMesh(map->generateMesh(w, h, 2 * ts));
+        update(worldMap);
+        defaultObj->models.clear();
+        for (const auto &entity: worldMap->getEntities()) {
+            defaultObj->models.push_back(
+                    glm::translate(
+                            glm::mat4(1),
+                            glm::vec3(
+                                    ts * entity->getPosition()->getX(),
+                                    ts * entity->getPosition()->getY(), 0)));
         }
-        // render ui
-        //Renderer::renderMesh(ui->generateMesh(w, h, 2 * ts));
+
+        // render
+        renderer.render(MOs, mvpUniform);
 
         // glfw: swap buffers and poll IO events
         // -------------------------------------------------------------------------------
@@ -121,12 +141,7 @@ void GameRunner::loop() {
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
            glfwWindowShouldClose(window) == 0);
 
-    // clear maps to ensure explicit destruction of map meshes
-    loadedMaps.clear();
-
-    // glfw: terminate, clearing all previously allocated GLFW resources
-    // ------------------------------------------------------------------
-    glfwTerminate();
+    renderer.cleanup();
 }
 
 void GameRunner::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -152,15 +167,7 @@ void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
 
 void GameRunner::update(const GridMap::Ptr &map) {
-    for (const MapActor::Ptr &actor: map->getActors()) {
-        switch (actor->update(map)) {
-            case MapActor::MOVE:
-                // do something I guess
-                std::cout << actor->getUId() << " moving" << std::endl;
-                break;
-            case MapActor::IDLE:
-                // std::cout << "Actor " << actor->getUId() << " idling" << std::endl;
-                break;
-        }
+    for (const WorldActor::Ptr &actor: map->getActors()) {
+        WorldActor::Action act = actor->update(map);
     }
 }

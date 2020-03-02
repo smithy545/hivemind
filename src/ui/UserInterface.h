@@ -14,7 +14,8 @@ class UserInterface {
 public:
     typedef std::shared_ptr<UserInterface> Ptr;
 
-    Mesh::Ptr generateMesh(float screenWidth, float screenHeight, float tileSize);
+    UserInterface();
+
 };
 
 

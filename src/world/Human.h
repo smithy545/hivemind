@@ -12,14 +12,12 @@
 #include <unordered_map>
 #include <utility>
 
-#include "src/world/MapActor.h"
-#include "src/pathing/MapPosition.h"
-#include "src/world/VisionMap.h"
+#include "src/world/WorldActor.h"
 #include "src/society/BaseRole.h"
-#include "src/pathing/GridMap.h"
+#include "GridMap.h"
 
 
-class Human : public MapActor {
+class Human : public WorldActor {
 public:
     typedef std::shared_ptr<Human> Ptr;
 
@@ -49,8 +47,6 @@ public:
 
     const std::string &getName() const;
 
-    const VisionMap::Ptr &getVisionMap() const;
-
     const std::unordered_map<std::string, Relationship::Ptr> &getRelationships() const;
 
     const BaseRole::Ptr &getRole() const;
@@ -58,8 +54,6 @@ public:
     const std::string &getCurrentTask() const;
 
     void setName(const std::string &name);
-
-    void setVisionMap(const VisionMap::Ptr &visionMap);
 
     void setRelationships(const std::unordered_map<std::string, Relationship::Ptr> &relationships);
 
@@ -69,7 +63,6 @@ public:
 
 private:
     std::string name;
-    VisionMap::Ptr visionMap;
     std::unordered_map<std::string, Relationship::Ptr> relationships;
     BaseRole::Ptr role;
     std::string currentTask;

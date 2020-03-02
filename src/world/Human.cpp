@@ -10,11 +10,11 @@
 #include "src/pathing/Pather.h"
 
 
-Human::Human(std::string name) : MapActor(), name(std::move(name)) {
+Human::Human(std::string name) : WorldActor(), name(std::move(name)) {
     std::cout << "Hi, I'm " << getName() << " and my id is " << getId() << std::endl;
 }
 
-MapActor::Action Human::update(GridMap::Ptr map) {
+WorldActor::Action Human::update(GridMap::Ptr map) {
     if (!path.empty()) {
         // move and if successful update path
         if (map->moveEntity(this->shared_from_this(), path.back())) {
@@ -23,7 +23,7 @@ MapActor::Action Human::update(GridMap::Ptr map) {
         } else {
             std::cout <<
                       "Could not move from (" <<
-                      position->getNode()->getX() << ", " << position->getNode()->getY()
+                      position->getX() << ", " << position->getY()
                       << ") to (" <<
                       path.back()->getX() << ", " << path.back()->getY()
                       << ")" << std::endl;
@@ -37,8 +37,8 @@ MapActor::Action Human::update(GridMap::Ptr map) {
         MapNode::Ptr nextPos = role->getTaskDestination(currentTask);
 
         // path to next task if necessary
-        if (nextPos != this->getPosition()->getNode())
-            path = Pather::genAStarPath(position->getNode(), nextPos);
+        if (nextPos != this->getPosition())
+            path = Pather::genAStarPath(position, nextPos);
     }
     // default behaviour
     return IDLE;
@@ -46,10 +46,6 @@ MapActor::Action Human::update(GridMap::Ptr map) {
 
 const std::string &Human::getName() const {
     return name;
-}
-
-const VisionMap::Ptr &Human::getVisionMap() const {
-    return visionMap;
 }
 
 const std::unordered_map<std::string, Human::Relationship::Ptr> &Human::getRelationships() const {
@@ -66,10 +62,6 @@ const std::string &Human::getCurrentTask() const {
 
 void Human::setName(const std::string &name) {
     this->name = name;
-}
-
-void Human::setVisionMap(const VisionMap::Ptr &visionMap) {
-    this->visionMap = visionMap;
 }
 
 void Human::setRelationships(const std::unordered_map<std::string, Relationship::Ptr> &relationships) {

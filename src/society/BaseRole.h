@@ -10,7 +10,7 @@
 #include <utility>
 #include <vector>
 
-#include "src/world/MapEntity.h"
+#include "src/world/WorldEntity.h"
 #include "src/pathing/MapNode.h"
 
 

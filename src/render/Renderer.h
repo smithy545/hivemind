@@ -8,21 +8,25 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
-#include "src/render/Camera.h"
+#include <glm/glm.hpp>
+
+#include "Camera.h"
 #include "Mesh.h"
+#include "MeshObject.h"
 
 
 class Renderer {
 public:
     Renderer(int width, int height, int tileSize);
 
-    GLFWwindow *init();
 
-    GLuint loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
-                             const std::string &fragmentShaderPath);
+    std::shared_ptr<GLFWwindow> init();
 
-    GLFWwindow *getWindow() const;
+    void cleanup();
+
+    void render(const std::vector<MeshObject::Ptr> &meshObjects, GLint mvpUniform);
 
     const Camera::Ptr &getCamera() const;
 
@@ -32,22 +36,18 @@ public:
 
     int getTileSize() const;
 
-    const std::unordered_map<std::string, GLuint> &getShaderPrograms() const;
-
-    // render functions
-    static void renderMesh(const std::weak_ptr<Mesh> &mesh);
-
-    static char *readShader(const std::string &path);
-
-    static void resize(GLFWwindow *window, int width, int height);
+    GLuint loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
+                             const std::string &fragmentShaderPath);
 
 private:
-    GLFWwindow *window;
+    std::shared_ptr<GLFWwindow> window;
     Camera::Ptr camera;
     int width;
     int height;
     int tileSize;
     std::unordered_map<std::string, GLuint> shaderPrograms;
+    glm::mat4 projectionMatrix;
+
 };
 
 

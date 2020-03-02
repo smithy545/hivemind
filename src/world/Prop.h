@@ -7,10 +7,10 @@
 
 #include <memory>
 
-#include "MapEntity.h"
+#include "WorldEntity.h"
 
 
-class Prop : public MapEntity {
+class Prop : public WorldEntity {
 public:
     typedef std::shared_ptr<Prop> Ptr;
 };

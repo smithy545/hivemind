@@ -7,13 +7,9 @@
 
 #include <memory>
 #include <deque>
-#include <string>
-#include <unordered_map>
 #include <unordered_set>
-#include <utility>
 
 
-class MapEntity;
 
 class MapNode {
 public:
@@ -61,23 +57,6 @@ public:
         return neighbors;
     }
 
-    std::unordered_map<std::string, std::shared_ptr<MapEntity>> &getEntities() {
-        return entities;
-    }
-
-    void setEntities(const std::unordered_map<std::string, std::shared_ptr<MapEntity>> &entities) {
-        this->entities = entities;
-    }
-
-    void addEntity(const std::string &id, std::shared_ptr<MapEntity> entity) {
-        entities[id] = std::move(entity);
-    }
-
-    void removeEntity(const std::string &id) {
-        entities.erase(id);
-    }
-
-
     Type getType() const {
         return type;
     }
@@ -92,7 +71,6 @@ private:
     Type type;
     bool passable;
     std::unordered_set<Ptr> neighbors;
-    std::unordered_map<std::string, std::shared_ptr<MapEntity>> entities;
 };
 
 #endif //HIVEMIND_MAPNODE_H

@@ -4,16 +4,31 @@
 
 #include "Renderer.h"
 
-#include <fstream>
 #include <iostream>
 
+#include <glm/ext.hpp>
+
+#include "RenderUtil.h"
 
 Renderer::Renderer(int width, int height, int tileSize) : camera(
         std::make_shared<Camera>(0, 0, width, height, tileSize)),
                                                           width(width), height(height), tileSize(tileSize),
-                                                          window(nullptr) {}
+                                                          window(nullptr),
+                                                          projectionMatrix(glm::ortho(
+                                                                  .0f, 1.f * width,
+                                                                  .0f, 1.f * height,
+                                                                  -1.f, 1.f)) {}
 
-GLFWwindow *Renderer::init() {
+void Renderer::cleanup() {
+    for (auto &shaderProgram : shaderPrograms) {
+        glDeleteProgram(shaderProgram.second);
+    }
+    // glfw: terminate, clearing all previously allocated GLFW resources
+    // ------------------------------------------------------------------
+    glfwTerminate();
+}
+
+std::shared_ptr<GLFWwindow> Renderer::init() {
     // Initialise GLFW
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -28,14 +43,13 @@ GLFWwindow *Renderer::init() {
 #endif
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow(width, height, "Hoovemind", nullptr, nullptr);
+    window = std::shared_ptr<GLFWwindow>(glfwCreateWindow(width, height, "Hoovemind", nullptr, nullptr));
     if (window == nullptr) {
         std::cerr << "Failed to open GLFW window" << std::endl;
         glfwTerminate();
         return nullptr;
     }
-    glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, Renderer::resize);
+    glfwMakeContextCurrent(window.get());
 
     // Initialize GLEW
     glewExperimental = true; // Needed for core profile
@@ -48,12 +62,27 @@ GLFWwindow *Renderer::init() {
     return window;
 }
 
+void Renderer::render(const std::vector<MeshObject::Ptr> &meshObjects, GLint mvpUniform) {
+    //GLuint program = shaderPrograms["default"];
+    //glUseProgram(program);
+    glm::mat4 viewProj = projectionMatrix * camera->getViewMatrix();
+
+    for (const MeshObject::Ptr &obj: meshObjects) {
+        for (auto model: obj->models) {
+            glm::mat4 mvpMatrix = viewProj * model;
+            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+
+            RenderUtil::renderMesh(obj->mesh);
+        }
+    }
+}
+
 GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
                                    const std::string &fragmentShaderPath) {
     // build and compile our shader program
     // ------------------------------------
     // vertex shader
-    const char *vertexShaderSource = readShader(vertexShaderPath);
+    const char *vertexShaderSource = RenderUtil::readShader(vertexShaderPath);
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
@@ -68,7 +97,7 @@ GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &v
     delete[] vertexShaderSource;
 
     // fragment shader
-    const char *fragmentShaderSource = readShader(fragmentShaderPath);
+    const char *fragmentShaderSource = RenderUtil::readShader(fragmentShaderPath);
     int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
     glCompileShader(fragmentShader);
@@ -100,47 +129,6 @@ GLuint Renderer::loadShaderProgram(const std::string &name, const std::string &v
     return shaderProgram;
 }
 
-void Renderer::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {
-    Mesh::Ptr mesh = meshPtr.lock();
-
-    glBindVertexArray(mesh->getVertexArrayId());
-    glDrawElements(GL_TRIANGLES, mesh->getNumIndices(), GL_UNSIGNED_INT, nullptr);
-}
-
-char *Renderer::readShader(const std::string &path) {
-    std::ifstream shaderStream("../res/shaders/" + path, std::ifstream::ate);
-    if (shaderStream) {
-        // get file length (ifstream::ate flag puts cursor at end of file)
-        int shaderLength = shaderStream.tellg();
-        shaderStream.seekg(0, std::ios_base::beg);
-
-        // store in buffer
-        char *shaderBuffer = new char[shaderLength];
-        int count = 0;
-        while (shaderStream.read(shaderBuffer + count, shaderLength - count) || shaderStream.gcount() != 0) {
-            count += shaderStream.gcount();
-        }
-        shaderStream.close();
-
-        // null terminate because C++ fucking sucks
-        shaderBuffer[count] = '\0';
-
-        return shaderBuffer;
-    }
-
-    // open failed for some reason
-    std::cout << "Error opening shader at res/shaders/" << path << std::endl;
-    return nullptr;
-}
-
-void Renderer::resize(GLFWwindow *window, int width, int height) {
-    glViewport(0, 0, width, height);
-}
-
-GLFWwindow *Renderer::getWindow() const {
-    return window;
-}
-
 const Camera::Ptr &Renderer::getCamera() const {
     return camera;
 }
@@ -155,8 +143,4 @@ int Renderer::getHeight() const {
 
 int Renderer::getTileSize() const {
     return tileSize;
-}
-
-const std::unordered_map<std::string, GLuint> &Renderer::getShaderPrograms() const {
-    return shaderPrograms;
 }

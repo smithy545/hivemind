@@ -5,10 +5,10 @@
 #include "Structure.h"
 
 
-Structure::Structure(const MapNode::Ptr &node) : MapActor(node) {
+Structure::Structure(const MapNode::Ptr &node) : WorldActor(node) {
 
 }
 
-MapActor::Action Structure::update(std::shared_ptr<GridMap> map) {
+WorldActor::Action Structure::update(std::shared_ptr<GridMap> map) {
     return IDLE;
 }

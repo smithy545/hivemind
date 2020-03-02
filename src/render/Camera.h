@@ -7,6 +7,8 @@
 
 #include <memory>
 
+#include <glm/glm.hpp>
+
 #include "src/pathing/MapNode.h"
 
 
@@ -38,6 +40,7 @@ public:
 
     void setTileSize(double tileSize);
 
+    glm::mat4 getViewMatrix();
 private:
     double x;
     double y;

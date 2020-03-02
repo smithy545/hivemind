@@ -4,6 +4,9 @@
 
 #include "Camera.h"
 
+#include <glm/ext.hpp>
+
+
 Camera::Camera(double x, double y, double width, double height, double tileSize) : x(x), y(y), width(width),
                                                                                    height(height), tileSize(tileSize) {}
 
@@ -54,3 +57,8 @@ double Camera::getTileSize() const {
 void Camera::setTileSize(double tileSize) {
     Camera::tileSize = tileSize;
 }
+
+glm::mat4 Camera::getViewMatrix() {
+    return glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
+}
+

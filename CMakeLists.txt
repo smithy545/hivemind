@@ -31,13 +31,12 @@ if(INCLUDE_DISTRIB)
 endif(INCLUDE_DISTRIB)
 
 include_directories(
-        external/AntTweakBar-1.16/include
         external/glfw-3.1.2/include
         external/glm
         external/glew-1.13.0/include
         external/assimp-3.0.1270/include
         external/fmt-master/include
-        external/bullet-2.81-rev2613/src
+        external/json/include
         .
 )
 
@@ -58,7 +57,7 @@ add_definitions(
 
 
 # add exec
-add_executable(hivemind src/main.cpp src/world/Human.cpp src/world/Human.h src/pathing/GridMap.cpp src/pathing/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/VisionMap.cpp src/world/VisionMap.h src/pathing/MapPosition.h src/world/MapEntity.h src/world/MapActor.h src/render/Camera.cpp src/render/Camera.h src/render/Mesh.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.cpp src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/MapActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderable.h src/render/Renderer.cpp src/render/Renderer.h)
+add_executable(hivemind src/main.cpp src/world/Human.cpp src/world/Human.h src/world/GridMap.cpp src/world/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/WorldEntity.h src/world/WorldActor.h src/render/Camera.cpp src/render/Camera.h src/render/Mesh.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.cpp src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/WorldActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderer.cpp src/render/Renderer.h src/render/RenderUtil.cpp src/render/RenderUtil.h src/render/MeshUtil.cpp src/render/MeshUtil.h src/render/MeshObject.h)
 target_link_libraries(hivemind
         ${ALL_LIBS}
         )

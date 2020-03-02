@@ -1,11 +1,9 @@
 //
-// Created by Philip on 2/10/2020.
+// Created by Philip on 3/1/2020.
 //
 
 #ifndef HIVEMIND_MESH_H
 #define HIVEMIND_MESH_H
-
-#include <memory>
 
 // Include GLEW
 #include <GL/glew.h>
@@ -13,16 +11,41 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
 
+#include <memory>
+#include <vector>
+
 
 class Mesh {
 public:
     typedef std::shared_ptr<Mesh> Ptr;
 
-    Mesh(int numVertices, int numIndices) : numVertices(numVertices), numIndices(numIndices) {
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+
+    GLuint vertexArrayId{0};
+    GLuint vertexBufferId{0};
+    GLuint elementBufferId{0};
+
+    Mesh() {
         glGenVertexArrays(1, &vertexArrayId);
         glBindVertexArray(vertexArrayId);
+        glEnableVertexAttribArray(0);
+
+        // setup verts to be first attribute with 3 components
         glGenBuffers(1, &vertexBufferId);
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+        glVertexAttribPointer(
+                0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+                2,                  // size
+                GL_FLOAT,           // type
+                GL_FALSE,           // normalized?
+                0,                  // stride
+                (void *) 0            // array buffer offset
+        );
+
+        // gen and bind index buffer
         glGenBuffers(1, &elementBufferId);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
     }
 
     ~Mesh() {
@@ -36,41 +59,13 @@ public:
             glDeleteBuffers(1, &elementBufferId);
     }
 
-    GLuint getVertexArrayId() const {
-        return vertexArrayId;
-    }
+    void reload() {
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
 
-    GLuint getVertexBufferId() const {
-        return vertexBufferId;
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), &indices[0], GL_STATIC_DRAW);
     }
-
-    GLuint getElementBufferId() const {
-        return elementBufferId;
-    }
-
-    int getNumVertices() const {
-        return numVertices;
-    }
-
-    void setNumVertices(int numVertices) {
-        Mesh::numVertices = numVertices;
-    }
-
-    int getNumIndices() const {
-        return numIndices;
-    }
-
-    void setNumIndices(int numIndices) {
-        Mesh::numIndices = numIndices;
-    }
-
-private:
-    GLuint vertexArrayId;
-    GLuint vertexBufferId;
-    GLuint elementBufferId;
-    int numVertices;
-    int numIndices;
 };
-
 
 #endif //HIVEMIND_MESH_H
