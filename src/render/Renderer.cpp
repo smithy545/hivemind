@@ -14,11 +14,7 @@
 Renderer::Renderer(int width, int height, int tileSize) : camera(
         std::make_shared<Camera>(0, 0, width, height, tileSize)),
                                                           width(width), height(height), tileSize(tileSize),
-                                                          window(nullptr),
-                                                          projectionMatrix(glm::ortho(
-                                                                  .0f, 1.f * width,
-                                                                  .0f, 1.f * height,
-                                                                  -1.f, 1.f)) {}
+                                                          window(nullptr) {}
 
 
 GLFWwindow* Renderer::init() {
@@ -105,7 +101,7 @@ void Renderer::render(GLint mvpUniform) {
     //GLuint program = loadedShaders["default"];
     //glUseProgram(program);
 
-    glm::mat4 viewProj = projectionMatrix * camera->getViewMatrix();
+    glm::mat4 viewProj = camera->getViewProjectionMatrix();
     for (const auto &obj: loadedMeshes) {
         for (auto model: obj.second->models) {
             glm::mat4 mvpMatrix = viewProj * model;

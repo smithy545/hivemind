@@ -11,19 +11,26 @@
 
 UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}
 
-void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float mouseY, const Renderer::Ptr &renderer) {
+void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float mouseY, float mouseScroll,
+                           const Renderer::Ptr &renderer) {
     // update camera
+    Camera::Ptr camera = renderer->getCamera();
+    if (mouseScroll > 0) {
+        camera->zoomIn();
+    } else if (mouseScroll < 0) {
+        camera->zoomOut();
+    }
     if (keys[GLFW_KEY_LEFT]) {
-        renderer->getCamera()->panLeft();
+        camera->panLeft();
     }
     if (keys[GLFW_KEY_RIGHT]) {
-        renderer->getCamera()->panRight();
+        camera->panRight();
     }
     if (keys[GLFW_KEY_UP]) {
-        renderer->getCamera()->panUp();
+        camera->panUp();
     }
     if (keys[GLFW_KEY_DOWN]) {
-        renderer->getCamera()->panDown();
+        camera->panDown();
     }
 
     if (map->getActors().empty())
@@ -31,8 +38,9 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float m
 
     // move adam to mouse pointer
     auto adam = map->getActors()[0];
-    int mx = (renderer->getCamera()->getX() + mouseX) / (1. * renderer->getTileSize());
-    int my = (renderer->getCamera()->getY() + renderer->getHeight() - mouseY) / (1. * renderer->getTileSize());
+    float scale = camera->getScale();
+    int mx = (renderer->getCamera()->getX() + scale * mouseX) / renderer->getTileSize();
+    int my = (renderer->getCamera()->getY() + scale * (renderer->getHeight() - mouseY)) / renderer->getTileSize();
     int gridWidth = map->getWidth();
     int gridHeight = map->getHeight();
     int gridX = mx < gridWidth ? mx : gridWidth - 1;

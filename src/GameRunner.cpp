@@ -18,6 +18,7 @@
 bool GameRunner::keys[];
 float GameRunner::mouseX = 0.0f;
 float GameRunner::mouseY = 0.0f;
+float GameRunner::mouseScroll = 0.0f;
 unsigned int WorldEntity::GLOBAL_ID = 0;
 
 void GameRunner::loop() {
@@ -38,6 +39,7 @@ void GameRunner::loop() {
     glfwSetKeyCallback(window, keyCallback);
     // Setup mouse inputs
     glfwSetCursorPosCallback(window, cursorPosCallback);
+    glfwSetScrollCallback(window, scrollCallback);
     // Setup text input
     glfwSetCharCallback(window, characterCallback);
 
@@ -76,7 +78,10 @@ void GameRunner::loop() {
         glUniform1f(mouseYUniform, mouseY);
 
         // update ui
-        ui->update(keys, mouseX, mouseY, renderer);
+        ui->update(keys, mouseX, mouseY, mouseScroll, renderer);
+
+        // reset mouse wheel position
+        mouseScroll = 0.0f;
 
         // update map
         updateMap(worldMap);
@@ -84,14 +89,10 @@ void GameRunner::loop() {
         // add tile mesh model for each world entity
         renderer->getMeshObject("tile")->models.clear();
         for (const auto &entity: worldMap->getEntities()) {
-            if (renderer->getCamera()->inSight(entity->getPosition())) {
-                float ts = renderer->getTileSize();
-                renderer->getMeshObject("tile")->models.push_back(
-                        glm::translate(
-                                glm::mat4(1),
-                                glm::vec3(
-                                        ts * entity->getPosition()->getX(),
-                                        ts * entity->getPosition()->getY(), 0)));
+            if (renderer->getCamera()
+                    ->inSight(entity->getPosition())) {
+                renderer->getMeshObject("tile")
+                        ->models.push_back(entity->getModel(renderer->getTileSize()));
             }
         }
 
@@ -124,12 +125,16 @@ void GameRunner::keyCallback(GLFWwindow* window, int key, int scancode, int acti
     }
 }
 
-void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos) {
+void GameRunner::cursorPosCallback(GLFWwindow *window, double xpos, double ypos) {
     mouseX = xpos;
     mouseY = ypos;
 }
 
-void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
+void GameRunner::characterCallback(GLFWwindow *window, unsigned int codepoint) {}
+
+void GameRunner::scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
+    mouseScroll = yoffset;
+}
 
 void GameRunner::updateMap(const GridMap::Ptr &map) {
     for (const WorldActor::Ptr &actor: map->getActors()) {

@@ -7,66 +7,78 @@
 #include <glm/ext.hpp>
 
 
-Camera::Camera(double x, double y, double width, double height, double tileSize) : x(x), y(y), width(width),
-                                                                                   height(height), tileSize(tileSize) {}
+Camera::Camera(float x, float y, float width, float height, float tileSize)
+        : pos(x, y), width(width), scale(1), height(height), tileSize(tileSize),
+          viewMatrix(glm::translate(glm::mat4(1), glm::vec3(-pos, 0))),
+          projectionMatrix(glm::ortho(0.f, width, 0.f, height, -1.f, 1.f)) {}
 
 bool Camera::inSight(const MapNode::Ptr &node) const {
     // TODO: Improve to include node size
-    return (node->getX() + 1) * tileSize > x
-           && node->getX() * tileSize < x + width
-           && (node->getY() + 1) * tileSize > y
-           && node->getY() * tileSize < y + height;
+    return (node->getX() + 1) * tileSize > pos.x
+           && node->getX() * tileSize < pos.x + scale * width
+           && (node->getY() + 1) * tileSize > pos.y
+           && node->getY() * tileSize < pos.y + scale * height;
 }
 
 void Camera::panLeft() {
-    x -= 1;
+    pos.x -= 1;
+    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 void Camera::panRight() {
-    x += 1;
+    pos.x += 1;
+    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 void Camera::panUp() {
-    y += 1;
+    pos.y += 1;
+    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
 void Camera::panDown() {
-    y -= 1;
+    pos.y -= 1;
+    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
 }
 
-double Camera::getX() const {
-    return x;
+void Camera::zoomIn() {
+    scale *= 0.9;
+    projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height, -1.f, 1.f);
 }
 
-void Camera::setX(double x) {
-    this->x = x;
+void Camera::zoomOut() {
+    scale *= 1.1;
+    projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height, -1.f, 1.f);
 }
 
-double Camera::getY() const {
-    return y;
+glm::mat4 Camera::getViewProjectionMatrix() {
+    return projectionMatrix * viewMatrix;
 }
 
-void Camera::setY(double y) {
-    this->y = y;
+float Camera::getX() const {
+    return pos.x;
 }
 
-double Camera::getWidth() const {
+float Camera::getY() const {
+    return pos.y;
+}
+
+float Camera::getWidth() const {
     return width;
 }
 
-void Camera::setWidth(double width) {
+void Camera::setWidth(float width) {
     this->width = width;
 }
 
-double Camera::getHeight() const {
+float Camera::getHeight() const {
     return height;
 }
 
-void Camera::setHeight(double height) {
+void Camera::setHeight(float height) {
     this->height = height;
 }
 
-double Camera::getTileSize() const {
+float Camera::getTileSize() const {
     return tileSize;
 }
 
@@ -74,7 +86,6 @@ void Camera::setTileSize(double tileSize) {
     this->tileSize = tileSize;
 }
 
-glm::mat4 Camera::getViewMatrix() {
-    return glm::translate(glm::mat4(1), glm::vec3(-x, -y, 0));
+float Camera::getScale() const {
+    return scale;
 }
-

@@ -52,12 +52,9 @@ private:
     GLFWwindow *window;
     std::unordered_map<std::string, MeshObject::Ptr> loadedMeshes;
     std::unordered_map<std::string, GLuint> loadedShaders;
-    glm::mat4 projectionMatrix;
-
 
     GLuint loadShaderProgram(const std::string &name, const std::string &vertexShaderPath,
                              const std::string &fragmentShaderPath);
-
 };
 
 

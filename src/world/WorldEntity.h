@@ -5,6 +5,8 @@
 #ifndef HIVEMIND_WORLDENTITY_H
 #define HIVEMIND_WORLDENTITY_H
 
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
 #include <memory>
 #include <string>
 #include <utility>
@@ -24,6 +26,34 @@ public:
 
     void setPosition(MapNode::Ptr node) {
         position = std::move(node);
+    }
+
+    glm::mat4 getModel(int tileSize) {
+        return glm::translate(glm::mat4(1), glm::vec3(getX(tileSize), getY(tileSize), 0));
+    }
+
+    int getX(int tileSize) {
+        if (position == nullptr)
+            return 0;
+        return position->getX() * tileSize;
+    }
+
+    int getY(int tileSize) {
+        if (position == nullptr)
+            return 0;
+        return position->getY() * tileSize;
+    }
+
+    int getGridX() {
+        if (position == nullptr)
+            return 0;
+        return position->getX();
+    }
+
+    int getGridY() {
+        if (position == nullptr)
+            return 0;
+        return position->getY();
     }
 
     unsigned int getId() {

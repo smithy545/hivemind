@@ -18,7 +18,7 @@ public:
 
     explicit UserInterface(GridMap::Ptr map);
 
-    void update(const bool keys[256], float mouseX, float mouseY, const Renderer::Ptr &renderer);
+    void update(const bool keys[256], float mouseX, float mouseY, float mouseScroll, const Renderer::Ptr &renderer);
 
 private:
     GridMap::Ptr map;
