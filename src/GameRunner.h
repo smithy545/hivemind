@@ -35,7 +35,7 @@ private:
     static void characterCallback(GLFWwindow* window, unsigned int codepoint);
 
     // game state functions
-    static void update(const GridMap::Ptr &map);
+    static void updateMap(const GridMap::Ptr &map);
 };
 
 

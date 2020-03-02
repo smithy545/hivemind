@@ -115,6 +115,9 @@ void GameRunner::loop() {
         // update ui
         ui->update(mouseX, renderer.getHeight() - mouseY, ts);
 
+        // update map
+        updateMap(worldMap);
+
         // add mesh model for each world entity
         defaultObj->models.clear();
         for (const auto &entity: worldMap->getEntities()) {
@@ -125,9 +128,6 @@ void GameRunner::loop() {
                                     ts * entity->getPosition()->getX(),
                                     ts * entity->getPosition()->getY(), 0)));
         }
-
-        // update
-        update(worldMap);
 
         // render
         renderer.render(MOs, mvpUniform);
@@ -165,7 +165,7 @@ void GameRunner::cursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 
 void GameRunner::characterCallback(GLFWwindow* window, unsigned int codepoint) { }
 
-void GameRunner::update(const GridMap::Ptr &map) {
+void GameRunner::updateMap(const GridMap::Ptr &map) {
     for (const WorldActor::Ptr &actor: map->getActors()) {
         WorldActor::Action act = actor->update(map);
     }
