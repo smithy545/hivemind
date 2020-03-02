@@ -19,19 +19,19 @@ bool Camera::inSight(const MapNode::Ptr &node) const {
 }
 
 void Camera::panLeft() {
-    x += 1;
-}
-
-void Camera::panRight() {
     x -= 1;
 }
 
+void Camera::panRight() {
+    x += 1;
+}
+
 void Camera::panUp() {
-    y -= 1;
+    y += 1;
 }
 
 void Camera::panDown() {
-    y += 1;
+    y -= 1;
 }
 
 double Camera::getX() const {
@@ -39,7 +39,7 @@ double Camera::getX() const {
 }
 
 void Camera::setX(double x) {
-    Camera::x = x;
+    this->x = x;
 }
 
 double Camera::getY() const {
@@ -47,7 +47,7 @@ double Camera::getY() const {
 }
 
 void Camera::setY(double y) {
-    Camera::y = y;
+    this->y = y;
 }
 
 double Camera::getWidth() const {
@@ -55,7 +55,7 @@ double Camera::getWidth() const {
 }
 
 void Camera::setWidth(double width) {
-    Camera::width = width;
+    this->width = width;
 }
 
 double Camera::getHeight() const {
@@ -63,7 +63,7 @@ double Camera::getHeight() const {
 }
 
 void Camera::setHeight(double height) {
-    Camera::height = height;
+    this->height = height;
 }
 
 double Camera::getTileSize() const {
@@ -71,10 +71,10 @@ double Camera::getTileSize() const {
 }
 
 void Camera::setTileSize(double tileSize) {
-    Camera::tileSize = tileSize;
+    this->tileSize = tileSize;
 }
 
 glm::mat4 Camera::getViewMatrix() {
-    return glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
+    return glm::translate(glm::mat4(1), glm::vec3(-x, -y, 0));
 }
 

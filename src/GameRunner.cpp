@@ -29,8 +29,8 @@ void GameRunner::loop() {
 
     std::cout << "Window init" << std::endl;
 
-    for (int i = 0; i < GLFW_KEY_LAST; i++)
-        keys[i] = false;
+    for (bool &key : keys)
+        key = false;
 
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -84,13 +84,15 @@ void GameRunner::loop() {
         // add tile mesh model for each world entity
         renderer->getMeshObject("tile")->models.clear();
         for (const auto &entity: worldMap->getEntities()) {
-            float ts = renderer->getTileSize();
-            renderer->getMeshObject("tile")->models.push_back(
-                    glm::translate(
-                            glm::mat4(1),
-                            glm::vec3(
-                                    ts * entity->getPosition()->getX(),
-                                    ts * entity->getPosition()->getY(), 0)));
+            if (renderer->getCamera()->inSight(entity->getPosition())) {
+                float ts = renderer->getTileSize();
+                renderer->getMeshObject("tile")->models.push_back(
+                        glm::translate(
+                                glm::mat4(1),
+                                glm::vec3(
+                                        ts * entity->getPosition()->getX(),
+                                        ts * entity->getPosition()->getY(), 0)));
+            }
         }
 
         // render

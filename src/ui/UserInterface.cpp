@@ -26,17 +26,22 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float m
         renderer->getCamera()->panDown();
     }
 
+    if (map->getActors().empty())
+        return;
+
     // move adam to mouse pointer
     auto adam = map->getActors()[0];
-    int mx = (mouseX - renderer->getCamera()->getX()) / (1. * renderer->getTileSize());
-    int my = (renderer->getHeight() - mouseY - renderer->getCamera()->getY()) / (1. * renderer->getTileSize());
+    int mx = (renderer->getCamera()->getX() + mouseX) / (1. * renderer->getTileSize());
+    int my = (renderer->getCamera()->getY() + renderer->getHeight() - mouseY) / (1. * renderer->getTileSize());
     int gridWidth = map->getWidth();
     int gridHeight = map->getHeight();
     int gridX = mx < gridWidth ? mx : gridWidth - 1;
     int gridY = my < gridHeight ? my : gridHeight - 1;
-    if ((gridX != adam->getPosition()->getX() || gridY != adam->getPosition()->getY()) && adam->getPath().empty()) {
-        MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(),
-                                                     map->getNode(gridX, gridY));
+    auto node = map->getNode(gridX, gridY);
+    if (node != nullptr
+        && (gridX != adam->getPosition()->getX() || gridY != adam->getPosition()->getY())
+        && adam->getPath().empty()) {
+        MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(), node);
         for (const auto &step: path) {
             adam->addToPath(step);
         }
