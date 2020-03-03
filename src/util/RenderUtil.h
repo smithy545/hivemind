@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include "src/render/Mesh.h"
+#include "render/Mesh.h"
 
 
 class RenderUtil {
@@ -15,6 +15,8 @@ public:
     static void renderMesh(const std::weak_ptr<Mesh> &mesh);
 
     static GLuint loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath);
+
+    static GLuint loadTexture(const std::string &texturePath);
 };
 
 

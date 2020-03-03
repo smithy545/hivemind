@@ -8,7 +8,7 @@
 #include <memory>
 #include <utility>
 
-#include "src/pathing/MapNode.h"
+#include "pathing/MapNode.h"
 
 #include "WorldEntity.h"
 

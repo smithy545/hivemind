@@ -12,7 +12,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
-#include "src/pathing/MapNode.h"
+#include "pathing/MapNode.h"
 
 
 class WorldEntity {

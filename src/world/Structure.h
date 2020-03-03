@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include "src/pathing/MapNode.h"
+#include "pathing/MapNode.h"
 
 #include "WorldActor.h"
 

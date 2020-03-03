@@ -10,8 +10,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "src/ui/UserInterface.h"
-#include "src/world/GridMap.h"
+#include "ui/UserInterface.h"
+#include "world/GridMap.h"
 
 
 class GameRunner {

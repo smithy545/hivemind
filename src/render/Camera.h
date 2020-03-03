@@ -9,7 +9,7 @@
 
 #include <glm/glm.hpp>
 
-#include "src/pathing/MapNode.h"
+#include "pathing/MapNode.h"
 
 
 class Camera {

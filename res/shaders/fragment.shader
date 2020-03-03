@@ -1,9 +1,11 @@
 #version 430 core
 
-in vec2 mousePos;
+in vec2 uv;
 
-out vec4 FragColor;
+out vec4 color;
+
+uniform sampler2D tex;
 
 void main() {
-    FragColor = vec4(mousePos.xy, 1.0f, 1.0f);
+    color = vec4(texture(tex, uv).rgb, 1);
 }

@@ -7,8 +7,8 @@
 #include <iostream>
 #include <memory>
 
-#include "src/render/Renderer.h"
-#include "src/world/Human.h"
+#include "render/Renderer.h"
+#include "world/Human.h"
 
 
 // static members
@@ -51,8 +51,12 @@ void GameRunner::loop() {
     GLuint defaultShader = renderer->getShader("default");
     glUseProgram(defaultShader);
     GLint mvpUniform = glGetUniformLocation(defaultShader, "MVP");
-    GLdouble mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
-    GLdouble mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
+    GLint mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
+    GLint mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
+
+    // setup texture space in shader program to use active texture unit 0
+    GLint texUniform = glGetUniformLocation(defaultShader, "tex");
+    glUniform1i(texUniform, 0);
 
     std::cout << "Map init" << std::endl;
 

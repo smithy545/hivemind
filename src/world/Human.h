@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include <utility>
 
-#include "src/society/BaseRole.h"
+#include "society/BaseRole.h"
 
 #include "GridMap.h"
 #include "WorldActor.h"

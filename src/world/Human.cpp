@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-#include "src/pathing/Pather.h"
+#include "pathing/Pather.h"
 
 
 Human::Human(std::string name) : WorldActor(), name(std::move(name)) {

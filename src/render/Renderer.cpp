@@ -5,11 +5,9 @@
 #include "Renderer.h"
 
 #include <iostream>
-#include <utility>
 
-#include "src/util/FileUtil.h"
-#include "src/util/MeshUtil.h"
-#include "src/util/RenderUtil.h"
+#include "util/MeshUtil.h"
+#include "util/RenderUtil.h"
 
 
 Renderer::Renderer(int width, int height, int tileSize) : camera(
@@ -49,13 +47,12 @@ GLFWwindow *Renderer::init() {
         return nullptr;
     }
 
-    // create square mesh the size of one tile for general use
-    Mesh::Ptr tileMesh = MeshUtil::generateTileMesh(tileSize);
-
-    storeMesh("tile", tileMesh);
-
     // setup default shader
     loadedShaders["default"] = RenderUtil::loadShaderProgram("vertex.shader", "fragment.shader");
+
+    // setup default mesh
+    Mesh::Ptr tileMesh = MeshUtil::generateTileMesh(tileSize);
+    storeMesh("tile", tileMesh);
 
     return window;
 }

@@ -10,8 +10,8 @@
 #include <utility>
 #include <vector>
 
-#include "src/world/WorldEntity.h"
-#include "src/pathing/MapNode.h"
+#include "world/WorldEntity.h"
+#include "pathing/MapNode.h"
 
 
 class BaseRole {

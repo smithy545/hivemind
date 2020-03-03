@@ -6,3 +6,4 @@ external/glfw-3.1.2
 external/glm
 external/json
 external/rpavlik-cmake-modules-fe2273
+external/CImg

@@ -5,7 +5,7 @@
 #ifndef WORKER_MESHUTIL_H
 #define WORKER_MESHUTIL_H
 
-#include "src/render/Mesh.h"
+#include "render/Mesh.h"
 
 
 class MeshUtil {

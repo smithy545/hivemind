@@ -8,7 +8,7 @@
 #include <memory>
 #include <vector>
 
-#include "src/pathing/MapNode.h"
+#include "pathing/MapNode.h"
 
 #include "WorldActor.h"
 #include "WorldEntity.h"

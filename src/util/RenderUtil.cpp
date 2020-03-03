@@ -6,11 +6,17 @@
 
 #include <iostream>
 
+#include "CImg.h"
 #include "FileUtil.h"
+
+using namespace cimg_library;
 
 
 void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {
     Mesh::Ptr mesh = meshPtr.lock();
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, mesh->textureId);
 
     glBindVertexArray(mesh->vertexArrayId);
     glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, nullptr);
@@ -63,4 +69,34 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
     glDeleteShader(fragmentShader);
 
     return shaderProgram;
+}
+
+
+GLuint RenderUtil::loadTexture(const std::string &texturePath) {
+    // Make sure imagemagick and graphicsmagick installed for img loading
+    cimg::imagemagick_path(nullptr, false);
+    cimg::graphicsmagick_path(nullptr, false);
+
+    CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
+
+    // Create one OpenGL texture
+    GLuint textureID;
+    glGenTextures(1, &textureID);
+
+    // "Bind" the newly created texture : all future texture functions will modify this texture
+    glBindTexture(GL_TEXTURE_2D, textureID);
+
+    // Give the image to OpenGL
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.width(), image.height(), 0, GL_BGR, GL_UNSIGNED_BYTE, image.data());
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    // ... which requires mipmaps. Generate them automatically.
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    std::cout << "Texture " << texturePath << " loaded" << std::endl;
+
+    return textureID;
 }

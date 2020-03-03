@@ -27,6 +27,7 @@ char* FileUtil::readResourceFile(const std::string &resourcePath) {
         // null terminate at actual read file count
         buf[count] = '\0';
 
+        std::cout << "Resource file res/" << resourcePath << " loaded" << std::endl;
         // MUST BE DELETED WHEN FINISHED WITH USE. TODO: Find better way to read file
         return buf;
     }
