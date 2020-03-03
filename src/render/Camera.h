@@ -61,8 +61,9 @@ private:
     float scale;
     float tileSize;
 
-    glm::mat4 viewMatrix;
-    glm::mat4 projectionMatrix;
+    // initialize matrices to identity
+    glm::mat4 viewMatrix{1};
+    glm::mat4 projectionMatrix{1};
 };
 
 

@@ -10,10 +10,10 @@
 
 #include "pathing/MapNode.h"
 
+#include "Structure.h"
 #include "WorldActor.h"
 #include "WorldEntity.h"
 #include "WorldMap.h"
-#include "Structure.h"
 
 
 class GridMap : public WorldMap {

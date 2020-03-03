@@ -6,9 +6,9 @@
 
 #include <memory>
 #include <utility>
-#include <world/Human.h>
 
 #include "pathing/Pather.h"
+#include "world/Human.h"
 
 
 UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}

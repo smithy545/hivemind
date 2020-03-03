@@ -11,8 +11,8 @@
 #include "pathing/Map.h"
 #include "pathing/MapNode.h"
 
-#include "WorldActor.h"
 #include "Structure.h"
+#include "WorldActor.h"
 
 
 class WorldMap : public Map {

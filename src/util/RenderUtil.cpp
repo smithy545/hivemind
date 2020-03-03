@@ -6,8 +6,7 @@
 
 #include <iostream>
 
-#include "CImg.h"
-
+#include <CImg.h>
 using namespace cimg_library;
 
 #include "FileUtil.h"

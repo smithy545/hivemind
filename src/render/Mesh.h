@@ -5,14 +5,11 @@
 #ifndef HIVEMIND_MESH_H
 #define HIVEMIND_MESH_H
 
-// Include GLEW
-#include <GL/glew.h>
-
-// Include GLFW
-#include <GLFW/glfw3.h>
-
 #include <memory>
 #include <vector>
+
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 
 class Mesh {

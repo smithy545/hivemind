@@ -5,8 +5,8 @@
 #ifndef HIVEMIND_MAPNODE_H
 #define HIVEMIND_MAPNODE_H
 
-#include <memory>
 #include <deque>
+#include <memory>
 #include <unordered_set>
 
 

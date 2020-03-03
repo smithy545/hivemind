@@ -11,6 +11,7 @@
 #include "world/Prop.h"
 #include "ResourcePool.h"
 
+
 // Exchange of goods between humans
 class Transaction {
 public:

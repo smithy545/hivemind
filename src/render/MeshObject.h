@@ -12,6 +12,7 @@
 
 #include "Mesh.h"
 
+
 // TODO: Encapsulate models/mesh members and provide interface to interact with individual models
 class MeshObject {
 public:

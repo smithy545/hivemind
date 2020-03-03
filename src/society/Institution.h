@@ -11,6 +11,7 @@
 
 #include "BaseRole.h"
 
+
 class Institution {
 public:
     typedef std::shared_ptr<Institution> Ptr;

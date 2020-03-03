@@ -4,11 +4,11 @@
 
 #include "MeshUtil.h"
 
-#include "RenderUtil.h"
-
-#include "CImg.h"
+#include <CImg.h>
 
 using namespace cimg_library;
+
+#include "RenderUtil.h"
 
 
 Mesh::Ptr MeshUtil::generateTileMesh(const std::string &texturePath, float tileSize) {

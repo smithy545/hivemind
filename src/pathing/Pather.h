@@ -5,7 +5,6 @@
 #ifndef HIVEMIND_PATHER_H
 #define HIVEMIND_PATHER_H
 
-
 #include <memory>
 #include <string>
 #include <utility>
