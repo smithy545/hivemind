@@ -49,13 +49,15 @@ GLFWwindow *Renderer::init() {
 
     // enable srgb
     glEnable(GL_FRAMEBUFFER_SRGB);
+
+    // cull triangles facing away from camera
     glEnable(GL_CULL_FACE);
 
     // setup default shader
     loadedShaders["default"] = RenderUtil::loadShaderProgram("vertex.shader", "fragment.shader");
 
     // setup default mesh
-    Mesh::Ptr tileMesh = MeshUtil::generateTileMesh(tileSize);
+    Mesh::Ptr tileMesh = MeshUtil::generateTileMesh("panel_boltsGreen.png", tileSize);
     storeMesh("tile", tileMesh);
 
     return window;

@@ -112,92 +112,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="Add texture setup and update include to add src/">
-      <change afterPath="$PROJECT_DIR$/external/CImg/CImg.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/Licence_CeCILL-C_V1-en.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/Licence_CeCILL_V2-en.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/CImg_demo.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/captcha.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/curve_editor2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/dtmri_view3d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/edge_explorer2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/fade_images.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/gaussian_fit1d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/generate_loop_macros.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/hough_transform2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/image2ascii.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/image_registration2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/image_surface3d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/CImg_demo.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/milla.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/odykill.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/parrot.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/parrot_mask.pgm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/sh0r.pgm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/sh1r.pgm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/img/tetris.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/jawbreaker.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/mcf_levelsets2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/mcf_levelsets3d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/odykill.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/pde_TschumperleDeriche2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/pde_heatflow2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/plotter1d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/radon_transform2d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/scene3d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/spherical_function3d.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/tetris.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/tron.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/tutorial.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_RGBclass.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_chlpca.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_cimgIPL.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_cimgmatlab.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_cimgmatlab.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_draw_gradient.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_jpeg_buffer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_nlmeans.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_skeleton.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_tiff_stream.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/use_tinymatwriter.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/examples/wavelet_atrous.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/add_fileformat.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/bayer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/chlpca.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/cvMat.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/draw_gradient.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/inpaint.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/ipl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/ipl_alt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/jpeg_buffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/loop_macros.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/matlab.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/nlmeans.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/skeleton.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/tiff_stream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/tinymatwriter.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/vrml.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/plugins/vtk.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/resources/CImg_reference.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/resources/compile_win_icl.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/resources/compile_win_visualcpp.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/CImg/resources/pycimg.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/panel_boltsGreen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/tile_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/img/dailyshow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/img/logo.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/external/CImg/examples/img/logo.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/shaders/fragment.shader" beforeDir="false" afterPath="$PROJECT_DIR$/res/shaders/fragment.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/shaders/vertex.shader" beforeDir="false" afterPath="$PROJECT_DIR$/res/shaders/vertex.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameRunner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameRunner.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/img/logo.bmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/render/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/UserInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserInterface.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/MeshUtil.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/MeshUtil.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/RenderUtil.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/RenderUtil.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/GridMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/GridMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/WorldEntity.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/WorldEntity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/MeshUtil.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/MeshUtil.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,16 +151,16 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Philip\CLionProjects\society\res\img" />
-      <recent name="C:\Users\Philip\CLionProjects\society\external\lpng1637" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Philip\CLionProjects\society" />
       <recent name="C:\Users\Philip\CLionProjects\society\external" />
       <recent name="C:\Users\Philip\CLionProjects\society\res\img" />
       <recent name="C:\Users\Philip\CLionProjects\society\res" />
       <recent name="C:\Users\Philip\CLionProjects\hivemind\src\util" />
-      <recent name="C:\Users\Philip\CLionProjects\hivemind\external" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Philip\CLionProjects\society\res\img" />
+      <recent name="C:\Users\Philip\CLionProjects\society\external\lpng1637" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.society">
@@ -926,14 +846,7 @@
       <workItem from="1583185660895" duration="7362000" />
       <workItem from="1583193057643" duration="751000" />
       <workItem from="1583193819377" duration="635000" />
-      <workItem from="1583194539281" duration="12238000" />
-    </task>
-    <task id="LOCAL-00009" summary="Add left out include">
-      <created>1582416910976</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1582416910976</updated>
+      <workItem from="1583194539281" duration="12604000" />
     </task>
     <task id="LOCAL-00010" summary="Set up mouse tracking and characterCallback stub">
       <created>1582422056550</created>
@@ -1271,7 +1184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583194614398</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Add texture setup and update include to add src/">
+      <created>1583206882907</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1583206882907</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1335,12 +1255,12 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1450" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583099412780" />
-    <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2" timestamp="1583206758469">
+    <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2" timestamp="1583207139163">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="136" y="13" width="1297" height="811" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582354103768" />
     <state x="159" y="80" width="1353" height="810" key="CommitChangelistDialog2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331327023" />
-    <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583206758469" />
+    <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583207139163" />
     <state x="1085" y="149" width="1508" height="1088" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1583186337140" />
     <state x="1468" y="215" width="799" height="797" key="CommitChangelistDialog2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842898202" />
     <state x="1456" y="107" width="1798" height="1175" key="CommitChangelistDialog2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629622464" />
@@ -1354,39 +1274,39 @@
     </state>
     <state x="1493" y="385" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1582573688177" />
     <state x="1493" y="396" width="428" height="474" key="FileChooserDialogImpl/0.0.3440.1440@0.0.3440.1440" timestamp="1579836594399" />
-    <state width="2169" height="291" key="GridCell.Tab.0.bottom" timestamp="1583206778956">
+    <state width="2169" height="291" key="GridCell.Tab.0.bottom" timestamp="1583207162958">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
-    <state width="2169" height="291" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583206778956" />
+    <state width="2169" height="291" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583207162958" />
     <state width="2310" height="292" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1583192715443" />
     <state width="2047" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928044" />
     <state width="1670" height="386" key="GridCell.Tab.0.bottom/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2169" height="291" key="GridCell.Tab.0.center" timestamp="1583206778956">
+    <state width="2169" height="291" key="GridCell.Tab.0.center" timestamp="1583207162958">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
-    <state width="2169" height="291" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583206778956" />
+    <state width="2169" height="291" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583207162958" />
     <state width="2310" height="292" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1583192715443" />
     <state width="2047" height="273" key="GridCell.Tab.0.center/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.center/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2169" height="291" key="GridCell.Tab.0.left" timestamp="1583206778956">
+    <state width="2169" height="291" key="GridCell.Tab.0.left" timestamp="1583207162958">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
-    <state width="2169" height="291" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583206778956" />
+    <state width="2169" height="291" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583207162958" />
     <state width="2310" height="292" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1583192715443" />
     <state width="2047" height="273" key="GridCell.Tab.0.left/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.left/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="2169" height="291" key="GridCell.Tab.0.right" timestamp="1583206778956">
+    <state width="2169" height="291" key="GridCell.Tab.0.right" timestamp="1583207162958">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="914" height="191" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582578794053" />
-    <state width="2169" height="291" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583206778956" />
+    <state width="2169" height="291" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583207162958" />
     <state width="2310" height="292" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1583192715443" />
     <state width="2047" height="273" key="GridCell.Tab.0.right/0.0.3440.1440@0.0.3440.1440" timestamp="1579846928043" />
     <state width="1670" height="386" key="GridCell.Tab.0.right/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
@@ -1403,12 +1323,12 @@
     <state x="1259" y="154" key="SettingsEditor/0.0.5360.1440@0.0.5360.1440" timestamp="1579734759232" />
     <state x="803" y="118" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579919306071" />
     <state x="3894" y="156" key="SettingsEditor/3440.0.1920.1080/0.0.3440.1440@3440.0.1920.1080" timestamp="1579542378989" />
-    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2" timestamp="1583194615819">
+    <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2" timestamp="1583206884021">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="965" y="183" width="481" height="297" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582354106620" />
     <state x="1126" y="240" width="483" height="389" key="Vcs.Push.Dialog.v2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331330030" />
-    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583194615819" />
+    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583206884021" />
     <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583186338893" />
     <state x="2163" y="338" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.3440.1440@0.0.3440.1440" timestamp="1579842899761" />
     <state x="2161" y="320" key="Vcs.Push.Dialog.v2/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1579924019835" />

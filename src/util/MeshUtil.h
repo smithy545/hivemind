@@ -10,7 +10,7 @@
 
 class MeshUtil {
 public:
-    static Mesh::Ptr generateTileMesh(float tileSize);
+    static Mesh::Ptr generateTileMesh(const std::string &texturePath, float tileSize);
 };
 
 

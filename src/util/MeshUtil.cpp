@@ -7,7 +7,7 @@
 #include "RenderUtil.h"
 
 
-Mesh::Ptr MeshUtil::generateTileMesh(float tileSize) {
+Mesh::Ptr MeshUtil::generateTileMesh(const std::string &texturePath, float tileSize) {
     Mesh::Ptr tileMesh = std::make_shared<Mesh>();
 
     // bottom left
@@ -48,7 +48,7 @@ Mesh::Ptr MeshUtil::generateTileMesh(float tileSize) {
     tileMesh->indices.push_back(0);
 
     // load default texture
-    tileMesh->textureId = RenderUtil::loadTexture("tile_01.png");
+    tileMesh->textureId = RenderUtil::loadTexture(texturePath);
 
     tileMesh->reload();
 
