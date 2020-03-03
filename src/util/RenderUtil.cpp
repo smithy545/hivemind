@@ -7,9 +7,10 @@
 #include <iostream>
 
 #include "CImg.h"
-#include "FileUtil.h"
 
 using namespace cimg_library;
+
+#include "FileUtil.h"
 
 
 void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {

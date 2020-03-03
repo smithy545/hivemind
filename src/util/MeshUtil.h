@@ -11,6 +11,8 @@
 class MeshUtil {
 public:
     static Mesh::Ptr generateTileMesh(const std::string &texturePath, float tileSize);
+
+    static Mesh::Ptr generateImageMesh(const std::string &imagePath);
 };
 
 

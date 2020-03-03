@@ -56,6 +56,10 @@ GLFWwindow *Renderer::init() {
     // setup default shader
     loadedShaders["default"] = RenderUtil::loadShaderProgram("vertex.shader", "fragment.shader");
 
+    // setup background mesh
+    Mesh::Ptr backgroundMesh = MeshUtil::generateImageMesh("fandango.jpg");
+    loadedMeshes["background"] = std::make_shared<MeshObject>(backgroundMesh);
+
     // setup default mesh
     Mesh::Ptr tileMesh = MeshUtil::generateTileMesh("panel_boltsGreen.png", tileSize);
     storeMesh("tile", tileMesh);

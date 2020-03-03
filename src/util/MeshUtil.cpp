@@ -6,51 +6,104 @@
 
 #include "RenderUtil.h"
 
+#include "CImg.h"
+
+using namespace cimg_library;
+
 
 Mesh::Ptr MeshUtil::generateTileMesh(const std::string &texturePath, float tileSize) {
-    Mesh::Ptr tileMesh = std::make_shared<Mesh>();
+    Mesh::Ptr mesh = std::make_shared<Mesh>();
 
     // bottom left
-    tileMesh->vertices.push_back(0);
-    tileMesh->vertices.push_back(0);
+    mesh->vertices.push_back(0);
+    mesh->vertices.push_back(0);
 
-    tileMesh->uvs.push_back(0);
-    tileMesh->uvs.push_back(0);
+    mesh->uvs.push_back(0);
+    mesh->uvs.push_back(0);
 
     // bottom right
-    tileMesh->vertices.push_back(tileSize);
-    tileMesh->vertices.push_back(0);
+    mesh->vertices.push_back(tileSize);
+    mesh->vertices.push_back(0);
 
-    tileMesh->uvs.push_back(1);
-    tileMesh->uvs.push_back(0);
+    mesh->uvs.push_back(1);
+    mesh->uvs.push_back(0);
 
     // top right
-    tileMesh->vertices.push_back(tileSize);
-    tileMesh->vertices.push_back(tileSize);
+    mesh->vertices.push_back(tileSize);
+    mesh->vertices.push_back(tileSize);
 
-    tileMesh->uvs.push_back(1);
-    tileMesh->uvs.push_back(1);
+    mesh->uvs.push_back(1);
+    mesh->uvs.push_back(1);
 
     // top left
-    tileMesh->vertices.push_back(0);
-    tileMesh->vertices.push_back(tileSize);
+    mesh->vertices.push_back(0);
+    mesh->vertices.push_back(tileSize);
 
-    tileMesh->uvs.push_back(0);
-    tileMesh->uvs.push_back(1);
+    mesh->uvs.push_back(0);
+    mesh->uvs.push_back(1);
 
     // indices
-    tileMesh->indices.push_back(0);
-    tileMesh->indices.push_back(2);
-    tileMesh->indices.push_back(3);
+    mesh->indices.push_back(0);
+    mesh->indices.push_back(2);
+    mesh->indices.push_back(3);
 
-    tileMesh->indices.push_back(1);
-    tileMesh->indices.push_back(2);
-    tileMesh->indices.push_back(0);
+    mesh->indices.push_back(1);
+    mesh->indices.push_back(2);
+    mesh->indices.push_back(0);
 
-    // load default texture
-    tileMesh->textureId = RenderUtil::loadTexture(texturePath);
+    mesh->textureId = RenderUtil::loadTexture(texturePath);
 
-    tileMesh->reload();
+    mesh->reload();
 
-    return tileMesh;
+    return mesh;
+}
+
+Mesh::Ptr MeshUtil::generateImageMesh(const std::string &imagePath) {
+    // double load image for now but who cares
+    CImg<unsigned char> img(("../res/img/" + imagePath).c_str());
+
+    Mesh::Ptr mesh = std::make_shared<Mesh>();
+
+    // bottom left
+    mesh->vertices.push_back(0);
+    mesh->vertices.push_back(0);
+
+    mesh->uvs.push_back(0);
+    mesh->uvs.push_back(0);
+
+    // bottom right
+    mesh->vertices.push_back(img.width());
+    mesh->vertices.push_back(0);
+
+    mesh->uvs.push_back(1);
+    mesh->uvs.push_back(0);
+
+    // top right
+    mesh->vertices.push_back(img.width());
+    mesh->vertices.push_back(img.height());
+
+    mesh->uvs.push_back(1);
+    mesh->uvs.push_back(1);
+
+    // top left
+    mesh->vertices.push_back(0);
+    mesh->vertices.push_back(img.height());
+
+    mesh->uvs.push_back(0);
+    mesh->uvs.push_back(1);
+
+    // indices
+    mesh->indices.push_back(0);
+    mesh->indices.push_back(2);
+    mesh->indices.push_back(3);
+
+    mesh->indices.push_back(1);
+    mesh->indices.push_back(2);
+    mesh->indices.push_back(0);
+
+    mesh->textureId = RenderUtil::loadTexture(imagePath);
+
+    mesh->reload();
+
+    return mesh;
 }
