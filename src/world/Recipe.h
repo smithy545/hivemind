@@ -23,8 +23,8 @@ private:
         PASSIVE
     };
 
-    int turnsToProduce;
-    Structure::Ptr requiredStructure{nullptr};
+    int turnsToProduce; // if 0 production is instant
+    Structure::Ptr requiredStructure{nullptr}; // if not present no structure is required
     std::vector<Prop::Ptr> inputs;
     Prop::Ptr output;
 };

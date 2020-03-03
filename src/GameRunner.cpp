@@ -13,8 +13,8 @@
 
 // static members
 bool GameRunner::keys[];
-int GameRunner::screenWidth = 1920;
-int GameRunner::screenHeight = 1080;
+int GameRunner::screenWidth = 1200;
+int GameRunner::screenHeight = 900;
 float GameRunner::mouseX = 0;
 float GameRunner::mouseY = 0;
 float GameRunner::mouseScroll = 0;

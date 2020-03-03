@@ -8,9 +8,10 @@
 
 
 Camera::Camera(float x, float y, float width, float height, float tileSize)
-        : pos(x, y), width(width), scale(1), height(height), tileSize(tileSize),
-          viewMatrix(glm::translate(glm::mat4(1), glm::vec3(-pos, 0))),
-          projectionMatrix(glm::ortho(0.f, width, 0.f, height, -1.f, 1.f)) {}
+        : pos(x, y), width(width), scale(1), height(height), tileSize(tileSize) {
+    resetProjectionMatrix();
+    resetViewMatrix();
+}
 
 bool Camera::inSight(const MapNode::Ptr &node) const {
     // TODO: Improve to include node size
@@ -61,7 +62,7 @@ void Camera::setTileSize(double tileSize) {
 }
 
 void Camera::resetProjectionMatrix() {
-    projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height, -1.f, 1.f);
+    projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height);
 }
 
 void Camera::resetViewMatrix() {

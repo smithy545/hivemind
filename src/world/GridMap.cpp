@@ -6,8 +6,6 @@
 
 #include <iostream>
 
-#include "Human.h"
-
 
 GridMap::GridMap(int width, int height) : width(width), height(height) {
     // initialize
@@ -43,8 +41,6 @@ GridMap::GridMap(int width, int height) : width(width), height(height) {
                 node->getNeighbors().insert(nodes[index - width + 1]);
         }
     }
-    for (int i = 0; i < 10; i++)
-        placeStructure(std::make_shared<Structure>(nullptr), i + 1, i, 1, 1);
 }
 
 MapNode::Ptr GridMap::getNode(int x, int y) {
