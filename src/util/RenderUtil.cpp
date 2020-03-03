@@ -24,8 +24,6 @@ void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {
 
 
 GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath) {
-    // build and compile our shader program
-    // ------------------------------------
     // vertex shader
     char *vertexShaderSource = FileUtil::readResourceFile("shaders/" + vertexShaderPath);
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);

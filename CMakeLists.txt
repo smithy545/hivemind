@@ -19,11 +19,11 @@ endif()
 # Compile external dependencies
 add_subdirectory(external)
 include_directories(
-        external/glfw-3.1.2/include
+        external/glfw/include
         external/glm
-        external/glew-1.13.0/include
-        external/assimp-3.0.1270/include
-        external/fmt-master/include
+        external/glew/include
+        external/assimp/include
+        external/fmt/include
         external/json/include
         external/CImg
         ./src)

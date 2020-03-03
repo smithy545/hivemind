@@ -113,7 +113,6 @@ void GameRunner::loop() {
         renderer->render(mvpUniform);
 
         // glfw: swap buffers and poll IO events
-        // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     } // Check if the ESC key was pressed or the window was closed
