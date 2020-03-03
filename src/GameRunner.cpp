@@ -21,21 +21,18 @@ float GameRunner::mouseScroll = 0;
 bool GameRunner::resized = false;
 unsigned int WorldEntity::GLOBAL_ID = 0;
 
+
 void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
-
-    // instantiate renderer and get created window
     Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight, 64);
     GLFWwindow *window = renderer->init();
 
     std::cout << "Window init" << std::endl;
-
-    for (bool &key : keys)
-        key = false;
-
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
+    for (bool &key : keys)
+        key = false;
     glfwSetKeyCallback(window, keyCallback);
     // Setup mouse inputs
     glfwSetCursorPosCallback(window, cursorPosCallback);
@@ -45,33 +42,25 @@ void GameRunner::loop() {
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
+    // activate default shader program and setup uniforms
     std::cout << "Shader init" << std::endl;
-
-    // activate shader program and setup uniforms
     GLuint defaultShader = renderer->getShader("default");
     glUseProgram(defaultShader);
     GLint mvpUniform = glGetUniformLocation(defaultShader, "MVP");
     GLint mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
     GLint mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
-
-    // setup texture space in shader program to use active texture unit 0
     GLint texUniform = glGetUniformLocation(defaultShader, "tex");
     glUniform1i(texUniform, 0);
 
     std::cout << "Map init" << std::endl;
-
-    // map setup
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
-    Human::Ptr ptr = std::make_shared<Human>("adam");
+    Human::Ptr ptr = std::make_shared<Human>("eve");
     worldMap->addActor(ptr, 0, 0);
 
     std::cout << "UI init" << std::endl;
-
-    // ui setup
     UserInterface::Ptr ui = std::make_shared<UserInterface>(worldMap);
 
-    std::cout << "Loop" << std::endl;
-
+    std::cout << "Misc init/loop start" << std::endl;
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -99,18 +88,17 @@ void GameRunner::loop() {
         // update map
         updateMap(worldMap);
 
-        // add tile mesh model for each world entity
-        renderer->getMeshObject("tile")->models.clear();
+        // refresh mesh model for each world entity
+        auto meshObj = renderer->getMeshObject("tile");
+        meshObj->models.clear();
         for (const auto &entity: worldMap->getEntities()) {
-            if (renderer->getCamera()
-                    ->inSight(entity->getPosition())) {
-                renderer->getMeshObject("tile")
-                        ->models.push_back(entity->getModel(renderer->getTileSize()));
+            if (renderer->getCamera()->inSight(entity->getPosition())) {
+                meshObj->models.push_back(entity->getModel(renderer->getTileSize()));
             }
         }
 
         // render
-        renderer->render(mvpUniform);
+        renderer->renderMeshes("default", mvpUniform);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);

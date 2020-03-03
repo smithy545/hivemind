@@ -13,6 +13,8 @@ public:
     static Mesh::Ptr generateTileMesh(const std::string &texturePath, float tileSize);
 
     static Mesh::Ptr generateImageMesh(const std::string &imagePath);
+
+    static Mesh::Ptr generateRectMesh(const std::string &imagePath, int width, int height);
 };
 
 

@@ -57,7 +57,7 @@ GLFWwindow *Renderer::init() {
     loadedShaders["default"] = RenderUtil::loadShaderProgram("vertex.shader", "fragment.shader");
 
     // setup background mesh
-    Mesh::Ptr backgroundMesh = MeshUtil::generateImageMesh("fandango.jpg");
+    Mesh::Ptr backgroundMesh = MeshUtil::generateImageMesh("bernie.jpg");
     loadedMeshes["background"] = std::make_shared<MeshObject>(backgroundMesh);
 
     // setup default mesh
@@ -80,9 +80,20 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(GLint mvpUniform) {
-    //GLuint program = loadedShaders["default"];
-    //glUseProgram(program);
+void Renderer::resize(int width, int height) {
+    this->width = width;
+    this->height = height;
+    camera->resize(width, height);
+}
+
+void Renderer::renderMeshes(const std::string &shaderName, GLint mvpUniform) {
+    if (loadedShaders.find(shaderName) == loadedShaders.end()) {
+        std::cerr << "Couldn't find shader " << shaderName << " in loaded shaders" << std::endl;
+        return;
+    }
+
+    GLuint program = loadedShaders[shaderName];
+    glUseProgram(program);
 
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
     for (const auto &obj: loadedMeshes) {
@@ -93,12 +104,6 @@ void Renderer::render(GLint mvpUniform) {
             RenderUtil::renderMesh(obj.second->mesh);
         }
     }
-}
-
-void Renderer::resize(int width, int height) {
-    this->width = width;
-    this->height = height;
-    camera->resize(width, height);
 }
 
 GLuint Renderer::getShader(const std::string &name) {

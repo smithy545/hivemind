@@ -27,9 +27,9 @@ public:
 
     void cleanup();
 
-    void render(GLint mvpUniform);
-
     void resize(int width, int height);
+
+    void renderMeshes(const std::string &shaderName, GLint mvpUniform);
 
     void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
 
