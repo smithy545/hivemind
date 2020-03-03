@@ -4,8 +4,9 @@
 
 #include "UserInterface.h"
 
-#include <iostream>
+#include <memory>
 #include <utility>
+#include <world/Human.h>
 
 #include "pathing/Pather.h"
 

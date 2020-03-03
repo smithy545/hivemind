@@ -43,15 +43,6 @@ GridMap::GridMap(int width, int height) : width(width), height(height) {
                 node->getNeighbors().insert(nodes[index - width + 1]);
         }
     }
-
-    // first there was adam and he was added to the map actors
-    Human::Ptr adam = std::make_shared<Human>("adam");
-    addActor(adam, 0, 20);
-    for (int i = 0; i < 10; i++)
-        addActor(std::make_shared<Human>("eve" + std::to_string(i)), i, i);
-    for (int i = 0; i < 10; i++)
-        placeStructure(std::make_shared<Structure>(nullptr), i + 1, i, 1, 1);
-
 }
 
 MapNode::Ptr GridMap::getNode(int x, int y) {

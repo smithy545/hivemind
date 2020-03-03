@@ -25,7 +25,7 @@ void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
 
     // instantiate renderer and get created window
-    Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight, 32);
+    Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight, 64);
     GLFWwindow *window = renderer->init();
 
     std::cout << "Window init" << std::endl;
@@ -62,6 +62,8 @@ void GameRunner::loop() {
 
     // map setup
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
+    Human::Ptr ptr = std::make_shared<Human>("adam");
+    worldMap->addActor(ptr, 0, 0);
 
     std::cout << "UI init" << std::endl;
 

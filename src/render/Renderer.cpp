@@ -47,6 +47,10 @@ GLFWwindow *Renderer::init() {
         return nullptr;
     }
 
+    // enable srgb
+    glEnable(GL_FRAMEBUFFER_SRGB);
+    glEnable(GL_CULL_FACE);
+
     // setup default shader
     loadedShaders["default"] = RenderUtil::loadShaderProgram("vertex.shader", "fragment.shader");
 

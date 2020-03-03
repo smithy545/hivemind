@@ -74,10 +74,16 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
 
 GLuint RenderUtil::loadTexture(const std::string &texturePath) {
     // Make sure imagemagick and graphicsmagick installed for img loading
-    cimg::imagemagick_path(nullptr, false);
-    cimg::graphicsmagick_path(nullptr, false);
-
     CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
+
+    // interleave color data
+    auto *data = new unsigned char[image.size()];
+    int N = image.width() * image.height();
+    for (int i = 0; i < N; i++) {
+        data[3 * i] = image.data()[i];
+        data[3 * i + 1] = image.data()[i + N];
+        data[3 * i + 2] = image.data()[i + 2 * N];
+    }
 
     // Create one OpenGL texture
     GLuint textureID;
@@ -87,14 +93,15 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath) {
     glBindTexture(GL_TEXTURE_2D, textureID);
 
     // Give the image to OpenGL
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.width(), image.height(), 0, GL_BGR, GL_UNSIGNED_BYTE, image.data());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    // ... which requires mipmaps. Generate them automatically.
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glGenerateMipmap(GL_TEXTURE_2D);
+
+    delete[] data;
 
     std::cout << "Texture " << texturePath << " loaded" << std::endl;
 
