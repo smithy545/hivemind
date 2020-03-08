@@ -2,8 +2,8 @@
 // Created by Philip on 2/8/2020.
 //
 
-#ifndef HIVEMIND_CAMERA_H
-#define HIVEMIND_CAMERA_H
+#ifndef SOCIETY_CAMERA_H
+#define SOCIETY_CAMERA_H
 
 #include <memory>
 
@@ -34,10 +34,6 @@ public:
 
     void resize(int width, int height);
 
-    void resetProjectionMatrix();
-
-    void resetViewMatrix();
-
     void setTileSize(double tileSize);
 
     float getX() const;
@@ -64,7 +60,11 @@ private:
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};
     glm::mat4 projectionMatrix{1};
+
+    void resetProjectionMatrix();
+
+    void resetViewMatrix();
 };
 
 
-#endif //HIVEMIND_CAMERA_H
+#endif //SOCIETY_CAMERA_H

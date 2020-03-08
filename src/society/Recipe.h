@@ -8,8 +8,8 @@
 #include <memory>
 #include <vector>
 
-#include "Prop.h"
-#include "Structure.h"
+#include "world/Prop.h"
+#include "world/Structure.h"
 
 
 // Recipe defining process for generating certain prop

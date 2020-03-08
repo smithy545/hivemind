@@ -2,8 +2,8 @@
 // Created by philip on 1/23/20.
 //
 
-#ifndef HIVEMIND_PATHER_H
-#define HIVEMIND_PATHER_H
+#ifndef SOCIETY_PATHER_H
+#define SOCIETY_PATHER_H
 
 #include <memory>
 #include <string>
@@ -38,4 +38,4 @@ private:
 };
 
 
-#endif //HIVEMIND_PATHER_H
+#endif //SOCIETY_PATHER_H

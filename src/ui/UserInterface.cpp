@@ -51,7 +51,7 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float m
 
         // move adam (first man) to mouse pointer
         auto adam = map->getActors()[0];
-        if ((gridX != adam->getGridX() || gridY != adam->getGridY()) && adam->getPath().empty()) {
+        if ((gridX != adam->getX() || gridY != adam->getY()) && adam->getPath().empty()) {
             MapNode::MapPath path = Pather::genAStarPath(adam->getPosition(), node);
             for (const auto &step: path) {
                 adam->addToPath(step);

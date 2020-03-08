@@ -2,8 +2,8 @@
 // Created by Philip on 2/23/2020.
 //
 
-#ifndef HIVEMIND_BASEROLE_H
-#define HIVEMIND_BASEROLE_H
+#ifndef SOCIETY_BASEROLE_H
+#define SOCIETY_BASEROLE_H
 
 #include <memory>
 #include <string>
@@ -36,4 +36,4 @@ private:
 };
 
 
-#endif //HIVEMIND_BASEROLE_H
+#endif //SOCIETY_BASEROLE_H

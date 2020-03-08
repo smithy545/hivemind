@@ -2,8 +2,8 @@
 // Created by Philip on 2/24/2020.
 //
 
-#ifndef HIVEMIND_WORLDMAP_H
-#define HIVEMIND_WORLDMAP_H
+#ifndef SOCIETY_WORLDMAP_H
+#define SOCIETY_WORLDMAP_H
 
 #include <memory>
 #include <vector>
@@ -32,4 +32,4 @@ public:
     virtual bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) = 0;
 };
 
-#endif //HIVEMIND_WORLDMAP_H
+#endif //SOCIETY_WORLDMAP_H

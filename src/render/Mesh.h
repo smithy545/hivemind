@@ -2,8 +2,8 @@
 // Created by Philip on 3/1/2020.
 //
 
-#ifndef HIVEMIND_MESH_H
-#define HIVEMIND_MESH_H
+#ifndef SOCIETY_MESH_H
+#define SOCIETY_MESH_H
 
 #include <memory>
 #include <vector>
@@ -89,4 +89,4 @@ public:
     }
 };
 
-#endif //HIVEMIND_MESH_H
+#endif //SOCIETY_MESH_H

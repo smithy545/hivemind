@@ -2,8 +2,8 @@
 // Created by Philip on 2/9/2020.
 //
 
-#ifndef HIVEMIND_WORLDENTITY_H
-#define HIVEMIND_WORLDENTITY_H
+#ifndef SOCIETY_WORLDENTITY_H
+#define SOCIETY_WORLDENTITY_H
 
 #include <memory>
 #include <string>
@@ -12,10 +12,11 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
+#include "common/Entity.h"
 #include "pathing/MapNode.h"
 
 
-class WorldEntity {
+class WorldEntity : public Entity {
 public:
     static unsigned int GLOBAL_ID;
 
@@ -45,16 +46,24 @@ public:
         return position->getY() * tileSize;
     }
 
-    int getGridX() {
+    int getX() override {
         if (position == nullptr)
             return 0;
         return position->getX();
     }
 
-    int getGridY() {
+    int getY() override {
         if (position == nullptr)
             return 0;
         return position->getY();
+    }
+
+    int getWidth() override {
+        return 1;
+    }
+
+    int getHeight() override {
+        return 1;
     }
 
     unsigned int getId() {
@@ -77,4 +86,4 @@ private:
     unsigned int id;
 };
 
-#endif //HIVEMIND_WORLDENTITY_H
+#endif //SOCIETY_WORLDENTITY_H

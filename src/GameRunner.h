@@ -2,8 +2,8 @@
 // Created by philip on 1/24/20.
 //
 
-#ifndef HIVEMIND_GAMERUNNER_H
-#define HIVEMIND_GAMERUNNER_H
+#ifndef SOCIETY_GAMERUNNER_H
+#define SOCIETY_GAMERUNNER_H
 
 #include <thread>
 
@@ -46,4 +46,4 @@ private:
 };
 
 
-#endif //HIVEMIND_GAMERUNNER_H
+#endif //SOCIETY_GAMERUNNER_H

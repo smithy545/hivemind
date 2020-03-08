@@ -2,8 +2,8 @@
 // Created by Philip on 3/1/2020.
 //
 
-#ifndef HIVEMIND_RENDERER_H
-#define HIVEMIND_RENDERER_H
+#ifndef SOCIETY_RENDERER_H
+#define SOCIETY_RENDERER_H
 
 #include <memory>
 #include <string>
@@ -57,4 +57,4 @@ private:
 };
 
 
-#endif //HIVEMIND_RENDERER_H
+#endif //SOCIETY_RENDERER_H

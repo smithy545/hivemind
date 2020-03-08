@@ -2,8 +2,8 @@
 // Created by philip on 1/23/20.
 //
 
-#ifndef HIVEMIND_HUMAN_H
-#define HIVEMIND_HUMAN_H
+#ifndef SOCIETY_HUMAN_H
+#define SOCIETY_HUMAN_H
 
 #include <memory>
 #include <string>
@@ -68,4 +68,4 @@ private:
 };
 
 
-#endif //HIVEMIND_HUMAN_H
+#endif //SOCIETY_HUMAN_H

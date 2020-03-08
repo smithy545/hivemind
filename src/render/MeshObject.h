@@ -2,8 +2,8 @@
 // Created by Philip on 3/1/2020.
 //
 
-#ifndef HIVEMIND_MESHOBJECT_H
-#define HIVEMIND_MESHOBJECT_H
+#ifndef SOCIETY_MESHOBJECT_H
+#define SOCIETY_MESHOBJECT_H
 
 #include <utility>
 #include <vector>
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif //HIVEMIND_MESHOBJECT_H
+#endif //SOCIETY_MESHOBJECT_H

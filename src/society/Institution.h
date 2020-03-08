@@ -2,8 +2,8 @@
 // Created by Philip on 2/18/2020.
 //
 
-#ifndef HIVEMIND_INSTITUTION_H
-#define HIVEMIND_INSTITUTION_H
+#ifndef SOCIETY_INSTITUTION_H
+#define SOCIETY_INSTITUTION_H
 
 #include <memory>
 #include <string>
@@ -36,4 +36,4 @@ private:
 };
 
 
-#endif //HIVEMIND_INSTITUTION_H
+#endif //SOCIETY_INSTITUTION_H

@@ -2,8 +2,8 @@
 // Created by Philip on 2/12/2020.
 //
 
-#ifndef HIVEMIND_STRUCTURE_H
-#define HIVEMIND_STRUCTURE_H
+#ifndef SOCIETY_STRUCTURE_H
+#define SOCIETY_STRUCTURE_H
 
 #include <memory>
 
@@ -24,4 +24,4 @@ public:
 };
 
 
-#endif //HIVEMIND_STRUCTURE_H
+#endif //SOCIETY_STRUCTURE_H

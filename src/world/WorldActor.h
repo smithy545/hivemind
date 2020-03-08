@@ -2,8 +2,8 @@
 // Created by Philip on 2/9/2020.
 //
 
-#ifndef HIVEMIND_WORLDACTOR_H
-#define HIVEMIND_WORLDACTOR_H
+#ifndef SOCIETY_WORLDACTOR_H
+#define SOCIETY_WORLDACTOR_H
 
 #include <memory>
 #include <utility>
@@ -42,4 +42,4 @@ protected:
     explicit WorldActor(const MapNode::Ptr &initialLocation);
 };
 
-#endif //HIVEMIND_WORLDACTOR_H
+#endif //SOCIETY_WORLDACTOR_H

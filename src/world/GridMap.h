@@ -2,8 +2,8 @@
 // Created by philip on 1/23/20.
 //
 
-#ifndef HIVEMIND_GRIDMAP_H
-#define HIVEMIND_GRIDMAP_H
+#ifndef SOCIETY_GRIDMAP_H
+#define SOCIETY_GRIDMAP_H
 
 #include <memory>
 #include <vector>
@@ -64,4 +64,4 @@ private:
 };
 
 
-#endif //HIVEMIND_GRIDMAP_H
+#endif //SOCIETY_GRIDMAP_H

@@ -9,9 +9,7 @@
 #include "pathing/Pather.h"
 
 
-Human::Human(std::string name) : WorldActor(), name(std::move(name)) {
-    std::cout << "Hi, I'm " << getName() << " and my id is " << getId() << std::endl;
-}
+Human::Human(std::string name) : WorldActor(), name(std::move(name)) {}
 
 WorldActor::Action Human::update(GridMap::Ptr map) {
     if (!path.empty()) {

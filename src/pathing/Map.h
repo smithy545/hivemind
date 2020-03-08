@@ -2,8 +2,8 @@
 // Created by philip on 1/26/20.
 //
 
-#ifndef HIVEMIND_MAP_H
-#define HIVEMIND_MAP_H
+#ifndef SOCIETY_MAP_H
+#define SOCIETY_MAP_H
 
 #include <memory>
 #include <vector>
@@ -20,4 +20,4 @@ public:
     virtual MapNode::Ptr getNode(int x, int y) = 0;
 };
 
-#endif //HIVEMIND_MAP_H
+#endif //SOCIETY_MAP_H

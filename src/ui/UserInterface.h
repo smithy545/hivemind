@@ -2,8 +2,8 @@
 // Created by Philip on 2/25/2020.
 //
 
-#ifndef HIVEMIND_USERINTERFACE_H
-#define HIVEMIND_USERINTERFACE_H
+#ifndef SOCIETY_USERINTERFACE_H
+#define SOCIETY_USERINTERFACE_H
 
 #include <memory>
 
@@ -22,8 +22,7 @@ public:
 
 private:
     GridMap::Ptr map;
-
 };
 
 
-#endif //HIVEMIND_USERINTERFACE_H
+#endif //SOCIETY_USERINTERFACE_H

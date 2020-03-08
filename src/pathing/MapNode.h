@@ -2,8 +2,8 @@
 // Created by philip on 1/23/20.
 //
 
-#ifndef HIVEMIND_MAPNODE_H
-#define HIVEMIND_MAPNODE_H
+#ifndef SOCIETY_MAPNODE_H
+#define SOCIETY_MAPNODE_H
 
 #include <deque>
 #include <memory>
@@ -72,4 +72,4 @@ private:
     std::unordered_set<Ptr> neighbors;
 };
 
-#endif //HIVEMIND_MAPNODE_H
+#endif //SOCIETY_MAPNODE_H
