@@ -62,8 +62,8 @@ GLFWwindow *Renderer::init() {
 
     // setup human, structure, prop meshes
     Mesh::Ptr humanMesh = MeshUtil::generateTileMesh("animals/monkey.png", tileSize);
-    Mesh::Ptr propMesh = MeshUtil::generateTileMesh("tree.png", tileSize);
-    Mesh::Ptr structureMesh = MeshUtil::generateTileMesh("panel_boltsGreen.png", tileSize);
+    Mesh::Ptr propMesh = MeshUtil::generateTileMesh("plants/tree.png", tileSize);
+    Mesh::Ptr structureMesh = MeshUtil::generateTileMesh("structures/panel_boltsGreen.png", tileSize);
     storeMesh("human", humanMesh);
     storeMesh("prop", propMesh);
     storeMesh("structure", structureMesh);

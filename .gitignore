@@ -1,8 +1,7 @@
 cmake-build-debug/
-external/assimp/
-external/fmt/
-external/glew/
-external/glfw/
-external/glm/
-external/json/
-external/CImg/
+external/CImg
+external/glew
+external/glfw
+external/glm
+external/json
+external/zips
