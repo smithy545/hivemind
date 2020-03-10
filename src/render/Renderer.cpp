@@ -11,7 +11,7 @@
 
 
 Renderer::Renderer(int width, int height, int tileSize) : camera(
-        std::make_shared<Camera>(0, 0, width, height, tileSize)),
+        std::make_shared<Camera>(0, 0, width, height)),
                                                           width(width), height(height), tileSize(tileSize),
                                                           window(nullptr) {}
 
@@ -58,11 +58,15 @@ GLFWwindow *Renderer::init() {
 
     // setup background mesh
     Mesh::Ptr backgroundMesh = MeshUtil::generateImageMesh("bernie.jpg");
-    loadedMeshes["background"] = std::make_shared<MeshObject>(backgroundMesh);
+    storeMesh("background", backgroundMesh);
 
-    // setup default mesh
-    Mesh::Ptr tileMesh = MeshUtil::generateTileMesh("panel_boltsGreen.png", tileSize);
-    storeMesh("tile", tileMesh);
+    // setup human, structure, prop meshes
+    Mesh::Ptr humanMesh = MeshUtil::generateTileMesh("animals/monkey.png", tileSize);
+    Mesh::Ptr propMesh = MeshUtil::generateTileMesh("tree.png", tileSize);
+    Mesh::Ptr structureMesh = MeshUtil::generateTileMesh("panel_boltsGreen.png", tileSize);
+    storeMesh("human", humanMesh);
+    storeMesh("prop", propMesh);
+    storeMesh("structure", structureMesh);
 
     return window;
 }
@@ -86,7 +90,7 @@ void Renderer::resize(int width, int height) {
     camera->resize(width, height);
 }
 
-void Renderer::renderMeshes(const std::string &shaderName, GLint mvpUniform) {
+void Renderer::renderMeshes(const std::string &shaderName, GLint mvpUniform, GLint texUniform) {
     if (loadedShaders.find(shaderName) == loadedShaders.end()) {
         std::cerr << "Couldn't find shader " << shaderName << " in loaded shaders" << std::endl;
         return;
@@ -96,13 +100,19 @@ void Renderer::renderMeshes(const std::string &shaderName, GLint mvpUniform) {
     glUseProgram(program);
 
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
+    int i = 0;
     for (const auto &obj: loadedMeshes) {
+        glUniform1i(texUniform, i);
         for (auto model: obj.second->models) {
             glm::mat4 mvpMatrix = viewProj * model;
             glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
-            RenderUtil::renderMesh(obj.second->mesh);
+            RenderUtil::renderMesh(obj.second->mesh, i);
         }
+        // HACKY: don't upload
+        if (obj.first != "background")
+            obj.second->models.clear();
+        i++;
     }
 }
 

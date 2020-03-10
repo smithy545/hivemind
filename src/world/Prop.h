@@ -15,9 +15,9 @@ class Prop : public WorldEntity {
 public:
     typedef std::shared_ptr<Prop> Ptr;
 
-    explicit Prop(std::string name) : Prop(std::move(name), 1) {}
+    explicit Prop(std::string name) : Prop(name, 1) {}
 
-    Prop(std::string name, int count) : name(std::move(name)), count(count) {}
+    Prop(const std::string &name, int count) : WorldEntity(name), name(name), count(count) {}
 
     const std::string &getName() const {
         return name;

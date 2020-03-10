@@ -29,7 +29,7 @@ public:
 
     void resize(int width, int height);
 
-    void renderMeshes(const std::string &shaderName, GLint mvpUniform);
+    void renderMeshes(const std::string &shaderName, GLint mvpUniform, GLint texUniform);
 
     void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
 

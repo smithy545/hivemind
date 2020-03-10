@@ -5,11 +5,15 @@
 #ifndef SOCIETY_UIENTITY_H
 #define SOCIETY_UIENTITY_H
 
+#include <memory>
+
 #include "common/Entity.h"
 
 
 class UIEntity : public Entity {
 public:
+    typedef std::shared_ptr<UIEntity> Ptr;
+
     int getX() override;
 
     int getY() override;

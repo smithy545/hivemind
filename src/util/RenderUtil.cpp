@@ -12,10 +12,10 @@ using namespace cimg_library;
 #include "FileUtil.h"
 
 
-void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr) {
+void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr, int i) {
     Mesh::Ptr mesh = meshPtr.lock();
 
-    glActiveTexture(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE0 + i);
     glBindTexture(GL_TEXTURE_2D, mesh->textureId);
 
     glBindVertexArray(mesh->vertexArrayId);
@@ -77,10 +77,14 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath) {
     // interleave color data
     auto *data = new unsigned char[image.size()];
     int N = image.width() * image.height();
-    for (int i = 0; i < N; i++) {
-        data[3 * i] = image.data()[i];
-        data[3 * i + 1] = image.data()[i + N];
-        data[3 * i + 2] = image.data()[i + 2 * N];
+    int channels = image.spectrum();
+    for (int y = 0; y < image.height(); y++) {
+        for (int x = 0; x < image.width(); x++) {
+            int index = y * image.width() + x;
+            for (int c = 0; c < channels; c++) {
+                data[channels * index + c] = image(x, y, c);
+            }
+        }
     }
 
     // Create one OpenGL texture
@@ -93,6 +97,10 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath) {
     // Give the image to OpenGL
     glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
+    // padding fix
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+    // texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);

@@ -11,6 +11,8 @@
 #include "render/Renderer.h"
 #include "world/GridMap.h"
 
+#include "UIEntity.h"
+
 
 class UserInterface {
 public:
@@ -22,6 +24,7 @@ public:
 
 private:
     GridMap::Ptr map;
+    std::vector<UIEntity::Ptr> entities;
 };
 
 

@@ -2,10 +2,10 @@
 
 in vec2 uv;
 
-out vec3 color;
+out vec3 fragColor;
 
 layout(binding=0) uniform sampler2D tex;
 
 void main() {
-    color = texture(tex, uv).rgb;
+    fragColor = texture(tex, uv).rgb;
 }

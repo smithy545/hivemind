@@ -18,6 +18,8 @@ class Structure : public WorldActor {
 public:
     typedef std::shared_ptr<Structure> Ptr;
 
+    Structure();
+
     explicit Structure(const MapNode::Ptr &node);
 
     Action update(std::shared_ptr<GridMap> map) override;

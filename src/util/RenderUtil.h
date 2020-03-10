@@ -12,7 +12,7 @@
 
 class RenderUtil {
 public:
-    static void renderMesh(const std::weak_ptr<Mesh> &mesh);
+    static void renderMesh(const std::weak_ptr<Mesh> &mesh, int i);
 
     static GLuint loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath);
 

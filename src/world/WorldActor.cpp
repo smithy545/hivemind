@@ -4,10 +4,13 @@
 
 #include "WorldActor.h"
 
+#include <utility>
 
-WorldActor::WorldActor() : WorldEntity() {}
 
-WorldActor::WorldActor(const MapNode::Ptr &initialLocation) : WorldEntity(initialLocation) {}
+WorldActor::WorldActor(std::string spriteName) : WorldEntity(std::move(spriteName)) {}
+
+WorldActor::WorldActor(std::string spriteName, const MapNode::Ptr &initialLocation) : WorldEntity(std::move(spriteName),
+                                                                                                  initialLocation) {}
 
 void WorldActor::addToPath(MapNode::Ptr nextPos) {
     path.push_front(std::move(nextPos));

@@ -37,9 +37,9 @@ public:
 protected:
     MapNode::MapPath path;
 
-    WorldActor();
+    explicit WorldActor(std::string spriteName);
 
-    explicit WorldActor(const MapNode::Ptr &initialLocation);
+    WorldActor(std::string spriteName, const MapNode::Ptr &initialLocation);
 };
 
 #endif //SOCIETY_WORLDACTOR_H

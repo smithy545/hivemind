@@ -7,13 +7,13 @@
 #include <glm/ext.hpp>
 
 
-Camera::Camera(float x, float y, float width, float height, float tileSize)
-        : pos(x, y), width(width), scale(1), height(height), tileSize(tileSize) {
+Camera::Camera(float x, float y, float width, float height)
+        : pos(x, y), width(width), scale(1), height(height) {
     resetProjectionMatrix();
     resetViewMatrix();
 }
 
-bool Camera::inSight(const MapNode::Ptr &node) const {
+bool Camera::inSight(const MapNode::Ptr &node, int tileSize) const {
     // TODO: Improve to include node size
     return (node->getX() + 1) * tileSize > pos.x
            && node->getX() * tileSize < pos.x + scale * width
@@ -57,10 +57,6 @@ void Camera::resize(int width, int height) {
     resetProjectionMatrix();
 }
 
-void Camera::setTileSize(double tileSize) {
-    this->tileSize = tileSize;
-}
-
 void Camera::resetProjectionMatrix() {
     projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height);
 }
@@ -87,10 +83,6 @@ float Camera::getWidth() const {
 
 float Camera::getHeight() const {
     return height;
-}
-
-float Camera::getTileSize() const {
-    return tileSize;
 }
 
 float Camera::getScale() const {

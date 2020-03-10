@@ -9,6 +9,7 @@
 
 #include "render/Renderer.h"
 #include "world/Human.h"
+#include "world/Prop.h"
 
 
 // static members
@@ -20,6 +21,14 @@ float GameRunner::mouseY = 0;
 float GameRunner::mouseScroll = 0;
 bool GameRunner::resized = false;
 unsigned int WorldEntity::GLOBAL_ID = 0;
+
+const std::string &WorldEntity::getSpriteName() const {
+    return spriteName;
+}
+
+void WorldEntity::setSpriteName(const std::string &spriteName) {
+    WorldEntity::spriteName = spriteName;
+}
 
 
 void GameRunner::loop() {
@@ -50,12 +59,15 @@ void GameRunner::loop() {
     GLint mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
     GLint mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
     GLint texUniform = glGetUniformLocation(defaultShader, "tex");
-    glUniform1i(texUniform, 0);
 
     std::cout << "Map init" << std::endl;
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
-    Human::Ptr ptr = std::make_shared<Human>("eve");
-    worldMap->addActor(ptr, 0, 0);
+    Human::Ptr eve = std::make_shared<Human>("eve");
+    Structure::Ptr house = std::make_shared<Structure>();
+    Prop::Ptr prop = std::make_shared<Prop>("prop");
+    worldMap->addActor(eve, 0, 0);
+    worldMap->placeStructure(house, 1, 1, 1, 1);
+    worldMap->addEntity(prop, 1, 2);
 
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>(worldMap);
@@ -89,16 +101,15 @@ void GameRunner::loop() {
         updateMap(worldMap);
 
         // refresh mesh model for each world entity
-        auto meshObj = renderer->getMeshObject("tile");
-        meshObj->models.clear();
         for (const auto &entity: worldMap->getEntities()) {
-            if (renderer->getCamera()->inSight(entity->getPosition())) {
+            auto meshObj = renderer->getMeshObject(entity->getSpriteName());
+            if (renderer->getCamera()->inSight(entity->getPosition(), renderer->getTileSize())) {
                 meshObj->models.push_back(entity->getModel(renderer->getTileSize()));
             }
         }
 
         // render
-        renderer->renderMeshes("default", mvpUniform);
+        renderer->renderMeshes("default", mvpUniform, texUniform);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);

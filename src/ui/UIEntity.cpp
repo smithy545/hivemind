@@ -4,6 +4,7 @@
 
 #include "UIEntity.h"
 
+
 int UIEntity::getX() {
     return x;
 }

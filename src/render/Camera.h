@@ -16,9 +16,9 @@ class Camera {
 public:
     typedef std::shared_ptr<Camera> Ptr;
 
-    Camera(float x, float y, float width, float height, float tileSize);
+    Camera(float x, float y, float width, float height);
 
-    bool inSight(const MapNode::Ptr &node) const;
+    bool inSight(const MapNode::Ptr &node, int tileSize) const;
 
     void panLeft();
 
@@ -34,8 +34,6 @@ public:
 
     void resize(int width, int height);
 
-    void setTileSize(double tileSize);
-
     float getX() const;
 
     float getY() const;
@@ -43,8 +41,6 @@ public:
     float getWidth() const;
 
     float getHeight() const;
-
-    float getTileSize() const;
 
     float getScale() const;
 
@@ -55,7 +51,6 @@ private:
     float width;
     float height;
     float scale;
-    float tileSize;
 
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};

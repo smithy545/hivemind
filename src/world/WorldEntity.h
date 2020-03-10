@@ -74,13 +74,19 @@ public:
         return std::to_string(id);
     }
 
+    const std::string &getSpriteName() const;
+
+    void setSpriteName(const std::string &spriteName);
+
 protected:
     MapNode::Ptr position;
+    std::string spriteName;
 
-    WorldEntity() : WorldEntity(nullptr) {}
+    explicit WorldEntity(std::string spriteName) : WorldEntity(std::move(spriteName), nullptr) {}
 
-    explicit WorldEntity(MapNode::Ptr initialLocation) : position(std::move(initialLocation)),
-                                                         id(GLOBAL_ID++) {}
+    WorldEntity(std::string spriteName, MapNode::Ptr initialLocation) : position(std::move(initialLocation)),
+                                                                        spriteName(std::move(spriteName)),
+                                                                        id(GLOBAL_ID++) {}
 
 private:
     unsigned int id;
