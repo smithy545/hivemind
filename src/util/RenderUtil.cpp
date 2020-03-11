@@ -70,17 +70,20 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
 }
 
 
-GLuint RenderUtil::loadTexture(const std::string &texturePath) {
+GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &height) {
     // Make sure imagemagick and graphicsmagick installed for img loading
     CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
 
+    // set input references
+    width = image.width();
+    height = image.height();
+
     // interleave color data
     auto *data = new unsigned char[image.size()];
-    int N = image.width() * image.height();
     int channels = image.spectrum();
-    for (int y = 0; y < image.height(); y++) {
-        for (int x = 0; x < image.width(); x++) {
-            int index = y * image.width() + x;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int index = y * width + x;
             for (int c = 0; c < channels; c++) {
                 data[channels * index + c] = image(x, y, c);
             }
@@ -95,7 +98,7 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath) {
     glBindTexture(GL_TEXTURE_2D, textureID);
 
     // Give the image to OpenGL
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
     // padding fix
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);

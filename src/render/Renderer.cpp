@@ -6,14 +6,13 @@
 
 #include <iostream>
 
+#include "util/FileUtil.h"
 #include "util/MeshUtil.h"
 #include "util/RenderUtil.h"
 
 
-Renderer::Renderer(int width, int height, int tileSize) : camera(
-        std::make_shared<Camera>(0, 0, width, height)),
-                                                          width(width), height(height), tileSize(tileSize),
-                                                          window(nullptr) {}
+Renderer::Renderer(int width, int height) : camera(
+        std::make_shared<Camera>(0, 0, width, height)), width(width), height(height), window(nullptr) {}
 
 
 GLFWwindow *Renderer::init() {
@@ -53,20 +52,26 @@ GLFWwindow *Renderer::init() {
     // cull triangles facing away from camera
     glEnable(GL_CULL_FACE);
 
-    // setup default shader
-    loadedShaders["default"] = RenderUtil::loadShaderProgram("vertex.shader", "fragment.shader");
+    auto manifest = FileUtil::readJsonFile("manifest.json");
+    tileSize = manifest["tileSize"];
 
-    // setup background mesh
-    Mesh::Ptr backgroundMesh = MeshUtil::generateImageMesh("bernie.jpg");
-    storeMesh("background", backgroundMesh);
+    // shaders
+    for (const auto &shader: manifest["shaders"].items()) {
+        loadedShaders[shader.key()] = RenderUtil::loadShaderProgram(shader.value()[0], shader.value()[1]);
+    }
 
-    // setup human, structure, prop meshes
-    Mesh::Ptr humanMesh = MeshUtil::generateTileMesh("animals/monkey.png", tileSize);
-    Mesh::Ptr propMesh = MeshUtil::generateTileMesh("plants/tree.png", tileSize);
-    Mesh::Ptr structureMesh = MeshUtil::generateTileMesh("structures/panel_boltsGreen.png", tileSize);
-    storeMesh("human", humanMesh);
-    storeMesh("prop", propMesh);
-    storeMesh("structure", structureMesh);
+    // image textures
+    for (const auto &tex: manifest["textures"].items()) {
+        storeMesh(tex.key(), MeshUtil::generateImageMesh(tex.value()));
+    }
+
+    // tile sprites
+    for (const auto &tile: manifest["tiles"]) {
+        storeMesh(tile, MeshUtil::generateTileMesh(tile, tileSize));
+    }
+
+    // complex sprites
+    for (const auto &tile: manifest["sprites"]) {}
 
     return window;
 }

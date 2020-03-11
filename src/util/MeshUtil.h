@@ -15,6 +15,8 @@ public:
     static Mesh::Ptr generateImageMesh(const std::string &imagePath);
 
     static Mesh::Ptr generateRectMesh(const std::string &imagePath, int width, int height);
+
+    static Mesh::Ptr generateSpriteMesh(const std::string &jsonPath);
 };
 
 

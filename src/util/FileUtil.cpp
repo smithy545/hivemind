@@ -39,5 +39,5 @@ char* FileUtil::readResourceFile(const std::string &resourcePath) {
 
 
 json FileUtil::readJsonFile(const std::string &jsonPath) {
-    return json::parse(std::ifstream(jsonPath));
+    return json::parse(std::ifstream("../res/" + jsonPath));
 }

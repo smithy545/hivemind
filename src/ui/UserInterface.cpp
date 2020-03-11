@@ -13,7 +13,10 @@
 
 UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}
 
-void UserInterface::update(const bool keys[GLFW_KEY_LAST], float mouseX, float mouseY, float mouseScroll,
+void UserInterface::update(const bool keys[GLFW_KEY_LAST],
+                           float mouseX,
+                           float mouseY,
+                           float mouseScroll,
                            const Renderer::Ptr &renderer) {
     // update camera
     Camera::Ptr camera = renderer->getCamera();

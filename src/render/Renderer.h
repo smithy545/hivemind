@@ -21,7 +21,7 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    Renderer(int width, int height, int tileSize);
+    Renderer(int width, int height);
 
     GLFWwindow *init();
 

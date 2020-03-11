@@ -33,7 +33,7 @@ void WorldEntity::setSpriteName(const std::string &spriteName) {
 
 void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight, 64);
+    Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight);
     GLFWwindow *window = renderer->init();
 
     std::cout << "Window init" << std::endl;
