@@ -9,12 +9,12 @@
 
 using json = nlohmann::json;
 
-#include "MeshUtil.h"
+#include "SpriteUtil.h"
 #include "RenderUtil.h"
 
 
-Mesh::Ptr MeshUtil::generateTileMesh(const std::string &texturePath, float tileSize) {
-    Mesh::Ptr mesh = std::make_shared<Mesh>();
+Sprite::Ptr SpriteUtil::generateTileMesh(const std::string &texturePath, float tileSize) {
+    Sprite::Ptr mesh = std::make_shared<Sprite>();
 
     // bottom left
     mesh->vertices.push_back(0);
@@ -61,8 +61,8 @@ Mesh::Ptr MeshUtil::generateTileMesh(const std::string &texturePath, float tileS
     return mesh;
 }
 
-Mesh::Ptr MeshUtil::generateImageMesh(const std::string &imagePath) {
-    Mesh::Ptr mesh = std::make_shared<Mesh>();
+Sprite::Ptr SpriteUtil::generateImageMesh(const std::string &imagePath) {
+    Sprite::Ptr mesh = std::make_shared<Sprite>();
 
     int width, height;
     mesh->textureId = RenderUtil::loadTexture(imagePath, width, height);
@@ -109,8 +109,8 @@ Mesh::Ptr MeshUtil::generateImageMesh(const std::string &imagePath) {
     return mesh;
 }
 
-Mesh::Ptr MeshUtil::generateRectMesh(const std::string &imagePath, int width, int height) {
-    Mesh::Ptr mesh = std::make_shared<Mesh>();
+Sprite::Ptr SpriteUtil::generateRectMesh(const std::string &imagePath, int width, int height) {
+    Sprite::Ptr mesh = std::make_shared<Sprite>();
     int imWidth, imHeight;
     mesh->textureId = RenderUtil::loadTexture(imagePath, imWidth, imHeight);
 
@@ -156,10 +156,10 @@ Mesh::Ptr MeshUtil::generateRectMesh(const std::string &imagePath, int width, in
     return mesh;
 }
 
-Mesh::Ptr MeshUtil::generateSpriteMesh(const std::string &jsonPath) {
+Sprite::Ptr SpriteUtil::generateSpriteMesh(const std::string &jsonPath) {
     json spriteData = FileUtil::readJsonFile(jsonPath);
 
-    Mesh::Ptr mesh = std::make_shared<Mesh>();
+    Sprite::Ptr mesh = std::make_shared<Sprite>();
 
     for (std::string tex: spriteData["textures"]) {
         std::cout << tex << std::endl;

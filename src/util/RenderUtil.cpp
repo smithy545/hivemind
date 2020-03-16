@@ -12,8 +12,8 @@ using namespace cimg_library;
 #include "FileUtil.h"
 
 
-void RenderUtil::renderMesh(const std::weak_ptr<Mesh> &meshPtr, int i) {
-    Mesh::Ptr mesh = meshPtr.lock();
+void RenderUtil::renderMesh(const std::weak_ptr<Sprite> &meshPtr, int i) {
+    Sprite::Ptr mesh = meshPtr.lock();
 
     glActiveTexture(GL_TEXTURE0 + i);
     glBindTexture(GL_TEXTURE_2D, mesh->textureId);

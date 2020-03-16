@@ -64,7 +64,7 @@ void GameRunner::loop() {
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
     Human::Ptr eve = std::make_shared<Human>("eve");
     Structure::Ptr house = std::make_shared<Structure>();
-    Prop::Ptr prop = std::make_shared<Prop>("prop");
+    Prop::Ptr prop = std::make_shared<Prop>("d");
     worldMap->addActor(eve, 0, 0);
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);
@@ -102,14 +102,16 @@ void GameRunner::loop() {
 
         // refresh mesh model for each world entity
         for (const auto &entity: worldMap->getEntities()) {
-            auto meshObj = renderer->getMeshObject(entity->getSpriteName());
-            if (renderer->getCamera()->inSight(entity->getPosition(), renderer->getTileSize())) {
-                meshObj->models.push_back(entity->getModel(renderer->getTileSize()));
+            auto spriteObj = renderer->getSprite(entity->getSpriteName());
+            if (spriteObj == nullptr) {
+                std::cerr << "No loaded mesh found for " << entity->getSpriteName() << std::endl;
+            } else if (renderer->getCamera()->inSight(entity->getPosition(), renderer->getTileSize())) {
+                spriteObj->models.push_back(entity->getModel(renderer->getTileSize()));
             }
         }
 
         // render
-        renderer->renderMeshes("default", mvpUniform, texUniform);
+        renderer->renderSprites("default", mvpUniform, texUniform);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);

@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include "util/FileUtil.h"
-#include "util/MeshUtil.h"
+#include "util/SpriteUtil.h"
 #include "util/RenderUtil.h"
 
 
@@ -30,7 +30,7 @@ GLFWwindow *Renderer::init() {
 #endif
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow(width, height, "Hoovemind", nullptr, nullptr);
+    window = glfwCreateWindow(width, height, "Society", nullptr, nullptr);
     if (window == nullptr) {
         std::cerr << "Failed to open GLFW window" << std::endl;
         glfwTerminate();
@@ -62,12 +62,12 @@ GLFWwindow *Renderer::init() {
 
     // image textures
     for (const auto &tex: manifest["textures"].items()) {
-        storeMesh(tex.key(), MeshUtil::generateImageMesh(tex.value()));
+        storeSprite(tex.key(), SpriteUtil::generateImageMesh(tex.value()));
     }
 
     // tile sprites
     for (const auto &tile: manifest["tiles"]) {
-        storeMesh(tile, MeshUtil::generateTileMesh(tile, tileSize));
+        storeSprite(tile, SpriteUtil::generateTileMesh(tile, tileSize));
     }
 
     // complex sprites
@@ -78,7 +78,7 @@ GLFWwindow *Renderer::init() {
 
 void Renderer::cleanup() {
     // clear loaded meshes
-    loadedMeshes.clear();
+    loadedSprites.clear();
 
     // clear loaded shaders
     for (auto &shaderProgram : loadedShaders) {
@@ -95,7 +95,7 @@ void Renderer::resize(int width, int height) {
     camera->resize(width, height);
 }
 
-void Renderer::renderMeshes(const std::string &shaderName, GLint mvpUniform, GLint texUniform) {
+void Renderer::renderSprites(const std::string &shaderName, GLint mvpUniform, GLint texUniform) {
     if (loadedShaders.find(shaderName) == loadedShaders.end()) {
         std::cerr << "Couldn't find shader " << shaderName << " in loaded shaders" << std::endl;
         return;
@@ -106,7 +106,7 @@ void Renderer::renderMeshes(const std::string &shaderName, GLint mvpUniform, GLi
 
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
     int i = 0;
-    for (const auto &obj: loadedMeshes) {
+    for (const auto &obj: loadedSprites) {
         glUniform1i(texUniform, i);
         for (auto model: obj.second->models) {
             glm::mat4 mvpMatrix = viewProj * model;
@@ -125,12 +125,14 @@ GLuint Renderer::getShader(const std::string &name) {
     return loadedShaders[name];
 }
 
-MeshObject::Ptr Renderer::getMeshObject(const std::string &name) {
-    return loadedMeshes[name];
+SpriteCollection::Ptr Renderer::getSprite(const std::string &name) {
+    if (loadedSprites.find(name) == loadedSprites.end())
+        return nullptr;
+    return loadedSprites[name];
 }
 
-void Renderer::storeMesh(const std::string &name, const Mesh::Ptr &mesh) {
-    loadedMeshes[name] = std::make_shared<MeshObject>(mesh);
+void Renderer::storeSprite(const std::string &name, const Sprite::Ptr &sprite) {
+    loadedSprites[name] = std::make_shared<SpriteCollection>(sprite);
 }
 
 const Camera::Ptr &Renderer::getCamera() const {

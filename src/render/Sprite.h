@@ -2,8 +2,8 @@
 // Created by Philip on 3/1/2020.
 //
 
-#ifndef SOCIETY_MESH_H
-#define SOCIETY_MESH_H
+#ifndef SOCIETY_SPRITE_H
+#define SOCIETY_SPRITE_H
 
 #include <memory>
 #include <vector>
@@ -12,9 +12,9 @@
 #include <GLFW/glfw3.h>
 
 
-class Mesh {
+class Sprite {
 public:
-    typedef std::shared_ptr<Mesh> Ptr;
+    typedef std::shared_ptr<Sprite> Ptr;
 
     std::vector<float> vertices;
     std::vector<float> uvs;
@@ -26,7 +26,7 @@ public:
     GLuint elementBufferId{0};
     GLuint textureId{0};
 
-    Mesh() {
+    Sprite() {
         glGenVertexArrays(1, &vertexArrayId);
         glBindVertexArray(vertexArrayId);
         glEnableVertexAttribArray(0);
@@ -64,7 +64,7 @@ public:
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
     }
 
-    ~Mesh() {
+    ~Sprite() {
         // optional: de-allocate all resources once they've outlived their purpose:
         // ------------------------------------------------------------------------
         if (vertexArrayId != 0)
@@ -89,4 +89,4 @@ public:
     }
 };
 
-#endif //SOCIETY_MESH_H
+#endif //SOCIETY_SPRITE_H

@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include "render/Mesh.h"
+#include "render/Sprite.h"
 #include "render/Renderer.h"
 #include "world/GridMap.h"
 

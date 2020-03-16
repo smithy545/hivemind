@@ -4,7 +4,7 @@
   "textures": {
     "background": "bernie.jpg",
     "human": "animals/monkey.png",
-    "prop": "plants/tree.png",
+    "d": "plants/tree.png",
     "tile1": "terrain/tile_01.png",
     "structure": "structures/panel_boltsGreen.png"
   },

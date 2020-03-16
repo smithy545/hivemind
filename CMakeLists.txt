@@ -31,7 +31,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 ### GLFW (opengl window/input) ###
-set(GLFW_LIB ../external/glfw/lib-vc2017/glfw3)
+set(GLFW_LIB ../external/glfw/lib-vc2019/glfw3)
 
 ### GLEW (opengl types) ###
 add_library(GLEW STATIC external/glew/src/glew.c)
@@ -44,7 +44,7 @@ include_directories(
         external/glfw/include
         external/json/include
         external/glm
-        external/CImg
+        external/cimg
         src
 )
 
@@ -61,7 +61,15 @@ add_definitions(
         -DGLEW_STATIC
         -D_CRT_SECURE_NO_WARNINGS
 )
-
+macro(print_all_variables)
+    message(STATUS "print_all_variables------------------------------------------{")
+    get_cmake_property(_variableNames VARIABLES)
+    foreach (_variableName ${_variableNames})
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach ()
+    message(STATUS "print_all_variables------------------------------------------}")
+endmacro()
+print_all_variables()
 # add exec
-add_executable(society src/main.cpp src/world/Human.cpp src/world/Human.h src/world/GridMap.cpp src/world/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/WorldEntity.h src/world/WorldActor.h src/render/Camera.cpp src/render/Camera.h src/render/Mesh.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/WorldActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderer.cpp src/render/Renderer.h src/util/RenderUtil.cpp src/util/RenderUtil.h src/util/MeshUtil.cpp src/util/MeshUtil.h src/render/MeshObject.h src/util/FileUtil.cpp src/util/FileUtil.h src/society/ProductionRole.h src/society/Transaction.h src/society/ResourcePool.h src/society/Recipe.h src/society/ServiceRole.h src/society/ResourcePool.cpp src/common/Entity.h src/ui/UIEntity.cpp src/ui/UIEntity.h)
+add_executable(society src/main.cpp src/world/Human.cpp src/world/Human.h src/world/GridMap.cpp src/world/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/WorldEntity.h src/world/WorldActor.h src/render/Camera.cpp src/render/Camera.h src/render/Sprite.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/WorldActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderer.cpp src/render/Renderer.h src/util/RenderUtil.cpp src/util/RenderUtil.h src/util/SpriteUtil.cpp src/util/SpriteUtil.h src/render/SpriteCollection.h src/util/FileUtil.cpp src/util/FileUtil.h src/society/ProductionRole.h src/society/Transaction.h src/society/ResourcePool.h src/society/Recipe.h src/society/ServiceRole.h src/society/ResourcePool.cpp src/common/Entity.h src/ui/UIEntity.cpp src/ui/UIEntity.h)
 target_link_libraries(society ${ALL_LIBS})

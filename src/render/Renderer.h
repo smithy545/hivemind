@@ -13,8 +13,8 @@
 #include <glm/glm.hpp>
 
 #include "Camera.h"
-#include "Mesh.h"
-#include "MeshObject.h"
+#include "Sprite.h"
+#include "SpriteCollection.h"
 
 
 class Renderer {
@@ -29,9 +29,9 @@ public:
 
     void resize(int width, int height);
 
-    void renderMeshes(const std::string &shaderName, GLint mvpUniform, GLint texUniform);
+    void renderSprites(const std::string &shaderName, GLint mvpUniform, GLint texUniform);
 
-    void storeMesh(const std::string &name, const Mesh::Ptr &mesh);
+    void storeSprite(const std::string &name, const Sprite::Ptr &sprite);
 
     const Camera::Ptr &getCamera() const;
 
@@ -43,16 +43,15 @@ public:
 
     GLuint getShader(const std::string &name);
 
-    MeshObject::Ptr getMeshObject(const std::string &name);
-
+    SpriteCollection::Ptr getSprite(const std::string &name);
 private:
     int width;
     int height;
-    int tileSize;
+    int tileSize{};
 
     Camera::Ptr camera;
     GLFWwindow *window;
-    std::unordered_map<std::string, MeshObject::Ptr> loadedMeshes;
+    std::unordered_map<std::string, SpriteCollection::Ptr> loadedSprites;
     std::unordered_map<std::string, GLuint> loadedShaders;
 };
 
