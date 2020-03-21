@@ -18,7 +18,9 @@
   },
   "sprites": [
     "sprites/gorilla.json",
-    "sprites/monkey.json"
+    "sprites/monkey.json",
+    "sprites/tree.json",
+    "sprites/structure.json"
   ],
   "width": 800,
   "height": 600

@@ -61,7 +61,7 @@ void GameRunner::loop() {
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
     Human::Ptr eve = std::make_shared<Human>("eve");
     Structure::Ptr house = std::make_shared<Structure>();
-    Prop::Ptr prop = std::make_shared<Prop>("abc/");
+    Prop::Ptr prop = std::make_shared<Prop>("tree");
     worldMap->addActor(eve, 0, 0);
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);
@@ -101,7 +101,7 @@ void GameRunner::loop() {
         updateMap(worldMap);
 
         // render
-        renderer->render("default", mvpUniform, texUniform);
+        renderer->render(worldMap, "default", mvpUniform, texUniform);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);

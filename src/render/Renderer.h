@@ -15,6 +15,7 @@
 #include "Camera.h"
 #include "Sprite.h"
 #include "SpriteCollection.h"
+#include "world/WorldMap.h"
 
 
 class Renderer {
@@ -27,7 +28,7 @@ public:
 
     void cleanup();
 
-    void render(const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
+    void render(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
 
     void resize(int width, int height);
 
@@ -49,7 +50,7 @@ private:
     Camera::Ptr camera;
     GLFWwindow *window;
     std::unordered_map<std::string, GLuint> loadedShaders;
-    std::unordered_map<std::string, SpriteCollection::Ptr> loadedSprites;
+    std::unordered_map<std::string, Sprite::Ptr> loadedSprites;
     std::unordered_map<std::string, GLuint> loadedTextures;
 
     void

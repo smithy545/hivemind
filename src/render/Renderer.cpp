@@ -115,7 +115,7 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
+void Renderer::render(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
     if (loadedShaders.find(shaderName) == loadedShaders.end()) {
         std::cerr << "Couldn't find shader " << shaderName << " in loaded shaders" << std::endl;
         return;
@@ -126,18 +126,21 @@ void Renderer::render(const std::string &shaderName, GLint mvpUniform, GLuint te
     glUniform1i(texUniform, 0);
 
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
-    for (std::pair<std::string, SpriteCollection::Ptr> element: loadedSprites) {
-        Sprite::Ptr sprite = element.second->getSprite();
-        for (auto model: element.second->getModels()) {
-            glm::mat4 mvpMatrix = viewProj * model;
-            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+    // insert map rendering here
+    for (const auto &entity: map->getEntities()) {
+        // skip sprites that don't exist
+        if (loadedSprites.find(entity->getSpriteName()) == loadedSprites.end())
+            continue;
 
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+        Sprite::Ptr sprite = loadedSprites[entity->getSpriteName()];
+        glm::mat4 mvpMatrix = viewProj * entity->getModel(tileSize);
+        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
-            glBindVertexArray(sprite->vertexArrayId);
-            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
-        }
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+
+        glBindVertexArray(sprite->vertexArrayId);
+        glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
     }
 }
 
@@ -155,11 +158,7 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
 void Renderer::loadSprite(const std::string &spritePath) {
     std::string name;
     auto sprite = SpriteUtil::generateSpriteFromJson(spritePath, name);
-    if (loadedSprites.find(name) == loadedSprites.end()) {
-        loadedSprites[name] = std::make_shared<SpriteCollection>(std::make_shared<Sprite>(), glm::mat4(1));
-    } else {
-        loadedSprites[name]->addModel(glm::mat4(1));
-    }
+    loadedSprites[name] = sprite;
 }
 
 void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
