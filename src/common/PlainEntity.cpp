@@ -7,7 +7,11 @@
 #include <utility>
 
 
-PlainEntity::PlainEntity(json schema) : Entity(std::move(schema)) {}
+PlainEntity::PlainEntity(const json &schema) : Entity(schema) {}
+
+json PlainEntity::pack() {
+    return data;
+}
 
 bool PlainEntity::unpack(json data) {
     if (validate(data)) {
@@ -15,8 +19,4 @@ bool PlainEntity::unpack(json data) {
         return true;
     }
     return false;
-}
-
-json PlainEntity::pack() {
-    return data;
 }

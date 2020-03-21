@@ -23,83 +23,35 @@ public:
 
     typedef std::shared_ptr<WorldEntity> Ptr;
 
-    MapNode::Ptr &getPosition() {
-        return position;
-    }
+    MapNode::Ptr &getPosition();
 
-    void setPosition(MapNode::Ptr node) {
-        position = std::move(node);
-    }
+    void setPosition(MapNode::Ptr node);
 
-    glm::mat4 getModel(int tileSize) {
-        return glm::translate(glm::mat4(1), glm::vec3(getX(tileSize), getY(tileSize), 0));
-    }
+    glm::mat4 getModel(int tileSize);
 
-    int getX(int tileSize) {
-        if (position == nullptr)
-            return -1;
-        return position->getX() * tileSize;
-    }
+    int getX(int tileSize);
 
-    int getY(int tileSize) {
-        if (position == nullptr)
-            return -1;
-        return position->getY() * tileSize;
-    }
+    int getY(int tileSize);
 
-    int getX() {
-        if (position == nullptr)
-            return -1;
-        return position->getX();
-    }
+    int getX();
 
-    int getY() {
-        if (position == nullptr)
-            return -1;
-        return position->getY();
-    }
+    int getY();
 
-    int getWidth() {
-        return 1;
-    }
+    int getWidth();
 
-    int getHeight() {
-        return 1;
-    }
+    int getHeight();
 
-    unsigned int getId() {
-        return id;
-    }
+    unsigned int getId();
 
-    std::string getIdString() {
-        return std::to_string(id);
-    }
+    std::string getIdString();
 
-    const std::string &getSpriteName() const {
-        return spriteName;
-    }
+    const std::string &getSpriteName() const;
 
-    void setSpriteName(const std::string &spriteName) {
-        this->spriteName = spriteName;
-    }
+    void setSpriteName(const std::string &spriteName);
 
-    json pack() override {
-        return json::parse(fmt::format(
-                R"({{"sprite":"{0}","x":{1},"y":{2}}})",
-                getSpriteName(),
-                getX(),
-                getY()
-        ));
-    }
+    json pack() override;
 
-    bool unpack(json data) override {
-        if (validate(data)) {
-            spriteName = data["spriteName"];
-            return true;
-        }
-        return false;
-    }
-
+    bool unpack(json data) override;
 protected:
     MapNode::Ptr position;
     std::string spriteName;

@@ -68,11 +68,6 @@ void GameRunner::loop() {
     worldMap->addEntity(prop, 1, 2);
 
 
-    std::cout << "Eve " << eve->pack() << std::endl;
-    std::cout << "House " << house->pack() << std::endl;
-    std::cout << "Prop " << prop->pack() << std::endl;
-
-
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>(worldMap);
 

@@ -10,12 +10,11 @@
 
 class PlainEntity : public Entity {
 public:
-    explicit PlainEntity(json schema);
-
-    bool unpack(json data) override;
+    explicit PlainEntity(const json &schema);
 
     json pack() override;
 
+    bool unpack(json data) override;
 private:
     json data;
 };
