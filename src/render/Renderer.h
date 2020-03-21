@@ -21,17 +21,15 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    Renderer(int width, int height);
+    explicit Renderer(const std::string &manifestFile);
 
     GLFWwindow *init();
 
     void cleanup();
 
+    void render(const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
+
     void resize(int width, int height);
-
-    void renderSprites(const std::string &shaderName, GLint mvpUniform, GLint texUniform);
-
-    void storeSprite(const std::string &name, const Sprite::Ptr &sprite);
 
     const Camera::Ptr &getCamera() const;
 
@@ -43,7 +41,6 @@ public:
 
     GLuint getShader(const std::string &name);
 
-    SpriteCollection::Ptr getSprite(const std::string &name);
 private:
     int width;
     int height;
@@ -51,8 +48,16 @@ private:
 
     Camera::Ptr camera;
     GLFWwindow *window;
-    std::unordered_map<std::string, SpriteCollection::Ptr> loadedSprites;
     std::unordered_map<std::string, GLuint> loadedShaders;
+    std::unordered_map<std::string, SpriteCollection::Ptr> loadedSprites;
+    std::unordered_map<std::string, GLuint> loadedTextures;
+
+    void
+    loadShader(const std::string &name, const std::string &vertexShaderPath, const std::string &fragmentShaderPath);
+
+    void loadSprite(const std::string &spritePath);
+
+    void loadTexture(const std::string &name, const std::string &texturePath);
 };
 
 

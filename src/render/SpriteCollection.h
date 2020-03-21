@@ -18,15 +18,23 @@ class SpriteCollection {
 public:
     typedef std::shared_ptr<SpriteCollection> Ptr;
 
-    Sprite::Ptr mesh;
+    explicit SpriteCollection(Sprite::Ptr sprite);
+
+    SpriteCollection(Sprite::Ptr sprite, glm::mat4 model);
+
+    SpriteCollection(Sprite::Ptr sprite, std::vector<glm::mat4> models);
+
+    void addModel(glm::mat4 model);
+
+    const Sprite::Ptr &getSprite() const;
+
+    const std::vector<glm::mat4> &getModels() const;
+
+    void clearModels();
+
+private:
+    Sprite::Ptr sprite;
     std::vector<glm::mat4> models;
-
-    explicit SpriteCollection(Sprite::Ptr mesh) : SpriteCollection(std::move(mesh), glm::mat4(1)) {}
-
-    SpriteCollection(Sprite::Ptr mesh, glm::mat4 model) : mesh(std::move(mesh)), models({model}) {}
-
-    SpriteCollection(Sprite::Ptr mesh, std::vector<glm::mat4> models) : mesh(std::move(mesh)),
-                                                                        models(std::move(models)) {}
 };
 
 

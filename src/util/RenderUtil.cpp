@@ -12,17 +12,6 @@ using namespace cimg_library;
 #include "FileUtil.h"
 
 
-void RenderUtil::renderMesh(const std::weak_ptr<Sprite> &meshPtr, int i) {
-    Sprite::Ptr mesh = meshPtr.lock();
-
-    glActiveTexture(GL_TEXTURE0 + i);
-    glBindTexture(GL_TEXTURE_2D, mesh->textureId);
-
-    glBindVertexArray(mesh->vertexArrayId);
-    glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, nullptr);
-}
-
-
 GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath) {
     // vertex shader
     char *vertexShaderSource = FileUtil::readResourceFile("shaders/" + vertexShaderPath);
@@ -111,8 +100,6 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
     glGenerateMipmap(GL_TEXTURE_2D);
 
     delete[] data;
-
-    std::cout << "Texture " << texturePath << " loaded" << std::endl;
 
     return textureID;
 }

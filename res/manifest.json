@@ -3,8 +3,9 @@
   "tilesheet": "",
   "textures": {
     "background": "bernie.jpg",
-    "human": "animals/monkey.png",
-    "d": "plants/tree.png",
+    "monkey": "animals/monkey.png",
+    "gorilla": "animals/gorilla.png",
+    "tree": "plants/tree.png",
     "tile1": "terrain/tile_01.png",
     "structure": "structures/panel_boltsGreen.png"
   },
@@ -16,6 +17,9 @@
     ]
   },
   "sprites": [
-    "monkey"
-  ]
+    "sprites/gorilla.json",
+    "sprites/monkey.json"
+  ],
+  "width": 800,
+  "height": 600
 }

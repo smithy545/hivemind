@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <memory>
+#include <util/FileUtil.h>
 
 #include "render/Renderer.h"
 #include "world/Human.h"
@@ -14,27 +15,21 @@
 
 // static members
 bool GameRunner::keys[];
-int GameRunner::screenWidth = 1200;
-int GameRunner::screenHeight = 900;
+int GameRunner::screenWidth = 0;
+int GameRunner::screenHeight = 0;
 float GameRunner::mouseX = 0;
 float GameRunner::mouseY = 0;
 float GameRunner::mouseScroll = 0;
 bool GameRunner::resized = false;
 unsigned int WorldEntity::GLOBAL_ID = 0;
 
-const std::string &WorldEntity::getSpriteName() const {
-    return spriteName;
-}
-
-void WorldEntity::setSpriteName(const std::string &spriteName) {
-    WorldEntity::spriteName = spriteName;
-}
-
-
 void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>(screenWidth, screenHeight);
+    Renderer::Ptr renderer = std::make_shared<Renderer>("manifest.json");
+    screenWidth = renderer->getWidth();
+    screenHeight = renderer->getHeight();
     GLFWwindow *window = renderer->init();
+
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -51,8 +46,9 @@ void GameRunner::loop() {
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
-    // activate default shader program and setup uniforms
+
     std::cout << "Shader init" << std::endl;
+    // activate default shader program and setup uniforms
     GLuint defaultShader = renderer->getShader("default");
     glUseProgram(defaultShader);
     GLint mvpUniform = glGetUniformLocation(defaultShader, "MVP");
@@ -60,21 +56,25 @@ void GameRunner::loop() {
     GLint mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
     GLint texUniform = glGetUniformLocation(defaultShader, "tex");
 
+
     std::cout << "Map init" << std::endl;
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
     Human::Ptr eve = std::make_shared<Human>("eve");
     Structure::Ptr house = std::make_shared<Structure>();
-    Prop::Ptr prop = std::make_shared<Prop>("d");
+    Prop::Ptr prop = std::make_shared<Prop>("abc/");
     worldMap->addActor(eve, 0, 0);
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);
 
+
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>(worldMap);
+
 
     std::cout << "Misc init/loop start" << std::endl;
     // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
 
     do {
         // render
@@ -100,18 +100,8 @@ void GameRunner::loop() {
         // update map
         updateMap(worldMap);
 
-        // refresh mesh model for each world entity
-        for (const auto &entity: worldMap->getEntities()) {
-            auto spriteObj = renderer->getSprite(entity->getSpriteName());
-            if (spriteObj == nullptr) {
-                std::cerr << "No loaded mesh found for " << entity->getSpriteName() << std::endl;
-            } else if (renderer->getCamera()->inSight(entity->getPosition(), renderer->getTileSize())) {
-                spriteObj->models.push_back(entity->getModel(renderer->getTileSize()));
-            }
-        }
-
         // render
-        renderer->renderSprites("default", mvpUniform, texUniform);
+        renderer->render("default", mvpUniform, texUniform);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);
@@ -126,7 +116,16 @@ void GameRunner::loop() {
 void GameRunner::updateMap(const GridMap::Ptr &map) {
     for (const WorldActor::Ptr &actor: map->getActors()) {
         WorldActor::Action act = actor->update(map);
+        // do something here
     }
+}
+
+const std::string &WorldEntity::getSpriteName() const {
+    return spriteName;
+}
+
+void WorldEntity::setSpriteName(const std::string &spriteName) {
+    this->spriteName = spriteName;
 }
 
 void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {

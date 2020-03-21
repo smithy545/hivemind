@@ -9,7 +9,7 @@
 #include "pathing/Pather.h"
 
 
-Human::Human(std::string name) : WorldActor("human"), name(std::move(name)) {}
+Human::Human(std::string name) : WorldActor("gorilla"), name(std::move(name)) {}
 
 WorldActor::Action Human::update(GridMap::Ptr map) {
     if (!path.empty()) {

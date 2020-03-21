@@ -11,9 +11,33 @@
 #include "util/RenderUtil.h"
 
 
-Renderer::Renderer(int width, int height) : camera(
-        std::make_shared<Camera>(0, 0, width, height)), width(width), height(height), window(nullptr) {}
+Renderer::Renderer(const std::string &manifestFile) : window(nullptr) {
+    auto config = FileUtil::readJsonFile(manifestFile);
 
+    width = config["width"];
+    height = config["height"];
+    camera = std::make_shared<Camera>(0, 0, width, height);
+}
+
+GLuint Renderer::getShader(const std::string &name) {
+    return loadedShaders[name];
+}
+
+const Camera::Ptr &Renderer::getCamera() const {
+    return camera;
+}
+
+int Renderer::getWidth() const {
+    return width;
+}
+
+int Renderer::getHeight() const {
+    return height;
+}
+
+int Renderer::getTileSize() const {
+    return tileSize;
+}
 
 GLFWwindow *Renderer::init() {
     // Initialise GLFW
@@ -52,33 +76,35 @@ GLFWwindow *Renderer::init() {
     // cull triangles facing away from camera
     glEnable(GL_CULL_FACE);
 
+    // TODO: Add jsonschema validation or something for more informative config errors
     auto manifest = FileUtil::readJsonFile("manifest.json");
     tileSize = manifest["tileSize"];
 
     // shaders
     for (const auto &shader: manifest["shaders"].items()) {
-        loadedShaders[shader.key()] = RenderUtil::loadShaderProgram(shader.value()[0], shader.value()[1]);
+        std::cout << "Loading shader " << shader.key() << " from " << shader.value()[0] << ", " << shader.value()[1]
+                  << std::endl;
+        loadShader(shader.key(), shader.value()[0], shader.value()[1]);
     }
 
     // image textures
     for (const auto &tex: manifest["textures"].items()) {
-        storeSprite(tex.key(), SpriteUtil::generateImageMesh(tex.value()));
+        std::cout << "Loading texture " << tex.key() << " from " << tex.value() << std::endl;
+        loadTexture(tex.key(), tex.value());
     }
 
-    // tile sprites
-    for (const auto &tile: manifest["tiles"]) {
-        storeSprite(tile, SpriteUtil::generateTileMesh(tile, tileSize));
+    // sprites
+    for (const auto &sprite: manifest["sprites"]) {
+        std::cout << "Loading sprite from " << sprite << std::endl;
+        loadSprite(sprite);
     }
-
-    // complex sprites
-    for (const auto &tile: manifest["sprites"]) {}
 
     return window;
 }
 
 void Renderer::cleanup() {
     // clear loaded meshes
-    loadedSprites.clear();
+    loadedTextures.clear();
 
     // clear loaded shaders
     for (auto &shaderProgram : loadedShaders) {
@@ -89,13 +115,7 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::resize(int width, int height) {
-    this->width = width;
-    this->height = height;
-    camera->resize(width, height);
-}
-
-void Renderer::renderSprites(const std::string &shaderName, GLint mvpUniform, GLint texUniform) {
+void Renderer::render(const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
     if (loadedShaders.find(shaderName) == loadedShaders.end()) {
         std::cerr << "Couldn't find shader " << shaderName << " in loaded shaders" << std::endl;
         return;
@@ -103,50 +123,46 @@ void Renderer::renderSprites(const std::string &shaderName, GLint mvpUniform, GL
 
     GLuint program = loadedShaders[shaderName];
     glUseProgram(program);
+    glUniform1i(texUniform, 0);
 
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
-    int i = 0;
-    for (const auto &obj: loadedSprites) {
-        glUniform1i(texUniform, i);
-        for (auto model: obj.second->models) {
+    for (std::pair<std::string, SpriteCollection::Ptr> element: loadedSprites) {
+        Sprite::Ptr sprite = element.second->getSprite();
+        for (auto model: element.second->getModels()) {
             glm::mat4 mvpMatrix = viewProj * model;
             glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
-            RenderUtil::renderMesh(obj.second->mesh, i);
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+
+            glBindVertexArray(sprite->vertexArrayId);
+            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
         }
-        // HACKY: don't upload
-        if (obj.first != "background")
-            obj.second->models.clear();
-        i++;
     }
 }
 
-GLuint Renderer::getShader(const std::string &name) {
-    return loadedShaders[name];
+void Renderer::resize(int width, int height) {
+    this->width = width;
+    this->height = height;
+    camera->resize(width, height);
 }
 
-SpriteCollection::Ptr Renderer::getSprite(const std::string &name) {
-    if (loadedSprites.find(name) == loadedSprites.end())
-        return nullptr;
-    return loadedSprites[name];
+void Renderer::loadShader(const std::string &name, const std::string &vertexShaderPath,
+                          const std::string &fragmentShaderPath) {
+    loadedShaders[name] = RenderUtil::loadShaderProgram(vertexShaderPath, fragmentShaderPath);
 }
 
-void Renderer::storeSprite(const std::string &name, const Sprite::Ptr &sprite) {
-    loadedSprites[name] = std::make_shared<SpriteCollection>(sprite);
+void Renderer::loadSprite(const std::string &spritePath) {
+    std::string name;
+    auto sprite = SpriteUtil::generateSpriteFromJson(spritePath, name);
+    if (loadedSprites.find(name) == loadedSprites.end()) {
+        loadedSprites[name] = std::make_shared<SpriteCollection>(std::make_shared<Sprite>(), glm::mat4(1));
+    } else {
+        loadedSprites[name]->addModel(glm::mat4(1));
+    }
 }
 
-const Camera::Ptr &Renderer::getCamera() const {
-    return camera;
-}
-
-int Renderer::getWidth() const {
-    return width;
-}
-
-int Renderer::getHeight() const {
-    return height;
-}
-
-int Renderer::getTileSize() const {
-    return tileSize;
+void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
+    int width, height;
+    loadedTextures[name] = RenderUtil::loadTexture(texturePath, width, height);
 }
