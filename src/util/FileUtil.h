@@ -14,11 +14,16 @@ using json = nlohmann::json;
 
 class FileUtil {
 public:
+    static const std::string RESOURCE_PREFIX;
+
     static char *readResourceFile(const std::string &resourcePath);
 
     static json readJsonFile(const std::string &jsonPath);
 
     static void writeJsonFile(const std::string &jsonPath, const json &data);
+
+private:
+    static std::string resource(std::string relativePath);
 };
 
 

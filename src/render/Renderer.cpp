@@ -5,6 +5,7 @@
 #include "Renderer.h"
 
 #include <iostream>
+#include <fmt/format.h>
 
 #include "util/FileUtil.h"
 #include "util/SpriteUtil.h"
@@ -82,20 +83,21 @@ GLFWwindow *Renderer::init() {
 
     // shaders
     for (const auto &shader: manifest["shaders"].items()) {
-        std::cout << "Loading shader " << shader.key() << " from " << shader.value()[0] << ", " << shader.value()[1]
+        std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],
+                                 shader.value()[1])
                   << std::endl;
         loadShader(shader.key(), shader.value()[0], shader.value()[1]);
     }
 
     // image textures
     for (const auto &tex: manifest["textures"].items()) {
-        std::cout << "Loading texture " << tex.key() << " from " << tex.value() << std::endl;
+        std::cout << fmt::format("Loading texture \"{0}\" from {1}", tex.key(), tex.value()) << std::endl;
         loadTexture(tex.key(), tex.value());
     }
 
     // sprites
     for (const auto &sprite: manifest["sprites"]) {
-        std::cout << "Loading sprite from " << sprite << std::endl;
+        std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
         loadSprite(sprite);
     }
 
@@ -117,7 +119,7 @@ void Renderer::cleanup() {
 
 void Renderer::render(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
     if (loadedShaders.find(shaderName) == loadedShaders.end()) {
-        std::cerr << "Couldn't find shader " << shaderName << " in loaded shaders" << std::endl;
+        std::cerr << fmt::format("Couldn't find shader {0} in loaded shaders", shaderName) << std::endl;
         return;
     }
 

@@ -10,17 +10,20 @@
 #include <utility>
 
 using nlohmann::json;
+using nlohmann::json_schema::json_validator;
 
 
 class Entity {
 public:
-    explicit Entity(json schema);
-
-    virtual bool unpack(json data) = 0;
+    explicit Entity(const json &schema);
 
     virtual json pack() = 0;
 
+    virtual bool unpack(json data) = 0;
+
     bool validate();
+
+    bool validate(const json &data);
 
     bool storeToFile(const std::string &filePath);
 
@@ -28,6 +31,7 @@ public:
 
 private:
     const json schema;
+    json_validator validator;
 };
 
 

@@ -30,6 +30,9 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
             )
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+### FMT ###
+add_subdirectory(external/fmt)
+
 ### JSON ###
 add_subdirectory(external/json)
 add_subdirectory(external/json-schema-validator)
@@ -48,6 +51,7 @@ include_directories(
         external/glew/include
         external/glfw/include
         external/json/include
+        external/fmt/include
         external/glm
         external/cimg
         src
@@ -56,6 +60,7 @@ include_directories(
 set(ALL_LIBS
         ${OPENGL_LIBRARY}
         ${GLFW_LIB}
+        fmt
         nlohmann_json_schema_validator
         GLEW
         )

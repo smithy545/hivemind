@@ -24,6 +24,7 @@ bool GameRunner::resized = false;
 unsigned int WorldEntity::GLOBAL_ID = 0;
 
 void GameRunner::loop() {
+
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("manifest.json");
     screenWidth = renderer->getWidth();
@@ -66,10 +67,10 @@ void GameRunner::loop() {
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);
 
-    PlainEntity jane("{\"type\":\"object\"}"_json);
-    jane.unpack("{}"_json);
-    jane.storeToFile("test.txt");
-    std::cout << jane.validate() << std::endl;
+
+    std::cout << "Eve " << eve->pack() << std::endl;
+    std::cout << "House " << house->pack() << std::endl;
+    std::cout << "Prop " << prop->pack() << std::endl;
 
 
     std::cout << "UI init" << std::endl;
@@ -123,14 +124,6 @@ void GameRunner::updateMap(const GridMap::Ptr &map) {
         WorldActor::Action act = actor->update(map);
         // do something here
     }
-}
-
-const std::string &WorldEntity::getSpriteName() const {
-    return spriteName;
-}
-
-void WorldEntity::setSpriteName(const std::string &spriteName) {
-    this->spriteName = spriteName;
 }
 
 void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {

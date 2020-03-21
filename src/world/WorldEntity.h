@@ -11,11 +11,13 @@
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include <fmt/format.h>
 
+#include "common/Entity.h"
 #include "pathing/MapNode.h"
 
 
-class WorldEntity {
+class WorldEntity : public Entity {
 public:
     static unsigned int GLOBAL_ID;
 
@@ -35,25 +37,25 @@ public:
 
     int getX(int tileSize) {
         if (position == nullptr)
-            return 0;
+            return -1;
         return position->getX() * tileSize;
     }
 
     int getY(int tileSize) {
         if (position == nullptr)
-            return 0;
+            return -1;
         return position->getY() * tileSize;
     }
 
     int getX() {
         if (position == nullptr)
-            return 0;
+            return -1;
         return position->getX();
     }
 
     int getY() {
         if (position == nullptr)
-            return 0;
+            return -1;
         return position->getY();
     }
 
@@ -73,9 +75,30 @@ public:
         return std::to_string(id);
     }
 
-    const std::string &getSpriteName() const;
+    const std::string &getSpriteName() const {
+        return spriteName;
+    }
 
-    void setSpriteName(const std::string &spriteName);
+    void setSpriteName(const std::string &spriteName) {
+        this->spriteName = spriteName;
+    }
+
+    json pack() override {
+        return json::parse(fmt::format(
+                R"({{"sprite":"{0}","x":{1},"y":{2}}})",
+                getSpriteName(),
+                getX(),
+                getY()
+        ));
+    }
+
+    bool unpack(json data) override {
+        if (validate(data)) {
+            spriteName = data["spriteName"];
+            return true;
+        }
+        return false;
+    }
 
 protected:
     MapNode::Ptr position;
@@ -83,7 +106,8 @@ protected:
 
     explicit WorldEntity(std::string spriteName) : WorldEntity(std::move(spriteName), nullptr) {}
 
-    WorldEntity(std::string spriteName, MapNode::Ptr initialLocation) : position(std::move(initialLocation)),
+    WorldEntity(std::string spriteName, MapNode::Ptr initialLocation) : Entity(R"({"type": "object"})"_json),
+                                                                        position(std::move(initialLocation)),
                                                                         spriteName(std::move(spriteName)),
                                                                         id(GLOBAL_ID++) {}
 

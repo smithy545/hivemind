@@ -7,15 +7,17 @@
 #include <iostream>
 #include <util/FileUtil.h>
 
-using nlohmann::json_schema::json_validator;
 
 
-Entity::Entity(json schema) : schema(std::move(schema)) {}
+Entity::Entity(const json &schema) : schema(schema) {
+    try {
+        validator.set_root_schema(schema);
+    } catch (const std::exception &ex) {
+        std::cerr << "Schema setup failed: " << ex.what() << std::endl;
+    }
+}
 
 bool Entity::validate() {
-    json_validator validator;
-    validator.set_root_schema(schema);
-
     try {
         // pack and validate
         validator.validate(pack());
@@ -26,8 +28,21 @@ bool Entity::validate() {
     }
 }
 
+bool Entity::validate(const json &data) {
+    try {
+        validator.validate(data);
+        return true;
+    } catch (const std::exception &ex) {
+        std::cerr << "Entity validation failed: " << ex.what() << std::endl;
+        return false;
+    }
+}
+
 bool Entity::storeToFile(const std::string &filePath) {
-    FileUtil::writeJsonFile(filePath, pack());
+    json data = pack();
+    if (!validate(data))
+        return false;
+    FileUtil::writeJsonFile(filePath, data);
     return true;
 }
 

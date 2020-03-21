@@ -39,7 +39,7 @@ private:
     // window callback(s)
     static void resizeCallback(GLFWwindow *window, int width, int height);
 
-    // game state functions
+    // game state function(s)
     static void updateMap(const GridMap::Ptr &map);
 };
 

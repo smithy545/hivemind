@@ -7,10 +7,16 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <fmt/format.h>
 
+const std::string FileUtil::RESOURCE_PREFIX = "../res/{0}";
 
-char* FileUtil::readResourceFile(const std::string &resourcePath) {
-    std::ifstream resourceStream("../res/" + resourcePath, std::ifstream::ate);
+std::string FileUtil::resource(std::string relativePath) {
+    return fmt::format(RESOURCE_PREFIX, relativePath);
+}
+
+char *FileUtil::readResourceFile(const std::string &resourcePath) {
+    std::ifstream resourceStream(resource(resourcePath), std::ifstream::ate);
     if (resourceStream) {
         // get file length (ifstream::ate flag puts cursor at end of file)
         int length = resourceStream.tellg();
@@ -38,12 +44,16 @@ char* FileUtil::readResourceFile(const std::string &resourcePath) {
 
 
 json FileUtil::readJsonFile(const std::string &jsonPath) {
-    return json::parse(std::ifstream("../res/" + jsonPath));
+    std::ifstream file(resource(jsonPath));
+    if (file.good())
+        return json::parse(file);
+    std::string message = fmt::format("Can't read file at {0}", jsonPath);
+    throw std::exception(message.c_str());
 }
 
 void FileUtil::writeJsonFile(const std::string &jsonPath, const json &data) {
     std::ofstream file;
-    file.open("../res/" + jsonPath, std::ofstream::out);
+    file.open(resource(jsonPath), std::ofstream::out);
     file << data;
     file.close();
 }

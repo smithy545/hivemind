@@ -10,8 +10,11 @@
 PlainEntity::PlainEntity(json schema) : Entity(std::move(schema)) {}
 
 bool PlainEntity::unpack(json data) {
-    this->data = data;
-    return true;
+    if (validate(data)) {
+        this->data = data;
+        return true;
+    }
+    return false;
 }
 
 json PlainEntity::pack() {
