@@ -16,6 +16,7 @@
 #include "Sprite.h"
 #include "SpriteCollection.h"
 #include "world/WorldMap.h"
+#include "ui/UserInterface.h"
 
 
 class Renderer {
@@ -28,7 +29,9 @@ public:
 
     void cleanup();
 
-    void render(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
+    void renderMap(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
+
+    void renderUI(const UserInterface::Ptr &ui, const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
 
     void resize(int width, int height);
 

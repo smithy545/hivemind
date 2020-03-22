@@ -6,11 +6,22 @@
 #define SOCIETY_UIENTITY_H
 
 #include <memory>
+#include <glm/glm.hpp>
+
+#include "common/Entity.h"
 
 
-class UIEntity {
+class UIEntity : public Entity {
 public:
     typedef std::shared_ptr<UIEntity> Ptr;
+
+    UIEntity(int x, int y, int width, int height);
+
+    json pack() override;
+
+    bool unpack(json data) override;
+
+    glm::mat4 getModel();
 
     int getX();
 
@@ -22,11 +33,13 @@ public:
 
     bool resize(int width, int height);
 
+    const std::string &getSpriteName() const;
 private:
     int x{};
     int y{};
     int width{};
     int height{};
+    std::string spriteName{"ui_tile_0"};
 };
 
 

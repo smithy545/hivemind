@@ -123,7 +123,7 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
+void Renderer::renderMap(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
     if (loadedShaders.find(shaderName) == loadedShaders.end()) {
         std::cerr << fmt::format("Couldn't find shader {0} in loaded shaders", shaderName) << std::endl;
         return;
@@ -141,6 +141,35 @@ void Renderer::render(const WorldMap::Ptr &map, const std::string &shaderName, G
 
         Sprite::Ptr sprite = loadedSprites[entity->getSpriteName()];
         glm::mat4 mvpMatrix = viewProj * entity->getModel(tileSize);
+        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+
+        glBindVertexArray(sprite->vertexArrayId);
+        glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+    }
+}
+
+void
+Renderer::renderUI(const UserInterface::Ptr &ui, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
+    if (loadedShaders.find(shaderName) == loadedShaders.end()) {
+        std::cerr << fmt::format("Couldn't find shader {0} in loaded shaders", shaderName) << std::endl;
+        return;
+    }
+
+    GLuint program = loadedShaders[shaderName];
+    glUseProgram(program);
+
+    glm::mat4 viewProj = camera->getViewProjectionMatrix();
+    // insert map rendering here
+    for (const auto &entity: ui->getEntities()) {
+        // skip sprites that don't exist
+        if (loadedSprites.find(entity->getSpriteName()) == loadedSprites.end())
+            continue;
+
+        Sprite::Ptr sprite = loadedSprites[entity->getSpriteName()];
+        glm::mat4 mvpMatrix = viewProj * entity->getModel();
         glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
         glActiveTexture(GL_TEXTURE0);

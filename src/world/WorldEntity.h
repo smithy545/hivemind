@@ -11,7 +11,6 @@
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
-#include <fmt/format.h>
 
 #include "common/Entity.h"
 #include "pathing/MapNode.h"
@@ -56,12 +55,9 @@ protected:
     MapNode::Ptr position;
     std::string spriteName;
 
-    explicit WorldEntity(std::string spriteName) : WorldEntity(std::move(spriteName), nullptr) {}
+    explicit WorldEntity(std::string spriteName);
 
-    WorldEntity(std::string spriteName, MapNode::Ptr initialLocation) : Entity(R"({"type": "object"})"_json),
-                                                                        position(std::move(initialLocation)),
-                                                                        spriteName(std::move(spriteName)),
-                                                                        id(GLOBAL_ID++) {}
+    WorldEntity(std::string spriteName, MapNode::Ptr initialLocation);
 
 private:
     unsigned int id;

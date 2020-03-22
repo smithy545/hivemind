@@ -7,8 +7,8 @@
 
 #include <memory>
 
+#include "render/Camera.h"
 #include "render/Sprite.h"
-#include "render/Renderer.h"
 #include "world/GridMap.h"
 
 #include "UIEntity.h"
@@ -24,8 +24,10 @@ public:
                 float mouseX,
                 float mouseY,
                 float mouseScroll,
-                const Renderer::Ptr &renderer);
+                const Camera::Ptr &camera,
+                int tilesize);
 
+    const std::vector<UIEntity::Ptr> &getEntities() const;
 
 private:
     GridMap::Ptr map;

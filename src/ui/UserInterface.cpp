@@ -17,9 +17,9 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
                            float mouseX,
                            float mouseY,
                            float mouseScroll,
-                           const Renderer::Ptr &renderer) {
+                           const Camera::Ptr &camera,
+                           int tilesize) {
     // update camera
-    Camera::Ptr camera = renderer->getCamera();
     if (mouseScroll > 0) {
         camera->zoomIn();
     } else if (mouseScroll < 0) {
@@ -41,8 +41,8 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
     if (mouseX >= 0 && mouseY >= 0) {
         // load mouse tile
         float scale = camera->getScale();
-        int mx = (renderer->getCamera()->getX() + scale * mouseX) / renderer->getTileSize();
-        int my = (renderer->getCamera()->getY() + scale * (renderer->getHeight() - mouseY)) / renderer->getTileSize();
+        int mx = (camera->getX() + scale * mouseX) / tilesize;
+        int my = (camera->getY() + scale * (camera->getHeight() - mouseY)) / tilesize;
         int gridWidth = map->getWidth();
         int gridHeight = map->getHeight();
         int gridX = mx < gridWidth ? mx : gridWidth - 1;
@@ -61,4 +61,8 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
             }
         }
     }
+}
+
+const std::vector<UIEntity::Ptr> &UserInterface::getEntities() const {
+    return entities;
 }

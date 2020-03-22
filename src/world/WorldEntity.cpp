@@ -5,6 +5,15 @@
 
 #include "WorldEntity.h"
 
+
+WorldEntity::WorldEntity(std::string spriteName) : WorldEntity(std::move(spriteName), nullptr) {}
+
+WorldEntity::WorldEntity(std::string spriteName, MapNode::Ptr initialLocation) :
+        Entity(R"({"type": "object"})"_json),
+        position(std::move(initialLocation)),
+        spriteName(std::move(spriteName)),
+        id(GLOBAL_ID++) {}
+
 MapNode::Ptr &WorldEntity::getPosition() {
     return position;
 }
@@ -66,12 +75,11 @@ void WorldEntity::setSpriteName(const std::string &spriteName) {
 }
 
 json WorldEntity::pack() {
-    return json::parse(fmt::format(
-            R"({{"sprite":"{0}","x":{1},"y":{2}}})",
-            getSpriteName(),
-            getX(),
-            getY()
-    ));
+    return {
+            {"sprite", getSpriteName()},
+            {"x",      getX()},
+            {"y",      getY()}
+    };
 }
 
 bool WorldEntity::unpack(json data) {

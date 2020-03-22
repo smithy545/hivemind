@@ -62,7 +62,7 @@ void GameRunner::loop() {
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
     Human::Ptr eve = std::make_shared<Human>("eve");
     Structure::Ptr house = std::make_shared<Structure>();
-    Prop::Ptr prop = std::make_shared<Prop>("ui_tile_989");
+    Prop::Ptr prop = std::make_shared<Prop>("tree");
     worldMap->addActor(eve, 0, 0);
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);
@@ -87,7 +87,7 @@ void GameRunner::loop() {
         glUniform1f(mouseYUniform, mouseY);
 
         // update ui
-        ui->update(keys, mouseX, mouseY, mouseScroll, renderer);
+        ui->update(keys, mouseX, mouseY, mouseScroll, renderer->getCamera(), renderer->getTileSize());
 
         // resize renderer/camera if necessary
         if (GameRunner::resized) {
@@ -101,8 +101,11 @@ void GameRunner::loop() {
         // update map
         updateMap(worldMap);
 
-        // render
-        renderer->render(worldMap, "default", mvpUniform, texUniform);
+        // render map
+        renderer->renderMap(worldMap, "default", mvpUniform, texUniform);
+
+        // render ui
+        renderer->renderUI(ui, "default", mvpUniform, texUniform);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);
