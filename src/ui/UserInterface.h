@@ -25,7 +25,7 @@ public:
                 float mouseY,
                 float mouseScroll,
                 const Camera::Ptr &camera,
-                int tilesize);
+                int tileSize);
 
     const std::vector<UIEntity::Ptr> &getEntities() const;
 

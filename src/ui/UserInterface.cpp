@@ -18,7 +18,7 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
                            float mouseY,
                            float mouseScroll,
                            const Camera::Ptr &camera,
-                           int tilesize) {
+                           int tileSize) {
     // update camera
     if (mouseScroll > 0) {
         camera->zoomIn();
@@ -41,8 +41,8 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
     if (mouseX >= 0 && mouseY >= 0) {
         // load mouse tile
         float scale = camera->getScale();
-        int mx = (camera->getX() + scale * mouseX) / tilesize;
-        int my = (camera->getY() + scale * (camera->getHeight() - mouseY)) / tilesize;
+        int mx = (camera->getX() + scale * mouseX) / tileSize;
+        int my = (camera->getY() + scale * (camera->getHeight() - mouseY)) / tileSize;
         int gridWidth = map->getWidth();
         int gridHeight = map->getHeight();
         int gridX = mx < gridWidth ? mx : gridWidth - 1;

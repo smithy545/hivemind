@@ -63,7 +63,7 @@ private:
 
     void loadTexture(const std::string &name, const std::string &texturePath);
 
-    void loadTilesheet(const std::string &name, const std::string &path, int tilesize, int padding);
+    void loadTileSheet(const std::string &name, const std::string &path, int sheetTileSize, int padding);
 };
 
 

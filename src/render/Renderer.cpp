@@ -98,7 +98,7 @@ GLFWwindow *Renderer::init() {
     // tilesheet textures
     for (const auto &tilesheet: manifest["tilesheets"].items()) {
         std::cout << fmt::format("Loading tilesheet from {0}", tilesheet.value()) << std::endl;
-        loadTilesheet(tilesheet.key(), tilesheet.value(), 16, 2);
+        loadTileSheet(tilesheet.key(), tilesheet.value(), 16, 2);
     }
 
     // sprites
@@ -202,18 +202,18 @@ void Renderer::loadTexture(const std::string &name, const std::string &texturePa
     loadedTextures[name] = RenderUtil::loadTexture(texturePath, width, height);
 }
 
-void Renderer::loadTilesheet(const std::string &name, const std::string &path, int tilesize, int padding) {
+void Renderer::loadTileSheet(const std::string &name, const std::string &path, int sheetTileSize, int padding) {
     int width, height;
     loadedTextures[name] = RenderUtil::loadTexture(path, width, height);
     int i = 0;
-    float uStep = (1.0 * tilesize) / (1.0 * width);
-    float vStep = (1.0 * tilesize) / (1.0 * height);
+    float uStep = (1.0 * sheetTileSize) / (1.0 * width);
+    float vStep = (1.0 * sheetTileSize) / (1.0 * height);
     float uPadding = (1.0 * padding) / (1.0 * width);
     float vPadding = (1.0 * padding) / (1.0 * height);
     float v = 0;
-    for (int y = 0; y < height; y += tilesize + padding) {
+    for (int y = 0; y < height; y += sheetTileSize + padding) {
         float u = 0;
-        for (int x = 0; x < width; x += tilesize + padding) {
+        for (int x = 0; x < width; x += sheetTileSize + padding) {
             Sprite::Ptr sprite = std::make_shared<Sprite>();
 
             sprite->texture = name;
@@ -226,22 +226,22 @@ void Renderer::loadTilesheet(const std::string &name, const std::string &path, i
             sprite->uvs.push_back(-v);
 
             // bottom right
-            sprite->vertices.push_back(tilesize);
+            sprite->vertices.push_back(sheetTileSize);
             sprite->vertices.push_back(0);
 
             sprite->uvs.push_back(u + uStep);
             sprite->uvs.push_back(-v);
 
             // top right
-            sprite->vertices.push_back(tilesize);
-            sprite->vertices.push_back(tilesize);
+            sprite->vertices.push_back(sheetTileSize);
+            sprite->vertices.push_back(sheetTileSize);
 
             sprite->uvs.push_back(u + uStep);
             sprite->uvs.push_back(-v - vStep);
 
             // top left
             sprite->vertices.push_back(0);
-            sprite->vertices.push_back(tilesize);
+            sprite->vertices.push_back(sheetTileSize);
 
             sprite->uvs.push_back(u);
             sprite->uvs.push_back(-v - vStep);
