@@ -95,6 +95,12 @@ GLFWwindow *Renderer::init() {
         loadTexture(tex.key(), tex.value());
     }
 
+    // tilesheet textures
+    for (const auto &tilesheet: manifest["tilesheets"].items()) {
+        std::cout << fmt::format("Loading tilesheet from {0}", tilesheet.value()) << std::endl;
+        loadTilesheet(tilesheet.key(), tilesheet.value(), 16, 2);
+    }
+
     // sprites
     for (const auto &sprite: manifest["sprites"]) {
         std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
@@ -125,7 +131,6 @@ void Renderer::render(const WorldMap::Ptr &map, const std::string &shaderName, G
 
     GLuint program = loadedShaders[shaderName];
     glUseProgram(program);
-    glUniform1i(texUniform, 0);
 
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
     // insert map rendering here
@@ -157,13 +162,76 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
     loadedShaders[name] = RenderUtil::loadShaderProgram(vertexShaderPath, fragmentShaderPath);
 }
 
-void Renderer::loadSprite(const std::string &spritePath) {
+void Renderer::loadSprite(const std::string &path) {
     std::string name;
-    auto sprite = SpriteUtil::generateSpriteFromJson(spritePath, name);
+    auto sprite = SpriteUtil::generateSpriteFromJson(path, name);
     loadedSprites[name] = sprite;
 }
 
 void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
     int width, height;
     loadedTextures[name] = RenderUtil::loadTexture(texturePath, width, height);
+}
+
+void Renderer::loadTilesheet(const std::string &name, const std::string &path, int tilesize, int padding) {
+    int width, height;
+    loadedTextures[name] = RenderUtil::loadTexture(path, width, height);
+    int i = 0;
+    float uStep = (1.0 * tilesize) / (1.0 * width);
+    float vStep = (1.0 * tilesize) / (1.0 * height);
+    float uPadding = (1.0 * padding) / (1.0 * width);
+    float vPadding = (1.0 * padding) / (1.0 * height);
+    float v = 0;
+    for (int y = 0; y < height; y += tilesize + padding) {
+        float u = 0;
+        for (int x = 0; x < width; x += tilesize + padding) {
+            Sprite::Ptr sprite = std::make_shared<Sprite>();
+
+            sprite->texture = name;
+
+            // bottom left
+            sprite->vertices.push_back(0);
+            sprite->vertices.push_back(0);
+
+            sprite->uvs.push_back(u);
+            sprite->uvs.push_back(-v);
+
+            // bottom right
+            sprite->vertices.push_back(tilesize);
+            sprite->vertices.push_back(0);
+
+            sprite->uvs.push_back(u + uStep);
+            sprite->uvs.push_back(-v);
+
+            // top right
+            sprite->vertices.push_back(tilesize);
+            sprite->vertices.push_back(tilesize);
+
+            sprite->uvs.push_back(u + uStep);
+            sprite->uvs.push_back(-v - vStep);
+
+            // top left
+            sprite->vertices.push_back(0);
+            sprite->vertices.push_back(tilesize);
+
+            sprite->uvs.push_back(u);
+            sprite->uvs.push_back(-v - vStep);
+
+            // indices
+            sprite->indices.push_back(0);
+            sprite->indices.push_back(2);
+            sprite->indices.push_back(3);
+
+            sprite->indices.push_back(1);
+            sprite->indices.push_back(2);
+            sprite->indices.push_back(0);
+
+            sprite->reload();
+            loadedSprites[fmt::format("{0}_tile_{1}", name, i)] = sprite;
+
+            u += uStep + uPadding;
+            i++;
+        }
+        v += vStep + vPadding;
+    }
 }

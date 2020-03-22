@@ -56,13 +56,13 @@ void GameRunner::loop() {
     GLint mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
     GLint mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
     GLint texUniform = glGetUniformLocation(defaultShader, "tex");
-
+    glUniform1i(texUniform, 0);
 
     std::cout << "Map init" << std::endl;
     GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
     Human::Ptr eve = std::make_shared<Human>("eve");
     Structure::Ptr house = std::make_shared<Structure>();
-    Prop::Ptr prop = std::make_shared<Prop>("tree");
+    Prop::Ptr prop = std::make_shared<Prop>("ui_tile_989");
     worldMap->addActor(eve, 0, 0);
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);

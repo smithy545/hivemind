@@ -42,14 +42,14 @@ Sprite::Ptr SpriteUtil::generateSpriteFromJson(const std::string &jsonPath, std:
     sprite->vertices.push_back(height);
 
     sprite->uvs.push_back(1);
-    sprite->uvs.push_back(1);
+    sprite->uvs.push_back(-1);
 
     // top left
     sprite->vertices.push_back(0);
     sprite->vertices.push_back(height);
 
     sprite->uvs.push_back(0);
-    sprite->uvs.push_back(1);
+    sprite->uvs.push_back(-1);
 
     // indices
     sprite->indices.push_back(0);

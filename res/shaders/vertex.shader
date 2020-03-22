@@ -12,5 +12,5 @@ out vec2 uv;
 
 void main() {
     gl_Position = MVP * vec4(aPos, 0, 1);
-    uv = vec2(texUv.x, 1 - texUv.y);
+    uv = vec2(texUv.x, texUv.y);
 }

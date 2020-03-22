@@ -4,8 +4,6 @@
 
 #include "PlainEntity.h"
 
-#include <utility>
-
 
 PlainEntity::PlainEntity(const json &schema) : Entity(schema) {}
 

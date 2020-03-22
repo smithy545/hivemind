@@ -56,9 +56,11 @@ private:
     void
     loadShader(const std::string &name, const std::string &vertexShaderPath, const std::string &fragmentShaderPath);
 
-    void loadSprite(const std::string &spritePath);
+    void loadSprite(const std::string &path);
 
     void loadTexture(const std::string &name, const std::string &texturePath);
+
+    void loadTilesheet(const std::string &name, const std::string &path, int tilesize, int padding);
 };
 
 

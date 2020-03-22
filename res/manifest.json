@@ -1,6 +1,7 @@
 {
-  "tiles": [],
-  "tilesheet": "",
+  "tilesheets": {
+    "ui": "UIpackSheet_transparent.png"
+  },
   "textures": {
     "background": "bernie.jpg",
     "monkey": "animals/monkey.png",
