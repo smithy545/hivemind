@@ -53,9 +53,7 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
 bool GridMap::addEntity(WorldEntity::Ptr entity, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
     if (node != nullptr && node->isPassable()) {
-        std::cout << "Adding entity " << entity->getIdString() << std::endl;
-
-        // node->addEntity(entitiy.id, entitiy)
+        // node->addEntity(entity.id, entity)
         node->setPassable(false);
         entity->setPosition(node);
 
@@ -72,6 +70,21 @@ bool GridMap::addActor(WorldActor::Ptr actor, int x, int y) {
         return true;
     }
     return false;
+}
+
+bool GridMap::placeStructure(Structure::Ptr structure, int x, int y, int width, int height) {
+    for (int j = y; j < y + height; j++) {
+        for (int i = x; i < x + width; i++) {
+            auto node = getNode(i, j);
+            //node->addEntity(structure->getUId(), structure);
+            node->setPassable(false);
+            node->setType(MapNode::STRUCTURE);
+        }
+    }
+    auto anchorNode = getNode(x, y);
+    structure->setPosition(anchorNode);
+    entities.push_back(structure);
+    return true;
 }
 
 bool GridMap::moveEntity(std::weak_ptr<WorldEntity> entityPtr, std::weak_ptr<MapNode> nextPosPtr) {
@@ -107,19 +120,4 @@ bool GridMap::moveEntity(std::weak_ptr<WorldEntity> entityPtr, std::weak_ptr<Map
     }
 
     return false;
-}
-
-bool GridMap::placeStructure(Structure::Ptr structure, int x, int y, int width, int height) {
-    for (int j = y; j < y + height; j++) {
-        for (int i = x; i < x + width; i++) {
-            auto node = getNode(i, j);
-            //node->addEntity(structure->getUId(), structure);
-            node->setPassable(false);
-            node->setType(MapNode::STRUCTURE);
-        }
-    }
-    auto anchorNode = getNode(x, y);
-    structure->setPosition(anchorNode);
-    entities.push_back(structure);
-    return true;
 }

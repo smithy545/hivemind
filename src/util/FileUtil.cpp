@@ -40,3 +40,10 @@ char* FileUtil::readResourceFile(const std::string &resourcePath) {
 json FileUtil::readJsonFile(const std::string &jsonPath) {
     return json::parse(std::ifstream("../res/" + jsonPath));
 }
+
+void FileUtil::writeJsonFile(const std::string &jsonPath, const json &data) {
+    std::ofstream file;
+    file.open("../res/" + jsonPath, std::ofstream::out);
+    file << data;
+    file.close();
+}

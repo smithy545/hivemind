@@ -16,7 +16,9 @@ class FileUtil {
 public:
     static char *readResourceFile(const std::string &resourcePath);
 
-    static json readJsonFile(const std::string& jsonPath);
+    static json readJsonFile(const std::string &jsonPath);
+
+    static void writeJsonFile(const std::string &jsonPath, const json &data);
 };
 
 

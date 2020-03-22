@@ -6,11 +6,11 @@
 
 #include <iostream>
 #include <memory>
-#include <util/FileUtil.h>
 
-#include "render/Renderer.h"
-#include "world/Human.h"
-#include "world/Prop.h"
+#include <render/Renderer.h>
+#include <world/Human.h>
+#include <world/Prop.h>
+#include <common/PlainEntity.h>
 
 
 // static members
@@ -65,6 +65,11 @@ void GameRunner::loop() {
     worldMap->addActor(eve, 0, 0);
     worldMap->placeStructure(house, 1, 1, 1, 1);
     worldMap->addEntity(prop, 1, 2);
+
+    PlainEntity jane("{\"type\":\"object\"}"_json);
+    jane.unpack("{}"_json);
+    jane.storeToFile("test.txt");
+    std::cout << jane.validate() << std::endl;
 
 
     std::cout << "UI init" << std::endl;

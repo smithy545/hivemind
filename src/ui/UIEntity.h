@@ -7,20 +7,18 @@
 
 #include <memory>
 
-#include "common/Entity.h"
 
-
-class UIEntity : public Entity {
+class UIEntity {
 public:
     typedef std::shared_ptr<UIEntity> Ptr;
 
-    int getX() override;
+    int getX();
 
-    int getY() override;
+    int getY();
 
-    int getWidth() override;
+    int getWidth();
 
-    int getHeight() override;
+    int getHeight();
 
     bool resize(int width, int height);
 

@@ -12,11 +12,10 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
-#include "common/Entity.h"
 #include "pathing/MapNode.h"
 
 
-class WorldEntity : public Entity {
+class WorldEntity {
 public:
     static unsigned int GLOBAL_ID;
 
@@ -46,23 +45,23 @@ public:
         return position->getY() * tileSize;
     }
 
-    int getX() override {
+    int getX() {
         if (position == nullptr)
             return 0;
         return position->getX();
     }
 
-    int getY() override {
+    int getY() {
         if (position == nullptr)
             return 0;
         return position->getY();
     }
 
-    int getWidth() override {
+    int getWidth() {
         return 1;
     }
 
-    int getHeight() override {
+    int getHeight() {
         return 1;
     }
 

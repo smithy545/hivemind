@@ -5,16 +5,29 @@
 #ifndef SOCIETY_ENTITY_H
 #define SOCIETY_ENTITY_H
 
+#include <iostream>
+#include <nlohmann/json-schema.hpp>
+#include <utility>
+
+using nlohmann::json;
+
 
 class Entity {
 public:
-    virtual int getX() = 0;
+    explicit Entity(json schema);
 
-    virtual int getY() = 0;
+    virtual bool unpack(json data) = 0;
 
-    virtual int getWidth() = 0;
+    virtual json pack() = 0;
 
-    virtual int getHeight() = 0;
+    bool validate();
+
+    bool storeToFile(const std::string &filePath);
+
+    bool loadFromFile(const std::string &filePath);
+
+private:
+    const json schema;
 };
 
 
