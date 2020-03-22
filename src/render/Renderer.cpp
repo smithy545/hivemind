@@ -12,13 +12,7 @@
 #include "util/RenderUtil.h"
 
 
-Renderer::Renderer(const std::string &manifestFile) : window(nullptr) {
-    auto config = FileUtil::readJsonFile(manifestFile);
-
-    width = config["width"];
-    height = config["height"];
-    camera = std::make_shared<Camera>(0, 0, width, height);
-}
+Renderer::Renderer(const std::string &configPath) : configPath(configPath), camera(nullptr), window(nullptr) {}
 
 GLuint Renderer::getShader(const std::string &name) {
     return loadedShaders[name];
@@ -41,6 +35,13 @@ int Renderer::getTileSize() const {
 }
 
 GLFWwindow *Renderer::init() {
+    // read config
+    auto config = FileUtil::readJsonFile(configPath);
+    tileSize = config["tileSize"];
+    width = config["width"];
+    height = config["height"];
+    camera = std::make_shared<Camera>(0, 0, width, height);
+
     // Initialise GLFW
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -77,12 +78,8 @@ GLFWwindow *Renderer::init() {
     // cull triangles facing away from camera
     glEnable(GL_CULL_FACE);
 
-    // TODO: Add jsonschema validation or something for more informative config errors
-    auto manifest = FileUtil::readJsonFile("manifest.json");
-    tileSize = manifest["tileSize"];
-
     // shaders
-    for (const auto &shader: manifest["shaders"].items()) {
+    for (const auto &shader: config["shaders"].items()) {
         std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],
                                  shader.value()[1])
                   << std::endl;
@@ -90,19 +87,19 @@ GLFWwindow *Renderer::init() {
     }
 
     // image textures
-    for (const auto &tex: manifest["textures"].items()) {
+    for (const auto &tex: config["textures"].items()) {
         std::cout << fmt::format("Loading texture \"{0}\" from {1}", tex.key(), tex.value()) << std::endl;
         loadTexture(tex.key(), tex.value());
     }
 
     // tilesheet textures
-    for (const auto &tilesheet: manifest["tilesheets"].items()) {
+    for (const auto &tilesheet: config["tilesheets"].items()) {
         std::cout << fmt::format("Loading tilesheet from {0}", tilesheet.value()) << std::endl;
         loadTileSheet(tilesheet.key(), tilesheet.value(), 16, 2);
     }
 
     // sprites
-    for (const auto &sprite: manifest["sprites"]) {
+    for (const auto &sprite: config["sprites"]) {
         std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
         loadSprite(sprite);
     }

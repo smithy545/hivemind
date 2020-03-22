@@ -5,8 +5,8 @@
 #include "UIEntity.h"
 #include <glm/ext.hpp>
 
-UIEntity::UIEntity(int x, int y, int width, int height) : Entity(R"({"type":"object"})"_json),
-                                                          x(x), y(y), width(width), height(height) {}
+
+UIEntity::UIEntity(const json &schema) : Entity(schema) {}
 
 json UIEntity::pack() {
     return {

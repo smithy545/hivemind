@@ -10,7 +10,7 @@
 #include <render/Renderer.h>
 #include <world/Human.h>
 #include <world/Prop.h>
-#include <common/PlainEntity.h>
+#include <world/Structure.h>
 
 
 // static members
@@ -26,7 +26,7 @@ unsigned int WorldEntity::GLOBAL_ID = 0;
 void GameRunner::loop() {
 
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>("manifest.json");
+    Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
     screenWidth = renderer->getWidth();
     screenHeight = renderer->getHeight();
     GLFWwindow *window = renderer->init();
@@ -69,7 +69,7 @@ void GameRunner::loop() {
 
 
     std::cout << "UI init" << std::endl;
-    UserInterface::Ptr ui = std::make_shared<UserInterface>(worldMap);
+    UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json");
 
 
     std::cout << "Misc init/loop start" << std::endl;
@@ -87,7 +87,7 @@ void GameRunner::loop() {
         glUniform1f(mouseYUniform, mouseY);
 
         // update ui
-        ui->update(keys, mouseX, mouseY, mouseScroll, renderer->getCamera(), renderer->getTileSize());
+        ui->update(keys, mouseX, mouseY, mouseScroll, worldMap, renderer->getCamera(), renderer->getTileSize());
 
         // resize renderer/camera if necessary
         if (GameRunner::resized) {

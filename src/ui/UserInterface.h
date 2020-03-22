@@ -6,6 +6,9 @@
 #define SOCIETY_USERINTERFACE_H
 
 #include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 #include "render/Camera.h"
 #include "render/Sprite.h"
@@ -18,20 +21,23 @@ class UserInterface {
 public:
     typedef std::shared_ptr<UserInterface> Ptr;
 
-    explicit UserInterface(GridMap::Ptr map);
+    explicit UserInterface(const std::string &configPath);
 
     void update(const bool keys[256],
                 float mouseX,
                 float mouseY,
                 float mouseScroll,
+                const GridMap::Ptr &map,
                 const Camera::Ptr &camera,
                 int tileSize);
+
+    void add(int x, int y, std::string component);
 
     const std::vector<UIEntity::Ptr> &getEntities() const;
 
 private:
-    GridMap::Ptr map;
-    std::vector<UIEntity::Ptr> entities;
+    std::unordered_map<std::string, UIEntity::Ptr> availableComponents;
+    std::vector<UIEntity::Ptr> loadedEntities;
 };
 
 

@@ -4,19 +4,30 @@
 
 #include "UserInterface.h"
 
-#include <memory>
-#include <utility>
+#include <util/FileUtil.h>
 
 #include "pathing/Pather.h"
 #include "world/Human.h"
 
 
-UserInterface::UserInterface(GridMap::Ptr map) : map(std::move(map)) {}
+UserInterface::UserInterface(const std::string &configPath) {
+    json config = FileUtil::readJsonFile(configPath);
+
+    for (const auto &component: config["components"].items()) {
+        if (component.value().is_string()) {
+            json schema = FileUtil::readJsonFile(component.value());
+            availableComponents[component.key()] = std::make_shared<UIEntity>(schema);
+        } else if (component.value().is_object()) {
+            availableComponents[component.key()] = std::make_shared<UIEntity>(component.value());
+        }
+    }
+}
 
 void UserInterface::update(const bool keys[GLFW_KEY_LAST],
                            float mouseX,
                            float mouseY,
                            float mouseScroll,
+                           const GridMap::Ptr &map,
                            const Camera::Ptr &camera,
                            int tileSize) {
     // update camera
@@ -63,6 +74,11 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
     }
 }
 
-const std::vector<UIEntity::Ptr> &UserInterface::getEntities() const {
-    return entities;
+void UserInterface::add(int x, int y, std::string component) {
+
 }
+
+const std::vector<UIEntity::Ptr> &UserInterface::getEntities() const {
+    return loadedEntities;
+}
+

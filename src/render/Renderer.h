@@ -23,7 +23,7 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    explicit Renderer(const std::string &manifestFile);
+    explicit Renderer(const std::string &configPath);
 
     GLFWwindow *init();
 
@@ -49,6 +49,7 @@ private:
     int width;
     int height;
     int tileSize{};
+    std::string configPath;
 
     Camera::Ptr camera;
     GLFWwindow *window;

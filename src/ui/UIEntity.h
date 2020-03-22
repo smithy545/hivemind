@@ -15,7 +15,7 @@ class UIEntity : public Entity {
 public:
     typedef std::shared_ptr<UIEntity> Ptr;
 
-    UIEntity(int x, int y, int width, int height);
+    UIEntity(const json &schema);
 
     json pack() override;
 
@@ -33,7 +33,7 @@ public:
 
     bool resize(int width, int height);
 
-    const std::string &getSpriteName() const;
+    [[nodiscard]] const std::string &getSpriteName() const;
 private:
     int x{};
     int y{};
