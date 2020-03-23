@@ -38,9 +38,11 @@ void GameRunner::loop() {
     // load config file and get initial game state
     std::cout << "Reading manifest" << std::endl;
     state = readManifest("manifest.json");
-    state->getEntities()[0]->generate({{"x",      100},
-                                       {"y",      100},
-                                       {"sprite", "gorilla"}});
+    state->getEntities()[0]->generate({
+                                              {"x",      100},
+                                              {"y",      100},
+                                              {"sprite", "gorilla"}
+                                      });
 
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
@@ -71,7 +73,6 @@ void GameRunner::loop() {
 
     std::cout << "Misc init/loop start" << std::endl;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
 
     do {
         glClear(GL_COLOR_BUFFER_BIT);

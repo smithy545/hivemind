@@ -1,7 +1,18 @@
 {
   "entities": {
     "human": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "sprite": {
+          "type": "string"
+        }
+      }
     }
   }
 }

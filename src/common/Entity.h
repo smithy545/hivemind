@@ -18,14 +18,14 @@ class Entity {
 public:
     typedef std::shared_ptr<Entity> Ptr;
 
+    explicit Entity(const std::string &schemaString);
+
     explicit Entity(const json &schema);
 
     std::unordered_map<unsigned int, json> getData();
 
     bool validate(const json &data);
-
     unsigned int generate(const json &data);
-
     void destroy(unsigned int id);
 
 private:
@@ -33,7 +33,7 @@ private:
     json_validator validator;
 
     int id{0};
-    std::unordered_map<unsigned int, json> entities;
+    std::unordered_map<unsigned int, json> entities{};
 };
 
 

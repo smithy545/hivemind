@@ -39,13 +39,13 @@ void GameState::setKey(int key, bool value) {
 }
 
 void GameState::setMouseX(double mouseX) {
-    GameState::mouseX = mouseX;
+    this->mouseX = mouseX;
 }
 
 void GameState::setMouseY(double mouseY) {
-    GameState::mouseY = mouseY;
+    this->mouseY = mouseY;
 }
 
 void GameState::setMouseScroll(double mouseScroll) {
-    GameState::mouseScroll = mouseScroll;
+    this->mouseScroll = mouseScroll;
 }

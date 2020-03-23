@@ -8,6 +8,7 @@
 #include <util/FileUtil.h>
 
 
+Entity::Entity(const std::string &schemaString) : Entity(json::parse(schemaString)) {}
 
 Entity::Entity(const json &schema) : schema(schema) {
     try {
