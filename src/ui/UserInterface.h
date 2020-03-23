@@ -23,14 +23,12 @@ public:
 
     explicit UserInterface(const std::string &configPath);
 
-    void update(GameState::Ptr state);
-
     void add(int x, int y, const std::string &component);
 
+    void update(const GameState::Ptr &state);
+
     [[nodiscard]] const std::vector<UIEntity::Ptr> &getEntities() const;
-
 private:
-
     std::unordered_map<std::string, UIEntity::Ptr> availableComponents;
     std::vector<UIEntity::Ptr> loadedEntities;
 };

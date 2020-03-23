@@ -20,29 +20,29 @@ UserInterface::UserInterface(const std::string &configPath) {
     }
 }
 
-void UserInterface::update(GameState::Ptr state) {
+void UserInterface::update(const GameState::Ptr &state) {
     // update camera
-    /*
-    if (mouseScroll > 0) {
-        camera->zoomIn();
-    } else if (mouseScroll < 0) {
-        camera->zoomOut();
+    if (state->getMouseScroll() > 0) {
+        //camera->zoomIn();
+    } else if (state->getMouseScroll() < 0) {
+        //camera->zoomOut();
     }
-    if (keys[GLFW_KEY_LEFT]) {
-        camera->panLeft();
+    if (state->getKey(GLFW_KEY_LEFT)) {
+        //camera->panLeft();
     }
-    if (keys[GLFW_KEY_RIGHT]) {
-        camera->panRight();
+    if (state->getKey(GLFW_KEY_RIGHT)) {
+        //camera->panRight();
     }
-    if (keys[GLFW_KEY_UP]) {
-        camera->panUp();
+    if (state->getKey(GLFW_KEY_UP)) {
+        //camera->panUp();
     }
-    if (keys[GLFW_KEY_DOWN]) {
-        camera->panDown();
+    if (state->getKey(GLFW_KEY_DOWN)) {
+        //camera->panDown();
     }
 
-    if (mouseX >= 0 && mouseY >= 0) {
+    if (state->getMouseX() >= 0 && state->getMouseY() >= 0) {
         // load mouse tile
+        /*
         float scale = camera->getScale();
         int mx = (camera->getX() + scale * mouseX) / tileSize;
         int my = (camera->getY() + scale * (camera->getHeight() - mouseY)) / tileSize;
@@ -63,8 +63,8 @@ void UserInterface::update(GameState::Ptr state) {
                 adam->addToPath(step);
             }
         }
+         */
     }
-     */
 }
 
 void UserInterface::add(int x, int y, const std::string &component) {

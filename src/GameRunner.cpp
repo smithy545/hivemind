@@ -44,11 +44,13 @@ void GameRunner::loop() {
                                               {"sprite", "gorilla"}
                                       });
 
+
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
     screenWidth = renderer->getWidth();
     screenHeight = renderer->getHeight();
     GLFWwindow *window = renderer->init();
+    renderer->setShader("default");
 
 
     std::cout << "Window init" << std::endl;
@@ -64,9 +66,6 @@ void GameRunner::loop() {
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
-
-    std::cout << "Shader init" << std::endl;
-    renderer->setShader("default");
 
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json");
