@@ -27,6 +27,8 @@ public:
 
     double getMouseScroll() const;
 
+    void add(Entity::Ptr);
+
     void setKey(int key, bool value);
 
     void setMouseX(double mouseX);

@@ -123,6 +123,7 @@ void Renderer::render(GameState::Ptr state) {
     // insert map rendering here
     for (const auto &entity: state->getEntities()) {
         for (auto e: entity->getData()) {
+            // TODO: json validate
             std::string spriteName = e.second["sprite"];
             int x = e.second["x"];
             int y = e.second["y"];

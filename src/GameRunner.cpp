@@ -17,17 +17,19 @@ bool GameRunner::resized = false;
 GameState::Ptr GameRunner::state = nullptr;
 
 GameState::Ptr GameRunner::readManifest(const std::string &manifestPath) {
+    GameState::Ptr initialState = std::make_shared<GameState>();
+
     json config = FileUtil::readJsonFile(manifestPath);
     for (const auto &entity: config["entities"].items()) {
         if (entity.value().is_string()) {
-            //loadedEntities[entity.key()] = std::make_shared<Entity>(FileUtil::readJsonFile(entity.value()));
+            initialState->add(std::make_shared<Entity>(FileUtil::readJsonFile(entity.value())));
         } else if (entity.value().is_object()) {
-            //loadedEntities[entity.key()] = std::make_shared<Entity>(entity.value());
+            initialState->add(std::make_shared<Entity>(entity.value()));
         }
     }
 
     // initial game state
-    return std::make_shared<GameState>();
+    return initialState;
 }
 
 void GameRunner::update() {}
@@ -36,7 +38,9 @@ void GameRunner::loop() {
     // load config file and get initial game state
     std::cout << "Reading manifest" << std::endl;
     state = readManifest("manifest.json");
-
+    state->getEntities()[0]->generate({{"x",      100},
+                                       {"y",      100},
+                                       {"sprite", "gorilla"}});
 
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
@@ -96,7 +100,6 @@ void GameRunner::loop() {
 
     renderer->cleanup();
 }
-
 
 void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     switch (action) {

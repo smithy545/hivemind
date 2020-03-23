@@ -30,6 +30,10 @@ double GameState::getMouseScroll() const {
     return mouseScroll;
 }
 
+void GameState::add(Entity::Ptr entity) {
+    loadedEntities.push_back(entity);
+}
+
 void GameState::setKey(int key, bool value) {
     keys[key] = value;
 }
