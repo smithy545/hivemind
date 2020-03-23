@@ -5,10 +5,11 @@
 #ifndef SOCIETY_RENDERUTIL_H
 #define SOCIETY_RENDERUTIL_H
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <memory>
+#include <render/Sprite.h>
 #include <string>
-
-#include "render/Sprite.h"
 
 
 class RenderUtil {

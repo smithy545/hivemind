@@ -6,11 +6,9 @@
 #define SOCIETY_GRIDMAP_H
 
 #include <memory>
+#include <pathing/MapNode.h>
 #include <vector>
 
-#include "pathing/MapNode.h"
-
-#include "Structure.h"
 #include "WorldActor.h"
 #include "WorldEntity.h"
 #include "WorldMap.h"
@@ -46,13 +44,13 @@ public:
         return actors;
     }
 
-    bool addEntity(WorldEntity::Ptr entity, int x, int y) override;
+    //bool addEntity(WorldEntity::Ptr entity, int x, int y) override;
 
-    bool addActor(WorldActor::Ptr actor, int x, int y) override;
+    //bool addActor(WorldActor::Ptr actor, int x, int y) override;
 
-    bool moveEntity(std::weak_ptr<WorldEntity> entity, std::weak_ptr<MapNode> nextPos) override;
+    //bool moveEntity(std::weak_ptr<WorldEntity> entity, std::weak_ptr<MapNode> nextPos) override;
 
-    bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) override;
+    //bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) override;
 
 private:
     const int width;

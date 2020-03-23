@@ -6,24 +6,37 @@
 
 #include <iostream>
 #include <memory>
-
 #include <render/Renderer.h>
-#include <world/Human.h>
-#include <world/Prop.h>
-#include <world/Structure.h>
+#include <util/FileUtil.h>
 
 
 // static members
-bool GameRunner::keys[];
 int GameRunner::screenWidth = 0;
 int GameRunner::screenHeight = 0;
-float GameRunner::mouseX = 0;
-float GameRunner::mouseY = 0;
-float GameRunner::mouseScroll = 0;
 bool GameRunner::resized = false;
-unsigned int WorldEntity::GLOBAL_ID = 0;
+GameState::Ptr GameRunner::state = nullptr;
+
+GameState::Ptr GameRunner::readManifest(const std::string &manifestPath) {
+    json config = FileUtil::readJsonFile(manifestPath);
+    for (const auto &entity: config["entities"].items()) {
+        if (entity.value().is_string()) {
+            //loadedEntities[entity.key()] = std::make_shared<Entity>(FileUtil::readJsonFile(entity.value()));
+        } else if (entity.value().is_object()) {
+            //loadedEntities[entity.key()] = std::make_shared<Entity>(entity.value());
+        }
+    }
+
+    // initial game state
+    return std::make_shared<GameState>();
+}
+
+void GameRunner::update() {}
 
 void GameRunner::loop() {
+    // load config file and get initial game state
+    std::cout << "Reading manifest" << std::endl;
+    state = readManifest("manifest.json");
+
 
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
@@ -36,8 +49,6 @@ void GameRunner::loop() {
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
-    for (bool &key : keys)
-        key = false;
     glfwSetKeyCallback(window, keyCallback);
     // Setup mouse inputs
     glfwSetCursorPosCallback(window, cursorPosCallback);
@@ -49,45 +60,17 @@ void GameRunner::loop() {
 
 
     std::cout << "Shader init" << std::endl;
-    // activate default shader program and setup uniforms
-    GLuint defaultShader = renderer->getShader("default");
-    glUseProgram(defaultShader);
-    GLint mvpUniform = glGetUniformLocation(defaultShader, "MVP");
-    GLint mouseXUniform = glGetUniformLocation(defaultShader, "mouseX");
-    GLint mouseYUniform = glGetUniformLocation(defaultShader, "mouseY");
-    GLint texUniform = glGetUniformLocation(defaultShader, "tex");
-    glUniform1i(texUniform, 0);
-
-    std::cout << "Map init" << std::endl;
-    GridMap::Ptr worldMap = std::make_shared<GridMap>(500, 500);
-    Human::Ptr eve = std::make_shared<Human>("eve");
-    Structure::Ptr house = std::make_shared<Structure>();
-    Prop::Ptr prop = std::make_shared<Prop>("tree");
-    worldMap->addActor(eve, 0, 0);
-    worldMap->placeStructure(house, 1, 1, 1, 1);
-    worldMap->addEntity(prop, 1, 2);
-
+    renderer->setShader("default");
 
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json");
 
-
     std::cout << "Misc init/loop start" << std::endl;
-    // set background to black
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 
     do {
-        // render
-        // ------
         glClear(GL_COLOR_BUFFER_BIT);
-
-        // update dynamic uniforms
-        glUniform1f(mouseXUniform, mouseX);
-        glUniform1f(mouseYUniform, mouseY);
-
-        // update ui
-        ui->update(keys, mouseX, mouseY, mouseScroll, worldMap, renderer->getCamera(), renderer->getTileSize());
 
         // resize renderer/camera if necessary
         if (GameRunner::resized) {
@@ -96,16 +79,13 @@ void GameRunner::loop() {
         }
 
         // reset mouse wheel position
-        mouseScroll = 0.0f;
+        state->setMouseScroll(0.0f);
 
-        // update map
-        updateMap(worldMap);
+        // update ui
+        ui->update(state);
 
-        // render map
-        renderer->renderMap(worldMap, "default", mvpUniform, texUniform);
-
-        // render ui
-        renderer->renderUI(ui, "default", mvpUniform, texUniform);
+        // render
+        renderer->render(state);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);
@@ -117,20 +97,14 @@ void GameRunner::loop() {
     renderer->cleanup();
 }
 
-void GameRunner::updateMap(const GridMap::Ptr &map) {
-    for (const WorldActor::Ptr &actor: map->getActors()) {
-        WorldActor::Action act = actor->update(map);
-        // do something here
-    }
-}
 
 void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     switch (action) {
         case GLFW_PRESS:
-            keys[key] = true;
+            state->setKey(key, true);
             break;
         case GLFW_RELEASE:
-            keys[key] = false;
+            state->setKey(key, false);
             break;
         case GLFW_REPEAT:
             break;
@@ -140,14 +114,14 @@ void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int acti
 }
 
 void GameRunner::cursorPosCallback(GLFWwindow *window, double xpos, double ypos) {
-    mouseX = xpos;
-    mouseY = ypos;
+    state->setMouseX(xpos);
+    state->setMouseY(ypos);
 }
 
 void GameRunner::characterCallback(GLFWwindow *window, unsigned int codepoint) {}
 
 void GameRunner::scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
-    mouseScroll = yoffset;
+    state->setMouseScroll(yoffset);
 }
 
 void GameRunner::resizeCallback(GLFWwindow *window, int width, int height) {

@@ -49,7 +49,7 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
         return nullptr;
     return nodes[index];
 }
-
+/*
 bool GridMap::addEntity(WorldEntity::Ptr entity, int x, int y) {
     MapNode::Ptr node = getNode(x, y);
     if (node != nullptr && node->isPassable()) {
@@ -121,3 +121,4 @@ bool GridMap::moveEntity(std::weak_ptr<WorldEntity> entityPtr, std::weak_ptr<Map
 
     return false;
 }
+ */

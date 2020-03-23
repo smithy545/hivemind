@@ -6,12 +6,10 @@
 #define SOCIETY_WORLDMAP_H
 
 #include <memory>
+#include <pathing/Map.h>
+#include <pathing/MapNode.h>
 #include <vector>
 
-#include "pathing/Map.h"
-#include "pathing/MapNode.h"
-
-#include "Structure.h"
 #include "WorldActor.h"
 
 
@@ -23,13 +21,13 @@ public:
 
     virtual const std::vector<WorldEntity::Ptr> &getEntities() = 0;
 
-    virtual bool addEntity(WorldEntity::Ptr entity, int x, int y) = 0;
+    //virtual bool addEntity(WorldEntity::Ptr entity, int x, int y) = 0;
 
-    virtual bool moveEntity(std::weak_ptr<WorldEntity> entity, std::weak_ptr<MapNode> nextPos) = 0;
+    //virtual bool moveEntity(std::weak_ptr<WorldEntity> entity, std::weak_ptr<MapNode> nextPos) = 0;
 
-    virtual bool addActor(WorldActor::Ptr actor, int x, int y) = 0;
+    //virtual bool addActor(WorldActor::Ptr actor, int x, int y) = 0;
 
-    virtual bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) = 0;
+    //virtual bool placeStructure(Structure::Ptr structure, int x, int y, int width, int height) = 0;
 };
 
 #endif //SOCIETY_WORLDMAP_H

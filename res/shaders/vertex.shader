@@ -3,8 +3,6 @@
 layout (location = 0) in vec2 aPos;
 layout (location = 1) in vec2 texUv;
 
-uniform float mouseX;
-uniform float mouseY;
 uniform mat4 MVP;
 
 out vec2 uv;

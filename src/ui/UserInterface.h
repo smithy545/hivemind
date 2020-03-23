@@ -6,13 +6,13 @@
 #define SOCIETY_USERINTERFACE_H
 
 #include <memory>
+#include <render/Camera.h>
+#include <render/Sprite.h>
+#include <state/GameState.h>
 #include <string>
 #include <unordered_map>
 #include <vector>
-
-#include "render/Camera.h"
-#include "render/Sprite.h"
-#include "world/GridMap.h"
+#include <world/GridMap.h>
 
 #include "UIEntity.h"
 
@@ -23,19 +23,14 @@ public:
 
     explicit UserInterface(const std::string &configPath);
 
-    void update(const bool keys[256],
-                float mouseX,
-                float mouseY,
-                float mouseScroll,
-                const GridMap::Ptr &map,
-                const Camera::Ptr &camera,
-                int tileSize);
+    void update(GameState::Ptr state);
 
-    void add(int x, int y, std::string component);
+    void add(int x, int y, const std::string &component);
 
-    const std::vector<UIEntity::Ptr> &getEntities() const;
+    [[nodiscard]] const std::vector<UIEntity::Ptr> &getEntities() const;
 
 private:
+
     std::unordered_map<std::string, UIEntity::Ptr> availableComponents;
     std::vector<UIEntity::Ptr> loadedEntities;
 };

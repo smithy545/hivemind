@@ -7,8 +7,8 @@
 
 #include "FileUtil.h"
 
-using json = nlohmann::json;
 
+using json = nlohmann::json;
 
 Sprite::Ptr SpriteUtil::generateSpriteFromJson(const std::string &jsonPath, std::string &spriteName) {
     Sprite::Ptr sprite = std::make_shared<Sprite>();

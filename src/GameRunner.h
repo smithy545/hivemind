@@ -7,9 +7,10 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
-#include "ui/UserInterface.h"
-#include "world/GridMap.h"
+#include <state/GameState.h>
+#include <ui/UserInterface.h>
+#include <unordered_map>
+#include <world/GridMap.h>
 
 
 class GameRunner {
@@ -17,17 +18,17 @@ public:
     static void loop();
 
 private:
-    static bool keys[GLFW_KEY_LAST];
+    // window state
     static int screenWidth;
     static int screenHeight;
-    static float mouseX;
-    static float mouseY;
-    static float mouseScroll;
-
-    // static state variables
     static bool resized;
 
-    // input callbacks
+    static GameState::Ptr readManifest(const std::string &manifestPath);
+
+    // window callback(s)
+    static void resizeCallback(GLFWwindow *window, int width, int height);
+
+    // user input callbacks
     static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 
     static void cursorPosCallback(GLFWwindow *window, double xpos, double ypos);
@@ -36,11 +37,11 @@ private:
 
     static void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
 
-    // window callback(s)
-    static void resizeCallback(GLFWwindow *window, int width, int height);
+    // game state
+    static GameState::Ptr state;
 
     // game state function(s)
-    static void updateMap(const GridMap::Ptr &map);
+    static void update();
 };
 
 

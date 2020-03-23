@@ -15,30 +15,12 @@ class UIEntity : public Entity {
 public:
     typedef std::shared_ptr<UIEntity> Ptr;
 
-    UIEntity(const json &schema);
-
-    json pack() override;
-
-    bool unpack(json data) override;
+    explicit UIEntity(const json &schema);
 
     glm::mat4 getModel();
 
-    int getX();
-
-    int getY();
-
-    int getWidth();
-
-    int getHeight();
-
-    bool resize(int width, int height);
-
     [[nodiscard]] const std::string &getSpriteName() const;
 private:
-    int x{};
-    int y{};
-    int width{};
-    int height{};
     std::string spriteName{"ui_tile_0"};
 };
 

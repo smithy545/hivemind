@@ -6,6 +6,7 @@
 #define SOCIETY_ENTITY_H
 
 #include <iostream>
+#include <memory>
 #include <nlohmann/json-schema.hpp>
 #include <utility>
 
@@ -15,23 +16,24 @@ using nlohmann::json_schema::json_validator;
 
 class Entity {
 public:
+    typedef std::shared_ptr<Entity> Ptr;
+
     explicit Entity(const json &schema);
 
-    virtual json pack() = 0;
-
-    virtual bool unpack(json data) = 0;
-
-    bool validate();
+    std::unordered_map<unsigned int, json> getData();
 
     bool validate(const json &data);
 
-    bool storeToFile(const std::string &filePath);
+    unsigned int generate(const json &data);
 
-    bool loadFromFile(const std::string &filePath);
+    void destroy(unsigned int id);
 
 private:
     const json schema;
     json_validator validator;
+
+    int id{0};
+    std::unordered_map<unsigned int, json> entities;
 };
 
 

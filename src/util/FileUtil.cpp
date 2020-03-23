@@ -5,9 +5,10 @@
 #include "FileUtil.h"
 
 #include <iostream>
+#include <fmt/format.h>
 #include <fstream>
 #include <sstream>
-#include <fmt/format.h>
+
 
 const std::string FileUtil::RESOURCE_PREFIX = "../res/{0}";
 

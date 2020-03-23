@@ -6,17 +6,13 @@
 
 #include <iostream>
 #include <fmt/format.h>
+#include <utility>
+#include <util/FileUtil.h>
+#include <util/SpriteUtil.h>
+#include <util/RenderUtil.h>
 
-#include "util/FileUtil.h"
-#include "util/SpriteUtil.h"
-#include "util/RenderUtil.h"
 
-
-Renderer::Renderer(const std::string &configPath) : configPath(configPath), camera(nullptr), window(nullptr) {}
-
-GLuint Renderer::getShader(const std::string &name) {
-    return loadedShaders[name];
-}
+Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), camera(nullptr), window(nullptr) {}
 
 const Camera::Ptr &Renderer::getCamera() const {
     return camera;
@@ -120,67 +116,47 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::renderMap(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
-    if (loadedShaders.find(shaderName) == loadedShaders.end()) {
-        std::cerr << fmt::format("Couldn't find shader {0} in loaded shaders", shaderName) << std::endl;
-        return;
-    }
-
-    GLuint program = loadedShaders[shaderName];
-    glUseProgram(program);
-
+void Renderer::render(GameState::Ptr state) {
+    glUseProgram(currentShaderProgram);
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
+
     // insert map rendering here
-    for (const auto &entity: map->getEntities()) {
-        // skip sprites that don't exist
-        if (loadedSprites.find(entity->getSpriteName()) == loadedSprites.end())
-            continue;
+    for (const auto &entity: state->getEntities()) {
+        for (auto e: entity->getData()) {
+            std::string spriteName = e.second["sprite"];
+            int x = e.second["x"];
+            int y = e.second["y"];
 
-        Sprite::Ptr sprite = loadedSprites[entity->getSpriteName()];
-        glm::mat4 mvpMatrix = viewProj * entity->getModel(tileSize);
-        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+            Sprite::Ptr sprite = loadedSprites[spriteName];
+            glm::mat4 mvpMatrix = viewProj * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
+            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
 
-        glBindVertexArray(sprite->vertexArrayId);
-        glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+            glBindVertexArray(sprite->vertexArrayId);
+            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+        }
     }
 }
 
-void
-Renderer::renderUI(const UserInterface::Ptr &ui, const std::string &shaderName, GLint mvpUniform, GLuint texUniform) {
-    if (loadedShaders.find(shaderName) == loadedShaders.end()) {
-        std::cerr << fmt::format("Couldn't find shader {0} in loaded shaders", shaderName) << std::endl;
-        return;
-    }
-
-    GLuint program = loadedShaders[shaderName];
-    glUseProgram(program);
-
-    glm::mat4 viewProj = camera->getViewProjectionMatrix();
-    // insert map rendering here
-    for (const auto &entity: ui->getEntities()) {
-        // skip sprites that don't exist
-        if (loadedSprites.find(entity->getSpriteName()) == loadedSprites.end())
-            continue;
-
-        Sprite::Ptr sprite = loadedSprites[entity->getSpriteName()];
-        glm::mat4 mvpMatrix = viewProj * entity->getModel();
-        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
-
-        glBindVertexArray(sprite->vertexArrayId);
-        glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
-    }
-}
 
 void Renderer::resize(int width, int height) {
     this->width = width;
     this->height = height;
     camera->resize(width, height);
+}
+
+void Renderer::setShader(const std::string &name) {
+    if (loadedShaders.find(name) != loadedShaders.end()) {
+        currentShaderProgram = loadedShaders[name];
+        glUseProgram(currentShaderProgram);
+        mvpUniform = glGetUniformLocation(currentShaderProgram, "MVP");
+        texUniform = glGetUniformLocation(currentShaderProgram, "tex");
+        glUniform1i(texUniform, 0);
+    } else {
+        std::cerr << "No shader found with name " << name << std::endl;
+    }
 }
 
 void Renderer::loadShader(const std::string &name, const std::string &vertexShaderPath,
@@ -195,22 +171,22 @@ void Renderer::loadSprite(const std::string &path) {
 }
 
 void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
-    int width, height;
-    loadedTextures[name] = RenderUtil::loadTexture(texturePath, width, height);
+    int w, h;
+    loadedTextures[name] = RenderUtil::loadTexture(texturePath, w, h);
 }
 
 void Renderer::loadTileSheet(const std::string &name, const std::string &path, int sheetTileSize, int padding) {
-    int width, height;
-    loadedTextures[name] = RenderUtil::loadTexture(path, width, height);
+    int w, h;
+    loadedTextures[name] = RenderUtil::loadTexture(path, w, h);
     int i = 0;
-    float uStep = (1.0 * sheetTileSize) / (1.0 * width);
-    float vStep = (1.0 * sheetTileSize) / (1.0 * height);
-    float uPadding = (1.0 * padding) / (1.0 * width);
-    float vPadding = (1.0 * padding) / (1.0 * height);
+    float uStep = (1.0 * sheetTileSize) / (1.0 * w);
+    float vStep = (1.0 * sheetTileSize) / (1.0 * h);
+    float uPadding = (1.0 * padding) / (1.0 * w);
+    float vPadding = (1.0 * padding) / (1.0 * h);
     float v = 0;
-    for (int y = 0; y < height; y += sheetTileSize + padding) {
+    for (int y = 0; y < h; y += sheetTileSize + padding) {
         float u = 0;
-        for (int x = 0; x < width; x += sheetTileSize + padding) {
+        for (int x = 0; x < w; x += sheetTileSize + padding) {
             Sprite::Ptr sprite = std::make_shared<Sprite>();
 
             sprite->texture = name;

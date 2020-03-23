@@ -6,7 +6,7 @@
 
 #include <utility>
 
-
+/*
 WorldActor::WorldActor(std::string spriteName) : WorldEntity(std::move(spriteName)) {}
 
 WorldActor::WorldActor(std::string spriteName, const MapNode::Ptr &initialLocation) : WorldEntity(std::move(spriteName),
@@ -28,3 +28,4 @@ const MapNode::MapPath &WorldActor::getPath() const {
 void WorldActor::setPath(const MapNode::MapPath &path) {
     this->path = path;
 }
+*/

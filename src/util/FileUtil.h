@@ -5,12 +5,11 @@
 #ifndef SOCIETY_FILEUTIL_H
 #define SOCIETY_FILEUTIL_H
 
+#include <nlohmann/json.hpp>
 #include <string>
 
-#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
-
 
 class FileUtil {
 public:

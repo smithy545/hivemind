@@ -5,11 +5,9 @@
 #ifndef SOCIETY_CAMERA_H
 #define SOCIETY_CAMERA_H
 
-#include <memory>
-
 #include <glm/glm.hpp>
-
-#include "pathing/MapNode.h"
+#include <memory>
+#include <pathing/MapNode.h>
 
 
 class Camera {

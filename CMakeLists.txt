@@ -84,5 +84,43 @@ print_all_variables()
 
 
 # add exec
-add_executable(society src/main.cpp src/world/Human.cpp src/world/Human.h src/world/GridMap.cpp src/world/GridMap.h src/pathing/MapNode.h src/pathing/Pather.cpp src/pathing/Pather.h src/GameRunner.cpp src/GameRunner.h src/pathing/Map.h src/world/WorldEntity.h src/world/WorldActor.h src/render/Camera.cpp src/render/Camera.h src/render/Sprite.h src/world/Structure.cpp src/world/Structure.h src/world/Prop.h src/society/Institution.cpp src/society/Institution.h src/society/BaseRole.h src/world/WorldActor.cpp src/world/WorldMap.h src/ui/UserInterface.cpp src/ui/UserInterface.h src/render/Renderer.cpp src/render/Renderer.h src/util/RenderUtil.cpp src/util/RenderUtil.h src/util/SpriteUtil.cpp src/util/SpriteUtil.h src/render/SpriteCollection.h src/util/FileUtil.cpp src/util/FileUtil.h src/society/ProductionRole.h src/society/Transaction.h src/society/ResourcePool.h src/society/Recipe.h src/society/ServiceRole.h src/society/ResourcePool.cpp src/common/Entity.h src/ui/UIEntity.cpp src/ui/UIEntity.h src/render/Sprite.cpp src/render/SpriteCollection.cpp src/render/SpriteSheet.cpp src/render/SpriteSheet.h src/render/TileSheet.cpp src/render/TileSheet.h src/common/Entity.cpp src/common/PlainEntity.cpp src/common/PlainEntity.h src/world/WorldEntity.cpp)
+add_executable(society
+        src/main.cpp
+        src/GameRunner.cpp
+        src/GameRunner.h
+        src/common/Entity.cpp
+        src/common/Entity.h
+        src/common/Actor.h
+        src/common/Stage.cpp
+        src/common/Stage.h
+        src/pathing/MapNode.h
+        src/pathing/Pather.cpp
+        src/pathing/Pather.h
+        src/pathing/Map.h
+        src/render/Camera.cpp
+        src/render/Camera.h
+        src/render/Sprite.cpp
+        src/render/Sprite.h
+        src/render/Renderer.cpp
+        src/render/Renderer.h
+        src/state/GameState.cpp
+        src/state/GameState.h
+        src/ui/UserInterface.cpp
+        src/ui/UserInterface.h
+        src/ui/UIEntity.cpp
+        src/ui/UIEntity.h
+        src/util/RenderUtil.cpp
+        src/util/RenderUtil.h
+        src/util/SpriteUtil.cpp
+        src/util/SpriteUtil.h
+        src/util/FileUtil.cpp
+        src/util/FileUtil.h
+        src/world/GridMap.cpp
+        src/world/GridMap.h
+        src/world/WorldEntity.cpp
+        src/world/WorldEntity.h
+        src/world/WorldActor.cpp
+        src/world/WorldActor.h
+        src/world/WorldMap.h
+        )
 target_link_libraries(society ${ALL_LIBS})

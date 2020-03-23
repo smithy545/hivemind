@@ -2,12 +2,11 @@
 // Created by Philip on 3/1/2020.
 //
 
-#ifndef WORKER_MESHUTIL_H
-#define WORKER_MESHUTIL_H
-
-#include <string>
+#ifndef SOCIETY_SPRITEUTIL_H
+#define SOCIETY_SPRITEUTIL_H
 
 #include <render/Sprite.h>
+#include <string>
 
 
 class SpriteUtil {
@@ -16,4 +15,4 @@ public:
 };
 
 
-#endif //WORKER_MESHUTIL_H
+#endif //SOCIETY_SPRITEUTIL_H

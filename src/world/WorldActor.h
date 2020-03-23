@@ -6,20 +6,18 @@
 #define SOCIETY_WORLDACTOR_H
 
 #include <memory>
+#include <pathing/MapNode.h>
 #include <utility>
-
-#include "pathing/MapNode.h"
 
 #include "WorldEntity.h"
 
 
 class GridMap;
 
-
 class WorldActor : public WorldEntity, public std::enable_shared_from_this<WorldActor> {
 public:
     typedef std::shared_ptr<WorldActor> Ptr;
-
+/*
     enum Action {
         MOVE, IDLE
     };
@@ -40,6 +38,7 @@ protected:
     explicit WorldActor(std::string spriteName);
 
     WorldActor(std::string spriteName, const MapNode::Ptr &initialLocation);
+    */
 };
 
 #endif //SOCIETY_WORLDACTOR_H

@@ -5,36 +5,36 @@
 #ifndef SOCIETY_RENDERER_H
 #define SOCIETY_RENDERER_H
 
+#include <GL/glew.h>
+#include <glm/glm.hpp>
 #include <memory>
 #include <string>
+#include <ui/UserInterface.h>
 #include <unordered_map>
 #include <vector>
-
-#include <glm/glm.hpp>
+#include <world/WorldMap.h>
 
 #include "Camera.h"
 #include "Sprite.h"
-#include "SpriteCollection.h"
-#include "world/WorldMap.h"
-#include "ui/UserInterface.h"
 
 
 class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    explicit Renderer(const std::string &configPath);
+    explicit Renderer(std::string configPath);
 
+    // lifecycle methods
     GLFWwindow *init();
+
+    void render(GameState::Ptr state);
 
     void cleanup();
 
-    void renderMap(const WorldMap::Ptr &map, const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
-
-    void renderUI(const UserInterface::Ptr &ui, const std::string &shaderName, GLint mvpUniform, GLuint texUniform);
-
+    // resize callback
     void resize(int width, int height);
 
+    // state getters
     const Camera::Ptr &getCamera() const;
 
     int getWidth() const;
@@ -43,14 +43,18 @@ public:
 
     int getTileSize() const;
 
-    GLuint getShader(const std::string &name);
+    // state setters
+    void setShader(const std::string &name);
 
 private:
-    int width;
-    int height;
+    int width{};
+    int height{};
     int tileSize{};
-    std::string configPath;
 
+    GLuint currentShaderProgram{};
+    GLint mvpUniform;
+    GLint texUniform;
+    std::string configPath;
     Camera::Ptr camera;
     GLFWwindow *window;
     std::unordered_map<std::string, GLuint> loadedShaders;

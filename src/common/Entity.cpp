@@ -17,15 +17,8 @@ Entity::Entity(const json &schema) : schema(schema) {
     }
 }
 
-bool Entity::validate() {
-    try {
-        // pack and validate
-        validator.validate(pack());
-        return true;
-    } catch (const std::exception &ex) {
-        std::cerr << "Entity validation failed: " << ex.what() << std::endl;
-        return false;
-    }
+std::unordered_map<unsigned int, json> Entity::getData() {
+    return entities;
 }
 
 bool Entity::validate(const json &data) {
@@ -38,14 +31,15 @@ bool Entity::validate(const json &data) {
     }
 }
 
-bool Entity::storeToFile(const std::string &filePath) {
-    json data = pack();
-    if (!validate(data))
-        return false;
-    FileUtil::writeJsonFile(filePath, data);
-    return true;
+unsigned int Entity::generate(const json &data) {
+    if (validate(data)) {
+        entities[id++] = data;
+        return id - 1;
+    }
+    return 0;
 }
 
-bool Entity::loadFromFile(const std::string &filePath) {
-    return unpack(FileUtil::readJsonFile(filePath));
+void Entity::destroy(unsigned int id) {
+    if (entities.find(id) != entities.end())
+        entities.erase(id);
 }

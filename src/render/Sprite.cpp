@@ -2,8 +2,10 @@
 // Created by smith on 3/16/2020.
 //
 
-#include <iostream>
 #include "Sprite.h"
+
+#include <iostream>
+
 
 Sprite::Sprite() {
     glGenVertexArrays(1, &vertexArrayId);

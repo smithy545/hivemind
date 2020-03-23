@@ -4,13 +4,13 @@
 
 #include "RenderUtil.h"
 
-#include <iostream>
-
 #include <CImg.h>
-using namespace cimg_library;
+#include <iostream>
 
 #include "FileUtil.h"
 
+
+using namespace cimg_library;
 
 GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath) {
     // vertex shader

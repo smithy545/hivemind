@@ -4,15 +4,12 @@
 
 #include "UserInterface.h"
 
+#include <pathing/Pather.h>
 #include <util/FileUtil.h>
-
-#include "pathing/Pather.h"
-#include "world/Human.h"
 
 
 UserInterface::UserInterface(const std::string &configPath) {
     json config = FileUtil::readJsonFile(configPath);
-
     for (const auto &component: config["components"].items()) {
         if (component.value().is_string()) {
             json schema = FileUtil::readJsonFile(component.value());
@@ -23,14 +20,9 @@ UserInterface::UserInterface(const std::string &configPath) {
     }
 }
 
-void UserInterface::update(const bool keys[GLFW_KEY_LAST],
-                           float mouseX,
-                           float mouseY,
-                           float mouseScroll,
-                           const GridMap::Ptr &map,
-                           const Camera::Ptr &camera,
-                           int tileSize) {
+void UserInterface::update(GameState::Ptr state) {
     // update camera
+    /*
     if (mouseScroll > 0) {
         camera->zoomIn();
     } else if (mouseScroll < 0) {
@@ -72,10 +64,16 @@ void UserInterface::update(const bool keys[GLFW_KEY_LAST],
             }
         }
     }
+     */
 }
 
-void UserInterface::add(int x, int y, std::string component) {
-
+void UserInterface::add(int x, int y, const std::string &component) {
+    if (availableComponents.find(component) == availableComponents.end()) {
+        std::cerr << "Could not add nonexistent ui component " << component << std::endl;
+    } else {
+        auto entity = std::make_shared<UIEntity>(component);
+        loadedEntities.push_back(entity);
+    }
 }
 
 const std::vector<UIEntity::Ptr> &UserInterface::getEntities() const {
