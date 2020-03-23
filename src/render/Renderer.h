@@ -52,8 +52,8 @@ private:
     int tileSize{};
 
     GLuint currentShaderProgram{};
-    GLint mvpUniform;
-    GLint texUniform;
+    GLint mvpUniform{};
+    GLint texUniform{};
     std::string configPath;
     Camera::Ptr camera;
     GLFWwindow *window;

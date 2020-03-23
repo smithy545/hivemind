@@ -22,7 +22,7 @@ public:
 
     explicit Entity(const json &schema);
 
-    std::unordered_map<unsigned int, json> getData();
+    std::unordered_map<unsigned int, json> getChildren();
 
     bool validate(const json &data);
     unsigned int generate(const json &data);
@@ -33,7 +33,7 @@ private:
     json_validator validator;
 
     int id{0};
-    std::unordered_map<unsigned int, json> entities{};
+    std::unordered_map<unsigned int, json> children;
 };
 
 

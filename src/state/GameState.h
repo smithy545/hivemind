@@ -44,7 +44,7 @@ private:
     double mouseY{};
     double mouseScroll{};
 
-    std::vector<Entity::Ptr> loadedEntities{};
+    std::vector<Entity::Ptr> entities;
 };
 
 

@@ -122,7 +122,7 @@ void Renderer::render(GameState::Ptr state) {
 
     // insert map rendering here
     for (const auto &entity: state->getEntities()) {
-        for (auto e: entity->getData()) {
+        for (auto e: entity->getChildren()) {
             // validate rendering info for DEBUGGING
             entity->validate(e.second);
             std::string spriteName = e.second["sprite"];

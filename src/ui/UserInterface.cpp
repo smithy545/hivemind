@@ -72,11 +72,11 @@ void UserInterface::add(int x, int y, const std::string &component) {
         std::cerr << "Could not add nonexistent ui component " << component << std::endl;
     } else {
         auto entity = std::make_shared<UIEntity>(component);
-        loadedEntities.push_back(entity);
+        entities.push_back(entity);
     }
 }
 
 const std::vector<UIEntity::Ptr> &UserInterface::getEntities() const {
-    return loadedEntities;
+    return entities;
 }
 

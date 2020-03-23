@@ -30,7 +30,7 @@ public:
     [[nodiscard]] const std::vector<UIEntity::Ptr> &getEntities() const;
 private:
     std::unordered_map<std::string, UIEntity::Ptr> availableComponents;
-    std::vector<UIEntity::Ptr> loadedEntities;
+    std::vector<UIEntity::Ptr> entities;
 };
 
 

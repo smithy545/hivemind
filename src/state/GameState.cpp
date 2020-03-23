@@ -11,7 +11,7 @@ GameState::GameState() {
 }
 
 std::vector<Entity::Ptr> GameState::getEntities() {
-    return loadedEntities;
+    return entities;
 }
 
 bool GameState::getKey(int key) const {
@@ -31,7 +31,7 @@ double GameState::getMouseScroll() const {
 }
 
 void GameState::add(Entity::Ptr entity) {
-    loadedEntities.push_back(entity);
+    entities.push_back(entity);
 }
 
 void GameState::setKey(int key, bool value) {

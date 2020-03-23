@@ -18,8 +18,8 @@ Entity::Entity(const json &schema) : schema(schema) {
     }
 }
 
-std::unordered_map<unsigned int, json> Entity::getData() {
-    return entities;
+std::unordered_map<unsigned int, json> Entity::getChildren() {
+    return children;
 }
 
 bool Entity::validate(const json &data) {
@@ -34,13 +34,13 @@ bool Entity::validate(const json &data) {
 
 unsigned int Entity::generate(const json &data) {
     if (validate(data)) {
-        entities[id++] = data;
+        children[id++] = data;
         return id - 1;
     }
     return 0;
 }
 
 void Entity::destroy(unsigned int id) {
-    if (entities.find(id) != entities.end())
-        entities.erase(id);
+    if (children.find(id) != children.end())
+        children.erase(id);
 }

@@ -5,7 +5,8 @@
 #ifndef SOCIETY_STAGE_H
 #define SOCIETY_STAGE_H
 
-#include <vector>
+#include <string>
+#include <unordered_map>
 
 #include "Entity.h"
 
@@ -14,10 +15,10 @@ class Stage {
 public:
     json get(unsigned int id);
 
-    void put(json entity);
+    void put(unsigned int id, json entity);
 
 private:
-    std::vector<json> entities;
+    std::unordered_map<unsigned int, json> entities;
 };
 
 
