@@ -4,4 +4,6 @@ external/glew
 external/glfw
 external/glm
 external/json
+external/json-schema-validator
+external/fmt
 external/zips
