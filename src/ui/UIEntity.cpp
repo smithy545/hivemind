@@ -5,4 +5,4 @@
 #include "UIEntity.h"
 
 
-UIEntity::UIEntity(const json &schema) : Entity(schema) {}
+UIEntity::UIEntity(const json &schema) : SchemaEntity(schema) {}

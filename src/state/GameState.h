@@ -5,7 +5,7 @@
 #ifndef SOCIETY_GAMESTATE_H
 #define SOCIETY_GAMESTATE_H
 
-#include <common/Entity.h>
+#include <common/SchemaEntity.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
@@ -17,7 +17,7 @@ public:
 
     GameState();
 
-    std::vector<Entity::Ptr> getEntities();
+    std::vector<SchemaEntity::Ptr> getEntities();
 
     bool getKey(int key) const;
 
@@ -27,7 +27,7 @@ public:
 
     double getMouseScroll() const;
 
-    void add(Entity::Ptr);
+    void add(SchemaEntity::Ptr);
 
     void setKey(int key, bool value);
 
@@ -44,7 +44,7 @@ private:
     double mouseY{};
     double mouseScroll{};
 
-    std::vector<Entity::Ptr> entities;
+    std::vector<SchemaEntity::Ptr> entities;
 };
 
 

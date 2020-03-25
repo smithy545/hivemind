@@ -2,8 +2,8 @@
 // Created by Philip on 3/7/2020.
 //
 
-#ifndef SOCIETY_ENTITY_H
-#define SOCIETY_ENTITY_H
+#ifndef SOCIETY_SCHEMAENTITY_H
+#define SOCIETY_SCHEMAENTITY_H
 
 #include <iostream>
 #include <memory>
@@ -14,13 +14,13 @@ using nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
 
-class Entity {
+class SchemaEntity {
 public:
-    typedef std::shared_ptr<Entity> Ptr;
+    typedef std::shared_ptr<SchemaEntity> Ptr;
 
-    explicit Entity(const std::string &schemaString);
+    explicit SchemaEntity(const std::string &schemaString);
 
-    explicit Entity(const json &schema);
+    explicit SchemaEntity(const json &schema);
 
     std::unordered_map<unsigned int, json> getChildren();
 
@@ -37,4 +37,4 @@ private:
 };
 
 
-#endif //SOCIETY_ENTITY_H
+#endif //SOCIETY_SCHEMAENTITY_H

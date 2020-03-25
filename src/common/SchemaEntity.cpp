@@ -2,15 +2,15 @@
 // Created by Philip on 3/21/2020.
 //
 
-#include "Entity.h"
+#include "SchemaEntity.h"
 
 #include <iostream>
 #include <util/FileUtil.h>
 
 
-Entity::Entity(const std::string &schemaString) : Entity(json::parse(schemaString)) {}
+SchemaEntity::SchemaEntity(const std::string &schemaString) : SchemaEntity(json::parse(schemaString)) {}
 
-Entity::Entity(const json &schema) : schema(schema) {
+SchemaEntity::SchemaEntity(const json &schema) : schema(schema) {
     try {
         validator.set_root_schema(schema);
     } catch (const std::exception &ex) {
@@ -18,11 +18,11 @@ Entity::Entity(const json &schema) : schema(schema) {
     }
 }
 
-std::unordered_map<unsigned int, json> Entity::getChildren() {
+std::unordered_map<unsigned int, json> SchemaEntity::getChildren() {
     return children;
 }
 
-bool Entity::validate(const json &data) {
+bool SchemaEntity::validate(const json &data) {
     try {
         validator.validate(data);
         return true;
@@ -32,7 +32,7 @@ bool Entity::validate(const json &data) {
     }
 }
 
-unsigned int Entity::generate(const json &data) {
+unsigned int SchemaEntity::generate(const json &data) {
     if (validate(data)) {
         children[id++] = data;
         return id - 1;
@@ -40,7 +40,7 @@ unsigned int Entity::generate(const json &data) {
     return 0;
 }
 
-void Entity::destroy(unsigned int id) {
+void SchemaEntity::destroy(unsigned int id) {
     if (children.find(id) != children.end())
         children.erase(id);
 }

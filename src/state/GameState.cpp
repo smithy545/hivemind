@@ -10,7 +10,7 @@ GameState::GameState() {
         keys[i] = false;
 }
 
-std::vector<Entity::Ptr> GameState::getEntities() {
+std::vector<SchemaEntity::Ptr> GameState::getEntities() {
     return entities;
 }
 
@@ -30,7 +30,7 @@ double GameState::getMouseScroll() const {
     return mouseScroll;
 }
 
-void GameState::add(Entity::Ptr entity) {
+void GameState::add(SchemaEntity::Ptr entity) {
     entities.push_back(entity);
 }
 

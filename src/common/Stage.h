@@ -8,7 +8,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "Entity.h"
+#include "SchemaEntity.h"
 
 
 class Stage {

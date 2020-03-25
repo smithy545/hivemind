@@ -88,8 +88,8 @@ add_executable(society
         src/main.cpp
         src/GameRunner.cpp
         src/GameRunner.h
-        src/common/Entity.cpp
-        src/common/Entity.h
+        src/common/SchemaEntity.cpp
+        src/common/SchemaEntity.h
         src/common/Actor.h
         src/common/Stage.cpp
         src/common/Stage.h

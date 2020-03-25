@@ -5,10 +5,10 @@
 #ifndef SOCIETY_ACTOR_H
 #define SOCIETY_ACTOR_H
 
-#include "Entity.h"
+#include "SchemaEntity.h"
 
 
-class Actor : public Entity {
+class Actor : public SchemaEntity {
 public:
     virtual void update() = 0;
 };

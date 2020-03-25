@@ -5,7 +5,7 @@
 #ifndef SOCIETY_WORLDENTITY_H
 #define SOCIETY_WORLDENTITY_H
 
-#include <common/Entity.h>
+#include <common/SchemaEntity.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <memory>
@@ -14,7 +14,7 @@
 #include <utility>
 
 
-class WorldEntity : public Entity {
+class WorldEntity : public SchemaEntity {
 public:
     typedef std::shared_ptr<WorldEntity> Ptr;
 

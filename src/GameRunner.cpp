@@ -22,9 +22,9 @@ GameState::Ptr GameRunner::readManifest(const std::string &manifestPath) {
     json config = FileUtil::readJsonFile(manifestPath);
     for (const auto &entity: config["entities"].items()) {
         if (entity.value().is_string()) {
-            initialState->add(std::make_shared<Entity>(FileUtil::readJsonFile(entity.value())));
+            initialState->add(std::make_shared<SchemaEntity>(FileUtil::readJsonFile(entity.value())));
         } else if (entity.value().is_object()) {
-            initialState->add(std::make_shared<Entity>(entity.value()));
+            initialState->add(std::make_shared<SchemaEntity>(entity.value()));
         }
     }
 

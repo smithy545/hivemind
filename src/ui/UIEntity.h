@@ -8,10 +8,10 @@
 #include <memory>
 #include <glm/glm.hpp>
 
-#include "common/Entity.h"
+#include "common/SchemaEntity.h"
 
 
-class UIEntity : public Entity {
+class UIEntity : public SchemaEntity {
 public:
     typedef std::shared_ptr<UIEntity> Ptr;
 
@@ -20,6 +20,7 @@ public:
     glm::mat4 getModel();
 
     [[nodiscard]] const std::string &getSpriteName() const;
+
 private:
     std::string spriteName{"ui_tile_0"};
 };
