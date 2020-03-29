@@ -27,7 +27,7 @@ public:
 
     double getMouseScroll() const;
 
-    void add(SchemaEntity::Ptr);
+    void addSchemaEntity(const SchemaEntity::Ptr &entity);
 
     void setKey(int key, bool value);
 

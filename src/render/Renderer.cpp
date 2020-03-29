@@ -116,12 +116,12 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(GameState::Ptr state) {
+void Renderer::render(std::vector<SchemaEntity::Ptr> entities) {
     glUseProgram(currentShaderProgram);
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
 
     // insert map rendering here
-    for (const auto &entity: state->getEntities()) {
+    for (const auto &entity: entities) {
         for (auto e: entity->getChildren()) {
             // validate rendering info for DEBUGGING
             entity->validate(e.second);

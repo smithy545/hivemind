@@ -30,6 +30,10 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
             )
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+### XML ###
+add_library(TINYXML STATIC external/tinyxml/tinystr.cpp external/tinyxml/tinyxml.cpp external/tinyxml/tinyxmlerror.cpp external/tinyxml/tinyxmlparser.cpp)
+target_include_directories(TINYXML PUBLIC external/tinyxml)
+
 ### FMT ###
 add_subdirectory(external/fmt)
 
@@ -54,6 +58,7 @@ include_directories(
         external/fmt/include
         external/glm
         external/cimg
+        external/tinyxml
         src
 )
 
@@ -63,6 +68,7 @@ set(ALL_LIBS
         fmt
         nlohmann_json_schema_validator
         GLEW
+        TINYXML
         )
 
 add_definitions(
@@ -83,16 +89,14 @@ endmacro()
 print_all_variables()
 
 
-# add exec
+# addSchemaEntity exec
 add_executable(society
         src/main.cpp
-        src/GameRunner.cpp
-        src/GameRunner.h
+        src/thread/GameRunner.cpp
+        src/thread/GameRunner.h
         src/common/SchemaEntity.cpp
         src/common/SchemaEntity.h
-        src/common/Actor.h
-        src/common/Stage.cpp
-        src/common/Stage.h
+        src/pathing/MapNode.cpp
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
         src/pathing/Pather.h
@@ -107,8 +111,6 @@ add_executable(society
         src/state/GameState.h
         src/ui/UserInterface.cpp
         src/ui/UserInterface.h
-        src/ui/UIEntity.cpp
-        src/ui/UIEntity.h
         src/util/RenderUtil.cpp
         src/util/RenderUtil.h
         src/util/SpriteUtil.cpp
@@ -121,6 +123,5 @@ add_executable(society
         src/world/WorldEntity.h
         src/world/WorldActor.cpp
         src/world/WorldActor.h
-        src/world/WorldMap.h
-        )
+        src/world/WorldMap.h)
 target_link_libraries(society ${ALL_LIBS})

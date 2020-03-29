@@ -7,7 +7,7 @@
 
 #include <nlohmann/json.hpp>
 #include <string>
-
+#include <tinyxml.h>
 
 using json = nlohmann::json;
 
@@ -18,6 +18,8 @@ public:
     static char *readResourceFile(const std::string &resourcePath);
 
     static json readJsonFile(const std::string &jsonPath);
+
+    static TiXmlDocument readXmlFile(const std::string &xmlPath);
 
     static void writeJsonFile(const std::string &jsonPath, const json &data);
 

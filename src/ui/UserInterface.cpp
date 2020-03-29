@@ -4,6 +4,7 @@
 
 #include "UserInterface.h"
 
+#include <exception>
 #include <pathing/Pather.h>
 #include <util/FileUtil.h>
 
@@ -11,12 +12,15 @@
 UserInterface::UserInterface(const std::string &configPath) {
     json config = FileUtil::readJsonFile(configPath);
     for (const auto &component: config["components"].items()) {
-        if (component.value().is_string()) {
-            json schema = FileUtil::readJsonFile(component.value());
-            availableComponents[component.key()] = std::make_shared<UIEntity>(schema);
-        } else if (component.value().is_object()) {
-            availableComponents[component.key()] = std::make_shared<UIEntity>(component.value());
-        }
+        json schema;
+        if (component.value().is_string())
+            schema = FileUtil::readJsonFile(component.value());
+        else if (component.value().is_object())
+            schema = component.value();
+        else
+            throw std::exception("Error reading ui config from ");
+
+        components[component.key()] = std::make_shared<SchemaEntity>(schema);
     }
 }
 
@@ -43,6 +47,8 @@ void UserInterface::update(const GameState::Ptr &state) {
     if (state->getMouseX() >= 0 && state->getMouseY() >= 0) {
         // load mouse tile
         /*
+         *         addComponentAt(0, 0, "EntityInfoBox");
+
         float scale = camera->getScale();
         int mx = (camera->getX() + scale * mouseX) / tileSize;
         int my = (camera->getY() + scale * (camera->getHeight() - mouseY)) / tileSize;
@@ -67,16 +73,23 @@ void UserInterface::update(const GameState::Ptr &state) {
     }
 }
 
-void UserInterface::add(int x, int y, const std::string &component) {
-    if (availableComponents.find(component) == availableComponents.end()) {
-        std::cerr << "Could not add nonexistent ui component " << component << std::endl;
+void UserInterface::addComponentAt(int x, int y, const std::string &component) {
+    if (components.find(component) == components.end()) {
+        std::cerr << "Could not addSchemaEntity nonexistent ui component " << component << std::endl;
     } else {
-        auto entity = std::make_shared<UIEntity>(component);
-        entities.push_back(entity);
+        components[component]->generate({{"x",      x},
+                                         {"y",      y},
+                                         {"sprite", "gorilla"}});
     }
 }
 
-const std::vector<UIEntity::Ptr> &UserInterface::getEntities() const {
-    return entities;
+const std::unordered_map<std::string, SchemaEntity::Ptr> &UserInterface::getComponents() const {
+    return components;
 }
 
+std::vector<SchemaEntity::Ptr> UserInterface::getComponentEntities() {
+    std::vector<SchemaEntity::Ptr> entities;
+    for (const auto &pair: components)
+        entities.push_back(pair.second);
+    return entities;
+}

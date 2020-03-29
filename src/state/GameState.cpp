@@ -30,7 +30,7 @@ double GameState::getMouseScroll() const {
     return mouseScroll;
 }
 
-void GameState::add(SchemaEntity::Ptr entity) {
+void GameState::addSchemaEntity(const SchemaEntity::Ptr &entity) {
     entities.push_back(entity);
 }
 

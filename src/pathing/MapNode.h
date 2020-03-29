@@ -22,48 +22,29 @@ public:
         STRUCTURE
     };
 
-    MapNode(int x, int y) : MapNode(x, y, true) {}
+    MapNode(int x, int y);
 
-    MapNode(int x, int y, bool passable) : MapNode(x, y, passable, GROUND) {}
+    MapNode(int x, int y, bool passable);
 
-    MapNode(int x, int y, bool passable, Type type) : x(x), y(y), passable(passable), type(type) {}
+    MapNode(int x, int y, bool passable, Type type);
 
-    int getX() const {
-        return x;
-    }
+    int getX() const;
 
-    void setX(int x) {
-        this->x = x;
-    }
+    void setX(int x);
 
-    int getY() const {
-        return y;
-    }
+    int getY() const;
 
-    void setY(int y) {
-        this->y = y;
-    }
+    void setY(int y);
 
-    bool isPassable() const {
-        return passable;
-    }
+    bool isPassable() const;
 
-    void setPassable(bool val) {
-        passable = val;
-    }
+    void setPassable(bool val);
 
-    std::unordered_set<Ptr> &getNeighbors() {
-        return neighbors;
-    }
+    std::unordered_set<Ptr> &getNeighbors();
 
-    Type getType() const {
-        return type;
-    }
+    Type getType() const;
 
-    void setType(Type type) {
-        MapNode::type = type;
-    }
-
+    void setType(Type type);
 private:
     int x;
     int y;

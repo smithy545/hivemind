@@ -5,6 +5,7 @@
 #ifndef SOCIETY_USERINTERFACE_H
 #define SOCIETY_USERINTERFACE_H
 
+#include <common/SchemaEntity.h>
 #include <memory>
 #include <render/Camera.h>
 #include <render/Sprite.h>
@@ -14,8 +15,6 @@
 #include <vector>
 #include <world/GridMap.h>
 
-#include "UIEntity.h"
-
 
 class UserInterface {
 public:
@@ -23,14 +22,16 @@ public:
 
     explicit UserInterface(const std::string &configPath);
 
-    void add(int x, int y, const std::string &component);
+    void addComponentAt(int x, int y, const std::string &componentType);
 
     void update(const GameState::Ptr &state);
 
-    const std::vector<UIEntity::Ptr> &getEntities() const;
+    const std::unordered_map<std::string, SchemaEntity::Ptr> &getComponents() const;
+
+    std::vector<SchemaEntity::Ptr> getComponentEntities();
+
 private:
-    std::unordered_map<std::string, UIEntity::Ptr> availableComponents;
-    std::vector<UIEntity::Ptr> entities;
+    std::unordered_map<std::string, SchemaEntity::Ptr> components;
 };
 
 

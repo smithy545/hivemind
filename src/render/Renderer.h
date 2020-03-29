@@ -27,7 +27,7 @@ public:
     // lifecycle methods
     GLFWwindow *init();
 
-    void render(GameState::Ptr state);
+    void render(std::vector<SchemaEntity::Ptr> entities);
 
     void cleanup();
 

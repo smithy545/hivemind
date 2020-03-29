@@ -1,17 +1,17 @@
 #include <iostream>
 #include <thread>
 
-#include "GameRunner.h"
+#include "thread/GameRunner.h"
 
 
 int main() {
     std::cout << "Starting main thread." << std::endl;
 
-    std::thread main_thread([] { return GameRunner::loop(); });
+    std::thread gameThread([] { return GameRunner::loop(); });
 
-    std::cout << "Waiting for main thread " << main_thread.get_id() << " to join..." << std::endl;
+    std::cout << "Waiting for main thread " << gameThread.get_id() << " to join..." << std::endl;
 
-    main_thread.join();
+    gameThread.join();
 
     std::cout << "Ending." << std::endl;
 

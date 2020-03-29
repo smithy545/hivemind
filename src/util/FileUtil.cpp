@@ -39,8 +39,8 @@ char *FileUtil::readResourceFile(const std::string &resourcePath) {
     }
 
     // open failed for some reason
-    std::cout << "Error opening shader at res/" << resourcePath << std::endl;
-    return nullptr;
+    std::string message = fmt::format("Can't read file at {0}", resource(resourcePath));
+    throw std::exception(message.c_str());
 }
 
 
@@ -48,7 +48,16 @@ json FileUtil::readJsonFile(const std::string &jsonPath) {
     std::ifstream file(resource(jsonPath));
     if (file.good())
         return json::parse(file);
-    std::string message = fmt::format("Can't read file at {0}", jsonPath);
+    std::string message = fmt::format("Can't read json file at {0}", resource(jsonPath));
+    throw std::exception(message.c_str());
+}
+
+TiXmlDocument FileUtil::readXmlFile(const std::string &xmlPath) {
+    TiXmlDocument file(resource(xmlPath).c_str());
+    if (file.LoadFile())
+        return file;
+
+    std::string message = fmt::format("Can't read xml file at {0}", resource(xmlPath));
     throw std::exception(message.c_str());
 }
 
