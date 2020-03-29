@@ -20,7 +20,7 @@ public:
         NATURE,
         ROAD,
         STRUCTURE
-    };;
+    };
 
     MapNode(int x, int y) : MapNode(x, y, true) {}
 

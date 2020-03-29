@@ -39,7 +39,7 @@ public:
 
 private:
     // io state
-    bool keys[GLFW_KEY_LAST];
+    bool keys[GLFW_KEY_LAST]{};
     double mouseX{};
     double mouseY{};
     double mouseScroll{};

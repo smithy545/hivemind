@@ -19,7 +19,7 @@ public:
 
     glm::mat4 getModel();
 
-    [[nodiscard]] const std::string &getSpriteName() const;
+    const std::string &getSpriteName() const;
 
 private:
     std::string spriteName{"ui_tile_0"};

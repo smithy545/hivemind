@@ -6,8 +6,8 @@
 
 
 GameState::GameState() {
-    for (int i = 0; i < GLFW_KEY_LAST; i++)
-        keys[i] = false;
+    for (bool &key : keys)
+        key = false;
 }
 
 std::vector<SchemaEntity::Ptr> GameState::getEntities() {

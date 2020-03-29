@@ -27,7 +27,7 @@ public:
 
     void update(const GameState::Ptr &state);
 
-    [[nodiscard]] const std::vector<UIEntity::Ptr> &getEntities() const;
+    const std::vector<UIEntity::Ptr> &getEntities() const;
 private:
     std::unordered_map<std::string, UIEntity::Ptr> availableComponents;
     std::vector<UIEntity::Ptr> entities;
