@@ -1,9 +1,10 @@
 cmake-build-debug/
-external/CImg
+external/cimg
+external/fmt
 external/glew
 external/glfw
 external/glm
 external/json
 external/json-schema-validator
-external/fmt
-external/zips
+external/tinyxml
+.idea/

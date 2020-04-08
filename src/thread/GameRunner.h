@@ -39,9 +39,6 @@ private:
 
     // game state
     static GameState::Ptr state;
-
-    // game state function(s)
-    static void update();
 };
 
 

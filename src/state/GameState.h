@@ -9,15 +9,17 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
+#include <render/Camera.h>
+#include <render/Scene.h>
 
 
-class GameState {
+class GameState : public Scene {
 public:
     typedef std::shared_ptr<GameState> Ptr;
 
     GameState();
 
-    std::vector<SchemaEntity::Ptr> getEntities();
+    std::vector<SchemaEntity::Ptr> getEntities() override;
 
     bool getKey(int key) const;
 
@@ -26,6 +28,8 @@ public:
     double getMouseY() const;
 
     double getMouseScroll() const;
+
+    Camera::Ptr &getCamera() override;
 
     void addSchemaEntity(const SchemaEntity::Ptr &entity);
 
@@ -37,6 +41,8 @@ public:
 
     void setMouseScroll(double mouseScroll);
 
+    void setCamera(const Camera::Ptr &camera);
+
 private:
     // io state
     bool keys[GLFW_KEY_LAST]{};
@@ -44,6 +50,8 @@ private:
     double mouseY{};
     double mouseScroll{};
 
+    // scene state
+    Camera::Ptr camera;
     std::vector<SchemaEntity::Ptr> entities;
 };
 

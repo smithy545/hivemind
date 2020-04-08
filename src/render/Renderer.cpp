@@ -12,11 +12,8 @@
 #include <util/RenderUtil.h>
 
 
-Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), camera(nullptr), window(nullptr) {}
+Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), window(nullptr) {}
 
-const Camera::Ptr &Renderer::getCamera() const {
-    return camera;
-}
 
 int Renderer::getWidth() const {
     return width;
@@ -36,7 +33,6 @@ GLFWwindow *Renderer::init() {
     tileSize = config["tileSize"];
     width = config["width"];
     height = config["height"];
-    camera = std::make_shared<Camera>(0, 0, width, height);
 
     // Initialise GLFW
     if (!glfwInit()) {
@@ -116,7 +112,39 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(std::vector<SchemaEntity::Ptr> entities) {
+void Renderer::render(const std::vector<SchemaEntity::Ptr> &entities) {
+    glUseProgram(currentShaderProgram);
+
+    // insert map rendering here
+    for (const auto &entity: entities) {
+        for (auto e: entity->getChildren()) {
+            // TODO: Add switch case for render types (e.g. "texture", "sprite", "tile" etc.)
+            // validate rendering info for DEBUGGING
+            entity->validate(e.second);
+            std::string spriteName = e.second["sprite"];
+            int x = e.second["x"];
+            int y = e.second["y"];
+
+            if (loadedSprites.find(spriteName) == loadedSprites.end()) {
+                std::cerr << "Cannot render sprite " << spriteName << std::endl;
+                break;
+            }
+
+            Sprite::Ptr sprite = loadedSprites[spriteName];
+            glm::mat4 mvpMatrix = glm::ortho(0.f, 1.f * width, 0.f, 1.f * height)
+                                  * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
+            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+
+            glBindVertexArray(sprite->vertexArrayId);
+            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+        }
+    }
+}
+
+void Renderer::render(const Camera::Ptr &camera, const std::vector<SchemaEntity::Ptr> &entities) {
     glUseProgram(currentShaderProgram);
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
 
@@ -142,11 +170,9 @@ void Renderer::render(std::vector<SchemaEntity::Ptr> entities) {
     }
 }
 
-
 void Renderer::resize(int width, int height) {
     this->width = width;
     this->height = height;
-    camera->resize(width, height);
 }
 
 void Renderer::setShader(const std::string &name) {
@@ -238,4 +264,12 @@ void Renderer::loadTileSheet(const std::string &name, const std::string &path, i
         }
         v += vStep + vPadding;
     }
+}
+
+void Renderer::addScene(const std::string &name, const Scene::Ptr &scene) {
+    loadedScenes[name] = scene;
+}
+
+const std::unordered_map<std::string, Scene::Ptr> &Renderer::getLoadedScenes() const {
+    return loadedScenes;
 }

@@ -44,3 +44,7 @@ void SchemaEntity::destroy(unsigned int id) {
     if (children.find(id) != children.end())
         children.erase(id);
 }
+
+const json &SchemaEntity::getSchema() const {
+    return schema;
+}

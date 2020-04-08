@@ -21,7 +21,8 @@
     "sprites/gorilla.json",
     "sprites/monkey.json",
     "sprites/tree.json",
-    "sprites/structure.json"
+    "sprites/structure.json",
+    "sprites/entityinfobox.json"
   ],
   "width": 1200,
   "height": 800

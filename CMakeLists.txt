@@ -123,5 +123,5 @@ add_executable(society
         src/world/WorldEntity.h
         src/world/WorldActor.cpp
         src/world/WorldActor.h
-        src/world/WorldMap.h)
+        src/world/WorldMap.h src/render/Scene.h)
 target_link_libraries(society ${ALL_LIBS})

@@ -27,7 +27,9 @@ public:
     // lifecycle methods
     GLFWwindow *init();
 
-    void render(std::vector<SchemaEntity::Ptr> entities);
+    void render(const std::vector<SchemaEntity::Ptr> &entities);
+
+    void render(const Camera::Ptr &camera, const std::vector<SchemaEntity::Ptr> &entities);
 
     void cleanup();
 
@@ -35,16 +37,18 @@ public:
     void resize(int width, int height);
 
     // state getters
-    const Camera::Ptr &getCamera() const;
-
     int getWidth() const;
 
     int getHeight() const;
 
     int getTileSize() const;
 
+    const std::unordered_map<std::string, Scene::Ptr> &getLoadedScenes() const;
+
     // state setters
     void setShader(const std::string &name);
+
+    void addScene(const std::string &name, const Scene::Ptr &scene);
 
 private:
     int width{};
@@ -55,11 +59,11 @@ private:
     GLint mvpUniform{};
     GLint texUniform{};
     std::string configPath;
-    Camera::Ptr camera;
     GLFWwindow *window;
     std::unordered_map<std::string, GLuint> loadedShaders;
     std::unordered_map<std::string, Sprite::Ptr> loadedSprites;
     std::unordered_map<std::string, GLuint> loadedTextures;
+    std::unordered_map<std::string, Scene::Ptr> loadedScenes;
 
     void
     loadShader(const std::string &name, const std::string &vertexShaderPath, const std::string &fragmentShaderPath);

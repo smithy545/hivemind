@@ -5,7 +5,7 @@
 #include "GameState.h"
 
 
-GameState::GameState() {
+GameState::GameState() : camera(nullptr) {
     for (bool &key : keys)
         key = false;
 }
@@ -48,4 +48,12 @@ void GameState::setMouseY(double mouseY) {
 
 void GameState::setMouseScroll(double mouseScroll) {
     this->mouseScroll = mouseScroll;
+}
+
+Camera::Ptr &GameState::getCamera() {
+    return camera;
+}
+
+void GameState::setCamera(const Camera::Ptr &camera) {
+    GameState::camera = camera;
 }

@@ -29,21 +29,19 @@ GameState::Ptr GameRunner::readManifest(const std::string &manifestPath) {
     }
 
     // initial game state
+    initialState->getEntities()[0]->generate({
+                                                     {"x",      100},
+                                                     {"y",      100},
+                                                     {"sprite", "gorilla"}
+                                             });
+
     return initialState;
 }
-
-void GameRunner::update() {}
 
 void GameRunner::loop() {
     // load config file and get initial game state
     std::cout << "Reading manifest" << std::endl;
     state = readManifest("manifest.json");
-    state->getEntities()[0]->generate({
-                                              {"x",      100},
-                                              {"y",      100},
-                                              {"sprite", "gorilla"}
-                                      });
-
 
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
@@ -69,6 +67,8 @@ void GameRunner::loop() {
 
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json");
+    renderer->addScene("ui", ui);
+    renderer->addScene("state", state);
 
     std::cout << "Misc init/loop start" << std::endl;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -82,15 +82,19 @@ void GameRunner::loop() {
             GameRunner::resized = false;
         }
 
-        // reset mouse wheel position
-        state->setMouseScroll(0.0f);
-
         // update ui
         ui->update(state);
 
-        // render
-        renderer->render(state->getEntities());
-        renderer->render(ui->getComponentEntities());
+        // render scenes
+        for (const auto &scene: renderer->getLoadedScenes()) {
+            if (scene.second->getCamera() != nullptr)
+                renderer->render(scene.second->getCamera(), scene.second->getEntities());
+            else
+                renderer->render(scene.second->getEntities());
+        }
+
+        // reset mouse wheel position
+        state->setMouseScroll(0.0f);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);

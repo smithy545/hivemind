@@ -8,6 +8,7 @@
 #include <common/SchemaEntity.h>
 #include <memory>
 #include <render/Camera.h>
+#include <render/Scene.h>
 #include <render/Sprite.h>
 #include <state/GameState.h>
 #include <string>
@@ -16,7 +17,7 @@
 #include <world/GridMap.h>
 
 
-class UserInterface {
+class UserInterface : public Scene {
 public:
     typedef std::shared_ptr<UserInterface> Ptr;
 
@@ -28,9 +29,14 @@ public:
 
     const std::unordered_map<std::string, SchemaEntity::Ptr> &getComponents() const;
 
-    std::vector<SchemaEntity::Ptr> getComponentEntities();
+    std::vector<SchemaEntity::Ptr> getEntities() override;
+
+    Camera::Ptr &getCamera() override;
+
+    void setCamera(const Camera::Ptr &camera);
 
 private:
+    Camera::Ptr camera;
     std::unordered_map<std::string, SchemaEntity::Ptr> components;
 };
 

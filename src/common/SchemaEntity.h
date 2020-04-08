@@ -24,11 +24,14 @@ public:
 
     std::unordered_map<unsigned int, json> getChildren();
 
+    const json &getSchema() const;
+
     bool validate(const json &data);
 
     unsigned int generate(const json &data);
 
     void destroy(unsigned int id);
+
 private:
     const json schema;
     json_validator validator;

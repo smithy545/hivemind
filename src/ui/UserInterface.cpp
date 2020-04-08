@@ -9,7 +9,7 @@
 #include <util/FileUtil.h>
 
 
-UserInterface::UserInterface(const std::string &configPath) {
+UserInterface::UserInterface(const std::string &configPath) : camera(nullptr) {
     json config = FileUtil::readJsonFile(configPath);
     for (const auto &component: config["components"].items()) {
         json schema;
@@ -42,6 +42,7 @@ void UserInterface::update(const GameState::Ptr &state) {
     }
     if (state->getKey(GLFW_KEY_DOWN)) {
         //camera->panDown();
+        addComponentAt(0, 0, "EntityInfoBox");
     }
 
     if (state->getMouseX() >= 0 && state->getMouseY() >= 0) {
@@ -73,13 +74,13 @@ void UserInterface::update(const GameState::Ptr &state) {
     }
 }
 
-void UserInterface::addComponentAt(int x, int y, const std::string &component) {
-    if (components.find(component) == components.end()) {
-        std::cerr << "Could not addSchemaEntity nonexistent ui component " << component << std::endl;
+void UserInterface::addComponentAt(int x, int y, const std::string &componentType) {
+    if (components.find(componentType) == components.end()) {
+        std::cerr << "Could not addSchemaEntity nonexistent ui component " << componentType << std::endl;
     } else {
-        components[component]->generate({{"x",      x},
-                                         {"y",      y},
-                                         {"sprite", "gorilla"}});
+        components[componentType]->generate({{"x",      x},
+                                             {"y",      y},
+                                             {"sprite", componentType}});
     }
 }
 
@@ -87,9 +88,17 @@ const std::unordered_map<std::string, SchemaEntity::Ptr> &UserInterface::getComp
     return components;
 }
 
-std::vector<SchemaEntity::Ptr> UserInterface::getComponentEntities() {
+std::vector<SchemaEntity::Ptr> UserInterface::getEntities() {
     std::vector<SchemaEntity::Ptr> entities;
     for (const auto &pair: components)
         entities.push_back(pair.second);
     return entities;
+}
+
+Camera::Ptr &UserInterface::getCamera() {
+    return camera;
+}
+
+void UserInterface::setCamera(const Camera::Ptr &camera) {
+    UserInterface::camera = camera;
 }
