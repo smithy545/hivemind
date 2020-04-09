@@ -5,9 +5,9 @@
 #include "GameRunner.h"
 
 #include <iostream>
+#include <fmt/format.h>
 #include <memory>
 #include <render/Renderer.h>
-#include <util/FileUtil.h>
 
 
 // static members
@@ -16,33 +16,7 @@ int GameRunner::screenHeight = 0;
 bool GameRunner::resized = false;
 GameState::Ptr GameRunner::state = nullptr;
 
-GameState::Ptr GameRunner::readManifest(const std::string &manifestPath) {
-    GameState::Ptr initialState = std::make_shared<GameState>();
-
-    json config = FileUtil::readJsonFile(manifestPath);
-    for (const auto &entity: config["entities"].items()) {
-        if (entity.value().is_string()) {
-            initialState->addSchemaEntity(std::make_shared<SchemaEntity>(FileUtil::readJsonFile(entity.value())));
-        } else if (entity.value().is_object()) {
-            initialState->addSchemaEntity(std::make_shared<SchemaEntity>(entity.value()));
-        }
-    }
-
-    // initial game state
-    initialState->getEntities()[0]->generate({
-                                                     {"x",      100},
-                                                     {"y",      100},
-                                                     {"sprite", "gorilla"}
-                                             });
-
-    return initialState;
-}
-
 void GameRunner::loop() {
-    // load config file and get initial game state
-    std::cout << "Reading manifest" << std::endl;
-    state = readManifest("manifest.json");
-
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
     screenWidth = renderer->getWidth();
@@ -50,6 +24,18 @@ void GameRunner::loop() {
     GLFWwindow *window = renderer->init();
     renderer->setShader("default");
 
+    std::cout << "State init" << std::endl;
+    state = std::make_shared<GameState>();
+    state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
+    state->addSchemaEntity(std::make_shared<SchemaPrototype>(std::string("{\"type\":\"object\"}")));
+    for (int y = 0; y < 32; y++) {
+        for (int x = 0; x < 32; x++) {
+            json obj = {{"x",      x * 14},
+                        {"y",      y * 14},
+                        {"sprite", fmt::format("basic_tile_{}", y * 32 + x)}};
+            state->getEntities()[0]->generate(obj);
+        }
+    }
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -59,16 +45,14 @@ void GameRunner::loop() {
     // Setup mouse inputs
     glfwSetCursorPosCallback(window, cursorPosCallback);
     glfwSetScrollCallback(window, scrollCallback);
+    glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Setup text input
     glfwSetCharCallback(window, characterCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
-
     std::cout << "UI init" << std::endl;
-    UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json");
-    renderer->addScene("ui", ui);
-    renderer->addScene("state", state);
+    UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json", renderer);
 
     std::cout << "Misc init/loop start" << std::endl;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -83,15 +67,10 @@ void GameRunner::loop() {
         }
 
         // update ui
-        ui->update(state);
+        ui->update(state, renderer);
 
         // render scenes
-        for (const auto &scene: renderer->getLoadedScenes()) {
-            if (scene.second->getCamera() != nullptr)
-                renderer->render(scene.second->getCamera(), scene.second->getEntities());
-            else
-                renderer->render(scene.second->getEntities());
-        }
+        renderer->render(state->getCamera());
 
         // reset mouse wheel position
         state->setMouseScroll(0.0f);
@@ -137,4 +116,8 @@ void GameRunner::resizeCallback(GLFWwindow *window, int width, int height) {
     screenHeight = height;
     glViewport(0, 0, width, height);
     GameRunner::resized = true;
+}
+
+void GameRunner::mouseButtonCallback(GLFWwindow *window, int button, int action, int mods) {
+
 }

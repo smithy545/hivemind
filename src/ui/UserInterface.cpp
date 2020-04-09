@@ -5,11 +5,12 @@
 #include "UserInterface.h"
 
 #include <exception>
+#include <fmt/format.h>
 #include <pathing/Pather.h>
 #include <util/FileUtil.h>
 
 
-UserInterface::UserInterface(const std::string &configPath) : camera(nullptr) {
+UserInterface::UserInterface(const std::string &configPath, const Renderer::Ptr &renderer) {
     json config = FileUtil::readJsonFile(configPath);
     for (const auto &component: config["components"].items()) {
         json schema;
@@ -20,30 +21,41 @@ UserInterface::UserInterface(const std::string &configPath) : camera(nullptr) {
         else
             throw std::exception("Error reading ui config from ");
 
-        components[component.key()] = std::make_shared<SchemaEntity>(schema);
+        components[component.key()] = std::make_shared<SchemaPrototype>(schema);
     }
+
+    selectorId = renderer->add(getSelectedSprite(), 0, 0);
 }
 
-void UserInterface::update(const GameState::Ptr &state) {
+void UserInterface::update(const GameState::Ptr &state, const Renderer::Ptr &renderer) {
     // update camera
     if (state->getMouseScroll() > 0) {
-        //camera->zoomIn();
+        //state->getCamera()->zoomIn();
+
+        renderer->destroy(getSelectedSprite(), selectorId);
+        tileId = (tileId + 1) % (32 * 32);
+        selectorId = renderer->add(getSelectedSprite(), state->getMouseX(), state->getMouseY());
     } else if (state->getMouseScroll() < 0) {
-        //camera->zoomOut();
+        //state->getCamera()->zoomOut();
+
+        renderer->destroy(getSelectedSprite(), selectorId);
+        tileId = (tileId - 1) >= 0 ? (tileId - 1) : (32 * 32 - 1);
+        selectorId = renderer->add(getSelectedSprite(), state->getMouseX(), state->getMouseY());
     }
     if (state->getKey(GLFW_KEY_LEFT)) {
-        //camera->panLeft();
+        state->getCamera()->panLeft();
     }
     if (state->getKey(GLFW_KEY_RIGHT)) {
-        //camera->panRight();
+        state->getCamera()->panRight();
     }
     if (state->getKey(GLFW_KEY_UP)) {
-        //camera->panUp();
+        state->getCamera()->panUp();
     }
     if (state->getKey(GLFW_KEY_DOWN)) {
-        //camera->panDown();
-        addComponentAt(0, 0, "EntityInfoBox");
+        state->getCamera()->panDown();
     }
+
+    renderer->move(getSelectedSprite(), selectorId, state->getMouseX(), renderer->getHeight() - state->getMouseY());
 
     if (state->getMouseX() >= 0 && state->getMouseY() >= 0) {
         // load mouse tile
@@ -76,29 +88,26 @@ void UserInterface::update(const GameState::Ptr &state) {
 
 void UserInterface::addComponentAt(int x, int y, const std::string &componentType) {
     if (components.find(componentType) == components.end()) {
-        std::cerr << "Could not addSchemaEntity nonexistent ui component " << componentType << std::endl;
+        std::cerr << "Could not add SchemaEntity nonexistent ui component " << componentType << std::endl;
     } else {
-        components[componentType]->generate({{"x",      x},
-                                             {"y",      y},
-                                             {"sprite", componentType}});
+        json obj = {{"x",      x},
+                    {"y",      y},
+                    {"sprite", componentType}};
+        components[componentType]->generate(obj);
     }
 }
 
-const std::unordered_map<std::string, SchemaEntity::Ptr> &UserInterface::getComponents() const {
+const std::unordered_map<std::string, SchemaPrototype::Ptr> &UserInterface::getComponents() const {
     return components;
 }
 
-std::vector<SchemaEntity::Ptr> UserInterface::getEntities() {
-    std::vector<SchemaEntity::Ptr> entities;
+std::vector<SchemaPrototype::Ptr> UserInterface::getEntities() {
+    std::vector<SchemaPrototype::Ptr> entities;
     for (const auto &pair: components)
         entities.push_back(pair.second);
     return entities;
 }
 
-Camera::Ptr &UserInterface::getCamera() {
-    return camera;
-}
-
-void UserInterface::setCamera(const Camera::Ptr &camera) {
-    UserInterface::camera = camera;
+std::string UserInterface::getSelectedSprite() {
+    return fmt::format("basic_tile_{}", tileId);
 }

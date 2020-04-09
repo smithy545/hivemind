@@ -4,6 +4,7 @@
 
 #include "Renderer.h"
 
+#include <glm/ext.hpp>
 #include <iostream>
 #include <fmt/format.h>
 #include <utility>
@@ -87,7 +88,7 @@ GLFWwindow *Renderer::init() {
     // tilesheet textures
     for (const auto &tilesheet: config["tilesheets"].items()) {
         std::cout << fmt::format("Loading tilesheet from {0}", tilesheet.value()) << std::endl;
-        loadTileSheet(tilesheet.key(), tilesheet.value(), 16, 2);
+        loadTileSheet(tilesheet.key(), tilesheet.value(), 16, 1);
     }
 
     // sprites
@@ -112,27 +113,19 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const std::vector<SchemaEntity::Ptr> &entities) {
+void Renderer::render() {
     glUseProgram(currentShaderProgram);
+    glm::mat4 viewProj = glm::ortho(0.f, 1.f * width, 0.f, 1.f * height);
 
     // insert map rendering here
-    for (const auto &entity: entities) {
-        for (auto e: entity->getChildren()) {
+    for (const auto &entity: loadedSprites) {
+        for (auto e: entity.second->getChildren()) {
             // TODO: Add switch case for render types (e.g. "texture", "sprite", "tile" etc.)
-            // validate rendering info for DEBUGGING
-            entity->validate(e.second);
-            std::string spriteName = e.second["sprite"];
             int x = e.second["x"];
             int y = e.second["y"];
 
-            if (loadedSprites.find(spriteName) == loadedSprites.end()) {
-                std::cerr << "Cannot render sprite " << spriteName << std::endl;
-                break;
-            }
-
-            Sprite::Ptr sprite = loadedSprites[spriteName];
-            glm::mat4 mvpMatrix = glm::ortho(0.f, 1.f * width, 0.f, 1.f * height)
-                                  * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
+            Sprite::Ptr sprite = entity.second->getSprite();
+            glm::mat4 mvpMatrix = viewProj * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
             glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
             glActiveTexture(GL_TEXTURE0);
@@ -144,20 +137,17 @@ void Renderer::render(const std::vector<SchemaEntity::Ptr> &entities) {
     }
 }
 
-void Renderer::render(const Camera::Ptr &camera, const std::vector<SchemaEntity::Ptr> &entities) {
+void Renderer::render(const Camera::Ptr &camera) {
     glUseProgram(currentShaderProgram);
     glm::mat4 viewProj = camera->getViewProjectionMatrix();
 
     // insert map rendering here
-    for (const auto &entity: entities) {
-        for (auto e: entity->getChildren()) {
-            // validate rendering info for DEBUGGING
-            entity->validate(e.second);
-            std::string spriteName = e.second["sprite"];
+    for (const auto &entity: loadedSprites) {
+        for (auto e: entity.second->getChildren()) {
             int x = e.second["x"];
             int y = e.second["y"];
 
-            Sprite::Ptr sprite = loadedSprites[spriteName];
+            Sprite::Ptr sprite = entity.second->getSprite();
             glm::mat4 mvpMatrix = viewProj * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
             glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
@@ -195,7 +185,7 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
 void Renderer::loadSprite(const std::string &path) {
     std::string name;
     auto sprite = SpriteUtil::generateSpriteFromJson(path, name);
-    loadedSprites[name] = sprite;
+    loadedSprites[name] = std::make_shared<SpritePrototype>(sprite);
 }
 
 void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
@@ -207,14 +197,15 @@ void Renderer::loadTileSheet(const std::string &name, const std::string &path, i
     int w, h;
     loadedTextures[name] = RenderUtil::loadTexture(path, w, h);
     int i = 0;
-    float uStep = (1.0 * sheetTileSize) / (1.0 * w);
-    float vStep = (1.0 * sheetTileSize) / (1.0 * h);
+    double contentSize = sheetTileSize - 2 * padding;
+    float uStep = contentSize / (1.0 * w);
+    float vStep = contentSize / (1.0 * h);
     float uPadding = (1.0 * padding) / (1.0 * w);
     float vPadding = (1.0 * padding) / (1.0 * h);
-    float v = 0;
-    for (int y = 0; y < h; y += sheetTileSize + padding) {
-        float u = 0;
-        for (int x = 0; x < w; x += sheetTileSize + padding) {
+    float v = vPadding;
+    for (int y = 0; y < h; y += sheetTileSize) {
+        float u = uPadding;
+        for (int x = 0; x < w; x += sheetTileSize) {
             Sprite::Ptr sprite = std::make_shared<Sprite>();
 
             sprite->texture = name;
@@ -227,22 +218,22 @@ void Renderer::loadTileSheet(const std::string &name, const std::string &path, i
             sprite->uvs.push_back(-v);
 
             // bottom right
-            sprite->vertices.push_back(sheetTileSize);
+            sprite->vertices.push_back(contentSize);
             sprite->vertices.push_back(0);
 
             sprite->uvs.push_back(u + uStep);
             sprite->uvs.push_back(-v);
 
             // top right
-            sprite->vertices.push_back(sheetTileSize);
-            sprite->vertices.push_back(sheetTileSize);
+            sprite->vertices.push_back(contentSize);
+            sprite->vertices.push_back(contentSize);
 
             sprite->uvs.push_back(u + uStep);
             sprite->uvs.push_back(-v - vStep);
 
             // top left
             sprite->vertices.push_back(0);
-            sprite->vertices.push_back(sheetTileSize);
+            sprite->vertices.push_back(contentSize);
 
             sprite->uvs.push_back(u);
             sprite->uvs.push_back(-v - vStep);
@@ -257,19 +248,33 @@ void Renderer::loadTileSheet(const std::string &name, const std::string &path, i
             sprite->indices.push_back(0);
 
             sprite->reload();
-            loadedSprites[fmt::format("{0}_tile_{1}", name, i)] = sprite;
+            loadedSprites[fmt::format("{0}_tile_{1}", name, i)] = std::make_shared<SpritePrototype>(sprite);
 
-            u += uStep + uPadding;
+            u += uStep + 2 * uPadding;
             i++;
         }
-        v += vStep + vPadding;
+        v += vStep + 2 * vPadding;
     }
 }
 
-void Renderer::addScene(const std::string &name, const Scene::Ptr &scene) {
-    loadedScenes[name] = scene;
+void Renderer::move(const std::string &spriteName, unsigned int id, int x, int y) {
+    if (loadedSprites.find(spriteName) != loadedSprites.end()
+        && loadedSprites[spriteName]->get(id) != nullptr) {
+        loadedSprites[spriteName]->set(id, "x", x);
+        loadedSprites[spriteName]->set(id, "y", y);
+    }
 }
 
-const std::unordered_map<std::string, Scene::Ptr> &Renderer::getLoadedScenes() const {
-    return loadedScenes;
+unsigned int Renderer::add(const std::string &spriteName, int x, int y) {
+    if (loadedSprites.find(spriteName) != loadedSprites.end()) {
+        json obj = {{"x", x},
+                    {"y", y}};
+        return loadedSprites[spriteName]->generate(obj);
+    }
+    std::cerr << "No sprite found at " << spriteName << std::endl;
+}
+
+void Renderer::destroy(const std::string &spriteName, unsigned int id) {
+    if (loadedSprites.find(spriteName) != loadedSprites.end())
+        loadedSprites[spriteName]->destroy(id);
 }

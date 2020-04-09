@@ -10,7 +10,7 @@ GameState::GameState() : camera(nullptr) {
         key = false;
 }
 
-std::vector<SchemaEntity::Ptr> GameState::getEntities() {
+std::vector<SchemaPrototype::Ptr> GameState::getEntities() {
     return entities;
 }
 
@@ -30,7 +30,7 @@ double GameState::getMouseScroll() const {
     return mouseScroll;
 }
 
-void GameState::addSchemaEntity(const SchemaEntity::Ptr &entity) {
+void GameState::addSchemaEntity(const SchemaPrototype::Ptr &entity) {
     entities.push_back(entity);
 }
 

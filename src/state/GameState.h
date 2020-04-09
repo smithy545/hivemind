@@ -5,21 +5,20 @@
 #ifndef SOCIETY_GAMESTATE_H
 #define SOCIETY_GAMESTATE_H
 
-#include <common/SchemaEntity.h>
+#include <common/SchemaPrototype.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
 #include <render/Camera.h>
-#include <render/Scene.h>
 
 
-class GameState : public Scene {
+class GameState {
 public:
     typedef std::shared_ptr<GameState> Ptr;
 
     GameState();
 
-    std::vector<SchemaEntity::Ptr> getEntities() override;
+    std::vector<SchemaPrototype::Ptr> getEntities();
 
     bool getKey(int key) const;
 
@@ -29,9 +28,9 @@ public:
 
     double getMouseScroll() const;
 
-    Camera::Ptr &getCamera() override;
+    Camera::Ptr &getCamera();
 
-    void addSchemaEntity(const SchemaEntity::Ptr &entity);
+    void addSchemaEntity(const SchemaPrototype::Ptr &entity);
 
     void setKey(int key, bool value);
 
@@ -52,8 +51,9 @@ private:
 
     // scene state
     Camera::Ptr camera;
-    std::vector<SchemaEntity::Ptr> entities;
+    std::vector<SchemaPrototype::Ptr> entities;
 };
 
 
 #endif //SOCIETY_GAMESTATE_H
+

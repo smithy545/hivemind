@@ -1,14 +1,8 @@
 {
   "tilesheets": {
-    "ui": "UIpackSheet_transparent.png"
+    "basic": "colored.png"
   },
   "textures": {
-    "background": "bernie.jpg",
-    "monkey": "animals/monkey.png",
-    "gorilla": "animals/gorilla.png",
-    "tree": "plants/tree.png",
-    "tile1": "terrain/tile_01.png",
-    "structure": "structures/panel_boltsGreen.png"
   },
   "tileSize": 128,
   "shaders": {
@@ -18,11 +12,6 @@
     ]
   },
   "sprites": [
-    "sprites/gorilla.json",
-    "sprites/monkey.json",
-    "sprites/tree.json",
-    "sprites/structure.json",
-    "sprites/entityinfobox.json"
   ],
   "width": 1200,
   "height": 800

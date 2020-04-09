@@ -94,8 +94,8 @@ add_executable(society
         src/main.cpp
         src/thread/GameRunner.cpp
         src/thread/GameRunner.h
-        src/common/SchemaEntity.cpp
-        src/common/SchemaEntity.h
+        src/common/SchemaPrototype.cpp
+        src/common/SchemaPrototype.h
         src/pathing/MapNode.cpp
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
@@ -117,11 +117,6 @@ add_executable(society
         src/util/SpriteUtil.h
         src/util/FileUtil.cpp
         src/util/FileUtil.h
-        src/world/GridMap.cpp
-        src/world/GridMap.h
-        src/world/WorldEntity.cpp
-        src/world/WorldEntity.h
-        src/world/WorldActor.cpp
-        src/world/WorldActor.h
-        src/world/WorldMap.h src/render/Scene.h)
+        src/render/SpritePrototype.cpp
+        src/render/SpritePrototype.h)
 target_link_libraries(society ${ALL_LIBS})
