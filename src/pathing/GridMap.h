@@ -7,9 +7,10 @@
 
 #include <memory>
 #include <vector>
+#include <pathing/QuadTree.h>
 
 #include "Map.h"
-#include "MapNode.h"
+#include "GridNode.h"
 
 
 class GridMap : public Map {
@@ -22,7 +23,10 @@ public:
 
     // topology
     std::vector<MapNode::Ptr> &getNodes() override {
-        return nodes;
+        std::vector<MapNode::Ptr> temp;
+        for (const auto &node: nodes)
+            temp.push_back(node);
+        return temp;
     }
 
     MapNode::Ptr getNode(int x, int y) override;
@@ -38,7 +42,8 @@ public:
 private:
     const int width;
     const int height;
-    std::vector<MapNode::Ptr> nodes;
+    std::vector<GridNode::Ptr> nodes;
+    QuadTree collisionTreeHead;
 };
 
 

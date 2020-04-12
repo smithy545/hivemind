@@ -4,11 +4,9 @@
 
 #include "WorldMap.h"
 
-WorldMap::WorldMap() = default;
+WorldMap::WorldMap() {}
 
-WorldMap::WorldMap(const std::string &mapFile) {}
 
-// topology
 const std::vector<MapNode::Ptr> &WorldMap::getNodes() {
     std::vector<MapNode::Ptr> nodes;
     for (const auto &map: subMaps)
@@ -23,15 +21,14 @@ MapNode::Ptr WorldMap::getNode(int x, int y) {
         if (node != nullptr)
             return node;
     }
-    // TODO: Add check to remove any overlap of new map with exisiting maps
+    // TODO: Add check to remove any overlap of new map with existing maps
     auto newMap = std::make_shared<GridMap>(x - 50, y - 50, 100, 100);
     return newMap->getNode(x, y);
 }
 
+void WorldMap::addPerson() {}
+
 void WorldMap::expandNorth() {}
-
 void WorldMap::expandWest() {}
-
 void WorldMap::expandSouth() {}
-
 void WorldMap::expandEast() {}

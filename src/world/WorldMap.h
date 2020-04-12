@@ -7,7 +7,7 @@
 
 #include <memory>
 #include <pathing/Map.h>
-#include <pathing/MapNode.h>
+#include <pathing/GridNode.h>
 #include <pathing/GridMap.h>
 #include <string>
 
@@ -18,20 +18,17 @@ public:
 
     WorldMap();
 
-    explicit WorldMap(const std::string &mapFile);
-
     // topology
     const std::vector<MapNode::Ptr> &getNodes() override;
 
     MapNode::Ptr getNode(int x, int y) override;
 
     //TODO
+    void addPerson();
+
     void expandNorth();
-
     void expandWest();
-
     void expandSouth();
-
     void expandEast();
 
 private:

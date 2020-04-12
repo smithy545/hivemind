@@ -5,13 +5,13 @@
 #include "Rectangle.h"
 
 
-Rectangle::Rectangle(int width, int height) : Rectangle(0, 0, width, height) {}
+Rectangle::Rectangle(float width, float height) : Rectangle(0, 0, width, height) {}
 
-Rectangle::Rectangle(int x, int y, int width, int height) : x(x), y(y), width(width), height(height) {
+Rectangle::Rectangle(float x, float y, float width, float height) : x(x), y(y), width(width), height(height) {
     calculatePoints();
 }
 
-bool Rectangle::collides(int X, int Y) {
+bool Rectangle::collides(float X, float Y) {
     return X >= x && X < x + width && Y >= y && Y < y + height;
 }
 
@@ -33,42 +33,42 @@ void Rectangle::calculatePoints() {
     points[7] = y + height;
 }
 
-int Rectangle::getX() const {
+float Rectangle::getX() const {
     return x;
 }
 
-void Rectangle::setX(int x) {
+void Rectangle::setX(float x) {
     Rectangle::x = x;
     calculatePoints();
 }
 
-int Rectangle::getY() const {
+float Rectangle::getY() const {
     return y;
 }
 
-void Rectangle::setY(int y) {
+void Rectangle::setY(float y) {
     Rectangle::y = y;
     calculatePoints();
 }
 
-int Rectangle::getWidth() const {
+float Rectangle::getWidth() const {
     return width;
 }
 
-void Rectangle::setWidth(int width) {
+void Rectangle::setWidth(float width) {
     Rectangle::width = width;
     calculatePoints();
 }
 
-int Rectangle::getHeight() const {
+float Rectangle::getHeight() const {
     return height;
 }
 
-void Rectangle::setHeight(int height) {
+void Rectangle::setHeight(float height) {
     Rectangle::height = height;
     calculatePoints();
 }
 
-const int *Rectangle::getPoints() const {
+const float *Rectangle::getPoints() const {
     return points;
 }

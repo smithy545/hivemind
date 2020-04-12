@@ -8,17 +8,17 @@
 #include <unordered_map>
 
 
-MapNode::MapPath Pather::genAStarPath(const MapNode::Ptr &start, const MapNode::Ptr &end) {
+MapNode::MapPath Pather::genAStarPath(const GridNode::Ptr &start, const GridNode::Ptr &end) {
     MapNode::MapPath path;
 
     std::unordered_map<std::string, PathNode::Ptr> open;
     std::unordered_map<std::string, PathNode::Ptr> closed;
 
     open[genKey(start)] = std::make_shared<PathNode>(start, 0, 0, nullptr);
-    while(!open.empty()) {
+    while (!open.empty()) {
         std::string minKey;
-        for(std::pair<std::string, PathNode::Ptr> el: open) {
-            if(minKey.empty() || el.second->getF() < open[minKey]->getF()) {
+        for (std::pair<std::string, PathNode::Ptr> el: open) {
+            if (minKey.empty() || el.second->getF() < open[minKey]->getF()) {
                 minKey = genKey(el.second->position);
             }
         }

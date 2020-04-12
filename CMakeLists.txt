@@ -96,13 +96,18 @@ add_executable(society
         src/thread/GameRunner.h
         src/common/SchemaObject.cpp
         src/common/SchemaObject.h
-        src/pathing/MapNode.cpp
-        src/pathing/MapNode.h
+        src/common/Rectangle.cpp
+        src/common/Rectangle.h
+        src/pathing/GridNode.cpp
+        src/pathing/GridNode.h
         src/pathing/Pather.cpp
         src/pathing/Pather.h
         src/pathing/Map.h
         src/pathing/GridMap.cpp
         src/pathing/GridMap.h
+        src/pathing/QuadTree.cpp
+        src/pathing/QuadTree.h
+        src/pathing/MapNode.h
         src/render/Camera.cpp
         src/render/Camera.h
         src/render/Sprite.cpp
@@ -125,5 +130,5 @@ add_executable(society
         src/world/WorldMap.h
         src/world/WorldEntity.cpp
         src/world/WorldEntity.h
-        src/pathing/QuadTree.cpp src/pathing/QuadTree.h src/common/Rectangle.cpp src/common/Rectangle.h)
+        )
 target_link_libraries(society ${ALL_LIBS})

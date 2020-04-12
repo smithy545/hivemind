@@ -7,7 +7,7 @@
 
 #include <glm/glm.hpp>
 #include <memory>
-#include <pathing/MapNode.h>
+#include <pathing/GridNode.h>
 
 
 class Camera {
@@ -16,7 +16,7 @@ public:
 
     Camera(float x, float y, float width, float height);
 
-    bool inSight(const MapNode::Ptr &node, int tileSize) const;
+    bool inSight(const GridNode::Ptr &node, int tileSize) const;
 
     void panLeft();
 

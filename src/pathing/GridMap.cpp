@@ -5,19 +5,21 @@
 #include "GridMap.h"
 
 
-GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset, yOffset), width(width),
-                                                                    height(height) {
+GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset, yOffset),
+                                                                    width(width),
+                                                                    height(height),
+                                                                    collisionTreeHead(0, Rectangle(width, height)) {
     // initialize
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            nodes.push_back(std::make_shared<MapNode>(xOffset + x, yOffset + y));
+            nodes.push_back(std::make_shared<GridNode>(xOffset + x, yOffset + y));
         }
     }
     // setup topology
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int index = y * width + x;
-            MapNode::Ptr node = nodes[index];
+            GridNode::Ptr node = nodes[index];
             const bool xgt0 = x > 0;
             const bool ygt0 = y > 0;
             const bool xltw = x < width - 1;

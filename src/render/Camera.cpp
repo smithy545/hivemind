@@ -13,7 +13,7 @@ Camera::Camera(float x, float y, float width, float height)
     resetViewMatrix();
 }
 
-bool Camera::inSight(const MapNode::Ptr &node, int tileSize) const {
+bool Camera::inSight(const GridNode::Ptr &node, int tileSize) const {
     // TODO: Improve to include node size
     return (node->getX() + 1) * tileSize > pos.x
            && node->getX() * tileSize < pos.x + scale * width

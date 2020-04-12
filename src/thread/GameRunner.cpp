@@ -5,7 +5,6 @@
 #include "GameRunner.h"
 
 #include <iostream>
-#include <fmt/format.h>
 #include <memory>
 #include <render/Renderer.h>
 
@@ -33,12 +32,11 @@ void GameRunner::loop() {
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Setup keyboard inputs
     glfwSetKeyCallback(window, keyCallback);
+    glfwSetCharCallback(window, characterCallback);
     // Setup mouse inputs
     glfwSetCursorPosCallback(window, cursorPosCallback);
     glfwSetScrollCallback(window, scrollCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
-    // Setup text input
-    glfwSetCharCallback(window, characterCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
@@ -54,8 +52,6 @@ void GameRunner::loop() {
         // Game Pipeline
         // Input -> GameState -> UI -> Renderer -> Player
 
-        // process Input
-        // resize renderer/camera if necessary
         if (GameRunner::resized) {
             renderer->resize(screenWidth, screenHeight);
             GameRunner::resized = false;

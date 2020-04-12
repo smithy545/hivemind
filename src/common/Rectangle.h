@@ -8,36 +8,36 @@
 
 class Rectangle {
 public:
-    Rectangle(int width, int height);
+    Rectangle(float width, float height);
 
-    Rectangle(int x, int y, int width, int height);
+    Rectangle(float x, float y, float width, float height);
 
-    bool collides(int X, int Y);
+    bool collides(float X, float Y);
 
     bool collides(Rectangle rect);
 
-    int getX() const;
+    float getX() const;
 
-    void setX(int x);
+    void setX(float x);
 
-    int getY() const;
+    float getY() const;
 
-    void setY(int y);
+    void setY(float y);
 
-    int getWidth() const;
+    float getWidth() const;
 
-    void setWidth(int width);
+    void setWidth(float width);
 
-    int getHeight() const;
+    float getHeight() const;
 
-    void setHeight(int height);
+    void setHeight(float height);
 
-    const int *getPoints() const;
+    const float *getPoints() const;
 
 private:
     int x, y;
-    int width, height;
-    int points[8]{};
+    float width, height;
+    float points[8]{};
 
     void calculatePoints();
 };
