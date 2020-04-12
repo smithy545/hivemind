@@ -7,9 +7,9 @@
 
 MapNode::MapNode(int x, int y) : MapNode(x, y, true) {}
 
-MapNode::MapNode(int x, int y, bool passable) : MapNode(x, y, passable, GROUND) {}
+MapNode::MapNode(int x, int y, bool passable) : MapNode(x, y, passable, 0) {}
 
-MapNode::MapNode(int x, int y, bool passable, Type type) : x(x), y(y), passable(passable), type(type) {}
+MapNode::MapNode(int x, int y, bool passable, int type) : x(x), y(y), passable(passable), type(type) {}
 
 int MapNode::getX() const {
     return x;
@@ -39,10 +39,10 @@ std::unordered_set<MapNode::Ptr> &MapNode::getNeighbors() {
     return neighbors;
 }
 
-MapNode::Type MapNode::getType() const {
+int MapNode::getType() const {
     return type;
 }
 
-void MapNode::setType(Type type) {
-    MapNode::type = type;
+void MapNode::setType(int type) {
+    this->type = type;
 }

@@ -4,7 +4,6 @@
 
 #include "Renderer.h"
 
-#include <glm/ext.hpp>
 #include <iostream>
 #include <fmt/format.h>
 #include <utility>
@@ -13,8 +12,16 @@
 #include <util/RenderUtil.h>
 
 
-Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), window(nullptr) {}
+const std::string Renderer::CONFIG_WIDTH_KEY = "width";
+const std::string Renderer::CONFIG_HEIGHT_KEY = "height";
+const std::string Renderer::CONFIG_SPRITESHEETS_KEY = "spriteSheets";
+const std::string Renderer::CONFIG_TILESHEETS_KEY = "tileSheets";
+const std::string Renderer::CONFIG_TILESIZE_KEY = "tileSize";
+const std::string Renderer::CONFIG_TEXTURES_KEY = "textures";
+const std::string Renderer::CONFIG_SHADERS_KEY = "shaders";
 
+
+Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), window(nullptr) {}
 
 int Renderer::getWidth() const {
     return width;
@@ -31,9 +38,9 @@ int Renderer::getTileSize() const {
 GLFWwindow *Renderer::init() {
     // read config
     auto config = FileUtil::readJsonFile(configPath);
-    tileSize = config["tileSize"];
-    width = config["width"];
-    height = config["height"];
+    tileSize = config[CONFIG_TILESIZE_KEY];
+    width = config[CONFIG_WIDTH_KEY];
+    height = config[CONFIG_HEIGHT_KEY];
 
     // Initialise GLFW
     if (!glfwInit()) {
@@ -72,7 +79,7 @@ GLFWwindow *Renderer::init() {
     glEnable(GL_CULL_FACE);
 
     // shaders
-    for (const auto &shader: config["shaders"].items()) {
+    for (const auto &shader: config[CONFIG_SHADERS_KEY].items()) {
         std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],
                                  shader.value()[1])
                   << std::endl;
@@ -80,19 +87,19 @@ GLFWwindow *Renderer::init() {
     }
 
     // image textures
-    for (const auto &tex: config["textures"].items()) {
+    for (const auto &tex: config[CONFIG_TEXTURES_KEY].items()) {
         std::cout << fmt::format("Loading texture \"{0}\" from {1}", tex.key(), tex.value()) << std::endl;
         loadTexture(tex.key(), tex.value());
     }
 
     // tilesheet textures
-    for (const auto &tilesheet: config["tilesheets"].items()) {
-        std::cout << fmt::format("Loading tilesheet from {0}", tilesheet.value()) << std::endl;
-        loadTileSheet(tilesheet.key(), tilesheet.value(), 16, 1);
+    for (const auto &tilesheet: config[CONFIG_TILESHEETS_KEY]) {
+        std::cout << fmt::format("Loading tilesheet from {0}", tilesheet) << std::endl;
+        loadTileSheet(tilesheet);
     }
 
     // sprites
-    for (const auto &sprite: config["sprites"]) {
+    for (const auto &sprite: config[CONFIG_SPRITESHEETS_KEY]) {
         std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
         loadSprite(sprite);
     }
@@ -113,51 +120,29 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render() {
+void Renderer::render(const GameState::Ptr &state) {
     glUseProgram(currentShaderProgram);
-    glm::mat4 viewProj = glm::ortho(0.f, 1.f * width, 0.f, 1.f * height);
+    glm::mat4 viewProj = state->getCamera()->getViewProjectionMatrix();
 
     // insert map rendering here
-    for (const auto &entity: loadedSprites) {
-        for (auto e: entity.second->getChildren()) {
-            // TODO: Add switch case for render types (e.g. "texture", "sprite", "tile" etc.)
-            int x = e.second["x"];
-            int y = e.second["y"];
+    for (const auto &entity: state->getWorldEntities()) {}
+    for (const auto &entity: state->getUiEntities()) {}
 
-            Sprite::Ptr sprite = entity.second->getSprite();
-            glm::mat4 mvpMatrix = viewProj * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
-            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+    /*
+    for(auto entity : entities->getChildren()) {
+        int x = entity.second["x"];
+        int y = entity.second["y"];
 
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
+        Sprite::Ptr sprite = loadedSprites[entity.second["spriteName"]];
+        glm::mat4 mvpMatrix = viewProj * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
+        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
 
-            glBindVertexArray(sprite->vertexArrayId);
-            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
-        }
-    }
-}
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
 
-void Renderer::render(const Camera::Ptr &camera) {
-    glUseProgram(currentShaderProgram);
-    glm::mat4 viewProj = camera->getViewProjectionMatrix();
-
-    // insert map rendering here
-    for (const auto &entity: loadedSprites) {
-        for (auto e: entity.second->getChildren()) {
-            int x = e.second["x"];
-            int y = e.second["y"];
-
-            Sprite::Ptr sprite = entity.second->getSprite();
-            glm::mat4 mvpMatrix = viewProj * glm::translate(glm::mat4(1), glm::vec3(x, y, 0));
-            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, loadedTextures[sprite->texture]);
-
-            glBindVertexArray(sprite->vertexArrayId);
-            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
-        }
-    }
+        glBindVertexArray(sprite->vertexArrayId);
+        glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+    }*/
 }
 
 void Renderer::resize(int width, int height) {
@@ -184,8 +169,7 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
 
 void Renderer::loadSprite(const std::string &path) {
     std::string name;
-    auto sprite = SpriteUtil::generateSpriteFromJson(path, name);
-    loadedSprites[name] = std::make_shared<SpritePrototype>(sprite);
+    loadedSprites[name] = SpriteUtil::generateSpriteFromJson(fmt::format("json/spritesheets/{}", path), name);
 }
 
 void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
@@ -193,9 +177,15 @@ void Renderer::loadTexture(const std::string &name, const std::string &texturePa
     loadedTextures[name] = RenderUtil::loadTexture(texturePath, w, h);
 }
 
-void Renderer::loadTileSheet(const std::string &name, const std::string &path, int sheetTileSize, int padding) {
+void Renderer::loadTileSheet(const std::string &path) {
     int w, h;
-    loadedTextures[name] = RenderUtil::loadTexture(path, w, h);
+    auto tilesheet = FileUtil::readJsonFile(fmt::format("json/tilesheets/{}", path));
+    // TODO: add constants for tilesheet keys
+    std::string name = tilesheet["name"];
+    int sheetTileSize = tilesheet["tileSize"];
+    int padding = tilesheet["padding"];
+    // find a way to get tex width and height to avoid double loading
+    loadedTextures[name] = RenderUtil::loadTexture(tilesheet["texture"], w, h);
     int i = 0;
     double contentSize = sheetTileSize - 2 * padding;
     float uStep = contentSize / (1.0 * w);
@@ -248,33 +238,11 @@ void Renderer::loadTileSheet(const std::string &name, const std::string &path, i
             sprite->indices.push_back(0);
 
             sprite->reload();
-            loadedSprites[fmt::format("{0}_tile_{1}", name, i)] = std::make_shared<SpritePrototype>(sprite);
+            loadedSprites[fmt::format("{0}_tile_{1}", name, i)] = sprite;
 
             u += uStep + 2 * uPadding;
             i++;
         }
         v += vStep + 2 * vPadding;
     }
-}
-
-void Renderer::move(const std::string &spriteName, unsigned int id, int x, int y) {
-    if (loadedSprites.find(spriteName) != loadedSprites.end()
-        && loadedSprites[spriteName]->get(id) != nullptr) {
-        loadedSprites[spriteName]->set(id, "x", x);
-        loadedSprites[spriteName]->set(id, "y", y);
-    }
-}
-
-unsigned int Renderer::add(const std::string &spriteName, int x, int y) {
-    if (loadedSprites.find(spriteName) != loadedSprites.end()) {
-        json obj = {{"x", x},
-                    {"y", y}};
-        return loadedSprites[spriteName]->generate(obj);
-    }
-    std::cerr << "No sprite found at " << spriteName << std::endl;
-}
-
-void Renderer::destroy(const std::string &spriteName, unsigned int id) {
-    if (loadedSprites.find(spriteName) != loadedSprites.end())
-        loadedSprites[spriteName]->destroy(id);
 }

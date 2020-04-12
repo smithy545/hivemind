@@ -4,13 +4,14 @@
 
 #include "UserInterface.h"
 
+#include <iostream>
 #include <exception>
 #include <fmt/format.h>
 #include <pathing/Pather.h>
 #include <util/FileUtil.h>
 
 
-UserInterface::UserInterface(const std::string &configPath, const Renderer::Ptr &renderer) {
+UserInterface::UserInterface(const std::string &configPath) {
     json config = FileUtil::readJsonFile(configPath);
     for (const auto &component: config["components"].items()) {
         json schema;
@@ -21,26 +22,20 @@ UserInterface::UserInterface(const std::string &configPath, const Renderer::Ptr 
         else
             throw std::exception("Error reading ui config from ");
 
-        components[component.key()] = std::make_shared<SchemaPrototype>(schema);
+        components[component.key()] = std::make_shared<SchemaObject>(schema);
     }
-
-    selectorId = renderer->add(getSelectedSprite(), 0, 0);
 }
 
-void UserInterface::update(const GameState::Ptr &state, const Renderer::Ptr &renderer) {
+void UserInterface::update(const GameState::Ptr &state) {
     // update camera
     if (state->getMouseScroll() > 0) {
         //state->getCamera()->zoomIn();
 
-        renderer->destroy(getSelectedSprite(), selectorId);
         tileId = (tileId + 1) % (32 * 32);
-        selectorId = renderer->add(getSelectedSprite(), state->getMouseX(), state->getMouseY());
     } else if (state->getMouseScroll() < 0) {
         //state->getCamera()->zoomOut();
 
-        renderer->destroy(getSelectedSprite(), selectorId);
         tileId = (tileId - 1) >= 0 ? (tileId - 1) : (32 * 32 - 1);
-        selectorId = renderer->add(getSelectedSprite(), state->getMouseX(), state->getMouseY());
     }
     if (state->getKey(GLFW_KEY_LEFT)) {
         state->getCamera()->panLeft();
@@ -55,7 +50,6 @@ void UserInterface::update(const GameState::Ptr &state, const Renderer::Ptr &ren
         state->getCamera()->panDown();
     }
 
-    renderer->move(getSelectedSprite(), selectorId, state->getMouseX(), renderer->getHeight() - state->getMouseY());
 
     if (state->getMouseX() >= 0 && state->getMouseY() >= 0) {
         // load mouse tile
@@ -93,21 +87,10 @@ void UserInterface::addComponentAt(int x, int y, const std::string &componentTyp
         json obj = {{"x",      x},
                     {"y",      y},
                     {"sprite", componentType}};
-        components[componentType]->generate(obj);
+        //components[componentType]->generate(obj);
     }
 }
 
-const std::unordered_map<std::string, SchemaPrototype::Ptr> &UserInterface::getComponents() const {
+const std::unordered_map<std::string, SchemaObject::Ptr> &UserInterface::getComponents() const {
     return components;
-}
-
-std::vector<SchemaPrototype::Ptr> UserInterface::getEntities() {
-    std::vector<SchemaPrototype::Ptr> entities;
-    for (const auto &pair: components)
-        entities.push_back(pair.second);
-    return entities;
-}
-
-std::string UserInterface::getSelectedSprite() {
-    return fmt::format("basic_tile_{}", tileId);
 }

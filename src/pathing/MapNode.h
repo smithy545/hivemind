@@ -15,18 +15,11 @@ public:
     typedef std::shared_ptr<MapNode> Ptr;
     typedef std::deque<Ptr> MapPath;
 
-    enum Type {
-        GROUND,
-        NATURE,
-        ROAD,
-        STRUCTURE
-    };
-
     MapNode(int x, int y);
 
     MapNode(int x, int y, bool passable);
 
-    MapNode(int x, int y, bool passable, Type type);
+    MapNode(int x, int y, bool passable, int type);
 
     int getX() const;
 
@@ -42,13 +35,13 @@ public:
 
     std::unordered_set<Ptr> &getNeighbors();
 
-    Type getType() const;
+    int getType() const;
 
-    void setType(Type type);
+    void setType(int type);
 private:
     int x;
     int y;
-    Type type;
+    int type;
     bool passable;
     std::unordered_set<Ptr> neighbors;
 };

@@ -18,7 +18,7 @@ GameState::Ptr GameRunner::state = nullptr;
 
 void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
+    Renderer::Ptr renderer = std::make_shared<Renderer>("json/renderer.json");
     screenWidth = renderer->getWidth();
     screenHeight = renderer->getHeight();
     GLFWwindow *window = renderer->init();
@@ -27,15 +27,6 @@ void GameRunner::loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<GameState>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
-    state->addSchemaEntity(std::make_shared<SchemaPrototype>(std::string("{\"type\":\"object\"}")));
-    for (int y = 0; y < 32; y++) {
-        for (int x = 0; x < 32; x++) {
-            json obj = {{"x",      x * 14},
-                        {"y",      y * 14},
-                        {"sprite", fmt::format("basic_tile_{}", y * 32 + x)}};
-            state->getEntities()[0]->generate(obj);
-        }
-    }
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -52,7 +43,7 @@ void GameRunner::loop() {
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
     std::cout << "UI init" << std::endl;
-    UserInterface::Ptr ui = std::make_shared<UserInterface>("ui.json", renderer);
+    UserInterface::Ptr ui = std::make_shared<UserInterface>("json/ui.json");
 
     std::cout << "Misc init/loop start" << std::endl;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -60,17 +51,24 @@ void GameRunner::loop() {
     do {
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // Game Pipeline
+        // Input -> GameState -> UI -> Renderer -> Player
+
+        // process Input
         // resize renderer/camera if necessary
         if (GameRunner::resized) {
             renderer->resize(screenWidth, screenHeight);
             GameRunner::resized = false;
         }
 
-        // update ui
-        ui->update(state, renderer);
+        // update GameState
+        //TODO
 
-        // render scenes
-        renderer->render(state->getCamera());
+        // update UI
+        ui->update(state);
+
+        // call Renderer
+        renderer->render(state);
 
         // reset mouse wheel position
         state->setMouseScroll(0.0f);

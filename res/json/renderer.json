@@ -1,0 +1,19 @@
+{
+  "shaders": {
+    "default": [
+      "vertex.shader",
+      "fragment.shader"
+    ]
+  },
+  "spriteSheets": [
+    "gorilla.json",
+    "monkey.json"
+  ],
+  "tileSheets": [
+    "basic.json"
+  ],
+  "tileSize": 128,
+  "textures": {},
+  "width": 1200,
+  "height": 800
+}

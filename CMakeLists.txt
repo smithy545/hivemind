@@ -94,13 +94,15 @@ add_executable(society
         src/main.cpp
         src/thread/GameRunner.cpp
         src/thread/GameRunner.h
-        src/common/SchemaPrototype.cpp
-        src/common/SchemaPrototype.h
+        src/common/SchemaObject.cpp
+        src/common/SchemaObject.h
         src/pathing/MapNode.cpp
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
         src/pathing/Pather.h
         src/pathing/Map.h
+        src/pathing/GridMap.cpp
+        src/pathing/GridMap.h
         src/render/Camera.cpp
         src/render/Camera.h
         src/render/Sprite.cpp
@@ -111,12 +113,17 @@ add_executable(society
         src/state/GameState.h
         src/ui/UserInterface.cpp
         src/ui/UserInterface.h
+        src/ui/UIEntity.cpp
+        src/ui/UIEntity.h
         src/util/RenderUtil.cpp
         src/util/RenderUtil.h
         src/util/SpriteUtil.cpp
         src/util/SpriteUtil.h
         src/util/FileUtil.cpp
         src/util/FileUtil.h
-        src/render/SpritePrototype.cpp
-        src/render/SpritePrototype.h)
+        src/world/WorldMap.cpp
+        src/world/WorldMap.h
+        src/world/WorldEntity.cpp
+        src/world/WorldEntity.h
+        src/pathing/QuadTree.cpp src/pathing/QuadTree.h src/common/Rectangle.cpp src/common/Rectangle.h)
 target_link_libraries(society ${ALL_LIBS})

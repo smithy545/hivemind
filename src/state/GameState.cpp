@@ -6,12 +6,17 @@
 
 
 GameState::GameState() : camera(nullptr) {
+    map = std::make_shared<WorldMap>();
     for (bool &key : keys)
         key = false;
 }
 
-std::vector<SchemaPrototype::Ptr> GameState::getEntities() {
-    return entities;
+const std::vector<WorldEntity::Ptr> &GameState::getWorldEntities() const {
+    return worldEntities;
+}
+
+const std::vector<UIEntity::Ptr> &GameState::getUiEntities() const {
+    return uiEntities;
 }
 
 bool GameState::getKey(int key) const {
@@ -28,10 +33,6 @@ double GameState::getMouseY() const {
 
 double GameState::getMouseScroll() const {
     return mouseScroll;
-}
-
-void GameState::addSchemaEntity(const SchemaPrototype::Ptr &entity) {
-    entities.push_back(entity);
 }
 
 void GameState::setKey(int key, bool value) {
@@ -56,4 +57,12 @@ Camera::Ptr &GameState::getCamera() {
 
 void GameState::setCamera(const Camera::Ptr &camera) {
     GameState::camera = camera;
+}
+
+const WorldMap::Ptr &GameState::getMap() const {
+    return map;
+}
+
+void GameState::setMap(const WorldMap::Ptr &map) {
+    GameState::map = map;
 }

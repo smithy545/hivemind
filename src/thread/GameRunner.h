@@ -10,6 +10,7 @@
 #include <state/GameState.h>
 #include <ui/UserInterface.h>
 #include <unordered_map>
+#include <world/WorldMap.h>
 
 
 class GameRunner {

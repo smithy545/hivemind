@@ -15,9 +15,34 @@ class Map {
 public:
     typedef std::shared_ptr<Map> Ptr;
 
+    Map() : Map(0, 0) {}
+
+    Map(int xOffset, int yOffset) : xOffset(xOffset), yOffset(yOffset) {}
+
     // topology
     virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
+
     virtual MapNode::Ptr getNode(int x, int y) = 0;
+
+protected:
+    int getXOffset() const {
+        return xOffset;
+    }
+
+    void setXOffset(int xOffset) {
+        Map::xOffset = xOffset;
+    }
+
+    int getYOffset() const {
+        return yOffset;
+    }
+
+    void setYOffset(int yOffset) {
+        Map::yOffset = yOffset;
+    }
+
+private:
+    int xOffset, yOffset;
 };
 
 #endif //SOCIETY_MAP_H
