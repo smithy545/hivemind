@@ -15,16 +15,17 @@ class Map {
 public:
     typedef std::shared_ptr<Map> Ptr;
 
-    Map() : Map(0, 0) {}
-
-    Map(int xOffset, int yOffset) : xOffset(xOffset), yOffset(yOffset) {}
-
-    // topology
     virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
 
     virtual MapNode::Ptr getNode(int x, int y) = 0;
 
+    virtual std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr node) = 0;
+
 protected:
+    Map() : Map(0, 0) {}
+
+    Map(int xOffset, int yOffset) : xOffset(xOffset), yOffset(yOffset) {}
+
     int getXOffset() const {
         return xOffset;
     }

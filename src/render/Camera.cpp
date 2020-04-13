@@ -7,18 +7,12 @@
 #include <glm/ext.hpp>
 
 
-Camera::Camera(float x, float y, float width, float height)
-        : pos(x, y), width(width), scale(1), height(height) {
-    resetProjectionMatrix();
-    resetViewMatrix();
-}
+Camera::Camera(double x, double y, double width, double height)
+        : pos(x, y, 0), bound(x, y, width, height),
+          projectionMatrix(glm::ortho(0.f, (float) width, 0.f, (float) height)) {}
 
-bool Camera::inSight(const GridNode::Ptr &node, int tileSize) const {
-    // TODO: Improve to include node size
-    return (node->getX() + 1) * tileSize > pos.x
-           && node->getX() * tileSize < pos.x + scale * width
-           && (node->getY() + 1) * tileSize > pos.y
-           && node->getY() * tileSize < pos.y + scale * height;
+bool Camera::inSight(double x, double y) {
+    return bound.collides(x, y);
 }
 
 void Camera::panLeft() {
@@ -51,40 +45,29 @@ void Camera::zoomOut() {
     resetProjectionMatrix();
 }
 
-void Camera::resize(int width, int height) {
-    this->width = width;
-    this->height = height;
+void Camera::resize(double width, double height) {
+    bound.setWidth(width);
+    bound.setHeight(height);
     resetProjectionMatrix();
 }
 
+#include <iostream>
 void Camera::resetProjectionMatrix() {
-    projectionMatrix = glm::ortho(0.f, scale * width, 0.f, scale * height);
+    projectionMatrix = glm::ortho(0.f, (float) (scale * bound.getWidth()), 0.f, (float) (scale * bound.getHeight()));
 }
 
 void Camera::resetViewMatrix() {
-    viewMatrix = glm::translate(glm::mat4(1), glm::vec3(-pos, 0));
+    viewMatrix = glm::translate(glm::mat4(1), -pos);
 }
 
 glm::mat4 Camera::getViewProjectionMatrix() {
     return projectionMatrix * viewMatrix;
 }
 
-float Camera::getX() const {
-    return pos.x;
+Rectangle Camera::getBoundingRect() {
+    return bound;
 }
 
-float Camera::getY() const {
-    return pos.y;
-}
-
-float Camera::getWidth() const {
-    return width;
-}
-
-float Camera::getHeight() const {
-    return height;
-}
-
-float Camera::getScale() const {
+double Camera::getScale() const {
     return scale;
 }

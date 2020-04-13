@@ -9,11 +9,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
+#include <pathing/Map.h>
 #include <render/Camera.h>
-#include <world/WorldMap.h>
-#include <world/WorldEntity.h>
-#include <ui/UIEntity.h>
-
+#include <render/RenderNode.h>
 
 class GameState {
 public:
@@ -21,9 +19,7 @@ public:
 
     GameState();
 
-    const std::vector<WorldEntity::Ptr> &getWorldEntities() const;
-
-    const std::vector<UIEntity::Ptr> &getUiEntities() const;
+    RenderNode::Ptr getRenderTree();
 
     bool getKey(int key) const;
 
@@ -35,7 +31,7 @@ public:
 
     Camera::Ptr &getCamera();
 
-    const WorldMap::Ptr &getMap() const;
+    const Map::Ptr &getMap() const;
 
     void setKey(int key, bool value);
 
@@ -47,9 +43,25 @@ public:
 
     void setCamera(const Camera::Ptr &camera);
 
-    void setMap(const WorldMap::Ptr &map);
+    void setMap(const Map::Ptr &map);
+
+    bool isPaused() const;
+
+    bool shouldStop() const;
+
+    void pause();
+
+    void unpause();
+
+    void start();
+
+    void stop();
 
 private:
+    // game state
+    bool paused{true};
+    bool stopped{true};
+
     // io state
     bool keys[GLFW_KEY_LAST]{};
     double mouseX{};
@@ -58,11 +70,9 @@ private:
 
     // scene state
     Camera::Ptr camera;
-    std::vector<WorldEntity::Ptr> worldEntities;
-    std::vector<UIEntity::Ptr> uiEntities;
 
     // world state
-    WorldMap::Ptr map;
+    Map::Ptr map;
 };
 
 

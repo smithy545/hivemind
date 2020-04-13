@@ -1,5 +1,6 @@
 //
 // Created by smith on 4/12/2020.
+// QuadTree ref: https://gamedevelopment.tutsplus.com/tutorials/quick-tip-use-quadtrees-to-detect-likely-collisions-in-2d-space--gamedev-374
 //
 
 #include "QuadTree.h"

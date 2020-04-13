@@ -47,8 +47,50 @@ set(GLFW_LIB ../external/glfw/lib-vc2019/glfw3)
 ### GLEW (opengl types) ###
 add_library(GLEW STATIC external/glew/src/glew.c)
 target_link_libraries(GLEW ${OPENGL_LIBRARY})
-
 find_package(OpenGL REQUIRED)
+
+### MY UTIL LIB ###
+add_library(util STATIC
+        src/util/RenderUtil.cpp
+        src/util/RenderUtil.h
+        src/util/FileUtil.cpp
+        src/util/FileUtil.h)
+
+### MY RENDERER LIB ###
+add_library(renderer STATIC
+        src/render/Camera.cpp
+        src/render/Camera.h
+        src/render/Sprite.cpp
+        src/render/Sprite.h
+        src/render/Renderer.cpp
+        src/render/Renderer.h
+        src/render/RenderNode.cpp
+        src/render/RenderNode.h
+        src/render/RenderEntity.cpp
+        src/render/RenderEntity.h)
+target_link_libraries(renderer util)
+
+
+include_directories(
+        external/json-schema-validator/src
+        external/glew/include
+        external/glfw/include
+        external/json/include
+        external/fmt/include
+        external/glm
+        external/cimg
+        external/tinyxml
+        src)
+
+set(ALL_LIBS
+        ${OPENGL_LIBRARY}
+        ${GLFW_LIB}
+        fmt
+        nlohmann_json_schema_validator
+        renderer
+        util
+        GLEW
+        TINYXML)
 
 include_directories(
         external/json-schema-validator/src
@@ -61,15 +103,6 @@ include_directories(
         external/tinyxml
         src
 )
-
-set(ALL_LIBS
-        ${OPENGL_LIBRARY}
-        ${GLFW_LIB}
-        fmt
-        nlohmann_json_schema_validator
-        GLEW
-        TINYXML
-        )
 
 add_definitions(
         -DTW_STATIC
@@ -92,12 +125,14 @@ print_all_variables()
 # addSchemaEntity exec
 add_executable(society
         src/main.cpp
-        src/thread/GameRunner.cpp
-        src/thread/GameRunner.h
+        src/collision/QuadTree.cpp
+        src/collision/QuadTree.h
+        src/collision/Rectangle.cpp
+        src/collision/Rectangle.h
+        src/collision/PhysicsCollider.cpp
+        src/collision/PhysicsCollider.h
         src/common/SchemaObject.cpp
         src/common/SchemaObject.h
-        src/common/Rectangle.cpp
-        src/common/Rectangle.h
         src/pathing/GridNode.cpp
         src/pathing/GridNode.h
         src/pathing/Pather.cpp
@@ -105,30 +140,14 @@ add_executable(society
         src/pathing/Map.h
         src/pathing/GridMap.cpp
         src/pathing/GridMap.h
-        src/pathing/QuadTree.cpp
-        src/pathing/QuadTree.h
         src/pathing/MapNode.h
-        src/render/Camera.cpp
-        src/render/Camera.h
-        src/render/Sprite.cpp
-        src/render/Sprite.h
-        src/render/Renderer.cpp
-        src/render/Renderer.h
+        src/pathing/TopologicalNode.h
         src/state/GameState.cpp
         src/state/GameState.h
+        src/thread/GameRunner.cpp
+        src/thread/GameRunner.h
         src/ui/UserInterface.cpp
         src/ui/UserInterface.h
-        src/ui/UIEntity.cpp
-        src/ui/UIEntity.h
-        src/util/RenderUtil.cpp
-        src/util/RenderUtil.h
-        src/util/SpriteUtil.cpp
-        src/util/SpriteUtil.h
-        src/util/FileUtil.cpp
-        src/util/FileUtil.h
         src/world/WorldMap.cpp
-        src/world/WorldMap.h
-        src/world/WorldEntity.cpp
-        src/world/WorldEntity.h
-        )
+        src/world/WorldMap.h)
 target_link_libraries(society ${ALL_LIBS})

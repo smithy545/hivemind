@@ -5,18 +5,18 @@
 #ifndef SOCIETY_CAMERA_H
 #define SOCIETY_CAMERA_H
 
+#include <collision/Rectangle.h>
 #include <glm/glm.hpp>
 #include <memory>
-#include <pathing/GridNode.h>
 
 
 class Camera {
 public:
     typedef std::shared_ptr<Camera> Ptr;
 
-    Camera(float x, float y, float width, float height);
+    Camera(double x, double y, double width, double height);
 
-    bool inSight(const GridNode::Ptr &node, int tileSize) const;
+    bool inSight(double x, double y);
 
     void panLeft();
 
@@ -30,29 +30,22 @@ public:
 
     void zoomOut();
 
-    void resize(int width, int height);
+    void resize(double width, double height);
 
-    float getX() const;
+    Rectangle getBoundingRect();
 
-    float getY() const;
-
-    float getWidth() const;
-
-    float getHeight() const;
-
-    float getScale() const;
+    double getScale() const;
 
     glm::mat4 getViewProjectionMatrix();
 
 private:
-    glm::vec2 pos;
-    float width;
-    float height;
-    float scale;
+    glm::vec3 pos;
+    Rectangle bound;
+    double scale;
 
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};
-    glm::mat4 projectionMatrix{1};
+    glm::mat4 projectionMatrix;
 
     void resetProjectionMatrix();
 

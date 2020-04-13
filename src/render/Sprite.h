@@ -17,16 +17,6 @@ class Sprite {
 public:
     typedef std::shared_ptr<Sprite> Ptr;
 
-    class Animation {
-    public:
-        int offset;
-        int length;
-
-        Animation() : Animation(0, 1) {}
-
-        Animation(int offset, int length) : offset(offset), length(length) {}
-    };
-
     std::vector<float> vertices;
     std::vector<float> uvs;
     std::vector<unsigned int> indices;
@@ -36,17 +26,12 @@ public:
     GLuint uvBufferId{0};
     GLuint elementBufferId{0};
     std::string texture;
-    std::unordered_map<std::string, Animation> animations;
 
     Sprite();
 
     ~Sprite();
 
     void reload();
-
-    void addAnimation(const std::string &name, int uvOffset, int length);
-
-    bool setAnimation(const std::string &name, int frame);
 };
 
 #endif //SOCIETY_SPRITE_H

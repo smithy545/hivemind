@@ -5,15 +5,13 @@
 
 
 int main() {
-    std::cout << "Starting main thread." << std::endl;
-
-    std::thread gameThread([] { return GameRunner::loop(); });
-
-    std::cout << "Waiting for main thread " << gameThread.get_id() << " to join..." << std::endl;
-
+    std::thread gameThread([] {
+        std::cout << "Starting main thread." << std::endl;
+        return GameRunner::loop();
+    });
     gameThread.join();
 
-    std::cout << "Ending." << std::endl;
+    std::cout << "End." << std::endl;
 
     return 0;
 }

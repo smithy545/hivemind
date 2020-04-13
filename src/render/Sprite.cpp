@@ -13,7 +13,7 @@ Sprite::Sprite() {
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
 
-    // setup verts to be first attribute with 3 components
+    // setup verts to be first attribute with 2 components
     glGenBuffers(1, &vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
     glVertexAttribPointer(
@@ -66,22 +66,4 @@ void Sprite::reload() {
     // 2 triangles x 3 indices = 6
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(int), &indices[0], GL_STATIC_DRAW);
-}
-
-
-void Sprite::addAnimation(const std::string &name, int uvOffset, int length) {
-    animations[name] = Animation(uvOffset, length);
-}
-
-bool Sprite::setAnimation(const std::string &name, int frame) {
-    if (animations.find(name) == animations.end())
-        return false;
-
-    auto animation = animations[name];
-
-    glBindBuffer(GL_ARRAY_BUFFER, uvBufferId);
-    glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), &uvs[animation.offset + (frame % animation.length)],
-                 GL_STATIC_DRAW);
-
-    return true;
 }

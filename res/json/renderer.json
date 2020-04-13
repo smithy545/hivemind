@@ -5,15 +5,15 @@
       "fragment.shader"
     ]
   },
-  "spriteSheets": [
-    "gorilla.json",
-    "monkey.json"
+  "spritesheets": [
+    "gorilla.json"
   ],
-  "tileSheets": [
+  "tilesheets": [
     "basic.json"
   ],
-  "tileSize": 128,
-  "textures": {},
+  "textures": {
+    "gorilla": "gorilla.png"
+  },
   "width": 1200,
   "height": 800
 }

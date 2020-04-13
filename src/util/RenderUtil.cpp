@@ -63,7 +63,7 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
     // Make sure imagemagick and graphicsmagick installed for img loading
     CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
 
-    // set input references
+    // set output references
     width = image.width();
     height = image.height();
 

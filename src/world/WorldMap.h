@@ -10,6 +10,7 @@
 #include <pathing/GridNode.h>
 #include <pathing/GridMap.h>
 #include <string>
+#include <vector>
 
 
 class WorldMap : public Map {
@@ -23,13 +24,10 @@ public:
 
     MapNode::Ptr getNode(int x, int y) override;
 
+    std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr node) override;
+
     //TODO
     void addPerson();
-
-    void expandNorth();
-    void expandWest();
-    void expandSouth();
-    void expandEast();
 
 private:
     std::vector<GridMap::Ptr> subMaps;

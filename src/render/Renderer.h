@@ -8,20 +8,20 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <memory>
-#include <state/GameState.h>
 #include <string>
 #include <unordered_map>
 #include <vector>
 
 #include "Camera.h"
 #include "Sprite.h"
-#include "Sprite.h"
+#include "RenderNode.h"
 
 
 class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
+    static const std::string CONFIG_NAME_KEY;
     static const std::string CONFIG_TILESIZE_KEY;
     static const std::string CONFIG_WIDTH_KEY;
     static const std::string CONFIG_HEIGHT_KEY;
@@ -29,13 +29,20 @@ public:
     static const std::string CONFIG_TILESHEETS_KEY;
     static const std::string CONFIG_TEXTURES_KEY;
     static const std::string CONFIG_SHADERS_KEY;
+    static const std::string DEFAULT_SHADER_NAME;
+
+    // TODO: Move these constants and tilesheet/spritesheet functionality to separate classes
+    static const std::string TILESHEET_CONFIG_PADDING_KEY;
+    static const std::string TILESHEET_CONFIG_TEXTURE_KEY;
+    static const std::string SPRITESHEET_CONFIG_TEXTURE_KEY;
+
 
     explicit Renderer(std::string configPath);
 
     // lifecycle methods
     GLFWwindow *init();
 
-    void render(const GameState::Ptr &state);
+    void render(RenderNode::Ptr treeHead, const Camera::Ptr &camera);
 
     void cleanup();
 
@@ -47,14 +54,11 @@ public:
 
     int getHeight() const;
 
-    int getTileSize() const;
-
     // state setters
     void setShader(const std::string &name);
 private:
     int width{};
     int height{};
-    int tileSize{};
 
     GLuint currentShaderProgram{};
     GLint mvpUniform{};

@@ -5,18 +5,15 @@
 #include "GameState.h"
 
 
-GameState::GameState() : camera(nullptr) {
-    map = std::make_shared<WorldMap>();
+GameState::GameState() : camera(nullptr), map(nullptr) {
     for (bool &key : keys)
         key = false;
 }
 
-const std::vector<WorldEntity::Ptr> &GameState::getWorldEntities() const {
-    return worldEntities;
-}
-
-const std::vector<UIEntity::Ptr> &GameState::getUiEntities() const {
-    return uiEntities;
+RenderNode::Ptr GameState::getRenderTree() {
+    auto temp = std::make_shared<RenderNode>("gorilla");
+    temp->addChild(100, 100, 1);
+    return temp;
 }
 
 bool GameState::getKey(int key) const {
@@ -59,10 +56,35 @@ void GameState::setCamera(const Camera::Ptr &camera) {
     GameState::camera = camera;
 }
 
-const WorldMap::Ptr &GameState::getMap() const {
+const Map::Ptr &GameState::getMap() const {
     return map;
 }
 
-void GameState::setMap(const WorldMap::Ptr &map) {
+void GameState::setMap(const Map::Ptr &map) {
     GameState::map = map;
+}
+
+bool GameState::isPaused() const {
+    return paused;
+}
+
+bool GameState::shouldStop() const {
+    return stopped;
+}
+
+void GameState::pause() {
+    paused = true;
+}
+
+void GameState::unpause() {
+    paused = false;
+}
+
+void GameState::start() {
+    paused = false;
+    stopped = false;
+}
+
+void GameState::stop() {
+    stopped = true;
 }

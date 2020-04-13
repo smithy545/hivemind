@@ -20,8 +20,6 @@ public:
     virtual int getY() = 0;
 
     virtual bool isPassable() = 0;
-
-    virtual std::unordered_set<Ptr> &getNeighbors() = 0;
 };
 
 #endif //SOCIETY_MAPNODE_H

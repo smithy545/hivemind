@@ -5,7 +5,7 @@
 #ifndef SOCIETY_QUADTREE_H
 #define SOCIETY_QUADTREE_H
 
-#include <common/Rectangle.h>
+#include <collision/Rectangle.h>
 #include <memory>
 #include <vector>
 

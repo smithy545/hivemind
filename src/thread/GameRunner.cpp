@@ -7,6 +7,8 @@
 #include <iostream>
 #include <memory>
 #include <render/Renderer.h>
+#include <collision/PhysicsCollider.h>
+#include <ui/UserInterface.h>
 
 
 // static members
@@ -14,14 +16,15 @@ int GameRunner::screenWidth = 0;
 int GameRunner::screenHeight = 0;
 bool GameRunner::resized = false;
 GameState::Ptr GameRunner::state = nullptr;
+const std::string GameRunner::RENDERER_CONFIG_FILE = "json/renderer.json";
+const std::string GameRunner::UI_CONFIG_FILE = "json/ui.json";
 
 void GameRunner::loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>("json/renderer.json");
+    Renderer::Ptr renderer = std::make_shared<Renderer>(RENDERER_CONFIG_FILE);
     screenWidth = renderer->getWidth();
     screenHeight = renderer->getHeight();
     GLFWwindow *window = renderer->init();
-    renderer->setShader("default");
 
     std::cout << "State init" << std::endl;
     state = std::make_shared<GameState>();
@@ -41,30 +44,42 @@ void GameRunner::loop() {
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
     std::cout << "UI init" << std::endl;
-    UserInterface::Ptr ui = std::make_shared<UserInterface>("json/ui.json");
+    UserInterface::Ptr ui = std::make_shared<UserInterface>(UI_CONFIG_FILE);
 
-    std::cout << "Misc init/loop start" << std::endl;
+    std::cout << "Physics init" << std::endl;
+    PhysicsCollider::Ptr collider = std::make_shared<PhysicsCollider>();
+
+    std::cout << "Misc init" << std::endl;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
+
+    // last chance state nullptr check
+    if (state == nullptr) {
+        renderer->cleanup();
+        return;
+    } else {
+        state->start();
+    }
+
+    std::cout << "Loop start" << std::endl;
     do {
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Game Pipeline
-        // Input -> GameState -> UI -> Renderer -> Player
-
+        // resize if flag set
         if (GameRunner::resized) {
             renderer->resize(screenWidth, screenHeight);
             GameRunner::resized = false;
         }
 
-        // update GameState
-        //TODO
+        // check collisions
+        if (!state->isPaused() && collider != nullptr)
+            collider->update(state);
 
-        // update UI
+        // update ui
         ui->update(state);
 
-        // call Renderer
-        renderer->render(state);
+        // render
+        renderer->render(state->getRenderTree(), state->getCamera());
 
         // reset mouse wheel position
         state->setMouseScroll(0.0f);
@@ -74,7 +89,8 @@ void GameRunner::loop() {
         glfwPollEvents();
     } // Check if the ESC key was pressed or the window was closed
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
-           glfwWindowShouldClose(window) == 0);
+           glfwWindowShouldClose(window) == 0 &&
+           !state->shouldStop());
 
     renderer->cleanup();
 }
@@ -94,12 +110,14 @@ void GameRunner::keyCallback(GLFWwindow *window, int key, int scancode, int acti
     }
 }
 
+void GameRunner::characterCallback(GLFWwindow *window, unsigned int codepoint) {}
+
 void GameRunner::cursorPosCallback(GLFWwindow *window, double xpos, double ypos) {
     state->setMouseX(xpos);
     state->setMouseY(ypos);
 }
 
-void GameRunner::characterCallback(GLFWwindow *window, unsigned int codepoint) {}
+void GameRunner::mouseButtonCallback(GLFWwindow *window, int button, int action, int mods) {}
 
 void GameRunner::scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
     state->setMouseScroll(yoffset);
@@ -110,8 +128,4 @@ void GameRunner::resizeCallback(GLFWwindow *window, int width, int height) {
     screenHeight = height;
     glViewport(0, 0, width, height);
     GameRunner::resized = true;
-}
-
-void GameRunner::mouseButtonCallback(GLFWwindow *window, int button, int action, int mods) {
-
 }

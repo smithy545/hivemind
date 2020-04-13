@@ -3,6 +3,7 @@
 //
 
 #include "GridMap.h"
+#include "GridNode.h"
 
 
 GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset, yOffset),
@@ -15,40 +16,38 @@ GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset,
             nodes.push_back(std::make_shared<GridNode>(xOffset + x, yOffset + y));
         }
     }
-    // setup topology
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            int index = y * width + x;
-            GridNode::Ptr node = nodes[index];
-            const bool xgt0 = x > 0;
-            const bool ygt0 = y > 0;
-            const bool xltw = x < width - 1;
-            const bool ylth = y < height - 1;
-            if (xgt0)
-                node->getNeighbors().insert(nodes[index - 1]);
-            if (xltw)
-                node->getNeighbors().insert(nodes[index + 1]);
-            if (ygt0)
-                node->getNeighbors().insert(nodes[index - width]);
-            if (ylth)
-                node->getNeighbors().insert(nodes[index + width]);
-            if (xgt0 && ygt0)
-                node->getNeighbors().insert(nodes[index - width - 1]);
-            if (xltw && ylth)
-                node->getNeighbors().insert(nodes[index + width + 1]);
-            if (xgt0 && ylth)
-                node->getNeighbors().insert(nodes[index + width - 1]);
-            if (xltw && ygt0)
-                node->getNeighbors().insert(nodes[index - width + 1]);
-        }
-    }
+}
+
+const std::vector<MapNode::Ptr> &GridMap::getNodes() {
+    return nodes;
 }
 
 MapNode::Ptr GridMap::getNode(int x, int y) {
     y -= getYOffset();
     x -= getXOffset();
-    unsigned int index = y * width + x;
-    if (x >= width || y >= height || x < 0 || y < 0)
+    if (x < 0 || y < 0 || x >= width || y >= height)
         return nullptr;
-    return nodes[index];
+    return nodes[x + y * width];
+}
+
+std::vector<MapNode::Ptr> GridMap::getNeighbors(MapNode::Ptr node) {
+    std::vector<MapNode::Ptr> neighbors;
+    for (int dy = -1; dy <= 1; dy++) {
+        for (int dx = -1; dx <= 1; dx++) {
+            int x = node->getX() + dx;
+            int y = node->getY() + dy;
+            auto neighbor = getNode(x, y);
+            if (neighbor != nullptr && x != node->getX() && y != node->getY())
+                neighbors.push_back(getNode(x, y));
+        }
+    }
+    return neighbors;
+}
+
+int GridMap::getWidth() {
+    return width;
+}
+
+int GridMap::getHeight() {
+    return height;
 }

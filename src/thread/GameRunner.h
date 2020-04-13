@@ -8,19 +8,25 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <state/GameState.h>
-#include <ui/UserInterface.h>
+#include <string>
 #include <unordered_map>
-#include <world/WorldMap.h>
 
 
 class GameRunner {
 public:
     static void loop();
+
 private:
+    static const std::string RENDERER_CONFIG_FILE;
+    static const std::string UI_CONFIG_FILE;
+
     // window state
     static int screenWidth;
     static int screenHeight;
     static bool resized;
+
+    // game state
+    static GameState::Ptr state;
 
     // window callback(s)
     static void resizeCallback(GLFWwindow *window, int width, int height);
@@ -35,9 +41,6 @@ private:
     static void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
 
     static void mouseButtonCallback(GLFWwindow *window, int button, int action, int mods);
-
-    // game state
-    static GameState::Ptr state;
 };
 
 

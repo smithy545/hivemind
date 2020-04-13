@@ -26,9 +26,8 @@ MapNode::Ptr WorldMap::getNode(int x, int y) {
     return newMap->getNode(x, y);
 }
 
-void WorldMap::addPerson() {}
+std::vector<MapNode::Ptr> WorldMap::getNeighbors(MapNode::Ptr node) {
+    return {};
+}
 
-void WorldMap::expandNorth() {}
-void WorldMap::expandWest() {}
-void WorldMap::expandSouth() {}
-void WorldMap::expandEast() {}
+void WorldMap::addPerson() {}

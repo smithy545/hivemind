@@ -14,8 +14,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "UIEntity.h"
-
 class UserInterface {
 public:
     typedef std::shared_ptr<UserInterface> Ptr;
@@ -27,6 +25,7 @@ public:
     void update(const GameState::Ptr &state);
 
     const std::unordered_map<std::string, SchemaObject::Ptr> &getComponents() const;
+
 private:
     std::unordered_map<std::string, SchemaObject::Ptr> components;
     int tileId{0};
