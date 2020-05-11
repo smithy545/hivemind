@@ -50,40 +50,41 @@ target_link_libraries(GLEW ${OPENGL_LIBRARY})
 find_package(OpenGL REQUIRED)
 
 ### MY COMMON LIB ###
-add_library(common
+add_library(common STATIC
         src/common/SchemaObject.cpp
         src/common/SchemaObject.h)
 
 ### MY PATHING LIB ##
-add_library(pathing src/pathing/GridNode.cpp
-        src/pathing/GridNode.h
-        src/pathing/Pather.cpp
-        src/pathing/Pather.h
-        src/pathing/Map.h
+add_library(pathing STATIC
         src/pathing/GridMap.cpp
         src/pathing/GridMap.h
+        src/pathing/GridNode.cpp
+        src/pathing/GridNode.h
+        src/pathing/Map.h
         src/pathing/MapNode.h
+        src/pathing/Pather.cpp
+        src/pathing/Pather.h
         src/pathing/TopologicalNode.h)
 
 ### MY UTIL LIB ###
 add_library(util STATIC
-        src/util/RenderUtil.cpp
-        src/util/RenderUtil.h
         src/util/FileUtil.cpp
-        src/util/FileUtil.h)
+        src/util/FileUtil.h
+        src/util/RenderUtil.cpp
+        src/util/RenderUtil.h)
 
 ### MY RENDERER LIB ###
 add_library(renderer STATIC
         src/render/Camera.cpp
         src/render/Camera.h
-        src/render/Sprite.cpp
-        src/render/Sprite.h
         src/render/Renderer.cpp
         src/render/Renderer.h
+        src/render/RenderEntity.cpp
+        src/render/RenderEntity.h
         src/render/RenderNode.cpp
         src/render/RenderNode.h
-        src/render/RenderEntity.cpp
-        src/render/RenderEntity.h)
+        src/render/Sprite.cpp
+        src/render/Sprite.h)
 target_link_libraries(renderer util)
 
 ### MY COLLISION LIB ###
@@ -153,10 +154,12 @@ add_executable(society
         src/GameState.h
         src/GameRunner.cpp
         src/GameRunner.h
-        src/UserInterface.cpp
-        src/UserInterface.h
         src/PhysicsCollider.cpp
         src/PhysicsCollider.h
+        src/PhysicsIntegrator.cpp
+        src/PhysicsIntegrator.h
         src/WorldMap.cpp
-        src/WorldMap.h src/PhysicsIntegrator.cpp src/PhysicsIntegrator.h)
+        src/WorldMap.h
+        src/UserInterface.cpp
+        src/UserInterface.h)
 target_link_libraries(society ${ALL_LIBS})
