@@ -70,6 +70,8 @@ add_library(pathing STATIC
 add_library(util STATIC
         src/util/FileUtil.cpp
         src/util/FileUtil.h
+        src/util/MathUtil.cpp
+        src/util/MathUtil.h
         src/util/RenderUtil.cpp
         src/util/RenderUtil.h)
 

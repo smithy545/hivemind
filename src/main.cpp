@@ -16,6 +16,9 @@ static int screenWidth;
 static int screenHeight;
 static bool resized;
 
+// game state
+static GameState::Ptr state;
+
 // game update method
 void loop();
 
@@ -71,7 +74,7 @@ void loop() {
     GLFWwindow *window = renderer->init();
 
     std::cout << "State init" << std::endl;
-    GameState::Ptr state = std::make_shared<GameState>();
+    state = std::make_shared<GameState>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
 
     std::cout << "Window init" << std::endl;
