@@ -87,12 +87,16 @@ void GameState::start() {
 
 void GameState::stop() {
     stopped = true;
-    lastFrameStart = gameClock.now();
+    lastFrameStart = std::chrono::system_clock::now();
 }
 
 void GameState::enterFrame() {
-    auto currentFrame = gameClock.now();
-    fps = 1.0 / (currentFrame - lastFrameStart).count();
+    auto currentFrame = std::chrono::system_clock::now();
+    fps = 1.0 / std::chrono::duration<double>(currentFrame - lastFrameStart).count();
     lastFrameStart = currentFrame;
+}
+
+double GameState::getFPS() const {
+    return fps;
 }
 

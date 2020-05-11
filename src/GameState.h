@@ -60,11 +60,12 @@ public:
 
     void enterFrame();
 
+    double getFPS() const;
+
 private:
     // game state
     bool paused{true};
     bool stopped{true};
-    std::chrono::system_clock gameClock;
     std::chrono::time_point<std::chrono::system_clock> lastFrameStart;
     double fps{};
 
