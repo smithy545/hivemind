@@ -31,16 +31,26 @@ MapNode::Ptr GridMap::getNode(int x, int y) {
 }
 
 std::vector<MapNode::Ptr> GridMap::getNeighbors(MapNode::Ptr node) {
+    int neighborMatrix[8][2] = {
+            {-1, -1},
+            {0,  -1},
+            {1,  -1},
+            {-1, 0},
+            {1,  0},
+            {-1, 1},
+            {0,  1},
+            {1,  1},
+    };
+    int nx = node->getX();
+    int ny = node->getY();
     std::vector<MapNode::Ptr> neighbors;
-    for (int dy = -1; dy <= 1; dy++) {
-        for (int dx = -1; dx <= 1; dx++) {
-            int x = node->getX() + dx;
-            int y = node->getY() + dy;
-            auto neighbor = getNode(x, y);
-            if (neighbor != nullptr && x != node->getX() && y != node->getY())
-                neighbors.push_back(getNode(x, y));
-        }
+
+    for (auto pos: neighborMatrix) {
+        auto neighbor = getNode(nx + pos[0], ny + pos[1]);
+        if (neighbor != nullptr)
+            neighbors.push_back(neighbor);
     }
+
     return neighbors;
 }
 

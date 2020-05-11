@@ -152,8 +152,6 @@ add_executable(society
         src/main.cpp
         src/GameState.cpp
         src/GameState.h
-        src/GameRunner.cpp
-        src/GameRunner.h
         src/PhysicsCollider.cpp
         src/PhysicsCollider.h
         src/PhysicsIntegrator.cpp

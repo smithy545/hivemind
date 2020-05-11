@@ -17,9 +17,15 @@ public:
 
     virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
 
+    // nullptr return value means position out of bounds
     virtual MapNode::Ptr getNode(int x, int y) = 0;
 
     virtual std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr node) = 0;
+
+    // Force bound checking in getNode!
+    bool inBounds(int x, int y) {
+        return getNode(x, y) != nullptr;
+    }
 
 protected:
     Map() : Map(0, 0) {}
