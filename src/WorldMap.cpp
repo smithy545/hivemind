@@ -4,30 +4,75 @@
 
 #include "WorldMap.h"
 
-WorldMap::WorldMap() {}
+#include <iostream>
+
+
+WorldMap::WorldMap() : WorldMap(0, 0) {}
+
+WorldMap::WorldMap(int xOffset, int yOffset) : Map(xOffset, yOffset) {
+    subMaps[0][0] = std::make_shared<GridMap>(xOffset, yOffset, subMapSize, subMapSize);
+    width = subMapSize;
+    height = subMapSize;
+}
 
 
 const std::vector<MapNode::Ptr> &WorldMap::getNodes() {
     std::vector<MapNode::Ptr> nodes;
-    for (const auto &map: subMaps)
-        for (const auto &node: map->getNodes())
-            nodes.push_back(node);
+    int sw = width / subMapSize;
+    int sh = height / subMapSize;
+    for (int sy = 0; sy < sw; sy++) {
+        for (int sx = 0; sx < sh; sx++) {
+            auto map = subMaps[sy][sx];
+
+            for (const auto &node: map->getNodes())
+                nodes.push_back(node);
+        }
+    }
     return std::move(nodes);
 }
 
 MapNode::Ptr WorldMap::getNode(int x, int y) {
-    for (const auto &map: subMaps) {
-        auto node = map->getNode(x, y);
-        if (node != nullptr)
-            return node;
+    if (x >= getXOffset() + MAX_SUBMAP_X * subMapSize || x < getXOffset() ||
+        y >= getYOffset() + MAX_SUBMAP_Y * subMapSize || y < getYOffset()) {
+        std::cerr << "Cannot get node at (" << x << ", " << y << "): Out of range";
+        return nullptr;
     }
-    // TODO: Add check to remove any overlap of new map with existing maps
-    auto newMap = std::make_shared<GridMap>(x - 50, y - 50, 100, 100);
-    return newMap->getNode(x, y);
+
+    int sx = x / subMapSize;
+    int sy = y / subMapSize;
+
+    if (x >= width) {
+        subMaps[width / subMapSize][sy] = std::make_shared<GridMap>(x, y, subMapSize, subMapSize);
+        width += subMapSize;
+    }
+    if (y >= height) {
+        subMaps[sx][height / subMapSize] = std::make_shared<GridMap>(x, y, subMapSize, subMapSize);
+        height += subMapSize;
+    }
+
+    return subMaps[sy][sx]->getNode(x, y);
 }
 
 std::vector<MapNode::Ptr> WorldMap::getNeighbors(MapNode::Ptr node) {
-    return {};
-}
+    int neighborMatrix[8][2] = {
+            {-1, -1},
+            {0,  -1},
+            {1,  -1},
+            {-1, 0},
+            {1,  0},
+            {-1, 1},
+            {0,  1},
+            {1,  1},
+    };
+    int nx = node->getX();
+    int ny = node->getY();
+    std::vector<MapNode::Ptr> neighbors;
 
-void WorldMap::addPerson() {}
+    for (auto pos: neighborMatrix) {
+        auto neighbor = getNode(nx + pos[0], ny + pos[1]);
+        if (neighbor != nullptr)
+            neighbors.push_back(neighbor);
+    }
+
+    return neighbors;
+}

@@ -19,6 +19,8 @@ public:
 
     WorldMap();
 
+    WorldMap(int xOffset, int yOffset);
+
     // topology
     const std::vector<MapNode::Ptr> &getNodes() override;
 
@@ -26,11 +28,13 @@ public:
 
     std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr node) override;
 
-    //TODO
-    void addPerson();
-
 private:
-    std::vector<GridMap::Ptr> subMaps;
+    static const int MAX_SUBMAP_X{64};
+    static const int MAX_SUBMAP_Y{64};
+    const int subMapSize{100};
+    int width{0};
+    int height{0};
+    GridMap::Ptr subMaps[MAX_SUBMAP_Y][MAX_SUBMAP_X];
 };
 
 
