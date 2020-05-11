@@ -6,6 +6,7 @@
 #define SOCIETY_GAMESTATE_H
 
 #include <common/SchemaObject.h>
+#include <chrono>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
@@ -57,10 +58,15 @@ public:
 
     void stop();
 
+    void enterFrame();
+
 private:
     // game state
     bool paused{true};
     bool stopped{true};
+    std::chrono::system_clock gameClock;
+    std::chrono::time_point<std::chrono::system_clock> lastFrameStart;
+    double fps{};
 
     // io state
     bool keys[GLFW_KEY_LAST]{};

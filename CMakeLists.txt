@@ -158,5 +158,5 @@ add_executable(society
         src/PhysicsCollider.cpp
         src/PhysicsCollider.h
         src/WorldMap.cpp
-        src/WorldMap.h)
+        src/WorldMap.h src/PhysicsIntegrator.cpp src/PhysicsIntegrator.h)
 target_link_libraries(society ${ALL_LIBS})

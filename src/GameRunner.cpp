@@ -9,6 +9,7 @@
 #include <render/Renderer.h>
 
 #include "PhysicsCollider.h"
+#include "PhysicsIntegrator.h"
 #include "UserInterface.h"
 
 
@@ -43,27 +44,21 @@ void GameRunner::loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     std::cout << "UI init" << std::endl;
     UserInterface::Ptr ui = std::make_shared<UserInterface>(UI_CONFIG_FILE);
 
     std::cout << "Physics init" << std::endl;
     PhysicsCollider::Ptr collider = std::make_shared<PhysicsCollider>();
-
-    std::cout << "Misc init" << std::endl;
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-
-    // last chance state nullptr check
-    if (state == nullptr) {
-        renderer->cleanup();
-        return;
-    } else {
-        state->start();
-    }
+    PhysicsIntegrator::Ptr integrator = std::make_shared<PhysicsIntegrator>();
 
     std::cout << "Loop start" << std::endl;
+    state->start();
     do {
+        // timekeeping
+        state->enterFrame();
+
         glClear(GL_COLOR_BUFFER_BIT);
 
         // resize if flag set
@@ -72,11 +67,15 @@ void GameRunner::loop() {
             GameRunner::resized = false;
         }
 
-        // check collisions
-        if (!state->isPaused() && collider != nullptr)
-            collider->update(state);
+        // check collisions and update bodies
+        if (!state->isPaused()) {
+            if (collider != nullptr)
+                collider->update(state);
+            if (integrator != nullptr)
+                integrator->update(state);
+        }
 
-        // update ui
+        // update state with user input
         ui->update(state);
 
         // render

@@ -87,4 +87,12 @@ void GameState::start() {
 
 void GameState::stop() {
     stopped = true;
+    lastFrameStart = gameClock.now();
 }
+
+void GameState::enterFrame() {
+    auto currentFrame = gameClock.now();
+    fps = 1.0 / (currentFrame - lastFrameStart).count();
+    lastFrameStart = currentFrame;
+}
+
