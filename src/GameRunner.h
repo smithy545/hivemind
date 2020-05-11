@@ -7,10 +7,10 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <state/GameState.h>
 #include <string>
 #include <unordered_map>
 
+#include "GameState.h"
 
 class GameRunner {
 public:

@@ -7,8 +7,9 @@
 #include <iostream>
 #include <memory>
 #include <render/Renderer.h>
-#include <collision/PhysicsCollider.h>
-#include <ui/UserInterface.h>
+
+#include "PhysicsCollider.h"
+#include "UserInterface.h"
 
 
 // static members

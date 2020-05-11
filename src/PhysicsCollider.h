@@ -6,7 +6,8 @@
 #define SOCIETY_PHYSICSCOLLIDER_H
 
 #include <memory>
-#include <state/GameState.h>
+
+#include "GameState.h"
 
 
 class PhysicsCollider {

@@ -60,7 +60,6 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
 
 
 GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &height) {
-    // Make sure imagemagick and graphicsmagick installed for img loading
     CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
 
 
@@ -71,7 +70,7 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
     width = image.width();
     height = image.height();
 
-    // interleave color data
+    // interleave color data from  cimg format (RRR...GGG...BBB... -> RGBRGBRGB...)
     int channels = image.spectrum();
     auto *data = new unsigned char[w * h * channels * image.depth()];
     for (int y = 0; y < h; y++) {
@@ -87,6 +86,9 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
         }
     }
 
+    // texture is byte aligned
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
     // Create one OpenGL texture
     GLuint textureID;
     glGenTextures(1, &textureID);
@@ -96,9 +98,6 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
 
     // Give the image to OpenGL
     glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-
-    // padding fix
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     // texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

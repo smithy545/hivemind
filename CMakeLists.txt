@@ -49,6 +49,22 @@ add_library(GLEW STATIC external/glew/src/glew.c)
 target_link_libraries(GLEW ${OPENGL_LIBRARY})
 find_package(OpenGL REQUIRED)
 
+### MY COMMON LIB ###
+add_library(common
+        src/common/SchemaObject.cpp
+        src/common/SchemaObject.h)
+
+### MY PATHING LIB ##
+add_library(pathing src/pathing/GridNode.cpp
+        src/pathing/GridNode.h
+        src/pathing/Pather.cpp
+        src/pathing/Pather.h
+        src/pathing/Map.h
+        src/pathing/GridMap.cpp
+        src/pathing/GridMap.h
+        src/pathing/MapNode.h
+        src/pathing/TopologicalNode.h)
+
 ### MY UTIL LIB ###
 add_library(util STATIC
         src/util/RenderUtil.cpp
@@ -70,6 +86,12 @@ add_library(renderer STATIC
         src/render/RenderEntity.h)
 target_link_libraries(renderer util)
 
+### MY COLLISION LIB ###
+add_library(collision STATIC
+        src/collision/QuadTree.cpp
+        src/collision/QuadTree.h
+        src/collision/Rectangle.cpp
+        src/collision/Rectangle.h)
 
 include_directories(
         external/json-schema-validator/src
@@ -87,10 +109,13 @@ set(ALL_LIBS
         ${GLFW_LIB}
         fmt
         nlohmann_json_schema_validator
-        renderer
-        util
         GLEW
-        TINYXML)
+        TINYXML
+        common
+        util
+        renderer
+        pathing
+        collision)
 
 include_directories(
         external/json-schema-validator/src
@@ -122,32 +147,16 @@ endmacro()
 print_all_variables()
 
 
-# addSchemaEntity exec
 add_executable(society
         src/main.cpp
-        src/collision/QuadTree.cpp
-        src/collision/QuadTree.h
-        src/collision/Rectangle.cpp
-        src/collision/Rectangle.h
-        src/collision/PhysicsCollider.cpp
-        src/collision/PhysicsCollider.h
-        src/common/SchemaObject.cpp
-        src/common/SchemaObject.h
-        src/pathing/GridNode.cpp
-        src/pathing/GridNode.h
-        src/pathing/Pather.cpp
-        src/pathing/Pather.h
-        src/pathing/Map.h
-        src/pathing/GridMap.cpp
-        src/pathing/GridMap.h
-        src/pathing/MapNode.h
-        src/pathing/TopologicalNode.h
-        src/state/GameState.cpp
-        src/state/GameState.h
-        src/thread/GameRunner.cpp
-        src/thread/GameRunner.h
-        src/ui/UserInterface.cpp
-        src/ui/UserInterface.h
-        src/world/WorldMap.cpp
-        src/world/WorldMap.h)
+        src/GameState.cpp
+        src/GameState.h
+        src/GameRunner.cpp
+        src/GameRunner.h
+        src/UserInterface.cpp
+        src/UserInterface.h
+        src/PhysicsCollider.cpp
+        src/PhysicsCollider.h
+        src/WorldMap.cpp
+        src/WorldMap.h)
 target_link_libraries(society ${ALL_LIBS})

@@ -9,10 +9,12 @@
 #include <memory>
 #include <render/Camera.h>
 #include <render/Sprite.h>
-#include <state/GameState.h>
 #include <string>
 #include <unordered_map>
 #include <vector>
+
+#include "GameState.h"
+
 
 class UserInterface {
 public:

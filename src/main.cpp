@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 
-#include "thread/GameRunner.h"
+#include "GameRunner.h"
 
 
 int main() {
