@@ -73,7 +73,9 @@ add_library(util STATIC
         src/util/MathUtil.cpp
         src/util/MathUtil.h
         src/util/RenderUtil.cpp
-        src/util/RenderUtil.h)
+        src/util/RenderUtil.h
+        src/util/StringUtil.cpp
+        src/util/StringUtil.h)
 
 ### MY RENDERER LIB ###
 add_library(renderer STATIC

@@ -3,10 +3,19 @@
 //
 #include "RenderNode.h"
 
+#include <utility>
 
-RenderNode::RenderNode(const std::basic_string<char> &spriteName) : RenderNode(spriteName, nullptr) {}
 
-RenderNode::RenderNode(const std::basic_string<char> &spriteName, Ptr next) : spriteName(spriteName), next(next) {}
+RenderNode::RenderNode(std::string spriteName, std::string shaderName) : RenderNode(
+        std::move(spriteName),
+        std::move(shaderName),
+        nullptr) {}
+
+RenderNode::RenderNode(std::string spriteName, std::string shaderName, RenderNode::Ptr next) :
+        spriteName(std::move(spriteName)),
+        shaderName(std::move(shaderName)),
+        next(std::move(next)),
+        mode(GL_TRIANGLES) {}
 
 const RenderNode::Ptr &RenderNode::getNext() const {
     return next;
@@ -24,10 +33,27 @@ const std::string &RenderNode::getSpriteName() const {
     return spriteName;
 }
 
+
+const std::string &RenderNode::getShaderName() const {
+    return shaderName;
+}
+
+void RenderNode::setShaderName(const std::string &shaderName) {
+    RenderNode::shaderName = shaderName;
+}
+
 void RenderNode::addChild(float x, float y) {
     children.emplace_back(glm::vec3(x, y, 0));
 }
 
 void RenderNode::addChild(float x, float y, float angle) {
     children.emplace_back(glm::vec3(x, y, 0), angle);
+}
+
+unsigned int RenderNode::getMode() const {
+    return mode;
+}
+
+void RenderNode::setMode(unsigned int mode) {
+    RenderNode::mode = mode;
 }

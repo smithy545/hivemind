@@ -1,14 +1,16 @@
 #version 430 core
 
-layout (location = 0) in vec2 aPos;
+layout (location = 0) in vec2 inPos;
 layout (location = 1) in vec2 texUv;
+layout (location = 2) in vec4 inColor;
 
 uniform mat4 MVP;
 
 out vec2 uv;
-
+out vec4 color;
 
 void main() {
-    gl_Position = MVP * vec4(aPos, 0, 1);
+    gl_Position = MVP * vec4(inPos, 0, 1);
     uv = vec2(texUv.x, texUv.y);
+    color = inColor;
 }

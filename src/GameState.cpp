@@ -11,9 +11,10 @@ GameState::GameState() : camera(nullptr), map(nullptr) {
 }
 
 RenderNode::Ptr GameState::getRenderTree() {
-    auto temp = std::make_shared<RenderNode>("gorilla");
-    temp->addChild(100, 100, 1);
-    return temp;
+    auto gorillas = std::make_shared<RenderNode>("gorilla", "texture");
+    gorillas->addChild(100, 100, 1);
+
+    return gorillas;
 }
 
 bool GameState::getKey(int key) const {

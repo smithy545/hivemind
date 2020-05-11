@@ -1,8 +1,12 @@
 {
   "shaders": {
-    "default": [
+    "texture": [
       "vertex.shader",
-      "fragment.shader"
+      "texture.fragment.shader"
+    ],
+    "color": [
+      "vertex.shader",
+      "color.fragment.shader"
     ]
   },
   "spritesheets": [

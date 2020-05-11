@@ -9,7 +9,10 @@
 #include <glm/ext.hpp>
 #include <utility>
 #include <util/FileUtil.h>
+#include <util/MathUtil.h>
 #include <util/RenderUtil.h>
+#include <util/StringUtil.h>
+
 
 const std::string Renderer::CONFIG_NAME_KEY = "name";
 const std::string Renderer::CONFIG_WIDTH_KEY = "width";
@@ -19,7 +22,7 @@ const std::string Renderer::CONFIG_TILESHEETS_KEY = "tilesheets";
 const std::string Renderer::CONFIG_TILESIZE_KEY = "tileSize";
 const std::string Renderer::CONFIG_TEXTURES_KEY = "textures";
 const std::string Renderer::CONFIG_SHADERS_KEY = "shaders";
-const std::string Renderer::DEFAULT_SHADER_NAME = "default";
+const std::string Renderer::DEFAULT_SHADER_NAME = "texture";
 const std::string Renderer::TILESHEET_CONFIG_PADDING_KEY = "padding";
 const std::string Renderer::TILESHEET_CONFIG_TEXTURE_KEY = "texture";
 const std::string Renderer::SPRITESHEET_CONFIG_TEXTURE_KEY = "textureName";
@@ -129,14 +132,16 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
         if (loadedSprites.find(spriteName) == loadedSprites.end()) {
             std::cerr << "Can't find sprite " << treeHead->getSpriteName() << std::endl;
             continue;
-        } else if (loadedTextures.find(loadedSprites[spriteName]->texture) == loadedTextures.end()) {
-            std::cerr << "Can't find texture " << loadedSprites[spriteName]->texture << " for sprite " << spriteName
-                      << std::endl;
+        } else if (!setShader(treeHead->getShaderName())) {
             continue;
         }
+
         Sprite::Ptr sprite = loadedSprites[treeHead->getSpriteName()];
-        GLuint texId = loadedTextures[sprite->texture];
+        GLuint texId =
+                loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0 : loadedTextures[sprite->texture];
+        GLenum drawMode = treeHead->getMode();
         for (auto child: treeHead->getChildren()) {
+            // TODO: Fix rotation about render node center
             glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child.getPosition());
             modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
             glm::mat4 mvpMatrix = viewProj * modelMatrix;
@@ -146,7 +151,7 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
             glBindTexture(GL_TEXTURE_2D, texId);
 
             glBindVertexArray(sprite->vertexArrayId);
-            glDrawElements(GL_TRIANGLES, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+            glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
         }
         treeHead = treeHead->getNext();
     }
@@ -157,16 +162,17 @@ void Renderer::resize(int width, int height) {
     this->height = height;
 }
 
-void Renderer::setShader(const std::string &name) {
+bool Renderer::setShader(const std::string &name) {
     if (loadedShaders.find(name) != loadedShaders.end()) {
         currentShaderProgram = loadedShaders[name];
         glUseProgram(currentShaderProgram);
         mvpUniform = glGetUniformLocation(currentShaderProgram, "MVP");
         texUniform = glGetUniformLocation(currentShaderProgram, "tex");
         glUniform1i(texUniform, 0);
-    } else {
-        std::cerr << "No shader found with name " << name << std::endl;
+        return true;
     }
+    std::cerr << "No shader found with name " << name << std::endl;
+    return false;
 }
 
 void Renderer::loadShader(const std::string &name, const std::string &vertexShaderPath,
@@ -184,32 +190,20 @@ void Renderer::loadSprite(const std::string &path) {
     sprite->texture = spriteData[SPRITESHEET_CONFIG_TEXTURE_KEY];
 
     // bottom left
-    sprite->vertices.push_back(0);
-    sprite->vertices.push_back(0);
-
-    sprite->uvs.push_back(0);
-    sprite->uvs.push_back(0);
+    sprite->vertices.emplace_back(0, 0);
+    sprite->uvs.emplace_back(0, 0);
 
     // bottom right
-    sprite->vertices.push_back(width);
-    sprite->vertices.push_back(0);
-
-    sprite->uvs.push_back(1);
-    sprite->uvs.push_back(0);
+    sprite->vertices.emplace_back(width, 0);
+    sprite->uvs.emplace_back(1, 0);
 
     // top right
-    sprite->vertices.push_back(width);
-    sprite->vertices.push_back(height);
-
-    sprite->uvs.push_back(1);
-    sprite->uvs.push_back(-1);
+    sprite->vertices.emplace_back(width, height);
+    sprite->uvs.emplace_back(1, -1);
 
     // top left
-    sprite->vertices.push_back(0);
-    sprite->vertices.push_back(height);
-
-    sprite->uvs.push_back(0);
-    sprite->uvs.push_back(-1);
+    sprite->vertices.emplace_back(0, height);
+    sprite->uvs.emplace_back(0, -1);
 
     // indices
     sprite->indices.push_back(0);
@@ -255,32 +249,20 @@ void Renderer::loadTileSheet(const std::string &path) {
             sprite->texture = name;
 
             // bottom left
-            sprite->vertices.push_back(0);
-            sprite->vertices.push_back(0);
-
-            sprite->uvs.push_back(u);
-            sprite->uvs.push_back(-v);
+            sprite->vertices.emplace_back(0, 0);
+            sprite->uvs.emplace_back(u, -v);
 
             // bottom right
-            sprite->vertices.push_back(contentSize);
-            sprite->vertices.push_back(0);
-
-            sprite->uvs.push_back(u + uStep);
-            sprite->uvs.push_back(-v);
+            sprite->vertices.emplace_back(contentSize, 0);
+            sprite->uvs.emplace_back(u + uStep, -v);
 
             // top right
-            sprite->vertices.push_back(contentSize);
-            sprite->vertices.push_back(contentSize);
-
-            sprite->uvs.push_back(u + uStep);
-            sprite->uvs.push_back(-v - vStep);
+            sprite->vertices.emplace_back(contentSize, contentSize);
+            sprite->uvs.emplace_back(u + uStep, -v - vStep);
 
             // top left
-            sprite->vertices.push_back(0);
-            sprite->vertices.push_back(contentSize);
-
-            sprite->uvs.push_back(u);
-            sprite->uvs.push_back(-v - vStep);
+            sprite->vertices.emplace_back(0, contentSize);
+            sprite->uvs.emplace_back(u, -v - vStep);
 
             // indices
             sprite->indices.push_back(0);
@@ -292,11 +274,38 @@ void Renderer::loadTileSheet(const std::string &path) {
             sprite->indices.push_back(0);
 
             sprite->reload();
-            loadedSprites[fmt::format("{0}_tile_{1}", name, i)] = sprite;
+            loadedSprites[fmt::format("{0}_{1}", name, i)] = sprite;
 
             u += uStep + 2 * uPadding;
             i++;
         }
         v += vStep + 2 * vPadding;
     }
+}
+
+std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize) {
+
+    auto curveSprite = std::make_shared<Sprite>();
+    auto curve = MathUtil::generateBezierCurve(hull, stepSize);
+    for (int index = 0; index < curve.size(); index++) {
+        // make all points on curve red and points on hull blue
+        curveSprite->vertices.push_back(curve[index]);
+        curveSprite->colors.emplace_back(1, 0, 0, 1);
+        curveSprite->indices.push_back(index);
+    }
+    curveSprite->reload();
+
+    auto hullSprite = std::make_shared<Sprite>();
+    for (int index = 0; index < hull.size(); index++) {
+        hullSprite->vertices.push_back(hull[index]);
+        hullSprite->colors.emplace_back(0, 0, 1, 1);
+        hullSprite->indices.push_back(index);
+    }
+    hullSprite->reload();
+
+    std::string id = StringUtil::uuid4();
+    loadedSprites[fmt::format("curve_{}", id)] = curveSprite;
+    loadedSprites[fmt::format("curve_hull_{}", id)] = hullSprite;
+
+    return id;
 }

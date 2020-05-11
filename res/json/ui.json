@@ -1,18 +1,1 @@
-{
-  "components": {
-    "EntityInfoBox": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number"
-        },
-        "y": {
-          "type": "number"
-        },
-        "sprite": {
-          "type": "string"
-        }
-      }
-    }
-  }
-}
+{}

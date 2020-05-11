@@ -55,7 +55,7 @@ public:
     int getHeight() const;
 
     // state setters
-    void setShader(const std::string &name);
+    bool setShader(const std::string &name);
 private:
     int width{};
     int height{};
@@ -77,6 +77,8 @@ private:
     void loadTexture(const std::string &name, const std::string &texturePath);
 
     void loadTileSheet(const std::string &path);
+
+    std::string generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize);
 };
 
 
