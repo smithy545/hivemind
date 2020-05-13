@@ -90,6 +90,7 @@
       <config projectName="society" targetName="test-merge_patch" />
       <config projectName="society" targetName="common" />
       <config projectName="society" targetName="test-msgpack" />
+      <config projectName="society" targetName="engine" />
       <config projectName="society" targetName="NightlyBuild" />
       <config projectName="society" targetName="NightlyMemoryCheck" />
       <config projectName="society" targetName="test-deserialization" />
@@ -120,18 +121,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/DoublyLinkedNode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/LinkedNode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/TreeNode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/UINode.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/UINode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Collider.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Collider.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Integrator.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Integrator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/State.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/State.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PhysicsCollider.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PhysicsCollider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PhysicsIntegrator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PhysicsIntegrator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Interface.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Interface.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorldMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/World.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorldMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/World.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/RenderNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/RenderNode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/RenderNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/RenderNode.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/render/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/render/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,19 +184,19 @@
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Philip\CLionProjects\society\src\common" />
-      <recent name="C:\Users\Philip\CLionProjects\society\src" />
-      <recent name="C:\Users\Philip\CLionProjects\society\src\game" />
-      <recent name="C:\Users\smith\CLionProjects\society\res\img\items" />
-      <recent name="C:\Users\Philip\CLionProjects\society\res" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Philip\CLionProjects\society\res\shaders" />
       <recent name="C:\Users\Philip\CLionProjects\society\src\util" />
       <recent name="C:\Users\Philip\CLionProjects\society\src\common" />
       <recent name="C:\Users\Philip\CLionProjects\society\external" />
       <recent name="C:\Users\smith\CLionProjects\society\res\tilesheets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Philip\CLionProjects\society\src\engine" />
+      <recent name="C:\Users\Philip\CLionProjects\society\src\common" />
+      <recent name="C:\Users\Philip\CLionProjects\society\src" />
+      <recent name="C:\Users\Philip\CLionProjects\society\src\game" />
+      <recent name="C:\Users\smith\CLionProjects\society\res\img\items" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -213,6 +221,11 @@
       </method>
     </configuration>
     <configuration name="common" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="common" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="engine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="society" TARGET_NAME="engine" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -256,6 +269,7 @@
     <list>
       <item itemvalue="CMake Application.collision" />
       <item itemvalue="CMake Application.common" />
+      <item itemvalue="CMake Application.engine" />
       <item itemvalue="CMake Application.GLEW" />
       <item itemvalue="CMake Application.pathing" />
       <item itemvalue="CMake Application.renderer" />
@@ -345,14 +359,7 @@
       <workItem from="1585145133071" duration="103000" />
       <workItem from="1589209488576" duration="15992000" />
       <workItem from="1589233789264" duration="1711000" />
-      <workItem from="1589390129313" duration="2385000" />
-    </task>
-    <task id="LOCAL-00033" summary="Update camera visibility detection">
-      <created>1582594058757</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1582594058757</updated>
+      <workItem from="1589390129313" duration="6349000" />
     </task>
     <task id="LOCAL-00034" summary="Add stub for UserInterface. Add Renderable.h.">
       <created>1582653852900</created>
@@ -690,7 +697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589390691975</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Add some common use node classes and UINode stub">
+      <created>1589393053548</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1589393053549</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -745,7 +759,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Rename" />
     <MESSAGE value="CMake cleanup" />
     <MESSAGE value="Move functionality to RenderUtil" />
     <MESSAGE value="Add texture setup and update include to add src/" />
@@ -770,7 +783,8 @@
     <MESSAGE value="Add BezierCurve generation. Make GameState static again because of course it's static." />
     <MESSAGE value="Add BezierCurve sprite generation and color shader. Add StringUtil for uuid4 generation." />
     <MESSAGE value="Minor tweaks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor tweaks" />
+    <MESSAGE value="Add some common use node classes and UINode stub" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some common use node classes and UINode stub" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -801,12 +815,12 @@
       <screen x="3440" y="372" width="1920" height="1040" />
     </state>
     <state x="4084" y="550" key="#glfw/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583878610240" />
-    <state x="124" y="228" width="2217" height="1203" key="CommitChangelistDialog2" timestamp="1589390691518">
+    <state x="442" y="58" width="1390" height="966" key="CommitChangelistDialog2" timestamp="1589393053120">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="136" y="13" width="1297" height="811" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582354103768" />
     <state x="159" y="1" width="1353" height="1079" key="CommitChangelistDialog2/0.0.1792.1080@0.0.1792.1080" timestamp="1583663431305" />
-    <state x="124" y="228" width="1390" height="812" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589390691518" />
+    <state x="442" y="58" width="1390" height="966" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589393053120" />
     <state x="222" y="17" key="CommitChangelistDialog2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1585109981278" />
     <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583698465982" />
     <state x="3629" y="372" width="1717" height="1027" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583884556958" />
@@ -824,45 +838,45 @@
     </state>
     <state x="833" y="286" width="313" height="353" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583977924609" />
     <state x="1493" y="385" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1582573688177" />
-    <state width="1865" height="200" key="GridCell.Tab.0.bottom" timestamp="1589390827214">
+    <state width="1865" height="200" key="GridCell.Tab.0.bottom" timestamp="1589397897492">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="1737" height="101" key="GridCell.Tab.0.bottom/0.0.1792.1080@0.0.1792.1080" timestamp="1583663437395" />
-    <state width="1865" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589390827214" />
+    <state width="1865" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589397897492" />
     <state width="2004" height="144" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583716284555" />
     <state width="1865" height="369" key="GridCell.Tab.0.bottom/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583952169327" />
     <state width="1662" height="144" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1583799421363" />
     <state width="3385" height="295" key="GridCell.Tab.0.bottom/1920.-348.3440.1400/0.0.1920.1040@1920.-348.3440.1400" timestamp="1589222671129" />
     <state width="1670" height="386" key="GridCell.Tab.0.bottom/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="1865" height="200" key="GridCell.Tab.0.center" timestamp="1589390827214">
+    <state width="1865" height="200" key="GridCell.Tab.0.center" timestamp="1589397897492">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="1737" height="101" key="GridCell.Tab.0.center/0.0.1792.1080@0.0.1792.1080" timestamp="1583663437395" />
-    <state width="1865" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589390827214" />
+    <state width="1865" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589397897492" />
     <state width="2004" height="144" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583716284555" />
     <state width="1865" height="369" key="GridCell.Tab.0.center/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583952169327" />
     <state width="1662" height="144" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1583799421363" />
     <state width="3385" height="295" key="GridCell.Tab.0.center/1920.-348.3440.1400/0.0.1920.1040@1920.-348.3440.1400" timestamp="1589222671129" />
     <state width="1670" height="386" key="GridCell.Tab.0.center/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="1865" height="200" key="GridCell.Tab.0.left" timestamp="1589390827214">
+    <state width="1865" height="200" key="GridCell.Tab.0.left" timestamp="1589397897492">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="1737" height="101" key="GridCell.Tab.0.left/0.0.1792.1080@0.0.1792.1080" timestamp="1583663437395" />
-    <state width="1865" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589390827214" />
+    <state width="1865" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589397897492" />
     <state width="2004" height="144" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583716284554" />
     <state width="1865" height="369" key="GridCell.Tab.0.left/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583952169327" />
     <state width="1662" height="144" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1583799421363" />
     <state width="3385" height="295" key="GridCell.Tab.0.left/1920.-348.3440.1400/0.0.1920.1040@1920.-348.3440.1400" timestamp="1589222671128" />
     <state width="1670" height="386" key="GridCell.Tab.0.left/3440.0.1920.1080/0.0.3440.1440@0.0.3440.1440" timestamp="1581629668449" />
-    <state width="1865" height="200" key="GridCell.Tab.0.right" timestamp="1589390827214">
+    <state width="1865" height="200" key="GridCell.Tab.0.right" timestamp="1589397897492">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582354064664" />
     <state width="1737" height="101" key="GridCell.Tab.0.right/0.0.1792.1080@0.0.1792.1080" timestamp="1583663437395" />
-    <state width="1865" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589390827214" />
+    <state width="1865" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589397897492" />
     <state width="2004" height="144" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583716284555" />
     <state width="1865" height="369" key="GridCell.Tab.0.right/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583952169327" />
     <state width="1662" height="144" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1583799421363" />
@@ -881,12 +895,12 @@
     <state x="1765" y="236" width="1141" height="883" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583358552458" />
     <state x="3935" y="459" width="1381" height="883" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583861446066" />
     <state x="803" y="115" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1583185507844" />
-    <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2" timestamp="1589390693437">
+    <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2" timestamp="1589393054573">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="965" y="183" width="481" height="297" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582354106620" />
     <state x="1126" y="240" width="483" height="389" key="Vcs.Push.Dialog.v2/0.0.1792.1080@0.0.1792.1080" timestamp="1582331330030" />
-    <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589390693437" />
+    <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589393054573" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583698468616" />
     <state x="4646" y="464" width="590" height="363" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583884573583" />
     <state x="2161" y="311" width="631" height="405" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1583186338893" />

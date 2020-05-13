@@ -2,8 +2,8 @@
 // Created by Philip on 2/25/2020.
 //
 
-#ifndef SOCIETY_USERINTERFACE_H
-#define SOCIETY_USERINTERFACE_H
+#ifndef SOCIETY_INTERFACE_H
+#define SOCIETY_INTERFACE_H
 
 #include <common/SchemaObject.h>
 #include <memory>
@@ -13,18 +13,18 @@
 #include <unordered_map>
 #include <vector>
 
-#include "GameState.h"
+#include "State.h"
 
 
-class UserInterface {
+class Interface {
 public:
-    typedef std::shared_ptr<UserInterface> Ptr;
+    typedef std::shared_ptr<Interface> Ptr;
 
-    explicit UserInterface(const std::string &configPath);
+    explicit Interface(const std::string &configPath);
 
     void addComponentAt(int x, int y, const std::string &componentType);
 
-    void update(const GameState::Ptr &state);
+    void update(const State::Ptr &state);
 
     const std::unordered_map<std::string, SchemaObject::Ptr> &getComponents() const;
 
@@ -34,4 +34,4 @@ private:
 };
 
 
-#endif //SOCIETY_USERINTERFACE_H
+#endif //SOCIETY_INTERFACE_H

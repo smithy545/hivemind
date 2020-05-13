@@ -2,21 +2,21 @@
 // Created by smith on 4/9/2020.
 //
 
-#include "WorldMap.h"
+#include "World.h"
 
 #include <iostream>
 
 
-WorldMap::WorldMap() : WorldMap(0, 0) {}
+World::World() : World(0, 0) {}
 
-WorldMap::WorldMap(int xOffset, int yOffset) : Map(xOffset, yOffset) {
+World::World(int xOffset, int yOffset) : Map(xOffset, yOffset) {
     subMaps[0][0] = std::make_shared<GridMap>(xOffset, yOffset, subMapSize, subMapSize);
     width = subMapSize;
     height = subMapSize;
 }
 
 
-const std::vector<MapNode::Ptr> &WorldMap::getNodes() {
+const std::vector<MapNode::Ptr> &World::getNodes() {
     std::vector<MapNode::Ptr> nodes;
     int sw = width / subMapSize;
     int sh = height / subMapSize;
@@ -31,7 +31,7 @@ const std::vector<MapNode::Ptr> &WorldMap::getNodes() {
     return std::move(nodes);
 }
 
-MapNode::Ptr WorldMap::getNode(int x, int y) {
+MapNode::Ptr World::getNode(int x, int y) {
     if (x >= getXOffset() + MAX_SUBMAP_X * subMapSize || x < getXOffset() ||
         y >= getYOffset() + MAX_SUBMAP_Y * subMapSize || y < getYOffset()) {
         std::cerr << "Cannot get node at (" << x << ", " << y << "): Out of range";
@@ -53,7 +53,7 @@ MapNode::Ptr WorldMap::getNode(int x, int y) {
     return subMaps[sy][sx]->getNode(x, y);
 }
 
-std::vector<MapNode::Ptr> WorldMap::getNeighbors(MapNode::Ptr node) {
+std::vector<MapNode::Ptr> World::getNeighbors(MapNode::Ptr node) {
     int neighborMatrix[8][2] = {
             {-1, -1},
             {0,  -1},

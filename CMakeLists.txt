@@ -102,6 +102,19 @@ add_library(ui STATIC
         src/ui/UINode.cpp
         src/ui/UINode.h)
 
+### GAME ENGINE ###
+add_library(engine STATIC
+        src/engine/State.cpp
+        src/engine/State.h
+        src/engine/Collider.cpp
+        src/engine/Collider.h
+        src/engine/Integrator.cpp
+        src/engine/Integrator.h
+        src/engine/World.cpp
+        src/engine/World.h
+        src/engine/Interface.cpp
+        src/engine/Interface.h)
+
 include_directories(
         external/json-schema-validator/src
         external/glew/include
@@ -125,7 +138,8 @@ set(ALL_LIBS
         pathing
         util
         renderer
-        ui)
+        ui
+        engine)
 
 include_directories(
         external/json-schema-validator/src
@@ -157,16 +171,5 @@ endmacro()
 print_all_variables()
 
 
-add_executable(society
-        src/main.cpp
-        src/GameState.cpp
-        src/GameState.h
-        src/PhysicsCollider.cpp
-        src/PhysicsCollider.h
-        src/PhysicsIntegrator.cpp
-        src/PhysicsIntegrator.h
-        src/WorldMap.cpp
-        src/WorldMap.h
-        src/UserInterface.cpp
-        src/UserInterface.h)
+add_executable(society src/main.cpp)
 target_link_libraries(society ${ALL_LIBS})

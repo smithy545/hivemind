@@ -2,7 +2,7 @@
 // Created by Philip on 2/25/2020.
 //
 
-#include "UserInterface.h"
+#include "Interface.h"
 
 #include <iostream>
 #include <exception>
@@ -11,7 +11,7 @@
 #include <util/FileUtil.h>
 
 
-UserInterface::UserInterface(const std::string &configPath) {
+Interface::Interface(const std::string &configPath) {
     json config = FileUtil::readJsonFile(configPath);
     for (const auto &component: config["components"].items()) {
         json schema;
@@ -26,7 +26,7 @@ UserInterface::UserInterface(const std::string &configPath) {
     }
 }
 
-void UserInterface::update(const GameState::Ptr &state) {
+void Interface::update(const State::Ptr &state) {
     // update camera
     if (state->getMouseScroll() > 0) {
         //state->getCamera()->zoomIn();
@@ -80,7 +80,7 @@ void UserInterface::update(const GameState::Ptr &state) {
     }
 }
 
-void UserInterface::addComponentAt(int x, int y, const std::string &componentType) {
+void Interface::addComponentAt(int x, int y, const std::string &componentType) {
     if (components.find(componentType) == components.end()) {
         std::cerr << "Could not add SchemaEntity nonexistent ui component " << componentType << std::endl;
     } else {
@@ -91,6 +91,6 @@ void UserInterface::addComponentAt(int x, int y, const std::string &componentTyp
     }
 }
 
-const std::unordered_map<std::string, SchemaObject::Ptr> &UserInterface::getComponents() const {
+const std::unordered_map<std::string, SchemaObject::Ptr> &Interface::getComponents() const {
     return components;
 }

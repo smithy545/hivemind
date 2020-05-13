@@ -1,14 +1,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include <memory>
 #include <render/Renderer.h>
 #include <thread>
 
-#include "GameState.h"
-#include "PhysicsCollider.h"
-#include "PhysicsIntegrator.h"
-#include "UserInterface.h"
+#include "engine/State.h"
+#include "engine/Collider.h"
+#include "engine/Integrator.h"
+#include "engine/Interface.h"
 
 
 // window state
@@ -17,7 +16,7 @@ static int screenHeight;
 static bool resized;
 
 // game state
-static GameState::Ptr state;
+static State::Ptr state;
 
 // game update method
 void loop();
@@ -74,7 +73,7 @@ void loop() {
     GLFWwindow *window = renderer->init();
 
     std::cout << "State init" << std::endl;
-    state = std::make_shared<GameState>();
+    state = std::make_shared<State>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
 
     std::cout << "Window init" << std::endl;
@@ -92,11 +91,11 @@ void loop() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     std::cout << "UI init" << std::endl;
-    UserInterface::Ptr ui = std::make_shared<UserInterface>("json/ui.json");
+    Interface::Ptr ui = std::make_shared<Interface>("json/ui.json");
 
     std::cout << "Physics init" << std::endl;
-    PhysicsCollider::Ptr collider = std::make_shared<PhysicsCollider>();
-    PhysicsIntegrator::Ptr integrator = std::make_shared<PhysicsIntegrator>();
+    Collider::Ptr collider = std::make_shared<Collider>();
+    Integrator::Ptr integrator = std::make_shared<Integrator>();
 
     std::cout << "Loop start" << std::endl;
     state->start();

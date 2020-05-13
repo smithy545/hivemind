@@ -14,19 +14,6 @@
 #include <util/StringUtil.h>
 
 
-const std::string Renderer::CONFIG_NAME_KEY = "name";
-const std::string Renderer::CONFIG_WIDTH_KEY = "width";
-const std::string Renderer::CONFIG_HEIGHT_KEY = "height";
-const std::string Renderer::CONFIG_SPRITESHEETS_KEY = "spritesheets";
-const std::string Renderer::CONFIG_TILESHEETS_KEY = "tilesheets";
-const std::string Renderer::CONFIG_TILESIZE_KEY = "tileSize";
-const std::string Renderer::CONFIG_TEXTURES_KEY = "textures";
-const std::string Renderer::CONFIG_SHADERS_KEY = "shaders";
-const std::string Renderer::DEFAULT_SHADER_NAME = "texture";
-const std::string Renderer::TILESHEET_CONFIG_PADDING_KEY = "padding";
-const std::string Renderer::TILESHEET_CONFIG_TEXTURE_KEY = "texture";
-const std::string Renderer::SPRITESHEET_CONFIG_TEXTURE_KEY = "textureName";
-
 Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), window(nullptr) {}
 
 int Renderer::getWidth() const {
@@ -184,8 +171,8 @@ void Renderer::loadSprite(const std::string &path) {
     Sprite::Ptr sprite = std::make_shared<Sprite>();
 
     auto spriteData = FileUtil::readJsonFile(fmt::format("json/spritesheets/{}", path));
-    float width = spriteData[CONFIG_WIDTH_KEY];
-    float height = spriteData[CONFIG_HEIGHT_KEY];
+    float spriteWidth = spriteData[CONFIG_WIDTH_KEY];
+    float spriteHeight = spriteData[CONFIG_HEIGHT_KEY];
     std::string name = spriteData[CONFIG_NAME_KEY];
     sprite->texture = spriteData[SPRITESHEET_CONFIG_TEXTURE_KEY];
 
@@ -194,15 +181,15 @@ void Renderer::loadSprite(const std::string &path) {
     sprite->uvs.emplace_back(0, 0);
 
     // bottom right
-    sprite->vertices.emplace_back(width, 0);
+    sprite->vertices.emplace_back(spriteWidth, 0);
     sprite->uvs.emplace_back(1, 0);
 
     // top right
-    sprite->vertices.emplace_back(width, height);
+    sprite->vertices.emplace_back(spriteWidth, spriteHeight);
     sprite->uvs.emplace_back(1, -1);
 
     // top left
-    sprite->vertices.emplace_back(0, height);
+    sprite->vertices.emplace_back(0, spriteHeight);
     sprite->uvs.emplace_back(0, -1);
 
     // indices

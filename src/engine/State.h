@@ -2,8 +2,8 @@
 // Created by smith on 3/23/2020.
 //
 
-#ifndef SOCIETY_GAMESTATE_H
-#define SOCIETY_GAMESTATE_H
+#ifndef SOCIETY_STATE_H
+#define SOCIETY_STATE_H
 
 #include <chrono>
 #include <GL/glew.h>
@@ -13,11 +13,11 @@
 #include <render/Camera.h>
 #include <render/RenderNode.h>
 
-class GameState {
+class State {
 public:
-    typedef std::shared_ptr<GameState> Ptr;
+    typedef std::shared_ptr<State> Ptr;
 
-    GameState();
+    State();
 
     RenderNode::Ptr getRenderTree();
 
@@ -82,5 +82,5 @@ private:
 };
 
 
-#endif //SOCIETY_GAMESTATE_H
+#endif //SOCIETY_STATE_H
 

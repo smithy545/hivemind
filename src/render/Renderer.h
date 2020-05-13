@@ -21,21 +21,20 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    static const std::string CONFIG_NAME_KEY;
-    static const std::string CONFIG_TILESIZE_KEY;
-    static const std::string CONFIG_WIDTH_KEY;
-    static const std::string CONFIG_HEIGHT_KEY;
-    static const std::string CONFIG_SPRITESHEETS_KEY;
-    static const std::string CONFIG_TILESHEETS_KEY;
-    static const std::string CONFIG_TEXTURES_KEY;
-    static const std::string CONFIG_SHADERS_KEY;
-    static const std::string DEFAULT_SHADER_NAME;
+    const std::string CONFIG_NAME_KEY{"name"};
+    const std::string CONFIG_WIDTH_KEY{"width"};
+    const std::string CONFIG_HEIGHT_KEY{"height"};
+    const std::string CONFIG_SPRITESHEETS_KEY{"spritesheets"};
+    const std::string CONFIG_TILESHEETS_KEY{"tilesheets"};
+    const std::string CONFIG_TILESIZE_KEY{"tileSize"};
+    const std::string CONFIG_TEXTURES_KEY{"textures"};
+    const std::string CONFIG_SHADERS_KEY{"shaders"};
+    const std::string DEFAULT_SHADER_NAME{"texture"};
 
     // TODO: Move these constants and tilesheet/spritesheet functionality to separate classes
-    static const std::string TILESHEET_CONFIG_PADDING_KEY;
-    static const std::string TILESHEET_CONFIG_TEXTURE_KEY;
-    static const std::string SPRITESHEET_CONFIG_TEXTURE_KEY;
-
+    const std::string TILESHEET_CONFIG_PADDING_KEY{"padding"};
+    const std::string TILESHEET_CONFIG_TEXTURE_KEY{"texture"};
+    const std::string SPRITESHEET_CONFIG_TEXTURE_KEY{"textureName"};
 
     explicit Renderer(std::string configPath);
 

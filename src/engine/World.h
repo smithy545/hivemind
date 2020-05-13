@@ -2,8 +2,8 @@
 // Created by smith on 4/9/2020.
 //
 
-#ifndef SOCIETY_WORLDMAP_H
-#define SOCIETY_WORLDMAP_H
+#ifndef SOCIETY_WORLD_H
+#define SOCIETY_WORLD_H
 
 #include <memory>
 #include <pathing/Map.h>
@@ -13,13 +13,13 @@
 #include <vector>
 
 
-class WorldMap : public Map {
+class World : public Map {
 public:
-    typedef std::shared_ptr<WorldMap> Ptr;
+    typedef std::shared_ptr<World> Ptr;
 
-    WorldMap();
+    World();
 
-    WorldMap(int xOffset, int yOffset);
+    World(int xOffset, int yOffset);
 
     // topology
     const std::vector<MapNode::Ptr> &getNodes() override;
@@ -38,4 +38,4 @@ private:
 };
 
 
-#endif //SOCIETY_WORLDMAP_H
+#endif //SOCIETY_WORLD_H
