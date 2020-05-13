@@ -17,8 +17,8 @@ RenderNode::RenderNode(std::string spriteName, std::string shaderName, RenderNod
         next(std::move(next)),
         mode(GL_TRIANGLES) {}
 
-const RenderNode::Ptr &RenderNode::getNext() const {
-    return next;
+LinkedNode::Ptr RenderNode::getNext() {
+    return std::dynamic_pointer_cast<LinkedNode>(next);
 }
 
 void RenderNode::setNext(const RenderNode::Ptr &next) {

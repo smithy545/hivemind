@@ -52,7 +52,7 @@ find_package(OpenGL REQUIRED)
 ### MY COMMON LIB ###
 add_library(common STATIC
         src/common/SchemaObject.cpp
-        src/common/SchemaObject.h)
+        src/common/SchemaObject.h src/common/LinkedNode.h src/common/TreeNode.h src/common/DoublyLinkedNode.h)
 
 ### MY COLLISION LIB ###
 add_library(collision STATIC
@@ -97,6 +97,11 @@ add_library(renderer STATIC
         src/render/Sprite.cpp
         src/render/Sprite.h)
 
+### MY UI LIB ####
+add_library(ui STATIC
+        src/ui/UINode.cpp
+        src/ui/UINode.h)
+
 include_directories(
         external/json-schema-validator/src
         external/glew/include
@@ -116,10 +121,11 @@ set(ALL_LIBS
         GLEW
         TINYXML
         common
+        collision
+        pathing
         util
         renderer
-        pathing
-        collision)
+        ui)
 
 include_directories(
         external/json-schema-validator/src

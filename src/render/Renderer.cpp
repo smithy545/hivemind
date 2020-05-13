@@ -153,7 +153,7 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
             glBindVertexArray(sprite->vertexArrayId);
             glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
         }
-        treeHead = treeHead->getNext();
+        treeHead = std::dynamic_pointer_cast<RenderNode>(treeHead->getNext());
     }
 }
 

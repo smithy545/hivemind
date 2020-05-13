@@ -5,6 +5,7 @@
 #ifndef SOCIETY_RENDERNODE_H
 #define SOCIETY_RENDERNODE_H
 
+#include <common/LinkedNode.h>
 #include <GL/glew.h>
 #include <memory>
 #include <string>
@@ -13,7 +14,7 @@
 #include "RenderEntity.h"
 
 
-class RenderNode {
+class RenderNode : public LinkedNode {
 public:
     typedef std::shared_ptr<RenderNode> Ptr;
 
@@ -21,7 +22,7 @@ public:
 
     RenderNode(std::string spriteName, std::string shaderName, Ptr next);
 
-    const Ptr &getNext() const;
+    LinkedNode::Ptr getNext() override;
 
     void setNext(const Ptr &next);
 

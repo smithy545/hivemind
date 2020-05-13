@@ -5,7 +5,6 @@
 #ifndef SOCIETY_GAMESTATE_H
 #define SOCIETY_GAMESTATE_H
 
-#include <common/SchemaObject.h>
 #include <chrono>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
