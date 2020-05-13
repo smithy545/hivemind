@@ -1,13 +1,12 @@
+#include <engine/State.h>
+#include <engine/Collider.h>
+#include <engine/Integrator.h>
+#include <engine/Interface.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <render/Renderer.h>
 #include <thread>
-
-#include "engine/State.h"
-#include "engine/Collider.h"
-#include "engine/Integrator.h"
-#include "engine/Interface.h"
 
 
 // window state
@@ -133,8 +132,8 @@ void loop() {
         glfwPollEvents();
     } // Check if the ESC key was pressed or the window was closed
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
-           glfwWindowShouldClose(window) == 0 &&
-           !state->shouldStop());
+            glfwWindowShouldClose(window) == 0 &&
+            !state->shouldStop());
 
     renderer->cleanup();
 }

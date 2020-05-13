@@ -4,15 +4,13 @@
 
 #include "Interface.h"
 
-#include <iostream>
 #include <exception>
-#include <fmt/format.h>
-#include <pathing/Pather.h>
 #include <util/FileUtil.h>
 
 
 Interface::Interface(const std::string &configPath) {
     json config = FileUtil::readJsonFile(configPath);
+    // DOES NOTHING BUT READ THE FILE RIGHT NOW
     for (const auto &component: config["components"].items()) {
         json schema;
         if (component.value().is_string())
@@ -21,21 +19,14 @@ Interface::Interface(const std::string &configPath) {
             schema = component.value();
         else
             throw std::exception("Error reading ui config from ");
-
-        components[component.key()] = std::make_shared<SchemaObject>(schema);
     }
 }
 
 void Interface::update(const State::Ptr &state) {
-    // update camera
     if (state->getMouseScroll() > 0) {
-        //state->getCamera()->zoomIn();
-
-        tileId = (tileId + 1) % (32 * 32);
+        state->getCamera()->zoomIn();
     } else if (state->getMouseScroll() < 0) {
-        //state->getCamera()->zoomOut();
-
-        tileId = (tileId - 1) >= 0 ? (tileId - 1) : (32 * 32 - 1);
+        state->getCamera()->zoomOut();
     }
     if (state->getKey(GLFW_KEY_LEFT)) {
         state->getCamera()->panLeft();
@@ -78,19 +69,4 @@ void Interface::update(const State::Ptr &state) {
         }
          */
     }
-}
-
-void Interface::addComponentAt(int x, int y, const std::string &componentType) {
-    if (components.find(componentType) == components.end()) {
-        std::cerr << "Could not add SchemaEntity nonexistent ui component " << componentType << std::endl;
-    } else {
-        json obj = {{"x",      x},
-                    {"y",      y},
-                    {"sprite", componentType}};
-        //components[componentType]->generate(obj);
-    }
-}
-
-const std::unordered_map<std::string, SchemaObject::Ptr> &Interface::getComponents() const {
-    return components;
 }

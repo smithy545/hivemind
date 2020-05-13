@@ -52,7 +52,10 @@ find_package(OpenGL REQUIRED)
 ### MY COMMON LIB ###
 add_library(common STATIC
         src/common/SchemaObject.cpp
-        src/common/SchemaObject.h src/common/LinkedNode.h src/common/TreeNode.h src/common/DoublyLinkedNode.h)
+        src/common/SchemaObject.h
+        src/common/LinkedNode.h
+        src/common/TreeNode.h
+        src/common/DoublyLinkedNode.h)
 
 ### MY COLLISION LIB ###
 add_library(collision STATIC
@@ -85,7 +88,7 @@ add_library(util STATIC
         src/util/StringUtil.h)
 
 ### MY RENDERER LIB ###
-add_library(renderer STATIC
+add_library(render STATIC
         src/render/Camera.cpp
         src/render/Camera.h
         src/render/Renderer.cpp
@@ -127,17 +130,19 @@ include_directories(
         src)
 
 set(ALL_LIBS
+        # external
         ${OPENGL_LIBRARY}
         ${GLFW_LIB}
+        GLEW
         fmt
         nlohmann_json_schema_validator
-        GLEW
         TINYXML
+        # internal
         common
         collision
         pathing
         util
-        renderer
+        render
         ui
         engine)
 

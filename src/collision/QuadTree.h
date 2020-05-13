@@ -5,9 +5,10 @@
 #ifndef SOCIETY_QUADTREE_H
 #define SOCIETY_QUADTREE_H
 
-#include <collision/Rectangle.h>
 #include <memory>
 #include <vector>
+
+#include "Rectangle.h"
 
 
 class QuadTree {

@@ -5,12 +5,9 @@
 #ifndef SOCIETY_INTERFACE_H
 #define SOCIETY_INTERFACE_H
 
-#include <common/SchemaObject.h>
 #include <memory>
-#include <render/Camera.h>
-#include <render/Sprite.h>
 #include <string>
-#include <unordered_map>
+#include <ui/UINode.h>
 #include <vector>
 
 #include "State.h"
@@ -22,15 +19,9 @@ public:
 
     explicit Interface(const std::string &configPath);
 
-    void addComponentAt(int x, int y, const std::string &componentType);
-
     void update(const State::Ptr &state);
-
-    const std::unordered_map<std::string, SchemaObject::Ptr> &getComponents() const;
-
 private:
-    std::unordered_map<std::string, SchemaObject::Ptr> components;
-    int tileId{0};
+    std::vector<UINode::Ptr> nodes;
 };
 
 
