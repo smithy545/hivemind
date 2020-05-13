@@ -8,8 +8,10 @@
 
 
 Camera::Camera(double x, double y, double width, double height)
-        : pos(x, y, 0), bound(x, y, width, height),
-          projectionMatrix(glm::ortho(0.f, (float) width, 0.f, (float) height)) {}
+        : pos(x, y, 0), bound(x, y, width, height) {
+    resetProjectionMatrix();
+    resetViewMatrix();
+}
 
 bool Camera::inSight(double x, double y) {
     return bound.collides(x, y);

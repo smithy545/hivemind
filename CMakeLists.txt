@@ -54,6 +54,13 @@ add_library(common STATIC
         src/common/SchemaObject.cpp
         src/common/SchemaObject.h)
 
+### MY COLLISION LIB ###
+add_library(collision STATIC
+        src/collision/QuadTree.cpp
+        src/collision/QuadTree.h
+        src/collision/Rectangle.cpp
+        src/collision/Rectangle.h)
+
 ### MY PATHING LIB ##
 add_library(pathing STATIC
         src/pathing/GridMap.cpp
@@ -89,14 +96,6 @@ add_library(renderer STATIC
         src/render/RenderNode.h
         src/render/Sprite.cpp
         src/render/Sprite.h)
-target_link_libraries(renderer util)
-
-### MY COLLISION LIB ###
-add_library(collision STATIC
-        src/collision/QuadTree.cpp
-        src/collision/QuadTree.h
-        src/collision/Rectangle.cpp
-        src/collision/Rectangle.h)
 
 include_directories(
         external/json-schema-validator/src

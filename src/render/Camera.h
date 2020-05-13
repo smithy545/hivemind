@@ -41,11 +41,11 @@ public:
 private:
     glm::vec3 pos;
     Rectangle bound;
-    double scale;
+    double scale{1.0};
 
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};
-    glm::mat4 projectionMatrix;
+    glm::mat4 projectionMatrix{1};
 
     void resetProjectionMatrix();
 
