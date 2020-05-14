@@ -7,7 +7,7 @@
 
 #include <memory>
 #include <string>
-#include <ui/UINode.h>
+#include <interface/InterfaceNode.h>
 #include <vector>
 
 #include "State.h"
@@ -21,7 +21,7 @@ public:
 
     void update(const State::Ptr &state);
 private:
-    std::vector<UINode::Ptr> nodes;
+    std::vector<InterfaceNode::Ptr> nodes;
 };
 
 

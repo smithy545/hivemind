@@ -102,8 +102,8 @@ add_library(render STATIC
 
 ### MY UI LIB ####
 add_library(ui STATIC
-        src/ui/UINode.cpp
-        src/ui/UINode.h)
+        src/interface/InterfaceNode.cpp
+        src/interface/InterfaceNode.h)
 
 ### GAME ENGINE ###
 add_library(engine STATIC
