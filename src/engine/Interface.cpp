@@ -5,7 +5,8 @@
 #include "Interface.h"
 
 #include <exception>
-#include <util/FileUtil.h>
+
+#include "util/FileUtil.h"
 
 
 Interface::Interface(const std::string &configPath) {

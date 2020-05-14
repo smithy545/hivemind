@@ -6,6 +6,7 @@
 
 #include <utility>
 
+
 std::vector<int *> MathUtil::generatedBinomialCoeffs;
 int MathUtil::maxGeneratedDegree = 0;
 

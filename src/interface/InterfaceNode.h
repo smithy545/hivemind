@@ -5,8 +5,9 @@
 #ifndef SOCIETY_INTERFACENODE_H
 #define SOCIETY_INTERFACENODE_H
 
-#include <common/TreeNode.h>
 #include <memory>
+
+#include "common/TreeNode.h"
 
 
 class InterfaceNode : public TreeNode {

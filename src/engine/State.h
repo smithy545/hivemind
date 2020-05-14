@@ -9,9 +9,11 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
-#include <pathing/Map.h>
-#include <render/Camera.h>
-#include <render/RenderNode.h>
+
+#include "pathing/Map.h"
+#include "render/Camera.h"
+#include "render/RenderNode.h"
+
 
 class State {
 public:

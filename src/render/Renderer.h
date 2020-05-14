@@ -13,8 +13,8 @@
 #include <vector>
 
 #include "Camera.h"
-#include "Sprite.h"
 #include "RenderNode.h"
+#include "Sprite.h"
 
 
 class Renderer {

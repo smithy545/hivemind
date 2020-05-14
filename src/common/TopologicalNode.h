@@ -8,14 +8,12 @@
 #include <memory>
 #include <vector>
 
-#include "MapNode.h"
 
-
-class TopologicalNode : public MapNode {
+class TopologicalNode {
 public:
     typedef std::shared_ptr<TopologicalNode> Ptr;
 
-    virtual std::vector<MapNode::Ptr> &getNeighbors() = 0;
+    virtual std::vector<Ptr> &getNeighbors() = 0;
 };
 
 #endif //SOCIETY_TOPOLOGICALNODE_H

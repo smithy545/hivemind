@@ -11,7 +11,6 @@
 
 #include "Map.h"
 #include "MapNode.h"
-#include "TopologicalNode.h"
 
 
 class Pather {
@@ -33,7 +32,7 @@ public:
         Ptr previous;
     };
 
-    static MapNode::MapPath genAStarPath(const TopologicalNode::Ptr &start, const TopologicalNode::Ptr &end);
+    static MapNode::MapPath genAStarPath(const TopologicalMapNode::Ptr &start, const TopologicalMapNode::Ptr &end);
 
     static MapNode::MapPath genAStarPath(const Map::Ptr &map, const MapNode::Ptr &start, const MapNode::Ptr &end);
 

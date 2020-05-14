@@ -4,6 +4,7 @@
 
 #include "RenderEntity.h"
 
+
 RenderEntity::RenderEntity(const glm::vec3 &position) : RenderEntity(position, 0) {}
 
 RenderEntity::RenderEntity(float x, float y) : RenderEntity(x, y, 0) {}

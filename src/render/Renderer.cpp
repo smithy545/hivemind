@@ -8,10 +8,11 @@
 #include <fmt/format.h>
 #include <glm/ext.hpp>
 #include <utility>
-#include <util/FileUtil.h>
-#include <util/MathUtil.h>
-#include <util/RenderUtil.h>
-#include <util/StringUtil.h>
+
+#include "util/FileUtil.h"
+#include "util/MathUtil.h"
+#include "util/RenderUtil.h"
+#include "util/StringUtil.h"
 
 
 Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), window(nullptr) {}

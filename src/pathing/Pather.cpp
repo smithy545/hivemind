@@ -8,7 +8,7 @@
 #include <unordered_map>
 
 
-MapNode::MapPath Pather::genAStarPath(const TopologicalNode::Ptr &start, const TopologicalNode::Ptr &end) {
+MapNode::MapPath Pather::genAStarPath(const TopologicalMapNode::Ptr &start, const TopologicalMapNode::Ptr &end) {
     MapNode::MapPath path;
 
     std::unordered_map<std::string, PathNode::Ptr> open;
@@ -25,7 +25,8 @@ MapNode::MapPath Pather::genAStarPath(const TopologicalNode::Ptr &start, const T
 
         PathNode::Ptr parent = open[minKey];
         open.erase(minKey);
-        for (const auto &neighbor: std::dynamic_pointer_cast<TopologicalNode>(parent->position)->getNeighbors()) {
+        for (const auto &neighborPtr: std::dynamic_pointer_cast<TopologicalMapNode>(parent->position)->getNeighbors()) {
+            auto neighbor = std::dynamic_pointer_cast<TopologicalMapNode>(neighborPtr);
             std::string key = genKey(neighbor);
             if (closed.count(key) > 0)
                 continue;

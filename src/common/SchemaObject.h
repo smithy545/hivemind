@@ -9,9 +9,9 @@
 #include <nlohmann/json-schema.hpp>
 #include <utility>
 
+
 using nlohmann::json;
 using nlohmann::json_schema::json_validator;
-
 
 class SchemaObject {
 public:

@@ -5,12 +5,12 @@
 #ifndef SOCIETY_RENDERNODE_H
 #define SOCIETY_RENDERNODE_H
 
-#include <common/LinkedNode.h>
 #include <GL/glew.h>
 #include <memory>
 #include <string>
 #include <vector>
 
+#include "common/LinkedNode.h"
 #include "RenderEntity.h"
 
 

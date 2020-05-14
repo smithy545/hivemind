@@ -6,11 +6,12 @@
 #define SOCIETY_WORLD_H
 
 #include <memory>
-#include <pathing/Map.h>
-#include <pathing/GridNode.h>
-#include <pathing/GridMap.h>
 #include <string>
 #include <vector>
+
+#include "pathing/Map.h"
+#include "pathing/GridNode.h"
+#include "pathing/GridMap.h"
 
 
 class World : public Map {

@@ -1,11 +1,11 @@
-#include <engine/State.h>
-#include <engine/Collider.h>
-#include <engine/Integrator.h>
-#include <engine/Interface.h>
 #include <iostream>
-#include <render/Renderer.h>
 #include <thread>
 
+#include "engine/State.h"
+#include "engine/Collider.h"
+#include "engine/Integrator.h"
+#include "engine/Interface.h"
+#include "render/Renderer.h"
 
 // window state
 static int screenWidth;

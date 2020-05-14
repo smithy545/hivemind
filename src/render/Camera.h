@@ -5,9 +5,10 @@
 #ifndef SOCIETY_CAMERA_H
 #define SOCIETY_CAMERA_H
 
-#include <collision/Rectangle.h>
 #include <glm/glm.hpp>
 #include <memory>
+
+#include "collision/Rectangle.h"
 
 
 class Camera {

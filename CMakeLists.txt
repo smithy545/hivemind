@@ -55,7 +55,8 @@ add_library(common STATIC
         src/common/SchemaObject.h
         src/common/LinkedNode.h
         src/common/TreeNode.h
-        src/common/DoublyLinkedNode.h)
+        src/common/DoublyLinkedNode.h
+        src/common/TopologicalNode.h)
 
 ### MY COLLISION LIB ###
 add_library(collision STATIC
@@ -73,8 +74,7 @@ add_library(pathing STATIC
         src/pathing/Map.h
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
-        src/pathing/Pather.h
-        src/pathing/TopologicalNode.h)
+        src/pathing/Pather.h)
 
 ### MY UTIL LIB ###
 add_library(util STATIC

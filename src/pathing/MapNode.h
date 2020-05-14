@@ -9,6 +9,8 @@
 #include <memory>
 #include <unordered_set>
 
+#include "common/TopologicalNode.h"
+
 
 class MapNode {
 public:
@@ -20,6 +22,12 @@ public:
     virtual int getY() = 0;
 
     virtual bool isPassable() = 0;
+};
+
+// MapNode containing local neighbor information
+class TopologicalMapNode : public MapNode, public TopologicalNode {
+public:
+    typedef std::shared_ptr<TopologicalMapNode> Ptr;
 };
 
 #endif //SOCIETY_MAPNODE_H
