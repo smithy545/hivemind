@@ -2,8 +2,8 @@
 // Created by Philip on 5/11/2020.
 //
 
-#ifndef CELL_MATHUTIL_H
-#define CELL_MATHUTIL_H
+#ifndef SOCIETY_MATHUTIL_H
+#define SOCIETY_MATHUTIL_H
 
 #include <glm/glm.hpp>
 #include <vector>
@@ -26,4 +26,4 @@ private:
 };
 
 
-#endif //CELL_MATHUTIL_H
+#endif //SOCIETY_MATHUTIL_H
