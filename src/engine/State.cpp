@@ -11,8 +11,13 @@ State::State() : camera(nullptr), map(nullptr) {
 }
 
 RenderNode::Ptr State::getRenderTree() {
+    if (map == nullptr)
+        return nullptr;
+
     auto gorillas = std::make_shared<RenderNode>("gorilla", "texture");
-    gorillas->addChild(100, 100, 1);
+    for (const auto &node: map->getNodes()) {
+        gorillas->addChild(node->getX() * 137, node->getY() * 137);
+    }
 
     return gorillas;
 }

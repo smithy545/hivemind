@@ -5,6 +5,7 @@
 #include "engine/Collider.h"
 #include "engine/Integrator.h"
 #include "engine/Interface.h"
+#include "pathing/GridMap.h"
 #include "render/Renderer.h"
 
 // window state
@@ -72,6 +73,7 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
+    state->setMap(std::make_shared<GridMap>(0, 0, 200, 200));
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below

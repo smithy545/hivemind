@@ -12,8 +12,6 @@ class RenderEntity {
 public:
     RenderEntity(float x, float y);
 
-    RenderEntity(const glm::vec3 &position);
-
     RenderEntity(float x, float y, float angle);
 
     RenderEntity(const glm::vec3 &position, float angle);

@@ -19,6 +19,8 @@ public:
 
     bool inSight(double x, double y);
 
+    bool inSight(glm::vec2 pos);
+
     void panLeft();
 
     void panRight();

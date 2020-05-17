@@ -4,6 +4,7 @@
 
 #include "MathUtil.h"
 
+#include <iostream>
 #include <utility>
 
 
@@ -30,15 +31,22 @@ std::vector<glm::vec2> MathUtil::generateBezierCurve(std::vector<glm::vec2> cont
 }
 
 std::vector<glm::vec2> MathUtil::bezierNaive(std::vector<glm::vec2> controlPoints, double stepSize) {
-    std::vector<glm::vec2> curvePoints;
+    if (controlPoints.size() < 2) {
+        std::cerr << "Can't make a bezier curve without at least start and endpoints provided." << std::endl;
+        return {};
+    }
+
+    // add first point to curve
+    std::vector<glm::vec2> curvePoints{controlPoints.front()};
+
     int n = controlPoints.size() - 1;
-    double t = 0.0;
-    while (t <= 1.0) {
+    double t = stepSize;
+    while (t < 1.0) {
         double x{0}, y{0};
         double subT = 1.0 - t;
         for (int k = 0; k <= n; k++) {
             int subK = n - k;
-            float coeff = MathUtil::binomialCoeff(n, k) * std::pow(subT, subK) * std::pow(t, k);
+            double coeff = MathUtil::binomialCoeff(n, k) * std::pow(subT, subK) * std::pow(t, k);
             // round to zero at threshold=0.001
             coeff = coeff > 0.001 ? coeff : 0;
             x += controlPoints[k].x * coeff;
@@ -48,6 +56,9 @@ std::vector<glm::vec2> MathUtil::bezierNaive(std::vector<glm::vec2> controlPoint
         curvePoints.emplace_back(x, y);
         t += stepSize;
     }
+
+    // add last point to curve
+    curvePoints.push_back(controlPoints.back());
 
     return curvePoints;
 }

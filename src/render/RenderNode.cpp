@@ -33,7 +33,6 @@ const std::string &RenderNode::getSpriteName() const {
     return spriteName;
 }
 
-
 const std::string &RenderNode::getShaderName() const {
     return shaderName;
 }
@@ -43,11 +42,11 @@ void RenderNode::setShaderName(const std::string &shaderName) {
 }
 
 void RenderNode::addChild(float x, float y) {
-    children.emplace_back(glm::vec3(x, y, 0));
+    children.emplace_back(x, y);
 }
 
 void RenderNode::addChild(float x, float y, float angle) {
-    children.emplace_back(glm::vec3(x, y, 0), angle);
+    children.emplace_back(x, y, angle);
 }
 
 unsigned int RenderNode::getMode() const {

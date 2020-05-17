@@ -128,18 +128,21 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
         GLuint texId =
                 loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0 : loadedTextures[sprite->texture];
         GLenum drawMode = treeHead->getMode();
+
+        glBindVertexArray(sprite->vertexArrayId);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texId);
+
         for (auto child: treeHead->getChildren()) {
-            // TODO: Fix rotation about render node center
-            glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child.getPosition());
-            modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
-            glm::mat4 mvpMatrix = viewProj * modelMatrix;
-            glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+            if (camera->inSight(child.getPosition())) {
+                glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child.getPosition());
+                // TODO: Fix rotation about render node center
+                //modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, texId);
-
-            glBindVertexArray(sprite->vertexArrayId);
-            glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+                glm::mat4 mvpMatrix = viewProj * modelMatrix;
+                glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+                glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+            }
         }
         treeHead = std::dynamic_pointer_cast<RenderNode>(treeHead->getNext());
     }

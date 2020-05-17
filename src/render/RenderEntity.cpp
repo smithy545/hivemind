@@ -5,14 +5,11 @@
 #include "RenderEntity.h"
 
 
-RenderEntity::RenderEntity(const glm::vec3 &position) : RenderEntity(position, 0) {}
-
 RenderEntity::RenderEntity(float x, float y) : RenderEntity(x, y, 0) {}
 
 RenderEntity::RenderEntity(const glm::vec3 &position, float angle) : pos(position), angle(angle) {}
 
 RenderEntity::RenderEntity(float x, float y, float angle) : pos(x, y, 0), angle(angle) {}
-
 
 const glm::vec3 &RenderEntity::getPosition() const {
     return pos;
