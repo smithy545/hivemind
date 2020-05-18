@@ -5,7 +5,7 @@
 #include "TopologicalMap.h"
 
 
-TopologicalMap::TopologicalMap() {}
+TopologicalMap::TopologicalMap() = default;
 
 const std::vector<MapNode::Ptr> &TopologicalMap::getNodes() {
     std::vector<MapNode::Ptr> nodes;

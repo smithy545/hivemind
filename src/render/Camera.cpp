@@ -52,17 +52,20 @@ void Camera::zoomOut() {
 }
 
 void Camera::resize(double width, double height) {
-    bound.setWidth(width);
-    bound.setHeight(height);
     resetProjectionMatrix();
 }
 
-#include <iostream>
 void Camera::resetProjectionMatrix() {
-    projectionMatrix = glm::ortho(0.f, (float) (scale * bound.getWidth()), 0.f, (float) (scale * bound.getHeight()));
+    float width = scale * bound.getWidth();
+    float height = scale * bound.getHeight();
+    bound.setWidth(width);
+    bound.setHeight(height);
+    projectionMatrix = glm::ortho(0.f, width, 0.f, height);
 }
 
 void Camera::resetViewMatrix() {
+    bound.setX(pos.x);
+    bound.setY(pos.y);
     viewMatrix = glm::translate(glm::mat4(1), -pos);
 }
 

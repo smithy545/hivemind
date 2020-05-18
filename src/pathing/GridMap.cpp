@@ -6,6 +6,8 @@
 #include "GridNode.h"
 
 
+GridMap::GridMap(int width, int height) : GridMap(0, 0, width, height) {}
+
 GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset, yOffset),
                                                                     width(width),
                                                                     height(height),

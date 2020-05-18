@@ -17,7 +17,7 @@ class GridMap : public Map {
 public:
     typedef std::shared_ptr<GridMap> Ptr;
 
-    GridMap(int width, int height) : GridMap(0, 0, width, height) {}
+    GridMap(int width, int height);
 
     GridMap(int xOffset, int yOffset, int width, int height);
 
