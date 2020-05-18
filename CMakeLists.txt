@@ -74,7 +74,7 @@ add_library(pathing STATIC
         src/pathing/Map.h
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
-        src/pathing/Pather.h)
+        src/pathing/Pather.h src/pathing/TopologicalMap.cpp src/pathing/TopologicalMap.h)
 
 ### MY UTIL LIB ###
 add_library(util STATIC
