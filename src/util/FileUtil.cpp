@@ -10,6 +10,7 @@
 
 
 const std::string FileUtil::RESOURCE_PREFIX = "../res/{0}";
+const std::string FileUtil::JSON_PREFIX = "json/{0}";
 
 std::string FileUtil::resource(std::string relativePath) {
     return fmt::format(RESOURCE_PREFIX, relativePath);
@@ -43,8 +44,9 @@ char *FileUtil::readResourceFile(const std::string &resourcePath) {
 }
 
 
-json FileUtil::readJsonFile(const std::string &jsonPath) {
-    std::ifstream file(resource(jsonPath));
+json FileUtil::readJsonFile(const std::string &jsonPath, bool prefixPath) {
+    std::string path = prefixPath ? resource(fmt::format(JSON_PREFIX, jsonPath)) : resource(jsonPath);
+    std::ifstream file(path);
     if (file.good())
         return json::parse(file);
     std::string message = fmt::format("Can't read json file at {0}", resource(jsonPath));

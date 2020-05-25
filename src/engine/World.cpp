@@ -15,7 +15,6 @@ World::World(int xOffset, int yOffset) : Map(xOffset, yOffset) {
     height = subMapSize;
 }
 
-
 const std::vector<MapNode::Ptr> &World::getNodes() {
     std::vector<MapNode::Ptr> nodes;
     int sw = width / subMapSize;

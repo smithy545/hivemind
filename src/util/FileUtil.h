@@ -14,10 +14,11 @@ using json = nlohmann::json;
 class FileUtil {
 public:
     static const std::string RESOURCE_PREFIX;
+    static const std::string JSON_PREFIX;
 
     static char *readResourceFile(const std::string &resourcePath);
 
-    static json readJsonFile(const std::string &jsonPath);
+    static json readJsonFile(const std::string &jsonPath, bool prefixPath = true);
 
     static TiXmlDocument readXmlFile(const std::string &xmlPath);
 

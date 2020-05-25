@@ -8,6 +8,7 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <memory>
+#include <nlohmann/json-schema.hpp>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -17,9 +18,13 @@
 #include "Sprite.h"
 
 
+using namespace nlohmann::json_schema;
+
 class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
+
+    json_validator validator;
 
     const std::string CONFIG_NAME_KEY{"name"};
     const std::string CONFIG_WIDTH_KEY{"width"};
@@ -79,6 +84,5 @@ private:
 
     std::string generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize);
 };
-
 
 #endif //SOCIETY_RENDERER_H

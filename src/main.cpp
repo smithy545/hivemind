@@ -65,7 +65,7 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 
 void loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>("json/renderer.json");
+    Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
     screenWidth = renderer->getWidth();
     screenHeight = renderer->getHeight();
     GLFWwindow *window = renderer->init();
@@ -73,7 +73,7 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
-    state->setMap(std::make_shared<GridMap>(0, 0, 200, 200));
+    state->setMap(std::make_shared<GridMap>(0, 0, 10, 10));
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -90,7 +90,7 @@ void loop() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     std::cout << "UI init" << std::endl;
-    Interface::Ptr ui = std::make_shared<Interface>("json/ui.json");
+    Interface::Ptr ui = std::make_shared<Interface>("ui.json");
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
