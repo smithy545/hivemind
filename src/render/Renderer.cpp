@@ -134,8 +134,9 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
         glBindTexture(GL_TEXTURE_2D, texId);
 
         for (auto child: treeHead->getChildren()) {
-            if (camera->inSight(child.getPosition())) {
-                glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child.getPosition());
+            auto childRect = child.getBounds();
+            if (camera->inSight(childRect)) {
+                glm::mat4 modelMatrix = glm::translate(glm::mat4(1), {childRect.getX(), childRect.getY(), 0});
                 // TODO: Fix rotation about render node center
                 //modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 

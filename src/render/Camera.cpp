@@ -21,6 +21,10 @@ bool Camera::inSight(glm::vec2 pos) {
     return bound.collides(pos.x, pos.y);
 }
 
+bool Camera::inSight(Rectangle obj) {
+    return obj.collides(bound);
+}
+
 void Camera::panLeft() {
     pos.x -= scale;
     resetViewMatrix();

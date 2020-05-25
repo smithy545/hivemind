@@ -12,7 +12,7 @@ public:
 
     Rectangle(double x, double y, double width, double height);
 
-    bool collides(double X, double Y);
+    bool collides(double X, double Y) const;
 
     bool collides(Rectangle rect);
 

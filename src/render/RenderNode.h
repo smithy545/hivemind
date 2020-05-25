@@ -38,10 +38,9 @@ public:
 
     void setMode(GLenum mode);
 
-    void addChild(float x, float y);
+    void addChild(Rectangle bounds, double angle);
 
-    void addChild(float x, float y, float angle);
-
+    void addChild(Rectangle bounds);
 private:
     std::vector<RenderEntity> children{};
     std::string shaderName;

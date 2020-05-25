@@ -21,6 +21,8 @@ public:
 
     bool inSight(glm::vec2 pos);
 
+    bool inSight(Rectangle obj);
+
     void panLeft();
 
     void panRight();

@@ -11,7 +11,7 @@ Rectangle::Rectangle(double x, double y, double width, double height) : x(x), y(
     calculatePoints();
 }
 
-bool Rectangle::collides(double X, double Y) {
+bool Rectangle::collides(double X, double Y) const {
     return X >= x && X < x + width && Y >= y && Y < y + height;
 }
 

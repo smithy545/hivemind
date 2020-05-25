@@ -4,25 +4,25 @@
 
 #include "RenderEntity.h"
 
+RenderEntity::RenderEntity(Rectangle bounds, double angle) : bounds(bounds), angle(angle) {}
 
-RenderEntity::RenderEntity(float x, float y) : RenderEntity(x, y, 0) {}
+RenderEntity::RenderEntity(Rectangle bounds) : RenderEntity(bounds, 0) {}
 
-RenderEntity::RenderEntity(const glm::vec3 &position, float angle) : pos(position), angle(angle) {}
+RenderEntity::RenderEntity(double x, double y, double width, double height, double angle)
+        : RenderEntity({x, y, width, height}, angle) {}
 
-RenderEntity::RenderEntity(float x, float y, float angle) : pos(x, y, 0), angle(angle) {}
-
-const glm::vec3 &RenderEntity::getPosition() const {
-    return pos;
+const Rectangle &RenderEntity::getBounds() const {
+    return bounds;
 }
 
-void RenderEntity::setPosition(const glm::vec3 &pos) {
-    RenderEntity::pos = pos;
+void RenderEntity::setBounds(const Rectangle &bounds) {
+    RenderEntity::bounds = bounds;
 }
 
-float RenderEntity::getAngle() const {
+double RenderEntity::getAngle() const {
     return angle;
 }
 
-void RenderEntity::setAngle(float angle) {
+void RenderEntity::setAngle(double angle) {
     RenderEntity::angle = angle;
 }

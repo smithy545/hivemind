@@ -5,28 +5,28 @@
 #ifndef SOCIETY_RENDERENTITY_H
 #define SOCIETY_RENDERENTITY_H
 
-#include <glm/glm.hpp>
+#include "collision/Rectangle.h"
 
 
 class RenderEntity {
 public:
-    RenderEntity(float x, float y);
+    explicit RenderEntity(Rectangle bounds);
 
-    RenderEntity(float x, float y, float angle);
+    RenderEntity(Rectangle bounds, double angle);
 
-    RenderEntity(const glm::vec3 &position, float angle);
+    RenderEntity(double x, double y, double width, double height, double angle);
 
-    const glm::vec3 &getPosition() const;
+    const Rectangle &getBounds() const;
 
-    void setPosition(const glm::vec3 &pos);
+    void setBounds(const Rectangle &bounds);
 
-    float getAngle() const;
+    double getAngle() const;
 
-    void setAngle(float angle);
+    void setAngle(double angle);
 
 private:
-    glm::vec3 pos;
-    float angle;
+    Rectangle bounds;
+    double angle;
 };
 
 

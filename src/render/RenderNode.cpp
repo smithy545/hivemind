@@ -41,18 +41,18 @@ void RenderNode::setShaderName(const std::string &shaderName) {
     RenderNode::shaderName = shaderName;
 }
 
-void RenderNode::addChild(float x, float y) {
-    children.emplace_back(x, y);
-}
-
-void RenderNode::addChild(float x, float y, float angle) {
-    children.emplace_back(x, y, angle);
-}
-
 unsigned int RenderNode::getMode() const {
     return mode;
 }
 
 void RenderNode::setMode(unsigned int mode) {
     RenderNode::mode = mode;
+}
+
+void RenderNode::addChild(Rectangle bounds) {
+    children.emplace_back(bounds);
+}
+
+void RenderNode::addChild(Rectangle bounds, double angle) {
+    children.emplace_back(bounds, angle);
 }

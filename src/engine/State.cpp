@@ -16,7 +16,7 @@ RenderNode::Ptr State::getRenderTree() {
 
     auto gorillas = std::make_shared<RenderNode>("gorilla", "texture");
     for (const auto &node: map->getNodes()) {
-        gorillas->addChild(node->getX() * 137, node->getY() * 137);
+        gorillas->addChild({node->getX() * 137.0, node->getY() * 137.0, 137.0, 137.0});
     }
 
     return gorillas;
