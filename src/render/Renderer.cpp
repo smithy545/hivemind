@@ -136,9 +136,17 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
         for (auto child: treeHead->getChildren()) {
             auto childRect = child.getBounds();
             if (camera->inSight(childRect)) {
-                glm::mat4 modelMatrix = glm::translate(glm::mat4(1), {childRect.getX(), childRect.getY(), 0});
-                // TODO: Fix rotation about render node center
-                //modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
+                // translate to center
+                glm::mat4 modelMatrix = glm::translate(
+                        glm::mat4(1),
+                        {
+                                childRect.getX(),
+                                childRect.getY(),
+                                0
+                        });
+                // rotate
+                //TODO: fix matrices so rotation is about center
+                // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 
                 glm::mat4 mvpMatrix = viewProj * modelMatrix;
                 glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);

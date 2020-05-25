@@ -12,21 +12,21 @@ class RenderEntity {
 public:
     explicit RenderEntity(Rectangle bounds);
 
-    RenderEntity(Rectangle bounds, double angle);
+    RenderEntity(Rectangle bounds, float angle);
 
-    RenderEntity(double x, double y, double width, double height, double angle);
+    RenderEntity(double x, double y, double width, double height, float angle);
 
     const Rectangle &getBounds() const;
 
     void setBounds(const Rectangle &bounds);
 
-    double getAngle() const;
+    float getAngle() const;
 
-    void setAngle(double angle);
+    void setAngle(float angle);
 
 private:
     Rectangle bounds;
-    double angle;
+    float angle;
 };
 
 
