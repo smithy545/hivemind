@@ -60,8 +60,8 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
 
 
 GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &height) {
+    // ensure graphics magick and maybe image magick are installed for this
     CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
-
 
     // padded image width (image size + padding for texture alignment)
     int w = image.width() + (8 - (image.width() % 8));

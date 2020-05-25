@@ -174,7 +174,7 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
 void Renderer::loadSprite(const std::string &path) {
     Sprite::Ptr sprite = std::make_shared<Sprite>();
 
-    auto spriteData = FileUtil::readJsonFile(fmt::format("json/spritesheets/{}", path));
+    auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path));
     float spriteWidth = spriteData[CONFIG_WIDTH_KEY];
     float spriteHeight = spriteData[CONFIG_HEIGHT_KEY];
     std::string name = spriteData[CONFIG_NAME_KEY];
@@ -216,7 +216,7 @@ void Renderer::loadTexture(const std::string &name, const std::string &texturePa
 }
 
 void Renderer::loadTileSheet(const std::string &path) {
-    auto tilesheet = FileUtil::readJsonFile(fmt::format("json/tilesheets/{}", path));
+    auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path));
 
     std::string name = tilesheet[CONFIG_NAME_KEY];
     int sheetTileSize = tilesheet[CONFIG_TILESIZE_KEY];
