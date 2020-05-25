@@ -24,6 +24,14 @@ public:
 
     void setY(double y);
 
+    double getCenterX() const;
+
+    void setCenterX(double centerX);
+
+    double getCenterY() const;
+
+    void setCenterY(double centerY);
+
     double getWidth() const;
 
     void setWidth(double width);
@@ -35,7 +43,8 @@ public:
     const double *getPoints() const;
 
 private:
-    int x, y;
+    double x, y;
+    double centerX, centerY;
     double width, height;
     double points[8]{};
 

@@ -22,7 +22,7 @@ bool Camera::inSight(glm::vec2 pos) {
 }
 
 bool Camera::inSight(Rectangle obj) {
-    return obj.collides(bound);
+    return bound.collides(obj);
 }
 
 void Camera::panLeft() {

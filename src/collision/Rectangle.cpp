@@ -7,7 +7,10 @@
 
 Rectangle::Rectangle(double width, double height) : Rectangle(0, 0, width, height) {}
 
-Rectangle::Rectangle(double x, double y, double width, double height) : x(x), y(y), width(width), height(height) {
+Rectangle::Rectangle(double x, double y, double width, double height) : x(x), y(y),
+                                                                        centerX(x - 0.5 * width),
+                                                                        centerY(y - 0.5 * height),
+                                                                        width(width), height(height) {
     calculatePoints();
 }
 
@@ -16,9 +19,10 @@ bool Rectangle::collides(double X, double Y) const {
 }
 
 bool Rectangle::collides(Rectangle rect) {
-    for (int i = 0; i < 8; i += 2)
-        if (rect.collides(points[i], points[i + 1]))
+    for (int i = 0; i < 8; i += 2) {
+        if (rect.collides(points[i], points[i + 1]) || collides(rect.points[i], rect.points[i + 1]))
             return true;
+    }
     return false;
 }
 
@@ -71,4 +75,24 @@ void Rectangle::setHeight(double height) {
 
 const double *Rectangle::getPoints() const {
     return points;
+}
+
+double Rectangle::getCenterX() const {
+    return centerX;
+}
+
+void Rectangle::setCenterX(double centerX) {
+    Rectangle::centerX = centerX;
+    Rectangle::x = centerX - width * 0.5;
+    calculatePoints();
+}
+
+double Rectangle::getCenterY() const {
+    return centerY;
+}
+
+void Rectangle::setCenterY(double centerY) {
+    Rectangle::centerY = centerY;
+    Rectangle::y = centerY - height * 0.5;
+    calculatePoints();
 }
