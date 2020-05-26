@@ -64,8 +64,10 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
     CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
 
     // padded image width (image size + padding for texture alignment)
-    int w = image.width() + (8 - (image.width() % 8));
-    int h = image.height() + (8 - (image.height() % 8));
+    int xoffset = image.width() % 8;
+    int yoffset = image.height() % 8;
+    int w = xoffset == 0 ? image.width() : image.width() + (8 - xoffset);
+    int h = yoffset == 0 ? image.height() : image.height() + (8 - yoffset);
     // set output references
     width = image.width();
     height = image.height();

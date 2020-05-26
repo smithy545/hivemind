@@ -73,7 +73,7 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
-    state->setMap(std::make_shared<GridMap>(0, 0, 10, 9));
+    state->setMap(std::make_shared<GridMap>(0, 0, 32, 32));
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below

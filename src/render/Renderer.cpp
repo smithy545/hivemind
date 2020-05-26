@@ -93,13 +93,6 @@ GLFWwindow *Renderer::init() {
         loadSprite(sprite);
     }
 
-    generateBezierSprite({
-                                 {90, 110},
-                                 {25, 40},
-                                 {230, 40},
-                                 {150, 240}
-                         }, 0.1);
-
     setShader(DEFAULT_SHADER_NAME);
 
     return window;
@@ -128,7 +121,7 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
             std::cerr << "Can't find sprite " << treeHead->getSpriteName() << std::endl;
             continue;
         } else if (!setShader(treeHead->getShaderName())) {
-            std::cerr << "Can't set sprite " << treeHead->getSpriteName() << std::endl;
+            std::cerr << "Can't set shader " << treeHead->getShaderName() << std::endl;
             continue;
         }
 
@@ -146,7 +139,7 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
         for (auto child: treeHead->getChildren()) {
             auto childRect = child.getBounds();
             if (camera->inSight(childRect)) {
-                // translate to center
+                // translate to world position
                 glm::mat4 modelMatrix = glm::translate(
                         glm::mat4(1),
                         {
@@ -155,7 +148,7 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
                                 0
                         });
                 // rotate
-                //TODO: fix matrices so rotation is about center
+                //TODO: do matrix math and figure out how to fix matrices so rotation is about center
                 // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 
                 glm::mat4 mvpMatrix = viewProj * modelMatrix;
@@ -245,34 +238,31 @@ void Renderer::loadTileSheet(const std::string &path) {
     loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TILESHEET_CONFIG_TEXTURE_KEY], w, h);
 
     int i = 0;
-    double contentSize = sheetTileSize - 2 * padding;
-    float uStep = contentSize / (1.0 * w);
-    float vStep = contentSize / (1.0 * h);
-    float uPadding = (1.0 * padding) / (1.0 * w);
-    float vPadding = (1.0 * padding) / (1.0 * h);
-    float v = vPadding;
-    for (int y = 0; y < h; y += sheetTileSize) {
-        float u = uPadding;
-        for (int x = 0; x < w; x += sheetTileSize) {
+    float uStep = sheetTileSize / (1.0 * w);
+    float vStep = sheetTileSize / (1.0 * h);
+    float uPadding = padding / (1.0 * w);
+    float vPadding = padding / (1.0 * h);
+    for (float v = 0; v > -1.0; v -= uStep + uPadding) {
+        for (float u = 0; u < 1.0; u += vStep + vPadding) {
             Sprite::Ptr sprite = std::make_shared<Sprite>();
 
             sprite->texture = name;
 
             // bottom left
             sprite->vertices.emplace_back(0, 0);
-            sprite->uvs.emplace_back(u, -v);
+            sprite->uvs.emplace_back(u, v);
 
             // bottom right
-            sprite->vertices.emplace_back(contentSize, 0);
-            sprite->uvs.emplace_back(u + uStep, -v);
+            sprite->vertices.emplace_back(sheetTileSize, 0);
+            sprite->uvs.emplace_back(u + uStep, v);
 
             // top right
-            sprite->vertices.emplace_back(contentSize, contentSize);
-            sprite->uvs.emplace_back(u + uStep, -v - vStep);
+            sprite->vertices.emplace_back(sheetTileSize, sheetTileSize);
+            sprite->uvs.emplace_back(u + uStep, v - vStep);
 
             // top left
-            sprite->vertices.emplace_back(0, contentSize);
-            sprite->uvs.emplace_back(u, -v - vStep);
+            sprite->vertices.emplace_back(0, sheetTileSize);
+            sprite->uvs.emplace_back(u, v - vStep);
 
             // indices
             sprite->indices.push_back(0);
@@ -285,11 +275,8 @@ void Renderer::loadTileSheet(const std::string &path) {
 
             sprite->reload();
             loadedSprites[fmt::format("{0}_{1}", name, i)] = sprite;
-
-            u += uStep + 2 * uPadding;
             i++;
         }
-        v += vStep + 2 * vPadding;
     }
 }
 
@@ -312,7 +299,7 @@ std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, d
     }
     hullSprite->reload();
 
-    std::string id = "1";//StringUtil::uuid4();
+    std::string id = StringUtil::uuid4();
     loadedSprites[fmt::format("curve_{}", id)] = curveSprite;
     loadedSprites[fmt::format("curve_hull_{}", id)] = hullSprite;
 

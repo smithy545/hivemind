@@ -4,6 +4,8 @@
 
 #include "State.h"
 
+#include <fmt/format.h>
+
 
 State::State() : camera(nullptr), map(nullptr) {
     for (bool &key : keys)
@@ -14,18 +16,13 @@ RenderNode::Ptr State::getRenderTree() {
     if (map == nullptr)
         return nullptr;
 
-    auto curves = std::make_shared<RenderNode>("curve_1", "color");
-    auto hulls = std::make_shared<RenderNode>("curve_hull_1", "color");
-    for (const auto &node: map->getNodes()) {
-        curves->addChild({node->getX() * 230.0, node->getY() * 240.0, 10, 10});
-        hulls->addChild({node->getX() * 230.0, node->getY() * 240.0, 10, 10});
+    int i = 0;
+    RenderNode::Ptr head = nullptr;
+    for (auto node: map->getNodes()) {
+        head = std::make_shared<RenderNode>(fmt::format("basic_{0}", i++), "texture", head);
+        head->addChild({node->getX() * 16.0, node->getY() * 16.0, 16, 16});
     }
-
-    curves->setMode(GL_LINE_STRIP);
-    hulls->setMode(GL_LINE_LOOP);
-    hulls->setNext(curves);
-
-    return hulls;
+    return head;
 }
 
 bool State::getKey(int key) const {

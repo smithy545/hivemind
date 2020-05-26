@@ -43,4 +43,7 @@ void Interface::update(const State::Ptr &state) {
     if (state->getKey(GLFW_KEY_DOWN)) {
         state->getCamera()->panDown();
     }
+
+    double mx = state->getMouseX();
+    double my = state->getMouseY();
 }
