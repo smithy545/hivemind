@@ -65,7 +65,7 @@ GLFWwindow *Renderer::init() {
     glEnable(GL_FRAMEBUFFER_SRGB);
 
     // cull triangles facing away from camera
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
 
     // shaders
     for (const auto &shader: config[CONFIG_SHADERS_KEY].items()) {
@@ -92,6 +92,13 @@ GLFWwindow *Renderer::init() {
         std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
         loadSprite(sprite);
     }
+
+    generateBezierSprite({
+                                 {90, 110},
+                                 {25, 40},
+                                 {230, 40},
+                                 {150, 240}
+                         }, 0.1);
 
     setShader(DEFAULT_SHADER_NAME);
 
@@ -121,17 +128,20 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
             std::cerr << "Can't find sprite " << treeHead->getSpriteName() << std::endl;
             continue;
         } else if (!setShader(treeHead->getShaderName())) {
+            std::cerr << "Can't set sprite " << treeHead->getSpriteName() << std::endl;
             continue;
         }
 
         Sprite::Ptr sprite = loadedSprites[treeHead->getSpriteName()];
-        GLuint texId =
-                loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0 : loadedTextures[sprite->texture];
         GLenum drawMode = treeHead->getMode();
 
         glBindVertexArray(sprite->vertexArrayId);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texId);
+        if (sprite->texture != "") {
+            GLuint texId =
+                    loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0 : loadedTextures[sprite->texture];
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, texId);
+        }
 
         for (auto child: treeHead->getChildren()) {
             auto childRect = child.getBounds();
@@ -284,12 +294,11 @@ void Renderer::loadTileSheet(const std::string &path) {
 }
 
 std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize) {
-
     auto curveSprite = std::make_shared<Sprite>();
     auto curve = MathUtil::generateBezierCurve(hull, stepSize);
     for (int index = 0; index < curve.size(); index++) {
         // make all points on curve red and points on hull blue
-        curveSprite->vertices.push_back(curve[index]);
+        curveSprite->vertices.emplace_back(curve[index].x, -curve[index].y);
         curveSprite->colors.emplace_back(1, 0, 0, 1);
         curveSprite->indices.push_back(index);
     }
@@ -297,13 +306,13 @@ std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, d
 
     auto hullSprite = std::make_shared<Sprite>();
     for (int index = 0; index < hull.size(); index++) {
-        hullSprite->vertices.push_back(hull[index]);
+        hullSprite->vertices.emplace_back(hull[index].x, -hull[index].y);
         hullSprite->colors.emplace_back(0, 0, 1, 1);
         hullSprite->indices.push_back(index);
     }
     hullSprite->reload();
 
-    std::string id = StringUtil::uuid4();
+    std::string id = "1";//StringUtil::uuid4();
     loadedSprites[fmt::format("curve_{}", id)] = curveSprite;
     loadedSprites[fmt::format("curve_hull_{}", id)] = hullSprite;
 

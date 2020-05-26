@@ -28,7 +28,7 @@ public:
     GLuint uvBufferId{0};
     GLuint colorBufferId{0};
     GLuint elementBufferId{0};
-    std::string texture;
+    std::string texture{""};
 
     Sprite();
 

@@ -19,10 +19,13 @@ private:
     static std::vector<int *> generatedBinomialCoeffs;
     static int maxGeneratedDegree;
 
-    // generate bezier curve for given control points via polynomial function
-    static std::vector<glm::vec2> bezierNaive(std::vector<glm::vec2> controlPoints, double stepSize);
-    // TODO: std::vector<glm::vec2> bezierDeCasteljau() // generate geometrically
-    // TODO: std::vector<glm::vec2> bezierMatrix()      // generate via matrix operations
+    // generate bezier curve for given control points
+    static std::vector<glm::vec2>
+    bezierPolynomial(std::vector<glm::vec2> points, double stepSize); // via polynomial function
+    static std::vector<glm::vec2> bezierDeCasteljau(std::vector<glm::vec2> points, double stepSize); // geometrically
+    static std::vector<glm::vec2>
+    bezierMatrix(std::vector<glm::vec2> controlPoints, double stepSize);      // via matrix operations
+    static glm::vec2 deCasteljauKernel(std::vector<glm::vec2> points, double t);
 };
 
 

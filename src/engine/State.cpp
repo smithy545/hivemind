@@ -14,12 +14,18 @@ RenderNode::Ptr State::getRenderTree() {
     if (map == nullptr)
         return nullptr;
 
-    auto gorillas = std::make_shared<RenderNode>("gorilla", "texture");
+    auto curves = std::make_shared<RenderNode>("curve_1", "color");
+    auto hulls = std::make_shared<RenderNode>("curve_hull_1", "color");
     for (const auto &node: map->getNodes()) {
-        gorillas->addChild({node->getX() * 137.0, node->getY() * 137.0, 137.0, 137.0});
+        curves->addChild({node->getX() * 230.0, node->getY() * 240.0, 10, 10});
+        hulls->addChild({node->getX() * 230.0, node->getY() * 240.0, 10, 10});
     }
 
-    return gorillas;
+    curves->setMode(GL_LINE_STRIP);
+    hulls->setMode(GL_LINE_LOOP);
+    hulls->setNext(curves);
+
+    return hulls;
 }
 
 bool State::getKey(int key) const {
