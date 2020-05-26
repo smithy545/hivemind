@@ -119,41 +119,40 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
         std::string spriteName = treeHead->getSpriteName();
         if (loadedSprites.find(spriteName) == loadedSprites.end()) {
             std::cerr << "Can't find sprite " << treeHead->getSpriteName() << std::endl;
-            continue;
         } else if (!setShader(treeHead->getShaderName())) {
             std::cerr << "Can't set shader " << treeHead->getShaderName() << std::endl;
-            continue;
-        }
+        } else {
+            Sprite::Ptr sprite = loadedSprites[treeHead->getSpriteName()];
+            GLenum drawMode = treeHead->getMode();
 
-        Sprite::Ptr sprite = loadedSprites[treeHead->getSpriteName()];
-        GLenum drawMode = treeHead->getMode();
+            glBindVertexArray(sprite->vertexArrayId);
+            if (sprite->texture != "") {
+                GLuint texId =
+                        loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0
+                                                                                     : loadedTextures[sprite->texture];
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, texId);
+            }
 
-        glBindVertexArray(sprite->vertexArrayId);
-        if (sprite->texture != "") {
-            GLuint texId =
-                    loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0 : loadedTextures[sprite->texture];
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, texId);
-        }
+            for (auto child: treeHead->getChildren()) {
+                auto childRect = child.getBounds();
+                if (camera->inSight(childRect)) {
+                    // translate to world position
+                    glm::mat4 modelMatrix = glm::translate(
+                            glm::mat4(1),
+                            {
+                                    childRect.getX(),
+                                    childRect.getY(),
+                                    0
+                            });
+                    // rotate
+                    //TODO: do matrix math and figure out how to fix matrices so rotation is about center
+                    // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 
-        for (auto child: treeHead->getChildren()) {
-            auto childRect = child.getBounds();
-            if (camera->inSight(childRect)) {
-                // translate to world position
-                glm::mat4 modelMatrix = glm::translate(
-                        glm::mat4(1),
-                        {
-                                childRect.getX(),
-                                childRect.getY(),
-                                0
-                        });
-                // rotate
-                //TODO: do matrix math and figure out how to fix matrices so rotation is about center
-                // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
-
-                glm::mat4 mvpMatrix = viewProj * modelMatrix;
-                glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+                    glm::mat4 mvpMatrix = viewProj * modelMatrix;
+                    glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+                    glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+                }
             }
         }
         treeHead = std::dynamic_pointer_cast<RenderNode>(treeHead->getNext());
@@ -232,7 +231,6 @@ void Renderer::loadTileSheet(const std::string &path) {
 
     std::string name = tilesheet[CONFIG_NAME_KEY];
     int sheetTileSize = tilesheet[CONFIG_TILESIZE_KEY];
-    int padding = tilesheet[TILESHEET_CONFIG_PADDING_KEY];
 
     int w, h;
     loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TILESHEET_CONFIG_TEXTURE_KEY], w, h);
@@ -240,10 +238,8 @@ void Renderer::loadTileSheet(const std::string &path) {
     int i = 0;
     float uStep = sheetTileSize / (1.0 * w);
     float vStep = sheetTileSize / (1.0 * h);
-    float uPadding = padding / (1.0 * w);
-    float vPadding = padding / (1.0 * h);
-    for (float v = 0; v > -1.0; v -= uStep + uPadding) {
-        for (float u = 0; u < 1.0; u += vStep + vPadding) {
+    for (float v = 0; v >= -1.0; v -= vStep) {
+        for (float u = 0; u < 1.0; u += uStep) {
             Sprite::Ptr sprite = std::make_shared<Sprite>();
 
             sprite->texture = name;

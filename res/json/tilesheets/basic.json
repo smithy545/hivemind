@@ -1,6 +1,5 @@
 {
   "name": "basic",
   "texture": "colored.png",
-  "padding": 0,
   "tileSize": 16
 }

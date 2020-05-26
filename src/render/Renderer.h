@@ -32,7 +32,6 @@ public:
     const std::string DEFAULT_SHADER_NAME{"texture"};
 
     // TODO: Move these constants and tilesheet/spritesheet functionality to separate classes
-    const std::string TILESHEET_CONFIG_PADDING_KEY{"padding"};
     const std::string TILESHEET_CONFIG_TEXTURE_KEY{"texture"};
     const std::string SPRITESHEET_CONFIG_TEXTURE_KEY{"textureName"};
 
