@@ -4,25 +4,20 @@
 
 #include "Interface.h"
 
-#include <exception>
-#include <fmt/format.h>
+#include <nlohmann/json.hpp>
 
 #include "util/FileUtil.h"
 
 
 Interface::Interface(const std::string &configPath) {
-    json config = FileUtil::readJsonFile(configPath);
-    for (const auto &component: config["components"].items()) {
-        json schema;
-        if (component.value().is_string())
-            schema = FileUtil::readJsonFile(component.value());
-        else if (component.value().is_object())
-            schema = component.value();
-        else {
-            auto msg = fmt::format("Error reading ui config from {0}", component.key());
-            throw std::exception(msg.c_str());
-        }
-    }
+    // read config
+    auto configSchema = json::parse(R"({
+    "title": "User interface initialization config",
+    "type": "object",
+    "properties": {},
+    "required": []
+})");
+    auto config = FileUtil::readJsonFile(configPath, configSchema);
 }
 
 void Interface::update(const State::Ptr &state) {

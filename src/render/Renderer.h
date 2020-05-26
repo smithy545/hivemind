@@ -21,7 +21,6 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    const std::string CONFIG_NAME_KEY{"name"};
     const std::string CONFIG_WIDTH_KEY{"width"};
     const std::string CONFIG_HEIGHT_KEY{"height"};
     const std::string CONFIG_SPRITESHEETS_KEY{"spritesheets"};
@@ -29,12 +28,14 @@ public:
     const std::string CONFIG_TILESIZE_KEY{"tileSize"};
     const std::string CONFIG_TEXTURES_KEY{"textures"};
     const std::string CONFIG_SHADERS_KEY{"shaders"};
-    const std::string DEFAULT_SHADER_NAME{"texture"};
 
     // TODO: Move these constants and tilesheet/spritesheet functionality to separate classes
+    const std::string CONFIG_NAME_KEY{"name"};
     const std::string TILESHEET_CONFIG_TEXTURE_KEY{"texture"};
     const std::string TILESHEET_CONFIG_TILENAMES_KEY{"tileNames"};
     const std::string SPRITESHEET_CONFIG_TEXTURE_KEY{"textureName"};
+
+    const std::string DEFAULT_SHADER_NAME{"texture"};
 
     explicit Renderer(std::string configPath);
 

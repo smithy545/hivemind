@@ -26,8 +26,50 @@ int Renderer::getHeight() const {
 }
 
 GLFWwindow *Renderer::init() {
-    // read config
-    auto config = FileUtil::readJsonFile(configPath);
+    // read config (double braces for fmt lib)
+    auto configSchema = json::parse(fmt::format(R"({{
+    "title": "Renderer initialization config",
+    "type": "object",
+    "properties": {{
+        "{0}": {{
+            "description": "Initial width of rendered window",
+            "type": "integer"
+        }},
+        "{1}": {{
+            "description": "Initial height of rendered window",
+            "type": "integer"
+        }},
+        "{2}": {{
+            "description": "Names of json files containing sprite information",
+            "type": "array",
+            "items": {{
+                "type": "string"
+            }}
+        }},
+        "{3}": {{
+            "description": "Names of json files containing tilesheet information",
+            "type": "array",
+            "items": {{
+                "type": "string"
+            }}
+        }},
+        "{4}": {{
+            "description": "Size of tiles to render on maps",
+            "type": "integer"
+        }},
+        "{5}": {{
+            "description": "Texture files to load",
+            "type": "object"
+        }},
+        "{6}": {{
+            "description": "Shader names and files",
+            "type": "object"
+        }}
+    }},
+    "required": ["{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}"]
+}})", CONFIG_WIDTH_KEY, CONFIG_HEIGHT_KEY, CONFIG_SPRITESHEETS_KEY, CONFIG_TILESHEETS_KEY,
+                                                CONFIG_TILESIZE_KEY, CONFIG_TEXTURES_KEY, CONFIG_SHADERS_KEY));
+    auto config = FileUtil::readJsonFile(configPath, configSchema);
     width = config[CONFIG_WIDTH_KEY];
     height = config[CONFIG_HEIGHT_KEY];
 
