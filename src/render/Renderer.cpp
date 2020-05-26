@@ -185,7 +185,32 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
 void Renderer::loadSprite(const std::string &path) {
     Sprite::Ptr sprite = std::make_shared<Sprite>();
 
-    auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path));
+    // sprite schema for validation (double escaped for fmt lib)
+    auto spriteSchema = json::parse(fmt::format(R"({{
+    "title": "A screen sprite",
+    "type": "object",
+    "properties": {{
+        "{0}": {{
+            "description": "Sprite width",
+            "type": "number"
+        }},
+        "{1}": {{
+            "description": "Sprite height",
+            "type": "number"
+        }},
+        "{2}": {{
+            "description": "Sprite name",
+            "type": "string"
+        }},
+        "{3}": {{
+            "description": "Sprite texture",
+            "type": "string"
+        }}
+    }},
+    "required": ["{0}", "{1}", "{2}", "{3}"]
+}}
+)", CONFIG_WIDTH_KEY, CONFIG_HEIGHT_KEY, CONFIG_NAME_KEY, SPRITESHEET_CONFIG_TEXTURE_KEY));
+    auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path), spriteSchema);
     float spriteWidth = spriteData[CONFIG_WIDTH_KEY];
     float spriteHeight = spriteData[CONFIG_HEIGHT_KEY];
     std::string name = spriteData[CONFIG_NAME_KEY];
@@ -270,7 +295,8 @@ void Renderer::loadTileSheet(const std::string &path) {
             sprite->indices.push_back(0);
 
             sprite->reload();
-            loadedSprites[fmt::format("{0}_{1}", name, i)] = sprite;
+            auto tileName = fmt::format("{0}_{1}", name, i);
+            loadedSprites[tileName] = sprite;
             i++;
         }
     }

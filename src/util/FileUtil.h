@@ -5,11 +5,13 @@
 #ifndef SOCIETY_FILEUTIL_H
 #define SOCIETY_FILEUTIL_H
 
+#include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <tinyxml.h>
 
 using json = nlohmann::json;
+using namespace nlohmann::json_schema;
 
 class FileUtil {
 public:
@@ -18,7 +20,7 @@ public:
 
     static char *readResourceFile(const std::string &resourcePath);
 
-    static json readJsonFile(const std::string &jsonPath, bool prefixPath = true);
+    static json readJsonFile(const std::string &jsonPath, const json &schema = nullptr, bool prefixPath = true);
 
     static TiXmlDocument readXmlFile(const std::string &xmlPath);
 

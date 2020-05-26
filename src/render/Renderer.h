@@ -33,6 +33,7 @@ public:
 
     // TODO: Move these constants and tilesheet/spritesheet functionality to separate classes
     const std::string TILESHEET_CONFIG_TEXTURE_KEY{"texture"};
+    const std::string TILESHEET_CONFIG_TILENAMES_KEY{"tileNames"};
     const std::string SPRITESHEET_CONFIG_TEXTURE_KEY{"textureName"};
 
     explicit Renderer(std::string configPath);

@@ -44,11 +44,26 @@ char *FileUtil::readResourceFile(const std::string &resourcePath) {
 }
 
 
-json FileUtil::readJsonFile(const std::string &jsonPath, bool prefixPath) {
+json FileUtil::readJsonFile(const std::string &jsonPath, const json &schema, bool prefixPath) {
     std::string path = prefixPath ? resource(fmt::format(JSON_PREFIX, jsonPath)) : resource(jsonPath);
     std::ifstream file(path);
-    if (file.good())
-        return json::parse(file);
+    if (file.good()) {
+        auto data = json::parse(file);
+        if (schema != nullptr) {
+            json_validator validator;
+            try {
+                validator.set_root_schema(schema);
+            } catch (std::exception e) {
+                std::cerr << "Schema error: " << e.what() << std::endl;
+            }
+            try {
+                validator.validate(data);
+            } catch (std::exception e) {
+                std::cerr << "Validation error: " << e.what() << std::endl;
+            }
+        }
+        return data;
+    }
     std::string message = fmt::format("Can't read json file at {0}", resource(jsonPath));
     throw std::exception(message.c_str());
 }
