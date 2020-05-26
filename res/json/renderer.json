@@ -18,7 +18,7 @@
   "textures": {
     "gorilla": "gorilla.png"
   },
-  "tileSize": 16,
+  "tilesize": 16,
   "width": 1200,
   "height": 800
 }

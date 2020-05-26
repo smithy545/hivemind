@@ -21,22 +21,6 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    const std::string CONFIG_WIDTH_KEY{"width"};
-    const std::string CONFIG_HEIGHT_KEY{"height"};
-    const std::string CONFIG_SPRITESHEETS_KEY{"spritesheets"};
-    const std::string CONFIG_TILESHEETS_KEY{"tilesheets"};
-    const std::string CONFIG_TILESIZE_KEY{"tileSize"};
-    const std::string CONFIG_TEXTURES_KEY{"textures"};
-    const std::string CONFIG_SHADERS_KEY{"shaders"};
-
-    // TODO: Move these constants and tilesheet/spritesheet functionality to separate classes
-    const std::string CONFIG_NAME_KEY{"name"};
-    const std::string TILESHEET_CONFIG_TEXTURE_KEY{"texture"};
-    const std::string TILESHEET_CONFIG_TILENAMES_KEY{"tileNames"};
-    const std::string SPRITESHEET_CONFIG_TEXTURE_KEY{"textureName"};
-
-    const std::string DEFAULT_SHADER_NAME{"texture"};
-
     explicit Renderer(std::string configPath);
 
     // lifecycle methods
@@ -56,10 +40,23 @@ public:
 
     // state setters
     bool setShader(const std::string &name);
+
 private:
+    const std::string NAME_KEY{"name"};
+    const std::string WIDTH_KEY{"width"};
+    const std::string HEIGHT_KEY{"height"};
+    const std::string SPRITESHEETS_KEY{"spritesheets"};
+    const std::string TILESHEETS_KEY{"tilesheets"};
+    const std::string TILESIZE_KEY{"tilesize"};
+    const std::string TILENAMES_KEY{"tilenames"};
+    const std::string TEXTURE_KEY{"texture"};
+    const std::string TEXTURES_KEY{"textures"};
+    const std::string TEXTURE_NAME_KEY{"textureName"};
+    const std::string SHADERS_KEY{"shaders"};
+    const std::string DEFAULT_SHADER_NAME{"texture"};
+
     int width{};
     int height{};
-
     GLuint currentShaderProgram{};
     GLint mvpUniform{};
     GLint texUniform{};

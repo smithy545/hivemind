@@ -67,11 +67,10 @@ GLFWwindow *Renderer::init() {
         }}
     }},
     "required": ["{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}"]
-}})", CONFIG_WIDTH_KEY, CONFIG_HEIGHT_KEY, CONFIG_SPRITESHEETS_KEY, CONFIG_TILESHEETS_KEY,
-                                                CONFIG_TILESIZE_KEY, CONFIG_TEXTURES_KEY, CONFIG_SHADERS_KEY));
+}})", WIDTH_KEY, HEIGHT_KEY, SPRITESHEETS_KEY, TILESHEETS_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY));
     auto config = FileUtil::readJsonFile(configPath, configSchema);
-    width = config[CONFIG_WIDTH_KEY];
-    height = config[CONFIG_HEIGHT_KEY];
+    width = config[WIDTH_KEY];
+    height = config[HEIGHT_KEY];
 
     // Initialise GLFW
     if (!glfwInit()) {
@@ -110,7 +109,7 @@ GLFWwindow *Renderer::init() {
     //glEnable(GL_CULL_FACE);
 
     // shaders
-    for (const auto &shader: config[CONFIG_SHADERS_KEY].items()) {
+    for (const auto &shader: config[SHADERS_KEY].items()) {
         std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],
                                  shader.value()[1])
                   << std::endl;
@@ -118,19 +117,19 @@ GLFWwindow *Renderer::init() {
     }
 
     // image textures
-    for (const auto &tex: config[CONFIG_TEXTURES_KEY].items()) {
+    for (const auto &tex: config[TEXTURES_KEY].items()) {
         std::cout << fmt::format("Loading texture \"{0}\" from {1}", tex.key(), tex.value()) << std::endl;
         loadTexture(tex.key(), tex.value());
     }
 
     // tilesheet textures
-    for (const auto &tilesheet: config[CONFIG_TILESHEETS_KEY]) {
+    for (const auto &tilesheet: config[TILESHEETS_KEY]) {
         std::cout << fmt::format("Loading tilesheet from {0}", tilesheet) << std::endl;
         loadTileSheet(tilesheet);
     }
 
     // sprites
-    for (const auto &sprite: config[CONFIG_SPRITESHEETS_KEY]) {
+    for (const auto &sprite: config[SPRITESHEETS_KEY]) {
         std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
         loadSprite(sprite);
     }
@@ -251,12 +250,12 @@ void Renderer::loadSprite(const std::string &path) {
     }},
     "required": ["{0}", "{1}", "{2}", "{3}"]
 }}
-)", CONFIG_WIDTH_KEY, CONFIG_HEIGHT_KEY, CONFIG_NAME_KEY, SPRITESHEET_CONFIG_TEXTURE_KEY));
+)", WIDTH_KEY, HEIGHT_KEY, NAME_KEY, TEXTURE_NAME_KEY));
     auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path), spriteSchema);
-    float spriteWidth = spriteData[CONFIG_WIDTH_KEY];
-    float spriteHeight = spriteData[CONFIG_HEIGHT_KEY];
-    std::string name = spriteData[CONFIG_NAME_KEY];
-    sprite->texture = spriteData[SPRITESHEET_CONFIG_TEXTURE_KEY];
+    float spriteWidth = spriteData[WIDTH_KEY];
+    float spriteHeight = spriteData[HEIGHT_KEY];
+    std::string name = spriteData[NAME_KEY];
+    sprite->texture = spriteData[TEXTURE_NAME_KEY];
 
     // bottom left
     sprite->vertices.emplace_back(0, 0);
@@ -318,13 +317,14 @@ void Renderer::loadTileSheet(const std::string &path) {
     }},
     "required": ["{0}", "{1}", "{2}"]
 }}
-)", CONFIG_NAME_KEY, CONFIG_TILESIZE_KEY, TILESHEET_CONFIG_TEXTURE_KEY, TILESHEET_CONFIG_TILENAMES_KEY));
+)", NAME_KEY, TILESIZE_KEY, TEXTURE_KEY, TILENAMES_KEY));
     auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path), tilesheetSchema);
 
-    std::string name = tilesheet[CONFIG_NAME_KEY];
-    int sheetTileSize = tilesheet[CONFIG_TILESIZE_KEY];
+    std::string name = tilesheet[NAME_KEY];
+    int sheetTileSize = tilesheet[TILESIZE_KEY];
     int w, h;
-    loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TILESHEET_CONFIG_TEXTURE_KEY], w, h);
+    loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TEXTURE_KEY], w, h);
+    loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TEXTURE_KEY], w, h);
 
     int i = 0;
     float uStep = sheetTileSize / (1.0 * w);

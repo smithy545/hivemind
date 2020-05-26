@@ -1,7 +1,7 @@
 {
   "name": "basic",
   "texture": "colored_transparent.png",
-  "tileSize": 16,
-  "tileNames": {
+  "tilesize": 16,
+  "tilenames": {
   }
 }
