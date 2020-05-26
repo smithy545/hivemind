@@ -252,11 +252,35 @@ void Renderer::loadTexture(const std::string &name, const std::string &texturePa
 }
 
 void Renderer::loadTileSheet(const std::string &path) {
-    auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path));
+    // tilesheet schema for validation (double escaped for fmt lib)
+    auto tilesheetSchema = json::parse(fmt::format(R"({{
+    "title": "A tile sheet",
+    "type": "object",
+    "properties": {{
+        "{0}": {{
+            "description": "Tilesheet name",
+            "type": "string"
+        }},
+        "{1}": {{
+            "description": "Tile size",
+            "type": "number"
+        }},
+        "{2}": {{
+            "description": "Tilesheet texture",
+            "type": "string"
+        }},
+        "{3}": {{
+            "description": "Tile names",
+            "type": "object"
+        }}
+    }},
+    "required": ["{0}", "{1}", "{2}"]
+}}
+)", CONFIG_NAME_KEY, CONFIG_TILESIZE_KEY, TILESHEET_CONFIG_TEXTURE_KEY, TILESHEET_CONFIG_TILENAMES_KEY));
+    auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path), tilesheetSchema);
 
     std::string name = tilesheet[CONFIG_NAME_KEY];
     int sheetTileSize = tilesheet[CONFIG_TILESIZE_KEY];
-
     int w, h;
     loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TILESHEET_CONFIG_TEXTURE_KEY], w, h);
 
