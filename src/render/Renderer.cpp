@@ -7,7 +7,6 @@
 #include <iostream>
 #include <fmt/format.h>
 #include <glm/ext.hpp>
-#include <utility>
 
 #include "util/FileUtil.h"
 #include "util/MathUtil.h"
@@ -15,7 +14,7 @@
 #include "util/StringUtil.h"
 
 
-Renderer::Renderer(std::string configPath) : configPath(std::move(configPath)), window(nullptr) {}
+Renderer::Renderer() : window(nullptr) {}
 
 int Renderer::getWidth() const {
     return width;
@@ -25,7 +24,7 @@ int Renderer::getHeight() const {
     return height;
 }
 
-GLFWwindow *Renderer::init() {
+GLFWwindow *Renderer::init(std::string configPath) {
     auto config = FileUtil::readJsonFile(configPath, CONFIG_SCHEMA);
     width = config[WIDTH_KEY];
     height = config[HEIGHT_KEY];

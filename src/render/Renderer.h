@@ -24,10 +24,10 @@ class Renderer {
 public:
     typedef std::shared_ptr<Renderer> Ptr;
 
-    explicit Renderer(std::string configPath);
+    Renderer();
 
     // lifecycle methods
-    GLFWwindow *init();
+    GLFWwindow *init(std::string configPath);
 
     void render(RenderNode::Ptr treeHead, const Camera::Ptr &camera);
 
@@ -121,7 +121,6 @@ private:
     GLuint currentShaderProgram{};
     GLint mvpUniform{};
     GLint texUniform{};
-    std::string configPath;
     GLFWwindow *window;
     std::unordered_map<std::string, GLuint> loadedShaders;
     std::unordered_map<std::string, Sprite::Ptr> loadedSprites;

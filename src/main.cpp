@@ -65,10 +65,10 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 
 void loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>("renderer.json");
+    Renderer::Ptr renderer = std::make_shared<Renderer>();
     screenWidth = renderer->getWidth();
     screenHeight = renderer->getHeight();
-    GLFWwindow *window = renderer->init();
+    GLFWwindow *window = renderer->init("renderer.json");
 
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>();
