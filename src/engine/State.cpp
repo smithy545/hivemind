@@ -7,7 +7,7 @@
 #include <fmt/format.h>
 
 
-State::State() : camera(nullptr), map(nullptr) {
+State::State() : camera(nullptr), head(nullptr), map(nullptr) {
     for (bool &key : keys)
         key = false;
 }
@@ -16,12 +16,6 @@ RenderNode::Ptr State::getRenderTree() {
     if (map == nullptr)
         return nullptr;
 
-    int i = 0;
-    RenderNode::Ptr head = nullptr;
-    for (auto node: map->getNodes()) {
-        head = std::make_shared<RenderNode>(fmt::format("basic_{0}", i++), "texture", head);
-        head->addChild({node->getX() * 16.0, node->getY() * 16.0, 16, 16});
-    }
     return head;
 }
 

@@ -103,7 +103,7 @@ GLFWwindow *Renderer::init() {
     }
 
     // enable srgb
-    glEnable(GL_FRAMEBUFFER_SRGB);
+    //glEnable(GL_FRAMEBUFFER_SRGB);
 
     // cull triangles facing away from camera
     //glEnable(GL_CULL_FACE);
@@ -225,33 +225,7 @@ void Renderer::loadShader(const std::string &name, const std::string &vertexShad
 
 void Renderer::loadSprite(const std::string &path) {
     Sprite::Ptr sprite = std::make_shared<Sprite>();
-
-    // sprite schema for validation (double escaped for fmt lib)
-    auto spriteSchema = json::parse(fmt::format(R"({{
-    "title": "A screen sprite",
-    "type": "object",
-    "properties": {{
-        "{0}": {{
-            "description": "Sprite width",
-            "type": "number"
-        }},
-        "{1}": {{
-            "description": "Sprite height",
-            "type": "number"
-        }},
-        "{2}": {{
-            "description": "Sprite name",
-            "type": "string"
-        }},
-        "{3}": {{
-            "description": "Sprite texture",
-            "type": "string"
-        }}
-    }},
-    "required": ["{0}", "{1}", "{2}", "{3}"]
-}}
-)", WIDTH_KEY, HEIGHT_KEY, NAME_KEY, TEXTURE_NAME_KEY));
-    auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path), spriteSchema);
+    auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path), SPRITE_SCHEMA);
     float spriteWidth = spriteData[WIDTH_KEY];
     float spriteHeight = spriteData[HEIGHT_KEY];
     std::string name = spriteData[NAME_KEY];
@@ -293,32 +267,7 @@ void Renderer::loadTexture(const std::string &name, const std::string &texturePa
 }
 
 void Renderer::loadTileSheet(const std::string &path) {
-    // tilesheet schema for validation (double escaped for fmt lib)
-    auto tilesheetSchema = json::parse(fmt::format(R"({{
-    "title": "A tile sheet",
-    "type": "object",
-    "properties": {{
-        "{0}": {{
-            "description": "Tilesheet name",
-            "type": "string"
-        }},
-        "{1}": {{
-            "description": "Tile size",
-            "type": "number"
-        }},
-        "{2}": {{
-            "description": "Tilesheet texture",
-            "type": "string"
-        }},
-        "{3}": {{
-            "description": "Tile names",
-            "type": "object"
-        }}
-    }},
-    "required": ["{0}", "{1}", "{2}"]
-}}
-)", NAME_KEY, TILESIZE_KEY, TEXTURE_KEY, TILENAMES_KEY));
-    auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path), tilesheetSchema);
+    auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path), TILESHEET_SCHEMA);
 
     std::string name = tilesheet[NAME_KEY];
     int sheetTileSize = tilesheet[TILESIZE_KEY];
@@ -361,11 +310,13 @@ void Renderer::loadTileSheet(const std::string &path) {
             sprite->indices.push_back(0);
 
             sprite->reload();
-            auto tileName = fmt::format("{0}_{1}", name, i);
-            loadedSprites[tileName] = sprite;
+            loadedSprites[fmt::format("{0}_{1}", name, i)] = sprite;
             i++;
         }
     }
+
+    // setup sprites
+    for (auto sprite: tilesheet[SPRITES_KEY]) {}
 }
 
 std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize) {

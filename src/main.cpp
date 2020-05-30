@@ -73,7 +73,7 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>();
     state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
-    state->setMap(std::make_shared<GridMap>(0, 0, 32, 32));
+    state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -87,10 +87,11 @@ void loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // clear background to dirt color
+    glClearColor(0.61f, 0.46, 0.33f, 0.5f);
 
     std::cout << "UI init" << std::endl;
-    Interface::Ptr ui = std::make_shared<Interface>("ui.json");
+    Interface::Ptr ui = std::make_shared<Interface>();
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
@@ -101,7 +102,6 @@ void loop() {
     do {
         // timekeeping
         state->enterFrame();
-
         glClear(GL_COLOR_BUFFER_BIT);
 
         // resize if flag set

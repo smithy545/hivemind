@@ -78,12 +78,12 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
     for (int y = 0; y < h; y++) {
         // load image data
         for (int x = 0; x < w; x++) {
-            int index = y * w + x;
+            int index = channels * (y * w + x);
             for (int c = 0; c < channels; c++) {
                 if (x < width && y < height)
-                    data[channels * index + c] = image(x, y, c);
+                    data[index + c] = image(x, y, c);
                 else
-                    data[channels * index + c] = 0;
+                    data[index + c] = 0;
             }
         }
     }
@@ -112,3 +112,4 @@ GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &
 
     return textureID;
 }
+

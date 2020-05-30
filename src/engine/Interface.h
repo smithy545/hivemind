@@ -17,7 +17,7 @@ class Interface {
 public:
     typedef std::shared_ptr<Interface> Ptr;
 
-    explicit Interface(const std::string &configPath);
+    Interface();
 
     void update(const State::Ptr &state);
 private:

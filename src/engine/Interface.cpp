@@ -4,21 +4,8 @@
 
 #include "Interface.h"
 
-#include <nlohmann/json.hpp>
 
-#include "util/FileUtil.h"
-
-
-Interface::Interface(const std::string &configPath) {
-    // read config
-    auto configSchema = json::parse(R"({
-    "title": "User interface initialization config",
-    "type": "object",
-    "properties": {},
-    "required": []
-})");
-    auto config = FileUtil::readJsonFile(configPath, configSchema);
-}
+Interface::Interface() {}
 
 void Interface::update(const State::Ptr &state) {
     if (state->getMouseScroll() > 0) {

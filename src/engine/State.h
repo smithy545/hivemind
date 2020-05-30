@@ -78,6 +78,7 @@ private:
 
     // scene state
     Camera::Ptr camera;
+    RenderNode::Ptr head;
 
     // world state
     Map::Ptr map;

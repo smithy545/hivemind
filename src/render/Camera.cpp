@@ -46,12 +46,12 @@ void Camera::panDown() {
 }
 
 void Camera::zoomIn() {
-    scale *= 0.9;
+    scale *= 0.5;
     resetProjectionMatrix();
 }
 
 void Camera::zoomOut() {
-    scale *= 1.1;
+    scale *= 2.0;
     resetProjectionMatrix();
 }
 
