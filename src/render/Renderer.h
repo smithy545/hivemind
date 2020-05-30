@@ -55,29 +55,28 @@ private:
     const std::string TILESIZE_KEY{"tilesize"};
     const std::string TEXTURE_KEY{"texture"};
     const std::string TEXTURES_KEY{"textures"};
-    const std::string TEXTURE_NAME_KEY{"textureName"};
     const std::string DEFAULT_SHADER_NAME{"texture"};
     const json SPRITE_SCHEMA{
             {"title",      "A screen sprite"},
             {"type",       "object"},
             {"properties", {
                                    {WIDTH_KEY, {{"description", "Sprite width"}, {"type", "number"}}},
-                                              {HEIGHT_KEY, {{"description", "Sprite height"}, {"type", "number"}}},
-                                                          {NAME_KEY, {{"description", "Sprite name"}, {"type", "string"}}},
-                                                                    {TEXTURE_KEY, {{"description", "Sprite texture"}, {"type", "string"}}}
+                                   {HEIGHT_KEY, {{"description", "Sprite height"}, {"type", "number"}}},
+                                   {NAME_KEY, {{"description", "Sprite name"}, {"type", "string"}}},
+                                   {TEXTURE_KEY, {{"description", "Sprite texture"}, {"type", "string"}}}
                            }},
-            {"required",   {       WIDTH_KEY, HEIGHT_KEY, NAME_KEY, TEXTURE_NAME_KEY}}
+            {"required",   {NAME_KEY, TEXTURE_KEY}}
     };
     const json TILESHEET_SCHEMA{
             {"title",      "A tile sheet"},
             {"type",       "object"},
             {"properties", {
                                    {NAME_KEY, {{"description", "Tilesheet name"}, {"type", "string"}}},
-                                             {TILESIZE_KEY, {{"description", "Tile size"}, {"type", "number"}}},
-                                                           {TEXTURE_KEY, {{"description", "Tilesheet texture"}, {"type", "string"}}},
-                                                                        {SPRITES_KEY, {{"description", "Tile names"}, {"type", "object"}}}
+                                   {TILESIZE_KEY, {{"description", "Tile size"}, {"type", "number"}}},
+                                   {TEXTURE_KEY, {{"description", "Tilesheet texture"}, {"type", "string"}}},
+                                   {SPRITES_KEY, {{"description", "Tile names"}, {"type", "array"}}}
                            }},
-            {"required",   {       NAME_KEY, TILESIZE_KEY, TEXTURE_KEY, SPRITES_KEY}}
+            {"required",   {NAME_KEY, TILESIZE_KEY, TEXTURE_KEY, SPRITES_KEY}}
     };
 
     int width{};

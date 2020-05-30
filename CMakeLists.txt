@@ -148,18 +148,6 @@ set(ALL_LIBS
         ui
         engine)
 
-include_directories(
-        external/json-schema-validator/src
-        external/glew/include
-        external/glfw/include
-        external/json/include
-        external/fmt/include
-        external/glm
-        external/cimg
-        external/tinyxml
-        src
-)
-
 add_definitions(
         -DTW_STATIC
         -DTW_NO_LIB_PRAGMA

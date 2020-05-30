@@ -2,5 +2,10 @@
   "name": "basic",
   "texture": "colored_transparent.png",
   "tilesize": 16,
-  "sprites": {}
+  "sprites": [{
+    "name": "nude",
+    "texture": "basic_792",
+    "width": 16,
+    "height": 16
+  }]
 }

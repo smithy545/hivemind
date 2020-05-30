@@ -229,7 +229,7 @@ void Renderer::loadSprite(const std::string &path) {
     float spriteWidth = spriteData[WIDTH_KEY];
     float spriteHeight = spriteData[HEIGHT_KEY];
     std::string name = spriteData[NAME_KEY];
-    sprite->texture = spriteData[TEXTURE_NAME_KEY];
+    sprite->texture = spriteData[TEXTURE_KEY];
 
     // bottom left
     sprite->vertices.emplace_back(0, 0);
@@ -316,7 +316,27 @@ void Renderer::loadTileSheet(const std::string &path) {
     }
 
     // setup sprites
-    for (auto sprite: tilesheet[SPRITES_KEY]) {}
+    json_validator validator;
+    try {
+        validator.set_root_schema(SPRITE_SCHEMA);
+    } catch (std::exception &e) {
+        std::cerr << "Schema error: " << e.what() << std::endl;
+        return;
+    }
+    for (const auto& spriteInfo: tilesheet[SPRITES_KEY]) {
+        try {
+            validator.validate(spriteInfo);
+        } catch(std::exception &e) {
+            std::cerr << "Validation error: " << e.what() << std::endl;
+            continue;
+        }
+
+        if(loadedSprites.find(spriteInfo[TEXTURE_KEY]) != loadedSprites.end()) {
+            // replace tile name with sprite name
+            loadedSprites[spriteInfo[NAME_KEY]] = loadedSprites[spriteInfo[TEXTURE_KEY]];
+            loadedSprites.erase(spriteInfo[TEXTURE_KEY]);
+        }
+    }
 }
 
 std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize) {
