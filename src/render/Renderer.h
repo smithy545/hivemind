@@ -56,6 +56,43 @@ private:
     const std::string TEXTURE_KEY{"texture"};
     const std::string TEXTURES_KEY{"textures"};
     const std::string DEFAULT_SHADER_NAME{"texture"};
+    const json CONFIG_SCHEMA{
+        {"title", "Renderer initialization config"},
+        {"type", "object"},
+        {"properties", {
+            {WIDTH_KEY, {
+                {"description", "Initial width of rendered window"},
+                {"type", "integer"}
+            }},
+            {HEIGHT_KEY, {
+                {"description", "Initial height of rendered window"},
+                {"type", "integer"}
+            }},
+            {SPRITESHEETS_KEY, {
+                {"description", "Names of json files containing sprite information"},
+                {"type", "array"},
+                {"items", {"type", "string"}}
+            }},
+            {TILESHEETS_KEY, {
+                {"description", "Names of json files containing tilesheet information"},
+                {"type", "array"},
+                {"items", {"type", "string"}}
+            }},
+            {TILESIZE_KEY, {
+                {"description", "Size of tiles to render on maps"},
+                {"type", "integer"}
+            }},
+            {TEXTURES_KEY, {
+                {"description", "Texture files to load"},
+                {"type", "object"}
+            }},
+            {SHADERS_KEY, {
+                {"description", "Shader names and files"},
+                {"type", "object"}
+            }}
+        }},
+        {"required", {WIDTH_KEY, HEIGHT_KEY, SPRITESHEETS_KEY, TILESHEETS_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
+    };
     const json SPRITE_SCHEMA{
             {"title",      "A screen sprite"},
             {"type",       "object"},
