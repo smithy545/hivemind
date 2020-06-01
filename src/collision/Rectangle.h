@@ -5,9 +5,12 @@
 #ifndef SOCIETY_RECTANGLE_H
 #define SOCIETY_RECTANGLE_H
 
+#include "macros.h"
 
 class Rectangle {
 public:
+    POINTERIZE(Rectangle);
+
     Rectangle(double width, double height);
 
     Rectangle(double x, double y, double width, double height);

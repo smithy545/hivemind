@@ -5,15 +5,15 @@
 #ifndef SOCIETY_MAP_H
 #define SOCIETY_MAP_H
 
-#include <memory>
 #include <vector>
 
+#include "macros.h"
 #include "MapNode.h"
 
 
 class Map {
 public:
-    typedef std::shared_ptr<Map> Ptr;
+    POINTERIZE(Map)
 
     virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
 

@@ -5,12 +5,12 @@
 #ifndef SOCIETY_LINKEDNODE_H
 #define SOCIETY_LINKEDNODE_H
 
-#include <memory>
+#include "macros.h"
 
 
 class LinkedNode {
 public:
-    typedef std::shared_ptr<LinkedNode> Ptr;
+    POINTERIZE(LinkedNode)
 
     virtual Ptr getNext() = 0;
 };

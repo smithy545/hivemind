@@ -7,13 +7,13 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-#include <memory>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <unordered_map>
 #include <vector>
 
 #include "Camera.h"
+#include "macros.h"
 #include "RenderNode.h"
 #include "Sprite.h"
 
@@ -22,7 +22,7 @@ using namespace nlohmann;
 
 class Renderer {
 public:
-    typedef std::shared_ptr<Renderer> Ptr;
+    POINTERIZE(Renderer)
 
     Renderer();
 

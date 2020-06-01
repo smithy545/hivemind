@@ -5,21 +5,21 @@
 #ifndef SOCIETY_GRIDMAP_H
 #define SOCIETY_GRIDMAP_H
 
-#include <memory>
 #include <vector>
 
 #include "collision/QuadTree.h"
+#include "macros.h"
 #include "Map.h"
 #include "MapNode.h"
 
 
 class GridMap : public Map {
 public:
-    typedef std::shared_ptr<GridMap> Ptr;
+    POINTERIZE(GridMap)
 
     class GridNode : public MapNode {
     public:
-        typedef std::shared_ptr<GridNode> Ptr;
+        POINTERIZE(GridNode)
 
         GridNode(int x, int y) : GridNode(x, y, true) {};
 

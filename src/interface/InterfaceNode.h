@@ -5,14 +5,13 @@
 #ifndef SOCIETY_INTERFACENODE_H
 #define SOCIETY_INTERFACENODE_H
 
-#include <memory>
-
 #include "common/TreeNode.h"
+#include "macros.h"
 
 
 class InterfaceNode : public TreeNode {
 public:
-    typedef std::shared_ptr<InterfaceNode> Ptr;
+    POINTERIZE(InterfaceNode)
 };
 
 #endif //SOCIETY_INTERFACENODE_H

@@ -5,14 +5,13 @@
 #ifndef SOCIETY_COLLIDER_H
 #define SOCIETY_COLLIDER_H
 
-#include <memory>
-
+#include "macros.h"
 #include "State.h"
 
 
 class Collider {
 public:
-    typedef std::shared_ptr<Collider> Ptr;
+    POINTERIZE(Collider)
 
     virtual void update(State::Ptr state);
 };

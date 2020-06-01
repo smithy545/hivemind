@@ -5,14 +5,13 @@
 #ifndef SOCIETY_DOUBLYLINKEDNODE_H
 #define SOCIETY_DOUBLYLINKEDNODE_H
 
-#include <memory>
-
+#include "macros.h"
 #include "LinkedNode.h"
 
 
 class DoublyLinkedNode : public LinkedNode {
 public:
-    typedef std::shared_ptr<DoublyLinkedNode> Ptr;
+    POINTERIZE(DoublyLinkedNode)
 
     virtual Ptr getPrevious() = 0;
 };

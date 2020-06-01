@@ -6,15 +6,15 @@
 #define SOCIETY_MAPNODE_H
 
 #include <deque>
-#include <memory>
 #include <unordered_set>
 
 #include "common/TopologicalNode.h"
+#include "macros.h"
 
 
 class MapNode {
 public:
-    typedef std::shared_ptr<MapNode> Ptr;
+    POINTERIZE(MapNode)
     typedef std::deque<Ptr> MapPath;
 
     virtual int getX() = 0;
@@ -27,7 +27,7 @@ public:
 // MapNode containing local neighbor information
 class TopologicalMapNode : public MapNode, public TopologicalNode {
 public:
-    typedef std::shared_ptr<TopologicalMapNode> Ptr;
+    POINTERIZE(TopologicalMapNode)
 };
 
 #endif //SOCIETY_MAPNODE_H

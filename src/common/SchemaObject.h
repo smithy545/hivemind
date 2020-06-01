@@ -5,9 +5,10 @@
 #ifndef SOCIETY_SCHEMAOBJECT_H
 #define SOCIETY_SCHEMAOBJECT_H
 
-#include <memory>
 #include <nlohmann/json-schema.hpp>
 #include <utility>
+
+#include "macros.h"
 
 
 using nlohmann::json;
@@ -15,7 +16,7 @@ using nlohmann::json_schema::json_validator;
 
 class SchemaObject {
 public:
-    typedef std::shared_ptr<SchemaObject> Ptr;
+    POINTERIZE(SchemaObject)
 
     explicit SchemaObject(const std::string &schemaString);
 

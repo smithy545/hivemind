@@ -5,13 +5,14 @@
 #ifndef SOCIETY_TREENODE_H
 #define SOCIETY_TREENODE_H
 
-#include <memory>
 #include <vector>
+
+#include "macros.h"
 
 
 class TreeNode {
 public:
-    typedef std::shared_ptr<TreeNode> Ptr;
+    POINTERIZE(TreeNode)
 
     virtual Ptr getParent() = 0;
 

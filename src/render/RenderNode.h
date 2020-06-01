@@ -6,17 +6,17 @@
 #define SOCIETY_RENDERNODE_H
 
 #include <GL/glew.h>
-#include <memory>
 #include <string>
 #include <vector>
 
 #include "common/LinkedNode.h"
+#include "macros.h"
 #include "RenderEntity.h"
 
 
 class RenderNode : public LinkedNode {
 public:
-    typedef std::shared_ptr<RenderNode> Ptr;
+    POINTERIZE(RenderNode)
 
     RenderNode(std::string spriteName, std::string shaderName);
 

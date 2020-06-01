@@ -8,8 +8,8 @@
 #include <chrono>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <memory>
 
+#include "macros.h"
 #include "pathing/Map.h"
 #include "render/Camera.h"
 #include "render/RenderNode.h"
@@ -17,7 +17,7 @@
 
 class State {
 public:
-    typedef std::shared_ptr<State> Ptr;
+    POINTERIZE(State)
 
     State();
 

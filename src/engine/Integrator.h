@@ -5,13 +5,12 @@
 #ifndef SOCIETY_INTEGRATOR_H
 #define SOCIETY_INTEGRATOR_H
 
-#include <memory>
-
+#include "macros.h"
 #include "State.h"
 
 class Integrator {
 public:
-    typedef std::shared_ptr<Integrator> Ptr;
+    POINTERIZE(Integrator)
 
     virtual void update(State::Ptr state);
 };

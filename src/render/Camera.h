@@ -6,14 +6,14 @@
 #define SOCIETY_CAMERA_H
 
 #include <glm/glm.hpp>
-#include <memory>
 
 #include "collision/Rectangle.h"
+#include "macros.h"
 
 
 class Camera {
 public:
-    typedef std::shared_ptr<Camera> Ptr;
+    POINTERIZE(Camera)
 
     Camera(double x, double y, double width, double height);
 

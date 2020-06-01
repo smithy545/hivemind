@@ -5,9 +5,9 @@
 #ifndef SOCIETY_TOPOLOGICALMAP_H
 #define SOCIETY_TOPOLOGICALMAP_H
 
-#include <memory>
 #include <vector>
 
+#include "macros.h"
 #include "Map.h"
 #include "MapNode.h"
 
@@ -15,7 +15,7 @@
 // Map where global structure is defined by local connections between nodes (local neighbor structure)
 class TopologicalMap : public Map {
 public:
-    typedef std::shared_ptr<TopologicalMap> Ptr;
+    POINTERIZE(TopologicalMap)
 
     TopologicalMap();
 

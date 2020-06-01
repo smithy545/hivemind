@@ -5,17 +5,17 @@
 #ifndef SOCIETY_INTERFACE_H
 #define SOCIETY_INTERFACE_H
 
-#include <memory>
 #include <string>
 #include <vector>
 
 #include "interface/InterfaceNode.h"
+#include "macros.h"
 #include "State.h"
 
 
 class Interface {
 public:
-    typedef std::shared_ptr<Interface> Ptr;
+    POINTERIZE(Interface)
 
     Interface();
 

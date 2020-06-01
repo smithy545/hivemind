@@ -114,12 +114,13 @@ add_library(engine STATIC
         src/engine/Integrator.cpp
         src/engine/Integrator.h
         src/engine/Interface.cpp
-        src/engine/Interface.h
-
+        src/engine/Interface.h)
 
 add_library(world STATIC
         src/world/Person.cpp
-        src/world/Person.h)
+        src/world/Person.h
+        src/world/Skeleton.cpp
+        src/world/Skeleton.h)
 
 ### CUDA STUFF ###
 add_subdirectory(src/cuda)

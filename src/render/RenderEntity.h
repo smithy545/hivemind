@@ -6,10 +6,13 @@
 #define SOCIETY_RENDERENTITY_H
 
 #include "collision/Rectangle.h"
+#include "macros.h"
 
 
 class RenderEntity {
 public:
+    POINTERIZE(RenderEntity)
+
     explicit RenderEntity(Rectangle bounds);
 
     RenderEntity(Rectangle bounds, float angle);

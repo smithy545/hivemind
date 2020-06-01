@@ -5,15 +5,15 @@
 #ifndef SOCIETY_QUADTREE_H
 #define SOCIETY_QUADTREE_H
 
-#include <memory>
 #include <vector>
 
+#include "macros.h"
 #include "Rectangle.h"
 
 
 class QuadTree {
 public:
-    typedef std::shared_ptr<QuadTree> Ptr;
+    POINTERIZE(QuadTree);
 
     QuadTree(int pLevel, Rectangle pBounds);
 

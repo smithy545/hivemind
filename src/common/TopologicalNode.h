@@ -5,13 +5,14 @@
 #ifndef SOCIETY_TOPOLOGICALNODE_H
 #define SOCIETY_TOPOLOGICALNODE_H
 
-#include <memory>
 #include <vector>
+
+#include "macros.h"
 
 
 class TopologicalNode {
 public:
-    typedef std::shared_ptr<TopologicalNode> Ptr;
+    POINTERIZE(TopologicalNode)
 
     virtual std::vector<Ptr> &getNeighbors() = 0;
 };

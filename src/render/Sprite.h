@@ -8,15 +8,16 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-#include <memory>
 #include <string>
 #include <unordered_map>
 #include <vector>
 
+#include "macros.h"
+
 
 class Sprite {
 public:
-    typedef std::shared_ptr<Sprite> Ptr;
+    POINTERIZE(Sprite)
 
     std::vector<glm::vec2> vertices;
     std::vector<glm::vec2> uvs;

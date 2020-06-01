@@ -6,16 +6,16 @@
 #define SOCIETY_PERSON_H
 
 #include <glm/glm.hpp>
-#include <memory>
 #include <string>
 #include <vector>
 
 #include "collision/Rectangle.h"
+#include "macros.h"
 
 
 class Person {
 public:
-    typedef std::shared_ptr<Person> Ptr;
+    POINTERIZE(Person)
 
     const std::string &getName() const;
 
@@ -26,7 +26,7 @@ public:
 private:
     class BodyPart {
     public:
-        typedef std::shared_ptr<BodyPart> Ptr;
+        POINTERIZE(BodyPart)
 
         enum ShapeClass {
             SPHERE,
