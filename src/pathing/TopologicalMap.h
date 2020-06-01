@@ -15,7 +15,7 @@
 // Map where global structure is defined by local connections between nodes (local neighbor structure)
 class TopologicalMap : public Map {
 public:
-    POINTERIZE(TopologicalMap)
+    POINTERIZE(TopologicalMap);
 
     TopologicalMap();
 

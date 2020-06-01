@@ -17,7 +17,7 @@
 
 class State {
 public:
-    POINTERIZE(State)
+    POINTERIZE(State);
 
     State();
 

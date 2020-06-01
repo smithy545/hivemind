@@ -17,7 +17,7 @@
 
 class Sprite {
 public:
-    POINTERIZE(Sprite)
+    POINTERIZE(Sprite);
 
     std::vector<glm::vec2> vertices;
     std::vector<glm::vec2> uvs;

@@ -10,7 +10,7 @@
 
 class Integrator {
 public:
-    POINTERIZE(Integrator)
+    POINTERIZE(Integrator);
 
     virtual void update(State::Ptr state);
 };

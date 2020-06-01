@@ -15,7 +15,7 @@
 
 class Interface {
 public:
-    POINTERIZE(Interface)
+    POINTERIZE(Interface);
 
     Interface();
 

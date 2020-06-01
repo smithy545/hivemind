@@ -10,7 +10,7 @@
 
 class LinkedNode {
 public:
-    POINTERIZE(LinkedNode)
+    POINTERIZE(LinkedNode);
 
     virtual Ptr getNext() = 0;
 };

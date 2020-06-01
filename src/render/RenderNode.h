@@ -16,7 +16,7 @@
 
 class RenderNode : public LinkedNode {
 public:
-    POINTERIZE(RenderNode)
+    POINTERIZE(RenderNode);
 
     RenderNode(std::string spriteName, std::string shaderName);
 

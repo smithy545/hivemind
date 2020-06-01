@@ -15,7 +15,7 @@
 
 class Person {
 public:
-    POINTERIZE(Person)
+    POINTERIZE(Person);
 
     const std::string &getName() const;
 
@@ -26,7 +26,7 @@ public:
 private:
     class BodyPart {
     public:
-        POINTERIZE(BodyPart)
+        POINTERIZE(BodyPart);
 
         enum ShapeClass {
             SPHERE,

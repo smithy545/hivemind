@@ -22,7 +22,7 @@ using namespace nlohmann;
 
 class Renderer {
 public:
-    POINTERIZE(Renderer)
+    POINTERIZE(Renderer);
 
     Renderer();
 

@@ -10,7 +10,29 @@
 
 class Skeleton {
 public:
-    POINTERIZE(Skeleton)
+    POINTERIZE(Skeleton);
+
+    class BodyPart {
+    public:
+    POINTERIZE(BodyPart);
+
+        enum ShapeClass {
+            SPHERE,
+            CYLINDER,
+            BOX,
+            OVAL
+        };
+
+        glm::vec3 orientation;
+        glm::vec3 dimensions;
+        glm::vec3 infinitesimalDims;
+        std::vector<glm::vec3> surfacePoints;
+        Ptr parent;
+        std::vector<Ptr> children;
+        ShapeClass shape;
+
+        void generateSurfacePoints();
+    };
 };
 
 

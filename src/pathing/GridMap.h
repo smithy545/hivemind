@@ -15,11 +15,11 @@
 
 class GridMap : public Map {
 public:
-    POINTERIZE(GridMap)
+    POINTERIZE(GridMap);
 
     class GridNode : public MapNode {
     public:
-        POINTERIZE(GridNode)
+        POINTERIZE(GridNode);
 
         GridNode(int x, int y) : GridNode(x, y, true) {};
 

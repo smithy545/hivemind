@@ -11,7 +11,7 @@
 
 class Collider {
 public:
-    POINTERIZE(Collider)
+    POINTERIZE(Collider);
 
     virtual void update(State::Ptr state);
 };

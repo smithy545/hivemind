@@ -13,7 +13,7 @@
 
 class Map {
 public:
-    POINTERIZE(Map)
+    POINTERIZE(Map);
 
     virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
 

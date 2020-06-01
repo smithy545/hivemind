@@ -11,7 +11,7 @@
 
 class DoublyLinkedNode : public LinkedNode {
 public:
-    POINTERIZE(DoublyLinkedNode)
+    POINTERIZE(DoublyLinkedNode);
 
     virtual Ptr getPrevious() = 0;
 };

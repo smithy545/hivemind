@@ -11,7 +11,7 @@
 
 class RenderEntity {
 public:
-    POINTERIZE(RenderEntity)
+    POINTERIZE(RenderEntity);
 
     explicit RenderEntity(Rectangle bounds);
 

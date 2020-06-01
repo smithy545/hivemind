@@ -16,7 +16,7 @@ using nlohmann::json_schema::json_validator;
 
 class SchemaObject {
 public:
-    POINTERIZE(SchemaObject)
+    POINTERIZE(SchemaObject);
 
     explicit SchemaObject(const std::string &schemaString);
 
