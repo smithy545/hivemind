@@ -5,33 +5,22 @@
 #ifndef SOCIETY_SKELETON_H
 #define SOCIETY_SKELETON_H
 
+#include <vector>
+
 #include "macros.h"
+#include <glm/glm.hpp>
 
 
 class Skeleton {
 public:
     POINTERIZE(Skeleton);
 
-    class BodyPart {
+    class Bone {
     public:
-    POINTERIZE(BodyPart);
-
-        enum ShapeClass {
-            SPHERE,
-            CYLINDER,
-            BOX,
-            OVAL
-        };
-
+        POINTERIZE(Bone);
         glm::vec3 orientation;
         glm::vec3 dimensions;
-        glm::vec3 infinitesimalDims;
-        std::vector<glm::vec3> surfacePoints;
-        Ptr parent;
-        std::vector<Ptr> children;
-        ShapeClass shape;
-
-        void generateSurfacePoints();
+        std::vector<Ptr> connected;
     };
 };
 
