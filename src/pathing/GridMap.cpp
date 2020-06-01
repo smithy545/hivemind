@@ -3,7 +3,6 @@
 //
 
 #include "GridMap.h"
-#include "GridNode.h"
 
 
 GridMap::GridMap(int width, int height) : GridMap(0, 0, width, height) {}
@@ -12,13 +11,13 @@ GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset,
                                                                     width(width),
                                                                     height(height),
                                                                     collisionTreeHead(0, Rectangle(width, height)) {
-    // initialize
+    // initializenQ
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             nodes.push_back(std::make_shared<GridNode>(xOffset + x, yOffset + y));
         }
     }
-}
+} 
 
 const std::vector<MapNode::Ptr> &GridMap::getNodes() {
     return nodes;

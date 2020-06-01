@@ -27,7 +27,7 @@ public:
     Renderer();
 
     // lifecycle methods
-    GLFWwindow *init(std::string configPath);
+    GLFWwindow *init(const std::string& configPath);
 
     void render(RenderNode::Ptr treeHead, const Camera::Ptr &camera);
 

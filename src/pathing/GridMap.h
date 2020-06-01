@@ -17,6 +17,30 @@ class GridMap : public Map {
 public:
     typedef std::shared_ptr<GridMap> Ptr;
 
+    class GridNode : public MapNode {
+    public:
+        typedef std::shared_ptr<GridNode> Ptr;
+
+        GridNode(int x, int y) : GridNode(x, y, true) {};
+
+        GridNode(int x, int y, bool passable) : x(x), y(y), passable(passable) {}
+
+        int getX() override {
+            return x;
+        }
+
+        int getY() override {
+            return y;
+        }
+
+        bool isPassable() override {
+            return passable;
+        }
+    private:
+        int x, y;
+        bool passable;
+    };
+
     GridMap(int width, int height);
 
     GridMap(int xOffset, int yOffset, int width, int height);

@@ -24,7 +24,7 @@ int Renderer::getHeight() const {
     return height;
 }
 
-GLFWwindow *Renderer::init(std::string configPath) {
+GLFWwindow *Renderer::init(const std::string& configPath) {
     auto config = FileUtil::readJsonFile(configPath, CONFIG_SCHEMA);
     width = config[WIDTH_KEY];
     height = config[HEIGHT_KEY];

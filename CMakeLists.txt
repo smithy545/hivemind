@@ -69,8 +69,6 @@ add_library(collision STATIC
 add_library(pathing STATIC
         src/pathing/GridMap.cpp
         src/pathing/GridMap.h
-        src/pathing/GridNode.cpp
-        src/pathing/GridNode.h
         src/pathing/Map.h
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
@@ -115,10 +113,16 @@ add_library(engine STATIC
         src/engine/Collider.h
         src/engine/Integrator.cpp
         src/engine/Integrator.h
-        src/engine/World.cpp
-        src/engine/World.h
         src/engine/Interface.cpp
-        src/engine/Interface.h)
+        src/engine/Interface.h
+
+
+add_library(world STATIC
+        src/world/Person.cpp
+        src/world/Person.h)
+
+### CUDA STUFF ###
+add_subdirectory(src/cuda)
 
 include_directories(
         external/json-schema-validator/src
@@ -146,7 +150,9 @@ set(ALL_LIBS
         util
         render
         ui
-        engine)
+        engine
+        world
+        cuda_stuff)
 
 add_definitions(
         -DTW_STATIC

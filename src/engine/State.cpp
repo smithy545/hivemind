@@ -10,8 +10,6 @@
 State::State() : camera(nullptr), head(nullptr), map(nullptr) {
     for (bool &key : keys)
         key = false;
-    head = std::make_shared<RenderNode>("nude", "texture");
-    head->addChild({0,0,16,16});
 }
 
 RenderNode::Ptr State::getRenderTree() {

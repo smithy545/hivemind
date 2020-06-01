@@ -97,3 +97,37 @@ glm::vec2 MathUtil::deCasteljauKernel(std::vector<glm::vec2> points, double t) {
 std::vector<glm::vec2> MathUtil::bezierMatrix(std::vector<glm::vec2> points, double stepSize) {
     return std::vector<glm::vec2>();
 }
+
+std::vector<glm::vec3> MathUtil::generateSphere(double radius, double phiStep, double thetaStep) {
+    auto surfacePoints = std::vector<glm::vec3>();
+    for(double phi = 0.0; phi <= 0.5*3.14159265358979; phi += phiStep) {
+        for(double theta = 0.0; theta < 3.14159265358979; theta += thetaStep) {
+            surfacePoints.emplace_back(radius*glm::sin(theta)*glm::cos(phi), radius*glm::sin(theta)*glm::sin(phi), radius*glm::cos(theta));
+        }
+    }
+
+    return surfacePoints;
+}
+
+std::vector<glm::vec3> MathUtil::generateCylinder(double radius, double length, double lengthStep, double phiStep) {
+    auto surfacePoints = std::vector<glm::vec3>();
+    for(double z = 0.0; z <= length; z += lengthStep) {
+        for(double phi = 0.0; phi < 3.14159265358979; phi += phiStep) {
+            surfacePoints.emplace_back(z*glm::cos(phi), z*glm::sin(phi), z);
+        }
+    }
+    return {};
+}
+
+std::vector<glm::vec3> MathUtil::generateBox(double width, double height, double length) {
+    return {
+            {0, 0, 0},
+            {width, 0, 0},
+            {width, height, 0},
+            {0, height, 0},
+            {0, 0, length},
+            {width, 0, length},
+            {width, height, length},
+            {0, height, length}
+    };
+}

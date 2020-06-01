@@ -26,7 +26,6 @@ public:
     bool inBounds(int x, int y) {
         return getNode(x, y) != nullptr;
     }
-
 protected:
     Map() : Map(0, 0) {}
 
