@@ -6,7 +6,6 @@
 
 #include <fmt/format.h>
 
-Integrator::Integrator() {}
 
 Integrator::Integrator(float timeStep) : timeStep(timeStep) {}
 
@@ -36,10 +35,10 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
         body->setAcceleration(acc);
 
         auto pos = body->getOrigin();
-        if(pos.y > 0) {
+        if(pos.y > groundLevel) {
             // if above ground accelerate due to gravity
             body->setVelocity(body->getVelocity() + G*timeStep);
-        } else if(pos.y < 0) {
+        } else if(pos.y < groundLevel) {
             // if below ground warp to ground and freeze
             // TODO: should collide with ground?
             pos.y = 0;
@@ -58,4 +57,3 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
 std::string Integrator::getBodyHash(const Body::Ptr& body) {
     return fmt::format("{0}:{1}:{2}", body->getOrigin().x, body->getOrigin().y, body->getOrigin().z);
 }
-
