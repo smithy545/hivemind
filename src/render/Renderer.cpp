@@ -125,10 +125,8 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
             GLenum drawMode = treeHead->getMode();
 
             glBindVertexArray(sprite->vertexArrayId);
-            if (!sprite->texture.empty()) {
-                GLuint texId =
-                        loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0
-                                                                                     : loadedTextures[sprite->texture];
+            if (loadedTextures.find(sprite->texture) != loadedTextures.end()) {
+                GLuint texId = loadedTextures[sprite->texture];
                 glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, texId);
             }

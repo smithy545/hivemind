@@ -125,13 +125,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Interface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Interface.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/State.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/State.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/State.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Camera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Camera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/render/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,14 +397,7 @@
       <workItem from="1590948493739" duration="2297000" />
       <workItem from="1590973991957" duration="1187000" />
       <workItem from="1591038683803" duration="22147000" />
-      <workItem from="1591067485450" duration="10957000" />
-    </task>
-    <task id="LOCAL-00062" summary="Setup skeleton for societal interactions">
-      <created>1583247782648</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1583247782649</updated>
+      <workItem from="1591067485450" duration="11850000" />
     </task>
     <task id="LOCAL-00063" summary="Flesh out society skeleton with minor comments/structure">
       <created>1583248337094</created>
@@ -748,7 +735,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591110270960</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Setup directional movement with mouse">
+      <created>1591112403136</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1591112403136</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -802,7 +796,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cleanup some imports, CMakeLists.txt and Interface unused, commented out code" />
     <MESSAGE value="Force use of &quot;&quot; over &lt;&gt; for imports of package-local libraries/code." />
     <MESSAGE value="Remove traces of bezier curve project from MathUtil" />
     <MESSAGE value="Setup map for state" />
@@ -827,7 +820,8 @@
     <MESSAGE value="Fix camera setup some shapes" />
     <MESSAGE value="3Dify" />
     <MESSAGE value="Update camera controls and background color" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update camera controls and background color" />
+    <MESSAGE value="Setup directional movement with mouse" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup directional movement with mouse" />
   </component>
   <component name="WindowStateProjectService">
     <state x="630" y="163" key="#collision" timestamp="1589399143438">
@@ -856,12 +850,12 @@
       <screen x="3440" y="372" width="1920" height="1040" />
     </state>
     <state x="4084" y="550" key="#glfw/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583878610240" />
-    <state x="222" y="17" width="1390" height="966" key="CommitChangelistDialog2" timestamp="1591110270565">
+    <state x="684" y="49" width="1437" height="1146" key="CommitChangelistDialog2" timestamp="1591112402718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="159" y="1" width="1353" height="1079" key="CommitChangelistDialog2/0.0.1792.1080@0.0.1792.1080" timestamp="1583663431305" />
     <state x="442" y="58" width="1390" height="966" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589477585633" />
-    <state x="222" y="17" key="CommitChangelistDialog2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591110270565" />
+    <state x="684" y="49" width="1437" height="1146" key="CommitChangelistDialog2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591112402718" />
     <state x="222" y="17" key="CommitChangelistDialog2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1589679419527" />
     <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583698465982" />
     <state x="3629" y="372" width="1717" height="1027" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583884556958" />
@@ -960,11 +954,11 @@
     <state x="1765" y="236" width="1141" height="883" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583358552458" />
     <state x="3935" y="459" width="1381" height="883" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583861446066" />
     <state x="803" y="115" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1583185507844" />
-    <state x="2161" y="311" width="590" height="301" key="Vcs.Push.Dialog.v2" timestamp="1591110272180">
+    <state x="2161" y="311" width="590" height="301" key="Vcs.Push.Dialog.v2" timestamp="1591112404668">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589477587599" />
-    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591110272180" />
+    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591112404668" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1589679421711" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583698468616" />
     <state x="4646" y="464" width="590" height="363" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583884573583" />
