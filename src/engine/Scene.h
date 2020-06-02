@@ -23,7 +23,7 @@ public:
 
     const CollisionNode::Ptr &getCollisionTree() const;
 
-    void addToScene(const std::string& spriteName, const std::string& shaderName, const GLenum &mode, const Body::Ptr& body);
+    void addToScene(const std::string& shaderName, const std::string& spriteName, const GLenum &mode, const Body::Ptr& body);
 private:
     std::vector<Body::Ptr> bodies;
     Camera::Ptr camera;

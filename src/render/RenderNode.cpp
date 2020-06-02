@@ -6,8 +6,7 @@
 #include <utility>
 
 
-RenderNode::RenderNode(std::string spriteName, std::string shaderName, const GLenum &mode, Ptr next):
-    spriteName(std::move(spriteName)),
+RenderNode::RenderNode(std::string shaderName, const GLenum &mode, Ptr next):
     shaderName(std::move(shaderName)),
     next(std::move(next)),
     mode(mode) {}
@@ -20,12 +19,8 @@ void RenderNode::setNext(const RenderNode::Ptr &node) {
     next = node;
 }
 
-const std::vector<Body::Ptr> &RenderNode::getChildren() const {
-    return children;
-}
-
-const std::string &RenderNode::getSpriteName() const {
-    return spriteName;
+const std::unordered_map<std::string, std::vector<Body::Ptr>> &RenderNode::getChildren() const {
+    return spriteBodies;
 }
 
 const std::string &RenderNode::getShaderName() const {
@@ -36,14 +31,17 @@ void RenderNode::setShaderName(const std::string &name) {
     shaderName = name;
 }
 
-unsigned int RenderNode::getMode() const {
+unsigned int RenderNode::getDrawMode() const {
     return mode;
 }
 
-void RenderNode::setMode(unsigned int mode) {
-    RenderNode::mode = mode;
+void RenderNode::setDrawMode(unsigned int newMode) {
+    mode = newMode;
 }
 
-void RenderNode::addChild(const Body::Ptr& body) {
-    children.push_back(body);
+void RenderNode::addChild(const std::string& spriteName, const Body::Ptr& body) {
+    if(spriteBodies.find(spriteName) == spriteBodies.end())
+        spriteBodies[spriteName] = {body};
+    else
+        spriteBodies[spriteName].push_back(body);
 }

@@ -7,5 +7,10 @@
     "texture": "basic_792",
     "width": 16,
     "height": 16
+  },{
+    "name": "random",
+    "texture": "basic_12",
+    "width": 16,
+    "height": 16
   }]
 }

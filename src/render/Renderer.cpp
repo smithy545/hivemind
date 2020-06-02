@@ -115,39 +115,42 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
 
     auto node = treeHead;
     while (node != nullptr) {
-        std::string spriteName = node->getSpriteName();
-        if (loadedSprites.find(spriteName) == loadedSprites.end()) {
-            std::cerr << "Can't find sprite " << node->getSpriteName() << std::endl;
-        } else if (node->getShaderName().empty() || !setShader(node->getShaderName())) {
+        if(!setShader(node->getShaderName())) {
             std::cerr << "Can't set shader " << node->getShaderName() << std::endl;
         } else {
-            Sprite::Ptr sprite = loadedSprites[node->getSpriteName()];
-            GLenum drawMode = node->getMode();
+            GLenum drawMode = node->getDrawMode();
+            for (const auto &spriteBodies: node->getChildren()) {
+                std::string spriteName = spriteBodies.first;
+                if (loadedSprites.find(spriteName) == loadedSprites.end()) {
+                    std::cerr << "Can't find sprite " << spriteName << std::endl;
+                    continue;
+                }
+                Sprite::Ptr sprite = loadedSprites[spriteName];
+                glBindVertexArray(sprite->vertexArrayId);
+                if (loadedTextures.find(sprite->texture) != loadedTextures.end()) {
+                    GLuint texId = loadedTextures[sprite->texture];
+                    glActiveTexture(GL_TEXTURE0);
+                    glBindTexture(GL_TEXTURE_2D, texId);
+                }
 
-            glBindVertexArray(sprite->vertexArrayId);
-            if (loadedTextures.find(sprite->texture) != loadedTextures.end()) {
-                GLuint texId = loadedTextures[sprite->texture];
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, texId);
-            }
+                for (const auto &child: spriteBodies.second) {
+                    auto pos = child->getOrigin();
+                    // translate to world position
+                    glm::mat4 modelMatrix = glm::translate(
+                            glm::mat4(1),
+                            {
+                                    pos.x,
+                                    pos.y,
+                                    pos.z
+                            });
+                    // rotate
+                    //TODO: do matrix math and figure out how to fix matrices so rotation is about center
+                    // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 
-            for (const auto& child: node->getChildren()) {
-                auto pos = child->getOrigin();
-                // translate to world position
-                glm::mat4 modelMatrix = glm::translate(
-                        glm::mat4(1),
-                        {
-                                pos.x,
-                                pos.y,
-                                pos.z
-                        });
-                // rotate
-                //TODO: do matrix math and figure out how to fix matrices so rotation is about center
-                // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
-
-                glm::mat4 mvpMatrix = viewProj * modelMatrix;
-                glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+                    glm::mat4 mvpMatrix = viewProj * modelMatrix;
+                    glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+                    glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
+                }
             }
         }
         node = std::dynamic_pointer_cast<RenderNode>(node->getNext());
@@ -160,7 +163,10 @@ void Renderer::resize(int width, int height) {
 }
 
 bool Renderer::setShader(const std::string &name) {
-    if (loadedShaders.find(name) != loadedShaders.end()) {
+    if(name == currentShader)
+        return true;
+    else if (loadedShaders.find(name) != loadedShaders.end()) {
+        currentShader = name;
         currentShaderProgram = loadedShaders[name];
         glUseProgram(currentShaderProgram);
         mvpUniform = glGetUniformLocation(currentShaderProgram, "MVP");

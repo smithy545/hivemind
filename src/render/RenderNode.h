@@ -7,6 +7,7 @@
 
 #include <GL/glew.h>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "collision/Body.h"
@@ -18,29 +19,26 @@ class RenderNode : public LinkedNode {
 public:
     POINTERIZE(RenderNode);
 
-    explicit RenderNode(std::string spriteName, std::string shaderName = "", const GLenum &mode = GL_TRIANGLES, Ptr next = nullptr);
+    explicit RenderNode(std::string shaderName, const GLenum &mode = GL_TRIANGLES, Ptr next = nullptr);
 
     LinkedNode::Ptr getNext() override;
 
     void setNext(const Ptr &node);
 
-    const std::vector<Body::Ptr> &getChildren() const;
-
-    const std::string &getSpriteName() const;
+    const std::unordered_map<std::string, std::vector<Body::Ptr>> &getChildren() const;
 
     const std::string &getShaderName() const;
 
     void setShaderName(const std::string &name);
 
-    GLenum getMode() const;
+    GLenum getDrawMode() const;
 
-    void setMode(GLenum mode);
+    void setDrawMode(GLenum newMode);
 
-    void addChild(const Body::Ptr& body);
+    void addChild(const std::string& spriteName, const Body::Ptr& body);
 private:
-    std::vector<Body::Ptr> children{};
     std::string shaderName;
-    std::string spriteName;
+    std::unordered_map<std::string, std::vector<Body::Ptr>> spriteBodies;
     GLenum mode;
     Ptr next;
 };

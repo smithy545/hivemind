@@ -78,13 +78,16 @@ void loop() {
 
     // setup some test sprites
     auto person = std::make_shared<Body>();
+    auto tile = std::make_shared<Body>();
     auto object = std::make_shared<Body>();
-    person->setOrigin({-10, 0, 10});
-    object->setOrigin({0, 0, 10});
+    person->setOrigin({20, 0, 10});
+    tile->setOrigin({0, 0, 10});
+    object->setOrigin({-20, 0, 0});
 
     auto boxId = renderer->generateLineSprite(MathUtil::generateBox(10, 20, 30));
-    state->getScene().addToScene(boxId, "color", GL_LINE_STRIP, object);
-    state->getScene().addToScene("nude", "texture", GL_TRIANGLES, person);
+    state->getScene().addToScene("texture", "random", GL_TRIANGLES, tile);
+    state->getScene().addToScene("texture", "nude", GL_TRIANGLES, person);
+    state->getScene().addToScene("color", boxId, GL_LINE_STRIP, object);
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below

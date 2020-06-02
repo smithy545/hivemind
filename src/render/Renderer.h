@@ -122,6 +122,7 @@ private:
 
     int width{};
     int height{};
+    std::string currentShader{};
     GLuint currentShaderProgram{};
     GLint mvpUniform{};
     GLint texUniform{};
