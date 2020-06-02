@@ -81,12 +81,12 @@ void loop() {
     auto tile = std::make_shared<Body>();
     auto boxId = renderer->generateLineSprite(MathUtil::generateBox(10, 20, 30));
     auto box = std::make_shared<Body>();
-    auto curveId = renderer->generateBezierSprite({{70, 250, 0}, {20, 110, 0}, {220, 60, 0}}, 0.1);
+    auto curveId = renderer->generateBezierSprite({{7, 25, 0}, {2, 11, 0}, {22, 6, 0}}, 0.1);
     auto curve = std::make_shared<Body>();
-    person->setOrigin({20, 0, 10});
-    tile->setOrigin({0, 0, 10});
-    box->setOrigin({-20, 0, 0});
-    curve->setOrigin({0, 0, 5});
+    person->setOrigin({20, 0, -10});
+    tile->setOrigin({0, -5, -5});
+    box->setOrigin({-20, 0, -20});
+    curve->setOrigin({0, 5, -15});
 
     state->getScene().addToScene("texture", "nude", GL_TRIANGLES, person);
     state->getScene().addToScene("texture", "random", GL_TRIANGLES, tile);

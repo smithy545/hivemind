@@ -17,6 +17,8 @@ public:
 
     Camera(double width, double height);
 
+    void move(glm::vec3 differential);
+
     void moveForward();
 
     void moveBackword();
@@ -50,10 +52,9 @@ public:
     Rectangle getBoundingRect();
 
     glm::mat4 getViewProjectionMatrix() const;
-
 private:
     glm::vec3 up{0, 1, 0};
-    glm::vec3 forward{0, 0, 1};
+    glm::vec3 forward{0, 0, -1};
     glm::vec3 position{0, 0, 0};
     Rectangle bound;
     float translationSpeed{0.2};

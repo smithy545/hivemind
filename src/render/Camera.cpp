@@ -50,6 +50,11 @@ void Camera::panVertical(float speed) {
     resetViewMatrix();
 }
 
+void Camera::move(glm::vec3 differential) {
+    position += differential;
+    resetViewMatrix();
+}
+
 void Camera::moveForward() {
     position += translationSpeed*forward;
     resetViewMatrix();
