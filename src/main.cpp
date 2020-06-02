@@ -1,3 +1,4 @@
+#include <fmt/format.h>
 #include <iostream>
 #include <thread>
 
@@ -7,6 +8,7 @@
 #include "engine/Interface.h"
 #include "pathing/GridMap.h"
 #include "render/Renderer.h"
+#include "util/MathUtil.h"
 
 // window state
 static int screenWidth;
@@ -73,6 +75,16 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
+
+    // setup some test sprites
+    auto person = std::make_shared<Body>();
+    auto object = std::make_shared<Body>();
+    person->setOrigin({-10, 0, 10});
+    object->setOrigin({0, 0, 10});
+
+    auto boxId = renderer->generateLineSprite(MathUtil::generateBox(10, 20, 30));
+    state->getScene().addToScene(boxId, "color", GL_LINE_STRIP, object);
+    state->getScene().addToScene("nude", "texture", GL_TRIANGLES, person);
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below

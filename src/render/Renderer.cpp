@@ -115,14 +115,14 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
 
     auto node = treeHead;
     while (node != nullptr) {
-        std::string spriteName = treeHead->getSpriteName();
+        std::string spriteName = node->getSpriteName();
         if (loadedSprites.find(spriteName) == loadedSprites.end()) {
-            std::cerr << "Can't find sprite " << treeHead->getSpriteName() << std::endl;
-        } else if (!setShader(treeHead->getShaderName())) {
-            std::cerr << "Can't set shader " << treeHead->getShaderName() << std::endl;
+            std::cerr << "Can't find sprite " << node->getSpriteName() << std::endl;
+        } else if (node->getShaderName().empty() || !setShader(node->getShaderName())) {
+            std::cerr << "Can't set shader " << node->getShaderName() << std::endl;
         } else {
-            Sprite::Ptr sprite = loadedSprites[treeHead->getSpriteName()];
-            GLenum drawMode = treeHead->getMode();
+            Sprite::Ptr sprite = loadedSprites[node->getSpriteName()];
+            GLenum drawMode = node->getMode();
 
             glBindVertexArray(sprite->vertexArrayId);
             if (loadedTextures.find(sprite->texture) != loadedTextures.end()) {
@@ -131,14 +131,15 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
-            for (const auto& child: treeHead->getChildren()) {
+            for (const auto& child: node->getChildren()) {
+                auto pos = child->getOrigin();
                 // translate to world position
                 glm::mat4 modelMatrix = glm::translate(
                         glm::mat4(1),
                         {
-                                child->getOrigin().x,
-                                child->getOrigin().y,
-                                child->getOrigin().z
+                                pos.x,
+                                pos.y,
+                                pos.z
                         });
                 // rotate
                 //TODO: do matrix math and figure out how to fix matrices so rotation is about center
@@ -185,19 +186,20 @@ void Renderer::loadSprite(const std::string &path) {
     sprite->texture = spriteData[TEXTURE_KEY];
 
     // bottom left
-    sprite->vertices.emplace_back(0, 0);
+    sprite->vertices.emplace_back(0, 0, 0);
     sprite->uvs.emplace_back(0, 0);
 
     // bottom right
-    sprite->vertices.emplace_back(spriteWidth, 0);
+    sprite->vertices.emplace_back(spriteWidth, 0, 0);
     sprite->uvs.emplace_back(1, 0);
 
     // top right
-    sprite->vertices.emplace_back(spriteWidth, spriteHeight);
+    sprite->vertices.emplace_back(spriteWidth, spriteHeight, 0);
     sprite->uvs.emplace_back(1, -1);
 
     // top left
-    sprite->vertices.emplace_back(0, spriteHeight);
+    sprite->vertices.emplace_back(0, spriteHeight, 0);
+
     sprite->uvs.emplace_back(0, -1);
 
     // indices
@@ -238,19 +240,19 @@ void Renderer::loadTileSheet(const std::string &path) {
             sprite->texture = name;
 
             // bottom left
-            sprite->vertices.emplace_back(0, 0);
+            sprite->vertices.emplace_back(0, 0, 0);
             sprite->uvs.emplace_back(u, v);
 
             // bottom right
-            sprite->vertices.emplace_back(sheetTileSize, 0);
+            sprite->vertices.emplace_back(sheetTileSize, 0, 0);
             sprite->uvs.emplace_back(u + uStep, v);
 
             // top right
-            sprite->vertices.emplace_back(sheetTileSize, sheetTileSize);
+            sprite->vertices.emplace_back(sheetTileSize, sheetTileSize, 0);
             sprite->uvs.emplace_back(u + uStep, v - vStep);
 
             // top left
-            sprite->vertices.emplace_back(0, sheetTileSize);
+            sprite->vertices.emplace_back(0, sheetTileSize, 0);
             sprite->uvs.emplace_back(u, v - vStep);
 
             // indices
@@ -296,24 +298,31 @@ std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, d
     auto curveSprite = std::make_shared<Sprite>();
     auto curve = MathUtil::generateBezierCurve(hull, stepSize);
     for (int index = 0; index < curve.size(); index++) {
-        // make all points on curve red and points on hull blue
-        curveSprite->vertices.emplace_back(curve[index].x, -curve[index].y);
+        // make all points on curve red
+        curveSprite->vertices.emplace_back(curve[index].x, -curve[index].y, 0);
         curveSprite->colors.emplace_back(1, 0, 0, 1);
         curveSprite->indices.push_back(index);
     }
     curveSprite->reload();
 
-    auto hullSprite = std::make_shared<Sprite>();
-    for (int index = 0; index < hull.size(); index++) {
-        hullSprite->vertices.emplace_back(hull[index].x, -hull[index].y);
-        hullSprite->colors.emplace_back(0, 0, 1, 1);
-        hullSprite->indices.push_back(index);
-    }
-    hullSprite->reload();
-
+    // store  in sprites and return id
     std::string id = StringUtil::uuid4();
-    loadedSprites[fmt::format("curve_{}", id)] = curveSprite;
-    loadedSprites[fmt::format("curve_hull_{}", id)] = hullSprite;
+    loadedSprites[id] = curveSprite;
+    return id;
+}
 
+std::string Renderer::generateLineSprite(const std::vector<glm::vec3> &points) {
+    auto lineSprite = std::make_shared<Sprite>();
+    for (int index = 0; index < points.size(); index++) {
+        // make all points on line red
+        lineSprite->vertices.emplace_back(points[index].x, -points[index].y, points[index].z);
+        lineSprite->colors.emplace_back(1, 0, 0, 1);
+        lineSprite->indices.push_back(index);
+    }
+    lineSprite->reload();
+
+    // store in sprites and return id
+    std::string id = StringUtil::uuid4();
+    loadedSprites[id] = lineSprite;
     return id;
 }

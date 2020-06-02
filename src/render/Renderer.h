@@ -44,6 +44,10 @@ public:
     // state setters
     bool setShader(const std::string &name);
 
+    // add sprites
+    std::string generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize);
+
+    std::string generateLineSprite(const std::vector<glm::vec3> &points);
 private:
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
@@ -134,8 +138,6 @@ private:
     void loadSprite(const std::string &path);
 
     void loadTileSheet(const std::string &path);
-
-    std::string generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize);
 };
 
 #endif //SOCIETY_RENDERER_H

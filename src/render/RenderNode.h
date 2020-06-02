@@ -18,13 +18,11 @@ class RenderNode : public LinkedNode {
 public:
     POINTERIZE(RenderNode);
 
-    RenderNode(std::string spriteName, std::string shaderName);
-
-    RenderNode(std::string spriteName, std::string shaderName, Ptr next);
+    explicit RenderNode(std::string spriteName, std::string shaderName = "", const GLenum &mode = GL_TRIANGLES, Ptr next = nullptr);
 
     LinkedNode::Ptr getNext() override;
 
-    void setNext(const Ptr &next);
+    void setNext(const Ptr &node);
 
     const std::vector<Body::Ptr> &getChildren() const;
 
@@ -32,13 +30,13 @@ public:
 
     const std::string &getShaderName() const;
 
-    void setShaderName(const std::string &shaderName);
+    void setShaderName(const std::string &name);
 
     GLenum getMode() const;
 
     void setMode(GLenum mode);
 
-    void addChild(Body::Ptr body);
+    void addChild(const Body::Ptr& body);
 private:
     std::vector<Body::Ptr> children{};
     std::string shaderName;

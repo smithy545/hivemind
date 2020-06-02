@@ -6,23 +6,18 @@
 #include <utility>
 
 
-RenderNode::RenderNode(std::string spriteName, std::string shaderName) : RenderNode(
-        std::move(spriteName),
-        std::move(shaderName),
-        nullptr) {}
-
-RenderNode::RenderNode(std::string spriteName, std::string shaderName, RenderNode::Ptr next) :
-        spriteName(std::move(spriteName)),
-        shaderName(std::move(shaderName)),
-        next(std::move(next)),
-        mode(GL_TRIANGLES) {}
+RenderNode::RenderNode(std::string spriteName, std::string shaderName, const GLenum &mode, Ptr next):
+    spriteName(std::move(spriteName)),
+    shaderName(std::move(shaderName)),
+    next(std::move(next)),
+    mode(mode) {}
 
 LinkedNode::Ptr RenderNode::getNext() {
     return std::dynamic_pointer_cast<LinkedNode>(next);
 }
 
-void RenderNode::setNext(const RenderNode::Ptr &next) {
-    RenderNode::next = next;
+void RenderNode::setNext(const RenderNode::Ptr &node) {
+    next = node;
 }
 
 const std::vector<Body::Ptr> &RenderNode::getChildren() const {
@@ -37,8 +32,8 @@ const std::string &RenderNode::getShaderName() const {
     return shaderName;
 }
 
-void RenderNode::setShaderName(const std::string &shaderName) {
-    RenderNode::shaderName = shaderName;
+void RenderNode::setShaderName(const std::string &name) {
+    shaderName = name;
 }
 
 unsigned int RenderNode::getMode() const {
@@ -49,6 +44,6 @@ void RenderNode::setMode(unsigned int mode) {
     RenderNode::mode = mode;
 }
 
-void RenderNode::addChild(Body::Ptr body) {
+void RenderNode::addChild(const Body::Ptr& body) {
     children.push_back(body);
 }

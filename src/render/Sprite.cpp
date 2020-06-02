@@ -12,12 +12,12 @@ Sprite::Sprite() {
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
 
-    // setup verts to be first attribute with 2 components
+    // setup verts to be first attribute with 3 components
     glGenBuffers(1, &vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
     glVertexAttribPointer(
             0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-            2,                  // size
+            3,                  // size
             GL_FLOAT,           // type
             GL_FALSE,           // normalized?
             0,                  // stride
@@ -70,7 +70,7 @@ Sprite::~Sprite() {
 
 void Sprite::reload() {
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec2), &vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
 
     // pad to prevent memory access error by shaders
     while (uvs.size() < vertices.size())

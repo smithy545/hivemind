@@ -5,13 +5,7 @@
 #include "Scene.h"
 
 
-Scene::Scene(int width, int height) : camera(std::make_shared<Camera>(width, height)) {
-    renderHead = std::make_shared<RenderNode>("nude", "texture");
-
-    auto temp = std::make_shared<Body>();
-    temp->setOrigin({0, 0, 10});
-    renderHead->addChild(temp);
-}
+Scene::Scene(int width, int height) : camera(std::make_shared<Camera>(width, height)) {}
 
 Camera::Ptr &Scene::getCamera() {
     return camera;
@@ -25,7 +19,17 @@ const CollisionNode::Ptr &Scene::getCollisionTree() const {
     return collisionHead;
 }
 
-void Scene::addBody(const Body::Ptr& body) {
+void Scene::addToScene(const std::string& spriteName, const std::string& shaderName, const GLenum &mode, const Body::Ptr& body) {
+    auto node = renderHead;
+    while(node != nullptr) {
+        if(node->getSpriteName() == spriteName && node->getShaderName() == shaderName)
+            break;
+        node = std::dynamic_pointer_cast<RenderNode>(node->getNext());
+    }
+    if(node == nullptr)
+        node = std::make_shared<RenderNode>(spriteName, shaderName, mode, renderHead);
+
     bodies.push_back(body);
-    renderHead->addChild(body);
+    node->addChild(body);
+    renderHead = node;
 }
