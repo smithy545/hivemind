@@ -60,10 +60,10 @@ GLFWwindow *Renderer::init(const std::string& configPath) {
     }
 
     // enable srgb
-    //glEnable(GL_FRAMEBUFFER_SRGB);
+    glEnable(GL_FRAMEBUFFER_SRGB);
 
     // cull triangles facing away from camera
-    //glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
 
     // shaders
     for (const auto &shader: config[SHADERS_KEY].items()) {

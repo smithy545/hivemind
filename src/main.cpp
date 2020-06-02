@@ -108,7 +108,7 @@ void loop() {
     // disable cursor to enable automatic recentering
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // clear background to black
-    glClearColor(.0f,.0f, .0f, .0f);
+    glClearColor(1.0f,1.0f, 1.0f, 1.0f);
 
     std::cout << "UI init" << std::endl;
     Interface::Ptr ui = std::make_shared<Interface>();

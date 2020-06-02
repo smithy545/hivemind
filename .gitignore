@@ -7,4 +7,5 @@ external/glm
 external/json
 external/json-schema-validator
 external/tinyxml
+external/box2d
 .idea/
