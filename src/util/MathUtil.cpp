@@ -4,7 +4,6 @@
 
 #include "MathUtil.h"
 
-#include <iostream>
 #include <utility>
 
 #define BEZIER_GEOMETRIC 1
@@ -32,70 +31,119 @@ std::vector<glm::vec2> MathUtil::generateBezierCurve(std::vector<glm::vec2> cont
         return controlPoints;
     }
 
+    std::vector<float> points;
+    for(auto p: controlPoints) {
+        points.push_back(p.x);
+        points.push_back(p.y);
+    }
+
+    std::vector<float> curve = generateBezierCurve(points, stepSize, 2);
+
+    std::vector<glm::vec2> returnPoints;
+    for(int i = 0; i < curve.size() - 1; i += 2)
+        returnPoints.emplace_back(curve[i], curve[i + 1]);
+
+    return returnPoints;
+}
+
+std::vector<glm::vec3> MathUtil::generateBezierCurve(std::vector<glm::vec3> controlPoints, double stepSize) {
+    if (controlPoints.size() <= 2) {
+        return controlPoints;
+    }
+
+    auto points = std::vector<float>();
+    for(auto p: controlPoints) {
+        points.push_back(p.x);
+        points.push_back(p.y);
+        points.push_back(p.z);
+    }
+
+    std::vector<float> curve = generateBezierCurve(points, stepSize, 3);
+
+    std::vector<glm::vec3> returnPoints;
+    for(int i = 0; i < curve.size() - 2; i += 3)
+        returnPoints.emplace_back(curve[i], curve[i + 1], curve[i + 2]);
+
+    return returnPoints;
+}
+
+std::vector<float> MathUtil::generateBezierCurve(std::vector<float> controlPoints, double stepSize, int dimension) {
+    if (controlPoints.size() <= 2) {
+        return controlPoints;
+    }
+
 #ifdef BEZIER_POLYNOMIAL
-    return bezierPolynomial(std::move(controlPoints), stepSize);
+    return bezierPolynomial(std::move(controlPoints), stepSize, dimension);
 #elif BEZIER_GEOMETRIC
-    return bezierDeCasteljau(std::move(controlPoints), stepSize);
+    return bezierDeCasteljau(std::move(controlPoints), stepSize, dimension);
 #else
-    return bezierMatrix(std::move(controlPoints), stepSize);
+    return bezierMatrix(std::move(controlPoints), stepSize, dimension);
 #endif
 }
 
-std::vector<glm::vec2> MathUtil::bezierPolynomial(std::vector<glm::vec2> points, double stepSize) {
+std::vector<float> MathUtil::bezierPolynomial(std::vector<float> points, double stepSize, int dimension) {
     // add first point to curve
-    std::vector<glm::vec2> curve{points.front()};
-    int n = points.size() - 1;
+    std::vector<float> curve;
+    curve.insert(std::end(curve), std::begin(points), std::begin(points) + dimension);
+    int n = points.size()/dimension - 1;
     double t = stepSize;
+
     while (t < 1.0) {
-        double x{0}, y{0};
+        // setup output vector
+        std::vector<float> v;
+        v.reserve(dimension);
+        for(int i = 0; i < dimension; i++)
+            v.push_back(0);
+
         double subT = 1.0 - t;
         for (int k = 0; k <= n; k++) {
             int subK = n - k;
             double coeff = MathUtil::binomialCoeff(n, k) * std::pow(subT, subK) * std::pow(t, k);
             // round to zero at threshold=0.001
             coeff = coeff > 0.001 ? coeff : 0;
-            x += points[k].x * coeff;
-            y += points[k].y * coeff;
+            for(int i = 0; i < dimension; i++)
+                v[i] += points[k*dimension + i] * coeff;
         }
 
-        curve.emplace_back(x, y);
+        curve.insert(std::end(curve), std::begin(v), std::end(v));
         t += stepSize;
     }
 
     // add last point to curve
-    curve.push_back(points.back());
+    curve.insert(std::end(curve), std::end(points) - dimension, std::end(points));
 
     return curve;
 }
 
 
-std::vector<glm::vec2> MathUtil::bezierDeCasteljau(std::vector<glm::vec2> points, double stepSize) {
+std::vector<float> MathUtil::bezierDeCasteljau(std::vector<float> points, double stepSize, int dimension) {
     // add first point to curve
-    std::vector<glm::vec2> curve{points.front()};
+    std::vector<float> curve;
+    curve.insert(std::end(curve), std::begin(points), std::begin(points) + dimension);
     double t = stepSize;
     while (t < 1.0) {
-        curve.push_back(deCasteljauKernel(points, t));
+        auto subCurve = deCasteljauKernel(points, t, dimension);
+        curve.insert(std::end(curve), std::begin(subCurve), std::end(subCurve));
         t += stepSize;
     }
 
     return curve;
 }
 
-glm::vec2 MathUtil::deCasteljauKernel(std::vector<glm::vec2> points, double t) {
-    if (points.size() <= 1)
-        return points[0];
+std::vector<float> MathUtil::deCasteljauKernel(std::vector<float> points, double t, int dimension) {
+    if (points.size() <= dimension)
+        return points;
 
-    std::vector<glm::vec2> curve;
-    for (int i = 0; i < points.size() - 1; i++) {
-        double x = (1 - t) * points[i].x + t * points[i + 1].x;
-        double y = (1 - t) * points[i].y + t * points[i + 1].y;
-        curve.emplace_back(x, y);
+    std::vector<float> curve;
+    for (int i = 0; i < points.size() - dimension; i += dimension) {
+        for(int j = 0; j < dimension; j++)
+            curve.push_back((1 - t) * points[i + j] + t * points[i + dimension + j]);
     }
-    return deCasteljauKernel(curve, t);
+    return deCasteljauKernel(curve, t, dimension);
 }
 
-std::vector<glm::vec2> MathUtil::bezierMatrix(std::vector<glm::vec2> points, double stepSize) {
-    return std::vector<glm::vec2>();
+std::vector<float> MathUtil::bezierMatrix(std::vector<float> points, double stepSize, int dimension) {
+    return {};
 }
 
 std::vector<glm::vec3> MathUtil::generateSphere(double radius, double phiStep, double thetaStep) {

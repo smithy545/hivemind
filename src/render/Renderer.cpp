@@ -300,12 +300,12 @@ void Renderer::loadTileSheet(const std::string &path) {
     }
 }
 
-std::string Renderer::generateBezierSprite(const std::vector<glm::vec2> &hull, double stepSize) {
+std::string Renderer::generateBezierSprite(const std::vector<glm::vec3> &hull, double stepSize) {
     auto curveSprite = std::make_shared<Sprite>();
     auto curve = MathUtil::generateBezierCurve(hull, stepSize);
     for (int index = 0; index < curve.size(); index++) {
         // make all points on curve red
-        curveSprite->vertices.emplace_back(curve[index].x, -curve[index].y, 0);
+        curveSprite->vertices.emplace_back(curve[index].x, -curve[index].y, curve[index].z);
         curveSprite->colors.emplace_back(1, 0, 0, 1);
         curveSprite->indices.push_back(index);
     }

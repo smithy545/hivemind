@@ -16,23 +16,28 @@ public:
     static std::vector<glm::vec2> generateBezierCurve(std::vector<glm::vec2> controlPoints, double stepSize);
 
     // 3-D utils
+    static std::vector<glm::vec3> generateBezierCurve(std::vector<glm::vec3> controlPoints, double stepSize);
     static std::vector<glm::vec3> generateSphere(double radius, double phiStep, double thetaStep);
     static std::vector<glm::vec3> generateCylinder(double radius, double length, double lengthStep, double phiStep);
     static std::vector<glm::vec3> generateBox(double width, double height, double length);
     // TODO: static std::vector<glm::vec3> generateOvaloid();
 
     // N-D utils
+    static std::vector<float> generateBezierCurve(std::vector<float> controlPoints, double stepSize, int dimension);
     // TODO: static int* generateBinomialMatrix(int n, int k);
 private:
     static std::vector<int *> generatedBinomialCoeffs;
     static int maxGeneratedDegree;
 
     // generate bezier curve for given control points
-    static std::vector<glm::vec2> bezierPolynomial(std::vector<glm::vec2> points, double stepSize);    // via polynomial function
-    static std::vector<glm::vec2> bezierDeCasteljau(std::vector<glm::vec2> points, double stepSize);   // geometrically
-    static std::vector<glm::vec2> bezierMatrix(std::vector<glm::vec2> controlPoints, double stepSize); // via matrix operations
-    static glm::vec2 deCasteljauKernel(std::vector<glm::vec2> points, double t);
 
+    // via polynomial function
+    static std::vector<float> bezierPolynomial(std::vector<float> points, double stepSize, int dimension);
+    // geometrically
+    static std::vector<float> bezierDeCasteljau(std::vector<float> points, double stepSize, int dimension);
+    static std::vector<float> deCasteljauKernel(std::vector<float> points, double t, int dimension);
+    // via matrix operations
+    static std::vector<float> bezierMatrix(std::vector<float> controlPoints, double stepSize, int dimension);
 };
 
 
