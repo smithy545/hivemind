@@ -19,7 +19,7 @@ class RenderNode : public LinkedNode {
 public:
     POINTERIZE(RenderNode);
 
-    explicit RenderNode(std::string shaderName, const GLenum &mode = GL_TRIANGLES, Ptr next = nullptr);
+    explicit RenderNode(std::string shaderName, GLenum mode = GL_TRIANGLES, Ptr next = nullptr);
 
     LinkedNode::Ptr getNext() override;
 

@@ -300,13 +300,13 @@ void Renderer::loadTileSheet(const std::string &path) {
     }
 }
 
-std::string Renderer::generateBezierSprite(const std::vector<glm::vec3> &hull, double stepSize) {
+std::string Renderer::generateBezierSprite(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color) {
     auto curveSprite = std::make_shared<Sprite>();
     auto curve = MathUtil::generateBezierCurve(hull, stepSize);
     for (int index = 0; index < curve.size(); index++) {
         // make all points on curve red
         curveSprite->vertices.emplace_back(curve[index].x, -curve[index].y, curve[index].z);
-        curveSprite->colors.emplace_back(1, 0, 0, 1);
+        curveSprite->colors.push_back(color);
         curveSprite->indices.push_back(index);
     }
     curveSprite->reload();
@@ -317,12 +317,12 @@ std::string Renderer::generateBezierSprite(const std::vector<glm::vec3> &hull, d
     return id;
 }
 
-std::string Renderer::generateLineSprite(const std::vector<glm::vec3> &points) {
+std::string Renderer::generateLineSprite(const std::vector<glm::vec3> &points, glm::vec4 color) {
     auto lineSprite = std::make_shared<Sprite>();
     for (int index = 0; index < points.size(); index++) {
         // make all points on line red
         lineSprite->vertices.emplace_back(points[index].x, -points[index].y, points[index].z);
-        lineSprite->colors.emplace_back(1, 0, 0, 1);
+        lineSprite->colors.push_back(color);
         lineSprite->indices.push_back(index);
     }
     lineSprite->reload();

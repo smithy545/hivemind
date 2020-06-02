@@ -6,7 +6,6 @@
 
 #include <utility>
 
-#define BEZIER_POLYNOMIAL 0
 
 std::vector<int *> MathUtil::generatedBinomialCoeffs;
 int MathUtil::maxGeneratedDegree = 0;

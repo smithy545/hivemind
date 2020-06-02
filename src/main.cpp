@@ -76,23 +76,6 @@ void loop() {
     state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
 
-    // setup some test sprites
-    auto person = std::make_shared<Body>();
-    auto tile = std::make_shared<Body>();
-    auto boxId = renderer->generateLineSprite(MathUtil::generateBox(10, 20, 30));
-    auto box = std::make_shared<Body>();
-    auto curveId = renderer->generateBezierSprite({{7, 25, 0}, {2, 11, 0}, {22, 6, 0}}, 0.1);
-    auto curve = std::make_shared<Body>();
-    person->setOrigin({20, 0, -10});
-    tile->setOrigin({0, -5, -5});
-    box->setOrigin({-20, 0, -20});
-    curve->setOrigin({0, 5, -15});
-
-    state->getScene().addToScene("texture", "nude", GL_TRIANGLES, person);
-    state->getScene().addToScene("texture", "random", GL_TRIANGLES, tile);
-    state->getScene().addToScene("color", boxId, GL_LINE_STRIP, box);
-    state->getScene().addToScene("color", curveId, GL_LINE_STRIP, curve);
-
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);

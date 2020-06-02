@@ -5,10 +5,14 @@
 #ifndef SOCIETY_RECTANGLE_H
 #define SOCIETY_RECTANGLE_H
 
-#include "macros.h"
-#include "Polygon.h"
+#include <glm/glm.hpp>
+#include <vector>
 
-class Rectangle : public Polygon, public std::enable_shared_from_this<Rectangle> {
+#include "Bound.h"
+#include "macros.h"
+
+
+class Rectangle : public Bound, public std::enable_shared_from_this<Rectangle> {
 public:
     POINTERIZE(Rectangle);
 
@@ -18,7 +22,7 @@ public:
 
     bool collides(double X, double Y) const;
 
-    bool collides(Shape::Ptr other) override;
+    bool collides(Bound::Ptr other) override;
 
     double getX() const;
 
@@ -44,8 +48,7 @@ public:
 
     void setHeight(double height);
 
-    std::vector<glm::vec2> getPoints() override;
-
+    std::vector<glm::vec2> getPoints();
 private:
     double x, y;
     double centerX, centerY;

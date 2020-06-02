@@ -6,7 +6,7 @@
 #include <utility>
 
 
-RenderNode::RenderNode(std::string shaderName, const GLenum &mode, Ptr next):
+RenderNode::RenderNode(std::string shaderName, GLenum mode, Ptr next):
     shaderName(std::move(shaderName)),
     next(std::move(next)),
     mode(mode) {}

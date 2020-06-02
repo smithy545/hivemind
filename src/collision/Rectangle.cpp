@@ -18,7 +18,7 @@ bool Rectangle::collides(double X, double Y) const {
     return X >= x && X < x + width && Y >= y && Y < y + height;
 }
 
-bool Rectangle::collides(Shape::Ptr other) {
+bool Rectangle::collides(Bound::Ptr other) {
     auto rect = std::dynamic_pointer_cast<Rectangle>(other);
     if(rect != nullptr) {
         if(other->collides(this->shared_from_this()))

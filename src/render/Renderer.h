@@ -45,9 +45,9 @@ public:
     bool setShader(const std::string &name);
 
     // add sprites
-    std::string generateBezierSprite(const std::vector<glm::vec3> &hull, double stepSize);
+    std::string generateBezierSprite(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
 
-    std::string generateLineSprite(const std::vector<glm::vec3> &points);
+    std::string generateLineSprite(const std::vector<glm::vec3> &points, glm::vec4 color);
 private:
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
