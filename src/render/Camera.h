@@ -27,13 +27,13 @@ public:
 
     void moveBackword();
 
-    void moveLeft();
-
-    void moveRight();
-
     void moveUp();
 
     void moveDown();
+
+    void strafeLeft();
+
+    void strafeRight();
 
     void panLeft();
 
@@ -53,14 +53,16 @@ public:
 
     float getScale() const;
 
-    const glm::mat4 getViewProjectionMatrix() const;
+    glm::mat4 getViewProjectionMatrix() const;
 
 private:
     glm::vec3 up{0, 1, 0};
     glm::vec3 forward{0, 0, 1};
     glm::vec3 position{0, 0, 0};
     Rectangle bound;
-    float scale{0.1};
+    float translationSpeed{0.5};
+    float horizontalRotationSpeed{0.1};
+    float verticalRotationSpeed{0.1};
 
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};

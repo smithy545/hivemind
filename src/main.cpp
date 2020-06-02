@@ -86,8 +86,8 @@ void loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
-    // clear background to dirt color
-    glClearColor(0.61f, 0.46, 0.33f, 0.5f);
+    // clear background to black
+    glClearColor(.0f,.0f, .0f, .0f);
 
     std::cout << "UI init" << std::endl;
     Interface::Ptr ui = std::make_shared<Interface>();

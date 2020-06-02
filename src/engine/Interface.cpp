@@ -9,30 +9,29 @@ Interface::Interface() {}
 
 void Interface::update(const State::Ptr &state) {
     auto camera = state->getScene().getCamera();
-    if (state->getMouseScroll() > 0) {
+    if (state->getMouseScroll() > 0)
         camera->zoomIn();
-    } else if (state->getMouseScroll() < 0) {
+    else if (state->getMouseScroll() < 0)
         camera->zoomOut();
-    }
-    if (state->getKey(GLFW_KEY_LEFT)) {
-        camera->panLeft();
-    }
-    if (state->getKey(GLFW_KEY_RIGHT)) {
-        camera->panRight();
-    }
-    if (state->getKey(GLFW_KEY_UP)) {
+
+    if (state->getKey(GLFW_KEY_W))
         camera->moveForward();
-    }
-    if (state->getKey(GLFW_KEY_DOWN)) {
+    if (state->getKey(GLFW_KEY_S))
         camera->moveBackword();
-    }
-    if(state->getKey(GLFW_KEY_SPACE)) {
+    if (state->getKey(GLFW_KEY_SPACE))
         camera->moveUp();
-    }
-    if(state->getKey(GLFW_KEY_LEFT_CONTROL)) {
+    if (state->getKey(GLFW_KEY_LEFT_CONTROL))
         camera->moveDown();
-    }
+    if (state->getKey(GLFW_KEY_A))
+        camera->panLeft();
+    if (state->getKey(GLFW_KEY_D))
+        camera->panRight();
+    if (state->getKey(GLFW_KEY_Q))
+        camera->strafeLeft();
+    if (state->getKey(GLFW_KEY_E))
+        camera->strafeRight();
 
     double mx = state->getMouseX();
     double my = state->getMouseY();
+    // do mouse collision detection here
 }
