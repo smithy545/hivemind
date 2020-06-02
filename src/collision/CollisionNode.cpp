@@ -4,7 +4,12 @@
 
 #include "CollisionNode.h"
 
-CollisionNode::CollisionNode(Body::Ptr first, Body::Ptr second) : bodies(first, second) {}
+#include <utility>
+
+
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second) : CollisionNode(first, second, nullptr) {}
+
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, CollisionNode::Ptr next) : bodies(first, second), next(std::move(next)) {}
 
 Body::Ptr CollisionNode::getFirstBody() {
     return bodies.first;
@@ -16,4 +21,8 @@ Body::Ptr CollisionNode::getSecondBody() {
 
 CollisionNode::Ptr CollisionNode::getNext() {
     return CollisionNode::Ptr();
+}
+
+void CollisionNode::setNext(CollisionNode::Ptr next) {
+    this->next = next;
 }

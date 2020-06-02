@@ -21,10 +21,16 @@ void Interface::update(const State::Ptr &state) {
         camera->panRight();
     }
     if (state->getKey(GLFW_KEY_UP)) {
-        camera->panUp();
+        camera->moveForward();
     }
     if (state->getKey(GLFW_KEY_DOWN)) {
-        camera->panDown();
+        camera->moveBackword();
+    }
+    if(state->getKey(GLFW_KEY_SPACE)) {
+        camera->moveUp();
+    }
+    if(state->getKey(GLFW_KEY_LEFT_CONTROL)) {
+        camera->moveDown();
     }
 
     double mx = state->getMouseX();

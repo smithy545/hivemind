@@ -140,7 +140,7 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
                         {
                                 child->getOrigin().x,
                                 child->getOrigin().y,
-                                0
+                                child->getOrigin().z
                         });
                 // rotate
                 //TODO: do matrix math and figure out how to fix matrices so rotation is about center

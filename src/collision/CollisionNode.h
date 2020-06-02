@@ -15,11 +15,13 @@ class CollisionNode {
 public:
     POINTERIZE(CollisionNode);
 
-    CollisionNode(Body::Ptr first, Body::Ptr second);
+    CollisionNode(const Body::Ptr& first, const Body::Ptr& second);
+    CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next);
 
     Body::Ptr getFirstBody();
     Body::Ptr getSecondBody();
     Ptr getNext();
+    void setNext(Ptr next);
 private:
     std::pair<Body::Ptr, Body::Ptr> bodies;
     Ptr next;

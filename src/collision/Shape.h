@@ -14,12 +14,5 @@ public:
     virtual bool collides(Ptr other) = 0;
 };
 
-class ClosedShape : public Shape {
-public:
-    POINTERIZE(ClosedShape);
-
-    virtual bool contains(Ptr other) = 0;
-};
-
 
 #endif //SOCIETY_SHAPE_H

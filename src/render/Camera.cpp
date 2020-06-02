@@ -4,20 +4,22 @@
 
 #include "Camera.h"
 
+#include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include <glm/gtx/rotate_vector.hpp>
 
 
-Camera::Camera(double x, double y, double width, double height)
-        : pos(x, y, 0), bound(x, y, width, height) {
+Camera::Camera(double width, double height)
+        : bound(0, 0, width, height) {
     resetProjectionMatrix();
     resetViewMatrix();
 }
 
-bool Camera::inSight(double x, double y) {
+bool Camera::inSight(double x, double y, double z) {
     return bound.collides(x, y);
 }
 
-bool Camera::inSight(glm::vec2 pos) {
+bool Camera::inSight(glm::vec3 pos) {
     return bound.collides(pos.x, pos.y);
 }
 
@@ -26,22 +28,26 @@ bool Camera::inSight(const Rectangle& obj) {
 }
 
 void Camera::panLeft() {
-    pos.x -= scale;
+    forward = glm::rotate(forward, scale, up);
     resetViewMatrix();
 }
 
 void Camera::panRight() {
-    pos.x += scale;
+    forward = glm::rotate(forward, -scale, up);
     resetViewMatrix();
 }
 
 void Camera::panUp() {
-    pos.y += scale;
+    auto left = glm::cross(up, forward);
+    forward = glm::rotate(forward, -scale, left);
+    up = glm::rotate(up, -scale, left);
     resetViewMatrix();
 }
 
 void Camera::panDown() {
-    pos.y -= scale;
+    auto left = glm::cross(up, forward);
+    forward = glm::rotate(forward, scale, left);
+    up = glm::rotate(up, scale, left);
     resetViewMatrix();
 }
 
@@ -60,17 +66,17 @@ void Camera::resize(double width, double height) {
 }
 
 void Camera::resetProjectionMatrix() {
-    float width = scale * bound.getWidth();
-    float height = scale * bound.getHeight();
+    float width = bound.getWidth();
+    float height = bound.getHeight();
     bound.setWidth(width);
     bound.setHeight(height);
-    projectionMatrix = glm::ortho(0.f, width, 0.f, height);
+    projectionMatrix = glm::perspective(glm::radians(90.0f), width/height, 0.1f, 100.0f);
 }
 
 void Camera::resetViewMatrix() {
-    bound.setX(pos.x);
-    bound.setY(pos.y);
-    viewMatrix = glm::translate(glm::mat4(1), -pos);
+    bound.setX(position.x);
+    bound.setY(position.y);
+    viewMatrix = glm::lookAt(position, position + forward, up);
 }
 
 const glm::mat4 Camera::getViewProjectionMatrix() const {
@@ -83,4 +89,34 @@ Rectangle Camera::getBoundingRect() {
 
 float Camera::getScale() const {
     return scale;
+}
+
+void Camera::moveForward() {
+    position += scale*forward;
+    resetViewMatrix();
+}
+
+void Camera::moveBackword() {
+    position -= scale*forward;
+    resetViewMatrix();
+}
+
+void Camera::moveLeft() {
+    position += scale*glm::cross(up, forward);
+    resetViewMatrix();
+}
+
+void Camera::moveRight() {
+    position -= scale*glm::cross(up, forward);
+    resetViewMatrix();
+}
+
+void Camera::moveUp() {
+    position += scale*up;
+    resetViewMatrix();
+}
+
+void Camera::moveDown() {
+    position -= scale*up;
+    resetViewMatrix();
 }

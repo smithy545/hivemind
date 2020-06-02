@@ -15,13 +15,25 @@ class Camera {
 public:
     POINTERIZE(Camera);
 
-    Camera(double x, double y, double width, double height);
+    Camera(double width, double height);
 
-    bool inSight(double x, double y);
+    bool inSight(double x, double y, double z);
 
-    bool inSight(glm::vec2 pos);
+    bool inSight(glm::vec3 pos);
 
     bool inSight(const Rectangle& obj);
+
+    void moveForward();
+
+    void moveBackword();
+
+    void moveLeft();
+
+    void moveRight();
+
+    void moveUp();
+
+    void moveDown();
 
     void panLeft();
 
@@ -44,9 +56,11 @@ public:
     const glm::mat4 getViewProjectionMatrix() const;
 
 private:
-    glm::vec3 pos;
+    glm::vec3 up{0, 1, 0};
+    glm::vec3 forward{0, 0, 1};
+    glm::vec3 position{0, 0, 0};
     Rectangle bound;
-    float scale{1};
+    float scale{0.1};
 
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};
