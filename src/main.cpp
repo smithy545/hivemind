@@ -71,8 +71,7 @@ void loop() {
     GLFWwindow *window = renderer->init("renderer.json");
 
     std::cout << "State init" << std::endl;
-    state = std::make_shared<State>();
-    state->setCamera(std::make_shared<Camera>(0, 0, renderer->getWidth(), renderer->getHeight()));
+    state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
 
     std::cout << "Window init" << std::endl;
@@ -95,7 +94,7 @@ void loop() {
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
-    Integrator::Ptr integrator = std::make_shared<Integrator>();
+    Integrator::Ptr integrator = std::make_shared<Integrator>(1.0, 0.1);
 
     std::cout << "Loop start" << std::endl;
     state->start();
@@ -104,25 +103,27 @@ void loop() {
         state->enterFrame();
         glClear(GL_COLOR_BUFFER_BIT);
 
+        auto scene = state->getScene();
         // resize if flag set
         if (resized) {
             renderer->resize(screenWidth, screenHeight);
+            scene.getCamera().resize(screenWidth, screenHeight);
             resized = false;
         }
 
-        // check collisions and update bodies
         if (!state->isPaused()) {
-            if (collider != nullptr)
-                collider->update(state);
-            if (integrator != nullptr)
-                integrator->update(state);
+            // check collisions and update bodies
+            if (collider != nullptr && integrator != nullptr) {
+                auto updatedObjects = collider->update(scene.getCollisionTree());
+                integrator->update(updatedObjects);
+            }
         }
 
         // update state with user input
         ui->update(state);
 
         // render
-        renderer->render(state->getRenderTree(), state->getCamera());
+        renderer->render(scene.getRenderTree(), scene.getCamera());
 
         // reset mouse wheel position
         state->setMouseScroll(0.0f);

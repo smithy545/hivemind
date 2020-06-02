@@ -7,6 +7,7 @@
 
 #include <memory>
 
+#define SP(X) std::shared_ptr<X>
 #define POINTERIZE(CLASS) typedef std::shared_ptr<CLASS> Ptr
 
 #endif //SOCIETY_MACROS_H

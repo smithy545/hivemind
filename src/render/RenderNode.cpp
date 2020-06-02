@@ -25,7 +25,7 @@ void RenderNode::setNext(const RenderNode::Ptr &next) {
     RenderNode::next = next;
 }
 
-const std::vector<RenderEntity> &RenderNode::getChildren() const {
+const std::vector<Body::Ptr> &RenderNode::getChildren() const {
     return children;
 }
 
@@ -49,10 +49,6 @@ void RenderNode::setMode(unsigned int mode) {
     RenderNode::mode = mode;
 }
 
-void RenderNode::addChild(Rectangle bounds) {
-    children.emplace_back(bounds);
-}
-
-void RenderNode::addChild(Rectangle bounds, double angle) {
-    children.emplace_back(bounds, angle);
+void RenderNode::addChild(Body::Ptr body) {
+    children.push_back(body);
 }

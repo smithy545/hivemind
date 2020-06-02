@@ -5,15 +5,18 @@
 #ifndef SOCIETY_COLLIDER_H
 #define SOCIETY_COLLIDER_H
 
+#include <vector>
+
+#include "collision/Body.h"
+#include "collision/CollisionNode.h"
 #include "macros.h"
-#include "State.h"
 
 
 class Collider {
 public:
     POINTERIZE(Collider);
 
-    virtual void update(State::Ptr state);
+    virtual std::vector<Body::Ptr> update(CollisionNode::Ptr collisionTree);
 };
 
 

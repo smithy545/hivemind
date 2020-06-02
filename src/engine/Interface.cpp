@@ -8,22 +8,23 @@
 Interface::Interface() {}
 
 void Interface::update(const State::Ptr &state) {
+    auto camera = state->getScene().getCamera();
     if (state->getMouseScroll() > 0) {
-        state->getCamera()->zoomIn();
+        camera.zoomIn();
     } else if (state->getMouseScroll() < 0) {
-        state->getCamera()->zoomOut();
+        camera.zoomOut();
     }
     if (state->getKey(GLFW_KEY_LEFT)) {
-        state->getCamera()->panLeft();
+        camera.panLeft();
     }
     if (state->getKey(GLFW_KEY_RIGHT)) {
-        state->getCamera()->panRight();
+        camera.panRight();
     }
     if (state->getKey(GLFW_KEY_UP)) {
-        state->getCamera()->panUp();
+        camera.panUp();
     }
     if (state->getKey(GLFW_KEY_DOWN)) {
-        state->getCamera()->panDown();
+        camera.panDown();
     }
 
     double mx = state->getMouseX();

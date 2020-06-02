@@ -63,7 +63,7 @@ add_library(collision STATIC
         src/collision/QuadTree.cpp
         src/collision/QuadTree.h
         src/collision/Rectangle.cpp
-        src/collision/Rectangle.h)
+        src/collision/Rectangle.h src/collision/CollisionNode.cpp src/collision/CollisionNode.h)
 
 ### MY PATHING LIB ##
 add_library(pathing STATIC
@@ -93,8 +93,6 @@ add_library(render STATIC
         src/render/Camera.h
         src/render/Renderer.cpp
         src/render/Renderer.h
-        src/render/RenderEntity.cpp
-        src/render/RenderEntity.h
         src/render/RenderNode.cpp
         src/render/RenderNode.h
         src/render/Sprite.cpp
@@ -105,6 +103,11 @@ add_library(ui STATIC
         src/interface/InterfaceNode.cpp
         src/interface/InterfaceNode.h)
 
+### MY DYNAMICS LIB ###
+add_library(dynamics STATIC
+        src/collision/Body.cpp
+        src/collision/Body.h)
+
 ### GAME ENGINE ###
 add_library(engine STATIC
         src/engine/State.cpp
@@ -114,13 +117,15 @@ add_library(engine STATIC
         src/engine/Integrator.cpp
         src/engine/Integrator.h
         src/engine/Interface.cpp
-        src/engine/Interface.h)
+        src/engine/Interface.h src/engine/Scene.cpp src/engine/Scene.h)
 
-add_library(world STATIC
-        src/world/Person.cpp
-        src/world/Person.h
-        src/world/Skeleton.cpp
-        src/world/Skeleton.h)
+add_library(life STATIC
+        src/life/Person.cpp
+        src/life/Person.h
+        src/life/Appendage.cpp
+        src/life/Appendage.h
+        src/life/Joint.cpp
+        src/life/Joint.h)
 
 ### CUDA STUFF ###
 add_subdirectory(src/cuda)
@@ -152,7 +157,8 @@ set(ALL_LIBS
         render
         ui
         engine
-        world
+        life
+        dynamics
         cuda_stuff)
 
 add_definitions(

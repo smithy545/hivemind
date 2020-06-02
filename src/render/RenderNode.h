@@ -9,9 +9,9 @@
 #include <string>
 #include <vector>
 
+#include "collision/Body.h"
 #include "common/LinkedNode.h"
 #include "macros.h"
-#include "RenderEntity.h"
 
 
 class RenderNode : public LinkedNode {
@@ -26,7 +26,7 @@ public:
 
     void setNext(const Ptr &next);
 
-    const std::vector<RenderEntity> &getChildren() const;
+    const std::vector<Body::Ptr> &getChildren() const;
 
     const std::string &getSpriteName() const;
 
@@ -38,11 +38,9 @@ public:
 
     void setMode(GLenum mode);
 
-    void addChild(Rectangle bounds, double angle);
-
-    void addChild(Rectangle bounds);
+    void addChild(Body::Ptr body);
 private:
-    std::vector<RenderEntity> children{};
+    std::vector<Body::Ptr> children{};
     std::string shaderName;
     std::string spriteName;
     GLenum mode;

@@ -4,19 +4,10 @@
 
 #include "State.h"
 
-#include <fmt/format.h>
 
-
-State::State() : camera(nullptr), head(nullptr), map(nullptr) {
+State::State(int width, int height) : map(nullptr), scene(width, height) {
     for (bool &key : keys)
         key = false;
-}
-
-RenderNode::Ptr State::getRenderTree() {
-    if (map == nullptr)
-        return nullptr;
-
-    return head;
 }
 
 bool State::getKey(int key) const {
@@ -49,14 +40,6 @@ void State::setMouseY(double mouseY) {
 
 void State::setMouseScroll(double mouseScroll) {
     this->mouseScroll = mouseScroll;
-}
-
-Camera::Ptr &State::getCamera() {
-    return camera;
-}
-
-void State::setCamera(const Camera::Ptr &camera) {
-    State::camera = camera;
 }
 
 const Map::Ptr &State::getMap() const {
@@ -101,5 +84,9 @@ void State::enterFrame() {
 
 double State::getFPS() const {
     return fps;
+}
+
+Scene &State::getScene() {
+    return scene;
 }
 

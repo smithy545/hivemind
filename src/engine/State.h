@@ -11,17 +11,16 @@
 
 #include "macros.h"
 #include "pathing/Map.h"
-#include "render/Camera.h"
-#include "render/RenderNode.h"
+#include "Scene.h"
 
 
 class State {
 public:
     POINTERIZE(State);
 
-    State();
+    State(int width, int height);
 
-    RenderNode::Ptr getRenderTree();
+    Scene &getScene();
 
     bool getKey(int key) const;
 
@@ -30,8 +29,6 @@ public:
     double getMouseY() const;
 
     double getMouseScroll() const;
-
-    Camera::Ptr &getCamera();
 
     const Map::Ptr &getMap() const;
 
@@ -42,8 +39,6 @@ public:
     void setMouseY(double mouseY);
 
     void setMouseScroll(double mouseScroll);
-
-    void setCamera(const Camera::Ptr &camera);
 
     void setMap(const Map::Ptr &map);
 
@@ -77,11 +72,11 @@ private:
     double mouseScroll{};
 
     // scene state
-    Camera::Ptr camera;
-    RenderNode::Ptr head;
+    Scene scene;
 
     // world state
     Map::Ptr map;
+
 };
 
 

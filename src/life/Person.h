@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+#include "Appendage.h"
 #include "collision/Rectangle.h"
 #include "macros.h"
 
@@ -24,31 +25,9 @@ public:
     void setPosition(const glm::vec3 &position);
 
 private:
-    class BodyPart {
-    public:
-        POINTERIZE(BodyPart);
-
-        enum ShapeClass {
-            SPHERE,
-            CYLINDER,
-            BOX,
-            OVAL
-        };
-
-        glm::vec3 orientation;
-        glm::vec3 dimensions;
-        glm::vec3 infinitesimalDims;
-        std::vector<glm::vec3> surfacePoints;
-        Ptr parent;
-        std::vector<Ptr> children;
-        ShapeClass shape;
-
-        void generateSurfacePoints();
-    };
-
     std::string name;
     glm::vec3 position;
-    BodyPart::Ptr head;
+    Appendage::Ptr head;
 };
 
 

@@ -2,27 +2,31 @@
 // Created by Philip on 6/1/2020.
 //
 
-#include "Person.h"
+#include "Appendage.h"
 
 #include "util/MathUtil.h"
 
 
-const std::string &Person::getName() const {
-    return name;
+Appendage::Appendage(const glm::vec3 &orientation, const glm::vec3 &dimensions, const glm::vec3 &infinitesimalDims,
+                     Shape shape)
+        : orientation(orientation), dimensions(dimensions),
+          infinitesimalDims(infinitesimalDims), shape(shape) {
+    generateSurfacePoints();
 }
 
-const glm::vec3 &Person::getPosition() const {
-    return position;
+void Appendage::link(const Appendage::Ptr& part) {
+    auto joint = std::make_shared<Joint>(this->shared_from_this(), part);
+    joints.push_back(joint);
 }
 
-void Person::setPosition(const glm::vec3 &position) {
-    Person::position = position;
+const std::vector<glm::vec3> &Appendage::getSurfacePoints() const {
+    return surfacePoints;
 }
 
-void Person::BodyPart::generateSurfacePoints() {
+void Appendage::generateSurfacePoints() {
     // generate surface points based on shape class
     // comments show how the dimensions 3-vector corresponds to the shape dimensions. 0 means the value goes unused
-    // infintesimal dimensions correspond to the step size during iteration of the dimensions in the dimensions vector
+    // infinitesimal dimensions correspond to the step size during iteration of the dimensions in the dimensions vector
     // TODO: Look into subclassing body parts according to shape class
     switch (shape) {
         case SPHERE:

@@ -5,4 +5,15 @@
 #include "Collider.h"
 
 
-void Collider::update(State::Ptr state) {}
+std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collisionTree) {
+    auto touchedBodies = std::vector<Body::Ptr>();
+    while(collisionTree != nullptr) {
+        bool collided = true;
+        if(collided) {
+            touchedBodies.push_back(collisionTree->getFirstBody());
+            touchedBodies.push_back(collisionTree->getSecondBody());
+        }
+        collisionTree = collisionTree->getNext();
+    }
+    return touchedBodies;
+}

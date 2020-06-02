@@ -109,9 +109,9 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
+void Renderer::render(RenderNode::Ptr treeHead, Camera &camera) {
     glUseProgram(currentShaderProgram);
-    glm::mat4 viewProj = camera->getViewProjectionMatrix();
+    glm::mat4 viewProj = camera.getViewProjectionMatrix();
 
     while (treeHead != nullptr) {
         std::string spriteName = treeHead->getSpriteName();
@@ -124,7 +124,7 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
             GLenum drawMode = treeHead->getMode();
 
             glBindVertexArray(sprite->vertexArrayId);
-            if (sprite->texture != "") {
+            if (!sprite->texture.empty()) {
                 GLuint texId =
                         loadedTextures.find(sprite->texture) == loadedTextures.end() ? 0
                                                                                      : loadedTextures[sprite->texture];
@@ -132,25 +132,22 @@ void Renderer::render(RenderNode::Ptr treeHead, const Camera::Ptr &camera) {
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
-            for (auto child: treeHead->getChildren()) {
-                auto childRect = child.getBounds();
-                if (camera->inSight(childRect)) {
-                    // translate to world position
-                    glm::mat4 modelMatrix = glm::translate(
-                            glm::mat4(1),
-                            {
-                                    childRect.getX(),
-                                    childRect.getY(),
-                                    0
-                            });
-                    // rotate
-                    //TODO: do matrix math and figure out how to fix matrices so rotation is about center
-                    // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
+            for (const auto& child: treeHead->getChildren()) {
+                // translate to world position
+                glm::mat4 modelMatrix = glm::translate(
+                        glm::mat4(1),
+                        {
+                                child->getOrigin().x,
+                                child->getOrigin().y,
+                                0
+                        });
+                // rotate
+                //TODO: do matrix math and figure out how to fix matrices so rotation is about center
+                // modelMatrix = glm::rotate(modelMatrix, child.getAngle(), glm::vec3(0, 0, 1));
 
-                    glm::mat4 mvpMatrix = viewProj * modelMatrix;
-                    glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                    glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
-                }
+                glm::mat4 mvpMatrix = viewProj * modelMatrix;
+                glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+                glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
             }
         }
         treeHead = std::dynamic_pointer_cast<RenderNode>(treeHead->getNext());
