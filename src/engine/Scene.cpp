@@ -5,15 +5,7 @@
 #include "Scene.h"
 
 
-Scene::Scene(int width, int height) : camera(0, 0, width, height) {
-    renderHead = std::make_shared<RenderNode>("nude", "texture");
-
-    auto testBody = std::make_shared<Body>();
-    testBody->setAcceleration({0.01, 0.01, 0});
-    addBody(testBody);
-
-    collisionHead = std::make_shared<CollisionNode>(testBody, testBody);
-}
+Scene::Scene(int width, int height) : camera(0, 0, width, height) {}
 
 Camera &Scene::getCamera() {
     return camera;

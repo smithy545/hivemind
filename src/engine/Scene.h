@@ -12,6 +12,7 @@
 #include "render/Camera.h"
 #include "render/RenderNode.h"
 
+
 class Scene {
 public:
     Scene(int width, int height);

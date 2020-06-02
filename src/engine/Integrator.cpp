@@ -5,7 +5,6 @@
 #include "Integrator.h"
 
 #include <fmt/format.h>
-#include <iostream>
 
 
 Integrator::Integrator() {}
@@ -19,24 +18,30 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
             activeBodies[bodyHash] = body;
     }
 
+    std::vector<std::string> inertBodies;
     for(const auto& bodyPair: activeBodies) {
         auto body = bodyPair.second;
         body->update(timeStep);
 
         // cull infinitesimal fields
         auto vel = body->getVelocity();
-        vel.x = vel.x < EPSILON ? 0 : vel.x;
-        vel.y = vel.y < EPSILON ? 0 : vel.y;
-        vel.z = vel.z < EPSILON ? 0 : vel.z;
+        vel.x = glm::abs(vel.x) < EPSILON ? 0 : vel.x;
+        vel.y = glm::abs(vel.y) < EPSILON ? 0 : vel.y;
+        vel.z = glm::abs(vel.z) < EPSILON ? 0 : vel.z;
         body->setVelocity(vel);
 
         auto acc = body->getAcceleration();
-        acc.x = acc.x < EPSILON ? 0 : acc.x;
-        acc.y = acc.y < EPSILON ? 0 : acc.y;
-        acc.z = acc.z < EPSILON ? 0 : acc.z;
-        //body->setAcceleration(acc);
-        body->setAcceleration({0, 0, 0});
+        acc.x = glm::abs(acc.x) < EPSILON ? 0 : acc.x;
+        acc.y = glm::abs(acc.y) < EPSILON ? 0 : acc.y;
+        acc.z = glm::abs(acc.z) < EPSILON ? 0 : acc.z;
+        body->setAcceleration(acc);
+
+        // if vel and acc are zero then cull from active bodies
+        if(glm::all(glm::equal(vel, {0,0,0}) + glm::equal(acc, {0,0,0})))
+            inertBodies.push_back(getBodyHash(body));
     }
+    for(const auto& hash: inertBodies)
+        activeBodies.erase(hash);
 }
 
 std::string Integrator::getBodyHash(const Body::Ptr& body) {
