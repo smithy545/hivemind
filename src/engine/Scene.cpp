@@ -20,8 +20,13 @@ const CollisionNode::Ptr &Scene::getCollisionTree() const {
 }
 
 void Scene::addToScene(const std::string& shaderName, const std::string& spriteName, const GLenum &mode, const Body::Ptr& body) {
-    // add to bodies
-    bodies.push_back(body);
+    // add to entities
+    auto rect = std::make_shared<Rectangle>(0, 0, 10, 10);
+    auto entity = std::make_shared<GameEntity>(rect, body);
+    entities.push_back(entity);
+
+    // add as collision so it will be picked up by the integrator
+    collisionHead = std::make_shared<CollisionNode>(body, body, collisionHead, nullptr);
 
     // add to render tree
     auto node = renderHead;
@@ -32,7 +37,6 @@ void Scene::addToScene(const std::string& shaderName, const std::string& spriteN
     }
     if(node == nullptr)
         node = std::make_shared<RenderNode>(shaderName, mode, renderHead);
-
     if(mode != node->getDrawMode())
         node->setDrawMode(mode);
     node->addChild(spriteName, body);

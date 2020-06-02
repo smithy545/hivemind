@@ -6,10 +6,9 @@
 
 #include <fmt/format.h>
 
-
 Integrator::Integrator() {}
 
-Integrator::Integrator(float timeStep, float friction) : timeStep(timeStep), friction(friction) {}
+Integrator::Integrator(float timeStep) : timeStep(timeStep) {}
 
 void Integrator::update(const std::vector<Body::Ptr> &bodies) {
     for(const auto& body: bodies) {
@@ -36,7 +35,19 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
         acc.z = glm::abs(acc.z) < EPSILON ? 0 : acc.z;
         body->setAcceleration(acc);
 
-        // if vel and acc are zero then cull from active bodies
+        auto pos = body->getOrigin();
+        if(pos.y > 0) {
+            // if above ground accelerate due to gravity
+            body->setVelocity(body->getVelocity() + G*timeStep);
+        } else if(pos.y < 0) {
+            // if below ground warp to ground and freeze
+            // TODO: should collide with ground?
+            pos.y = 0;
+            body->setOrigin(pos);
+            body->setAcceleration({0,0,0});
+            body->setVelocity({0,0,0});
+        }
+
         if(glm::all(glm::equal(vel, {0,0,0}) + glm::equal(acc, {0,0,0})))
             inertBodies.push_back(getBodyHash(body));
     }

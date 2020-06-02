@@ -16,15 +16,20 @@ public:
     POINTERIZE(CollisionNode);
 
     CollisionNode(const Body::Ptr& first, const Body::Ptr& second);
-    CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next);
+    CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr prev, Ptr next);
 
     Body::Ptr getFirstBody();
     Body::Ptr getSecondBody();
     Ptr getNext();
     void setNext(Ptr next);
+
+    const Ptr &getPrev() const;
+
+    void setPrev(const Ptr &prev);
+
 private:
     std::pair<Body::Ptr, Body::Ptr> bodies;
-    Ptr next;
+    Ptr prev, next;
 };
 
 

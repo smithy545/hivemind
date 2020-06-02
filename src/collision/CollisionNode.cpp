@@ -7,9 +7,9 @@
 #include <utility>
 
 
-CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second) : CollisionNode(first, second, nullptr) {}
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second) : CollisionNode(first, second, nullptr, nullptr) {}
 
-CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, CollisionNode::Ptr next) : bodies(first, second), next(std::move(next)) {}
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr prev, Ptr next) : bodies(first, second), prev(std::move(prev)), next(std::move(next)) {}
 
 Body::Ptr CollisionNode::getFirstBody() {
     return bodies.first;
@@ -25,4 +25,12 @@ CollisionNode::Ptr CollisionNode::getNext() {
 
 void CollisionNode::setNext(CollisionNode::Ptr next) {
     this->next = next;
+}
+
+const CollisionNode::Ptr &CollisionNode::getPrev() const {
+    return prev;
+}
+
+void CollisionNode::setPrev(const CollisionNode::Ptr &prev) {
+    this->prev = prev;
 }

@@ -21,10 +21,9 @@ bool Rectangle::collides(double X, double Y) const {
 bool Rectangle::collides(Bound::Ptr other) {
     auto rect = std::dynamic_pointer_cast<Rectangle>(other);
     if(rect != nullptr) {
-        if(other->collides(this->shared_from_this()))
+        if(rect->collides(this->shared_from_this()))
             return true;
-        auto otherPoints = rect->getPoints();
-        for (auto p: otherPoints) {
+        for (auto p: rect->getPoints()) {
             if(collides(p.x, p.y))
                 return true;
         }

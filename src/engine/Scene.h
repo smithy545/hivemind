@@ -7,8 +7,8 @@
 
 #include <vector>
 
-#include "collision/Body.h"
 #include "collision/CollisionNode.h"
+#include "GameEntity.h"
 #include "render/Camera.h"
 #include "render/RenderNode.h"
 
@@ -25,7 +25,7 @@ public:
 
     void addToScene(const std::string& shaderName, const std::string& spriteName, const GLenum &mode, const Body::Ptr& body);
 private:
-    std::vector<Body::Ptr> bodies;
+    std::vector<GameEntity::Ptr> entities;
     Camera::Ptr camera;
     RenderNode::Ptr renderHead;
     CollisionNode::Ptr collisionHead;

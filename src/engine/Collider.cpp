@@ -4,16 +4,29 @@
 
 #include "Collider.h"
 
+#include <utility>
+
 
 std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collisionTree) {
     auto touchedBodies = std::vector<Body::Ptr>();
-    while(collisionTree != nullptr) {
-        bool collided = true;
+    auto node = std::move(collisionTree);
+    while(node != nullptr) {
+        auto collided = false;
+        // only bare minimum collision detection
+        if(node->getFirstBody() == node->getSecondBody())
+            collided = true;
+
         if(collided) {
-            touchedBodies.push_back(collisionTree->getFirstBody());
-            touchedBodies.push_back(collisionTree->getSecondBody());
+            touchedBodies.push_back(node->getFirstBody());
+            touchedBodies.push_back(node->getSecondBody());
+        } else {
+            // no collision, remove from tree
+            if(node->getPrev() != nullptr)
+                node->getPrev()->setNext(node->getNext());
+            if(node->getNext() != nullptr)
+                node->getNext()->setPrev(node->getPrev());
         }
-        collisionTree = collisionTree->getNext();
+        node = node->getNext();
     }
     return touchedBodies;
 }

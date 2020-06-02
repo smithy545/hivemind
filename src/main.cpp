@@ -1,4 +1,3 @@
-#include <fmt/format.h>
 #include <iostream>
 #include <thread>
 
@@ -8,7 +7,7 @@
 #include "engine/Interface.h"
 #include "pathing/GridMap.h"
 #include "render/Renderer.h"
-#include "util/MathUtil.h"
+
 
 // window state
 static int screenWidth;
@@ -76,6 +75,10 @@ void loop() {
     state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
 
+    auto body = std::make_shared<Body>();
+    body->setOrigin({0, 100, -10});
+    state->getScene().addToScene("texture", "nude", GL_TRIANGLES, body);
+
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -98,7 +101,7 @@ void loop() {
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
-    Integrator::Ptr integrator = std::make_shared<Integrator>(1.0, 0.1);
+    Integrator::Ptr integrator = std::make_shared<Integrator>(1.0);
 
     std::cout << "Loop start" << std::endl;
     state->start();
