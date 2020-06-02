@@ -21,7 +21,7 @@ public:
 
     bool inSight(glm::vec2 pos);
 
-    bool inSight(Rectangle obj);
+    bool inSight(const Rectangle& obj);
 
     void panLeft();
 
@@ -39,14 +39,14 @@ public:
 
     Rectangle getBoundingRect();
 
-    double getScale() const;
+    float getScale() const;
 
-    glm::mat4 getViewProjectionMatrix();
+    const glm::mat4 getViewProjectionMatrix() const;
 
 private:
     glm::vec3 pos;
     Rectangle bound;
-    double scale{1.0};
+    float scale{1};
 
     // initialize matrices to identity
     glm::mat4 viewMatrix{1};

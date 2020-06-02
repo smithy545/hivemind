@@ -6,8 +6,9 @@
 #define SOCIETY_RECTANGLE_H
 
 #include "macros.h"
+#include "Polygon.h"
 
-class Rectangle {
+class Rectangle : public Polygon, public std::enable_shared_from_this<Rectangle> {
 public:
     POINTERIZE(Rectangle);
 
@@ -17,7 +18,7 @@ public:
 
     bool collides(double X, double Y) const;
 
-    bool collides(Rectangle rect);
+    bool collides(Shape::Ptr other) override;
 
     double getX() const;
 
@@ -43,13 +44,13 @@ public:
 
     void setHeight(double height);
 
-    const double *getPoints() const;
+    std::vector<glm::vec2> getPoints() override;
 
 private:
     double x, y;
     double centerX, centerY;
     double width, height;
-    double points[8]{};
+    std::vector<glm::vec2> points{4};
 
     void calculatePoints();
 };

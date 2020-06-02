@@ -17,7 +17,7 @@ class Scene {
 public:
     Scene(int width, int height);
 
-    Camera &getCamera();
+    Camera::Ptr &getCamera();
 
     const RenderNode::Ptr &getRenderTree() const;
 
@@ -26,7 +26,7 @@ public:
     void addBody(const Body::Ptr& body);
 private:
     std::vector<Body::Ptr> bodies;
-    Camera camera;
+    Camera::Ptr camera;
     RenderNode::Ptr renderHead;
     CollisionNode::Ptr collisionHead;
 };

@@ -63,7 +63,11 @@ add_library(collision STATIC
         src/collision/QuadTree.cpp
         src/collision/QuadTree.h
         src/collision/Rectangle.cpp
-        src/collision/Rectangle.h src/collision/CollisionNode.cpp src/collision/CollisionNode.h)
+        src/collision/Rectangle.h
+        src/collision/CollisionNode.cpp
+        src/collision/CollisionNode.h
+        src/collision/Shape.h
+        src/collision/Polygon.h)
 
 ### MY PATHING LIB ##
 add_library(pathing STATIC
@@ -117,7 +121,9 @@ add_library(engine STATIC
         src/engine/Integrator.cpp
         src/engine/Integrator.h
         src/engine/Interface.cpp
-        src/engine/Interface.h src/engine/Scene.cpp src/engine/Scene.h)
+        src/engine/Interface.h
+        src/engine/Scene.cpp
+        src/engine/Scene.h)
 
 add_library(life STATIC
         src/life/Person.cpp

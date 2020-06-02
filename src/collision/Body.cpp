@@ -4,8 +4,6 @@
 
 #include "Body.h"
 
-#include <iostream>
-
 
 Body::Body() {}
 

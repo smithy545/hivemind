@@ -21,8 +21,8 @@ bool Camera::inSight(glm::vec2 pos) {
     return bound.collides(pos.x, pos.y);
 }
 
-bool Camera::inSight(Rectangle obj) {
-    return bound.collides(obj);
+bool Camera::inSight(const Rectangle& obj) {
+    return bound.collides(std::make_shared<Rectangle>(obj));
 }
 
 void Camera::panLeft() {
@@ -73,7 +73,7 @@ void Camera::resetViewMatrix() {
     viewMatrix = glm::translate(glm::mat4(1), -pos);
 }
 
-glm::mat4 Camera::getViewProjectionMatrix() {
+const glm::mat4 Camera::getViewProjectionMatrix() const {
     return projectionMatrix * viewMatrix;
 }
 
@@ -81,6 +81,6 @@ Rectangle Camera::getBoundingRect() {
     return bound;
 }
 
-double Camera::getScale() const {
+float Camera::getScale() const {
     return scale;
 }

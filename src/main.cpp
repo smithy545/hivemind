@@ -107,15 +107,15 @@ void loop() {
         // resize if flag set
         if (resized) {
             renderer->resize(screenWidth, screenHeight);
-            scene.getCamera().resize(screenWidth, screenHeight);
+            scene.getCamera()->resize(screenWidth, screenHeight);
             resized = false;
         }
 
         if (!state->isPaused()) {
             // check collisions and update bodies
             if (collider != nullptr && integrator != nullptr) {
-                auto updatedObjects = collider->update(scene.getCollisionTree());
-                integrator->update(updatedObjects);
+                auto updatedBodies = collider->update(scene.getCollisionTree());
+                integrator->update(updatedBodies);
             }
         }
 

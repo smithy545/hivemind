@@ -18,23 +18,25 @@ bool Rectangle::collides(double X, double Y) const {
     return X >= x && X < x + width && Y >= y && Y < y + height;
 }
 
-bool Rectangle::collides(Rectangle rect) {
-    for (int i = 0; i < 8; i += 2) {
-        if (rect.collides(points[i], points[i + 1]) || collides(rect.points[i], rect.points[i + 1]))
+bool Rectangle::collides(Shape::Ptr other) {
+    auto rect = std::dynamic_pointer_cast<Rectangle>(other);
+    if(rect != nullptr) {
+        if(other->collides(this->shared_from_this()))
             return true;
+        auto otherPoints = rect->getPoints();
+        for (auto p: otherPoints) {
+            if(collides(p.x, p.y))
+                return true;
+        }
     }
     return false;
 }
 
 void Rectangle::calculatePoints() {
-    points[0] = x;
-    points[1] = y;
-    points[2] = x + width;
-    points[3] = y;
-    points[4] = x;
-    points[5] = y + height;
-    points[6] = x + width;
-    points[7] = y + height;
+    points[0] = {x, y};
+    points[1] = {x + width, y};
+    points[2] = {x, y + height};
+    points[3] = {x + width, y + height};
 }
 
 double Rectangle::getX() const {
@@ -73,7 +75,7 @@ void Rectangle::setHeight(double height) {
     calculatePoints();
 }
 
-const double *Rectangle::getPoints() const {
+std::vector<glm::vec2> Rectangle::getPoints() {
     return points;
 }
 

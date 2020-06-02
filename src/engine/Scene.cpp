@@ -5,9 +5,12 @@
 #include "Scene.h"
 
 
-Scene::Scene(int width, int height) : camera(0, 0, width, height) {}
+Scene::Scene(int width, int height) : camera(std::make_shared<Camera>(0, 0, width, height)) {
+    renderHead = std::make_shared<RenderNode>("nude", "texture");
+    renderHead->addChild(std::make_shared<Body>());
+}
 
-Camera &Scene::getCamera() {
+Camera::Ptr &Scene::getCamera() {
     return camera;
 }
 

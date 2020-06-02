@@ -12,6 +12,7 @@
 #include "macros.h"
 #include "State.h"
 
+
 class Integrator {
 public:
     POINTERIZE(Integrator);

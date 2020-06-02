@@ -109,11 +109,12 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(RenderNode::Ptr treeHead, Camera &camera) {
+void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera) {
     glUseProgram(currentShaderProgram);
-    glm::mat4 viewProj = camera.getViewProjectionMatrix();
+    auto viewProj = camera->getViewProjectionMatrix();
 
-    while (treeHead != nullptr) {
+    auto node = treeHead;
+    while (node != nullptr) {
         std::string spriteName = treeHead->getSpriteName();
         if (loadedSprites.find(spriteName) == loadedSprites.end()) {
             std::cerr << "Can't find sprite " << treeHead->getSpriteName() << std::endl;
@@ -150,7 +151,7 @@ void Renderer::render(RenderNode::Ptr treeHead, Camera &camera) {
                 glDrawElements(drawMode, sprite->indices.size(), GL_UNSIGNED_INT, nullptr);
             }
         }
-        treeHead = std::dynamic_pointer_cast<RenderNode>(treeHead->getNext());
+        node = std::dynamic_pointer_cast<RenderNode>(node->getNext());
     }
 }
 
