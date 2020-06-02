@@ -158,7 +158,7 @@ std::vector<glm::vec3> MathUtil::generateCylinder(double radius, double length, 
             surfacePoints.emplace_back(z*glm::cos(phi), z*glm::sin(phi), z);
         }
     }
-    return {};
+    return surfacePoints;
 }
 
 std::vector<glm::vec3> MathUtil::generateBox(double width, double height, double length) {

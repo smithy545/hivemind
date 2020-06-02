@@ -27,6 +27,8 @@ public:
 
     void moveDown();
 
+    void setPosition(const glm::vec3 &position);
+
     void strafeLeft();
 
     void strafeRight();
@@ -52,6 +54,12 @@ public:
     Rectangle getBoundingRect();
 
     glm::mat4 getViewProjectionMatrix() const;
+
+    const glm::vec3 &getPosition() const;
+
+    const glm::vec3 &getForward() const;
+
+    const glm::vec3 &getUp() const;
 private:
     glm::vec3 up{0, 1, 0};
     glm::vec3 forward{0, 0, -1};

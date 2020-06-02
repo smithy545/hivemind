@@ -85,6 +85,11 @@ void Camera::strafeRight() {
     resetViewMatrix();
 }
 
+void Camera::setPosition(const glm::vec3 &position) {
+    Camera::position = position;
+    resetViewMatrix();
+}
+
 // TODO: Zoom
 void Camera::zoomIn() {}
 void Camera::zoomOut() {}
@@ -113,4 +118,16 @@ glm::mat4 Camera::getViewProjectionMatrix() const {
 
 Rectangle Camera::getBoundingRect() {
     return bound;
+}
+
+const glm::vec3 &Camera::getPosition() const {
+    return position;
+}
+
+const glm::vec3 &Camera::getForward() const {
+    return forward;
+}
+
+const glm::vec3 &Camera::getUp() const {
+    return up;
 }
