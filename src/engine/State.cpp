@@ -5,7 +5,12 @@
 #include "State.h"
 
 
-State::State(int width, int height) : map(nullptr), scene(width, height) {
+State::State(int width, int height) :   map(nullptr),
+                                        scene(width, height),
+                                        mouseX(width*0.5),
+                                        mouseY(height*0.5),
+                                        lastMouseX(width*0.5),
+                                        lastMouseY(height*0.5) {
     for (bool &key : keys)
         key = false;
 }
@@ -30,16 +35,18 @@ void State::setKey(int key, bool value) {
     keys[key] = value;
 }
 
-void State::setMouseX(double mouseX) {
-    this->mouseX = mouseX;
+void State::setMouseX(double x) {
+    lastMouseX = mouseX;
+    mouseX = x;
 }
 
-void State::setMouseY(double mouseY) {
-    this->mouseY = mouseY;
+void State::setMouseY(double y) {
+    lastMouseY = mouseY;
+    mouseY = y;
 }
 
-void State::setMouseScroll(double mouseScroll) {
-    this->mouseScroll = mouseScroll;
+void State::setMouseScroll(double delta) {
+    mouseScroll = delta;
 }
 
 const Map::Ptr &State::getMap() const {
@@ -88,5 +95,13 @@ double State::getFPS() const {
 
 Scene &State::getScene() {
     return scene;
+}
+
+double State::getLastMouseX() const {
+    return lastMouseX;
+}
+
+double State::getLastMouseY() const {
+    return lastMouseY;
 }
 

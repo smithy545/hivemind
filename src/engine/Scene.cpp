@@ -9,7 +9,7 @@ Scene::Scene(int width, int height) : camera(std::make_shared<Camera>(width, hei
     renderHead = std::make_shared<RenderNode>("nude", "texture");
 
     auto temp = std::make_shared<Body>();
-    temp->setOrigin({0, 0, 1});
+    temp->setOrigin({0, 0, 10});
     renderHead->addChild(temp);
 }
 

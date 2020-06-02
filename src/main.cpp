@@ -86,6 +86,8 @@ void loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
+    // disable cursor to enable automatic recentering
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // clear background to black
     glClearColor(.0f,.0f, .0f, .0f);
 

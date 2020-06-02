@@ -23,15 +23,16 @@ void Interface::update(const State::Ptr &state) {
     if (state->getKey(GLFW_KEY_LEFT_CONTROL))
         camera->moveDown();
     if (state->getKey(GLFW_KEY_A))
-        camera->panLeft();
-    if (state->getKey(GLFW_KEY_D))
-        camera->panRight();
-    if (state->getKey(GLFW_KEY_Q))
         camera->strafeLeft();
-    if (state->getKey(GLFW_KEY_E))
+    if (state->getKey(GLFW_KEY_D))
         camera->strafeRight();
 
-    double mx = state->getMouseX();
-    double my = state->getMouseY();
-    // do mouse collision detection here
+    float dx = 3.0*(state->getMouseX() - state->getLastMouseX())/camera->getBoundingRect().getWidth();
+    float dy = 0.0*(state->getMouseY() - state->getLastMouseY())/camera->getBoundingRect().getHeight();
+    camera->panHorizontal(dx);
+    camera->panVertical(dy);
+
+    // set mouse pos to itself so the last mouse position is also set to the current mouse position
+    state->setMouseX(state->getMouseX());
+    state->setMouseY(state->getMouseY());
 }

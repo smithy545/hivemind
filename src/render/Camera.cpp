@@ -14,18 +14,6 @@ Camera::Camera(double width, double height)
     resetViewMatrix();
 }
 
-bool Camera::inSight(double x, double y, double z) {
-    return bound.collides(x, y);
-}
-
-bool Camera::inSight(glm::vec3 pos) {
-    return bound.collides(pos.x, pos.y);
-}
-
-bool Camera::inSight(const Rectangle& obj) {
-    return bound.collides(std::make_shared<Rectangle>(obj));
-}
-
 void Camera::panLeft() {
     forward = glm::rotate(forward, horizontalRotationSpeed, up);
     resetViewMatrix();
@@ -50,12 +38,55 @@ void Camera::panDown() {
     resetViewMatrix();
 }
 
+void Camera::panHorizontal(float speed) {
+    forward = glm::rotate(forward, speed, -up);
+    resetViewMatrix();
+}
+
+void Camera::panVertical(float speed) {
+    auto left = glm::cross(up, forward);
+    forward = glm::rotate(forward, speed, left);
+    up = glm::rotate(up, speed, left);
+    resetViewMatrix();
+}
+
+void Camera::moveForward() {
+    position += translationSpeed*forward;
+    resetViewMatrix();
+}
+
+void Camera::moveBackword() {
+    position -= translationSpeed*forward;
+    resetViewMatrix();
+}
+
+void Camera::moveUp() {
+    position += translationSpeed*up;
+    resetViewMatrix();
+}
+
+void Camera::moveDown() {
+    position -= translationSpeed*up;
+    resetViewMatrix();
+}
+
+void Camera::strafeLeft() {
+    position += translationSpeed*glm::cross(up, forward);
+    resetViewMatrix();
+}
+
+void Camera::strafeRight() {
+    position -= translationSpeed*glm::cross(up, forward);
+    resetViewMatrix();
+}
+
 // TODO: Zoom
 void Camera::zoomIn() {}
 void Camera::zoomOut() {}
 
-
-void Camera::resize(double width, double height) {
+void Camera::resize(float width, float height) {
+    bound.setWidth(width);
+    bound.setHeight(height);
     resetProjectionMatrix();
 }
 
@@ -77,34 +108,4 @@ glm::mat4 Camera::getViewProjectionMatrix() const {
 
 Rectangle Camera::getBoundingRect() {
     return bound;
-}
-
-void Camera::moveForward() {
-    position += translationSpeed*forward;
-    resetViewMatrix();
-}
-
-void Camera::moveBackword() {
-    position -= translationSpeed*forward;
-    resetViewMatrix();
-}
-
-void Camera::strafeLeft() {
-    position += translationSpeed*glm::cross(up, forward);
-    resetViewMatrix();
-}
-
-void Camera::strafeRight() {
-    position -= translationSpeed*glm::cross(up, forward);
-    resetViewMatrix();
-}
-
-void Camera::moveUp() {
-    position += translationSpeed*up;
-    resetViewMatrix();
-}
-
-void Camera::moveDown() {
-    position -= translationSpeed*up;
-    resetViewMatrix();
 }
