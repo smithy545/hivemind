@@ -6,7 +6,7 @@
 
 #include <utility>
 
-#define BEZIER_GEOMETRIC 1
+#define BEZIER_POLYNOMIAL 0
 
 std::vector<int *> MathUtil::generatedBinomialCoeffs;
 int MathUtil::maxGeneratedDegree = 0;
@@ -74,10 +74,8 @@ std::vector<float> MathUtil::generateBezierCurve(std::vector<float> controlPoint
 
 #ifdef BEZIER_POLYNOMIAL
     return bezierPolynomial(std::move(controlPoints), stepSize, dimension);
-#elif BEZIER_GEOMETRIC
-    return bezierDeCasteljau(std::move(controlPoints), stepSize, dimension);
 #else
-    return bezierMatrix(std::move(controlPoints), stepSize, dimension);
+    return bezierDeCasteljau(std::move(controlPoints), stepSize, dimension);
 #endif
 }
 
@@ -140,10 +138,6 @@ std::vector<float> MathUtil::deCasteljauKernel(std::vector<float> points, double
             curve.push_back((1 - t) * points[i + j] + t * points[i + dimension + j]);
     }
     return deCasteljauKernel(curve, t, dimension);
-}
-
-std::vector<float> MathUtil::bezierMatrix(std::vector<float> points, double stepSize, int dimension) {
-    return {};
 }
 
 std::vector<glm::vec3> MathUtil::generateSphere(double radius, double phiStep, double thetaStep) {

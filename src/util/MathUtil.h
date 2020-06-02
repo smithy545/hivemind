@@ -37,7 +37,7 @@ private:
     static std::vector<float> bezierDeCasteljau(std::vector<float> points, double stepSize, int dimension);
     static std::vector<float> deCasteljauKernel(std::vector<float> points, double t, int dimension);
     // via matrix operations
-    static std::vector<float> bezierMatrix(std::vector<float> controlPoints, double stepSize, int dimension);
+    // TODO: static std::vector<float> bezierMatrix(std::vector<float> controlPoints, double stepSize, int dimension);
 };
 
 

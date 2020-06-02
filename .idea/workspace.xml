@@ -125,9 +125,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/render/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Renderer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/MathUtil.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/MathUtil.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/MathUtil.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/MathUtil.h" afterDir="false" />
     </list>
@@ -401,14 +398,7 @@
       <workItem from="1590948493739" duration="2297000" />
       <workItem from="1590973991957" duration="1187000" />
       <workItem from="1591038683803" duration="22147000" />
-      <workItem from="1591067485450" duration="19885000" />
-    </task>
-    <task id="LOCAL-00066" summary="Cleanup imports and remove empty class files so I don't have to do actual work">
-      <created>1583255687913</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1583255687913</updated>
+      <workItem from="1591067485450" duration="19974000" />
     </task>
     <task id="LOCAL-00067" summary="Finish rename">
       <created>1583698466791</created>
@@ -746,7 +736,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591118102699</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Fix Bezier curve generation to work in N-dimensions">
+      <created>1591121262797</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1591121262797</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -800,7 +797,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add stub for topological maps. For TopologicalMap global structure follows from local structure." />
     <MESSAGE value="Update camera bounds on move and zoom." />
     <MESSAGE value="Improve bezier stuff" />
     <MESSAGE value="Fix tilesheet stuff" />
@@ -825,7 +821,8 @@
     <MESSAGE value="Ew" />
     <MESSAGE value="Fully 3dify" />
     <MESSAGE value="Modify render nodes to identify by shader rather than sprite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify render nodes to identify by shader rather than sprite" />
+    <MESSAGE value="Fix Bezier curve generation to work in N-dimensions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Bezier curve generation to work in N-dimensions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="630" y="163" key="#collision" timestamp="1589399143438">
@@ -854,12 +851,12 @@
       <screen x="3440" y="372" width="1920" height="1040" />
     </state>
     <state x="4084" y="550" key="#glfw/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583878610240" />
-    <state x="684" y="49" width="1437" height="1146" key="CommitChangelistDialog2" timestamp="1591118102281">
+    <state x="684" y="49" width="1437" height="1146" key="CommitChangelistDialog2" timestamp="1591121262408">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="159" y="1" width="1353" height="1079" key="CommitChangelistDialog2/0.0.1792.1080@0.0.1792.1080" timestamp="1583663431305" />
     <state x="442" y="58" width="1390" height="966" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589477585633" />
-    <state x="684" y="49" width="1437" height="1146" key="CommitChangelistDialog2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591118102281" />
+    <state x="684" y="49" width="1437" height="1146" key="CommitChangelistDialog2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591121262408" />
     <state x="222" y="17" key="CommitChangelistDialog2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1589679419527" />
     <state x="1370" y="321" width="1501" height="964" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583698465982" />
     <state x="3629" y="372" width="1717" height="1027" key="CommitChangelistDialog2/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583884556958" />
@@ -958,11 +955,11 @@
     <state x="1765" y="236" width="1141" height="883" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583358552458" />
     <state x="3935" y="459" width="1381" height="883" key="SettingsEditor/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583861446066" />
     <state x="803" y="115" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1583185507844" />
-    <state x="2161" y="311" width="590" height="301" key="Vcs.Push.Dialog.v2" timestamp="1591118104168">
+    <state x="2161" y="311" width="590" height="301" key="Vcs.Push.Dialog.v2" timestamp="1591121264237">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589477587599" />
-    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591118104168" />
+    <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591121264237" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1589679421711" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@0.0.3440.1400" timestamp="1583698468616" />
     <state x="4646" y="464" width="590" height="363" key="Vcs.Push.Dialog.v2/0.0.3440.1400/3440.372.1920.1040@3440.372.1920.1040" timestamp="1583884573583" />
