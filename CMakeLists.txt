@@ -99,7 +99,7 @@ add_library(render STATIC
         src/render/RenderNode.cpp
         src/render/RenderNode.h
         src/render/Sprite.cpp
-        src/render/Sprite.h)
+        src/render/Sprite.h src/render/Mesh.cpp src/render/Mesh.h src/render/Drawable.h)
 
 ### MY UI LIB ####
 add_library(ui STATIC

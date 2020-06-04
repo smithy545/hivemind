@@ -14,6 +14,7 @@
 
 #include "Camera.h"
 #include "macros.h"
+#include "Mesh.h"
 #include "RenderNode.h"
 #include "Sprite.h"
 
@@ -45,9 +46,11 @@ public:
     bool setShader(const std::string &name);
 
     // add sprites
-    std::string generateBezierSprite(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
+    std::string generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
 
-    std::string generateLineSprite(const std::vector<glm::vec3> &points, glm::vec4 color);
+    std::string generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color);
+
+    std::string generateBoxMesh(int width, int height, int length, glm::vec4 color);
 private:
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
@@ -127,6 +130,7 @@ private:
     GLint mvpUniform{};
     GLint texUniform{};
     GLFWwindow *window;
+    std::unordered_map<std::string, Mesh::Ptr> loadedMeshes;
     std::unordered_map<std::string, GLuint> loadedShaders;
     std::unordered_map<std::string, Sprite::Ptr> loadedSprites;
     std::unordered_map<std::string, GLuint> loadedTextures;

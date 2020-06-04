@@ -17,7 +17,7 @@ Sprite::Sprite() {
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
     glVertexAttribPointer(
             0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-            3,                  // size
+            2,                  // size
             GL_FLOAT,           // type
             GL_FALSE,           // normalized?
             0,                  // stride
@@ -50,7 +50,6 @@ Sprite::Sprite() {
 
     // gen and bind index buffer
     glGenBuffers(1, &elementBufferId);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
 }
 
 Sprite::~Sprite() {
@@ -68,23 +67,66 @@ Sprite::~Sprite() {
         glDeleteBuffers(1, &elementBufferId);
 };
 
-void Sprite::reload() {
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+const std::vector<glm::vec2> &Sprite::getVertices() const {
+    return vertices;
+}
 
-    // pad to prevent memory access error by shaders
-    while (uvs.size() < vertices.size())
-        uvs.emplace_back();
-    while (colors.size() < vertices.size())
-        colors.emplace_back();
+void Sprite::setVertices(std::vector<glm::vec2> &vertices) {
+    Sprite::vertices = vertices;
+    if (vertexBufferId != 0) {
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size()*sizeof(glm::vec2), &vertices[0], GL_STATIC_DRAW);
+    }
+}
 
-    // use vertices.size() so no unused uvs/colors are loaded unnecessarily
-    glBindBuffer(GL_ARRAY_BUFFER, uvBufferId);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+const std::vector<glm::vec2> &Sprite::getUvs() const {
+    return uvs;
+}
 
-    glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec4), &colors[0], GL_STATIC_DRAW);
+void Sprite::setUvs(std::vector<glm::vec2> &uvs) {
+    Sprite::uvs = uvs;
+    if(uvBufferId != 0) {
+        glBindBuffer(GL_ARRAY_BUFFER, uvBufferId);
+        glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+    }
+}
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), &indices[0], GL_STATIC_DRAW);
+const std::vector<glm::vec4> &Sprite::getColors() const {
+    return colors;
+}
+
+void Sprite::setColors(std::vector<glm::vec4> &colors) {
+    Sprite::colors = colors;
+    if(colorBufferId != 0) {
+        glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
+        glBufferData(GL_ARRAY_BUFFER, colors.size() * sizeof(glm::vec4), &colors[0], GL_STATIC_DRAW);
+    }
+}
+
+const std::vector<unsigned int> &Sprite::getIndices() const {
+    return indices;
+}
+
+void Sprite::setIndices(std::vector<unsigned int> &indices) {
+    Sprite::indices = indices;
+    if(elementBufferId != 0) {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferId);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), &indices[0], GL_STATIC_DRAW);
+    }
+}
+
+void Sprite::setTexture(const std::string &texture) {
+    Sprite::texture = texture;
+}
+
+std::string Sprite::getTexture() {
+    return texture;
+}
+
+unsigned int Sprite::getNumIndices() {
+    return indices.size();
+}
+
+GLuint Sprite::getVertexArrayId() {
+    return vertexArrayId;
 }

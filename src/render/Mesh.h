@@ -1,39 +1,30 @@
 //
-// Created by Philip on 3/1/2020.
+// Created by Philip on 6/3/2020.
 //
 
-#ifndef SOCIETY_SPRITE_H
-#define SOCIETY_SPRITE_H
+#ifndef SOCIETY_MESH_H
+#define SOCIETY_MESH_H
 
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <string>
-#include <unordered_map>
 #include <vector>
 
 #include "Drawable.h"
 #include "macros.h"
 
-class Renderer;
 
-class Sprite : public Drawable {
+class Mesh : public Drawable {
 public:
-    POINTERIZE(Sprite);
+    POINTERIZE(Mesh);
 
-    Sprite();
+    Mesh();
 
-    ~Sprite();
+    ~Mesh();
 
-    void reload();
+    const std::vector<glm::vec3> &getVertices() const;
 
-    const std::vector<glm::vec2> &getVertices() const;
-
-    void setVertices(std::vector<glm::vec2> &vertices);
-
-    const std::vector<glm::vec2> &getUvs() const;
-
-    void setUvs(std::vector<glm::vec2> &uvs);
+    void setVertices(std::vector<glm::vec3> &vertices);
 
     const std::vector<glm::vec4> &getColors() const;
 
@@ -43,25 +34,21 @@ public:
 
     void setIndices(std::vector<unsigned int> &indices);
 
-    void setTexture(const std::string &texture);
-
     std::string getTexture() override;
 
     unsigned int getNumIndices() override;
 
     GLuint getVertexArrayId() override;
 private:
-    std::vector<glm::vec2> vertices;
-    std::vector<glm::vec2> uvs;
+    std::vector<glm::vec3> vertices;
     std::vector<glm::vec4> colors;
     std::vector<unsigned int> indices;
 
     GLuint vertexArrayId{0};
     GLuint vertexBufferId{0};
-    GLuint uvBufferId{0};
     GLuint colorBufferId{0};
     GLuint elementBufferId{0};
-    std::string texture{""};
 };
 
-#endif //SOCIETY_SPRITE_H
+
+#endif //SOCIETY_MESH_H
