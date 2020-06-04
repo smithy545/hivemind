@@ -114,34 +114,33 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
     auto viewProj = camera->getViewProjectionMatrix();
     auto node = treeHead;
     while (node != nullptr) {
-        if(!setShader(node->getShaderName())) {
-            std::cerr << "Can't set shader " << node->getShaderName() << std::endl;
-        } else {
+        if(setShader(node->getShaderName())) {
             for (const auto &bodies: node->getChildren()) {
-                std::string name = bodies.first;
                 Drawable::Ptr entity = nullptr;
-                if (loadedSprites.find(name) != loadedSprites.end()) {
-                    entity = loadedSprites[name];
-                } else if(loadedMeshes.find(name) != loadedMeshes.end()) {
-                    entity = loadedMeshes[name];
-                } else {
-                    std::cerr << "No sprite or mesh found for: " << name << std::endl;
-                    continue;
-                }
-                glBindVertexArray(entity->getVertexArrayId());
-                auto tex = entity->getTexture();
-                if (!tex.empty() && loadedTextures.find(tex) != loadedTextures.end()) {
-                    GLuint texId = loadedTextures[tex];
-                    glActiveTexture(GL_TEXTURE0);
-                    glBindTexture(GL_TEXTURE_2D, texId);
-                }
 
-                for (const auto &child: bodies.second) {
-                    // translate to world position
-                    glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child->getOrigin());
-                    glm::mat4 mvpMatrix = viewProj * modelMatrix;
-                    glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                    glDrawElements(entity->getDrawMode(), entity->getNumIndices()*sizeof(unsigned int), GL_UNSIGNED_INT, nullptr);
+                std::string name = bodies.first;
+                if (loadedSprites.find(name) != loadedSprites.end())
+                    entity = loadedSprites[name];
+                else if(loadedMeshes.find(name) != loadedMeshes.end())
+                    entity = loadedMeshes[name];
+
+                if(entity != nullptr) {
+                    glBindVertexArray(entity->getVertexArrayId());
+                    auto tex = entity->getTexture();
+                    if (!tex.empty() && loadedTextures.find(tex) != loadedTextures.end()) {
+                        GLuint texId = loadedTextures[tex];
+                        glActiveTexture(GL_TEXTURE0);
+                        glBindTexture(GL_TEXTURE_2D, texId);
+                    }
+
+                    for (const auto &child: bodies.second) {
+                        // translate to world position
+                        glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child->getOrigin());
+                        glm::mat4 mvpMatrix = viewProj * modelMatrix;
+                        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+                        glDrawElements(entity->getDrawMode(), entity->getNumIndices() * sizeof(unsigned int),
+                                       GL_UNSIGNED_INT, nullptr);
+                    }
                 }
             }
         }
