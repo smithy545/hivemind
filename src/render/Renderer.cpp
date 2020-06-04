@@ -137,9 +137,8 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
                 }
 
                 for (const auto &child: bodies.second) {
-                    auto pos = child->getOrigin();
                     // translate to world position
-                    glm::mat4 modelMatrix = glm::translate(glm::mat4(1), pos);
+                    glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child->getOrigin());
                     glm::mat4 mvpMatrix = viewProj * modelMatrix;
                     glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
                     glDrawElements(entity->getDrawMode(), entity->getNumIndices()*sizeof(unsigned int), GL_UNSIGNED_INT, nullptr);
