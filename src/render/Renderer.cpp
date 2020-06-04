@@ -117,7 +117,6 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
         if(!setShader(node->getShaderName())) {
             std::cerr << "Can't set shader " << node->getShaderName() << std::endl;
         } else {
-            GLenum drawMode = node->getDrawMode();
             for (const auto &bodies: node->getChildren()) {
                 std::string name = bodies.first;
                 Drawable::Ptr entity = nullptr;
@@ -129,7 +128,6 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
                     std::cerr << "No sprite or mesh found for: " << name << std::endl;
                     continue;
                 }
-
                 glBindVertexArray(entity->getVertexArrayId());
                 auto tex = entity->getTexture();
                 if (!tex.empty() && loadedTextures.find(tex) != loadedTextures.end()) {
@@ -154,7 +152,7 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera
 
                     glm::mat4 mvpMatrix = viewProj * modelMatrix;
                     glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                    glDrawElements(drawMode, entity->getNumIndices()*sizeof(unsigned int), GL_UNSIGNED_INT, nullptr);
+                    glDrawElements(entity->getDrawMode(), entity->getNumIndices()*sizeof(unsigned int), GL_UNSIGNED_INT, nullptr);
                 }
             }
         }
@@ -356,7 +354,7 @@ std::string Renderer::generateLineMesh(const std::vector<glm::vec3> &points, glm
     return id;
 }
 
-std::string Renderer::generateBoxMesh(int width, int height, int length, glm::vec4 color) {
+std::string Renderer::generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color) {
     auto verts = MathUtil::generateBox(width, height, length);
     auto mesh = std::make_shared<Mesh>();
     // indices for triangles on box surface
@@ -384,6 +382,45 @@ std::string Renderer::generateBoxMesh(int width, int height, int length, glm::ve
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
+    mesh->setDrawMode(GL_TRIANGLES);
+
+    // store in sprites and return id
+    std::string id = StringUtil::uuid4();
+    loadedMeshes[id] = mesh;
+    return id;
+}
+
+std::string Renderer::generateBoxMeshLines(int width, int height, int length, glm::vec4 color) {
+    auto verts = MathUtil::generateBox(width, height, length);
+    auto mesh = std::make_shared<Mesh>();
+    // indices for triangles on box surface
+    std::vector<unsigned int> indices = {
+        0, 1,
+        1, 2,
+        2, 3,
+        3, 0,
+
+        4, 5,
+        5, 6,
+        6, 7,
+        7, 4,
+
+        0, 4,
+        1, 5,
+        2, 6,
+        3, 7
+    };
+    // set colors for every vert
+    std::vector<glm::vec4> colors;
+    colors.reserve(verts.size());
+    for (int i = 0; i < verts.size(); i++) {
+        colors.push_back(color);
+    }
+
+    mesh->setVertices(verts);
+    mesh->setColors(colors);
+    mesh->setIndices(indices);
+    mesh->setDrawMode(GL_LINES);
 
     // store in sprites and return id
     std::string id = StringUtil::uuid4();

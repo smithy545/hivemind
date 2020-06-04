@@ -19,7 +19,7 @@ class RenderNode : public LinkedNode {
 public:
     POINTERIZE(RenderNode);
 
-    explicit RenderNode(std::string shaderName, GLenum mode = GL_TRIANGLES, Ptr next = nullptr);
+    explicit RenderNode(std::string shaderName, Ptr next = nullptr);
 
     LinkedNode::Ptr getNext() override;
 
@@ -31,15 +31,10 @@ public:
 
     void setShaderName(const std::string &name);
 
-    GLenum getDrawMode() const;
-
-    void setDrawMode(GLenum newMode);
-
     void addChild(const std::string& spriteName, const Body::Ptr& body);
 private:
     std::string shaderName;
     std::unordered_map<std::string, std::vector<Body::Ptr>> spriteBodies;
-    GLenum mode;
     Ptr next;
 };
 

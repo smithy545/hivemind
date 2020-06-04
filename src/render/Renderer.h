@@ -50,7 +50,9 @@ public:
 
     std::string generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color);
 
-    std::string generateBoxMesh(int width, int height, int length, glm::vec4 color);
+    std::string generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color);
+
+    std::string generateBoxMeshLines(int width, int height, int length, glm::vec4 color);
 private:
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};

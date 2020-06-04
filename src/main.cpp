@@ -75,10 +75,11 @@ void loop() {
     state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
 
-    std::string id = renderer->generateBoxMesh(10, 20, 30, glm::vec4(1.0f,0.f,0.f,1.0f));
-    auto body = std::make_shared<Body>();
-    body->setOrigin({0,0,0});
-    state->getScene().addToScene("color", id, GL_TRIANGLES, body);
+    // generate box
+    auto box = renderer->generateBoxMeshTriangles(10, 20, 30, glm::vec4(1.0f,0.f,0.f,1.0f));
+    auto outline = renderer->generateBoxMeshLines(10, 20, 30, glm::vec4(0.0f,0.f,0.f,1.0f));
+    state->getScene().addToScene("color", box, std::make_shared<Body>());
+    state->getScene().addToScene("color", outline, std::make_shared<Body>());
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below

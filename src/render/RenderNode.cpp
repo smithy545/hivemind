@@ -6,10 +6,9 @@
 #include <utility>
 
 
-RenderNode::RenderNode(std::string shaderName, GLenum mode, Ptr next):
+RenderNode::RenderNode(std::string shaderName, Ptr next):
     shaderName(std::move(shaderName)),
-    next(std::move(next)),
-    mode(mode) {}
+    next(std::move(next)) {}
 
 LinkedNode::Ptr RenderNode::getNext() {
     return std::dynamic_pointer_cast<LinkedNode>(next);
@@ -29,14 +28,6 @@ const std::string &RenderNode::getShaderName() const {
 
 void RenderNode::setShaderName(const std::string &name) {
     shaderName = name;
-}
-
-unsigned int RenderNode::getDrawMode() const {
-    return mode;
-}
-
-void RenderNode::setDrawMode(unsigned int newMode) {
-    mode = newMode;
 }
 
 void RenderNode::addChild(const std::string& spriteName, const Body::Ptr& body) {

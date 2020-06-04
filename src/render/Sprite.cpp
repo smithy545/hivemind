@@ -130,3 +130,7 @@ unsigned int Sprite::getNumIndices() {
 GLuint Sprite::getVertexArrayId() {
     return vertexArrayId;
 }
+
+GLenum Sprite::getDrawMode() {
+    return GL_TRIANGLES;
+}

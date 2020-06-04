@@ -99,3 +99,11 @@ GLuint Mesh::getVertexArrayId() {
 unsigned int Mesh::getNumIndices() {
     return indices.size();
 }
+
+GLenum Mesh::getDrawMode() {
+    return mode;
+}
+
+void Mesh::setDrawMode(GLenum drawMode) {
+    mode = drawMode;
+}

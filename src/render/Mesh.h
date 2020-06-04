@@ -34,11 +34,15 @@ public:
 
     void setIndices(std::vector<unsigned int> &indices);
 
+    void setDrawMode(GLenum drawMode);
+
     std::string getTexture() override;
 
     unsigned int getNumIndices() override;
 
     GLuint getVertexArrayId() override;
+
+    GLenum getDrawMode() override;
 private:
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec4> colors;
@@ -48,6 +52,7 @@ private:
     GLuint vertexBufferId{0};
     GLuint colorBufferId{0};
     GLuint elementBufferId{0};
+    GLenum mode{GL_TRIANGLES};
 };
 
 

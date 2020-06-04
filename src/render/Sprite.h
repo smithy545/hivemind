@@ -50,6 +50,8 @@ public:
     unsigned int getNumIndices() override;
 
     GLuint getVertexArrayId() override;
+
+    GLenum getDrawMode() override;
 private:
     std::vector<glm::vec2> vertices;
     std::vector<glm::vec2> uvs;

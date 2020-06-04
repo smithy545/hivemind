@@ -19,6 +19,7 @@ public:
     virtual std::string getTexture() = 0;
     virtual GLuint getVertexArrayId() = 0;
     virtual unsigned int getNumIndices() = 0;
+    virtual GLenum getDrawMode() = 0;
 };
 
 
