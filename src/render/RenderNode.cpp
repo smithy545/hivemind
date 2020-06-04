@@ -19,7 +19,7 @@ void RenderNode::setNext(const RenderNode::Ptr &node) {
 }
 
 const std::unordered_map<std::string, std::vector<Body::Ptr>> &RenderNode::getChildren() const {
-    return spriteBodies;
+    return bodies;
 }
 
 const std::string &RenderNode::getShaderName() const {
@@ -30,9 +30,9 @@ void RenderNode::setShaderName(const std::string &name) {
     shaderName = name;
 }
 
-void RenderNode::addChild(const std::string& spriteName, const Body::Ptr& body) {
-    if(spriteBodies.find(spriteName) == spriteBodies.end())
-        spriteBodies[spriteName] = {body};
+void RenderNode::addChild(const std::string& drawableId, const Body::Ptr& body) {
+    if(bodies.find(drawableId) == bodies.end())
+        bodies[drawableId] = {body};
     else
-        spriteBodies[spriteName].push_back(body);
+        bodies[drawableId].push_back(body);
 }

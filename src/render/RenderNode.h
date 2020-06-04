@@ -31,10 +31,10 @@ public:
 
     void setShaderName(const std::string &name);
 
-    void addChild(const std::string& spriteName, const Body::Ptr& body);
+    void addChild(const std::string& drawableId, const Body::Ptr& body);
 private:
     std::string shaderName;
-    std::unordered_map<std::string, std::vector<Body::Ptr>> spriteBodies;
+    std::unordered_map<std::string, std::vector<Body::Ptr>> bodies;
     Ptr next;
 };
 

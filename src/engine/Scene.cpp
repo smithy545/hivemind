@@ -19,7 +19,7 @@ const CollisionNode::Ptr &Scene::getCollisionTree() const {
     return collisionHead;
 }
 
-void Scene::addToScene(const std::string& shaderName, const std::string& spriteName, const Body::Ptr& body) {
+void Scene::addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body) {
     // add collision nodes to check collision with existing entities
     for(const auto& entity: entities)
         collisionHead = std::make_shared<CollisionNode>(body, entity->getBody(), collisionHead, nullptr);
@@ -42,6 +42,6 @@ void Scene::addToScene(const std::string& shaderName, const std::string& spriteN
     if(renderNode == nullptr)
         renderNode = std::make_shared<RenderNode>(shaderName, renderHead);
 
-    renderNode->addChild(spriteName, body);
+    renderNode->addChild(drawableId, body);
     renderHead = renderNode;
 }

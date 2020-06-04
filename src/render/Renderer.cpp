@@ -314,6 +314,7 @@ std::string Renderer::generateBezierMesh(const std::vector<glm::vec3> &hull, dou
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
+    mesh->setDrawMode(GL_LINE_STRIP);
 
     // store  in sprites and return id
     std::string id = StringUtil::uuid4();
@@ -335,6 +336,7 @@ std::string Renderer::generateLineMesh(const std::vector<glm::vec3> &points, glm
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
+    mesh->setDrawMode(GL_LINE_STRIP);
 
     // store in sprites and return id
     std::string id = StringUtil::uuid4();
@@ -349,14 +351,19 @@ std::string Renderer::generateBoxMeshTriangles(int width, int height, int length
     std::vector<unsigned int> indices = {
             1, 0, 2,
             2, 0, 3,
+
             4, 5, 6,
             6, 7, 4,
+
             0, 4, 7,
             7, 3, 0,
+
             6, 5, 1,
             2, 6, 1,
+
             4, 0, 5,
             5, 0, 1,
+
             6, 2, 7,
             7, 2, 3,
     };
