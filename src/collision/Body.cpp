@@ -4,8 +4,10 @@
 
 #include "Body.h"
 
+#include "util/StringUtil.h"
 
-Body::Body() {}
+
+Body::Body() : id(StringUtil::uuid4()) {}
 
 void Body::update(float timeStep) {
     // update velocity
@@ -37,4 +39,8 @@ const glm::vec3 &Body::getAcceleration() const {
 
 void Body::setAcceleration(const glm::vec3 &acceleration) {
     Body::acceleration = acceleration;
+}
+
+const std::string &Body::getId() const {
+    return id;
 }

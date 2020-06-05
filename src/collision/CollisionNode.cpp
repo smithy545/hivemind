@@ -7,9 +7,9 @@
 #include <utility>
 
 
-CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second) : CollisionNode(first, second, nullptr, nullptr) {}
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second) : CollisionNode(first, second, nullptr) {}
 
-CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr prev, Ptr next) : bodies(first, second), prev(std::move(prev)), next(std::move(next)) {}
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next) : bodies(first, second), next(std::move(next)), alive(true) {}
 
 Body::Ptr CollisionNode::getFirstBody() {
     return bodies.first;
@@ -20,17 +20,17 @@ Body::Ptr CollisionNode::getSecondBody() {
 }
 
 CollisionNode::Ptr CollisionNode::getNext() {
-    return CollisionNode::Ptr();
+    return next;
 }
 
-void CollisionNode::setNext(CollisionNode::Ptr next) {
-    this->next = next;
+void CollisionNode::setNext(CollisionNode::Ptr node) {
+    next = std::move(node);
 }
 
-const CollisionNode::Ptr &CollisionNode::getPrev() const {
-    return prev;
+void CollisionNode::kill() {
+    alive = false;
 }
 
-void CollisionNode::setPrev(const CollisionNode::Ptr &prev) {
-    this->prev = prev;
+bool CollisionNode::isAlive() {
+    return alive;
 }

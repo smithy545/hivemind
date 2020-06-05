@@ -4,6 +4,7 @@
 
 #include "Integrator.h"
 
+#include <iostream>
 #include <fmt/format.h>
 
 
@@ -11,9 +12,8 @@ Integrator::Integrator(float timeStep) : timeStep(timeStep) {}
 
 void Integrator::update(const std::vector<Body::Ptr> &bodies) {
     for(const auto& body: bodies) {
-        auto bodyHash = getBodyHash(body);
-        if(activeBodies.find(bodyHash) == activeBodies.end())
-            activeBodies[bodyHash] = body;
+        if(activeBodies.find(body->getId()) == activeBodies.end())
+            activeBodies[body->getId()] = body;
     }
 
     std::vector<std::string> inertBodies;
@@ -46,14 +46,12 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
             body->setAcceleration({0,0,0});
             body->setVelocity({0,0,0});
         }
-
-        if(glm::all(glm::equal(vel, {0,0,0}) + glm::equal(acc, {0,0,0})))
-            inertBodies.push_back(getBodyHash(body));
+        if (glm::all(glm::equal(body->getVelocity(), {0,0,0})) &&
+            glm::all(glm::equal(body->getAcceleration(), {0,0,0})))
+            inertBodies.push_back(body->getId());
     }
-    for(const auto& hash: inertBodies)
-        activeBodies.erase(hash);
-}
 
-std::string Integrator::getBodyHash(const Body::Ptr& body) {
-    return fmt::format("{0}:{1}:{2}", body->getOrigin().x, body->getOrigin().y, body->getOrigin().z);
+    // cull inert bodies
+    for(const auto& id: inertBodies)
+        activeBodies.erase(id);
 }

@@ -27,8 +27,6 @@ private:
     float timeStep{1.0};
     float groundLevel{0.0};
     std::unordered_map<std::string, Body::Ptr> activeBodies;
-
-    static std::string getBodyHash(const Body::Ptr& body);
 };
 
 

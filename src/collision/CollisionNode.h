@@ -11,25 +11,23 @@
 #include "macros.h"
 
 
-class CollisionNode {
+class CollisionNode : public std::enable_shared_from_this<CollisionNode> {
 public:
     POINTERIZE(CollisionNode);
 
     CollisionNode(const Body::Ptr& first, const Body::Ptr& second);
-    CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr prev, Ptr next);
+    CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next);
 
     Body::Ptr getFirstBody();
     Body::Ptr getSecondBody();
     Ptr getNext();
-    void setNext(Ptr next);
-
-    const Ptr &getPrev() const;
-
-    void setPrev(const Ptr &prev);
-
+    void setNext(Ptr node);
+    void kill();
+    bool isAlive();
 private:
+    bool alive;
     std::pair<Body::Ptr, Body::Ptr> bodies;
-    Ptr prev, next;
+    Ptr next;
 };
 
 

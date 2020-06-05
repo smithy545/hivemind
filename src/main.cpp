@@ -74,12 +74,17 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
+    state->getScene().getCamera()->setPosition({0,2,10});
 
-    // generate box
-    auto box = renderer->generateBoxMeshTriangles(10, 20, 30, glm::vec4(1.0f,0.f,0.f,1.0f));
-    auto outline = renderer->generateBoxMeshLines(10, 20, 30, glm::vec4(0.0f,0.f,0.f,1.0f));
-    state->getScene().addToScene("color", box, std::make_shared<Body>());
-    state->getScene().addToScene("color", outline, std::make_shared<Body>());
+    // generate boxes
+    auto box = renderer->generateBoxMeshTriangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
+    auto outline = renderer->generateBoxMeshLines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f));
+    for(int y = 0; y < 10; y++) {
+        auto body = std::make_shared<Body>();
+        body->setOrigin({y,10*y,0});
+        state->getScene().addToScene("color", box, body);
+        state->getScene().addToScene("color", outline, body);
+    }
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -119,7 +124,6 @@ void loop() {
             scene.getCamera()->resize(screenWidth, screenHeight);
             resized = false;
         }
-
         if (!state->isPaused()) {
             // check collisions and update bodies
             if (collider != nullptr && integrator != nullptr) {

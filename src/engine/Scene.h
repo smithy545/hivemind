@@ -19,9 +19,9 @@ public:
 
     Camera::Ptr &getCamera();
 
-    const RenderNode::Ptr &getRenderTree() const;
+    RenderNode::Ptr getRenderTree();
 
-    const CollisionNode::Ptr &getCollisionTree() const;
+    CollisionNode::Ptr getCollisionTree();
 
     void addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body);
 private:
