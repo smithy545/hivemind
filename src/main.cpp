@@ -80,10 +80,11 @@ void loop() {
     auto box = renderer->generateBoxMeshTriangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
     auto outline = renderer->generateBoxMeshLines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f));
     for(int y = 0; y < 10; y++) {
+        // only set physics on outline since the box and outline share a body
         auto body = std::make_shared<Body>();
         body->setOrigin({y,10*y,0});
-        state->getScene().addToScene("color", box, body);
-        state->getScene().addToScene("color", outline, body);
+        state->getScene().addToScene("color", box, body, false);
+        state->getScene().addToScene("color", outline, body, true);
     }
 
     std::cout << "Window init" << std::endl;

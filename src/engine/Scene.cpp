@@ -35,26 +35,28 @@ CollisionNode::Ptr Scene::getCollisionTree() {
     return collisionHead;
 }
 
-void Scene::addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body) {
-    // find end of collision list
-    auto collisionNode = collisionHead;
-    while(collisionNode != nullptr && collisionNode->getNext() != nullptr)
-        collisionNode = collisionNode->getNext();
+void Scene::addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body, bool physics) {
+    if(physics) {
+        // find end of collision list
+        auto collisionNode = collisionHead;
+        while (collisionNode != nullptr && collisionNode->getNext() != nullptr)
+            collisionNode = collisionNode->getNext();
 
-    // add collision node with self to ensure collision is found and object is passed to integrator
-    auto selfCollision = std::make_shared<CollisionNode>(body, body);
-    if(collisionNode == nullptr) {
-        collisionHead = selfCollision;
-        collisionNode = collisionHead;
-    } else {
-        collisionNode->setNext(selfCollision);
-        collisionNode = collisionNode->getNext();
-    }
+        // add collision node with self to ensure collision is found and object is passed to integrator
+        auto selfCollision = std::make_shared<CollisionNode>(body, body);
+        if (collisionNode == nullptr) {
+            collisionHead = selfCollision;
+            collisionNode = collisionHead;
+        } else {
+            collisionNode->setNext(selfCollision);
+            collisionNode = collisionNode->getNext();
+        }
 
-    // add collision nodes to check collision with existing entities
-    for(const auto& entity: entities) {
-        collisionNode->setNext(std::make_shared<CollisionNode>(body, entity->getBody()));
-        collisionNode = collisionNode->getNext();
+        // add collision nodes to check collision with existing entities
+        for (const auto &entity: entities) {
+            collisionNode->setNext(std::make_shared<CollisionNode>(body, entity->getBody()));
+            collisionNode = collisionNode->getNext();
+        }
     }
 
     // add to render tree

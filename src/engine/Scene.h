@@ -23,7 +23,7 @@ public:
 
     CollisionNode::Ptr getCollisionTree();
 
-    void addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body);
+    void addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body, bool physics = false);
 private:
     std::vector<GameEntity::Ptr> entities;
     Camera::Ptr camera;
