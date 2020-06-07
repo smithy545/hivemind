@@ -65,6 +65,9 @@ GLFWwindow *Renderer::init(const std::string& configPath) {
     // cull triangles facing away from camera
     glEnable(GL_CULL_FACE);
 
+    // enable depth buffer
+    glEnable(GL_DEPTH_TEST);
+
     // shaders
     for (const auto &shader: config[SHADERS_KEY].items()) {
         std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],

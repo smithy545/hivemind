@@ -9,7 +9,7 @@
 
 
 std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collisionTree) {
-    auto collisions = std::vector<Body::Ptr>();
+    std::vector<Body::Ptr> collisions;
     auto node = std::move(collisionTree);
     while(node != nullptr) {
         if(node->getFirstBody()->getId() == node->getSecondBody()->getId()) {
