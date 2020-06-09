@@ -13,28 +13,34 @@
 #include "collision/Body.h"
 #include "common/LinkedNode.h"
 #include "macros.h"
+#include "Drawable.h"
 
 
 class RenderNode : public LinkedNode {
 public:
     POINTERIZE(RenderNode);
 
-    explicit RenderNode(std::string shaderName, Ptr next = nullptr);
+    explicit RenderNode(std::string shaderName, Drawable::Ptr entity, Ptr next = nullptr);
 
     LinkedNode::Ptr getNext() override;
 
     void setNext(const Ptr &node);
 
-    const std::unordered_map<std::string, std::vector<Body::Ptr>> &getChildren() const;
+    const std::vector<Body::Ptr> &getChildren() const;
 
     const std::string &getShaderName() const;
 
     void setShaderName(const std::string &name);
 
-    void addChild(const std::string& drawableId, const Body::Ptr& body);
+    void addChild(const Body::Ptr& body);
+
+    Drawable::Ptr getEntity();
+
+    void setEntity(Drawable::Ptr entity);
 private:
     std::string shaderName;
-    std::unordered_map<std::string, std::vector<Body::Ptr>> bodies;
+    std::vector<Body::Ptr> bodies;
+    Drawable::Ptr entity;
     Ptr next;
 };
 

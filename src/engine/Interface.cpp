@@ -8,31 +8,33 @@
 Interface::Interface() {}
 
 void Interface::update(const State::Ptr &state) {
-    auto camera = state->getScene().getCamera();
     if (state->getMouseScroll() > 0)
-        camera->zoomIn();
+        state->getScene().getCamera().zoomIn();
     else if (state->getMouseScroll() < 0)
-        camera->zoomOut();
+        state->getScene().getCamera().zoomOut();
 
     if (state->getKey(GLFW_KEY_W))
-        camera->moveForward();
+        state->getScene().getCamera().moveForward();
     if (state->getKey(GLFW_KEY_S))
-        camera->moveBackword();
+        state->getScene().getCamera().moveBackword();
     if (state->getKey(GLFW_KEY_SPACE))
-        camera->moveUp();
+        state->getScene().getCamera().moveUp();
     if (state->getKey(GLFW_KEY_LEFT_CONTROL))
-        camera->moveDown();
+        state->getScene().getCamera().moveDown();
     if (state->getKey(GLFW_KEY_A))
-        camera->strafeLeft();
+        state->getScene().getCamera().strafeLeft();
     if (state->getKey(GLFW_KEY_D))
-        camera->strafeRight();
+        state->getScene().getCamera().strafeRight();
 
-    float dx = 3.0*(state->getMouseX() - state->getLastMouseX())/camera->getBoundingRect().getWidth();
-    float dy = 0.0*(state->getMouseY() - state->getLastMouseY())/camera->getBoundingRect().getHeight();
-    camera->panHorizontal(dx);
-    camera->panVertical(dy);
+    auto cameraRect = state->getScene().getCamera().getBoundingRect();
+    auto mx = state->getMouseX();
+    auto my = state->getMouseY();
+    float dx = 3.0*(mx - state->getLastMouseX())/cameraRect.getWidth();
+    float dy = 0.0*(my - state->getLastMouseY())/cameraRect.getHeight();
+    state->getScene().getCamera().panHorizontal(dx);
+    state->getScene().getCamera().panVertical(dy);
 
     // set mouse pos to itself so the last mouse position is also set to the current mouse position
-    state->setMouseX(state->getMouseX());
-    state->setMouseY(state->getMouseY());
+    state->setMouseX(mx);
+    state->setMouseY(my);
 }

@@ -10,6 +10,7 @@
 #include "collision/CollisionNode.h"
 #include "GameEntity.h"
 #include "render/Camera.h"
+#include "render/Mesh.h"
 #include "render/RenderNode.h"
 
 
@@ -17,16 +18,16 @@ class Scene {
 public:
     Scene(int width, int height);
 
-    Camera::Ptr &getCamera();
+    Camera &getCamera();
 
     RenderNode::Ptr getRenderTree();
 
     CollisionNode::Ptr getCollisionTree();
 
-    void addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body, bool physics = false);
+    void addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body, bool physics = false);
 private:
     std::vector<GameEntity::Ptr> entities;
-    Camera::Ptr camera;
+    Camera camera;
     RenderNode::Ptr renderHead;
     CollisionNode::Ptr collisionHead;
 };

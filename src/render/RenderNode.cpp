@@ -6,8 +6,9 @@
 #include <utility>
 
 
-RenderNode::RenderNode(std::string shaderName, Ptr next):
+RenderNode::RenderNode(std::string shaderName, Drawable::Ptr entity, Ptr next):
     shaderName(std::move(shaderName)),
+    entity(std::move(entity)),
     next(std::move(next)) {}
 
 LinkedNode::Ptr RenderNode::getNext() {
@@ -18,7 +19,7 @@ void RenderNode::setNext(const RenderNode::Ptr &node) {
     next = node;
 }
 
-const std::unordered_map<std::string, std::vector<Body::Ptr>> &RenderNode::getChildren() const {
+const std::vector<Body::Ptr> &RenderNode::getChildren() const {
     return bodies;
 }
 
@@ -30,9 +31,14 @@ void RenderNode::setShaderName(const std::string &name) {
     shaderName = name;
 }
 
-void RenderNode::addChild(const std::string& drawableId, const Body::Ptr& body) {
-    if(bodies.find(drawableId) == bodies.end())
-        bodies[drawableId] = {body};
-    else
-        bodies[drawableId].push_back(body);
+void RenderNode::addChild(const Body::Ptr& body) {
+    bodies.push_back(body);
+}
+
+Drawable::Ptr RenderNode::getEntity() {
+    return entity;
+}
+
+void RenderNode::setEntity(Drawable::Ptr entity) {
+    this->entity = std::move(entity);
 }

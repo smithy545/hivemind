@@ -74,18 +74,13 @@ void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
     state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
-    state->getScene().getCamera()->setPosition({0,2,10});
+    state->getScene().getCamera().setPosition({0,2,10});
 
-    // generate boxes
-    auto box = renderer->generateBoxMeshTriangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
-    auto outline = renderer->generateBoxMeshLines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f));
-    for(int y = 0; y < 10; y++) {
-        // only set physics on outline since the box and outline share a body
-        auto body = std::make_shared<Body>();
-        body->setOrigin({y,10*y,0});
-        state->getScene().addToScene("color", box, body, false);
-        state->getScene().addToScene("color", outline, body, true);
-    }
+    // only set physics on outline since the box and outline share a body
+    auto body = std::make_shared<Body>();
+    body->setOrigin({0,10,0});
+    state->getScene().addToScene("color", Renderer::generateBoxMeshTriangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f)), body, false);
+    state->getScene().addToScene("color", Renderer::generateBoxMeshLines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body, true);
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -122,7 +117,7 @@ void loop() {
         // resize if flag set
         if (resized) {
             renderer->resize(screenWidth, screenHeight);
-            scene.getCamera()->resize(screenWidth, screenHeight);
+            scene.getCamera().resize(screenWidth, screenHeight);
             resized = false;
         }
         if (!state->isPaused()) {

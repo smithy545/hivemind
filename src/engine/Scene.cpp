@@ -5,9 +5,9 @@
 #include "Scene.h"
 
 
-Scene::Scene(int width, int height) : camera(std::make_shared<Camera>(width, height)) {}
+Scene::Scene(int width, int height) : camera(width, height) {}
 
-Camera::Ptr &Scene::getCamera() {
+Camera &Scene::getCamera() {
     return camera;
 }
 
@@ -35,7 +35,7 @@ CollisionNode::Ptr Scene::getCollisionTree() {
     return collisionHead;
 }
 
-void Scene::addToScene(const std::string& shaderName, const std::string& drawableId, const Body::Ptr& body, bool physics) {
+void Scene::addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body, bool physics) {
     if(physics) {
         // find end of collision list
         auto collisionNode = collisionHead;
@@ -60,13 +60,8 @@ void Scene::addToScene(const std::string& shaderName, const std::string& drawabl
     }
 
     // add to render tree
-    auto renderNode = renderHead;
-    while(renderNode != nullptr && renderNode->getShaderName() != shaderName)
-            renderNode = std::dynamic_pointer_cast<RenderNode>(renderNode->getNext());
-    if(renderNode == nullptr)
-        renderNode = std::make_shared<RenderNode>(shaderName, renderHead);
-    renderNode->addChild(drawableId, body);
-    renderHead = renderNode;
+    renderHead = std::make_shared<RenderNode>(shaderName, std::move(mesh), renderHead);
+    renderHead->addChild(body);
 
     // add to entities
     auto rect = std::make_shared<Rectangle>(0, 0, 10, 10);

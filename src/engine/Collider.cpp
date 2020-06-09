@@ -24,8 +24,8 @@ std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collisionTree) {
             if (collided) {
                 collisions.push_back(node->getFirstBody());
                 collisions.push_back(node->getSecondBody());
-            } else
-                node->kill();
+            }
+            node->kill();
         }
         node = node->getNext();
     }

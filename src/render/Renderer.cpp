@@ -112,39 +112,27 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera) {
+void Renderer::render(const RenderNode::Ptr &treeHead, const Camera &camera) {
     glUseProgram(currentShaderProgram);
-    auto viewProj = camera->getViewProjectionMatrix();
+    auto viewProj = camera.getViewProjectionMatrix();
     auto node = treeHead;
     while (node != nullptr) {
-        if(setShader(node->getShaderName())) {
-            for (const auto &bodies: node->getChildren()) {
-                Drawable::Ptr entity = nullptr;
+        if(setShader(node->getShaderName()) && node->getEntity() != nullptr) {
+            glBindVertexArray(node->getEntity()->getVertexArrayId());
+            auto tex = node->getEntity()->getTexture();
+            if (!tex.empty() && loadedTextures.find(tex) != loadedTextures.end()) {
+                GLuint texId = loadedTextures[tex];
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, texId);
+            }
 
-                std::string name = bodies.first;
-                if (loadedSprites.find(name) != loadedSprites.end())
-                    entity = loadedSprites[name];
-                else if(loadedMeshes.find(name) != loadedMeshes.end())
-                    entity = loadedMeshes[name];
-
-                if(entity != nullptr) {
-                    glBindVertexArray(entity->getVertexArrayId());
-                    auto tex = entity->getTexture();
-                    if (!tex.empty() && loadedTextures.find(tex) != loadedTextures.end()) {
-                        GLuint texId = loadedTextures[tex];
-                        glActiveTexture(GL_TEXTURE0);
-                        glBindTexture(GL_TEXTURE_2D, texId);
-                    }
-
-                    for (const auto &child: bodies.second) {
-                        // translate to world position
-                        glm::mat4 modelMatrix = glm::translate(glm::mat4(1), child->getOrigin());
-                        glm::mat4 mvpMatrix = viewProj * modelMatrix;
-                        glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                        glDrawElements(entity->getDrawMode(), entity->getNumIndices() * sizeof(unsigned int),
-                                       GL_UNSIGNED_INT, nullptr);
-                    }
-                }
+            for (const auto &body: node->getChildren()) {
+                // translate to world position
+                glm::mat4 modelMatrix = glm::translate(glm::mat4(1), body->getOrigin());
+                glm::mat4 mvpMatrix = viewProj * modelMatrix;
+                glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
+                glDrawElements(node->getEntity()->getDrawMode(), node->getEntity()->getNumIndices() * sizeof(unsigned int),
+                               GL_UNSIGNED_INT, nullptr);
             }
         }
         node = std::dynamic_pointer_cast<RenderNode>(node->getNext());
@@ -302,8 +290,7 @@ void Renderer::loadTileSheet(const std::string &path) {
     }
 }
 
-std::string Renderer::generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color) {
-    auto mesh = std::make_shared<Mesh>();
+Mesh::Ptr Renderer::generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color) {
     auto curve = MathUtil::generateBezierCurve(hull, stepSize);
     std::vector<glm::vec3> verts;
     std::vector<glm::vec4> colors;
@@ -314,19 +301,17 @@ std::string Renderer::generateBezierMesh(const std::vector<glm::vec3> &hull, dou
         colors.push_back(color);
         indices.push_back(index);
     }
+
+    auto mesh = std::make_shared<Mesh>();
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
     mesh->setDrawMode(GL_LINE_STRIP);
 
-    // store  in sprites and return id
-    std::string id = StringUtil::uuid4();
-    loadedMeshes[id] = mesh;
-    return id;
+    return mesh;
 }
 
-std::string Renderer::generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color) {
-    auto mesh = std::make_shared<Mesh>();
+Mesh::Ptr Renderer::generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color) {
     std::vector<glm::vec3> verts;
     std::vector<glm::vec4> colors;
     std::vector<unsigned int> indices;
@@ -336,20 +321,18 @@ std::string Renderer::generateLineMesh(const std::vector<glm::vec3> &points, glm
         colors.push_back(color);
         indices.push_back(index);
     }
+
+    auto mesh = std::make_shared<Mesh>();
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
     mesh->setDrawMode(GL_LINE_STRIP);
 
-    // store in sprites and return id
-    std::string id = StringUtil::uuid4();
-    loadedMeshes[id] = mesh;
-    return id;
+    return mesh;
 }
 
-std::string Renderer::generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color) {
+Mesh::Ptr Renderer::generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color) {
     auto verts = MathUtil::generateBox(width, height, length);
-    auto mesh = std::make_shared<Mesh>();
     // indices for triangles on box surface
     std::vector<unsigned int> indices = {
             1, 0, 2,
@@ -377,20 +360,17 @@ std::string Renderer::generateBoxMeshTriangles(int width, int height, int length
         colors.push_back(color);
     }
 
+    auto mesh = std::make_shared<Mesh>();
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
     mesh->setDrawMode(GL_TRIANGLES);
 
-    // store in sprites and return id
-    std::string id = StringUtil::uuid4();
-    loadedMeshes[id] = mesh;
-    return id;
+    return mesh;
 }
 
-std::string Renderer::generateBoxMeshLines(int width, int height, int length, glm::vec4 color) {
+Mesh::Ptr Renderer::generateBoxMeshLines(int width, int height, int length, glm::vec4 color) {
     auto verts = MathUtil::generateBox(width, height, length);
-    auto mesh = std::make_shared<Mesh>();
     // indices for triangles on box surface
     std::vector<unsigned int> indices = {
         0, 1,
@@ -415,14 +395,12 @@ std::string Renderer::generateBoxMeshLines(int width, int height, int length, gl
         colors.push_back(color);
     }
 
+    auto mesh = std::make_shared<Mesh>();
     mesh->setVertices(verts);
     mesh->setColors(colors);
     mesh->setIndices(indices);
     mesh->setDrawMode(GL_LINES);
 
-    // store in sprites and return id
-    std::string id = StringUtil::uuid4();
-    loadedMeshes[id] = mesh;
-    return id;
+    return mesh;
 }
 

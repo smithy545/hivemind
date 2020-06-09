@@ -80,7 +80,6 @@ private:
 
     // world state
     Map::Ptr map;
-
 };
 
 

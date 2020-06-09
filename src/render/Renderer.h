@@ -30,7 +30,7 @@ public:
     // lifecycle methods
     GLFWwindow *init(const std::string& configPath);
 
-    void render(const RenderNode::Ptr &treeHead, const Camera::Ptr &camera);
+    void render(const RenderNode::Ptr &treeHead, const Camera &camera);
 
     void cleanup();
 
@@ -46,13 +46,13 @@ public:
     bool setShader(const std::string &name);
 
     // add sprites
-    std::string generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
+    static Mesh::Ptr generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
 
-    std::string generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color);
+    static Mesh::Ptr generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color);
 
-    std::string generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color);
+    static Mesh::Ptr generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color);
 
-    std::string generateBoxMeshLines(int width, int height, int length, glm::vec4 color);
+    static Mesh::Ptr generateBoxMeshLines(int width, int height, int length, glm::vec4 color);
 private:
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
