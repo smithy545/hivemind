@@ -18,6 +18,8 @@ class Scene {
 public:
     Scene(int width, int height);
 
+    void cleanup();
+
     Camera &getCamera();
 
     RenderNode::Ptr getRenderTree();

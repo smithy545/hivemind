@@ -7,6 +7,15 @@
 
 Scene::Scene(int width, int height) : camera(width, height) {}
 
+void Scene::cleanup() {
+    // destroy references to render objects so their constructors are called
+    while(renderHead != nullptr) {
+        auto node = std::dynamic_pointer_cast<RenderNode>(renderHead->getNext());
+        renderHead->setNext(nullptr);
+        renderHead = node;
+    }
+}
+
 Camera &Scene::getCamera() {
     return camera;
 }
@@ -61,7 +70,7 @@ void Scene::addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body
 
     // add to render tree
     renderHead = std::make_shared<RenderNode>(shaderName, std::move(mesh), renderHead);
-    renderHead->addChild(body);
+    renderHead->addBody(body);
 
     // add to entities
     auto rect = std::make_shared<Rectangle>(0, 0, 10, 10);

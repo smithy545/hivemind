@@ -126,7 +126,7 @@ void Renderer::render(const RenderNode::Ptr &treeHead, const Camera &camera) {
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
-            for (const auto &body: node->getChildren()) {
+            for (const auto &body: node->getBodies()) {
                 // translate to world position
                 glm::mat4 modelMatrix = glm::translate(glm::mat4(1), body->getOrigin());
                 glm::mat4 mvpMatrix = viewProj * modelMatrix;
@@ -403,4 +403,3 @@ Mesh::Ptr Renderer::generateBoxMeshLines(int width, int height, int length, glm:
 
     return mesh;
 }
-

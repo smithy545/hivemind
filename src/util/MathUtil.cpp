@@ -20,6 +20,7 @@ int MathUtil::binomialCoeff(int n, int k) {
         coeffs[s] = 1;
         generatedBinomialCoeffs.push_back(coeffs);
         maxGeneratedDegree++;
+        //delete[] coeffs;
     }
 
     return generatedBinomialCoeffs[n][k];

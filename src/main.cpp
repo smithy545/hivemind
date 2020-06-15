@@ -25,7 +25,6 @@ int main() {
     std::thread gameThread(loop);
     gameThread.join();
     std::cout << "End." << std::endl;
-
     return 0;
 }
 
@@ -79,9 +78,12 @@ void loop() {
     // only set physics on outline since the box and outline share a body
     auto body = std::make_shared<Body>();
     body->setOrigin({0,10,0});
-    state->getScene().addToScene("color", Renderer::generateBoxMeshTriangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f)), body, false);
-    state->getScene().addToScene("color", Renderer::generateBoxMeshLines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body, true);
-
+    state->getScene().addToScene("color",
+            Renderer::generateBoxMeshTriangles(1,2,3,
+            glm::vec4(1.0f, 0.f, 0.f, 1.0f)), body,false);
+    state->getScene().addToScene("color",
+            Renderer::generateBoxMeshLines(1, 2, 3,
+            glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body,true);
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -145,5 +147,7 @@ void loop() {
             glfwWindowShouldClose(window) == 0 &&
             !state->shouldStop());
 
+    // cleanup state before cleaning up renderer so glfw isn't terminated
+    state->getScene().cleanup();
     renderer->cleanup();
 }

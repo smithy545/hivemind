@@ -19,7 +19,7 @@ void RenderNode::setNext(const RenderNode::Ptr &node) {
     next = node;
 }
 
-const std::vector<Body::Ptr> &RenderNode::getChildren() const {
+const std::vector<Body::Ptr> &RenderNode::getBodies() const {
     return bodies;
 }
 
@@ -31,7 +31,7 @@ void RenderNode::setShaderName(const std::string &name) {
     shaderName = name;
 }
 
-void RenderNode::addChild(const Body::Ptr& body) {
+void RenderNode::addBody(const Body::Ptr& body) {
     bodies.push_back(body);
 }
 

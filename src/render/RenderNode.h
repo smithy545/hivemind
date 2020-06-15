@@ -26,13 +26,13 @@ public:
 
     void setNext(const Ptr &node);
 
-    const std::vector<Body::Ptr> &getChildren() const;
+    const std::vector<Body::Ptr> &getBodies() const;
 
     const std::string &getShaderName() const;
 
     void setShaderName(const std::string &name);
 
-    void addChild(const Body::Ptr& body);
+    void addBody(const Body::Ptr& body);
 
     Drawable::Ptr getEntity();
 
