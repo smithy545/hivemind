@@ -124,7 +124,11 @@ add_library(engine STATIC
         src/engine/Scene.cpp
         src/engine/Scene.h
         src/engine/GameEntity.cpp
-        src/engine/GameEntity.h)
+        src/engine/GameEntity.h
+        src/engine/Scheduler.h
+        src/engine/Stage.h
+        src/engine/SimpleScheduler.cpp
+        src/engine/SimpleScheduler.h)
 
 add_library(life STATIC
         src/life/Person.cpp
