@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 #include <thread>
 
@@ -84,6 +85,7 @@ void loop() {
     state->getScene().addToScene("color",
             Renderer::generateBoxMeshLines(1, 2, 3,
             glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body,true);
+
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -132,6 +134,14 @@ void loop() {
 
         // update state with user input
         ui->update(state);
+
+        // enforce fps
+        int desiredFPS = 60;
+        auto fps = state->getFPS();
+        if(desiredFPS < ((int)fps)) {
+            std::chrono::duration<double> leftOver{2*(fps-desiredFPS)/(fps*desiredFPS)};
+            std::this_thread::sleep_for(leftOver);
+        }
 
         // render
         renderer->render(scene.getRenderTree(), scene.getCamera());

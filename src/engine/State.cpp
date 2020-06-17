@@ -76,6 +76,7 @@ void State::unpause() {
 void State::start() {
     paused = false;
     stopped = false;
+    lastFrameStart = std::chrono::system_clock::now();
 }
 
 void State::stop() {
@@ -84,9 +85,9 @@ void State::stop() {
 }
 
 void State::enterFrame() {
-    auto currentFrame = std::chrono::system_clock::now();
-    fps = 1.0 / std::chrono::duration<double>(currentFrame - lastFrameStart).count();
-    lastFrameStart = currentFrame;
+    auto currentFrameStart = std::chrono::system_clock::now();
+    fps = 1.0 / std::chrono::duration<double>(currentFrameStart - lastFrameStart).count();
+    lastFrameStart = currentFrameStart;
 }
 
 double State::getFPS() const {

@@ -187,7 +187,7 @@ macro(print_all_variables)
     endforeach ()
     message(STATUS "print_all_variables------------------------------------------}")
 endmacro()
-print_all_variables()
+#print_all_variables()
 
 
 add_executable(society src/main.cpp)
