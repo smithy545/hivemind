@@ -128,11 +128,7 @@ add_library(engine STATIC
 
 add_library(life STATIC
         src/life/Person.cpp
-        src/life/Person.h
-        src/life/Appendage.cpp
-        src/life/Appendage.h
-        src/life/Joint.cpp
-        src/life/Joint.h)
+        src/life/Person.h)
 
 ### CUDA STUFF ###
 add_subdirectory(src/cuda)

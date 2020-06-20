@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 
-#include "Appendage.h"
 #include "collision/Rectangle.h"
 #include "macros.h"
 
@@ -27,7 +26,6 @@ public:
 private:
     std::string name;
     glm::vec3 position;
-    Appendage::Ptr head;
 };
 
 
