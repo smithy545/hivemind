@@ -1,0 +1,8 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/Extras/obj2sdf/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/Extras/obj2sdf/CMakeFiles/generate.stamp is up-to-date.
+  obj2sdf.cpp
+  b3ResourcePath.cpp
+  tiny_obj_loader.cpp
+  Generating Code...
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+  App_obj2sdf.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\Extras\obj2sdf\Debug\App_obj2sdf.exe

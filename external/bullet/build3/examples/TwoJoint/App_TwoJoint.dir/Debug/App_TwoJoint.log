@@ -1,0 +1,159 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/examples/TwoJoint/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/TwoJoint/CMakeFiles/generate.stamp is up-to-date.
+  TwoJointMain.cpp
+  collisionFilterPlugin.cpp
+  pdControlPlugin.cpp
+  b3RobotSimulatorClientAPI_NoDirect.cpp
+  IKTrajectoryHelper.cpp
+  InProcessExampleBrowser.cpp
+  tinyRendererPlugin.cpp
+  TinyRendererVisualShapeConverter.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\plugins\tinyrendererplugin\tinyrenderervisualshapeconverter.cpp(127): warning C4316: 'TinyRendererVisualShapeConverterInternalData': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\plugins\tinyrendererplugin\tinyrenderervisualshapeconverter.cpp(751): warning C4316: 'TinyRendererObjectArray': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\plugins\tinyrendererplugin\tinyrenderervisualshapeconverter.cpp(790): warning C4316: 'TinyRenderObjectData': object allocated on the heap may not be aligned 16
+  SimpleCamera.cpp
+  geometry.cpp
+  model.cpp
+  tgaimage.cpp
+  our_gl.cpp
+  TinyRenderer.cpp
+  InProcessMemory.cpp
+  PhysicsClient.cpp
+  PhysicsServer.cpp
+  GraphicsServerExample.cpp
+  GraphicsClientExample.cpp
+  RemoteGUIHelper.cpp
+  Generating Code...
+  Compiling...
+  PhysicsServerExample.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsserverexample.cpp(863): warning C4316: 'MultithreadedDebugDrawer': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsserverexample.cpp(3234): warning C4316: 'MultiThreadedOpenGLGuiHelper': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsserverexample.cpp(3239): warning C4316: 'PhysicsServerExample': object allocated on the heap may not be aligned 16
+  PhysicsServerExampleBullet2.cpp
+  SharedMemoryInProcessPhysicsC_API.cpp
+  PhysicsServerSharedMemory.cpp
+  PhysicsDirect.cpp
+  PhysicsDirectC_API.cpp
+  PhysicsServerCommandProcessor.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(2000): warning C4316: 'PhysicsServerCommandProcessorInternalData': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(4437): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(4440): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8116): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8120): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8260): warning C4316: 'btDeformableGravityForce': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8431): warning C4316: 'btMultiBodyJointFeedback': object allocated on the heap may not be aligned 16
+  b3PluginManager.cpp
+  PhysicsClientSharedMemory.cpp
+  PhysicsClientSharedMemory_C_API.cpp
+  PhysicsClientC_API.cpp
+  Win32SharedMemory.cpp
+  PosixSharedMemory.cpp
+  b3ResourcePath.cpp
+  RobotLoggingUtil.cpp
+  tinyxml2.cpp
+  tiny_obj_loader.cpp
+  stb_image.cpp
+  LoadMeshFromCollada.cpp
+  LoadMeshFromObj.cpp
+  Generating Code...
+  Compiling...
+  Wavefront2GLInstanceGraphicsShape.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(78): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(107): warning C4018: '<': signed/unsigned mismatch
+  BulletMJCFImporter.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(422): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(432): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(435): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(614): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(1080): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(1279): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(1443): warning C4804: '>': unsafe use of type 'bool' in operation
+  BulletUrdfImporter.cpp
+  MyMultiBodyCreator.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(66): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(147): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(171): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+  URDF2Bullet.cpp
+  UrdfParser.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(660): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(719): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1645): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1667): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1718): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1747): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1748): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1859): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1894): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1916): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1967): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+  urdfStringSplit.cpp
+  b3ImportMeshUtility.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmeshutility\b3importmeshutility.cpp(80): warning C4018: '<': signed/unsigned mismatch
+  b3PosixThreadSupport.cpp
+  b3Win32ThreadSupport.cpp
+  b3ThreadSupportInterface.cpp
+  PhysicsClientUDP.cpp
+  PhysicsClientUDP_C_API.cpp
+  PhysicsClientTCP.cpp
+h:\moreapps\visualstudio\vc\tools\msvc\14.16.27023\include\stdint.h(56): warning C4005: 'UINT8_MAX': macro redefinition
+  c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\host.h(107): note: see previous definition of 'UINT8_MAX'
+h:\moreapps\visualstudio\vc\tools\msvc\14.16.27023\include\stdint.h(57): warning C4005: 'UINT16_MAX': macro redefinition
+  c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\host.h(110): note: see previous definition of 'UINT16_MAX'
+h:\moreapps\visualstudio\vc\tools\msvc\14.16.27023\include\stdint.h(58): warning C4005: 'UINT32_MAX': macro redefinition
+  c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\host.h(113): note: see previous definition of 'UINT32_MAX'
+  PhysicsClientTCP_C_API.cpp
+  SimpleSocket.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.h(484): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: see declaration of 'inet_ntoa'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.h(498): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: see declaration of 'inet_ntoa'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.cpp(177): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: see declaration of 'inet_addr'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.cpp(895): warning C4996: 'lseek': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _lseek. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_io.h(503): note: see declaration of 'lseek'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.cpp(904): warning C4996: 'read': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _read. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_io.h(523): note: see declaration of 'read'
+  ActiveSocket.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.h(484): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: see declaration of 'inet_ntoa'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.h(498): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: see declaration of 'inet_ntoa'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\activesocket.cpp(65): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2219): note: see declaration of 'gethostbyname'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\activesocket.cpp(145): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2219): note: see declaration of 'gethostbyname'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\activesocket.cpp(203): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2219): note: see declaration of 'gethostbyname'
+  PassiveSocket.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.h(484): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: see declaration of 'inet_ntoa'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\simplesocket.h(498): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: see declaration of 'inet_ntoa'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\passivesocket.cpp(80): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: see declaration of 'inet_addr'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\passivesocket.cpp(94): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: see declaration of 'inet_addr'
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\clsocket\src\passivesocket.cpp(165): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: see declaration of 'inet_addr'
+  Generating Code...
+  win32.c
+  unix.c
+  callbacks.c
+  compress.c
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(308): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(313): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(331): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(560): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(575): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(590): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+c:\users\philip\clionprojects\society\external\bullet\examples\thirdpartylibs\enet\compress.c(605): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  host.c
+  list.c
+  packet.c
+  peer.c
+  protocol.c
+  Generating Code...
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+     Creating library C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/TwoJoint/Debug/App_TwoJoint_d.lib and object C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/TwoJoint/Debug/App_TwoJoint_d.exp
+  App_TwoJoint.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\examples\TwoJoint\Debug\App_TwoJoint_d.exe

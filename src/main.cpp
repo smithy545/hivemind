@@ -118,12 +118,12 @@ void loop() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         auto scene = state->getScene();
-        // resize if flag set
         if (resized) {
             renderer->resize(screenWidth, screenHeight);
             scene.getCamera().resize(screenWidth, screenHeight);
             resized = false;
         }
+
         if (!state->isPaused()) {
             // check collisions and update bodies
             if (collider != nullptr && integrator != nullptr) {

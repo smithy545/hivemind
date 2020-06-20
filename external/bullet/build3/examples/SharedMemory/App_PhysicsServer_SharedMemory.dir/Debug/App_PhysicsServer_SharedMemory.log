@@ -1,0 +1,103 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/examples/SharedMemory/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/SharedMemory/CMakeFiles/generate.stamp is up-to-date.
+  collisionFilterPlugin.cpp
+  pdControlPlugin.cpp
+  b3RobotSimulatorClientAPI_NoDirect.cpp
+  IKTrajectoryHelper.cpp
+  PhysicsClient.cpp
+  PhysicsClientSharedMemory.cpp
+  PhysicsClientExample.cpp
+  PhysicsServerExample.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsserverexample.cpp(863): warning C4316: 'MultithreadedDebugDrawer': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsserverexample.cpp(3234): warning C4316: 'MultiThreadedOpenGLGuiHelper': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsserverexample.cpp(3239): warning C4316: 'PhysicsServerExample': object allocated on the heap may not be aligned 16
+  PhysicsServerExampleBullet2.cpp
+  PhysicsServerSharedMemory.cpp
+  PhysicsServer.cpp
+  PhysicsClientC_API.cpp
+  GraphicsClientExample.cpp
+  GraphicsServerExample.cpp
+  PosixSharedMemory.cpp
+  Win32SharedMemory.cpp
+  InProcessMemory.cpp
+  PhysicsDirect.cpp
+  PhysicsDirectC_API.cpp
+  PhysicsLoopBack.cpp
+  Generating Code...
+  Compiling...
+  PhysicsLoopBackC_API.cpp
+  PhysicsClientSharedMemory_C_API.cpp
+  PhysicsClientSharedMemory2_C_API.cpp
+  PhysicsClientSharedMemory2.cpp
+  SharedMemoryCommandProcessor.cpp
+  PhysicsServerCommandProcessor.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(2000): warning C4316: 'PhysicsServerCommandProcessorInternalData': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(4437): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(4440): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8116): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8120): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8260): warning C4316: 'btDeformableGravityForce': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\physicsservercommandprocessor.cpp(8431): warning C4316: 'btMultiBodyJointFeedback': object allocated on the heap may not be aligned 16
+  tinyRendererPlugin.cpp
+  TinyRendererVisualShapeConverter.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\plugins\tinyrendererplugin\tinyrenderervisualshapeconverter.cpp(127): warning C4316: 'TinyRendererVisualShapeConverterInternalData': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\plugins\tinyrendererplugin\tinyrenderervisualshapeconverter.cpp(751): warning C4316: 'TinyRendererObjectArray': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\sharedmemory\plugins\tinyrendererplugin\tinyrenderervisualshapeconverter.cpp(790): warning C4316: 'TinyRenderObjectData': object allocated on the heap may not be aligned 16
+  b3PluginManager.cpp
+  geometry.cpp
+  model.cpp
+  tgaimage.cpp
+  our_gl.cpp
+  TinyRenderer.cpp
+  SimpleCamera.cpp
+  MyMultiBodyCreator.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(66): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(147): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(171): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+  BulletUrdfImporter.cpp
+  UrdfParser.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(660): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(719): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1645): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1667): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1718): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1747): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1748): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1859): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1894): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1916): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1967): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+  urdfStringSplit.cpp
+  URDF2Bullet.cpp
+  Generating Code...
+  Compiling...
+  BulletMJCFImporter.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(422): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(432): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(435): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(614): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(1080): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(1279): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmjcfdemo\bulletmjcfimporter.cpp(1443): warning C4804: '>': unsafe use of type 'bool' in operation
+  b3ResourcePath.cpp
+  b3Clock.cpp
+  RobotLoggingUtil.cpp
+  ChromeTraceUtil.cpp
+  Wavefront2GLInstanceGraphicsShape.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(78): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(107): warning C4018: '<': signed/unsigned mismatch
+  LoadMeshFromObj.cpp
+  LoadMeshFromCollada.cpp
+  tiny_obj_loader.cpp
+  tinyxml2.cpp
+  b3ImportMeshUtility.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmeshutility\b3importmeshutility.cpp(80): warning C4018: '<': signed/unsigned mismatch
+  stb_image.cpp
+  b3ThreadSupportInterface.cpp
+  main.cpp
+  b3Win32ThreadSupport.cpp
+  Generating Code...
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+     Creating library C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/SharedMemory/Debug/App_PhysicsServer_SharedMemory.lib and object C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/SharedMemory/Debug/App_PhysicsServer_SharedMemory.exp
+  App_PhysicsServer_SharedMemory.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\examples\SharedMemory\Debug\App_PhysicsServer_SharedMemory.exe

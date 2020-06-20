@@ -1,0 +1,46 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/test/InverseDynamics/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/test/InverseDynamics/CMakeFiles/generate.stamp is up-to-date.
+  test_invdyn_bullet.cpp
+  b3ResourcePath.cpp
+  MyMultiBodyCreator.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(66): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(147): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\mymultibodycreator.cpp(171): warning C4316: 'GenericConstraintUserInfo': object allocated on the heap may not be aligned 16
+  BulletUrdfImporter.cpp
+  urdfStringSplit.cpp
+  UrdfParser.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(660): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(719): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1645): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1667): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1718): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1747): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1748): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1859): warning C4316: 'UrdfModel': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1894): warning C4316: 'UrdfMaterial': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1916): warning C4316: 'UrdfLink': object allocated on the heap may not be aligned 16
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importurdfdemo\urdfparser.cpp(1967): warning C4316: 'UrdfJoint': object allocated on the heap may not be aligned 16
+  URDF2Bullet.cpp
+  b3ImportMeshUtility.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importmeshutility\b3importmeshutility.cpp(80): warning C4018: '<': signed/unsigned mismatch
+  stb_image.cpp
+  b3Clock.cpp
+  btBulletWorldImporter.cpp
+  btWorldImporter.cpp
+  bChunk.cpp
+  bFile.cpp
+  bDNA.cpp
+  btBulletFile.cpp
+  Wavefront2GLInstanceGraphicsShape.cpp
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(78): warning C4018: '<': signed/unsigned mismatch
+c:\users\philip\clionprojects\society\external\bullet\examples\importers\importobjdemo\wavefront2glinstancegraphicsshape.cpp(107): warning C4018: '<': signed/unsigned mismatch
+  LoadMeshFromObj.cpp
+  LoadMeshFromCollada.cpp
+  tiny_obj_loader.cpp
+  Generating Code...
+  Compiling...
+  tinyxml2.cpp
+  Generating Code...
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+  Test_BulletInverseForwardDynamics.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\test\InverseDynamics\Debug\Test_BulletInverseForwardDynamics.exe

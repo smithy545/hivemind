@@ -1,0 +1,6 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/examples/RobotSimulator/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/RobotSimulator/CMakeFiles/generate.stamp is up-to-date.
+  HelloBulletRobotics.cpp
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+     Creating library C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/RobotSimulator/Debug/App_HelloBulletRobotics_d.lib and object C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/RobotSimulator/Debug/App_HelloBulletRobotics_d.exp
+  App_HelloBulletRobotics.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\examples\RobotSimulator\Debug\App_HelloBulletRobotics_d.exe

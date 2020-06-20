@@ -1,0 +1,13 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/examples/ThirdPartyLibs/BussIK/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/ThirdPartyLibs/BussIK/CMakeFiles/generate.stamp is up-to-date.
+  Jacobian.cpp
+  LinearR2.cpp
+  LinearR3.cpp
+  LinearR4.cpp
+  MatrixRmn.cpp
+  Misc.cpp
+  Node.cpp
+  Tree.cpp
+  VectorRn.cpp
+  Generating Code...
+  BussIK.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\lib\Debug\BussIK_Debug.lib

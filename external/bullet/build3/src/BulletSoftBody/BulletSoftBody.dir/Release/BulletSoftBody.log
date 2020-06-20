@@ -1,0 +1,21 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/src/BulletSoftBody/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/src/BulletSoftBody/CMakeFiles/generate.stamp is up-to-date.
+  btSoftBody.cpp
+c:\users\philip\clionprojects\society\external\bullet\src\bulletsoftbody\btsoftbody.cpp(3698): warning C4316: 'btDbvntNode': object allocated on the heap may not be aligned 16
+  btSoftBodyConcaveCollisionAlgorithm.cpp
+  btSoftBodyHelpers.cpp
+c:\users\philip\clionprojects\society\external\bullet\src\bulletsoftbody\btsoftbodyhelpers.cpp(1315): warning C4018: '<': signed/unsigned mismatch
+  btSoftBodyRigidBodyCollisionConfiguration.cpp
+  btSoftRigidCollisionAlgorithm.cpp
+  btSoftRigidDynamicsWorld.cpp
+  btSoftMultiBodyDynamicsWorld.cpp
+  btSoftSoftCollisionAlgorithm.cpp
+  btDefaultSoftBodySolver.cpp
+  btDeformableBackwardEulerObjective.cpp
+  btDeformableBodySolver.cpp
+  btDeformableMultiBodyConstraintSolver.cpp
+  btDeformableContactProjection.cpp
+  btDeformableMultiBodyDynamicsWorld.cpp
+  btDeformableContactConstraint.cpp
+  Generating Code...
+  BulletSoftBody.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\lib\Release\BulletSoftBody.lib

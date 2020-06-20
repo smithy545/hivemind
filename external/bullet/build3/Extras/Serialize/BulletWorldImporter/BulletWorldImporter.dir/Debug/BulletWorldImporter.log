@@ -1,0 +1,7 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/Extras/Serialize/BulletWorldImporter/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/Extras/Serialize/BulletWorldImporter/CMakeFiles/generate.stamp is up-to-date.
+  btMultiBodyWorldImporter.cpp
+  btBulletWorldImporter.cpp
+  btWorldImporter.cpp
+  Generating Code...
+  BulletWorldImporter.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\lib\Debug\BulletWorldImporter_Debug.lib

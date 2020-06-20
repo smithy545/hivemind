@@ -1,0 +1,5 @@
+﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/test/BulletDynamics/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/test/BulletDynamics/CMakeFiles/generate.stamp is up-to-date.
+  test_btKinematicCharacterController.cpp
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+  Test_btKinematicCharacterController.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\test\BulletDynamics\Debug\Test_btKinematicCharacterController.exe
