@@ -124,11 +124,11 @@ add_library(engine STATIC
         src/engine/Scene.cpp
         src/engine/Scene.h
         src/engine/GameEntity.cpp
-        src/engine/GameEntity.h)
-
-add_library(life STATIC
-        src/life/Person.cpp
-        src/life/Person.h)
+        src/engine/GameEntity.h
+        src/engine/Person.cpp
+        src/engine/Person.h
+        src/engine/Role.cpp
+        src/engine/Role.h)
 
 ### CUDA STUFF ###
 add_subdirectory(src/cuda)
@@ -160,7 +160,6 @@ set(ALL_LIBS
         render
         ui
         engine
-        life
         dynamics
         cuda_stuff)
 

@@ -961,7 +961,7 @@ convert the files to/from buffers in memory.
 This all makes LodePNG suitable for loading textures in games, demos and small
 programs, ... It's less suitable for full fledged image editors, loading PNGs
 over network (it requires all the image data to be available before decoding can
-begin), life-critical systems, ...
+begin), society-critical systems, ...
 
 1.1. supported features
 -----------------------

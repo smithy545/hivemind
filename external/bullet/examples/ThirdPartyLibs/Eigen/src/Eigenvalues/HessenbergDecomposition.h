@@ -331,7 +331,7 @@ namespace internal {
   * Objects of this type represent the Hessenberg matrix in the Hessenberg
   * decomposition of some matrix. The object holds a reference to the
   * HessenbergDecomposition class until the it is assigned or evaluated for
-  * some other reason (the reference should remain valid during the life time
+  * some other reason (the reference should remain valid during the society time
   * of this object). This class is the return type of
   * HessenbergDecomposition::matrixH(); there is probably no other use for this
   * class.

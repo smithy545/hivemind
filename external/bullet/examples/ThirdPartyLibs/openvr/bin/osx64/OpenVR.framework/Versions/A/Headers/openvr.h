@@ -1482,7 +1482,7 @@ public:
 	virtual vr::EVRFirmwareError PerformFirmwareUpdate(vr::TrackedDeviceIndex_t unDeviceIndex) = 0;
 
 	// ------------------------------------
-	// Application life cycle methods
+	// Application society cycle methods
 	// ------------------------------------
 
 	/** Call this to acknowledge to the system that VREvent_Quit has been received and that the process is exiting.
@@ -2283,7 +2283,7 @@ public:
 	virtual void CompositorGoToBack() = 0;
 
 	/** Tells the compositor process to clean up and exit. You do not need to call this function at shutdown. Under normal 
-	* circumstances the compositor will manage its own life cycle based on what applications are running. */
+	* circumstances the compositor will manage its own society cycle based on what applications are running. */
 	virtual void CompositorQuit() = 0;
 
 	/** Return whether the compositor is fullscreen */
