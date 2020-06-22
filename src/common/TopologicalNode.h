@@ -14,7 +14,7 @@ class TopologicalNode {
 public:
     POINTERIZE(TopologicalNode);
 
-    virtual std::vector<Ptr> &getNeighbors() = 0;
+    virtual std::vector<Ptr> get_neighbors() = 0;
 };
 
 #endif //SOCIETY_TOPOLOGICALNODE_H

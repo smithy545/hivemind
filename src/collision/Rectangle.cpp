@@ -7,15 +7,13 @@
 
 Rectangle::Rectangle(double width, double height) : Rectangle(0, 0, width, height) {}
 
-Rectangle::Rectangle(double x, double y, double width, double height) : x(x), y(y),
-                                                                        centerX(x - 0.5 * width),
-                                                                        centerY(y - 0.5 * height),
-                                                                        width(width), height(height) {
+Rectangle::Rectangle(double x, double y, double width, double height) : _x(x), _y(y),
+                                                                        _width(width), _height(height) {
     calculatePoints();
 }
 
 bool Rectangle::collides(double X, double Y) const {
-    return X >= x && X < x + width && Y >= y && Y < y + height;
+    return X >= _x && X < _x + _width && Y >= _y && Y < _y + _height;
 }
 
 bool Rectangle::collides(Bound::Ptr other) {
@@ -23,7 +21,7 @@ bool Rectangle::collides(Bound::Ptr other) {
     if(rect != nullptr) {
         if(rect->collides(this->shared_from_this()))
             return true;
-        for (auto p: rect->getPoints()) {
+        for (auto p: rect->get_points()) {
             if(collides(p.x, p.y))
                 return true;
         }
@@ -32,68 +30,16 @@ bool Rectangle::collides(Bound::Ptr other) {
 }
 
 void Rectangle::calculatePoints() {
-    points[0] = {x, y};
-    points[1] = {x + width, y};
-    points[2] = {x, y + height};
-    points[3] = {x + width, y + height};
+    _points[0] = {_x, _y};
+    _points[1] = {_x + _width, _y};
+    _points[2] = {_x, _y + _height};
+    _points[3] = {_x + _width, _y + _height};
 }
 
-double Rectangle::getX() const {
-    return x;
+double Rectangle::get_center_x() {
+    return _x + 0.5*_width;
 }
 
-void Rectangle::setX(double x) {
-    Rectangle::x = x;
-    calculatePoints();
-}
-
-double Rectangle::getY() const {
-    return y;
-}
-
-void Rectangle::setY(double y) {
-    Rectangle::y = y;
-    calculatePoints();
-}
-
-double Rectangle::getWidth() const {
-    return width;
-}
-
-void Rectangle::setWidth(double width) {
-    Rectangle::width = width;
-    calculatePoints();
-}
-
-double Rectangle::getHeight() const {
-    return height;
-}
-
-void Rectangle::setHeight(double height) {
-    Rectangle::height = height;
-    calculatePoints();
-}
-
-std::vector<glm::vec2> Rectangle::getPoints() {
-    return points;
-}
-
-double Rectangle::getCenterX() const {
-    return centerX;
-}
-
-void Rectangle::setCenterX(double centerX) {
-    Rectangle::centerX = centerX;
-    Rectangle::x = centerX - width * 0.5;
-    calculatePoints();
-}
-
-double Rectangle::getCenterY() const {
-    return centerY;
-}
-
-void Rectangle::setCenterY(double centerY) {
-    Rectangle::centerY = centerY;
-    Rectangle::y = centerY - height * 0.5;
-    calculatePoints();
+double Rectangle::get_center_y() {
+    return _y + 0.5*_height;
 }

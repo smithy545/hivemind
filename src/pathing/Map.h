@@ -15,40 +15,24 @@ class Map {
 public:
     POINTERIZE(Map);
 
-    virtual const std::vector<MapNode::Ptr> &getNodes() = 0;
+    virtual const std::vector<MapNode::Ptr> &get_nodes() = 0;
 
     // nullptr return value means position out of bounds
-    virtual MapNode::Ptr getNode(int x, int y) = 0;
+    virtual MapNode::Ptr get_node(int x, int y) = 0;
 
-    virtual std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr node) = 0;
+    virtual std::vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) = 0;
 
     // Force bound checking in getNode!
     bool inBounds(int x, int y) {
-        return getNode(x, y) != nullptr;
+        return get_node(x, y) != nullptr;
     }
 protected:
     Map() : Map(0, 0) {}
 
-    Map(int xOffset, int yOffset) : xOffset(xOffset), yOffset(yOffset) {}
+    Map(int xOffset, int yOffset) : _x_offset(xOffset), _y_offset(yOffset) {}
 
-    int getXOffset() const {
-        return xOffset;
-    }
-
-    void setXOffset(int xOffset) {
-        Map::xOffset = xOffset;
-    }
-
-    int getYOffset() const {
-        return yOffset;
-    }
-
-    void setYOffset(int yOffset) {
-        Map::yOffset = yOffset;
-    }
-
-private:
-    int xOffset, yOffset;
+    _VAR(int,x_offset,protected,protected,)
+    _VAR(int,y_offset,protected,protected,)
 };
 
 #endif //SOCIETY_MAP_H

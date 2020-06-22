@@ -8,18 +8,14 @@
 #include <exception>
 
 
-SchemaObject::SchemaObject(const std::string &schemaString) : SchemaObject(json::parse(schemaString)) {}
+SchemaObject::SchemaObject(const std::string &schema_string) : SchemaObject(json::parse(schema_string)) {}
 
-SchemaObject::SchemaObject(const json &schema) : schema(schema) {
+SchemaObject::SchemaObject(const json &schema) : _schema(schema) {
     try {
         validator.set_root_schema(schema);
     } catch (const std::exception &ex) {
         std::cerr << "Schema setup failed: " << ex.what() << std::endl;
     }
-}
-
-const json &SchemaObject::getSchema() const {
-    return schema;
 }
 
 bool SchemaObject::validate(const json &data) {

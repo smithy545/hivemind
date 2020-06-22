@@ -18,16 +18,13 @@ class SchemaObject {
 public:
     POINTERIZE(SchemaObject);
 
-    explicit SchemaObject(const std::string &schemaString);
+    explicit SchemaObject(const std::string &schema_string);
 
     explicit SchemaObject(const json &schema);
 
-    const json &getSchema() const;
-
     bool validate(const json &data);
-
 private:
-    const json schema;
+    _VAR(json,schema,public,private,)
     json_validator validator;
 };
 

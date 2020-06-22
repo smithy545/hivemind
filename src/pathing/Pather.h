@@ -22,7 +22,7 @@ public:
         PathNode(MapNode::Ptr pos, double g, double h, Ptr prev)
                 : position(std::move(pos)), g(g), h(h), previous(std::move(prev)) {}
 
-        double getF() {
+        double get_f() {
             return g + h;
         }
 

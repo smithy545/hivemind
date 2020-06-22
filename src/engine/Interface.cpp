@@ -8,9 +8,9 @@
 Interface::Interface() {}
 
 void Interface::update(const State::Ptr &state) {
-    if (state->getMouseScroll() > 0)
+    if (state->get_mouse_scroll() > 0)
         state->getScene().getCamera().zoomIn();
-    else if (state->getMouseScroll() < 0)
+    else if (state->get_mouse_scroll() < 0)
         state->getScene().getCamera().zoomOut();
 
     if (state->getKey(GLFW_KEY_W))
@@ -27,14 +27,14 @@ void Interface::update(const State::Ptr &state) {
         state->getScene().getCamera().strafeRight();
 
     auto cameraRect = state->getScene().getCamera().getBoundingRect();
-    auto mx = state->getMouseX();
-    auto my = state->getMouseY();
-    float dx = 3.0*(mx - state->getLastMouseX())/cameraRect.getWidth();
-    float dy = 0.0*(my - state->getLastMouseY())/cameraRect.getHeight();
+    auto mx = state->get_mouse_x();
+    auto my = state->get_mouse_y();
+    float dx = 3.0*(mx - state->get_last_mouse_x())/cameraRect.get_width();
+    float dy = 0.0*(my - state->get_last_mouse_y())/cameraRect.get_height();
     state->getScene().getCamera().panHorizontal(dx);
     state->getScene().getCamera().panVertical(dy);
 
     // set mouse pos to itself so the last mouse position is also set to the current mouse position
-    state->setMouseX(mx);
-    state->setMouseY(my);
+    state->set_mouse_x(mx);
+    state->set_mouse_x(my);
 }

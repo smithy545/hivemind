@@ -8,11 +8,11 @@
 #include <utility>
 
 
-std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collisionTree) {
+std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collision_tree) {
     std::vector<Body::Ptr> collisions;
-    auto node = std::move(collisionTree);
+    auto node = std::move(collision_tree);
     while(node != nullptr) {
-        if(node->getFirstBody()->getId() == node->getSecondBody()->getId()) {
+        if(node->getFirstBody()->get_id() == node->getSecondBody()->get_id()) {
             // self collision
             collisions.push_back(node->getFirstBody());
             node->kill();
@@ -27,7 +27,7 @@ std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collisionTree) {
             }
             node->kill();
         }
-        node = node->getNext();
+        node = node->get_next();
     }
     return collisions;
 }

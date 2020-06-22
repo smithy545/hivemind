@@ -23,41 +23,30 @@ public:
 
         GridNode(int x, int y) : GridNode(x, y, true) {};
 
-        GridNode(int x, int y, bool passable) : x(x), y(y), passable(passable) {}
+        GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}
 
-        int getX() override {
-            return x;
-        }
-
-        int getY() override {
-            return y;
-        }
+        _VAR(int,x,public,private,)
+        _VAR(int,y,public,private,)
 
         bool isPassable() override {
-            return passable;
+            return _passable;
         }
     private:
-        int x, y;
-        bool passable;
+        bool _passable;
     };
 
     GridMap(int width, int height);
 
     GridMap(int xOffset, int yOffset, int width, int height);
 
-    const std::vector<MapNode::Ptr> &getNodes() override;
+    const std::vector<MapNode::Ptr> &get_nodes() override;
 
-    MapNode::Ptr getNode(int x, int y) override;
+    MapNode::Ptr get_node(int x, int y) override;
 
-    std::vector<MapNode::Ptr> getNeighbors(MapNode::Ptr node) override;
-
-    int getWidth();
-
-    int getHeight();
-
+    std::vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) override;
 private:
-    const int width;
-    const int height;
+    _VAR(int,width,public,private,)
+    _VAR(int,height,public,private,)
     std::vector<MapNode::Ptr> nodes;
     QuadTree collisionTreeHead;
 };

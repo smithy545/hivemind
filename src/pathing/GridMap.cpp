@@ -8,8 +8,8 @@
 GridMap::GridMap(int width, int height) : GridMap(0, 0, width, height) {}
 
 GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset, yOffset),
-                                                                    width(width),
-                                                                    height(height),
+                                                                    _width(width),
+                                                                    _height(height),
                                                                     collisionTreeHead(0, Rectangle(width, height)) {
     // initializenQ
     for (int y = 0; y < height; y++) {
@@ -19,19 +19,19 @@ GridMap::GridMap(int xOffset, int yOffset, int width, int height) : Map(xOffset,
     }
 } 
 
-const std::vector<MapNode::Ptr> &GridMap::getNodes() {
+const std::vector<MapNode::Ptr> &GridMap::get_nodes() {
     return nodes;
 }
 
-MapNode::Ptr GridMap::getNode(int x, int y) {
+MapNode::Ptr GridMap::get_node(int x, int y) {
     y -= getYOffset();
     x -= getXOffset();
-    if (x < 0 || y < 0 || x >= width || y >= height)
+    if (x < 0 || y < 0 || x >= _width || y >= _height)
         return nullptr;
-    return nodes[x + y * width];
+    return nodes[x + y * _width];
 }
 
-std::vector<MapNode::Ptr> GridMap::getNeighbors(MapNode::Ptr node) {
+std::vector<MapNode::Ptr> GridMap::get_neighbors(MapNode::Ptr node) {
     int neighborMatrix[8][2] = {
             {-1, -1},
             {0,  -1},
@@ -53,12 +53,4 @@ std::vector<MapNode::Ptr> GridMap::getNeighbors(MapNode::Ptr node) {
     }
 
     return neighbors;
-}
-
-int GridMap::getWidth() {
-    return width;
-}
-
-int GridMap::getHeight() {
-    return height;
 }

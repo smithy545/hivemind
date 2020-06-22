@@ -51,20 +51,12 @@ public:
 
     void resize(float width, float height);
 
-    Rectangle getBoundingRect();
-
     glm::mat4 getViewProjectionMatrix() const;
-
-    const glm::vec3 &getPosition() const;
-
-    const glm::vec3 &getForward() const;
-
-    const glm::vec3 &getUp() const;
 private:
-    glm::vec3 up{0, 1, 0};
-    glm::vec3 forward{0, 0, -1};
-    glm::vec3 position{0, 0, 0};
-    Rectangle bound;
+    _VAR(glm::vec3,up,public,private,glm::vec3(0, 1, 0));
+    _VAR(glm::vec3,forward,public,private,glm::vec3(0, 0, -1));
+    _VAR(glm::vec3,position,public,private,glm::vec3(0, 0, 0));
+    _VAR(Rectangle,bounding_rect,public,private,Rectangle(0,0));
     float translationSpeed{0.2};
     float horizontalRotationSpeed{0.05};
     float verticalRotationSpeed{0.05};

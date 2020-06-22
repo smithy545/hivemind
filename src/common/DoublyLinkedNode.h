@@ -13,7 +13,7 @@ class DoublyLinkedNode : public LinkedNode {
 public:
     POINTERIZE(DoublyLinkedNode);
 
-    virtual Ptr getPrevious() = 0;
+    virtual Ptr get_previous() = 0;
 };
 
 

@@ -9,28 +9,16 @@
 
 CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second) : CollisionNode(first, second, nullptr) {}
 
-CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next) : bodies(first, second), next(std::move(next)), alive(true) {}
+CollisionNode::CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next) : _bodies(first, second), _next(std::move(next)) {}
 
-Body::Ptr CollisionNode::getFirstBody() {
-    return bodies.first;
+Body::Ptr CollisionNode::get_first_body() {
+    return _bodies.first;
 }
 
-Body::Ptr CollisionNode::getSecondBody() {
-    return bodies.second;
-}
-
-CollisionNode::Ptr CollisionNode::getNext() {
-    return next;
-}
-
-void CollisionNode::setNext(CollisionNode::Ptr node) {
-    next = std::move(node);
+Body::Ptr CollisionNode::get_second_body() {
+    return _bodies.second;
 }
 
 void CollisionNode::kill() {
-    alive = false;
-}
-
-bool CollisionNode::isAlive() {
-    return alive;
+    _alive = false;
 }

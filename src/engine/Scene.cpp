@@ -32,13 +32,13 @@ CollisionNode::Ptr Scene::getCollisionTree() {
         if (!node->isAlive()) {
             if (prev != nullptr)
                 prev = node;
-            else if (node->getNext() == nullptr) {
+            else if (node->get_next() == nullptr) {
                 collisionHead = nullptr;
                 break;
             }
         } else if(prev != nullptr)
-            prev->setNext(node->getNext());
-        node = node->getNext();
+            prev->set_next(node->get_next());
+        node = node->get_next();
     }
 
     return collisionHead;
@@ -48,8 +48,8 @@ void Scene::addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body
     if(physics) {
         // find end of collision list
         auto collisionNode = collisionHead;
-        while (collisionNode != nullptr && collisionNode->getNext() != nullptr)
-            collisionNode = collisionNode->getNext();
+        while (collisionNode != nullptr && collisionNode->get_next() != nullptr)
+            collisionNode = collisionNode->get_next();
 
         // add collision node with self to ensure collision is found and object is passed to integrator
         auto selfCollision = std::make_shared<CollisionNode>(body, body);
@@ -57,14 +57,8 @@ void Scene::addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body
             collisionHead = selfCollision;
             collisionNode = collisionHead;
         } else {
-            collisionNode->setNext(selfCollision);
-            collisionNode = collisionNode->getNext();
-        }
-
-        // add collision nodes to check collision with existing entities
-        for (const auto &entity: entities) {
-            collisionNode->setNext(std::make_shared<CollisionNode>(body, entity->getBody()));
-            collisionNode = collisionNode->getNext();
+            collisionNode->set_next(selfCollision);
+            collisionNode = collisionNode->get_next();
         }
     }
 
@@ -74,6 +68,6 @@ void Scene::addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body
 
     // add to entities
     auto rect = std::make_shared<Rectangle>(0, 0, 10, 10);
-    auto entity = std::make_shared<GameEntity>(rect, body);
-    entities.push_back(entity);
+    //auto entity = std::make_shared<GameEntity>(rect, body);
+    //entities.push_back(entity);
 }

@@ -18,7 +18,7 @@ MapNode::MapPath Pather::genAStarPath(const TopologicalMapNode::Ptr &start, cons
     while (!open.empty()) {
         std::string minKey;
         for (const auto &el: open) {
-            if (minKey.empty() || el.second->getF() < open[minKey]->getF()) {
+            if (minKey.empty() || el.second->get_f() < open[minKey]->getF()) {
                 minKey = genKey(el.second->position);
             }
         }
@@ -42,7 +42,7 @@ MapNode::MapPath Pather::genAStarPath(const TopologicalMapNode::Ptr &start, cons
                 double h = distanceEuclid(neighbor, end);
 
                 if (open.count(key) > 0) {
-                    if (open[key]->getF() < g + h) {
+                    if (open[key]->get_f() < g + h) {
                         continue;
                     } else {
                         open[key]->previous = parent;
@@ -68,14 +68,14 @@ MapNode::MapPath Pather::genAStarPath(const Map::Ptr &map, const MapNode::Ptr &s
     while (!open.empty()) {
         std::string minKey;
         for (const auto &el: open) {
-            if (minKey.empty() || el.second->getF() < open[minKey]->getF()) {
+            if (minKey.empty() || el.second->get_f() < open[minKey]->getF()) {
                 minKey = genKey(el.second->position);
             }
         }
 
         PathNode::Ptr parent = open[minKey];
         open.erase(minKey);
-        for (const auto &neighbor: map->getNeighbors(parent->position)) {
+        for (const auto &neighbor: map->get_neighbors(parent->position)) {
             std::string key = genKey(neighbor);
             if (closed.count(key) > 0)
                 continue;
@@ -91,7 +91,7 @@ MapNode::MapPath Pather::genAStarPath(const Map::Ptr &map, const MapNode::Ptr &s
                 double h = distanceEuclid(neighbor, end);
 
                 if (open.count(key) > 0) {
-                    if (open[key]->getF() < g + h) {
+                    if (open[key]->get_f() < g + h) {
                         continue;
                     } else {
                         open[key]->previous = parent;

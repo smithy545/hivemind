@@ -24,25 +24,9 @@ public:
 
     bool getKey(int key) const;
 
-    double getMouseX() const;
-
-    double getMouseY() const;
-
-    double getLastMouseX() const;
-
-    double getLastMouseY() const;
-
-    double getMouseScroll() const;
-
     const Map::Ptr &getMap() const;
 
     void setKey(int key, bool value);
-
-    void setMouseX(double x);
-
-    void setMouseY(double y);
-
-    void setMouseScroll(double delta);
 
     void setMap(const Map::Ptr &map);
 
@@ -71,9 +55,11 @@ private:
 
     // io state
     bool keys[GLFW_KEY_LAST]{};
-    double mouseX{0}, mouseY{0};
-    double lastMouseX{0}, lastMouseY{0};
-    double mouseScroll{};
+    _VAR(double,mouse_x,public,public,0)
+    _VAR(double,mouse_y,public,public,0)
+    _VAR(double,last_mouse_x,public,private,0)
+    _VAR(double,last_mouse_y,public,private,0)
+    _VAR(double,mouse_scroll,public,public,0);
 
     // scene state
     Scene scene;

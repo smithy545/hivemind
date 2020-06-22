@@ -76,8 +76,7 @@ add_library(pathing STATIC
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
         src/pathing/Pather.h
-        src/pathing/TopologicalMap.cpp
-        src/pathing/TopologicalMap.h)
+        )
 
 ### MY UTIL LIB ###
 add_library(util STATIC
@@ -123,8 +122,6 @@ add_library(engine STATIC
         src/engine/Interface.h
         src/engine/Scene.cpp
         src/engine/Scene.h
-        src/engine/GameEntity.cpp
-        src/engine/GameEntity.h
         src/engine/Person.cpp
         src/engine/Person.h
         src/engine/Role.cpp

@@ -14,20 +14,18 @@
 class CollisionNode : public std::enable_shared_from_this<CollisionNode> {
 public:
     POINTERIZE(CollisionNode);
+    typedef std::pair<Body::Ptr, Body::Ptr> CollisionPair;
 
     CollisionNode(const Body::Ptr& first, const Body::Ptr& second);
     CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next);
 
-    Body::Ptr getFirstBody();
-    Body::Ptr getSecondBody();
-    Ptr getNext();
-    void setNext(Ptr node);
+    Body::Ptr get_first_body();
+    Body::Ptr get_second_body();
     void kill();
-    bool isAlive();
 private:
-    bool alive;
-    std::pair<Body::Ptr, Body::Ptr> bodies;
-    Ptr next;
+    _VAR(CollisionPair,bodies,private,private,)
+    _VAR(Ptr,next,public,public,)
+    _BVAR(bool,alive,public,private,true)
 };
 
 

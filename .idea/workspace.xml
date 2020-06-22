@@ -122,20 +122,41 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="style tweaks">
-      <change afterPath="$PROJECT_DIR$/src/engine/Role.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/engine/Role.h" afterDir="false" />
+    <list default="true" id="ecc937a1-1b0b-4b01-9a12-177af0245679" name="Default Changelist" comment="Add shit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/Eigen/src/Eigenvalues/HessenbergDecomposition.h" beforeDir="false" afterPath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/Eigen/src/Eigenvalues/HessenbergDecomposition.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/bin/osx64/OpenVR.framework/Headers/openvr.h" beforeDir="false" afterPath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/bin/osx64/OpenVR.framework/Headers/openvr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/bin/osx64/OpenVR.framework/Versions/A/Headers/openvr.h" beforeDir="false" afterPath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/bin/osx64/OpenVR.framework/Versions/A/Headers/openvr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/bin/osx64/OpenVR.framework/Versions/Current/Headers/openvr.h" beforeDir="false" afterPath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/bin/osx64/OpenVR.framework/Versions/Current/Headers/openvr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/headers/openvr.h" beforeDir="false" afterPath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/headers/openvr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/samples/shared/lodepng.h" beforeDir="false" afterPath="$PROJECT_DIR$/external/bullet/examples/ThirdPartyLibs/openvr/samples/shared/lodepng.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Person.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Person.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collision/Body.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/collision/Body.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collision/Body.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/collision/Body.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collision/CollisionNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/collision/CollisionNode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collision/CollisionNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/collision/CollisionNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collision/Rectangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/collision/Rectangle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collision/Rectangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/collision/Rectangle.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/DoublyLinkedNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/DoublyLinkedNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/LinkedNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/LinkedNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/SchemaObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/SchemaObject.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/SchemaObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/SchemaObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TopologicalNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/TopologicalNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/TreeNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/TreeNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Collider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Collider.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/GameEntity.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/GameEntity.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Integrator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Integrator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Interface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Interface.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Person.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/State.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/State.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/State.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/macros.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/macros.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/GridMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathing/GridMap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/GridMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathing/GridMap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathing/Map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/Pather.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathing/Pather.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/Pather.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathing/Pather.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/TopologicalMap.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathing/TopologicalMap.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/render/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/render/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/render/Camera.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -435,14 +456,7 @@
       <workItem from="1592629637172" duration="662000" />
       <workItem from="1592805148115" duration="47000" />
       <workItem from="1592805203585" duration="85000" />
-      <workItem from="1592806192052" duration="2176000" />
-    </task>
-    <task id="LOCAL-00086" summary="Force use of &quot;&quot; over &lt;&gt; for imports of package-local libraries/code.">
-      <created>1589467208136</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1589467208136</updated>
+      <workItem from="1592806192052" duration="6805000" />
     </task>
     <task id="LOCAL-00087" summary="Remove traces of bezier curve project from MathUtil">
       <created>1589477586009</created>
@@ -780,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592613930505</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Add shit">
+      <created>1592808438445</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1592808438446</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -844,7 +865,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix camera setup some shapes" />
     <MESSAGE value="3Dify" />
     <MESSAGE value="Update camera controls and background color" />
     <MESSAGE value="Setup directional movement with mouse" />
@@ -869,7 +889,8 @@
     <MESSAGE value="Add scheduling stubs" />
     <MESSAGE value="Add FPS enforcement" />
     <MESSAGE value="Remove some stubs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove some stubs" />
+    <MESSAGE value="Add shit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add shit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="630" y="163" key="#collision" timestamp="1589399143438">
@@ -881,9 +902,10 @@
     </state>
     <state x="1979" y="420" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591378448763" />
     <state x="3899" y="72" key="#com.intellij.ide.util.MemberChooser/1920.-348.3440.1400/0.0.1920.1040@1920.-348.3440.1400" timestamp="1589221195213" />
-    <state x="1450" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592613854040">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="647" y="264" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592834036609">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="647" y="264" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1592834036609" />
     <state x="1450" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1592613854040" />
     <state x="684" y="49" width="1112" height="742" key="CommitChangelistDialog2" timestamp="1592613841405">
       <screen x="0" y="0" width="3440" height="1400" />
@@ -968,10 +990,10 @@
     </state>
     <state x="359" y="67" width="914" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591249614283" />
     <state x="803" y="114" key="SettingsEditor/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1591407344043" />
-    <state x="2161" y="311" width="587" height="178" key="Vcs.Push.Dialog.v2" timestamp="1592613934802">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="949" y="183" width="587" height="178" key="Vcs.Push.Dialog.v2" timestamp="1592808439908">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="949" y="183" width="587" height="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592340173022" />
+    <state x="949" y="183" width="587" height="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592808439908" />
     <state x="1206" y="231" width="590" height="301" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589477587599" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1592613934802" />
     <state x="2161" y="311" key="Vcs.Push.Dialog.v2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1589679421711" />
@@ -990,9 +1012,10 @@
     <state x="925" y="366" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1591249488219" />
     <state x="2071" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1590870286479" />
     <state x="2071" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400/-1920.348.1920.1040@0.0.3440.1400" timestamp="1585109985724" />
-    <state x="1398" y="306" width="1310" height="991" key="find.popup" timestamp="1592353590842">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="624" y="180" width="585" height="584" key="find.popup" timestamp="1592833307625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="624" y="180" width="585" height="584" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1592833307625" />
     <state x="780" y="227" width="731" height="736" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589477567672" />
     <state x="1398" y="306" width="1310" height="991" key="find.popup/0.0.3440.1400/-1920.0.1920.1040@0.0.3440.1400" timestamp="1592353590842" />
     <state x="3318" y="-42" width="1310" height="908" key="find.popup/1920.-348.3440.1400/0.0.1920.1040@1920.-348.3440.1400" timestamp="1589218855519" />

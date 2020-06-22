@@ -24,37 +24,16 @@ public:
 
     bool collides(Bound::Ptr other) override;
 
-    double getX() const;
+    double get_center_x();
 
-    void setX(double x);
+    double get_center_y();
 
-    double getY() const;
-
-    void setY(double y);
-
-    double getCenterX() const;
-
-    void setCenterX(double centerX);
-
-    double getCenterY() const;
-
-    void setCenterY(double centerY);
-
-    double getWidth() const;
-
-    void setWidth(double width);
-
-    double getHeight() const;
-
-    void setHeight(double height);
-
-    std::vector<glm::vec2> getPoints();
+    _VAR(double,x,public,public,)
+    _VAR(double,y,public,public,)
+    _VAR(double,width,public,public,)
+    _VAR(double,height,public,public,)
+    _VAR(std::vector<glm::vec2>,points,public,private,4)
 private:
-    double x, y;
-    double centerX, centerY;
-    double width, height;
-    std::vector<glm::vec2> points{4};
-
     void calculatePoints();
 };
 

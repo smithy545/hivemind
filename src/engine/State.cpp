@@ -7,46 +7,16 @@
 
 State::State(int width, int height) :   map(nullptr),
                                         scene(width, height),
-                                        mouseX(width*0.5),
-                                        mouseY(height*0.5),
-                                        lastMouseX(width*0.5),
-                                        lastMouseY(height*0.5) {
+                                        _mouse_x(width*0.5),
+                                        _mouse_y(height*0.5),
+                                        _last_mouse_x(width*0.5),
+                                        _last_mouse_y(height*0.5) {
     for (bool &key : keys)
         key = false;
 }
 
 bool State::getKey(int key) const {
     return keys[key];
-}
-
-double State::getMouseX() const {
-    return mouseX;
-}
-
-double State::getMouseY() const {
-    return mouseY;
-}
-
-double State::getMouseScroll() const {
-    return mouseScroll;
-}
-
-void State::setKey(int key, bool value) {
-    keys[key] = value;
-}
-
-void State::setMouseX(double x) {
-    lastMouseX = mouseX;
-    mouseX = x;
-}
-
-void State::setMouseY(double y) {
-    lastMouseY = mouseY;
-    mouseY = y;
-}
-
-void State::setMouseScroll(double delta) {
-    mouseScroll = delta;
 }
 
 const Map::Ptr &State::getMap() const {
@@ -97,12 +67,3 @@ double State::getFPS() const {
 Scene &State::getScene() {
     return scene;
 }
-
-double State::getLastMouseX() const {
-    return lastMouseX;
-}
-
-double State::getLastMouseY() const {
-    return lastMouseY;
-}
-

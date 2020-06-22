@@ -9,34 +9,19 @@
 #include <string>
 
 #include "macros.h"
-
+#include "util/StringUtil.h"
 
 class Body {
 public:
     POINTERIZE(Body);
 
-    Body();
+    void update(float time_step);
 
-    void update(float timeStep);
-
-    const std::string &getId() const;
-
-    const glm::vec3 &getOrigin() const;
-
-    void setOrigin(const glm::vec3 &origin);
-
-    const glm::vec3 &getVelocity() const;
-
-    void setVelocity(const glm::vec3 &velocity);
-
-    const glm::vec3 &getAcceleration() const;
-
-    void setAcceleration(const glm::vec3 &acceleration);
-private:
-    std::string id;
-    glm::vec3 origin{0, 0, 0};
-    glm::vec3 velocity{0, 0, 0}; // in meters I guess
-    glm::vec3 acceleration{0, 0, 0};
+    // in meters I guess
+    _VAR(std::string,id,public,public,StringUtil::uuid4())
+    _VAR(glm::vec3,origin,public,public,0)
+    _VAR(glm::vec3,velocity,public,public,0)
+    _VAR(glm::vec3,acceleration,public,public,0)
 };
 
 

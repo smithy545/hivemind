@@ -4,43 +4,11 @@
 
 #include "Body.h"
 
-#include "util/StringUtil.h"
 
-
-Body::Body() : id(StringUtil::uuid4()) {}
-
-void Body::update(float timeStep) {
+void Body::update(float time_step) {
     // update velocity
-    velocity += acceleration * timeStep;
+    _velocity += _acceleration * time_step;
 
     // update position
-    origin += velocity * timeStep;
-}
-
-const glm::vec3 &Body::getOrigin() const {
-    return origin;
-}
-
-void Body::setOrigin(const glm::vec3 &origin) {
-    Body::origin = origin;
-}
-
-const glm::vec3 &Body::getVelocity() const {
-    return velocity;
-}
-
-void Body::setVelocity(const glm::vec3 &velocity) {
-    Body::velocity = velocity;
-}
-
-const glm::vec3 &Body::getAcceleration() const {
-    return acceleration;
-}
-
-void Body::setAcceleration(const glm::vec3 &acceleration) {
-    Body::acceleration = acceleration;
-}
-
-const std::string &Body::getId() const {
-    return id;
+    _origin += _velocity * time_step;
 }

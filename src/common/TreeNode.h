@@ -14,9 +14,9 @@ class TreeNode {
 public:
     POINTERIZE(TreeNode);
 
-    virtual Ptr getParent() = 0;
+    virtual Ptr get_parent() = 0;
 
-    virtual std::vector<Ptr> getChildren() = 0;
+    virtual std::vector<Ptr> get_children() = 0;
 };
 
 
