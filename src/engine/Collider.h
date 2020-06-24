@@ -16,7 +16,7 @@ class Collider {
 public:
     POINTERIZE(Collider);
 
-    virtual std::vector<Body::Ptr> update(CollisionNode::Ptr collisionTree);
+    std::vector<Body::Ptr> update(CollisionNode::Ptr collisionTree);
 };
 
 

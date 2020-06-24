@@ -5,8 +5,8 @@
 #ifndef SOCIETY_DOUBLYLINKEDNODE_H
 #define SOCIETY_DOUBLYLINKEDNODE_H
 
-#include "macros.h"
 #include "LinkedNode.h"
+#include "macros.h"
 
 
 class DoublyLinkedNode : public LinkedNode {

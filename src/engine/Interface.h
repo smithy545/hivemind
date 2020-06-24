@@ -17,11 +17,7 @@ class Interface {
 public:
     POINTERIZE(Interface);
 
-    Interface();
-
     void update(const State::Ptr &state);
-private:
-    std::vector<InterfaceNode::Ptr> nodes;
 };
 
 

@@ -12,9 +12,9 @@
 
 using namespace cimg_library;
 
-GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath) {
+GLuint RenderUtil::load_shader_program(const std::string &vertex_shader_path, const std::string &fragment_shader_path) {
     // vertex shader
-    char *vertexShaderSource = FileUtil::readResourceFile("shaders/" + vertexShaderPath);
+    char *vertexShaderSource = FileUtil::read_resource_file("shaders/" + vertex_shader_path);
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
@@ -29,7 +29,7 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
     delete[] vertexShaderSource;
 
     // fragment shader
-    char *fragmentShaderSource = FileUtil::readResourceFile("shaders/" + fragmentShaderPath);
+    char *fragmentShaderSource = FileUtil::read_resource_file("shaders/" + fragment_shader_path);
     int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
     glCompileShader(fragmentShader);
@@ -59,9 +59,9 @@ GLuint RenderUtil::loadShaderProgram(const std::string &vertexShaderPath, const 
 }
 
 
-GLuint RenderUtil::loadTexture(const std::string &texturePath, int &width, int &height) {
+GLuint RenderUtil::load_texture(const std::string &texture_path, int &width, int &height) {
     // ensure graphics magick and maybe image magick are installed for this
-    CImg<unsigned char> image(("../res/img/" + texturePath).c_str());
+    CImg<unsigned char> image(("../res/img/" + texture_path).c_str());
 
     // padded image width (image size + padding for texture alignment)
     int xoffset = image.width() % 8;

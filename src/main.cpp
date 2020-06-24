@@ -11,8 +11,8 @@
 
 
 // window state
-static int screenWidth;
-static int screenHeight;
+static int screen_width;
+static int screen_height;
 static bool resized;
 
 // game state
@@ -23,8 +23,8 @@ void loop();
 
 int main() {
     std::cout << "Begin Society" << std::endl;
-    std::thread gameThread(loop);
-    gameThread.join();
+    std::thread game(loop);
+    game.join();
     std::cout << "End." << std::endl;
     return 0;
 }
@@ -32,10 +32,10 @@ int main() {
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     switch (action) {
         case GLFW_PRESS:
-            state->setKey(key, true);
+            state->set_key(key, true);
             break;
         case GLFW_RELEASE:
-            state->setKey(key, false);
+            state->set_key(key, false);
             break;
         case GLFW_REPEAT:
             break;
@@ -47,19 +47,19 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
 void characterCallback(GLFWwindow *window, unsigned int codepoint) {}
 
 void cursorPosCallback(GLFWwindow *window, double xpos, double ypos) {
-    state->setMouseX(xpos);
-    state->setMouseY(ypos);
+    state->set_mouse_x(xpos);
+    state->set_mouse_y(ypos);
 }
 
 void mouseButtonCallback(GLFWwindow *window, int button, int action, int mods) {}
 
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
-    state->setMouseScroll(yoffset);
+    state->set_mouse_scroll(yoffset);
 }
 
 void resizeCallback(GLFWwindow *window, int width, int height) {
-    screenWidth = width;
-    screenHeight = height;
+    screen_width = width;
+    screen_height = height;
     glViewport(0, 0, width, height);
     resized = true;
 }
@@ -67,24 +67,25 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 void loop() {
     std::cout << "Renderer init" << std::endl;
     Renderer::Ptr renderer = std::make_shared<Renderer>();
-    screenWidth = renderer->getWidth();
-    screenHeight = renderer->getHeight();
+    screen_width = renderer->get_width();
+    screen_height = renderer->get_height();
     GLFWwindow *window = renderer->init("renderer.json");
 
     std::cout << "State init" << std::endl;
-    state = std::make_shared<State>(renderer->getWidth(), renderer->getHeight());
-    state->setMap(std::make_shared<GridMap>(0, 0, 64, 64));
-    state->getScene().getCamera().setPosition({0,2,10});
+    state = std::make_shared<State>(renderer->get_width(), renderer->get_height());
+    auto scene = state->get_scene();
+    state->set_map(std::make_shared<GridMap>(0, 0, 64, 64));
+    scene->get_camera()->move({0,2,10});
 
     // only set physics on outline since the box and outline share a body
     auto body = std::make_shared<Body>();
-    body->setOrigin({0,10,0});
-    state->getScene().addToScene("color",
-            Renderer::generateBoxMeshTriangles(1,2,3,
-            glm::vec4(1.0f, 0.f, 0.f, 1.0f)), body,false);
-    state->getScene().addToScene("color",
-            Renderer::generateBoxMeshLines(1, 2, 3,
-            glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body,true);
+    body->set_origin({0,10,0});
+    scene->add_to_scene("color",
+                                 Renderer::generate_box_mesh_triangles(1, 2, 3,
+                                                                       glm::vec4(1.0f, 0.f, 0.f, 1.0f)), body,false);
+    scene->add_to_scene("color",
+                                 Renderer::generate_box_mesh_lines(1, 2, 3,
+                                                                   glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body,true);
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -108,27 +109,26 @@ void loop() {
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
-    Integrator::Ptr integrator = std::make_shared<Integrator>(1.0);
+    Integrator::Ptr integrator = std::make_shared<Integrator>();
 
     std::cout << "Loop start" << std::endl;
     state->start();
     do {
         // timekeeping
-        state->enterFrame();
+        auto dt = state->enter_frame();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        auto scene = state->getScene();
         if (resized) {
-            renderer->resize(screenWidth, screenHeight);
-            scene.getCamera().resize(screenWidth, screenHeight);
+            renderer->resize(screen_width, screen_height);
+            scene->get_camera()->resize(screen_width, screen_height);
             resized = false;
         }
 
-        if (!state->isPaused()) {
+        if (!state->is_paused()) {
             // check collisions and update bodies
             if (collider != nullptr && integrator != nullptr) {
-                auto updatedBodies = collider->update(scene.getCollisionTree());
-                integrator->update(updatedBodies);
+                auto updated = collider->update(scene->get_collision_tree());
+                integrator->update(updated, 1.0f);
             }
         }
 
@@ -137,17 +137,17 @@ void loop() {
 
         // enforce fps
         int desiredFPS = 60;
-        auto fps = state->getFPS();
+        auto fps = state->get_fps();
         if(desiredFPS < ((int)fps)) {
             std::chrono::duration<double> leftOver{2*(fps-desiredFPS)/(fps*desiredFPS)};
             std::this_thread::sleep_for(leftOver);
         }
 
         // render
-        renderer->render(scene.getRenderTree(), scene.getCamera());
+        renderer->render(scene->get_render_head(), scene->get_camera());
 
         // reset mouse wheel position
-        state->setMouseScroll(0.0f);
+        state->set_mouse_scroll(0.0f);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);
@@ -155,9 +155,9 @@ void loop() {
     } // Check if the ESC key was pressed or the window was closed
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
             glfwWindowShouldClose(window) == 0 &&
-            !state->shouldStop());
+            !state->is_stopped());
 
     // cleanup state before cleaning up renderer so glfw isn't terminated
-    state->getScene().cleanup();
+    scene->cleanup();
     renderer->cleanup();
 }

@@ -18,10 +18,10 @@ public:
     void update(float time_step);
 
     // in meters I guess
-    _VAR(std::string,id,public,public,StringUtil::uuid4())
-    _VAR(glm::vec3,origin,public,public,0)
-    _VAR(glm::vec3,velocity,public,public,0)
-    _VAR(glm::vec3,acceleration,public,public,0)
+    _VAR_GET_INIT(id, std::string, public, StringUtil::uuid4())
+    _VAR_GETSET_INIT(origin, glm::vec3, public, public, 0)
+    _VAR_GETSET_INIT(velocity, glm::vec3, public, public, 0)
+    _VAR_GETSET_INIT(acceleration, glm::vec3, public, public, 0)
 };
 
 

@@ -13,9 +13,9 @@
 
 class RenderUtil {
 public:
-    static GLuint loadShaderProgram(const std::string &vertexShaderPath, const std::string &fragmentShaderPath);
+    static GLuint load_shader_program(const std::string &vertex_shader_path, const std::string &fragment_shader_path);
 
-    static GLuint loadTexture(const std::string &texturePath, int &width, int &height);
+    static GLuint load_texture(const std::string &texture_path, int &width, int &height);
 };
 
 

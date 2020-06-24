@@ -15,18 +15,17 @@ class QuadTree {
 public:
     POINTERIZE(QuadTree);
 
-    QuadTree(int pLevel, Rectangle pBounds);
+    QuadTree(int level, Rectangle bounds);
 
     void clear();
 
     void split();
 
-    int getIndex(Rectangle pRect);
+    int get_index(Rectangle pRect);
 
     void insert(Rectangle pRect);
 
-    std::vector<Rectangle> retrieve(std::vector<Rectangle> returnObjects, Rectangle pRect);
-
+    std::vector<Rectangle> retrieve(std::vector<Rectangle> return_objects, Rectangle pRect);
 private:
     const int OBJECTS_PER_QUAD = 5;
     const int MAX_LEVELS = 5;
@@ -35,7 +34,6 @@ private:
     std::vector<Rectangle> objects;
     Rectangle bounds;
     QuadTree::Ptr nodes[4];
-
 };
 
 

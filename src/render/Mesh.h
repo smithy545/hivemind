@@ -22,37 +22,23 @@ public:
 
     ~Mesh();
 
-    const std::vector<glm::vec3> &getVertices() const;
+    unsigned int get_num_indices() override;
 
-    void setVertices(std::vector<glm::vec3> &vertices);
+    std::string get_texture() override;
 
-    const std::vector<glm::vec4> &getColors() const;
-
-    void setColors(std::vector<glm::vec4> &colors);
-
-    const std::vector<unsigned int> &getIndices() const;
-
-    void setIndices(std::vector<unsigned int> &indices);
-
-    void setDrawMode(GLenum drawMode);
-
-    std::string getTexture() override;
-
-    unsigned int getNumIndices() override;
-
-    GLuint getVertexArrayId() override;
-
-    GLenum getDrawMode() override;
+    void bufferVertices();
+    void bufferColors();
+    void bufferIndices();
 private:
-    std::vector<glm::vec3> vertices;
-    std::vector<glm::vec4> colors;
-    std::vector<unsigned int> indices;
+    _REFVAR_GET(vertices, std::vector<glm::vec3>, public)
+    _REFVAR_GET(colors, std::vector<glm::vec4>, public)
+    _REFVAR_GET(indices, std::vector<unsigned int>, public)
 
-    GLuint vertexArrayId{0};
-    GLuint vertexBufferId{0};
-    GLuint colorBufferId{0};
-    GLuint elementBufferId{0};
-    GLenum mode{GL_TRIANGLES};
+    _VAR_GETSET_INIT(vertex_array_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(vertex_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(color_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(element_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(draw_mode, GLenum, public, public, GL_TRIANGLES)
 };
 
 

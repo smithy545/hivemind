@@ -32,14 +32,13 @@ public:
         Ptr previous;
     };
 
-    static MapNode::MapPath genAStarPath(const TopologicalMapNode::Ptr &start, const TopologicalMapNode::Ptr &end);
+    static MapNode::MapPath get_astar_path(const TopologicalMapNode::Ptr &start, const TopologicalMapNode::Ptr &end);
 
-    static MapNode::MapPath genAStarPath(const Map::Ptr &map, const MapNode::Ptr &start, const MapNode::Ptr &end);
-
+    static MapNode::MapPath get_astar_path(const Map::Ptr &map, const MapNode::Ptr &start, const MapNode::Ptr &end);
 private:
-    static std::string genKey(const MapNode::Ptr &pos);
+    static std::string get_node_key(const MapNode::Ptr &pos);
 
-    static double distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b);
+    static double distance_euclid(const MapNode::Ptr &a, const MapNode::Ptr &b);
 };
 
 

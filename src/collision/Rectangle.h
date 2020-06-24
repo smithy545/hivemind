@@ -28,13 +28,21 @@ public:
 
     double get_center_y();
 
-    _VAR(double,x,public,public,)
-    _VAR(double,y,public,public,)
-    _VAR(double,width,public,public,)
-    _VAR(double,height,public,public,)
-    _VAR(std::vector<glm::vec2>,points,public,private,4)
+    void set_x(double x);
+
+    void set_y(double y);
+
+    void set_width(double width);
+
+    void set_height(double height);
+
+    _VAR_GET(x, double, public)
+    _VAR_GET(y, double, public)
+    _VAR_GET(width, double, public)
+    _VAR_GET(height, double, public)
+    _VAR_GET_INIT(points, std::vector<glm::vec2>, public, 4)
 private:
-    void calculatePoints();
+    void calculate_points();
 };
 
 

@@ -18,21 +18,17 @@ class State {
 public:
     POINTERIZE(State);
 
+    typedef std::chrono::time_point<std::chrono::system_clock> timestamp;
+
     State(int width, int height);
 
-    Scene &getScene();
+    bool get_key(int key) const;
 
-    bool getKey(int key) const;
+    void set_key(int key, bool value);
 
-    const Map::Ptr &getMap() const;
+    void set_mouse_x(double x);
 
-    void setKey(int key, bool value);
-
-    void setMap(const Map::Ptr &map);
-
-    bool isPaused() const;
-
-    bool shouldStop() const;
+    void set_mouse_y(double y);
 
     void pause();
 
@@ -42,30 +38,26 @@ public:
 
     void stop();
 
-    void enterFrame();
+    double enter_frame();
 
-    double getFPS() const;
-
-private:
     // game state
-    bool paused{true};
-    bool stopped{true};
-    std::chrono::time_point<std::chrono::system_clock> lastFrameStart;
-    double fps{};
-
-    // io state
-    bool keys[GLFW_KEY_LAST]{};
-    _VAR(double,mouse_x,public,public,0)
-    _VAR(double,mouse_y,public,public,0)
-    _VAR(double,last_mouse_x,public,private,0)
-    _VAR(double,last_mouse_y,public,private,0)
-    _VAR(double,mouse_scroll,public,public,0);
-
-    // scene state
-    Scene scene;
+    _BVAR_GETSET_INIT(paused, public, private, true)
+    _BVAR_GETSET_INIT(stopped, public, private, true)
+    _VAR_GETSET_INIT(fps, double, public, private, 0)
+    _VAR_GETSET(last_frame_start, timestamp, public, private)
 
     // world state
-    Map::Ptr map;
+    _MVAR_GETSET_INIT(map, Map::Ptr, public, public, nullptr)
+    _MVAR_GETSET(scene, Scene::Ptr, public, public)
+
+    // io state
+    _VAR_GET_INIT(mouse_x, double, public, 0)
+    _VAR_GET_INIT(mouse_y, double, public, 0)
+    _VAR_GET_INIT(last_mouse_x, double, public, 0)
+    _VAR_GET_INIT(last_mouse_y, double, public, 0)
+    _VAR_GETSET_INIT(mouse_scroll, double, public, public, 0)
+private:
+    bool keys[GLFW_KEY_LAST]{};
 };
 
 

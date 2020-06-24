@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "collision/CollisionNode.h"
+#include "macros.h"
 #include "render/Camera.h"
 #include "render/Mesh.h"
 #include "render/RenderNode.h"
@@ -15,21 +16,20 @@
 
 class Scene {
 public:
+    POINTERIZE(Scene);
+
     Scene(int width, int height);
+
+    void add_to_scene(const std::string& shader_name, Mesh::Ptr mesh, const Body::Ptr& body, bool physics = false);
 
     void cleanup();
 
-    Camera &getCamera();
+    CollisionNode::Ptr get_collision_tree();
 
-    RenderNode::Ptr getRenderTree();
-
-    CollisionNode::Ptr getCollisionTree();
-
-    void addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body, bool physics = false);
+    _MVAR_GETSET(camera, Camera::Ptr, public, private)
+    _MVAR_GETSET(render_head, RenderNode::Ptr, public, private)
 private:
-    Camera camera;
-    RenderNode::Ptr renderHead;
-    CollisionNode::Ptr collisionHead;
+    CollisionNode::Ptr collision_head;
 };
 
 

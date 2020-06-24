@@ -8,38 +8,38 @@
 #include <unordered_map>
 
 
-MapNode::MapPath Pather::genAStarPath(const TopologicalMapNode::Ptr &start, const TopologicalMapNode::Ptr &end) {
+MapNode::MapPath Pather::get_astar_path(const TopologicalMapNode::Ptr &start, const TopologicalMapNode::Ptr &end) {
     MapNode::MapPath path;
 
     std::unordered_map<std::string, PathNode::Ptr> open;
     std::unordered_map<std::string, PathNode::Ptr> closed;
 
-    open[genKey(start)] = std::make_shared<PathNode>(start, 0, 0, nullptr);
+    open[get_node_key(start)] = std::make_shared<PathNode>(start, 0, 0, nullptr);
     while (!open.empty()) {
         std::string minKey;
         for (const auto &el: open) {
-            if (minKey.empty() || el.second->get_f() < open[minKey]->getF()) {
-                minKey = genKey(el.second->position);
+            if (minKey.empty() || el.second->get_f() < open[minKey]->get_f()) {
+                minKey = get_node_key(el.second->position);
             }
         }
 
         PathNode::Ptr parent = open[minKey];
         open.erase(minKey);
-        for (const auto &neighborPtr: std::dynamic_pointer_cast<TopologicalMapNode>(parent->position)->getNeighbors()) {
+        for (const auto &neighborPtr: std::dynamic_pointer_cast<TopologicalMapNode>(parent->position)->get_neighbors()) {
             auto neighbor = std::dynamic_pointer_cast<TopologicalMapNode>(neighborPtr);
-            std::string key = genKey(neighbor);
+            std::string key = get_node_key(neighbor);
             if (closed.count(key) > 0)
                 continue;
-            if (end->getX() == neighbor->getX() && end->getY() == neighbor->getY()) {
+            if (end->get_x() == neighbor->get_x() && end->get_y() == neighbor->get_y()) {
                 path.push_front(end);
                 while (parent->previous != nullptr) {
                     path.push_front(parent->position);
                     parent = parent->previous;
                 }
                 return path;
-            } else if (neighbor->isPassable()) {
-                double g = parent->g + distanceEuclid(neighbor, parent->position);
-                double h = distanceEuclid(neighbor, end);
+            } else if (neighbor->is_passable()) {
+                double g = parent->g + distance_euclid(neighbor, parent->position);
+                double h = distance_euclid(neighbor, end);
 
                 if (open.count(key) > 0) {
                     if (open[key]->get_f() < g + h) {
@@ -58,37 +58,37 @@ MapNode::MapPath Pather::genAStarPath(const TopologicalMapNode::Ptr &start, cons
     return path;
 }
 
-MapNode::MapPath Pather::genAStarPath(const Map::Ptr &map, const MapNode::Ptr &start, const MapNode::Ptr &end) {
+MapNode::MapPath Pather::get_astar_path(const Map::Ptr &map, const MapNode::Ptr &start, const MapNode::Ptr &end) {
     MapNode::MapPath path;
 
     std::unordered_map<std::string, PathNode::Ptr> open;
     std::unordered_map<std::string, PathNode::Ptr> closed;
 
-    open[genKey(start)] = std::make_shared<PathNode>(start, 0, 0, nullptr);
+    open[get_node_key(start)] = std::make_shared<PathNode>(start, 0, 0, nullptr);
     while (!open.empty()) {
         std::string minKey;
         for (const auto &el: open) {
-            if (minKey.empty() || el.second->get_f() < open[minKey]->getF()) {
-                minKey = genKey(el.second->position);
+            if (minKey.empty() || el.second->get_f() < open[minKey]->get_f()) {
+                minKey = get_node_key(el.second->position);
             }
         }
 
         PathNode::Ptr parent = open[minKey];
         open.erase(minKey);
         for (const auto &neighbor: map->get_neighbors(parent->position)) {
-            std::string key = genKey(neighbor);
+            std::string key = get_node_key(neighbor);
             if (closed.count(key) > 0)
                 continue;
-            if (end->getX() == neighbor->getX() && end->getY() == neighbor->getY()) {
+            if (end->get_x() == neighbor->get_x() && end->get_y() == neighbor->get_y()) {
                 path.push_front(end);
                 while (parent->previous != nullptr) {
                     path.push_front(parent->position);
                     parent = parent->previous;
                 }
                 return path;
-            } else if (neighbor->isPassable()) {
-                double g = parent->g + distanceEuclid(neighbor, parent->position);
-                double h = distanceEuclid(neighbor, end);
+            } else if (neighbor->is_passable()) {
+                double g = parent->g + distance_euclid(neighbor, parent->position);
+                double h = distance_euclid(neighbor, end);
 
                 if (open.count(key) > 0) {
                     if (open[key]->get_f() < g + h) {
@@ -107,12 +107,12 @@ MapNode::MapPath Pather::genAStarPath(const Map::Ptr &map, const MapNode::Ptr &s
     return path;
 };
 
-std::string Pather::genKey(const MapNode::Ptr &pos) {
-    return std::to_string(pos->getX()) + ":" + std::to_string(pos->getY());
+std::string Pather::get_node_key(const MapNode::Ptr &pos) {
+    return std::to_string(pos->get_x()) + ":" + std::to_string(pos->get_y());
 }
 
-double Pather::distanceEuclid(const MapNode::Ptr &a, const MapNode::Ptr &b) {
-    double dx = a->getX() - b->getX();
-    double dy = a->getY() - b->getY();
+double Pather::distance_euclid(const MapNode::Ptr &a, const MapNode::Ptr &b) {
+    double dx = a->get_x() - b->get_x();
+    double dy = a->get_y() - b->get_y();
     return std::sqrt(dx * dx + dy * dy);
 }

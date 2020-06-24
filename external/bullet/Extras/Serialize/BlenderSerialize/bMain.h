@@ -57,7 +57,7 @@ public:
 
 	bListBasePtr *getListBasePtr(int listBaseCode);
 
-	bListBasePtr *getScene();
+	bListBasePtr *get_scene();
 	bListBasePtr *getLibrary();
 	bListBasePtr *getObject();
 	bListBasePtr *getMesh();

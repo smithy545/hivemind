@@ -19,13 +19,20 @@ public:
     CollisionNode(const Body::Ptr& first, const Body::Ptr& second);
     CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next);
 
-    Body::Ptr get_first_body();
-    Body::Ptr get_second_body();
     void kill();
+
+    inline Body::Ptr get_first_body() {
+        return bodies.first;
+    }
+
+    inline Body::Ptr get_second_body() {
+        return bodies.second;
+    }
+
+    _MVAR_GETSET(next, CollisionNode::Ptr, public, public)
+    _BVAR_GET_INIT(alive, public, true)
 private:
-    _VAR(CollisionPair,bodies,private,private,)
-    _VAR(Ptr,next,public,public,)
-    _BVAR(bool,alive,public,private,true)
+    CollisionPair bodies;
 };
 
 

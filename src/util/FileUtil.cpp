@@ -12,12 +12,12 @@
 const std::string FileUtil::RESOURCE_PREFIX = "../res/{0}";
 const std::string FileUtil::JSON_PREFIX = "json/{0}";
 
-std::string FileUtil::resource(std::string relativePath) {
-    return fmt::format(RESOURCE_PREFIX, relativePath);
+std::string FileUtil::resource(std::string relative_path) {
+    return fmt::format(RESOURCE_PREFIX, relative_path);
 }
 
-char *FileUtil::readResourceFile(const std::string &resourcePath) {
-    std::ifstream resourceStream(resource(resourcePath), std::ifstream::ate);
+char *FileUtil::read_resource_file(const std::string &resource_path) {
+    std::ifstream resourceStream(resource(resource_path), std::ifstream::ate);
     if (resourceStream) {
         // get file length (ifstream::ate flag puts cursor at end of file)
         int length = resourceStream.tellg();
@@ -39,13 +39,13 @@ char *FileUtil::readResourceFile(const std::string &resourcePath) {
     }
 
     // open failed for some reason
-    std::string message = fmt::format("Can't read file at {0}", resource(resourcePath));
+    std::string message = fmt::format("Can't read file at {0}", resource(resource_path));
     throw std::exception(message.c_str());
 }
 
 
-json FileUtil::readJsonFile(const std::string &jsonPath, const json &schema, bool prefixPath) {
-    std::string path = prefixPath ? resource(fmt::format(JSON_PREFIX, jsonPath)) : resource(jsonPath);
+json FileUtil::read_json_file(const std::string &json_path, const json &schema, bool prefix_path) {
+    std::string path = prefix_path ? resource(fmt::format(JSON_PREFIX, json_path)) : resource(json_path);
     std::ifstream file(path);
     if (file.good()) {
         auto data = json::parse(file);
@@ -64,22 +64,22 @@ json FileUtil::readJsonFile(const std::string &jsonPath, const json &schema, boo
         }
         return data;
     }
-    std::string message = fmt::format("Can't read json file at {0}", resource(jsonPath));
+    std::string message = fmt::format("Can't read json file at {0}", resource(json_path));
     throw std::exception(message.c_str());
 }
 
-TiXmlDocument FileUtil::readXmlFile(const std::string &xmlPath) {
-    TiXmlDocument file(resource(xmlPath).c_str());
+TiXmlDocument FileUtil::read_xml_file(const std::string &xml_path) {
+    TiXmlDocument file(resource(xml_path).c_str());
     if (file.LoadFile())
         return file;
 
-    std::string message = fmt::format("Can't read xml file at {0}", resource(xmlPath));
+    std::string message = fmt::format("Can't read xml file at {0}", resource(xml_path));
     throw std::exception(message.c_str());
 }
 
-void FileUtil::writeJsonFile(const std::string &jsonPath, const json &data) {
+void FileUtil::write_json_file(const std::string &json_path, const json &data) {
     std::ofstream file;
-    file.open(resource(jsonPath), std::ofstream::out);
+    file.open(resource(json_path), std::ofstream::out);
     file << data;
     file.close();
 }

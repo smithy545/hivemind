@@ -5,69 +5,57 @@
 #include "Scene.h"
 
 
-Scene::Scene(int width, int height) : camera(width, height) {}
+Scene::Scene(int width, int height) : _camera(std::make_shared<Camera>(width, height)) {}
 
 void Scene::cleanup() {
     // destroy references to render objects so their constructors are called
-    while(renderHead != nullptr) {
-        auto node = std::dynamic_pointer_cast<RenderNode>(renderHead->getNext());
-        renderHead->setNext(nullptr);
-        renderHead = node;
+    while(_render_head != nullptr) {
+        auto node = std::dynamic_pointer_cast<RenderNode>(_render_head->get_next());
+        _render_head->set_next(nullptr);
+        _render_head = node;
     }
 }
 
-Camera &Scene::getCamera() {
-    return camera;
-}
-
-RenderNode::Ptr Scene::getRenderTree() {
-    return renderHead;
-}
-
-CollisionNode::Ptr Scene::getCollisionTree() {
+CollisionNode::Ptr Scene::get_collision_tree() {
     // kill nodes marked for removal
-    auto node = collisionHead;
+    auto node = collision_head;
     CollisionNode::Ptr prev = nullptr;
     while(node != nullptr) {
-        if (!node->isAlive()) {
-            if (prev != nullptr)
-                prev = node;
-            else if (node->get_next() == nullptr) {
-                collisionHead = nullptr;
-                break;
+        if (!node->is_alive()) {
+            if (prev != nullptr) {
+                prev->set_next(node->get_next());
+            } else {
+                collision_head = node->get_next();
+                if(collision_head == nullptr)
+                    break;
             }
-        } else if(prev != nullptr)
-            prev->set_next(node->get_next());
+        }
         node = node->get_next();
+        prev = node;
     }
 
-    return collisionHead;
+    return collision_head;
 }
 
-void Scene::addToScene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body, bool physics) {
+void Scene::add_to_scene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body, bool physics) {
     if(physics) {
         // find end of collision list
-        auto collisionNode = collisionHead;
-        while (collisionNode != nullptr && collisionNode->get_next() != nullptr)
-            collisionNode = collisionNode->get_next();
+        auto collision_node = collision_head;
+        while (collision_node != nullptr && collision_node->get_next() != nullptr)
+            collision_node = collision_node->get_next();
 
         // add collision node with self to ensure collision is found and object is passed to integrator
-        auto selfCollision = std::make_shared<CollisionNode>(body, body);
-        if (collisionNode == nullptr) {
-            collisionHead = selfCollision;
-            collisionNode = collisionHead;
+        auto self_collision = std::make_shared<CollisionNode>(body, body);
+        if (collision_node == nullptr) {
+            collision_head = self_collision;
+            collision_node = collision_head;
         } else {
-            collisionNode->set_next(selfCollision);
-            collisionNode = collisionNode->get_next();
+            collision_node->set_next(self_collision);
+            collision_node = collision_node->get_next();
         }
     }
 
     // add to render tree
-    renderHead = std::make_shared<RenderNode>(shaderName, std::move(mesh), renderHead);
-    renderHead->addBody(body);
-
-    // add to entities
-    auto rect = std::make_shared<Rectangle>(0, 0, 10, 10);
-    //auto entity = std::make_shared<GameEntity>(rect, body);
-    //entities.push_back(entity);
+    _render_head = std::make_shared<RenderNode>(shaderName, std::move(mesh), _render_head);
+    _render_head->add_body(body);
 }

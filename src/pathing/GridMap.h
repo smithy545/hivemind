@@ -25,30 +25,22 @@ public:
 
         GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}
 
-        _VAR(int,x,public,private,)
-        _VAR(int,y,public,private,)
-
-        bool isPassable() override {
-            return _passable;
-        }
-    private:
-        bool _passable;
+        _VAR_GETSET(x, int, public, private)
+        _VAR_GETSET(y, int, public, private)
+        _BVAR_GETSET(passable, public, private)
     };
 
     GridMap(int width, int height);
 
     GridMap(int xOffset, int yOffset, int width, int height);
 
-    const std::vector<MapNode::Ptr> &get_nodes() override;
-
     MapNode::Ptr get_node(int x, int y) override;
 
     std::vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) override;
-private:
-    _VAR(int,width,public,private,)
-    _VAR(int,height,public,private,)
-    std::vector<MapNode::Ptr> nodes;
-    QuadTree collisionTreeHead;
+
+    _VAR_GETSET(width, int, public, private)
+    _VAR_GETSET(height, int, public, private)
+    _REFVAR_GET(nodes, std::vector<MapNode::Ptr>, public)
 };
 
 

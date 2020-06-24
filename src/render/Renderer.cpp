@@ -14,20 +14,10 @@
 #include "util/StringUtil.h"
 
 
-Renderer::Renderer() : window(nullptr) {}
-
-int Renderer::getWidth() const {
-    return width;
-}
-
-int Renderer::getHeight() const {
-    return height;
-}
-
-GLFWwindow *Renderer::init(const std::string& configPath) {
-    auto config = FileUtil::readJsonFile(configPath, CONFIG_SCHEMA);
-    width = config[WIDTH_KEY];
-    height = config[HEIGHT_KEY];
+GLFWwindow *Renderer::init(const std::string& config_path) {
+    auto config = FileUtil::read_json_file(config_path, CONFIG_SCHEMA);
+    _width = config[WIDTH_KEY];
+    _height = config[HEIGHT_KEY];
 
     // Initialise GLFW
     if (!glfwInit()) {
@@ -43,7 +33,7 @@ GLFWwindow *Renderer::init(const std::string& configPath) {
 #endif
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow(width, height, "SOCIETY", nullptr, nullptr);
+    window = glfwCreateWindow(_width, _height, "SOCIETY", nullptr, nullptr);
     if (window == nullptr) {
         std::cerr << "Failed to open GLFW window" << std::endl;
         glfwTerminate();
@@ -73,38 +63,38 @@ GLFWwindow *Renderer::init(const std::string& configPath) {
         std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],
                                  shader.value()[1])
                   << std::endl;
-        loadShader(shader.key(), shader.value()[0], shader.value()[1]);
+        load_shader(shader.key(), shader.value()[0], shader.value()[1]);
     }
 
     // image textures
     for (const auto &tex: config[TEXTURES_KEY].items()) {
         std::cout << fmt::format("Loading texture \"{0}\" from {1}", tex.key(), tex.value()) << std::endl;
-        loadTexture(tex.key(), tex.value());
+        load_texture(tex.key(), tex.value());
     }
 
     // tilesheet textures
     for (const auto &tilesheet: config[TILESHEETS_KEY]) {
         std::cout << fmt::format("Loading tilesheet from {0}", tilesheet) << std::endl;
-        loadTileSheet(tilesheet);
+        load_tilesheet(tilesheet);
     }
 
     // sprites
     for (const auto &sprite: config[SPRITESHEETS_KEY]) {
         std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
-        loadSprite(sprite);
+        load_sprite(sprite);
     }
 
-    setShader(DEFAULT_SHADER_NAME);
+    set_shader(DEFAULT_SHADER_NAME);
 
     return window;
 }
 
 void Renderer::cleanup() {
     // clear loaded meshes
-    loadedTextures.clear();
+    loaded_textures.clear();
 
     // clear loaded shaders
-    for (auto &shaderProgram : loadedShaders) {
+    for (auto &shaderProgram : loaded_shaders) {
         glDeleteProgram(shaderProgram.second);
     }
 
@@ -112,156 +102,144 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const RenderNode::Ptr &treeHead, const Camera &camera) {
-    glUseProgram(currentShaderProgram);
-    auto viewProj = camera.getViewProjectionMatrix();
-    auto node = treeHead;
+void Renderer::render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camera) {
+    glUseProgram(current_shader_program);
+    auto vp_matrix = camera->get_view_projection_matrix();
+    auto node = tree_head;
     while (node != nullptr) {
-        if(setShader(node->getShaderName()) && node->getEntity() != nullptr) {
-            glBindVertexArray(node->getEntity()->getVertexArrayId());
-            auto tex = node->getEntity()->getTexture();
-            if (!tex.empty() && loadedTextures.find(tex) != loadedTextures.end()) {
-                GLuint texId = loadedTextures[tex];
+        auto entity = node->get_entity();
+        if(set_shader(node->get_shader_name()) && entity!= nullptr) {
+            glBindVertexArray(entity->get_vertex_array_id());
+            auto tex = entity->get_texture();
+            if (!tex.empty() && loaded_textures.find(tex) != loaded_textures.end()) {
+                GLuint texId = loaded_textures[tex];
                 glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
-            for (const auto &body: node->getBodies()) {
+            for (const auto &body: node->get_bodies()) {
                 // translate to world position
-                glm::mat4 modelMatrix = glm::translate(glm::mat4(1), body->getOrigin());
-                glm::mat4 mvpMatrix = viewProj * modelMatrix;
-                glUniformMatrix4fv(mvpUniform, 1, GL_FALSE, &mvpMatrix[0][0]);
-                glDrawElements(node->getEntity()->getDrawMode(), node->getEntity()->getNumIndices() * sizeof(unsigned int),
+                glm::mat4 model_matrix = glm::translate(glm::mat4(1), body->get_origin());
+                glm::mat4 mvp_matrix = vp_matrix * model_matrix;
+                glUniformMatrix4fv(mvp_uniform, 1, GL_FALSE, &mvp_matrix[0][0]);
+                glDrawElements(entity->get_draw_mode(),
+                         entity->get_num_indices() * sizeof(unsigned int),
                                GL_UNSIGNED_INT, nullptr);
             }
         }
-        node = std::dynamic_pointer_cast<RenderNode>(node->getNext());
+        node = std::dynamic_pointer_cast<RenderNode>(node->get_next());
     }
 }
 
 void Renderer::resize(int width, int height) {
-    this->width = width;
-    this->height = height;
+    _width = width;
+    _height = height;
 }
 
-bool Renderer::setShader(const std::string &name) {
-    if(name == currentShader)
+bool Renderer::set_shader(const std::string &name) {
+    if(name == current_shader_name)
         return true;
-    else if (loadedShaders.find(name) != loadedShaders.end()) {
-        currentShader = name;
-        currentShaderProgram = loadedShaders[name];
-        glUseProgram(currentShaderProgram);
-        mvpUniform = glGetUniformLocation(currentShaderProgram, "MVP");
-        texUniform = glGetUniformLocation(currentShaderProgram, "tex");
-        glUniform1i(texUniform, 0);
+    else if (loaded_shaders.find(name) != loaded_shaders.end()) {
+        current_shader_name = name;
+        current_shader_program = loaded_shaders[name];
+        glUseProgram(current_shader_program);
+        mvp_uniform = glGetUniformLocation(current_shader_program, "MVP");
+        tex_uniform = glGetUniformLocation(current_shader_program, "tex");
+        glUniform1i(tex_uniform, 0);
         return true;
     }
     std::cerr << "No shader found with name " << name << std::endl;
     return false;
 }
 
-void Renderer::loadShader(const std::string &name, const std::string &vertexShaderPath,
-                          const std::string &fragmentShaderPath) {
-    loadedShaders[name] = RenderUtil::loadShaderProgram(vertexShaderPath, fragmentShaderPath);
+void Renderer::load_shader(const std::string &name, const std::string &vertex_shader_path,
+                           const std::string &fragment_shader_path) {
+    loaded_shaders[name] = RenderUtil::load_shader_program(vertex_shader_path, fragment_shader_path);
 }
 
-void Renderer::loadSprite(const std::string &path) {
-    Sprite::Ptr sprite = std::make_shared<Sprite>();
-    auto spriteData = FileUtil::readJsonFile(fmt::format("spritesheets/{}", path), SPRITE_SCHEMA);
+void Renderer::load_sprite(const std::string &path) {
+    auto spriteData = FileUtil::read_json_file(fmt::format("spritesheets/{}", path), SPRITE_SCHEMA);
+    std::string tex = spriteData[TEXTURE_KEY];
+    Sprite::Ptr sprite = std::make_shared<Sprite>(tex);
     float spriteWidth = spriteData[WIDTH_KEY];
     float spriteHeight = spriteData[HEIGHT_KEY];
     std::string name = spriteData[NAME_KEY];
-    sprite->setTexture(spriteData[TEXTURE_KEY]);
 
-    std::vector<glm::vec2> vertices, uvs;
-    std::vector<unsigned int> indices;
     // bottom left
-    vertices.emplace_back(0, 0);
-    uvs.emplace_back(0, 0);
+    sprite->get_vertices().emplace_back(0, 0);
+    sprite->get_uvs().emplace_back(0, 0);
 
     // bottom right
-    vertices.emplace_back(spriteWidth, 0);
-    uvs.emplace_back(1, 0);
+    sprite->get_vertices().emplace_back(spriteWidth, 0);
+    sprite->get_uvs().emplace_back(1, 0);
 
     // top right
-    vertices.emplace_back(spriteWidth, spriteHeight);
-    uvs.emplace_back(1, -1);
+    sprite->get_vertices().emplace_back(spriteWidth, spriteHeight);
+    sprite->get_uvs().emplace_back(1, -1);
 
     // top left
-    vertices.emplace_back(0, spriteHeight);
-
-    uvs.emplace_back(0, -1);
+    sprite->get_vertices().emplace_back(0, spriteHeight);
+    sprite->get_uvs().emplace_back(0, -1);
 
     // indices
-    indices.push_back(0);
-    indices.push_back(2);
-    indices.push_back(3);
+    sprite->get_indices().push_back(0);
+    sprite->get_indices().push_back(2);
+    sprite->get_indices().push_back(3);
 
-    indices.push_back(1);
-    indices.push_back(2);
-    indices.push_back(0);
+    sprite->get_indices().push_back(1);
+    sprite->get_indices().push_back(2);
+    sprite->get_indices().push_back(0);
 
-    sprite->setVertices(vertices);
-    sprite->setUvs(uvs);
-    sprite->setIndices(indices);
-
-    loadedSprites[name] = sprite;
+    loaded_sprites[name] = sprite;
 }
 
-void Renderer::loadTexture(const std::string &name, const std::string &texturePath) {
+void Renderer::load_texture(const std::string &name, const std::string &texture_path) {
     int w, h;
-    loadedTextures[name] = RenderUtil::loadTexture(texturePath, w, h);
+    loaded_textures[name] = RenderUtil::load_texture(texture_path, w, h);
 }
 
-void Renderer::loadTileSheet(const std::string &path) {
-    auto tilesheet = FileUtil::readJsonFile(fmt::format("tilesheets/{}", path), TILESHEET_SCHEMA);
+void Renderer::load_tilesheet(const std::string &path) {
+    auto tilesheet = FileUtil::read_json_file(fmt::format("tilesheets/{}", path), TILESHEET_SCHEMA);
 
     std::string name = tilesheet[NAME_KEY];
-    int sheetTileSize = tilesheet[TILESIZE_KEY];
+    int sheet_tilesize = tilesheet[TILESIZE_KEY];
     int w, h;
-    loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TEXTURE_KEY], w, h);
-    loadedTextures[name] = RenderUtil::loadTexture(tilesheet[TEXTURE_KEY], w, h);
+    loaded_textures[name] = RenderUtil::load_texture(tilesheet[TEXTURE_KEY], w, h);
+    loaded_textures[name] = RenderUtil::load_texture(tilesheet[TEXTURE_KEY], w, h);
 
     int i = 0;
-    float uStep = sheetTileSize / (1.0 * w);
-    float vStep = sheetTileSize / (1.0 * h);
+    float uStep = sheet_tilesize / (1.0 * w);
+    float vStep = sheet_tilesize / (1.0 * h);
     for (float v = 0; v >= -1.0; v -= vStep) {
         for (float u = 0; u < 1.0; u += uStep) {
-            Sprite::Ptr sprite = std::make_shared<Sprite>();
-            sprite->setTexture(name);
+            Sprite::Ptr sprite = std::make_shared<Sprite>(name);
 
-            std::vector<glm::vec2> vertices, uvs;
-            std::vector<unsigned int> indices;
             // bottom left
-            vertices.emplace_back(0, 0);
-            uvs.emplace_back(u, v);
+            sprite->get_vertices().emplace_back(0, 0);
+            sprite->get_uvs().emplace_back(u, v);
 
             // bottom right
-            vertices.emplace_back(sheetTileSize, 0);
-            uvs.emplace_back(u + uStep, v);
+            sprite->get_vertices().emplace_back(sheet_tilesize, 0);
+            sprite->get_uvs().emplace_back(u + uStep, v);
 
             // top right
-            vertices.emplace_back(sheetTileSize, sheetTileSize);
-            uvs.emplace_back(u + uStep, v - vStep);
+            sprite->get_vertices().emplace_back(sheet_tilesize, sheet_tilesize);
+            sprite->get_uvs().emplace_back(u + uStep, v - vStep);
 
             // top left
-            vertices.emplace_back(0, sheetTileSize);
-            uvs.emplace_back(u, v - vStep);
+            sprite->get_vertices().emplace_back(0, sheet_tilesize);
+            sprite->get_uvs().emplace_back(u, v - vStep);
 
             // indices
-            indices.push_back(0);
-            indices.push_back(2);
-            indices.push_back(3);
+            sprite->get_indices().push_back(0);
+            sprite->get_indices().push_back(2);
+            sprite->get_indices().push_back(3);
 
-            indices.push_back(1);
-            indices.push_back(2);
-            indices.push_back(0);
+            sprite->get_indices().push_back(1);
+            sprite->get_indices().push_back(2);
+            sprite->get_indices().push_back(0);
 
-            sprite->setVertices(vertices);
-            sprite->setUvs(uvs);
-            sprite->setIndices(indices);
-
-            loadedSprites[fmt::format("{0}_{1}", name, i)] = sprite;
+            loaded_sprites[fmt::format("{0}_{1}", name, i)] = sprite;
             i++;
         }
     }
@@ -282,58 +260,49 @@ void Renderer::loadTileSheet(const std::string &path) {
             continue;
         }
 
-        if(loadedSprites.find(spriteInfo[TEXTURE_KEY]) != loadedSprites.end()) {
+        if(loaded_sprites.find(spriteInfo[TEXTURE_KEY]) != loaded_sprites.end()) {
             // replace tile name with sprite name
-            loadedSprites[spriteInfo[NAME_KEY]] = loadedSprites[spriteInfo[TEXTURE_KEY]];
-            loadedSprites.erase(spriteInfo[TEXTURE_KEY]);
+            loaded_sprites[spriteInfo[NAME_KEY]] = loaded_sprites[spriteInfo[TEXTURE_KEY]];
+            loaded_sprites.erase(spriteInfo[TEXTURE_KEY]);
         }
     }
 }
 
-Mesh::Ptr Renderer::generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color) {
-    auto curve = MathUtil::generateBezierCurve(hull, stepSize);
-    std::vector<glm::vec3> verts;
-    std::vector<glm::vec4> colors;
-    std::vector<unsigned int> indices;
+Mesh::Ptr Renderer::generate_bezier_mesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color) {
+    auto curve = MathUtil::generate_bezier_curve(hull, stepSize);
+    auto mesh = std::make_shared<Mesh>();
     for (int index = 0; index < curve.size(); index++) {
         // make all points on curve red
-        verts.emplace_back(curve[index].x, -curve[index].y, curve[index].z);
-        colors.push_back(color);
-        indices.push_back(index);
+        mesh->get_vertices().emplace_back(curve[index].x, -curve[index].y, curve[index].z);
+        mesh->get_colors().push_back(color);
+        mesh->get_indices().push_back(index);
     }
-
-    auto mesh = std::make_shared<Mesh>();
-    mesh->setVertices(verts);
-    mesh->setColors(colors);
-    mesh->setIndices(indices);
-    mesh->setDrawMode(GL_LINE_STRIP);
+    mesh->set_draw_mode(GL_LINE_STRIP);
+    mesh->bufferVertices();
+    mesh->bufferColors();
+    mesh->bufferIndices();
 
     return mesh;
 }
 
-Mesh::Ptr Renderer::generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color) {
-    std::vector<glm::vec3> verts;
-    std::vector<glm::vec4> colors;
-    std::vector<unsigned int> indices;
+Mesh::Ptr Renderer::generate_line_mesh(const std::vector<glm::vec3> &points, glm::vec4 color) {
+    auto mesh = std::make_shared<Mesh>();
     for (int index = 0; index < points.size(); index++) {
         // make all points on line red
-        verts.emplace_back(points[index].x, -points[index].y, points[index].z);
-        colors.push_back(color);
-        indices.push_back(index);
+        mesh->get_vertices().emplace_back(points[index].x, -points[index].y, points[index].z);
+        mesh->get_colors().push_back(color);
+        mesh->get_indices().push_back(index);
     }
-
-    auto mesh = std::make_shared<Mesh>();
-    mesh->setVertices(verts);
-    mesh->setColors(colors);
-    mesh->setIndices(indices);
-    mesh->setDrawMode(GL_LINE_STRIP);
+    mesh->set_draw_mode(GL_LINE_STRIP);
+    mesh->bufferVertices();
+    mesh->bufferColors();
+    mesh->bufferIndices();
 
     return mesh;
 }
 
-Mesh::Ptr Renderer::generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color) {
-    auto verts = MathUtil::generateBox(width, height, length);
-    // indices for triangles on box surface
+Mesh::Ptr Renderer::generate_box_mesh_triangles(int width, int height, int length, glm::vec4 color) {
+    auto verts = MathUtil::generate_box(width, height, length);
     std::vector<unsigned int> indices = {
             1, 0, 2,
             2, 0, 3,
@@ -353,25 +322,24 @@ Mesh::Ptr Renderer::generateBoxMeshTriangles(int width, int height, int length, 
             6, 2, 7,
             7, 2, 3,
     };
-    // set colors for every vert
-    std::vector<glm::vec4> colors;
-    colors.reserve(verts.size());
-    for (int i = 0; i < verts.size(); i++) {
-        colors.push_back(color);
-    }
 
     auto mesh = std::make_shared<Mesh>();
-    mesh->setVertices(verts);
-    mesh->setColors(colors);
-    mesh->setIndices(indices);
-    mesh->setDrawMode(GL_TRIANGLES);
+    for (auto vert: verts) {
+        mesh->get_vertices().push_back(vert);
+        mesh->get_colors().push_back(color);
+    }
+    for(auto index: indices)
+        mesh->get_indices().push_back(index);
+    mesh->set_draw_mode(GL_TRIANGLES);
+    mesh->bufferVertices();
+    mesh->bufferColors();
+    mesh->bufferIndices();
 
     return mesh;
 }
 
-Mesh::Ptr Renderer::generateBoxMeshLines(int width, int height, int length, glm::vec4 color) {
-    auto verts = MathUtil::generateBox(width, height, length);
-    // indices for triangles on box surface
+Mesh::Ptr Renderer::generate_box_mesh_lines(int width, int height, int length, glm::vec4 color) {
+    auto verts = MathUtil::generate_box(width, height, length);
     std::vector<unsigned int> indices = {
         0, 1,
         1, 2,
@@ -388,18 +356,18 @@ Mesh::Ptr Renderer::generateBoxMeshLines(int width, int height, int length, glm:
         2, 6,
         3, 7
     };
-    // set colors for every vert
-    std::vector<glm::vec4> colors;
-    colors.reserve(verts.size());
-    for (int i = 0; i < verts.size(); i++) {
-        colors.push_back(color);
-    }
 
     auto mesh = std::make_shared<Mesh>();
-    mesh->setVertices(verts);
-    mesh->setColors(colors);
-    mesh->setIndices(indices);
-    mesh->setDrawMode(GL_LINES);
+    for (auto vert: verts) {
+        mesh->get_vertices().push_back(vert);
+        mesh->get_colors().push_back(color);
+    }
+    for(auto index: indices)
+        mesh->get_indices().push_back(index);
+    mesh->set_draw_mode(GL_LINES);
+    mesh->bufferVertices();
+    mesh->bufferColors();
+    mesh->bufferIndices();
 
     return mesh;
 }

@@ -141,7 +141,7 @@ bListBasePtr *bMain::_findCode(int code)
 }
 
 // ------------------------------------------------------------//
-bListBasePtr *bMain::getScene()
+bListBasePtr *bMain::get_scene()
 {
 	bListBasePtr *ptr = _findCode(ID_SCE);
 	if (!ptr)

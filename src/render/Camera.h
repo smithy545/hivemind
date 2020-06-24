@@ -19,55 +19,54 @@ public:
 
     void move(glm::vec3 differential);
 
-    void moveForward();
+    void move_forward();
 
-    void moveBackword();
+    void move_backword();
 
-    void moveUp();
+    void move_up();
 
-    void moveDown();
+    void move_down();
 
-    void setPosition(const glm::vec3 &position);
+    void strafe_left();
 
-    void strafeLeft();
+    void strafe_right();
 
-    void strafeRight();
+    void pan_left();
 
-    void panLeft();
+    void pan_right();
 
-    void panRight();
+    void pan_up();
 
-    void panUp();
+    void pan_down();
 
-    void panDown();
+    void pan_horizontal(float speed);
 
-    void panHorizontal(float speed);
+    void pan_vertical(float speed);
 
-    void panVertical(float speed);
+    void zoom_in();
 
-    void zoomIn();
-
-    void zoomOut();
+    void zoom_out();
 
     void resize(float width, float height);
 
-    glm::mat4 getViewProjectionMatrix() const;
+    glm::mat4 get_view_projection_matrix() const;
+
+    _VAR_GET_INIT(up, glm::vec3, public, glm::vec3(0, 1, 0))
+    _VAR_GET_INIT(forward, glm::vec3, public, glm::vec3(0, 0, -1))
+    _VAR_GET_INIT(position, glm::vec3, public, 0)
+    _VAR_GET_INIT(bounding_rect, Rectangle, public, Rectangle(0,0))
 private:
-    _VAR(glm::vec3,up,public,private,glm::vec3(0, 1, 0));
-    _VAR(glm::vec3,forward,public,private,glm::vec3(0, 0, -1));
-    _VAR(glm::vec3,position,public,private,glm::vec3(0, 0, 0));
-    _VAR(Rectangle,bounding_rect,public,private,Rectangle(0,0));
-    float translationSpeed{0.2};
-    float horizontalRotationSpeed{0.05};
-    float verticalRotationSpeed{0.05};
+    float translation_speed{0.2f};
+    float horizontal_rotation_speed{0.05f};
+    float vertical_rotation_speed{0.05f};
 
     // initialize matrices to identity
-    glm::mat4 viewMatrix{1};
-    glm::mat4 projectionMatrix{1};
+    glm::mat4 view_matrix{1};
+    glm::mat4 projection_matrix{1};
 
-    void resetProjectionMatrix();
+    void reset_projection_matrix();
 
-    void resetViewMatrix();
+    void reset_view_matrix();
 };
 
 

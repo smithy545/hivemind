@@ -25,35 +25,49 @@ class Renderer {
 public:
     POINTERIZE(Renderer);
 
-    Renderer();
-
     // lifecycle methods
-    GLFWwindow *init(const std::string& configPath);
+    GLFWwindow *init(const std::string& config_path);
 
-    void render(const RenderNode::Ptr &treeHead, const Camera &camera);
+    void render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camera);
 
     void cleanup();
 
     // resize callback
     void resize(int width, int height);
 
-    // state getters
-    int getWidth() const;
-
-    int getHeight() const;
-
     // state setters
-    bool setShader(const std::string &name);
+    bool set_shader(const std::string &name);
 
     // add sprites
-    static Mesh::Ptr generateBezierMesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
+    static Mesh::Ptr generate_bezier_mesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
 
-    static Mesh::Ptr generateLineMesh(const std::vector<glm::vec3> &points, glm::vec4 color);
+    static Mesh::Ptr generate_line_mesh(const std::vector<glm::vec3> &points, glm::vec4 color);
 
-    static Mesh::Ptr generateBoxMeshTriangles(int width, int height, int length, glm::vec4 color);
+    static Mesh::Ptr generate_box_mesh_triangles(int width, int height, int length, glm::vec4 color);
 
-    static Mesh::Ptr generateBoxMeshLines(int width, int height, int length, glm::vec4 color);
+    static Mesh::Ptr generate_box_mesh_lines(int width, int height, int length, glm::vec4 color);
+
+    _VAR_GETSET(width, int, public, private);
+    _VAR_GETSET(height, int, public, private);
 private:
+    std::string current_shader_name{};
+    GLuint current_shader_program{};
+    GLint mvp_uniform{};
+    GLint tex_uniform{};
+    GLFWwindow *window{nullptr};
+    std::unordered_map<std::string, GLuint> loaded_shaders;
+    std::unordered_map<std::string, Sprite::Ptr> loaded_sprites;
+    std::unordered_map<std::string, GLuint> loaded_textures;
+
+    void
+    load_shader(const std::string &name, const std::string &vertex_shader_path, const std::string &fragment_shader_path);
+
+    void load_texture(const std::string &name, const std::string &texture_path);
+
+    void load_sprite(const std::string &path);
+
+    void load_tilesheet(const std::string &path);
+
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
     const std::string HEIGHT_KEY{"height"};
@@ -66,85 +80,61 @@ private:
     const std::string TEXTURES_KEY{"textures"};
     const std::string DEFAULT_SHADER_NAME{"texture"};
     const json CONFIG_SCHEMA{
-        {"title", "Renderer initialization config"},
-        {"type", "object"},
-        {"properties", {
-            {WIDTH_KEY, {
+            {"title", "Renderer initialization config"},
+            {"type", "object"},
+            {"properties", {
+                {WIDTH_KEY, {
                 {"description", "Initial width of rendered window"},
                 {"type", "integer"}
-            }},
-            {HEIGHT_KEY, {
+                }},
+                {HEIGHT_KEY, {
                 {"description", "Initial height of rendered window"},
                 {"type", "integer"}
-            }},
-            {SPRITESHEETS_KEY, {
+                }},
+                {SPRITESHEETS_KEY, {
                 {"description", "Names of json files containing sprite information"},
                 {"type", "array"},
                 {"items", {"type", "string"}}
-            }},
-            {TILESHEETS_KEY, {
+                }},
+                {TILESHEETS_KEY, {
                 {"description", "Names of json files containing tilesheet information"},
                 {"type", "array"},
                 {"items", {"type", "string"}}
-            }},
-            {TILESIZE_KEY, {
+                }},
+                {TILESIZE_KEY, {
                 {"description", "Size of tiles to render on maps"},
                 {"type", "integer"}
-            }},
-            {TEXTURES_KEY, {
+                }},
+                {TEXTURES_KEY, {
                 {"description", "Texture files to load"},
                 {"type", "object"}
-            }},
-            {SHADERS_KEY, {
+                }},
+                {SHADERS_KEY, {
                 {"description", "Shader names and files"},
                 {"type", "object"}
-            }}
-        }},
-        {"required", {WIDTH_KEY, HEIGHT_KEY, SPRITESHEETS_KEY, TILESHEETS_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
+                }}
+              }},
+    {"required", {WIDTH_KEY, HEIGHT_KEY, SPRITESHEETS_KEY, TILESHEETS_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
     };
     const json SPRITE_SCHEMA{
             {"title",      "A screen sprite"},
             {"type",       "object"},
-            {"properties", {
-                                   {WIDTH_KEY, {{"description", "Sprite width"}, {"type", "number"}}},
-                                   {HEIGHT_KEY, {{"description", "Sprite height"}, {"type", "number"}}},
-                                   {NAME_KEY, {{"description", "Sprite name"}, {"type", "string"}}},
-                                   {TEXTURE_KEY, {{"description", "Sprite texture"}, {"type", "string"}}}
-                           }},
+            {"properties", {{WIDTH_KEY, {{"description", "Sprite width"}, {"type", "number"}}},
+                           {HEIGHT_KEY, {{"description", "Sprite height"}, {"type", "number"}}},
+                           {NAME_KEY, {{"description", "Sprite name"}, {"type", "string"}}},
+                           {TEXTURE_KEY, {{"description", "Sprite texture"}, {"type", "string"}}}}},
             {"required",   {NAME_KEY, TEXTURE_KEY}}
     };
     const json TILESHEET_SCHEMA{
             {"title",      "A tile sheet"},
             {"type",       "object"},
-            {"properties", {
-                                   {NAME_KEY, {{"description", "Tilesheet name"}, {"type", "string"}}},
-                                   {TILESIZE_KEY, {{"description", "Tile size"}, {"type", "number"}}},
-                                   {TEXTURE_KEY, {{"description", "Tilesheet texture"}, {"type", "string"}}},
-                                   {SPRITES_KEY, {{"description", "Tile names"}, {"type", "array"}}}
-                           }},
+            {"properties", {{NAME_KEY, {{"description", "Tilesheet name"}, {"type", "string"}}},
+                            {TILESIZE_KEY, {{"description", "Tile size"}, {"type", "number"}}},
+                            {TEXTURE_KEY, {{"description", "Tilesheet texture"}, {"type", "string"}}},
+                            {SPRITES_KEY, {{"description", "Tile names"}, {"type", "array"}}}}},
             {"required",   {NAME_KEY, TILESIZE_KEY, TEXTURE_KEY, SPRITES_KEY}}
     };
 
-    int width{};
-    int height{};
-    std::string currentShader{};
-    GLuint currentShaderProgram{};
-    GLint mvpUniform{};
-    GLint texUniform{};
-    GLFWwindow *window;
-    std::unordered_map<std::string, Mesh::Ptr> loadedMeshes;
-    std::unordered_map<std::string, GLuint> loadedShaders;
-    std::unordered_map<std::string, Sprite::Ptr> loadedSprites;
-    std::unordered_map<std::string, GLuint> loadedTextures;
-
-    void
-    loadShader(const std::string &name, const std::string &vertexShaderPath, const std::string &fragmentShaderPath);
-
-    void loadTexture(const std::string &name, const std::string &texturePath);
-
-    void loadSprite(const std::string &path);
-
-    void loadTileSheet(const std::string &path);
 };
 
 #endif //SOCIETY_RENDERER_H

@@ -8,18 +8,16 @@
 #include <fmt/format.h>
 
 
-Integrator::Integrator(float timeStep) : timeStep(timeStep) {}
-
-void Integrator::update(const std::vector<Body::Ptr> &bodies) {
+void Integrator::update(const std::vector<Body::Ptr> &bodies, float time_step) {
     for(const auto& body: bodies) {
-        if(activeBodies.find(body->get_id()) == activeBodies.end())
-            activeBodies[body->get_id()] = body;
+        if(active_bodies.find(body->get_id()) == active_bodies.end())
+            active_bodies[body->get_id()] = body;
     }
 
-    std::vector<std::string> inertBodies;
-    for(const auto& bodyPair: activeBodies) {
-        auto body = bodyPair.second;
-        body->update(timeStep);
+    std::vector<std::string> inert_bodies;
+    for(const auto& body_pair: active_bodies) {
+        auto body = body_pair.second;
+        body->update(time_step);
 
         // cull infinitesimal fields
         auto vel = body->get_velocity();
@@ -35,10 +33,10 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
         body->set_acceleration(acc);
 
         auto pos = body->get_origin();
-        if(pos.y > groundLevel) {
+        if(pos.y > 0) {
             // if above ground accelerate due to gravity
-            body->set_velocity(body->get_velocity() + G*timeStep);
-        } else if(pos.y < groundLevel) {
+            body->set_velocity(body->get_velocity() + G*time_step);
+        } else if(pos.y < 0) {
             // if below ground warp to ground and freeze
             // TODO: should collide with ground?
             pos.y = 0;
@@ -48,10 +46,10 @@ void Integrator::update(const std::vector<Body::Ptr> &bodies) {
         }
         if (glm::all(glm::equal(body->get_velocity(), {0,0,0})) &&
             glm::all(glm::equal(body->get_acceleration(), {0,0,0})))
-            inertBodies.push_back(body->get_id());
+            inert_bodies.push_back(body->get_id());
     }
 
     // cull inert bodies
-    for(const auto& id: inertBodies)
-        activeBodies.erase(id);
+    for(const auto& id: inert_bodies)
+        active_bodies.erase(id);
 }

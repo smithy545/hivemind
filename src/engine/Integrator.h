@@ -17,16 +17,11 @@ class Integrator {
 public:
     POINTERIZE(Integrator);
 
-    explicit Integrator(float timeStep);
-
-    virtual void update(const std::vector<Body::Ptr> &bodies);
+    void update(const std::vector<Body::Ptr> &bodies, float time_step);
 private:
-
     const float EPSILON{0.01}; // Numbers with abs val smaller than this are considered equal to zero
     const glm::vec3 G{0, -0.01, 0}; // gravity acceleration vector
-    float timeStep{1.0};
-    float groundLevel{0.0};
-    std::unordered_map<std::string, Body::Ptr> activeBodies;
+    std::unordered_map<std::string, Body::Ptr> active_bodies;
 };
 
 

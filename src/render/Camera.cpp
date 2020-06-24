@@ -10,108 +10,102 @@
 
 Camera::Camera(double width, double height)
         : _bounding_rect(0, 0, width, height) {
-    resetProjectionMatrix();
-    resetViewMatrix();
+    reset_projection_matrix();
+    reset_view_matrix();
 }
 
-void Camera::panLeft() {
-    _forward = glm::rotate(_forward, horizontalRotationSpeed, _up);
-    resetViewMatrix();
+void Camera::pan_left() {
+    _forward = glm::rotate(_forward, horizontal_rotation_speed, _up);
+    reset_view_matrix();
 }
 
-void Camera::panRight() {
-    _forward = glm::rotate(_forward, -horizontalRotationSpeed, _up);
-    resetViewMatrix();
+void Camera::pan_right() {
+    _forward = glm::rotate(_forward, -horizontal_rotation_speed, _up);
+    reset_view_matrix();
 }
 
-void Camera::panUp() {
+void Camera::pan_up() {
     auto left = glm::cross(_up, _forward);
-    _forward = glm::rotate(_forward, -verticalRotationSpeed, left);
-    _up = glm::rotate(_up, -verticalRotationSpeed, left);
-    resetViewMatrix();
+    _forward = glm::rotate(_forward, -vertical_rotation_speed, left);
+    _up = glm::rotate(_up, -vertical_rotation_speed, left);
+    reset_view_matrix();
 }
 
-void Camera::panDown() {
+void Camera::pan_down() {
     auto left = glm::cross(_up, _forward);
-    _forward = glm::rotate(_forward, verticalRotationSpeed, left);
-    _up = glm::rotate(_up, verticalRotationSpeed, left);
-    resetViewMatrix();
+    _forward = glm::rotate(_forward, vertical_rotation_speed, left);
+    _up = glm::rotate(_up, vertical_rotation_speed, left);
+    reset_view_matrix();
 }
 
-void Camera::panHorizontal(float speed) {
+void Camera::pan_horizontal(float speed) {
     _forward = glm::rotate(_forward, speed, -_up);
-    resetViewMatrix();
+    reset_view_matrix();
 }
 
-void Camera::panVertical(float speed) {
+void Camera::pan_vertical(float speed) {
     auto left = glm::cross(_up, _forward);
     _forward = glm::rotate(_forward, speed, left);
     _up = glm::rotate(_up, speed, left);
-    resetViewMatrix();
+    reset_view_matrix();
 }
 
 void Camera::move(glm::vec3 differential) {
     _position += differential;
-    resetViewMatrix();
+    reset_view_matrix();
 }
 
-void Camera::moveForward() {
-    _position += translationSpeed*_forward;
-    resetViewMatrix();
+void Camera::move_forward() {
+    _position += translation_speed * _forward;
+    reset_view_matrix();
 }
 
-void Camera::moveBackword() {
-    _position -= translationSpeed*_forward;
-    resetViewMatrix();
+void Camera::move_backword() {
+    _position -= translation_speed * _forward;
+    reset_view_matrix();
 }
 
-void Camera::moveUp() {
-    _position += translationSpeed*_up;
-    resetViewMatrix();
+void Camera::move_up() {
+    _position += translation_speed * _up;
+    reset_view_matrix();
 }
 
-void Camera::moveDown() {
-    _position -= translationSpeed*_up;
-    resetViewMatrix();
+void Camera::move_down() {
+    _position -= translation_speed * _up;
+    reset_view_matrix();
 }
 
-void Camera::strafeLeft() {
-    _position += translationSpeed*glm::cross(_up, _forward);
-    resetViewMatrix();
+void Camera::strafe_left() {
+    _position += translation_speed * glm::cross(_up, _forward);
+    reset_view_matrix();
 }
 
-void Camera::strafeRight() {
-    _position -= translationSpeed*glm::cross(_up, _forward);
-    resetViewMatrix();
-}
-
-void Camera::setPosition(const glm::vec3 &position) {
-    _position = position;
-    resetViewMatrix();
+void Camera::strafe_right() {
+    _position -= translation_speed * glm::cross(_up, _forward);
+    reset_view_matrix();
 }
 
 // TODO: Zoom
-void Camera::zoomIn() {}
-void Camera::zoomOut() {}
+void Camera::zoom_in() {}
+void Camera::zoom_out() {}
 
 void Camera::resize(float width, float height) {
     _bounding_rect.set_width(width);
     _bounding_rect.set_height(height);
-    resetProjectionMatrix();
+    reset_projection_matrix();
 }
 
-void Camera::resetProjectionMatrix() {
-    float width = _bounding_rect.get_width();
-    float height = _bounding_rect.get_height();
-    projectionMatrix = glm::perspective(glm::radians(90.0f), width/height, 0.1f, 100.0f);
+void Camera::reset_projection_matrix() {
+    float aspect = _bounding_rect.get_width() / _bounding_rect.get_height();
+    projection_matrix = glm::perspective(glm::radians(90.0f), aspect, 0.1f, 100.0f);
 }
 
-void Camera::resetViewMatrix() {
+void Camera::reset_view_matrix() {
     _bounding_rect.set_x(_position.x);
     _bounding_rect.set_y(_position.y);
-    viewMatrix = glm::lookAt(_position, _position + _forward, _up);
+    view_matrix = glm::lookAt(_position, _position + _forward, _up);
 }
 
-glm::mat4 Camera::getViewProjectionMatrix() const {
-    return projectionMatrix * viewMatrix;
+glm::mat4 Camera::get_view_projection_matrix() const {
+    return projection_matrix * view_matrix;
 }

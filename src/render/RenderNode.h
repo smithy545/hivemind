@@ -22,25 +22,16 @@ public:
 
     explicit RenderNode(std::string shaderName, Drawable::Ptr entity, Ptr next = nullptr);
 
-    LinkedNode::Ptr getNext() override;
+    LinkedNode::Ptr get_next() override;
 
-    void setNext(const Ptr &node);
+    void set_next(const Ptr &node);
 
-    const std::vector<Body::Ptr> &getBodies() const;
+    void add_body(const Body::Ptr& body);
 
-    const std::string &getShaderName() const;
-
-    void setShaderName(const std::string &name);
-
-    void addBody(const Body::Ptr& body);
-
-    Drawable::Ptr getEntity();
-
-    void setEntity(Drawable::Ptr entity);
+    _MVAR_GETSET(shader_name, std::string, public, private)
+    _REFVAR_GET(bodies, std::vector<Body::Ptr>, public)
+    _MVAR_GETSET(entity, Drawable::Ptr, public, public)
 private:
-    std::string shaderName;
-    std::vector<Body::Ptr> bodies;
-    Drawable::Ptr entity;
     Ptr next;
 };
 

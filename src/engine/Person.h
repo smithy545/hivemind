@@ -14,8 +14,9 @@
 class Person {
 public:
     POINTERIZE(Person);
-    _VAR(std::string, name, public, public,)
-    _VAR(glm::vec3, position, public, public,)
+
+    _MVAR_GETSET(name, std::string, public, public)
+    _VAR_GETSET(position, glm::vec3, public, public)
 };
 
 

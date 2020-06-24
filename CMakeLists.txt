@@ -50,13 +50,12 @@ target_link_libraries(GLEW ${OPENGL_LIBRARY})
 find_package(OpenGL REQUIRED)
 
 ### MY COMMON LIB ###
-add_library(common STATIC
-        src/common/SchemaObject.cpp
-        src/common/SchemaObject.h
-        src/common/LinkedNode.h
-        src/common/TreeNode.h
-        src/common/DoublyLinkedNode.h
-        src/common/TopologicalNode.h)
+add_library(common INTERFACE)
+target_sources(common INTERFACE
+        ${PROJECT_SOURCE_DIR}/src/common/LinkedNode.h
+        ${PROJECT_SOURCE_DIR}/src/common/TreeNode.h
+        ${PROJECT_SOURCE_DIR}/src/common/DoublyLinkedNode.h
+        ${PROJECT_SOURCE_DIR}/src/common/TopologicalNode.h)
 
 ### MY COLLISION LIB ###
 add_library(collision STATIC

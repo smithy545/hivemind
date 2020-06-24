@@ -18,16 +18,16 @@ public:
     static const std::string RESOURCE_PREFIX;
     static const std::string JSON_PREFIX;
 
-    static char *readResourceFile(const std::string &resourcePath);
+    static char *read_resource_file(const std::string &resource_path);
 
-    static json readJsonFile(const std::string &jsonPath, const json &schema = nullptr, bool prefixPath = true);
+    static json read_json_file(const std::string &json_path, const json &schema = nullptr, bool prefix_path = true);
 
-    static TiXmlDocument readXmlFile(const std::string &xmlPath);
+    static TiXmlDocument read_xml_file(const std::string &xml_path);
 
-    static void writeJsonFile(const std::string &jsonPath, const json &data);
+    static void write_json_file(const std::string &json_path, const json &data);
 
 private:
-    static std::string resource(std::string relativePath);
+    static std::string resource(std::string relative_path);
 };
 
 

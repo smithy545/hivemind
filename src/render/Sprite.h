@@ -21,49 +21,25 @@ class Sprite : public Drawable {
 public:
     POINTERIZE(Sprite);
 
-    Sprite();
+    explicit Sprite(std::string texture);
 
     ~Sprite();
 
-    void reload();
+    unsigned int get_num_indices() override;
 
-    const std::vector<glm::vec2> &getVertices() const;
+    GLenum get_draw_mode() override;
 
-    void setVertices(std::vector<glm::vec2> &vertices);
+    _REFVAR_GET(vertices, std::vector<glm::vec2>, public)
+    _REFVAR_GET(uvs, std::vector<glm::vec2>, public)
+    _REFVAR_GET(colors, std::vector<glm::vec4>, public)
+    _REFVAR_GET(indices, std::vector<unsigned int>, public)
 
-    const std::vector<glm::vec2> &getUvs() const;
-
-    void setUvs(std::vector<glm::vec2> &uvs);
-
-    const std::vector<glm::vec4> &getColors() const;
-
-    void setColors(std::vector<glm::vec4> &colors);
-
-    const std::vector<unsigned int> &getIndices() const;
-
-    void setIndices(std::vector<unsigned int> &indices);
-
-    void setTexture(const std::string &texture);
-
-    std::string getTexture() override;
-
-    unsigned int getNumIndices() override;
-
-    GLuint getVertexArrayId() override;
-
-    GLenum getDrawMode() override;
-private:
-    std::vector<glm::vec2> vertices;
-    std::vector<glm::vec2> uvs;
-    std::vector<glm::vec4> colors;
-    std::vector<unsigned int> indices;
-
-    GLuint vertexArrayId{0};
-    GLuint vertexBufferId{0};
-    GLuint uvBufferId{0};
-    GLuint colorBufferId{0};
-    GLuint elementBufferId{0};
-    std::string texture{""};
+    _VAR_GETSET_INIT(vertex_array_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(vertex_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(uv_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(color_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET_INIT(element_buffer_id, GLuint, public, public, 0)
+    _VAR_GETSET(texture, std::string, public, public)
 };
 
 #endif //SOCIETY_SPRITE_H

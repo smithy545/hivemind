@@ -12,9 +12,9 @@ std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collision_tree) {
     std::vector<Body::Ptr> collisions;
     auto node = std::move(collision_tree);
     while(node != nullptr) {
-        if(node->getFirstBody()->get_id() == node->getSecondBody()->get_id()) {
+        if(node->get_first_body()->get_id() == node->get_second_body()->get_id()) {
             // self collision
-            collisions.push_back(node->getFirstBody());
+            collisions.push_back(node->get_first_body());
             node->kill();
         } else {
             auto collided = false;
@@ -22,8 +22,8 @@ std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collision_tree) {
             // TODO: Check collisions here
 
             if (collided) {
-                collisions.push_back(node->getFirstBody());
-                collisions.push_back(node->getSecondBody());
+                collisions.push_back(node->get_first_body());
+                collisions.push_back(node->get_second_body());
             }
             node->kill();
         }

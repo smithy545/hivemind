@@ -6,39 +6,19 @@
 #include <utility>
 
 
-RenderNode::RenderNode(std::string shaderName, Drawable::Ptr entity, Ptr next):
-    shaderName(std::move(shaderName)),
-    entity(std::move(entity)),
+RenderNode::RenderNode(std::string shader_name, Drawable::Ptr entity, Ptr next):
+    _shader_name(std::move(shader_name)),
+    _entity(std::move(entity)),
     next(std::move(next)) {}
 
-LinkedNode::Ptr RenderNode::getNext() {
+LinkedNode::Ptr RenderNode::get_next() {
     return std::dynamic_pointer_cast<LinkedNode>(next);
 }
 
-void RenderNode::setNext(const RenderNode::Ptr &node) {
+void RenderNode::set_next(const RenderNode::Ptr &node) {
     next = node;
 }
 
-const std::vector<Body::Ptr> &RenderNode::getBodies() const {
-    return bodies;
-}
-
-const std::string &RenderNode::getShaderName() const {
-    return shaderName;
-}
-
-void RenderNode::setShaderName(const std::string &name) {
-    shaderName = name;
-}
-
-void RenderNode::addBody(const Body::Ptr& body) {
-    bodies.push_back(body);
-}
-
-Drawable::Ptr RenderNode::getEntity() {
-    return entity;
-}
-
-void RenderNode::setEntity(Drawable::Ptr entity) {
-    this->entity = std::move(entity);
+void RenderNode::add_body(const Body::Ptr& body) {
+    _bodies.push_back(body);
 }

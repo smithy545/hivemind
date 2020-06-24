@@ -5,36 +5,36 @@
 #include "Interface.h"
 
 
-Interface::Interface() {}
-
 void Interface::update(const State::Ptr &state) {
+    auto scene = state->get_scene();
+    auto camera = scene->get_camera();
     if (state->get_mouse_scroll() > 0)
-        state->getScene().getCamera().zoomIn();
+        camera->zoom_in();
     else if (state->get_mouse_scroll() < 0)
-        state->getScene().getCamera().zoomOut();
+        camera->zoom_out();
 
-    if (state->getKey(GLFW_KEY_W))
-        state->getScene().getCamera().moveForward();
-    if (state->getKey(GLFW_KEY_S))
-        state->getScene().getCamera().moveBackword();
-    if (state->getKey(GLFW_KEY_SPACE))
-        state->getScene().getCamera().moveUp();
-    if (state->getKey(GLFW_KEY_LEFT_CONTROL))
-        state->getScene().getCamera().moveDown();
-    if (state->getKey(GLFW_KEY_A))
-        state->getScene().getCamera().strafeLeft();
-    if (state->getKey(GLFW_KEY_D))
-        state->getScene().getCamera().strafeRight();
+    if (state->get_key(GLFW_KEY_W))
+        camera->move_forward();
+    if (state->get_key(GLFW_KEY_S))
+        camera->move_backword();
+    if (state->get_key(GLFW_KEY_SPACE))
+        camera->move_up();
+    if (state->get_key(GLFW_KEY_LEFT_CONTROL))
+        camera->move_down();
+    if (state->get_key(GLFW_KEY_A))
+        camera->strafe_left();
+    if (state->get_key(GLFW_KEY_D))
+        camera->strafe_right();
 
-    auto cameraRect = state->getScene().getCamera().getBoundingRect();
+    auto camera_bound = camera->get_bounding_rect();
     auto mx = state->get_mouse_x();
     auto my = state->get_mouse_y();
-    float dx = 3.0*(mx - state->get_last_mouse_x())/cameraRect.get_width();
-    float dy = 0.0*(my - state->get_last_mouse_y())/cameraRect.get_height();
-    state->getScene().getCamera().panHorizontal(dx);
-    state->getScene().getCamera().panVertical(dy);
+
+    // pan horizontal if necessary
+    float dx = 3.0 * (mx - state->get_last_mouse_x()) / camera_bound.get_width();
+    camera->pan_horizontal(dx);
 
     // set mouse pos to itself so the last mouse position is also set to the current mouse position
     state->set_mouse_x(mx);
-    state->set_mouse_x(my);
+    state->set_mouse_y(my);
 }

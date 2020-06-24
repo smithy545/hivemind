@@ -15,13 +15,14 @@
 class MapNode {
 public:
     POINTERIZE(MapNode);
+
     typedef std::deque<Ptr> MapPath;
 
-    virtual int getX() = 0;
+    virtual int get_x() = 0;
 
-    virtual int getY() = 0;
+    virtual int get_y() = 0;
 
-    virtual bool isPassable() = 0;
+    virtual bool is_passable() = 0;
 };
 
 // MapNode containing local neighbor information

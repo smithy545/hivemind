@@ -8,7 +8,7 @@
 using std::make_shared;
 
 
-QuadTree::QuadTree(int pLevel, Rectangle pBounds) : level(pLevel), bounds(pBounds) {}
+QuadTree::QuadTree(int level, Rectangle bounds) : level(level), bounds(bounds) {}
 
 void QuadTree::clear() {
     objects.clear();
@@ -22,10 +22,10 @@ void QuadTree::clear() {
 }
 
 void QuadTree::split() {
-    int subWidth = (int) (bounds.getWidth() / 2);
-    int subHeight = (int) (bounds.getHeight() / 2);
-    int x = (int) bounds.getX();
-    int y = (int) bounds.getY();
+    int subWidth = (int) (bounds.get_width() / 2);
+    int subHeight = (int) (bounds.get_height() / 2);
+    int x = (int) bounds.get_x();
+    int y = (int) bounds.get_y();
 
 
     nodes[1] = make_shared<QuadTree>(level + 1, Rectangle(x, y, subWidth, subHeight));
@@ -39,18 +39,18 @@ void QuadTree::split() {
  * object cannot completely fit within a child node and is part
  * of the parent node
  */
-int QuadTree::getIndex(Rectangle pRect) {
+int QuadTree::get_index(Rectangle pRect) {
     int index = -1;
-    double verticalMidpoint = bounds.getX() + (bounds.getWidth() / 2.0);
-    double horizontalMidpoint = bounds.getY() + (bounds.getHeight() / 2.0);
+    double verticalMidpoint = bounds.get_x() + (bounds.get_width() / 2.0);
+    double horizontalMidpoint = bounds.get_y() + (bounds.get_height() / 2.0);
 
     // Object can completely fit within the top quadrants
-    bool topQuadrant = (pRect.getY() < horizontalMidpoint && pRect.getY() + pRect.getHeight() < horizontalMidpoint);
+    bool topQuadrant = (pRect.get_y() < horizontalMidpoint && pRect.get_y() + pRect.get_height() < horizontalMidpoint);
     // Object can completely fit within the bottom quadrants
-    bool bottomQuadrant = (pRect.getY() > horizontalMidpoint);
+    bool bottomQuadrant = (pRect.get_y() > horizontalMidpoint);
 
     // Object can completely fit within the left quadrants
-    if (pRect.getX() < verticalMidpoint && pRect.getX() + pRect.getWidth() < verticalMidpoint) {
+    if (pRect.get_x() < verticalMidpoint && pRect.get_x() + pRect.get_width() < verticalMidpoint) {
         if (topQuadrant) {
             index = 1;
         } else if (bottomQuadrant) {
@@ -58,7 +58,7 @@ int QuadTree::getIndex(Rectangle pRect) {
         }
     }
         // Object can completely fit within the right quadrants
-    else if (pRect.getX() > verticalMidpoint) {
+    else if (pRect.get_x() > verticalMidpoint) {
         if (topQuadrant) {
             index = 0;
         } else if (bottomQuadrant) {
@@ -71,7 +71,7 @@ int QuadTree::getIndex(Rectangle pRect) {
 
 void QuadTree::insert(Rectangle pRect) {
     if (nodes[0] != nullptr) {
-        int index = getIndex(pRect);
+        int index = get_index(pRect);
 
         if (index != -1) {
             nodes[index]->insert(pRect);
@@ -89,7 +89,7 @@ void QuadTree::insert(Rectangle pRect) {
 
         int i = 0;
         while (i < objects.size()) {
-            int index = getIndex(objects[i]);
+            int index = get_index(objects[i]);
             if (index != -1) {
                 nodes[index]->insert(objects[i]);
                 objects.erase(objects.begin() + i);
@@ -100,14 +100,14 @@ void QuadTree::insert(Rectangle pRect) {
     }
 }
 
-std::vector<Rectangle> QuadTree::retrieve(std::vector<Rectangle> returnObjects, Rectangle pRect) {
-    int index = getIndex(pRect);
+std::vector<Rectangle> QuadTree::retrieve(std::vector<Rectangle> return_objects, Rectangle pRect) {
+    int index = get_index(pRect);
     if (index != -1 && nodes[0] != nullptr) {
-        nodes[index]->retrieve(returnObjects, pRect);
+        nodes[index]->retrieve(return_objects, pRect);
     }
 
     for (auto obj: objects)
-        returnObjects.push_back(obj);
+        return_objects.push_back(obj);
 
-    return returnObjects;
+    return return_objects;
 }
