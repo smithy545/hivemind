@@ -1,11 +1,2 @@
 cmake-build-debug/
-external/cimg
-external/fmt
-external/glew
-external/glfw
-external/glm
-external/json
-external/json-schema-validator
-external/tinyxml
-external/box2d
 .idea/

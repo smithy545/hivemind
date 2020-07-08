@@ -120,11 +120,17 @@ add_library(engine STATIC
         src/engine/Interface.cpp
         src/engine/Interface.h
         src/engine/Scene.cpp
-        src/engine/Scene.h
-        src/engine/Person.cpp
-        src/engine/Person.h
-        src/engine/Role.cpp
-        src/engine/Role.h)
+        src/engine/Scene.h)
+
+add_library(world STATIC
+        src/world/Person.cpp
+        src/world/Person.h
+        src/world/Role.cpp
+        src/world/Role.h
+        src/world/Task.cpp
+        src/world/Task.h
+        src/world/Resource.cpp
+        src/world/Resource.h)
 
 ### CUDA STUFF ###
 add_subdirectory(src/cuda)
@@ -156,6 +162,7 @@ set(ALL_LIBS
         render
         ui
         engine
+        world
         dynamics
         cuda_stuff)
 
