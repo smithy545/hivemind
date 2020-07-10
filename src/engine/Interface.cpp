@@ -5,8 +5,7 @@
 #include "Interface.h"
 
 
-void Interface::update(const State::Ptr &state) {
-    auto scene = state->get_scene();
+void Interface::update(const State::Ptr &state, Scene::Ptr &scene, God::Ptr &god) {
     auto camera = scene->get_camera();
     if (state->get_mouse_scroll() > 0)
         camera->zoom_in();

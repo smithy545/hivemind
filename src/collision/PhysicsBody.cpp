@@ -2,10 +2,10 @@
 // Created by Philip on 6/1/2020.
 //
 
-#include "Body.h"
+#include "PhysicsBody.h"
 
 
-void Body::update(float time_step) {
+void PhysicsBody::update(float time_step) {
     // update velocity
     _velocity += _acceleration * time_step;
 

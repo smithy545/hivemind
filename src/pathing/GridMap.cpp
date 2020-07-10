@@ -4,6 +4,10 @@
 
 #include "GridMap.h"
 
+#include <utility>
+
+
+using std::vector;
 
 GridMap::GridMap(int width, int height) : GridMap(0, 0, width, height) {}
 
@@ -26,7 +30,7 @@ MapNode::Ptr GridMap::get_node(int x, int y) {
     return _nodes[x + y * _width];
 }
 
-std::vector<MapNode::Ptr> GridMap::get_neighbors(MapNode::Ptr node) {
+vector<MapNode::Ptr> GridMap::get_neighbors(MapNode::Ptr node) {
     int neighborMatrix[8][2] = {
             {-1, -1},
             {0,  -1},
@@ -48,4 +52,8 @@ std::vector<MapNode::Ptr> GridMap::get_neighbors(MapNode::Ptr node) {
     }
 
     return neighbors;
+}
+
+vector<MapNode::Ptr> &GridMap::get_dirty_nodes() {
+    return ret;
 }

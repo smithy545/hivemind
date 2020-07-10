@@ -30,6 +30,9 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
             )
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+### Boost PP ###
+add_subdirectory(external/boost/libs/preprocessor)
+
 ### XML ###
 add_library(TINYXML STATIC external/tinyxml/tinystr.cpp external/tinyxml/tinyxml.cpp external/tinyxml/tinyxmlerror.cpp external/tinyxml/tinyxmlparser.cpp)
 target_include_directories(TINYXML PUBLIC external/tinyxml)
@@ -52,6 +55,7 @@ find_package(OpenGL REQUIRED)
 ### MY COMMON LIB ###
 add_library(common INTERFACE)
 target_sources(common INTERFACE
+        ${PROJECT_SOURCE_DIR}/src/common/Body.h
         ${PROJECT_SOURCE_DIR}/src/common/LinkedNode.h
         ${PROJECT_SOURCE_DIR}/src/common/TreeNode.h
         ${PROJECT_SOURCE_DIR}/src/common/DoublyLinkedNode.h
@@ -97,7 +101,10 @@ add_library(render STATIC
         src/render/RenderNode.cpp
         src/render/RenderNode.h
         src/render/Sprite.cpp
-        src/render/Sprite.h src/render/Mesh.cpp src/render/Mesh.h src/render/Drawable.h)
+        src/render/Sprite.h
+        src/render/Mesh.cpp
+        src/render/Mesh.h
+        src/render/Drawable.h)
 
 ### MY UI LIB ####
 add_library(ui STATIC
@@ -106,8 +113,8 @@ add_library(ui STATIC
 
 ### MY DYNAMICS LIB ###
 add_library(dynamics STATIC
-        src/collision/Body.cpp
-        src/collision/Body.h)
+        src/collision/PhysicsBody.cpp
+        src/collision/PhysicsBody.h)
 
 ### GAME ENGINE ###
 add_library(engine STATIC
@@ -130,7 +137,12 @@ add_library(world STATIC
         src/world/Task.cpp
         src/world/Task.h
         src/world/Resource.cpp
-        src/world/Resource.h)
+        src/world/Resource.h
+        src/world/SuperTask.cpp
+        src/world/SuperTask.h
+        src/world/God.cpp
+        src/world/God.h
+        src/world/Actor.h)
 
 ### CUDA STUFF ###
 add_subdirectory(src/cuda)
@@ -144,6 +156,7 @@ include_directories(
         external/glm
         external/cimg
         external/tinyxml
+        external/boost
         src)
 
 set(ALL_LIBS
@@ -164,7 +177,8 @@ set(ALL_LIBS
         engine
         world
         dynamics
-        cuda_stuff)
+        cuda_stuff
+        boost_preprocessor)
 
 add_definitions(
         -DTW_STATIC

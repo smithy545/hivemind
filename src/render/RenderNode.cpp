@@ -19,6 +19,6 @@ void RenderNode::set_next(const RenderNode::Ptr &node) {
     next = node;
 }
 
-void RenderNode::add_body(const Body::Ptr& body) {
+void RenderNode::add_body(const PhysicsBody::Ptr& body) {
     _bodies.push_back(body);
 }

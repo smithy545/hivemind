@@ -51,10 +51,10 @@ public:
 
     glm::mat4 get_view_projection_matrix() const;
 
-    _VAR_GET_INIT(up, glm::vec3, public, glm::vec3(0, 1, 0))
-    _VAR_GET_INIT(forward, glm::vec3, public, glm::vec3(0, 0, -1))
-    _VAR_GET_INIT(position, glm::vec3, public, 0)
-    _VAR_GET_INIT(bounding_rect, Rectangle, public, Rectangle(0,0))
+    _VAR_GET(glm::vec3, up, public){glm::vec3(0, 1, 0)};
+    _VAR_GET(glm::vec3,forward, public){glm::vec3(0, 0, -1)};
+    _VAR_GET(glm::vec3, position, public){0};
+    _VAR_GET(Rectangle, bounding_rect, public){Rectangle(0,0)};
 private:
     float translation_speed{0.2f};
     float horizontal_rotation_speed{0.05f};

@@ -29,17 +29,17 @@ public:
 
     GLenum get_draw_mode() override;
 
-    _REFVAR_GET(vertices, std::vector<glm::vec2>, public)
-    _REFVAR_GET(uvs, std::vector<glm::vec2>, public)
-    _REFVAR_GET(colors, std::vector<glm::vec4>, public)
-    _REFVAR_GET(indices, std::vector<unsigned int>, public)
+    _REFVAR_GET(std::vector<glm::vec2>, vertices, public);
+    _REFVAR_GET(std::vector<glm::vec2>, uvs, public);
+    _REFVAR_GET(std::vector<glm::vec4>, colors, public);
+    _REFVAR_GET(std::vector<unsigned int>, indices, public);
 
-    _VAR_GETSET_INIT(vertex_array_id, GLuint, public, public, 0)
-    _VAR_GETSET_INIT(vertex_buffer_id, GLuint, public, public, 0)
-    _VAR_GETSET_INIT(uv_buffer_id, GLuint, public, public, 0)
-    _VAR_GETSET_INIT(color_buffer_id, GLuint, public, public, 0)
-    _VAR_GETSET_INIT(element_buffer_id, GLuint, public, public, 0)
-    _VAR_GETSET(texture, std::string, public, public)
+    _VAR_GETSET(GLuint, vertex_array_id, public, public){0};
+    _VAR_GETSET(GLuint, vertex_buffer_id, public, public){0};
+    _VAR_GETSET(GLuint, uv_buffer_id, public, public){0};
+    _VAR_GETSET(GLuint, color_buffer_id, public, public){0};
+    _VAR_GETSET(GLuint, element_buffer_id, public, public){0};
+    _VAR_GETSET(std::string, texture, public, public);
 };
 
 #endif //SOCIETY_SPRITE_H

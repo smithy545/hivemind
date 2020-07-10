@@ -5,8 +5,7 @@
 #include "State.h"
 
 
-State::State(int width, int height) :   _scene(std::make_shared<Scene>(width, height)),
-                                        _mouse_x(width*0.5),
+State::State(int width, int height) :   _mouse_x(width*0.5),
                                         _mouse_y(height*0.5),
                                         _last_mouse_x(width*0.5),
                                         _last_mouse_y(height*0.5) {

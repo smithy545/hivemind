@@ -8,15 +8,19 @@
 #include <glm/glm.hpp>
 #include <string>
 
+#include "Actor.h"
+#include "collision/PhysicsBody.h"
 #include "macros.h"
 
 
-class Person {
+class Person : public Actor {
 public:
     POINTERIZE(Person);
 
-    _MVAR_GETSET(name, std::string, public, public)
-    _VAR_GETSET(position, glm::vec3, public, public)
+    _MVAR_GETSET(std::string, name, public, public);
+    _MVAR_GETSET(PhysicsBody::Ptr, body, public, public);
+
+    void update() override;
 };
 
 

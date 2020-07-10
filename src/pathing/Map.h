@@ -10,17 +10,22 @@
 #include "macros.h"
 #include "MapNode.h"
 
+using std::vector;
+
 
 class Map {
 public:
     POINTERIZE(Map);
 
-    virtual std::vector<MapNode::Ptr> &get_nodes() = 0;
+    virtual vector<MapNode::Ptr> &get_nodes() = 0;
+
+    // get nodes changed since last check
+    virtual vector<MapNode::Ptr> &get_dirty_nodes() = 0;
 
     // nullptr return value means position out of bounds
     virtual MapNode::Ptr get_node(int x, int y) = 0;
 
-    virtual std::vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) = 0;
+    virtual vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) = 0;
 
     // Force bound checking in getNode!
     bool in_bounds(int x, int y) {
@@ -31,8 +36,8 @@ protected:
 
     Map(int x_offset, int y_offset) : _x_offset(x_offset), _y_offset(y_offset) {}
 
-    _VAR_GETSET(x_offset, int, protected, protected)
-    _VAR_GETSET(y_offset, int, protected, protected)
+    _VAR_GETSET(int, x_offset, protected, protected);
+    _VAR_GETSET(int, y_offset, protected, protected);
 };
 
 #endif //SOCIETY_MAP_H

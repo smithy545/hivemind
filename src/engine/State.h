@@ -41,21 +41,17 @@ public:
     double enter_frame();
 
     // game state
-    _BVAR_GETSET_INIT(paused, public, private, true)
-    _BVAR_GETSET_INIT(stopped, public, private, true)
-    _VAR_GETSET_INIT(fps, double, public, private, 0)
-    _VAR_GETSET(last_frame_start, timestamp, public, private)
-
-    // world state
-    _MVAR_GETSET_INIT(map, Map::Ptr, public, public, nullptr)
-    _MVAR_GETSET(scene, Scene::Ptr, public, public)
+    _BVAR_GETSET(paused, public, private){true};
+    _BVAR_GETSET(stopped, public, private){true};
+    _VAR_GETSET(double, fps, public, private){0};
+    _VAR_GETSET(timestamp, last_frame_start, public, private);
 
     // io state
-    _VAR_GET_INIT(mouse_x, double, public, 0)
-    _VAR_GET_INIT(mouse_y, double, public, 0)
-    _VAR_GET_INIT(last_mouse_x, double, public, 0)
-    _VAR_GET_INIT(last_mouse_y, double, public, 0)
-    _VAR_GETSET_INIT(mouse_scroll, double, public, public, 0)
+    _VAR_GET(double, mouse_x, public){0};
+    _VAR_GET(double, mouse_y, public){0};
+    _VAR_GET(double, last_mouse_x, public){0};
+    _VAR_GET(double, last_mouse_y, public){0};
+    _VAR_GETSET(double, mouse_scroll, public, public){0};
 private:
     bool keys[GLFW_KEY_LAST]{};
 };

@@ -11,6 +11,8 @@
 class Task {
 public:
     POINTERIZE(Task);
+
+    virtual void operator()() = 0;
 };
 
 

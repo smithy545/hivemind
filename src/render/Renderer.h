@@ -47,8 +47,8 @@ public:
 
     static Mesh::Ptr generate_box_mesh_lines(int width, int height, int length, glm::vec4 color);
 
-    _VAR_GETSET(width, int, public, private);
-    _VAR_GETSET(height, int, public, private);
+    _VAR_GETSET(int, width, public, private);
+    _VAR_GETSET(int, height, public, private);
 private:
     std::string current_shader_name{};
     GLuint current_shader_program{};

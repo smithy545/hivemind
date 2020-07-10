@@ -11,6 +11,8 @@
 class Role {
 public:
     POINTERIZE(Role);
+
+// needs, demands, wants
 };
 
 

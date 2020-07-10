@@ -3,18 +3,10 @@
 // For the CUDA runtime routines (prefixed with "cuda_")
 #include <cuda_runtime.h>
 
-/**
- * CUDA Kernel Device code
- *
- * Computes the vector addition of A and B into C. The 3 vectors have the same
- * number of elements numElements.
- */
-__global__ void vectorAdd(const float *A, const float *B, float *C, int numElements) {
-    int i = blockDim.x * blockIdx.x + threadIdx.x;
+__global__ void role_runner() {}
 
-    if (i < numElements) {
-        C[i] = A[i] + B[i];
-    }
+__host__ void task_master() {
+    std::cout << "test" << std::endl;
 }
 
 int cuda_main() {
@@ -76,7 +68,7 @@ int cuda_main() {
     int threadsPerBlock = 256;
     int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
     printf("CUDA kernel launch with %d blocks of %d threads\n", blocksPerGrid, threadsPerBlock);
-    vectorAdd<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
+    //vectorAdd<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
     err = cudaGetLastError();
     if (err != cudaSuccess) {
         fprintf(stderr, "Failed to launch vectorAdd kernel (error code %s)!\n", cudaGetErrorString(err));
@@ -91,8 +83,6 @@ int cuda_main() {
         fprintf(stderr, "Failed to copy vector C from device to host (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
     }
-
-    vectorAdd<<<1, 1>>>(in, in, out, N);
 
     std::cout << "After" << std::endl;
     for (int i = 0; i < N; i++) {

@@ -8,8 +8,8 @@
 #include <utility>
 
 
-std::vector<Body::Ptr> Collider::update(CollisionNode::Ptr collision_tree) {
-    std::vector<Body::Ptr> collisions;
+std::vector<PhysicsBody::Ptr> Collider::update(CollisionNode::Ptr collision_tree) {
+    std::vector<PhysicsBody::Ptr> collisions;
     auto node = std::move(collision_tree);
     while(node != nullptr) {
         if(node->get_first_body()->get_id() == node->get_second_body()->get_id()) {

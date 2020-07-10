@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "collision/Body.h"
+#include "collision/PhysicsBody.h"
 #include "collision/CollisionNode.h"
 #include "macros.h"
 
@@ -16,7 +16,7 @@ class Collider {
 public:
     POINTERIZE(Collider);
 
-    std::vector<Body::Ptr> update(CollisionNode::Ptr collisionTree);
+    std::vector<PhysicsBody::Ptr> update(CollisionNode::Ptr collisionTree);
 };
 
 

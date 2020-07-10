@@ -12,6 +12,8 @@
 #include "Map.h"
 #include "MapNode.h"
 
+using std::vector;
+
 
 class GridMap : public Map {
 public:
@@ -25,22 +27,26 @@ public:
 
         GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}
 
-        _VAR_GETSET(x, int, public, private)
-        _VAR_GETSET(y, int, public, private)
-        _BVAR_GETSET(passable, public, private)
+        _VAR_GETSET(int, x, public, private);
+        _VAR_GETSET(int, y, public, private);
+        _BVAR_GETSET(passable, public, private);
     };
 
     GridMap(int width, int height);
 
     GridMap(int xOffset, int yOffset, int width, int height);
 
+    vector<MapNode::Ptr> &get_dirty_nodes() override;
+
     MapNode::Ptr get_node(int x, int y) override;
 
-    std::vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) override;
+    vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) override;
 
-    _VAR_GETSET(width, int, public, private)
-    _VAR_GETSET(height, int, public, private)
-    _REFVAR_GET(nodes, std::vector<MapNode::Ptr>, public)
+    _VAR_GETSET(int, width, public, private);
+    _VAR_GETSET(int, height, public, private);
+    _REFVAR_GET(vector<MapNode::Ptr>, nodes, public);
+private:
+    vector<MapNode::Ptr> ret;
 };
 
 

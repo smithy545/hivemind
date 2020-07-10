@@ -23,6 +23,8 @@ public:
     virtual int get_y() = 0;
 
     virtual bool is_passable() = 0;
+
+    _BVAR_GETSET(dirty, public, public){false};
 };
 
 // MapNode containing local neighbor information

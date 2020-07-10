@@ -8,6 +8,7 @@
 #include "engine/Interface.h"
 #include "pathing/GridMap.h"
 #include "render/Renderer.h"
+#include "world/God.h"
 
 
 // window state
@@ -66,26 +67,26 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 
 void loop() {
     std::cout << "Renderer init" << std::endl;
-    Renderer::Ptr renderer = std::make_shared<Renderer>();
+    auto renderer = std::make_shared<Renderer>();
+    GLFWwindow *window = renderer->init("renderer.json");
     screen_width = renderer->get_width();
     screen_height = renderer->get_height();
-    GLFWwindow *window = renderer->init("renderer.json");
 
     std::cout << "State init" << std::endl;
-    state = std::make_shared<State>(renderer->get_width(), renderer->get_height());
-    auto scene = state->get_scene();
-    state->set_map(std::make_shared<GridMap>(0, 0, 64, 64));
+    state = std::make_shared<State>(screen_width, screen_height);
+    auto god = std::make_shared<God>();
+    auto scene = std::make_shared<Scene>(renderer->get_width(), renderer->get_height());
     scene->get_camera()->move({0,2,10});
 
     // only set physics on outline since the box and outline share a body
-    auto body = std::make_shared<Body>();
+    auto body = std::make_shared<PhysicsBody>();
     body->set_origin({0,10,0});
     scene->add_to_scene("color",
                                  Renderer::generate_box_mesh_triangles(1, 2, 3,
-                                                                       glm::vec4(1.0f, 0.f, 0.f, 1.0f)), body,false);
+                                                                       glm::vec4(1.0f, 0.f, 0.f, 1.0f)));
     scene->add_to_scene("color",
                                  Renderer::generate_box_mesh_lines(1, 2, 3,
-                                                                   glm::vec4(0.0f, 0.f, 0.f, 1.0f)), body,true);
+                                                                   glm::vec4(0.0f, 0.f, 0.f, 1.0f)));
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -127,13 +128,14 @@ void loop() {
         if (!state->is_paused()) {
             // check collisions and update bodies
             if (collider != nullptr && integrator != nullptr) {
-                auto updated = collider->update(scene->get_collision_tree());
+                auto updated = collider->update(god->get_collision_tree());
                 integrator->update(updated, 1.0f);
             }
         }
 
         // update state with user input
-        ui->update(state);
+        ui->update(state, scene, god);
+        god->update();
 
         // enforce fps
         int desiredFPS = 60;

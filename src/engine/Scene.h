@@ -20,16 +20,12 @@ public:
 
     Scene(int width, int height);
 
-    void add_to_scene(const std::string& shader_name, Mesh::Ptr mesh, const Body::Ptr& body, bool physics = false);
+    void add_to_scene(const std::string& shader_name, Mesh::Ptr mesh);
 
     void cleanup();
 
-    CollisionNode::Ptr get_collision_tree();
-
-    _MVAR_GETSET(camera, Camera::Ptr, public, private)
-    _MVAR_GETSET(render_head, RenderNode::Ptr, public, private)
-private:
-    CollisionNode::Ptr collision_head;
+    _MVAR_GETSET(Camera::Ptr, camera, public, private);
+    _MVAR_GETSET(RenderNode::Ptr, render_head, public, private);
 };
 
 

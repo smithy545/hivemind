@@ -8,7 +8,7 @@
 #include <fmt/format.h>
 
 
-void Integrator::update(const std::vector<Body::Ptr> &bodies, float time_step) {
+void Integrator::update(const std::vector<PhysicsBody::Ptr> &bodies, float time_step) {
     for(const auto& body: bodies) {
         if(active_bodies.find(body->get_id()) == active_bodies.end())
             active_bodies[body->get_id()] = body;

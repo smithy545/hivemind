@@ -7,30 +7,30 @@
 
 #include <utility>
 
-#include "collision/Body.h"
+#include "collision/PhysicsBody.h"
 #include "macros.h"
 
 
 class CollisionNode : public std::enable_shared_from_this<CollisionNode> {
 public:
     POINTERIZE(CollisionNode);
-    typedef std::pair<Body::Ptr, Body::Ptr> CollisionPair;
+    typedef std::pair<PhysicsBody::Ptr, PhysicsBody::Ptr> CollisionPair;
 
-    CollisionNode(const Body::Ptr& first, const Body::Ptr& second);
-    CollisionNode(const Body::Ptr& first, const Body::Ptr& second, Ptr next);
+    CollisionNode(const PhysicsBody::Ptr& first, const PhysicsBody::Ptr& second);
+    CollisionNode(const PhysicsBody::Ptr& first, const PhysicsBody::Ptr& second, Ptr next);
 
     void kill();
 
-    inline Body::Ptr get_first_body() {
+    inline PhysicsBody::Ptr get_first_body() {
         return bodies.first;
     }
 
-    inline Body::Ptr get_second_body() {
+    inline PhysicsBody::Ptr get_second_body() {
         return bodies.second;
     }
 
-    _MVAR_GETSET(next, CollisionNode::Ptr, public, public)
-    _BVAR_GET_INIT(alive, public, true)
+    _MVAR_GETSET(CollisionNode::Ptr, next, public, public);
+    _BVAR_GET(alive, public){true};
 private:
     CollisionPair bodies;
 };
