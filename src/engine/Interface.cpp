@@ -37,3 +37,7 @@ void Interface::update(const State::Ptr &state, Scene::Ptr &scene, God::Ptr &god
     state->set_mouse_x(mx);
     state->set_mouse_y(my);
 }
+
+Interface::Interface(Scene::Ptr scene, God::Ptr god) {
+    scene->get_camera()->move({0,2,10});
+}

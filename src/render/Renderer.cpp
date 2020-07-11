@@ -14,7 +14,7 @@
 #include "util/StringUtil.h"
 
 
-GLFWwindow *Renderer::init(const std::string& config_path) {
+GLFWwindow* Renderer::init(const std::string& config_path) {
     auto config = FileUtil::read_json_file(config_path, CONFIG_SCHEMA);
     _width = config[WIDTH_KEY];
     _height = config[HEIGHT_KEY];
@@ -72,25 +72,13 @@ GLFWwindow *Renderer::init(const std::string& config_path) {
         load_texture(tex.key(), tex.value());
     }
 
-    // tilesheet textures
-    for (const auto &tilesheet: config[TILESHEETS_KEY]) {
-        std::cout << fmt::format("Loading tilesheet from {0}", tilesheet) << std::endl;
-        load_tilesheet(tilesheet);
-    }
-
-    // sprites
-    for (const auto &sprite: config[SPRITESHEETS_KEY]) {
-        std::cout << fmt::format("Loading sprite from {0}", sprite) << std::endl;
-        load_sprite(sprite);
-    }
-
     set_shader(DEFAULT_SHADER_NAME);
 
     return window;
 }
 
 void Renderer::cleanup() {
-    // clear loaded meshes
+    // clear loaded textures
     loaded_textures.clear();
 
     // clear loaded shaders
@@ -109,7 +97,9 @@ void Renderer::render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camer
     while (node != nullptr) {
         auto entity = node->get_entity();
         if(set_shader(node->get_shader_name()) && entity!= nullptr) {
+            // bind vertex array object
             glBindVertexArray(entity->get_vertex_array_id());
+            // check for texture
             auto tex = entity->get_texture();
             if (!tex.empty() && loaded_textures.find(tex) != loaded_textures.end()) {
                 GLuint texId = loaded_textures[tex];
@@ -117,11 +107,14 @@ void Renderer::render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camer
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
-            for (const auto &body: node->get_bodies()) {
+            for (const auto &instance: node->get_instances()) {
                 // translate to world position
-                glm::mat4 model_matrix = glm::translate(glm::mat4(1), body->get_origin());
+                glm::mat4 model_matrix = glm::translate(glm::mat4(1), instance->get_origin());
+                // transform to screen position
                 glm::mat4 mvp_matrix = vp_matrix * model_matrix;
+                // store in shader uniform
                 glUniformMatrix4fv(mvp_uniform, 1, GL_FALSE, &mvp_matrix[0][0]);
+                // draw instances
                 glDrawElements(entity->get_draw_mode(),
                          entity->get_num_indices() * sizeof(unsigned int),
                                GL_UNSIGNED_INT, nullptr);
@@ -157,115 +150,10 @@ void Renderer::load_shader(const std::string &name, const std::string &vertex_sh
     loaded_shaders[name] = RenderUtil::load_shader_program(vertex_shader_path, fragment_shader_path);
 }
 
-void Renderer::load_sprite(const std::string &path) {
-    auto spriteData = FileUtil::read_json_file(fmt::format("spritesheets/{}", path), SPRITE_SCHEMA);
-    std::string tex = spriteData[TEXTURE_KEY];
-    Sprite::Ptr sprite = std::make_shared<Sprite>(tex);
-    float spriteWidth = spriteData[WIDTH_KEY];
-    float spriteHeight = spriteData[HEIGHT_KEY];
-    std::string name = spriteData[NAME_KEY];
-
-    // bottom left
-    sprite->get_vertices().emplace_back(0, 0);
-    sprite->get_uvs().emplace_back(0, 0);
-
-    // bottom right
-    sprite->get_vertices().emplace_back(spriteWidth, 0);
-    sprite->get_uvs().emplace_back(1, 0);
-
-    // top right
-    sprite->get_vertices().emplace_back(spriteWidth, spriteHeight);
-    sprite->get_uvs().emplace_back(1, -1);
-
-    // top left
-    sprite->get_vertices().emplace_back(0, spriteHeight);
-    sprite->get_uvs().emplace_back(0, -1);
-
-    // indices
-    sprite->get_indices().push_back(0);
-    sprite->get_indices().push_back(2);
-    sprite->get_indices().push_back(3);
-
-    sprite->get_indices().push_back(1);
-    sprite->get_indices().push_back(2);
-    sprite->get_indices().push_back(0);
-
-    loaded_sprites[name] = sprite;
-}
 
 void Renderer::load_texture(const std::string &name, const std::string &texture_path) {
     int w, h;
     loaded_textures[name] = RenderUtil::load_texture(texture_path, w, h);
-}
-
-void Renderer::load_tilesheet(const std::string &path) {
-    auto tilesheet = FileUtil::read_json_file(fmt::format("tilesheets/{}", path), TILESHEET_SCHEMA);
-
-    std::string name = tilesheet[NAME_KEY];
-    int sheet_tilesize = tilesheet[TILESIZE_KEY];
-    int w, h;
-    loaded_textures[name] = RenderUtil::load_texture(tilesheet[TEXTURE_KEY], w, h);
-    loaded_textures[name] = RenderUtil::load_texture(tilesheet[TEXTURE_KEY], w, h);
-
-    int i = 0;
-    float uStep = sheet_tilesize / (1.0 * w);
-    float vStep = sheet_tilesize / (1.0 * h);
-    for (float v = 0; v >= -1.0; v -= vStep) {
-        for (float u = 0; u < 1.0; u += uStep) {
-            Sprite::Ptr sprite = std::make_shared<Sprite>(name);
-
-            // bottom left
-            sprite->get_vertices().emplace_back(0, 0);
-            sprite->get_uvs().emplace_back(u, v);
-
-            // bottom right
-            sprite->get_vertices().emplace_back(sheet_tilesize, 0);
-            sprite->get_uvs().emplace_back(u + uStep, v);
-
-            // top right
-            sprite->get_vertices().emplace_back(sheet_tilesize, sheet_tilesize);
-            sprite->get_uvs().emplace_back(u + uStep, v - vStep);
-
-            // top left
-            sprite->get_vertices().emplace_back(0, sheet_tilesize);
-            sprite->get_uvs().emplace_back(u, v - vStep);
-
-            // indices
-            sprite->get_indices().push_back(0);
-            sprite->get_indices().push_back(2);
-            sprite->get_indices().push_back(3);
-
-            sprite->get_indices().push_back(1);
-            sprite->get_indices().push_back(2);
-            sprite->get_indices().push_back(0);
-
-            loaded_sprites[fmt::format("{0}_{1}", name, i)] = sprite;
-            i++;
-        }
-    }
-
-    // setup sprites
-    json_validator validator;
-    try {
-        validator.set_root_schema(SPRITE_SCHEMA);
-    } catch (std::exception &e) {
-        std::cerr << "Schema error: " << e.what() << std::endl;
-        return;
-    }
-    for (const auto& spriteInfo: tilesheet[SPRITES_KEY]) {
-        try {
-            validator.validate(spriteInfo);
-        } catch(std::exception &e) {
-            std::cerr << "Validation error: " << e.what() << std::endl;
-            continue;
-        }
-
-        if(loaded_sprites.find(spriteInfo[TEXTURE_KEY]) != loaded_sprites.end()) {
-            // replace tile name with sprite name
-            loaded_sprites[spriteInfo[NAME_KEY]] = loaded_sprites[spriteInfo[TEXTURE_KEY]];
-            loaded_sprites.erase(spriteInfo[TEXTURE_KEY]);
-        }
-    }
 }
 
 Mesh::Ptr Renderer::generate_bezier_mesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color) {

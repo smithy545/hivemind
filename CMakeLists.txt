@@ -100,8 +100,6 @@ add_library(render STATIC
         src/render/Renderer.h
         src/render/RenderNode.cpp
         src/render/RenderNode.h
-        src/render/Sprite.cpp
-        src/render/Sprite.h
         src/render/Mesh.cpp
         src/render/Mesh.h
         src/render/Drawable.h)
@@ -120,14 +118,14 @@ add_library(dynamics STATIC
 add_library(engine STATIC
         src/engine/State.cpp
         src/engine/State.h
-        src/engine/Collider.cpp
-        src/engine/Collider.h
-        src/engine/Integrator.cpp
-        src/engine/Integrator.h
+        src/collision/Collider.cpp
+        src/collision/Collider.h
+        src/collision/Integrator.cpp
+        src/collision/Integrator.h
         src/engine/Interface.cpp
         src/engine/Interface.h
-        src/engine/Scene.cpp
-        src/engine/Scene.h)
+        src/render/Scene.cpp
+        src/render/Scene.h)
 
 add_library(world STATIC
         src/world/Person.cpp

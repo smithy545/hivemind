@@ -15,6 +15,8 @@ void God::update() {
     for(const auto& actor: actors) {
         actor->update();
     }
+
+    for(auto node: map->get_dirty_nodes()) {}
 }
 
 CollisionNode::Ptr God::get_collision_tree() {
@@ -55,4 +57,8 @@ void God::add(const PhysicsBody::Ptr& body, bool physics) {
             collision_node = collision_node->get_next();
         }
     }
+}
+
+void God::generate_town() {
+
 }

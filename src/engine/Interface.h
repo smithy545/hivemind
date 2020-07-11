@@ -10,7 +10,7 @@
 
 #include "interface/InterfaceNode.h"
 #include "macros.h"
-#include "Scene.h"
+#include "render/Scene.h"
 #include "State.h"
 #include "world/God.h"
 
@@ -18,6 +18,8 @@
 class Interface {
 public:
     POINTERIZE(Interface);
+
+    Interface(Scene::Ptr scene, God::Ptr god);
 
     void update(const State::Ptr &state, Scene::Ptr &scene, God::Ptr &god);
 };

@@ -11,7 +11,7 @@
 
 #include "macros.h"
 #include "pathing/Map.h"
-#include "Scene.h"
+#include "render/Scene.h"
 
 
 class State {

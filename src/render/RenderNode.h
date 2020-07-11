@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "collision/PhysicsBody.h"
+#include "common/Body.h"
 #include "common/LinkedNode.h"
 #include "macros.h"
 #include "Drawable.h"
@@ -26,10 +26,10 @@ public:
 
     void set_next(const Ptr &node);
 
-    void add_body(const PhysicsBody::Ptr& body);
+    void instance(const Body::Ptr& body);
 
     _MVAR_GETSET(std::string, shader_name, public, private);
-    _REFVAR_GET(std::vector<PhysicsBody::Ptr>, bodies, public);
+    _REFVAR_GET(std::vector<Body::Ptr>, instances, public);
     _MVAR_GETSET(Drawable::Ptr, entity, public, public);
 private:
     Ptr next;

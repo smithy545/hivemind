@@ -3,8 +3,8 @@
 #include <thread>
 
 #include "engine/State.h"
-#include "engine/Collider.h"
-#include "engine/Integrator.h"
+#include "collision/Collider.h"
+#include "collision/Integrator.h"
 #include "engine/Interface.h"
 #include "pathing/GridMap.h"
 #include "render/Renderer.h"
@@ -67,26 +67,21 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 
 void loop() {
     std::cout << "Renderer init" << std::endl;
-    auto renderer = std::make_shared<Renderer>();
-    GLFWwindow *window = renderer->init("renderer.json");
-    screen_width = renderer->get_width();
-    screen_height = renderer->get_height();
+    Renderer renderer;
+    GLFWwindow *window = renderer.init("renderer.json");
+    screen_width = renderer.get_width();
+    screen_height = renderer.get_height();
 
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(screen_width, screen_height);
     auto god = std::make_shared<God>();
-    auto scene = std::make_shared<Scene>(renderer->get_width(), renderer->get_height());
-    scene->get_camera()->move({0,2,10});
-
-    // only set physics on outline since the box and outline share a body
-    auto body = std::make_shared<PhysicsBody>();
-    body->set_origin({0,10,0});
+    auto scene = std::make_shared<Scene>(renderer.get_width(), renderer.get_height());
     scene->add_to_scene("color",
-                                 Renderer::generate_box_mesh_triangles(1, 2, 3,
-                                                                       glm::vec4(1.0f, 0.f, 0.f, 1.0f)));
+                        Renderer::generate_box_mesh_triangles(1, 2, 3,
+                                                              glm::vec4(1.0f, 0.f, 0.f, 1.0f)));
     scene->add_to_scene("color",
-                                 Renderer::generate_box_mesh_lines(1, 2, 3,
-                                                                   glm::vec4(0.0f, 0.f, 0.f, 1.0f)));
+                        Renderer::generate_box_mesh_lines(1, 2, 3,
+                                                          glm::vec4(0.0f, 0.f, 0.f, 1.0f)));
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below
@@ -106,7 +101,7 @@ void loop() {
     glClearColor(1.0f,1.0f, 1.0f, 1.0f);
 
     std::cout << "UI init" << std::endl;
-    Interface::Ptr ui = std::make_shared<Interface>();
+    Interface::Ptr ui = std::make_shared<Interface>(scene, god);
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
@@ -120,7 +115,7 @@ void loop() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         if (resized) {
-            renderer->resize(screen_width, screen_height);
+            renderer.resize(screen_width, screen_height);
             scene->get_camera()->resize(screen_width, screen_height);
             resized = false;
         }
@@ -146,7 +141,7 @@ void loop() {
         }
 
         // render
-        renderer->render(scene->get_render_head(), scene->get_camera());
+        renderer.render(scene->get_render_head(), scene->get_camera());
 
         // reset mouse wheel position
         state->set_mouse_scroll(0.0f);
@@ -161,5 +156,5 @@ void loop() {
 
     // cleanup state before cleaning up renderer so glfw isn't terminated
     scene->cleanup();
-    renderer->cleanup();
+    renderer.cleanup();
 }

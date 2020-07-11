@@ -6,6 +6,7 @@
 #define SOCIETY_RENDERER_H
 
 #include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -16,15 +17,12 @@
 #include "macros.h"
 #include "Mesh.h"
 #include "RenderNode.h"
-#include "Sprite.h"
 
 
 using namespace nlohmann;
 
 class Renderer {
 public:
-    POINTERIZE(Renderer);
-
     // lifecycle methods
     GLFWwindow *init(const std::string& config_path);
 
@@ -54,19 +52,14 @@ private:
     GLuint current_shader_program{};
     GLint mvp_uniform{};
     GLint tex_uniform{};
-    GLFWwindow *window{nullptr};
+    GLFWwindow* window{nullptr};
     std::unordered_map<std::string, GLuint> loaded_shaders;
-    std::unordered_map<std::string, Sprite::Ptr> loaded_sprites;
     std::unordered_map<std::string, GLuint> loaded_textures;
 
     void
     load_shader(const std::string &name, const std::string &vertex_shader_path, const std::string &fragment_shader_path);
 
     void load_texture(const std::string &name, const std::string &texture_path);
-
-    void load_sprite(const std::string &path);
-
-    void load_tilesheet(const std::string &path);
 
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
@@ -84,34 +77,34 @@ private:
             {"type", "object"},
             {"properties", {
                 {WIDTH_KEY, {
-                {"description", "Initial width of rendered window"},
-                {"type", "integer"}
+                    {"description", "Initial width of rendered window"},
+                    {"type", "integer"}
                 }},
                 {HEIGHT_KEY, {
-                {"description", "Initial height of rendered window"},
-                {"type", "integer"}
+                    {"description", "Initial height of rendered window"},
+                    {"type", "integer"}
                 }},
                 {SPRITESHEETS_KEY, {
-                {"description", "Names of json files containing sprite information"},
-                {"type", "array"},
-                {"items", {"type", "string"}}
+                    {"description", "Names of json files containing sprite information"},
+                    {"type", "array"},
+                    {"items", {"type", "string"}}
                 }},
                 {TILESHEETS_KEY, {
-                {"description", "Names of json files containing tilesheet information"},
-                {"type", "array"},
-                {"items", {"type", "string"}}
+                    {"description", "Names of json files containing tilesheet information"},
+                    {"type", "array"},
+                    {"items", {"type", "string"}}
                 }},
                 {TILESIZE_KEY, {
-                {"description", "Size of tiles to render on maps"},
-                {"type", "integer"}
+                    {"description", "Size of tiles to render on maps"},
+                    {"type", "integer"}
                 }},
                 {TEXTURES_KEY, {
-                {"description", "Texture files to load"},
-                {"type", "object"}
+                    {"description", "Texture files to load"},
+                    {"type", "object"}
                 }},
                 {SHADERS_KEY, {
-                {"description", "Shader names and files"},
-                {"type", "object"}
+                    {"description", "Shader names and files"},
+                    {"type", "object"}
                 }}
               }},
     {"required", {WIDTH_KEY, HEIGHT_KEY, SPRITESHEETS_KEY, TILESHEETS_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
