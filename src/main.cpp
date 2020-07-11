@@ -140,7 +140,7 @@ void loop() {
 
         // enforce fps if desired
         auto fps = state->get_fps();
-        if(enforce_fps && desired_fps < ((int)fps)) {
+        if(enforce_fps && (fps - desired_fps > 1.0)) {
             std::chrono::duration<double> remaining{2*(fps-desired_fps)/(fps*desired_fps)};
             std::this_thread::sleep_for(remaining);
         }
