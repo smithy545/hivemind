@@ -105,12 +105,12 @@ void Renderer::render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camer
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
-            node->prepare();
+            int num_instances = node->prepare(camera);
             for (const auto &instance: node->get_instances()) {
                 // store in shader uniform
                 glUniformMatrix4fv(vp_uniform, 1, GL_FALSE, &vp_matrix[0][0]);
                 // draw instances
-                glDrawElementsInstanced(entity->get_draw_mode(), entity->get_num_indices(), GL_UNSIGNED_INT, 0, node->get_num_instances());
+                glDrawElementsInstanced(entity->get_draw_mode(), entity->get_num_indices(), GL_UNSIGNED_INT, 0, num_instances);
             }
         }
         node = std::dynamic_pointer_cast<RenderNode>(node->get_next());

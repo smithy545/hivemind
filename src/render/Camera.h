@@ -49,6 +49,8 @@ public:
 
     void resize(float width, float height);
 
+    bool is_visible(glm::vec3 point);
+
     glm::mat4 get_view_projection_matrix() const;
 
     _VAR_GET(glm::vec3, up, public){glm::vec3(0, 1, 0)};
