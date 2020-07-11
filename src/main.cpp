@@ -77,9 +77,9 @@ void loop() {
     auto god = std::make_shared<God>();
     auto scene = std::make_shared<Scene>(renderer.get_width(), renderer.get_height());
     std::vector<PhysicsBody::Ptr> bodies;
-    for(auto y = 0; y < 10; y += 1) {
+    for(auto x = 0; x < 10; x += 1) {
         auto body = std::make_shared<PhysicsBody>();
-        body->set_origin({0,y,0});
+        body->set_origin({x, 10, 0});
         scene->add_to_scene("instanced_color",
                             Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f)),
                             body);
@@ -87,6 +87,7 @@ void loop() {
                             Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f)),
                             body);
         bodies.push_back(body);
+        god->add(body);
     }
 
     std::cout << "Window init" << std::endl;

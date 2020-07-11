@@ -10,8 +10,10 @@
 
 void Integrator::update(const std::vector<PhysicsBody::Ptr> &bodies, float time_step) {
     for(const auto& body: bodies) {
-        if(active_bodies.find(body->get_id()) == active_bodies.end())
+        if(active_bodies.find(body->get_id()) == active_bodies.end()) {
             active_bodies[body->get_id()] = body;
+            body->set_acceleration(G); // invoke gravity
+        }
     }
 
     std::vector<std::string> inert_bodies;
@@ -32,12 +34,9 @@ void Integrator::update(const std::vector<PhysicsBody::Ptr> &bodies, float time_
         acc.z = glm::abs(acc.z) < EPSILON ? 0 : acc.z;
         body->set_acceleration(acc);
 
+        // check if underground
         auto pos = body->get_origin();
-        if(pos.y > 0) {
-            // if above ground accelerate due to gravity
-            body->set_velocity(body->get_velocity() + G*time_step);
-        } else if(pos.y < 0) {
-            // if below ground warp to ground and freeze
+        if(pos.y < 0) {
             // TODO: should collide with ground?
             pos.y = 0;
             body->set_origin(pos);

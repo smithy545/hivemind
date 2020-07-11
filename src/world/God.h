@@ -21,7 +21,7 @@ public:
 
     void generate_town();
 
-    void add(const PhysicsBody::Ptr& body, bool physics);
+    void add(const PhysicsBody::Ptr& body);
 
     CollisionNode::Ptr get_collision_tree();
 private:
