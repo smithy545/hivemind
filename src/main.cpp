@@ -80,10 +80,10 @@ void loop() {
     // setup some boxes
     auto box_mesh = Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
     auto outline_mesh =  Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f));
-    for(auto x = 0; x < 10; x++) {
-        for(auto z = 0; z < 10; z++) {
+    for(auto x = 0; x < 100; x += 2) {
+        for(auto z = 0; z < 100; z += 4) {
             auto body = std::make_shared<PhysicsBody>();
-            body->set_origin({x, 10, z});
+            body->set_position({x, 10, z});
             scene->add_to_scene("instanced_color", box_mesh, body);
             scene->add_to_scene("instanced_color", outline_mesh, body);
             god->add(body);

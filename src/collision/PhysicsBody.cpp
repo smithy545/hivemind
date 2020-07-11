@@ -10,5 +10,5 @@ void PhysicsBody::update(float time_step) {
     _velocity += _acceleration * time_step;
 
     // update position
-    set_origin(get_origin() + _velocity * time_step);
+    set_position(get_position() + _velocity * time_step);
 }

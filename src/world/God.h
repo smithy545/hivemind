@@ -21,6 +21,10 @@ public:
 
     void generate_town();
 
+    void generate_person();
+
+    void generate_house();
+
     void add(const PhysicsBody::Ptr& body);
 
     CollisionNode::Ptr get_collision_tree();

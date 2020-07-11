@@ -60,3 +60,11 @@ void God::add(const PhysicsBody::Ptr& body) {
 void God::generate_town() {
 
 }
+
+void God::generate_person() {
+
+}
+
+void God::generate_house() {
+
+}

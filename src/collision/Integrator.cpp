@@ -34,11 +34,11 @@ void Integrator::update(const std::vector<PhysicsBody::Ptr> &bodies, float time_
         body->set_acceleration(acc);
 
         // check if underground
-        auto pos = body->get_origin();
+        auto pos = body->get_position();
         if(pos.y < 0) {
             // TODO: should collide with ground?
             pos.y = 0;
-            body->set_origin(pos);
+            body->set_position(pos);
             body->set_acceleration({0,0,0});
             body->set_velocity({0,0,0});
         }
