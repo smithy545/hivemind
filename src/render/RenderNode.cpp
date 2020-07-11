@@ -52,13 +52,24 @@ int RenderNode::get_num_instances() {
 
 void RenderNode::instance(const Body::Ptr& body) {
     _instances.push_back(body);
-}
-
-void RenderNode::prepare() {
-    _instance_matrices.clear();
-    for(const auto& body: _instances)
-        _instance_matrices.push_back(body->get_model_matrix());
+    _instance_matrices.push_back(body->get_model_matrix());
 
     glBindBuffer(GL_ARRAY_BUFFER, _instance_buffer);
     glBufferData(GL_ARRAY_BUFFER, _instance_matrices.size()*sizeof(glm::mat4), &_instance_matrices[0], GL_STATIC_DRAW);
+}
+
+void RenderNode::prepare() {
+    bool modified = false;
+    for(int i = 0; i < _instances.size(); i++) {
+        if (_instances[i]->is_dirty()) {
+            _instance_matrices[i] = _instances[i]->get_model_matrix();
+            modified = true;
+        }
+    }
+
+    if(modified) {
+        glBindBuffer(GL_ARRAY_BUFFER, _instance_buffer);
+        glBufferData(GL_ARRAY_BUFFER, _instance_matrices.size() * sizeof(glm::mat4), &_instance_matrices[0],
+                     GL_STATIC_DRAW);
+    }
 }

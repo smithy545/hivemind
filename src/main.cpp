@@ -6,15 +6,15 @@
 #include "collision/Collider.h"
 #include "collision/Integrator.h"
 #include "engine/Interface.h"
-#include "pathing/GridMap.h"
 #include "render/Renderer.h"
-#include "world/God.h"
 
 
 // window state
 static int screen_width;
 static int screen_height;
 static bool resized;
+static bool enforce_fps = false;
+static int desired_fps = 100;
 
 // game state
 static State::Ptr state;
@@ -76,7 +76,8 @@ void loop() {
     state = std::make_shared<State>(screen_width, screen_height);
     auto god = std::make_shared<God>();
     auto scene = std::make_shared<Scene>(renderer.get_width(), renderer.get_height());
-    for(auto y = 0; y < 100; y += 10) {
+    std::vector<PhysicsBody::Ptr> bodies;
+    for(auto y = 0; y < 10; y += 1) {
         auto body = std::make_shared<PhysicsBody>();
         body->set_origin({0,y,0});
         scene->add_to_scene("instanced_color",
@@ -85,6 +86,7 @@ void loop() {
         scene->add_to_scene("instanced_color",
                             Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f)),
                             body);
+        bodies.push_back(body);
     }
 
     std::cout << "Window init" << std::endl;
@@ -136,12 +138,11 @@ void loop() {
         ui->update(state, scene, god);
         god->update();
 
-        // enforce fps
-        int desiredFPS = 60;
+        // enforce fps if desired
         auto fps = state->get_fps();
-        if(desiredFPS < ((int)fps)) {
-            std::chrono::duration<double> leftOver{2*(fps-desiredFPS)/(fps*desiredFPS)};
-            std::this_thread::sleep_for(leftOver);
+        if(enforce_fps && desired_fps < ((int)fps)) {
+            std::chrono::duration<double> remaining{2*(fps-desired_fps)/(fps*desired_fps)};
+            std::this_thread::sleep_for(remaining);
         }
 
         // render

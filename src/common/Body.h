@@ -20,6 +20,10 @@ public:
         return glm::translate(glm::mat4(1), _origin);
     }
 
+    virtual bool is_dirty() {
+        return true;
+    }
+
     _VAR_GET(std::string, id, public){StringUtil::uuid4()};
     _VAR_GETSET(glm::vec3, origin, public, public){0}; // in meters I guess
 };
