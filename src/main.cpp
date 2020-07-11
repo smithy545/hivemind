@@ -76,18 +76,18 @@ void loop() {
     state = std::make_shared<State>(screen_width, screen_height);
     auto god = std::make_shared<God>();
     auto scene = std::make_shared<Scene>(renderer.get_width(), renderer.get_height());
-    std::vector<PhysicsBody::Ptr> bodies;
-    for(auto x = 0; x < 10; x += 1) {
-        auto body = std::make_shared<PhysicsBody>();
-        body->set_origin({x, 10, 0});
-        scene->add_to_scene("instanced_color",
-                            Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f)),
-                            body);
-        scene->add_to_scene("instanced_color",
-                            Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f)),
-                            body);
-        bodies.push_back(body);
-        god->add(body);
+
+    // setup some boxes
+    auto box_mesh = Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
+    auto outline_mesh =  Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f));
+    for(auto x = 0; x < 10; x++) {
+        for(auto z = 0; z < 10; z++) {
+            auto body = std::make_shared<PhysicsBody>();
+            body->set_origin({x, 10, z});
+            scene->add_to_scene("instanced_color", box_mesh, body);
+            scene->add_to_scene("instanced_color", outline_mesh, body);
+            god->add(body);
+        }
     }
 
     std::cout << "Window init" << std::endl;

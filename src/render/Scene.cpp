@@ -17,6 +17,14 @@ void Scene::cleanup() {
 }
 
 void Scene::add_to_scene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body) {
+    auto node = _render_head;
+    while(node != nullptr) {
+        if(mesh == node->get_entity()) {
+            node->instance(body);
+            return;
+        }
+        node = std::dynamic_pointer_cast<RenderNode>(node->get_next());
+    }
     _render_head = std::make_shared<RenderNode>(shaderName, std::move(mesh), _render_head);
     _render_head->instance(body);
 }

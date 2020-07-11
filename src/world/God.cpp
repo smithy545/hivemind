@@ -25,12 +25,12 @@ CollisionNode::Ptr God::get_collision_tree() {
     CollisionNode::Ptr prev = nullptr;
     while(node != nullptr) {
         if (!node->is_alive()) {
-            if (prev != nullptr) {
+            if (prev != nullptr)
                 prev->set_next(node->get_next());
-            } else {
+            else {
                 collision_head = node->get_next();
-                if(collision_head == nullptr)
-                    break;
+                node = node->get_next();
+                continue;
             }
         }
         node = node->get_next();

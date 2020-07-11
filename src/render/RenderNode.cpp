@@ -5,7 +5,7 @@
 
 #include <utility>
 
-#include <iostream>
+
 RenderNode::RenderNode(std::string shader_name, Drawable::Ptr entity, Ptr next):
     _shader_name(std::move(shader_name)),
     _entity(std::move(entity)),

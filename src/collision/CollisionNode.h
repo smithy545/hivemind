@@ -11,7 +11,7 @@
 #include "macros.h"
 
 
-class CollisionNode : public std::enable_shared_from_this<CollisionNode> {
+class CollisionNode{
 public:
     POINTERIZE(CollisionNode);
     typedef std::pair<PhysicsBody::Ptr, PhysicsBody::Ptr> CollisionPair;
@@ -21,13 +21,9 @@ public:
 
     void kill();
 
-    inline PhysicsBody::Ptr get_first_body() {
-        return bodies.first;
-    }
+    PhysicsBody::Ptr get_first_body();
 
-    inline PhysicsBody::Ptr get_second_body() {
-        return bodies.second;
-    }
+    PhysicsBody::Ptr get_second_body();
 
     _MVAR_GETSET(CollisionNode::Ptr, next, public, public);
     _BVAR_GET(alive, public){true};

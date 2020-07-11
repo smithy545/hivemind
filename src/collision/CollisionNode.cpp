@@ -14,3 +14,11 @@ CollisionNode::CollisionNode(const PhysicsBody::Ptr& first, const PhysicsBody::P
 void CollisionNode::kill() {
     _alive = false;
 }
+
+PhysicsBody::Ptr CollisionNode::get_first_body() {
+    return bodies.first;
+}
+
+PhysicsBody::Ptr CollisionNode::get_second_body() {
+    return bodies.second;
+}

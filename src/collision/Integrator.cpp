@@ -4,7 +4,6 @@
 
 #include "Integrator.h"
 
-#include <iostream>
 #include <fmt/format.h>
 
 

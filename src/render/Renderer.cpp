@@ -6,12 +6,10 @@
 
 #include <iostream>
 #include <fmt/format.h>
-#include <glm/ext.hpp>
 
 #include "util/FileUtil.h"
 #include "util/MathUtil.h"
 #include "util/RenderUtil.h"
-#include "util/StringUtil.h"
 
 
 GLFWwindow* Renderer::init(const std::string& config_path) {
