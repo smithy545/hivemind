@@ -76,12 +76,16 @@ void loop() {
     state = std::make_shared<State>(screen_width, screen_height);
     auto god = std::make_shared<God>();
     auto scene = std::make_shared<Scene>(renderer.get_width(), renderer.get_height());
-    scene->add_to_scene("color",
-                        Renderer::generate_box_mesh_triangles(1, 2, 3,
-                                                              glm::vec4(1.0f, 0.f, 0.f, 1.0f)));
-    scene->add_to_scene("color",
-                        Renderer::generate_box_mesh_lines(1, 2, 3,
-                                                          glm::vec4(0.0f, 0.f, 0.f, 1.0f)));
+    for(auto y = 0; y < 100; y += 10) {
+        auto body = std::make_shared<PhysicsBody>();
+        body->set_origin({0,y,0});
+        scene->add_to_scene("instanced_color",
+                            Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f)),
+                            body);
+        scene->add_to_scene("instanced_color",
+                            Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f)),
+                            body);
+    }
 
     std::cout << "Window init" << std::endl;
     // Ensure we can capture the escape key being pressed below

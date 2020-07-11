@@ -7,14 +7,16 @@
     "color": [
       "vertex.shader",
       "color.fragment.shader"
+    ],
+    "instanced_texture": [
+      "vertex.instanced.shader",
+      "texture.fragment.shader"
+    ],
+    "instanced_color": [
+      "vertex.instanced.shader",
+      "color.fragment.shader"
     ]
   },
-  "spritesheets": [
-    "gorilla.json"
-  ],
-  "tilesheets": [
-    "basic.json"
-  ],
   "textures": {
     "gorilla": "gorilla.png"
   },

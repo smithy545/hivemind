@@ -26,10 +26,16 @@ public:
 
     void set_next(const Ptr &node);
 
+    int get_num_instances();
+
     void instance(const Body::Ptr& body);
 
-    _MVAR_GETSET(std::string, shader_name, public, private);
+    void prepare();
+
+    _VAR_GET(GLuint, instance_buffer, public);
     _REFVAR_GET(std::vector<Body::Ptr>, instances, public);
+    _VAR_GET(std::vector<glm::mat4>, instance_matrices, public);
+    _MVAR_GETSET(std::string, shader_name, public, private);
     _MVAR_GETSET(Drawable::Ptr, entity, public, public);
 private:
     Ptr next;

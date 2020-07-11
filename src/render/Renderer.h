@@ -50,7 +50,7 @@ public:
 private:
     std::string current_shader_name{};
     GLuint current_shader_program{};
-    GLint mvp_uniform{};
+    GLint vp_uniform{};
     GLint tex_uniform{};
     GLFWwindow* window{nullptr};
     std::unordered_map<std::string, GLuint> loaded_shaders;
@@ -66,8 +66,6 @@ private:
     const std::string HEIGHT_KEY{"height"};
     const std::string SHADERS_KEY{"shaders"};
     const std::string SPRITES_KEY{"sprites"};
-    const std::string SPRITESHEETS_KEY{"spritesheets"};
-    const std::string TILESHEETS_KEY{"tilesheets"};
     const std::string TILESIZE_KEY{"tilesize"};
     const std::string TEXTURE_KEY{"texture"};
     const std::string TEXTURES_KEY{"textures"};
@@ -84,16 +82,6 @@ private:
                     {"description", "Initial height of rendered window"},
                     {"type", "integer"}
                 }},
-                {SPRITESHEETS_KEY, {
-                    {"description", "Names of json files containing sprite information"},
-                    {"type", "array"},
-                    {"items", {"type", "string"}}
-                }},
-                {TILESHEETS_KEY, {
-                    {"description", "Names of json files containing tilesheet information"},
-                    {"type", "array"},
-                    {"items", {"type", "string"}}
-                }},
                 {TILESIZE_KEY, {
                     {"description", "Size of tiles to render on maps"},
                     {"type", "integer"}
@@ -107,7 +95,7 @@ private:
                     {"type", "object"}
                 }}
               }},
-    {"required", {WIDTH_KEY, HEIGHT_KEY, SPRITESHEETS_KEY, TILESHEETS_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
+    {"required", {WIDTH_KEY, HEIGHT_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
     };
     const json SPRITE_SCHEMA{
             {"title",      "A screen sprite"},

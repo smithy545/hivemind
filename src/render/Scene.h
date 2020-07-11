@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "collision/CollisionNode.h"
+#include "common/Body.h"
 #include "macros.h"
 #include "render/Camera.h"
 #include "render/Mesh.h"
@@ -20,7 +20,7 @@ public:
 
     Scene(int width, int height);
 
-    void add_to_scene(const std::string& shader_name, Mesh::Ptr mesh);
+    void add_to_scene(const std::string& shader_name, Mesh::Ptr mesh, const Body::Ptr& body);
 
     void cleanup();
 

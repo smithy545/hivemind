@@ -107,17 +107,12 @@ void Renderer::render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camer
                 glBindTexture(GL_TEXTURE_2D, texId);
             }
 
+            node->prepare();
             for (const auto &instance: node->get_instances()) {
-                // translate to world position
-                glm::mat4 model_matrix = glm::translate(glm::mat4(1), instance->get_origin());
-                // transform to screen position
-                glm::mat4 mvp_matrix = vp_matrix * model_matrix;
                 // store in shader uniform
-                glUniformMatrix4fv(mvp_uniform, 1, GL_FALSE, &mvp_matrix[0][0]);
+                glUniformMatrix4fv(vp_uniform, 1, GL_FALSE, &vp_matrix[0][0]);
                 // draw instances
-                glDrawElements(entity->get_draw_mode(),
-                         entity->get_num_indices() * sizeof(unsigned int),
-                               GL_UNSIGNED_INT, nullptr);
+                glDrawElementsInstanced(entity->get_draw_mode(), entity->get_num_indices(), GL_UNSIGNED_INT, 0, node->get_num_instances());
             }
         }
         node = std::dynamic_pointer_cast<RenderNode>(node->get_next());
@@ -136,7 +131,7 @@ bool Renderer::set_shader(const std::string &name) {
         current_shader_name = name;
         current_shader_program = loaded_shaders[name];
         glUseProgram(current_shader_program);
-        mvp_uniform = glGetUniformLocation(current_shader_program, "MVP");
+        vp_uniform = glGetUniformLocation(current_shader_program, "VP");
         tex_uniform = glGetUniformLocation(current_shader_program, "tex");
         glUniform1i(tex_uniform, 0);
         return true;

@@ -6,6 +6,7 @@
 #define SOCIETY_BODY_H
 
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 #include "macros.h"
 #include "util/StringUtil.h"
@@ -14,9 +15,13 @@
 class Body {
 public:
     POINTERIZE(Body);
-    // in meters I guess
+
+    virtual glm::mat4 get_model_matrix() {
+        return glm::translate(glm::mat4(1), _origin);
+    }
+
     _VAR_GET(std::string, id, public){StringUtil::uuid4()};
-    _VAR_GETSET(glm::vec3, origin, public, public){0};
+    _VAR_GETSET(glm::vec3, origin, public, public){0}; // in meters I guess
 };
 
 

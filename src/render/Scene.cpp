@@ -16,9 +16,7 @@ void Scene::cleanup() {
     }
 }
 
-
-void Scene::add_to_scene(const std::string& shaderName, Mesh::Ptr mesh) {
-    // add to render tree with body at origin
+void Scene::add_to_scene(const std::string& shaderName, Mesh::Ptr mesh, const Body::Ptr& body) {
     _render_head = std::make_shared<RenderNode>(shaderName, std::move(mesh), _render_head);
-    _render_head->instance(std::make_shared<PhysicsBody>());
+    _render_head->instance(body);
 }
