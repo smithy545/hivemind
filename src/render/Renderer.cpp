@@ -82,6 +82,27 @@ GLFWwindow* Renderer::init(const std::string& config_path) {
     // clear background to black
     glClearColor(1.0f,1.0f, 1.0f, 1.0f);
 
+    // setup origin markers
+    origin_mesh = std::make_shared<Mesh>();
+    origin_mesh->get_vertices().emplace_back(0,0,0);
+    origin_mesh->get_vertices().emplace_back(10,0,0);
+    origin_mesh->get_vertices().emplace_back(0,10,0);
+    origin_mesh->get_vertices().emplace_back(0,0,10);
+    origin_mesh->get_colors().emplace_back(0,0,0,1);
+    origin_mesh->get_colors().emplace_back(1,0,0,1);
+    origin_mesh->get_colors().emplace_back(0,1,0,1);
+    origin_mesh->get_colors().emplace_back(0,0,1,1);
+    origin_mesh->get_indices().push_back(0);
+    origin_mesh->get_indices().push_back(1);
+    origin_mesh->get_indices().push_back(0);
+    origin_mesh->get_indices().push_back(2);
+    origin_mesh->get_indices().push_back(0);
+    origin_mesh->get_indices().push_back(3);
+    origin_mesh->bufferVertices();
+    origin_mesh->bufferColors();
+    origin_mesh->bufferIndices();
+    origin_mesh->set_draw_mode(GL_LINES);
+
     return window;
 }
 
@@ -98,7 +119,7 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const Camera& camera, const Map::Ptr& map) {
+void Renderer::render(Camera& camera, const Map::Ptr& map) {
     glUseProgram(current_shader_program);
     auto vp_matrix = camera.get_view_projection_matrix();
     auto mesh = map->get_mesh();
@@ -111,6 +132,9 @@ void Renderer::render(const Camera& camera, const Map::Ptr& map) {
         // draw instances
         glDrawElements(mesh->get_draw_mode(), mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
     }
+
+    glBindVertexArray(origin_mesh->get_vertex_array_id());
+    glDrawElements(origin_mesh->get_draw_mode(), origin_mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
 }
 
 void Renderer::resize(int width, int height) {

@@ -15,7 +15,7 @@
 
 #include "Camera.h"
 #include "macros.h"
-#include "pathing/Map.h"
+#include "pathing/GridMap.h"
 #include "RenderNode.h"
 
 
@@ -26,7 +26,7 @@ public:
     // lifecycle methods
     GLFWwindow *init(const std::string& config_path);
 
-    void render(const Camera& camera, const Map::Ptr& map);
+    void render(Camera& camera, const Map::Ptr& map);
 
     void cleanup();
 
@@ -39,6 +39,7 @@ public:
     _VAR_GETSET(int, width, public, private);
     _VAR_GETSET(int, height, public, private);
 private:
+    Mesh::Ptr origin_mesh;
     std::string current_shader_name{};
     GLuint current_shader_program{};
     GLint vp_uniform{};
