@@ -115,18 +115,15 @@ bool Camera::is_visible(glm::vec3 point) {
     return glm::length(point - _position) < 100.0f;
 }
 
-glm::vec3 Camera::get_camera_to_mouse(int mouse_x, int screen_width, int mouse_y, int screen_height) {
+glm::vec3 Camera::get_camera_to_mouse(int mouse_x, int mouse_y, int screen_width, int screen_height) {
     // normalized device coordincates (nds)
     float x = (2.0f * mouse_x) / screen_width - 1.0f;
     float y = 1.0f - (2.0f * mouse_y) / screen_height;
-    float z = -1.0f;
-    auto ray_nds = glm::vec3(x, y, z);
     // clip coordinates
-    auto ray_clip = glm::vec4(ray_nds, 1.0);
+    auto ray_clip = glm::vec4(x, y, -1.0f, 1.0);
     // eye/camera coords
-    auto ray_eye = inverse(projection_matrix) * ray_clip;
+    auto ray_eye = glm::inverse(projection_matrix) * ray_clip;
     ray_eye = glm::vec4(ray_eye.x, ray_eye.y, -1.0, 0.0);
     // world coords
-    glm::vec3 ray_world(glm::inverse(view_matrix) * ray_eye);
-    return glm::normalize(ray_world);
+    return glm::normalize(glm::inverse(view_matrix) * ray_eye);
 }

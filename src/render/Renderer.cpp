@@ -75,6 +75,13 @@ GLFWwindow* Renderer::init(const std::string& config_path) {
     else
         std::cerr << "Error setting default shader: " << DEFAULT_SHADER_NAME << std::endl;
 
+    // Ensure we can capture the escape key being pressed below
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+    // disable cursor to enable automatic recentering
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    // clear background to black
+    glClearColor(1.0f,1.0f, 1.0f, 1.0f);
+
     return window;
 }
 

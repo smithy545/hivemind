@@ -54,7 +54,7 @@ public:
     glm::mat4 get_view_projection_matrix() const;
 
     // ref: https://antongerdelan.net/opengl/raycasting.html
-    glm::vec3 get_camera_to_mouse(int mouse_x, int screen_width, int mouse_y, int screen_height);
+    glm::vec3 get_camera_to_mouse(int mouse_x,int mouse_y, int screen_width, int screen_height);
 
     _VAR_GET(glm::vec3, up, public){glm::vec3(0, 1, 0)};
     _VAR_GET(glm::vec3,forward, public){glm::vec3(0, 0, -1)};

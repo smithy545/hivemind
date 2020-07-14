@@ -73,27 +73,7 @@ void loop() {
     screen_height = renderer.get_height();
     auto camera = std::make_shared<Camera>(screen_width, screen_height);
 
-    std::cout << "State init" << std::endl;
-    state = std::make_shared<State>(screen_width, screen_height);
-    auto god = std::make_shared<God>();
-    auto map = std::make_shared<GridMap>(64,64);
-
-    // setup some boxes
-    auto box_mesh = Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
-    auto outline_mesh =  Renderer::generate_box_mesh_lines(1, 2, 3, glm::vec4(0.0f, 0.f, 0.f, 1.0f));
-    for(auto x = 0; x < 100; x += 2) {
-        for(auto z = 0; z < 100; z += 4) {
-            auto body = std::make_shared<PhysicsBody>();
-            body->set_position({x, 10, z});
-            //scene->add_to_scene("instanced_color", box_mesh, body);
-            //scene->add_to_scene("instanced_color", outline_mesh, body);
-            //god->add(body);
-        }
-    }
-
-    std::cout << "Window init" << std::endl;
-    // Ensure we can capture the escape key being pressed below
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+    std::cout << "Input init" << std::endl;
     // Setup keyboard inputs
     glfwSetKeyCallback(window, keyCallback);
     glfwSetCharCallback(window, characterCallback);
@@ -103,10 +83,11 @@ void loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
-    // disable cursor to enable automatic recentering
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    // clear background to black
-    glClearColor(1.0f,1.0f, 1.0f, 1.0f);
+
+    std::cout << "State init" << std::endl;
+    state = std::make_shared<State>(screen_width, screen_height);
+    auto god = std::make_shared<God>();
+    auto map = std::make_shared<GridMap>(64,64);
 
     std::cout << "UI init" << std::endl;
     Interface::Ptr ui = std::make_shared<Interface>(god);
