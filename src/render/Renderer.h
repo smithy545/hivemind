@@ -15,7 +15,6 @@
 
 #include "Camera.h"
 #include "macros.h"
-#include "Mesh.h"
 #include "pathing/Map.h"
 #include "RenderNode.h"
 
@@ -37,15 +36,6 @@ public:
     // state setters
     bool set_shader(const std::string &name);
 
-    // add sprites
-    static Mesh::Ptr generate_bezier_mesh(const std::vector<glm::vec3> &hull, double stepSize, glm::vec4 color);
-
-    static Mesh::Ptr generate_line_mesh(const std::vector<glm::vec3> &points, glm::vec4 color);
-
-    static Mesh::Ptr generate_box_mesh_triangles(int width, int height, int length, glm::vec4 color);
-
-    static Mesh::Ptr generate_box_mesh_lines(int width, int height, int length, glm::vec4 color);
-
     _VAR_GETSET(int, width, public, private);
     _VAR_GETSET(int, height, public, private);
 private:
@@ -62,6 +52,8 @@ private:
 
     void load_texture(const std::string &name, const std::string &texture_path);
 
+    const std::string DEFAULT_SHADER_NAME{"color"};
+
     const std::string NAME_KEY{"name"};
     const std::string WIDTH_KEY{"width"};
     const std::string HEIGHT_KEY{"height"};
@@ -70,7 +62,6 @@ private:
     const std::string TILESIZE_KEY{"tilesize"};
     const std::string TEXTURE_KEY{"texture"};
     const std::string TEXTURES_KEY{"textures"};
-    const std::string DEFAULT_SHADER_NAME{"texture"};
     const json CONFIG_SCHEMA{
             {"title", "Renderer initialization config"},
             {"type", "object"},

@@ -9,6 +9,7 @@
 
 #include "macros.h"
 #include "MapNode.h"
+#include "render/Mesh.h"
 
 using std::vector;
 
@@ -26,6 +27,8 @@ public:
     virtual MapNode::Ptr get_node(int x, int y) = 0;
 
     virtual vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) = 0;
+
+    virtual Mesh::Ptr get_mesh() = 0;
 
     // Force bound checking in getNode!
     bool in_bounds(int x, int y) {

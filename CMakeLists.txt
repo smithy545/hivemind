@@ -89,7 +89,9 @@ add_library(util STATIC
         src/util/RenderUtil.cpp
         src/util/RenderUtil.h
         src/util/StringUtil.cpp
-        src/util/StringUtil.h)
+        src/util/StringUtil.h
+        src/util/MeshUtil.cpp
+        src/util/MeshUtil.h)
 
 ### MY RENDERER LIB ###
 add_library(render STATIC

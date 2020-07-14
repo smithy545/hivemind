@@ -9,7 +9,7 @@ Mesh::Mesh() {
     glGenVertexArrays(1, &_vertex_array_id);
     glBindVertexArray(_vertex_array_id);
     glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(1);
 
     // setup verts to be first attribute with 3 components
     glGenBuffers(1, &_vertex_buffer_id);
@@ -27,7 +27,7 @@ Mesh::Mesh() {
     glGenBuffers(1, &_color_buffer_id);
     glBindBuffer(GL_ARRAY_BUFFER, _color_buffer_id);
     glVertexAttribPointer(
-            2,                  // attribute
+            1,                  // attribute
             4,                  // size
             GL_FLOAT,           // type
             GL_FALSE,           // normalized?
@@ -37,6 +37,11 @@ Mesh::Mesh() {
 
     // gen and bind index buffer
     glGenBuffers(1, &_element_buffer_id);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _element_buffer_id);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 }
 
 Mesh::~Mesh() {
@@ -62,21 +67,27 @@ std::string Mesh::get_texture() {
 
 void Mesh::bufferVertices() {
     if (_vertex_buffer_id != 0) {
+        glBindVertexArray(_vertex_array_id);
         glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_id);
         glBufferData(GL_ARRAY_BUFFER, _vertices.size()*sizeof(glm::vec3), &_vertices[0], GL_STATIC_DRAW);
+        glBindVertexArray(0);
     }
 }
 
 void Mesh::bufferColors() {
     if (_color_buffer_id != 0) {
+        glBindVertexArray(_vertex_array_id);
         glBindBuffer(GL_ARRAY_BUFFER, _color_buffer_id);
         glBufferData(GL_ARRAY_BUFFER, _colors.size()*sizeof(glm::vec4), &_colors[0], GL_STATIC_DRAW);
+        glBindVertexArray(0);
     }
 }
 
 void Mesh::bufferIndices() {
     if (_element_buffer_id != 0) {
+        glBindVertexArray(_vertex_array_id);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _element_buffer_id);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, _indices.size()*sizeof(unsigned int), &_indices[0], GL_STATIC_DRAW);
+        glBindVertexArray(0);
     }
 }

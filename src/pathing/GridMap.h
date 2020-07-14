@@ -43,6 +43,7 @@ public:
 
     _VAR_GET(int, width, public);
     _VAR_GET(int, height, public);
+    _VAR_GET(Mesh::Ptr, mesh, public);
     _REFVAR_GET(vector<MapNode::Ptr>, nodes, public);
 private:
     vector<MapNode::Ptr> ret;

@@ -4,8 +4,7 @@
 
 #include "GridMap.h"
 
-#include <utility>
-
+#include "util/MeshUtil.h"
 
 using std::vector;
 
@@ -14,7 +13,8 @@ GridMap::GridMap(int width, int height) : GridMap(0, 0, width, height) {}
 GridMap::GridMap(int x_offset, int y_offset, int width, int height) : Map(x_offset, y_offset),
                                                                     _width(width),
                                                                     _height(height) {
-    // initialize nodes
+    _mesh = MeshUtil::generate_quad_mesh(width, height, {1.0f,0.f,0.f,1.0f});
+    // initialize nodes and mesh
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             _nodes.push_back(std::make_shared<GridNode>(x_offset + x, y_offset + y));
