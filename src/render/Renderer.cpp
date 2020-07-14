@@ -98,9 +98,9 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const Camera::Ptr& camera, const Map::Ptr& map) {
+void Renderer::render(const Camera& camera, const Map::Ptr& map) {
     glUseProgram(current_shader_program);
-    auto vp_matrix = camera->get_view_projection_matrix();
+    auto vp_matrix = camera.get_view_projection_matrix();
     auto mesh = map->get_mesh();
     if(mesh != nullptr) {
         // bind vertex array object

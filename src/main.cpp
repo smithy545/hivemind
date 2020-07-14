@@ -71,7 +71,7 @@ void loop() {
     GLFWwindow *window = renderer.init("renderer.json");
     screen_width = renderer.get_width();
     screen_height = renderer.get_height();
-    auto camera = std::make_shared<Camera>(screen_width, screen_height);
+    Camera camera(screen_width, screen_height);
 
     std::cout << "Input init" << std::endl;
     // Setup keyboard inputs
@@ -86,15 +86,13 @@ void loop() {
 
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(screen_width, screen_height);
-    auto god = std::make_shared<God>();
-    auto map = std::make_shared<GridMap>(64,64);
+
+    std::cout << "World init" << std::endl;
+    God god;
+    auto map = std::make_shared<GridMap>(64, 64);
 
     std::cout << "UI init" << std::endl;
-    Interface::Ptr ui = std::make_shared<Interface>(god);
-
-    std::cout << "Physics init" << std::endl;
-    Collider::Ptr collider = std::make_shared<Collider>();
-    Integrator::Ptr integrator = std::make_shared<Integrator>();
+    Interface ui;
 
     std::cout << "Loop start" << std::endl;
     state->start();
@@ -105,21 +103,16 @@ void loop() {
 
         if (resized) {
             renderer.resize(screen_width, screen_height);
-            camera->resize(screen_width, screen_height);
+            camera.resize(screen_width, screen_height);
             resized = false;
         }
 
-        if (!state->is_paused()) {
-            // check collisions and update bodies
-            if (collider != nullptr && integrator != nullptr) {
-                auto updated = collider->update(god->get_collision_tree());
-                integrator->update(updated, 1.0f);
-            }
-        }
-
         // update state with user input
-        ui->update(state, camera, god);
-        god->update();
+        ui.update(state, camera);
+        god.update();
+
+        // reset mouse wheel position
+        state->set_mouse_scroll(0.0f);
 
         // enforce fps if desired
         auto fps = state->get_fps();
@@ -130,9 +123,6 @@ void loop() {
 
         // render
         renderer.render(camera, map);
-
-        // reset mouse wheel position
-        state->set_mouse_scroll(0.0f);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);

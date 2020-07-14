@@ -18,9 +18,7 @@ class Interface {
 public:
     POINTERIZE(Interface);
 
-    explicit Interface(God::Ptr god);
-
-    void update(const State::Ptr &state, Camera::Ptr &camera, God::Ptr &god);
+    void update(const State::Ptr &state, Camera &camera);
 };
 
 

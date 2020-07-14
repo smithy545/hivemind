@@ -26,7 +26,7 @@ public:
     // lifecycle methods
     GLFWwindow *init(const std::string& config_path);
 
-    void render(const Camera::Ptr& camera, const Map::Ptr& map);
+    void render(const Camera& camera, const Map::Ptr& map);
 
     void cleanup();
 
