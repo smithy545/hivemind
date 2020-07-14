@@ -78,8 +78,7 @@ add_library(pathing STATIC
         src/pathing/Map.h
         src/pathing/MapNode.h
         src/pathing/Pather.cpp
-        src/pathing/Pather.h
-        )
+        src/pathing/Pather.h)
 
 ### MY UTIL LIB ###
 add_library(util STATIC
@@ -112,20 +111,18 @@ add_library(ui STATIC
 ### MY DYNAMICS LIB ###
 add_library(dynamics STATIC
         src/collision/PhysicsBody.cpp
-        src/collision/PhysicsBody.h)
+        src/collision/PhysicsBody.h
+        src/collision/Collider.cpp
+        src/collision/Collider.h
+        src/collision/Integrator.cpp
+        src/collision/Integrator.h)
 
 ### GAME ENGINE ###
 add_library(engine STATIC
         src/engine/State.cpp
         src/engine/State.h
-        src/collision/Collider.cpp
-        src/collision/Collider.h
-        src/collision/Integrator.cpp
-        src/collision/Integrator.h
         src/engine/Interface.cpp
-        src/engine/Interface.h
-        src/render/Scene.cpp
-        src/render/Scene.h)
+        src/engine/Interface.h)
 
 add_library(world STATIC
         src/world/Person.cpp

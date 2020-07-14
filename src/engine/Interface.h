@@ -8,9 +8,8 @@
 #include <string>
 #include <vector>
 
-#include "interface/InterfaceNode.h"
 #include "macros.h"
-#include "render/Scene.h"
+#include "render/Camera.h"
 #include "State.h"
 #include "world/God.h"
 
@@ -19,9 +18,9 @@ class Interface {
 public:
     POINTERIZE(Interface);
 
-    Interface(Scene::Ptr scene, God::Ptr god);
+    explicit Interface(God::Ptr god);
 
-    void update(const State::Ptr &state, Scene::Ptr &scene, God::Ptr &god);
+    void update(const State::Ptr &state, Camera::Ptr &camera, God::Ptr &god);
 };
 
 

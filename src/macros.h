@@ -29,15 +29,15 @@
 
 // Useful Getter/Setter permutations
 #define GET(NAME, TYPE, ACCESS) GETFUNC(NAME, TYPE, ACCESS, inline, get, EMPTY)
-#define GET(NAME, TYPE, ACCESS) GETFUNC(NAME, TYPE, ACCESS, inline, get, EMPTY)
 #define GET_BOOL(NAME, _, ACCESS) GETFUNC(NAME, bool, ACCESS, inline, is,  EMPTY)
+#define GET_CONST(NAME, TYPE, ACCESS) GETFUNC(NAME, TYPE, ACCESS, inline, get, const)
 #define SET(NAME, TYPE, ACCESS) SETFUNC(NAME, TYPE, ACCESS, inline, set, ID)
 #define MOVE_AND_SET(NAME, TYPE, ACCESS) SETFUNC(NAME, TYPE, ACCESS, inline, set, MOVE)
 #define GET_REF(NAME, TYPE, ACCESS) GETFUNC(NAME, TYPE, ACCESS, inline, &get, EMPTY)
 #define SET_REF(NAME, TYPE, ACCESS) SETFUNC(NAME, TYPE##&, ACCESS, inline, set, ID)
 
 // CONSTVAR: const var
-#define _CONSTVAR(TYPE, NAME, ACCESS) GET(NAME, TYPE, ACCESS) _DECLARE(const TYPE, NAME, private)
+#define _CONSTVAR(TYPE, NAME, ACCESS) _VAR(TYPE, NAME, GET_CONST, ACCESS, NOOP, EMPTY)
 
 // Useful permutations of var base
 #define _VAR_GET(TYPE, NAME, ACCESS) _VAR(TYPE, NAME, GET, ACCESS, NOOP, EMPTY)

@@ -88,13 +88,13 @@ void Renderer::cleanup() {
     glfwTerminate();
 }
 
-void Renderer::render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camera) {
+void Renderer::render(const Camera::Ptr& camera, const Map::Ptr& map) {
     glUseProgram(current_shader_program);
     auto vp_matrix = camera->get_view_projection_matrix();
-    auto node = tree_head;
+    RenderNode::Ptr node = nullptr; // render head
     while (node != nullptr) {
         auto entity = node->get_entity();
-        if(set_shader(node->get_shader_name()) && entity!= nullptr) {
+        if(entity != nullptr) {
             // bind vertex array object
             glBindVertexArray(entity->get_vertex_array_id());
             // check for texture

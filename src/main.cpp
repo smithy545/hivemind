@@ -2,10 +2,10 @@
 #include <iostream>
 #include <thread>
 
-#include "engine/State.h"
 #include "collision/Collider.h"
 #include "collision/Integrator.h"
 #include "engine/Interface.h"
+#include "pathing/GridMap.h"
 #include "render/Renderer.h"
 
 
@@ -71,11 +71,12 @@ void loop() {
     GLFWwindow *window = renderer.init("renderer.json");
     screen_width = renderer.get_width();
     screen_height = renderer.get_height();
+    auto camera = std::make_shared<Camera>(screen_width, screen_height);
 
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(screen_width, screen_height);
     auto god = std::make_shared<God>();
-    auto scene = std::make_shared<Scene>(renderer.get_width(), renderer.get_height());
+    auto map = std::make_shared<GridMap>(64,64);
 
     // setup some boxes
     auto box_mesh = Renderer::generate_box_mesh_triangles(1, 2, 3, glm::vec4(1.0f, 0.f, 0.f, 1.0f));
@@ -84,9 +85,9 @@ void loop() {
         for(auto z = 0; z < 100; z += 4) {
             auto body = std::make_shared<PhysicsBody>();
             body->set_position({x, 10, z});
-            scene->add_to_scene("instanced_color", box_mesh, body);
-            scene->add_to_scene("instanced_color", outline_mesh, body);
-            god->add(body);
+            //scene->add_to_scene("instanced_color", box_mesh, body);
+            //scene->add_to_scene("instanced_color", outline_mesh, body);
+            //god->add(body);
         }
     }
 
@@ -108,7 +109,7 @@ void loop() {
     glClearColor(1.0f,1.0f, 1.0f, 1.0f);
 
     std::cout << "UI init" << std::endl;
-    Interface::Ptr ui = std::make_shared<Interface>(scene, god);
+    Interface::Ptr ui = std::make_shared<Interface>(god);
 
     std::cout << "Physics init" << std::endl;
     Collider::Ptr collider = std::make_shared<Collider>();
@@ -123,7 +124,7 @@ void loop() {
 
         if (resized) {
             renderer.resize(screen_width, screen_height);
-            scene->get_camera()->resize(screen_width, screen_height);
+            camera->resize(screen_width, screen_height);
             resized = false;
         }
 
@@ -136,7 +137,7 @@ void loop() {
         }
 
         // update state with user input
-        ui->update(state, scene, god);
+        ui->update(state, camera, god);
         god->update();
 
         // enforce fps if desired
@@ -147,7 +148,7 @@ void loop() {
         }
 
         // render
-        renderer.render(scene->get_render_head(), scene->get_camera());
+        renderer.render(camera, map);
 
         // reset mouse wheel position
         state->set_mouse_scroll(0.0f);
@@ -161,6 +162,5 @@ void loop() {
             !state->is_stopped());
 
     // cleanup state before cleaning up renderer so glfw isn't terminated
-    scene->cleanup();
     renderer.cleanup();
 }

@@ -16,6 +16,7 @@
 #include "Camera.h"
 #include "macros.h"
 #include "Mesh.h"
+#include "pathing/Map.h"
 #include "RenderNode.h"
 
 
@@ -26,7 +27,7 @@ public:
     // lifecycle methods
     GLFWwindow *init(const std::string& config_path);
 
-    void render(const RenderNode::Ptr &tree_head, const Camera::Ptr& camera);
+    void render(const Camera::Ptr& camera, const Map::Ptr& map);
 
     void cleanup();
 

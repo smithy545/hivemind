@@ -24,12 +24,11 @@ public:
         POINTERIZE(GridNode);
 
         GridNode(int x, int y) : GridNode(x, y, true) {};
-
         GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}
 
-        _VAR_GETSET(int, x, public, private);
-        _VAR_GETSET(int, y, public, private);
-        _BVAR_GETSET(passable, public, private);
+        _VAR_GET(int, x, public);
+        _VAR_GET(int, y, public);
+        _BVAR_GET(passable, public);
     };
 
     GridMap(int width, int height);
@@ -42,8 +41,8 @@ public:
 
     vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) override;
 
-    _VAR_GETSET(int, width, public, private);
-    _VAR_GETSET(int, height, public, private);
+    _VAR_GET(int, width, public);
+    _VAR_GET(int, height, public);
     _REFVAR_GET(vector<MapNode::Ptr>, nodes, public);
 private:
     vector<MapNode::Ptr> ret;

@@ -5,8 +5,7 @@
 #include "Interface.h"
 
 
-void Interface::update(const State::Ptr &state, Scene::Ptr &scene, God::Ptr &god) {
-    auto camera = scene->get_camera();
+void Interface::update(const State::Ptr &state, Camera::Ptr &camera, God::Ptr &god) {
     if (state->get_mouse_scroll() > 0)
         camera->zoom_in();
     else if (state->get_mouse_scroll() < 0)
@@ -38,6 +37,4 @@ void Interface::update(const State::Ptr &state, Scene::Ptr &scene, God::Ptr &god
     state->set_mouse_y(my);
 }
 
-Interface::Interface(Scene::Ptr scene, God::Ptr god) {
-    scene->get_camera()->move({0,2,10});
-}
+Interface::Interface(God::Ptr god) {}

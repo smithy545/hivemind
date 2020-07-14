@@ -4,10 +4,8 @@
 
 #include "God.h"
 
-#include "pathing/GridMap.h"
 
-
-God::God() : map(std::make_shared<GridMap>(64,64)) {
+God::God() {
     // let there be light
 }
 
@@ -15,8 +13,6 @@ void God::update() {
     for(const auto& actor: actors) {
         actor->update();
     }
-
-    for(auto node: map->get_dirty_nodes()) {}
 }
 
 CollisionNode::Ptr God::get_collision_tree() {

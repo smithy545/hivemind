@@ -8,7 +8,6 @@
 #include "Actor.h"
 #include "collision/CollisionNode.h"
 #include "macros.h"
-#include "pathing/Map.h"
 
 
 class God {
@@ -30,7 +29,6 @@ public:
     CollisionNode::Ptr get_collision_tree();
 private:
     CollisionNode::Ptr collision_head;
-    Map::Ptr map;
     std::vector<Actor::Ptr> actors;
 };
 
