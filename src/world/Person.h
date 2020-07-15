@@ -9,14 +9,14 @@
 #include <string>
 
 #include "Actor.h"
-#include "collision/PhysicsBody.h"
+#include "common/Body.h"
 #include "macros.h"
 
 
 class Person : public Actor {
 public:
     MVAR(std::string, name, public, public);
-    MVAR(PhysicsBody::Ptr, body, public, public);
+    MVAR(Body::Ptr, body, public, public);
 
     void update() override;
 };

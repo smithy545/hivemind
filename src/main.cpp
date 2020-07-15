@@ -2,8 +2,6 @@
 #include <iostream>
 #include <thread>
 
-#include "collision/Collider.h"
-#include "collision/Integrator.h"
 #include "engine/Interface.h"
 #include "pathing/GridMap.h"
 #include "render/Renderer.h"
@@ -13,7 +11,7 @@
 static int screen_width = 800;
 static int screen_height = 600;
 static bool resized;
-static bool enforce_fps = true;
+static bool enforce_fps = false;
 static double desired_dt = 1./60.;
 
 // game state
@@ -112,9 +110,8 @@ void loop() {
         state->set_mouse_scroll(0.0f);
 
         // enforce fps if desired
-        if(enforce_fps && dt < desired_dt) {
+        if(enforce_fps && dt < desired_dt)
             std::this_thread::sleep_for(std::chrono::duration<double>(desired_dt - dt));
-        }
 
         // render
         renderer.render(camera, map);

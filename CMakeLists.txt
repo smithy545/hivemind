@@ -67,8 +67,6 @@ add_library(collision STATIC
         src/collision/QuadTree.h
         src/collision/Rectangle.cpp
         src/collision/Rectangle.h
-        src/collision/CollisionNode.cpp
-        src/collision/CollisionNode.h
         src/collision/Bound.h)
 
 ### MY PATHING LIB ##
@@ -109,15 +107,6 @@ add_library(render STATIC
 add_library(ui STATIC
         src/interface/InterfaceNode.cpp
         src/interface/InterfaceNode.h)
-
-### MY DYNAMICS LIB ###
-add_library(dynamics STATIC
-        src/collision/PhysicsBody.cpp
-        src/collision/PhysicsBody.h
-        src/collision/Collider.cpp
-        src/collision/Collider.h
-        src/collision/Integrator.cpp
-        src/collision/Integrator.h)
 
 ### GAME ENGINE ###
 add_library(engine STATIC
@@ -173,7 +162,6 @@ set(ALL_LIBS
         ui
         engine
         world
-        dynamics
         cuda_stuff
         boost_preprocessor)
 
