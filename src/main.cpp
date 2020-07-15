@@ -13,8 +13,8 @@
 static int screen_width = 800;
 static int screen_height = 600;
 static bool resized;
-static bool enforce_fps = false;
-static int desired_fps = 100;
+static bool enforce_fps = true;
+static double desired_dt = 1./60.;
 
 // game state
 static State::Ptr state;
@@ -66,7 +66,10 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 }
 
 void loop() {
-    std::cout << "Renderer init" << std::endl;
+    std::cout << "State init" << std::endl;
+    state = std::make_shared<State>(screen_width, screen_height);
+
+    std::cout << "Window init" << std::endl;
     Renderer renderer;
     GLFWwindow *window = renderer.init("renderer.json", screen_width, screen_height);
     Camera camera(screen_width, screen_height);
@@ -82,12 +85,9 @@ void loop() {
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
 
-    std::cout << "State init" << std::endl;
-    state = std::make_shared<State>(screen_width, screen_height);
-
     std::cout << "World init" << std::endl;
-    God god;
     auto map = std::make_shared<GridMap>(64, 64);
+    God god;
 
     std::cout << "UI init" << std::endl;
     Interface ui;
@@ -112,10 +112,8 @@ void loop() {
         state->set_mouse_scroll(0.0f);
 
         // enforce fps if desired
-        auto fps = state->get_fps();
-        if(enforce_fps && (fps - desired_fps > 1.0)) {
-            std::chrono::duration<double> remaining{2*(fps-desired_fps)/(fps*desired_fps)};
-            std::this_thread::sleep_for(remaining);
+        if(enforce_fps && dt < desired_dt) {
+            std::this_thread::sleep_for(std::chrono::duration<double>(desired_dt - dt));
         }
 
         // render
