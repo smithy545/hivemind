@@ -118,14 +118,6 @@ add_library(engine STATIC
 add_library(world STATIC
         src/world/Person.cpp
         src/world/Person.h
-        src/world/Role.cpp
-        src/world/Role.h
-        src/world/Task.cpp
-        src/world/Task.h
-        src/world/Resource.cpp
-        src/world/Resource.h
-        src/world/SuperTask.cpp
-        src/world/SuperTask.h
         src/world/God.cpp
         src/world/God.h
         src/world/Actor.h)
