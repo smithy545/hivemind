@@ -24,20 +24,16 @@ using namespace nlohmann;
 class Renderer {
 public:
     // lifecycle methods
-    GLFWwindow *init(const std::string& config_path);
+    GLFWwindow *init(const std::string& config_path, int width, int height);
 
     void render(Camera& camera, const Map::Ptr& map);
 
-    void cleanup();
+    void render_map_node(Camera& camera, MapNode::Ptr &node);
 
-    // resize callback
-    void resize(int width, int height);
+    void cleanup();
 
     // state setters
     bool set_shader(const std::string &name);
-
-    _VAR_GETSET(int, width, public, private);
-    _VAR_GETSET(int, height, public, private);
 private:
     Mesh::Ptr origin_mesh;
     std::string current_shader_name{};
@@ -56,8 +52,6 @@ private:
     const std::string DEFAULT_SHADER_NAME{"color"};
 
     const std::string NAME_KEY{"name"};
-    const std::string WIDTH_KEY{"width"};
-    const std::string HEIGHT_KEY{"height"};
     const std::string SHADERS_KEY{"shaders"};
     const std::string SPRITES_KEY{"sprites"};
     const std::string TILESIZE_KEY{"tilesize"};
@@ -67,14 +61,6 @@ private:
             {"title", "Renderer initialization config"},
             {"type", "object"},
             {"properties", {
-                {WIDTH_KEY, {
-                    {"description", "Initial width of rendered window"},
-                    {"type", "integer"}
-                }},
-                {HEIGHT_KEY, {
-                    {"description", "Initial height of rendered window"},
-                    {"type", "integer"}
-                }},
                 {TILESIZE_KEY, {
                     {"description", "Size of tiles to render on maps"},
                     {"type", "integer"}
@@ -88,13 +74,13 @@ private:
                     {"type", "object"}
                 }}
               }},
-    {"required", {WIDTH_KEY, HEIGHT_KEY, TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
+    {"required", {TILESIZE_KEY, TEXTURES_KEY, SHADERS_KEY}}
     };
     const json SPRITE_SCHEMA{
             {"title",      "A screen sprite"},
             {"type",       "object"},
-            {"properties", {{WIDTH_KEY, {{"description", "Sprite width"}, {"type", "number"}}},
-                           {HEIGHT_KEY, {{"description", "Sprite height"}, {"type", "number"}}},
+            {"properties", {{"width", {{"description", "Sprite width"}, {"type", "number"}}},
+                           {"height", {{"description", "Sprite height"}, {"type", "number"}}},
                            {NAME_KEY, {{"description", "Sprite name"}, {"type", "string"}}},
                            {TEXTURE_KEY, {{"description", "Sprite texture"}, {"type", "string"}}}}},
             {"required",   {NAME_KEY, TEXTURE_KEY}}
@@ -108,7 +94,6 @@ private:
                             {SPRITES_KEY, {{"description", "Tile names"}, {"type", "array"}}}}},
             {"required",   {NAME_KEY, TILESIZE_KEY, TEXTURE_KEY, SPRITES_KEY}}
     };
-
 };
 
 #endif //SOCIETY_RENDERER_H

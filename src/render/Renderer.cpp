@@ -12,10 +12,28 @@
 #include "util/RenderUtil.h"
 
 
-GLFWwindow* Renderer::init(const std::string& config_path) {
+void Renderer::render(Camera &camera, const Map::Ptr &map) {
+    glUseProgram(current_shader_program);
+    auto vp_matrix = camera.get_view_projection_matrix();
+    auto mesh = map->get_mesh();
+    if(mesh != nullptr) {
+        // bind vertex array object
+        glBindVertexArray(mesh->get_vertex_array_id());
+
+        // store in shader uniform
+        glUniformMatrix4fv(vp_uniform, 1, GL_FALSE, &vp_matrix[0][0]);
+        // draw instances
+        glDrawElements(mesh->get_draw_mode(), mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
+    }
+
+    glBindVertexArray(origin_mesh->get_vertex_array_id());
+    glDrawElements(origin_mesh->get_draw_mode(), origin_mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
+}
+
+void Renderer::render_map_node(Camera &camera, MapNode::Ptr &node) {}
+
+GLFWwindow* Renderer::init(const std::string& config_path, int width, int height) {
     auto config = FileUtil::read_json_file(config_path, CONFIG_SCHEMA);
-    _width = config[WIDTH_KEY];
-    _height = config[HEIGHT_KEY];
 
     // Initialise GLFW
     if (!glfwInit()) {
@@ -31,7 +49,7 @@ GLFWwindow* Renderer::init(const std::string& config_path) {
 #endif
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow(_width, _height, "SOCIETY", nullptr, nullptr);
+    window = glfwCreateWindow(width, height, "SOCIETY", nullptr, nullptr);
     if (window == nullptr) {
         std::cerr << "Failed to open GLFW window" << std::endl;
         glfwTerminate();
@@ -51,7 +69,7 @@ GLFWwindow* Renderer::init(const std::string& config_path) {
     glEnable(GL_FRAMEBUFFER_SRGB);
 
     // cull triangles facing away from camera
-    //glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
 
     // enable depth buffer
     glEnable(GL_DEPTH_TEST);
@@ -117,29 +135,6 @@ void Renderer::cleanup() {
 
     // glfw: terminate, clearing all previously allocated GLFW resources
     glfwTerminate();
-}
-
-void Renderer::render(Camera& camera, const Map::Ptr& map) {
-    glUseProgram(current_shader_program);
-    auto vp_matrix = camera.get_view_projection_matrix();
-    auto mesh = map->get_mesh();
-    if(mesh != nullptr) {
-        // bind vertex array object
-        glBindVertexArray(mesh->get_vertex_array_id());
-
-        // store in shader uniform
-        glUniformMatrix4fv(vp_uniform, 1, GL_FALSE, &vp_matrix[0][0]);
-        // draw instances
-        glDrawElements(mesh->get_draw_mode(), mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
-    }
-
-    glBindVertexArray(origin_mesh->get_vertex_array_id());
-    glDrawElements(origin_mesh->get_draw_mode(), origin_mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
-}
-
-void Renderer::resize(int width, int height) {
-    _width = width;
-    _height = height;
 }
 
 bool Renderer::set_shader(const std::string &name) {

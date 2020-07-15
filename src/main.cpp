@@ -10,8 +10,8 @@
 
 
 // window state
-static int screen_width;
-static int screen_height;
+static int screen_width = 800;
+static int screen_height = 600;
 static bool resized;
 static bool enforce_fps = false;
 static int desired_fps = 100;
@@ -68,9 +68,7 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 void loop() {
     std::cout << "Renderer init" << std::endl;
     Renderer renderer;
-    GLFWwindow *window = renderer.init("renderer.json");
-    screen_width = renderer.get_width();
-    screen_height = renderer.get_height();
+    GLFWwindow *window = renderer.init("renderer.json", screen_width, screen_height);
     Camera camera(screen_width, screen_height);
 
     std::cout << "Input init" << std::endl;
@@ -102,7 +100,6 @@ void loop() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         if (resized) {
-            renderer.resize(screen_width, screen_height);
             camera.resize(screen_width, screen_height);
             resized = false;
         }
