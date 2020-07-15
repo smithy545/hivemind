@@ -12,8 +12,6 @@
 
 class God {
 public:
-    PTR(God);
-
     God();
 
     void update();

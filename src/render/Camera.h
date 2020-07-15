@@ -13,8 +13,6 @@
 
 class Camera {
 public:
-    PTR(Camera);
-
     Camera(double width, double height);
 
     void move(glm::vec3 differential);
@@ -49,7 +47,7 @@ public:
 
     void resize(float width, float height);
 
-    bool is_visible(glm::vec3 point);
+    bool is_visible(glm::vec3 point) const;
 
     glm::mat4 get_view_projection_matrix() const;
 

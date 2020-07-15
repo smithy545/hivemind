@@ -16,8 +16,6 @@
 
 class Interface {
 public:
-    PTR(Interface);
-
     void update(const State::Ptr &state, Camera &camera);
 };
 

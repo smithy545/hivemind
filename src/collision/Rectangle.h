@@ -14,8 +14,6 @@
 
 class Rectangle : public Bound, public std::enable_shared_from_this<Rectangle> {
 public:
-    PTR(Rectangle);
-
     Rectangle(double width, double height);
 
     Rectangle(double x, double y, double width, double height);

@@ -17,12 +17,8 @@ using std::vector;
 
 class GridMap : public Map {
 public:
-    PTR(GridMap);
-
     class GridNode : public MapNode {
     public:
-        PTR(GridNode);
-
         GridNode(int x, int y) : GridNode(x, y, true) {};
         GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}
 

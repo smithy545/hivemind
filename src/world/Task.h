@@ -10,8 +10,6 @@
 
 class Task {
 public:
-    PTR(Task);
-
     virtual void operator()() = 0;
 };
 

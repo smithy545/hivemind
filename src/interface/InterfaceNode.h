@@ -9,9 +9,6 @@
 #include "macros.h"
 
 
-class InterfaceNode : public TreeNode {
-public:
-    PTR(InterfaceNode);
-};
+class InterfaceNode : public TreeNode {};
 
 #endif //SOCIETY_INTERFACENODE_H

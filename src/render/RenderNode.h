@@ -19,8 +19,6 @@
 
 class RenderNode : public LinkedNode {
 public:
-    PTR(RenderNode);
-
     explicit RenderNode(std::string shaderName, Drawable::Ptr entity, Ptr next = nullptr);
 
     LinkedNode::Ptr get_next() override;
@@ -29,7 +27,7 @@ public:
 
     void instance(const Body::Ptr& body);
 
-    int prepare(const Camera::Ptr& camera);
+    int prepare(const Camera& camera);
 
     VAR_GET(GLuint, instance_buffer, public){0};
     REFVAR_GET(std::vector<Body::Ptr>, instances, public);

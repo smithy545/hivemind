@@ -45,10 +45,10 @@ void RenderNode::instance(const Body::Ptr& body) {
     _instances.push_back(body);
 }
 
-int RenderNode::prepare(const Camera::Ptr& camera) {
+int RenderNode::prepare(const Camera& camera) {
     std::vector<glm::mat4> matrices;
     for(auto & _instance : _instances) {
-        if (camera->is_visible(_instance->get_position()))
+        if (camera.is_visible(_instance->get_position()))
             matrices.push_back(_instance->get_model_matrix());
     }
     glBindBuffer(GL_ARRAY_BUFFER, _instance_buffer);

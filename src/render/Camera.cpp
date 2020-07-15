@@ -110,7 +110,7 @@ glm::mat4 Camera::get_view_projection_matrix() const {
     return projection_matrix * view_matrix;
 }
 
-bool Camera::is_visible(glm::vec3 point) {
+bool Camera::is_visible(glm::vec3 point) const {
     // TODO: improve from rough sphere culling
     return glm::length(point - _position) < 100.0f;
 }

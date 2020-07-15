@@ -15,8 +15,6 @@
 
 class Integrator {
 public:
-    PTR(Integrator);
-
     void update(const std::vector<PhysicsBody::Ptr> &bodies, float time_step);
 private:
     const float EPSILON{0.01f}; // Numbers with abs val smaller than this are considered equal to zero

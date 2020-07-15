@@ -8,12 +8,7 @@
 #include "macros.h"
 
 
-class Role {
-public:
-    PTR(Role);
-
-// needs, demands, wants
-};
+class Role {};
 
 
 #endif //SOCIETY_ROLE_H

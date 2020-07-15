@@ -14,9 +14,6 @@ using std::vector;
 
 
 class SuperTask : public Task {
-public:
-    PTR(SuperTask);
-
 private:
     vector<vector<Task>> preTasks;
 };

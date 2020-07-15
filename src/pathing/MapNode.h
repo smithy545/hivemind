@@ -15,7 +15,6 @@
 class MapNode {
 public:
     PTR(MapNode);
-
     typedef std::deque<Ptr> MapPath;
 
     virtual int get_x() const = 0;

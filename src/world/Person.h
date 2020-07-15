@@ -15,8 +15,6 @@
 
 class Person : public Actor {
 public:
-    PTR(Person);
-
     MVAR(std::string, name, public, public);
     MVAR(PhysicsBody::Ptr, body, public, public);
 

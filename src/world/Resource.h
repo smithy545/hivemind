@@ -8,10 +8,7 @@
 #include "macros.h"
 
 
-class Resource {
-public:
-    PTR(Resource);
-};
+class Resource {};
 
 
 #endif //SOCIETY_RESOURCE_H

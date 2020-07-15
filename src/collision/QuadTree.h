@@ -33,7 +33,7 @@ private:
     int level;
     std::vector<Rectangle> objects;
     Rectangle bounds;
-    QuadTree::Ptr nodes[4];
+    Ptr nodes[4];
 };
 
 
