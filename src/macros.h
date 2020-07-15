@@ -18,6 +18,7 @@
 #define MOVE(X) std::move(X)
 #define NOOP(...)
 #define ID(X) X
+#define REF(X) & X
 
 // Private var base
 #define _DECLARE(TYPE, NAME, ACCESS) ACCESS: TYPE _##NAME
