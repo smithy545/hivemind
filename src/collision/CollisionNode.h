@@ -13,7 +13,7 @@
 
 class CollisionNode{
 public:
-    POINTERIZE(CollisionNode);
+    PTR(CollisionNode);
     typedef std::pair<PhysicsBody::Ptr, PhysicsBody::Ptr> CollisionPair;
 
     CollisionNode(const PhysicsBody::Ptr& first, const PhysicsBody::Ptr& second);

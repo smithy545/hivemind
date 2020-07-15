@@ -19,7 +19,7 @@
 
 class RenderNode : public LinkedNode {
 public:
-    POINTERIZE(RenderNode);
+    PTR(RenderNode);
 
     explicit RenderNode(std::string shaderName, Drawable::Ptr entity, Ptr next = nullptr);
 

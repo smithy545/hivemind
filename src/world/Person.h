@@ -15,7 +15,7 @@
 
 class Person : public Actor {
 public:
-    POINTERIZE(Person);
+    PTR(Person);
 
     MVAR(std::string, name, public, public);
     MVAR(PhysicsBody::Ptr, body, public, public);

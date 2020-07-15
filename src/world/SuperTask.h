@@ -15,7 +15,7 @@ using std::vector;
 
 class SuperTask : public Task {
 public:
-    POINTERIZE(SuperTask);
+    PTR(SuperTask);
 
 private:
     vector<vector<Task>> preTasks;

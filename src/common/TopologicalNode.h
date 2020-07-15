@@ -12,7 +12,7 @@
 
 class TopologicalNode {
 public:
-    POINTERIZE(TopologicalNode);
+    PTR(TopologicalNode);
 
     virtual std::vector<Ptr> get_neighbors() = 0;
 };

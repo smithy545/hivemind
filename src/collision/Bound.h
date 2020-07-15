@@ -9,7 +9,7 @@
 
 class Bound {
 public:
-    POINTERIZE(Bound);
+    PTR(Bound);
 
     virtual bool collides(Ptr other) = 0;
 };

@@ -12,7 +12,7 @@
 
 class God {
 public:
-    POINTERIZE(God);
+    PTR(God);
 
     God();
 

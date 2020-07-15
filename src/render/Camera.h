@@ -13,7 +13,7 @@
 
 class Camera {
 public:
-    POINTERIZE(Camera);
+    PTR(Camera);
 
     Camera(double width, double height);
 

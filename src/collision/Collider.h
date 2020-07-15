@@ -14,7 +14,7 @@
 
 class Collider {
 public:
-    POINTERIZE(Collider);
+    PTR(Collider);
 
     std::vector<PhysicsBody::Ptr> update(CollisionNode::Ptr collisionTree);
 };

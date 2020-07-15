@@ -17,7 +17,7 @@ class Pather {
 public:
     class PathNode {
     public:
-        POINTERIZE(PathNode);
+        PTR(PathNode);
 
         PathNode(MapNode::Ptr pos, double g, double h, Ptr prev)
                 : position(std::move(pos)), g(g), h(h), previous(std::move(prev)) {}

@@ -15,7 +15,7 @@
 
 class Integrator {
 public:
-    POINTERIZE(Integrator);
+    PTR(Integrator);
 
     void update(const std::vector<PhysicsBody::Ptr> &bodies, float time_step);
 private:

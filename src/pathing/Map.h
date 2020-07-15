@@ -16,7 +16,7 @@ using std::vector;
 
 class Map {
 public:
-    POINTERIZE(Map);
+    PTR(Map);
 
     // get nodes changed since last check
     virtual vector<MapNode::Ptr> &get_dirty_nodes() = 0;

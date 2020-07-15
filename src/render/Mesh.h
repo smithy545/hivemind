@@ -16,7 +16,7 @@
 
 class Mesh : public Drawable {
 public:
-    POINTERIZE(Mesh);
+    PTR(Mesh);
 
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec4> colors;

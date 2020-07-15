@@ -14,7 +14,7 @@
 
 class PhysicsBody : public Body {
 public:
-    POINTERIZE(PhysicsBody);
+    PTR(PhysicsBody);
 
     void update(float time_step);
 

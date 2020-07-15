@@ -14,7 +14,7 @@
 
 class Drawable {
 public:
-    POINTERIZE(Drawable);
+    PTR(Drawable);
 
     virtual std::string get_texture() const = 0;
     virtual GLuint get_vertex_array_id() const = 0;

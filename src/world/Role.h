@@ -10,7 +10,7 @@
 
 class Role {
 public:
-    POINTERIZE(Role);
+    PTR(Role);
 
 // needs, demands, wants
 };

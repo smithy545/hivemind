@@ -10,7 +10,7 @@
 
 class Task {
 public:
-    POINTERIZE(Task);
+    PTR(Task);
 
     virtual void operator()() = 0;
 };

@@ -17,11 +17,11 @@ using std::vector;
 
 class GridMap : public Map {
 public:
-    POINTERIZE(GridMap);
+    PTR(GridMap);
 
     class GridNode : public MapNode {
     public:
-        POINTERIZE(GridNode);
+        PTR(GridNode);
 
         GridNode(int x, int y) : GridNode(x, y, true) {};
         GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}

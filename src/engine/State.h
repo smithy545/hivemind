@@ -15,7 +15,7 @@
 
 class State {
 public:
-    POINTERIZE(State);
+    PTR(State);
 
     typedef std::chrono::time_point<std::chrono::system_clock> timestamp;
 

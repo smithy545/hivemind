@@ -16,7 +16,7 @@
 
 class Interface {
 public:
-    POINTERIZE(Interface);
+    PTR(Interface);
 
     void update(const State::Ptr &state, Camera &camera);
 };

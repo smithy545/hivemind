@@ -11,7 +11,7 @@
 
 class InterfaceNode : public TreeNode {
 public:
-    POINTERIZE(InterfaceNode);
+    PTR(InterfaceNode);
 };
 
 #endif //SOCIETY_INTERFACENODE_H

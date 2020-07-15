@@ -14,7 +14,7 @@
 
 class Rectangle : public Bound, public std::enable_shared_from_this<Rectangle> {
 public:
-    POINTERIZE(Rectangle);
+    PTR(Rectangle);
 
     Rectangle(double width, double height);
 

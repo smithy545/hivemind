@@ -14,7 +14,7 @@
 
 class MapNode {
 public:
-    POINTERIZE(MapNode);
+    PTR(MapNode);
 
     typedef std::deque<Ptr> MapPath;
 
@@ -30,7 +30,7 @@ public:
 // MapNode containing local neighbor information
 class TopologicalMapNode : public MapNode, public TopologicalNode {
 public:
-    POINTERIZE(TopologicalMapNode);
+    PTR(TopologicalMapNode);
 };
 
 #endif //SOCIETY_MAPNODE_H

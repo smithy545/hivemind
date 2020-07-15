@@ -10,7 +10,7 @@
 
 class Resource {
 public:
-    POINTERIZE(Resource);
+    PTR(Resource);
 };
 
 

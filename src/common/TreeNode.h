@@ -12,7 +12,7 @@
 
 class TreeNode {
 public:
-    POINTERIZE(TreeNode);
+    PTR(TreeNode);
 
     virtual Ptr get_parent() = 0;
 

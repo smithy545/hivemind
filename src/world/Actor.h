@@ -10,7 +10,7 @@
 
 class Actor {
 public:
-    POINTERIZE(Actor);
+    PTR(Actor);
 
     virtual void update() = 0;
 };

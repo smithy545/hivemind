@@ -15,7 +15,7 @@
 
 class Body {
 public:
-    POINTERIZE(Body);
+    PTR(Body);
 
     virtual glm::mat4 get_model_matrix() {
         return glm::translate(glm::mat4(1), _position);

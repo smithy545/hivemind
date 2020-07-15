@@ -13,7 +13,7 @@
 
 class QuadTree {
 public:
-    POINTERIZE(QuadTree);
+    PTR(QuadTree);
 
     QuadTree(int level, Rectangle bounds);
 
