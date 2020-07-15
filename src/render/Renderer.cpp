@@ -76,7 +76,7 @@ GLFWwindow* Renderer::init(const std::string& config_path, int width, int height
 
     // shaders
     for (const auto &shader: config[SHADERS_KEY].items()) {
-        std::cout << fmt::format("Loading shader \"{0}\" from {1} {2} ", shader.key(), shader.value()[0],
+        std::cout << fmt::format(R"(Loading shader ({0}) from "{1}" "{2}" )", shader.key(), shader.value()[0],
                                  shader.value()[1])
                   << std::endl;
         load_shader(shader.key(), shader.value()[0], shader.value()[1]);
@@ -84,7 +84,7 @@ GLFWwindow* Renderer::init(const std::string& config_path, int width, int height
 
     // image textures
     for (const auto &tex: config[TEXTURES_KEY].items()) {
-        std::cout << fmt::format("Loading texture \"{0}\" from {1}", tex.key(), tex.value()) << std::endl;
+        std::cout << fmt::format("Loading texture ({0}) from \"{1}\"", tex.key(), tex.value()) << std::endl;
         load_texture(tex.key(), tex.value());
     }
 
@@ -96,7 +96,7 @@ GLFWwindow* Renderer::init(const std::string& config_path, int width, int height
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // disable cursor to enable automatic recentering
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     // clear background to black
     glClearColor(1.0f,1.0f, 1.0f, 1.0f);
 

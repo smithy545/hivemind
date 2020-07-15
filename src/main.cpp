@@ -21,10 +21,8 @@ static State::Ptr state;
 void loop();
 
 int main() {
-    std::cout << "Begin Society" << std::endl;
     std::thread game(loop);
     game.join();
-    std::cout << "End." << std::endl;
     return 0;
 }
 
@@ -66,11 +64,16 @@ void resizeCallback(GLFWwindow *window, int width, int height) {
 void loop() {
     std::cout << "State init" << std::endl;
     state = std::make_shared<State>(screen_width, screen_height);
+    God god;
 
     std::cout << "Window init" << std::endl;
     Renderer renderer;
     GLFWwindow *window = renderer.init("renderer.json", screen_width, screen_height);
     Camera camera(screen_width, screen_height);
+
+    // must be init after render.init()
+    auto map = std::make_shared<GridMap>(64, 64);
+    Interface ui;
 
     std::cout << "Input init" << std::endl;
     // Setup keyboard inputs
@@ -82,13 +85,6 @@ void loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     // Window resize
     glfwSetFramebufferSizeCallback(window, resizeCallback);
-
-    std::cout << "World init" << std::endl;
-    auto map = std::make_shared<GridMap>(64, 64);
-    God god;
-
-    std::cout << "UI init" << std::endl;
-    Interface ui;
 
     std::cout << "Loop start" << std::endl;
     state->start();
@@ -109,12 +105,12 @@ void loop() {
         // reset mouse wheel position
         state->set_mouse_scroll(0.0f);
 
+        // render
+        renderer.render(camera, map);
+
         // enforce fps if desired
         if(enforce_fps && dt < desired_dt)
             std::this_thread::sleep_for(std::chrono::duration<double>(desired_dt - dt));
-
-        // render
-        renderer.render(camera, map);
 
         // glfw: swap buffers and poll IO events
         glfwSwapBuffers(window);
