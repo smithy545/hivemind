@@ -36,11 +36,11 @@ public:
 
     void set_height(double height);
 
-    _VAR_GET(double, x, public);
-    _VAR_GET(double, y, public);
-    _VAR_GET(double, width, public);
-    _VAR_GET(double, height, public);
-    _VAR_GET(std::vector<glm::vec2>, points, public){4};
+    VAR_GET(double, x, public);
+    VAR_GET(double, y, public);
+    VAR_GET(double, width, public);
+    VAR_GET(double, height, public);
+    VAR_GET(std::vector<glm::vec2>, points, public){4};
 private:
     void calculate_points();
 };

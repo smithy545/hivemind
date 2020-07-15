@@ -56,10 +56,10 @@ public:
     // ref: https://antongerdelan.net/opengl/raycasting.html
     glm::vec3 get_camera_to_mouse(int mouse_x,int mouse_y);
 
-    _VAR_GET(glm::vec3, up, public){glm::vec3(0, 1, 0)};
-    _VAR_GET(glm::vec3,forward, public){glm::vec3(0, 0, -1)};
-    _VAR_GET(glm::vec3, position, public){0};
-    _VAR_GET(Rectangle, bounding_rect, public){Rectangle(0,0)};
+    VAR_GET(glm::vec3, up, public){glm::vec3(0, 1, 0)};
+    VAR_GET(glm::vec3,forward, public){glm::vec3(0, 0, -1)};
+    VAR_GET(glm::vec3, position, public){0};
+    VAR_GET(Rectangle, bounding_rect, public){Rectangle(0,0)};
 private:
     float translation_speed{0.2f};
     float horizontal_rotation_speed{0.05f};

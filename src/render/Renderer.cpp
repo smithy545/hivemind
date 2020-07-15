@@ -30,7 +30,7 @@ void Renderer::render(Camera &camera, const Map::Ptr &map) {
     glDrawElements(origin_mesh->get_draw_mode(), origin_mesh->get_num_indices(), GL_UNSIGNED_INT, 0);
 }
 
-void Renderer::render_map_node(Camera &camera, MapNode::Ptr &node) {}
+void Renderer::render_map_node(Camera &camera, const MapNode::Ptr &node) {}
 
 GLFWwindow* Renderer::init(const std::string& config_path, int width, int height) {
     auto config = FileUtil::read_json_file(config_path, CONFIG_SCHEMA);
@@ -102,20 +102,20 @@ GLFWwindow* Renderer::init(const std::string& config_path, int width, int height
 
     // setup origin markers
     origin_mesh = std::make_shared<Mesh>();
-    origin_mesh->get_vertices().emplace_back(0,0,0);
-    origin_mesh->get_vertices().emplace_back(10,0,0);
-    origin_mesh->get_vertices().emplace_back(0,10,0);
-    origin_mesh->get_vertices().emplace_back(0,0,10);
-    origin_mesh->get_colors().emplace_back(0,0,0,1);
-    origin_mesh->get_colors().emplace_back(1,0,0,1);
-    origin_mesh->get_colors().emplace_back(0,1,0,1);
-    origin_mesh->get_colors().emplace_back(0,0,1,1);
-    origin_mesh->get_indices().push_back(0);
-    origin_mesh->get_indices().push_back(1);
-    origin_mesh->get_indices().push_back(0);
-    origin_mesh->get_indices().push_back(2);
-    origin_mesh->get_indices().push_back(0);
-    origin_mesh->get_indices().push_back(3);
+    origin_mesh->vertices.emplace_back(0,0,0);
+    origin_mesh->vertices.emplace_back(10,0,0);
+    origin_mesh->vertices.emplace_back(0,10,0);
+    origin_mesh->vertices.emplace_back(0,0,10);
+    origin_mesh->colors.emplace_back(0,0,0,1);
+    origin_mesh->colors.emplace_back(1,0,0,1);
+    origin_mesh->colors.emplace_back(0,1,0,1);
+    origin_mesh->colors.emplace_back(0,0,1,1);
+    origin_mesh->indices.push_back(0);
+    origin_mesh->indices.push_back(1);
+    origin_mesh->indices.push_back(0);
+    origin_mesh->indices.push_back(2);
+    origin_mesh->indices.push_back(0);
+    origin_mesh->indices.push_back(3);
     origin_mesh->bufferVertices();
     origin_mesh->bufferColors();
     origin_mesh->bufferIndices();

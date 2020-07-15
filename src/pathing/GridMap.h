@@ -26,9 +26,9 @@ public:
         GridNode(int x, int y) : GridNode(x, y, true) {};
         GridNode(int x, int y, bool passable) : _x(x), _y(y), _passable(passable) {}
 
-        _VAR_GET(int, x, public);
-        _VAR_GET(int, y, public);
-        _BVAR_GET(passable, public);
+        VAR_GET(int, x, public);
+        VAR_GET(int, y, public);
+        BVAR_GET(passable, public);
     };
 
     GridMap(int width, int height);
@@ -37,14 +37,14 @@ public:
 
     vector<MapNode::Ptr> &get_dirty_nodes() override;
 
-    MapNode::Ptr get_node(int x, int y) override;
+    MapNode::Ptr &get_node(int x, int y) override;
 
     vector<MapNode::Ptr> get_neighbors(MapNode::Ptr node) override;
 
-    _VAR_GET(int, width, public);
-    _VAR_GET(int, height, public);
-    _VAR_GET(Mesh::Ptr, mesh, public);
-    _REFVAR_GET(vector<MapNode::Ptr>, nodes, public);
+    VAR_GET(int, width, public);
+    VAR_GET(int, height, public);
+    VAR_GET(vector<MapNode::Ptr>, nodes, public);
+    REFVAR_GET(Mesh::Ptr, mesh, public);
 private:
     vector<MapNode::Ptr> ret;
 };

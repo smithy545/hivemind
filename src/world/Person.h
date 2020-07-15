@@ -17,8 +17,8 @@ class Person : public Actor {
 public:
     POINTERIZE(Person);
 
-    _MVAR_GETSET(std::string, name, public, public);
-    _MVAR_GETSET(PhysicsBody::Ptr, body, public, public);
+    MVAR(std::string, name, public, public);
+    MVAR(PhysicsBody::Ptr, body, public, public);
 
     void update() override;
 };

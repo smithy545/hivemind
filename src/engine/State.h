@@ -40,17 +40,17 @@ public:
     double enter_frame();
 
     // game state
-    _BVAR_GETSET(paused, public, private){true};
-    _BVAR_GETSET(stopped, public, private){true};
-    _VAR_GETSET(double, fps, public, private){0};
-    _VAR_GETSET(timestamp, last_frame_start, public, private);
+    BVAR(paused, public, private){true};
+    BVAR(stopped, public, private){true};
+    VAR(double, fps, public, private){0};
+    VAR(timestamp, last_frame_start, public, private);
 
     // io state
-    _VAR_GET(double, mouse_x, public){0};
-    _VAR_GET(double, mouse_y, public){0};
-    _VAR_GET(double, last_mouse_x, public){0};
-    _VAR_GET(double, last_mouse_y, public){0};
-    _VAR_GETSET(double, mouse_scroll, public, public){0};
+    VAR_GET(double, mouse_x, public){0};
+    VAR_GET(double, mouse_y, public){0};
+    VAR_GET(double, last_mouse_x, public){0};
+    VAR_GET(double, last_mouse_y, public){0};
+    VAR(double, mouse_scroll, public, public){0};
 private:
     bool keys[GLFW_KEY_LAST]{};
 };

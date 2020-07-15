@@ -57,11 +57,11 @@ Mesh::~Mesh() {
         glDeleteBuffers(1, &_element_buffer_id);
 }
 
-unsigned int Mesh::get_num_indices() {
-    return _indices.size();
+unsigned int Mesh::get_num_indices() const {
+    return indices.size();
 }
 
-std::string Mesh::get_texture() {
+std::string Mesh::get_texture() const {
     return "";
 }
 
@@ -69,7 +69,7 @@ void Mesh::bufferVertices() {
     if (_vertex_buffer_id != 0) {
         glBindVertexArray(_vertex_array_id);
         glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_id);
-        glBufferData(GL_ARRAY_BUFFER, _vertices.size()*sizeof(glm::vec3), &_vertices[0], GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size()*sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
         glBindVertexArray(0);
     }
 }
@@ -78,7 +78,7 @@ void Mesh::bufferColors() {
     if (_color_buffer_id != 0) {
         glBindVertexArray(_vertex_array_id);
         glBindBuffer(GL_ARRAY_BUFFER, _color_buffer_id);
-        glBufferData(GL_ARRAY_BUFFER, _colors.size()*sizeof(glm::vec4), &_colors[0], GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, colors.size()*sizeof(glm::vec4), &colors[0], GL_STATIC_DRAW);
         glBindVertexArray(0);
     }
 }
@@ -87,7 +87,13 @@ void Mesh::bufferIndices() {
     if (_element_buffer_id != 0) {
         glBindVertexArray(_vertex_array_id);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _element_buffer_id);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, _indices.size()*sizeof(unsigned int), &_indices[0], GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size()*sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
         glBindVertexArray(0);
     }
+}
+
+void Mesh::buffer() {
+    bufferVertices();
+    bufferColors();
+    bufferIndices();
 }

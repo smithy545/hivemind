@@ -22,12 +22,16 @@ GridMap::GridMap(int x_offset, int y_offset, int width, int height) : Map(x_offs
     }
 }
 
-MapNode::Ptr GridMap::get_node(int x, int y) {
+MapNode::Ptr &GridMap::get_node(int x, int y) {
     y -= get_y_offset();
     x -= get_x_offset();
     if (x < 0 || y < 0 || x >= _width || y >= _height)
-        return nullptr;
+        return _nodes[0];
     return _nodes[x + y * _width];
+}
+
+vector<MapNode::Ptr> &GridMap::get_dirty_nodes() {
+    return ret;
 }
 
 vector<MapNode::Ptr> GridMap::get_neighbors(MapNode::Ptr node) {
@@ -52,8 +56,4 @@ vector<MapNode::Ptr> GridMap::get_neighbors(MapNode::Ptr node) {
     }
 
     return neighbors;
-}
-
-vector<MapNode::Ptr> &GridMap::get_dirty_nodes() {
-    return ret;
 }

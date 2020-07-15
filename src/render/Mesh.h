@@ -18,27 +18,28 @@ class Mesh : public Drawable {
 public:
     POINTERIZE(Mesh);
 
+    std::vector<glm::vec3> vertices;
+    std::vector<glm::vec4> colors;
+    std::vector<unsigned int> indices;
+
     Mesh();
 
     ~Mesh();
 
-    unsigned int get_num_indices() override;
+    unsigned int get_num_indices() const override;
 
-    std::string get_texture() override;
+    std::string get_texture() const override;
 
     void bufferVertices();
     void bufferColors();
     void bufferIndices();
+    void buffer();
 private:
-    _REFVAR_GET(std::vector<glm::vec3>, vertices, public);
-    _REFVAR_GET(std::vector<glm::vec4>, colors, public);
-    _REFVAR_GET(std::vector<unsigned int>, indices, public);
-
-    _VAR_GETSET(GLuint, vertex_array_id, public, public){0};
-    _VAR_GETSET(GLuint, vertex_buffer_id, public, public){0};
-    _VAR_GETSET(GLuint, color_buffer_id, public, public){0};
-    _VAR_GETSET(GLuint, element_buffer_id, public, public){0};
-    _VAR_GETSET(GLenum, draw_mode, public, public){GL_TRIANGLES};
+    VAR(GLenum, draw_mode, public, public){GL_TRIANGLES};
+    VAR(GLuint, vertex_array_id, public, public){0};
+    VAR(GLuint, vertex_buffer_id, public, public){0};
+    VAR(GLuint, color_buffer_id, public, public){0};
+    VAR(GLuint, element_buffer_id, public, public){0};
 };
 
 

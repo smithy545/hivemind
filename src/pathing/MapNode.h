@@ -18,13 +18,13 @@ public:
 
     typedef std::deque<Ptr> MapPath;
 
-    virtual int get_x() = 0;
+    virtual int get_x() const = 0;
 
-    virtual int get_y() = 0;
+    virtual int get_y() const = 0;
 
-    virtual bool is_passable() = 0;
+    virtual bool is_passable() const = 0;
 
-    _BVAR_GETSET(dirty, public, public){false};
+    BVAR(dirty, public, public){false};
 };
 
 // MapNode containing local neighbor information

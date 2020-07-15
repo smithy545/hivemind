@@ -18,8 +18,8 @@ public:
 
     void update(float time_step);
 
-    _VAR_GETSET(glm::vec3, velocity, public, public){0};
-    _VAR_GETSET(glm::vec3, acceleration, public, public){0};
+    VAR(glm::vec3, velocity, public, public){0};
+    VAR(glm::vec3, acceleration, public, public){0};
 };
 
 

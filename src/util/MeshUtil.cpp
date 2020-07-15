@@ -10,14 +10,12 @@ Mesh::Ptr MeshUtil::generate_bezier_mesh(const std::vector<glm::vec3> &hull, dou
     auto mesh = std::make_shared<Mesh>();
     for (int index = 0; index < curve.size(); index++) {
         // make all points on curve red
-        mesh->get_vertices().emplace_back(curve[index].x, -curve[index].y, curve[index].z);
-        mesh->get_colors().push_back(color);
-        mesh->get_indices().push_back(index);
+        mesh->vertices.emplace_back(curve[index].x, -curve[index].y, curve[index].z);
+        mesh->colors.push_back(color);
+        mesh->indices.push_back(index);
     }
     mesh->set_draw_mode(GL_LINE_STRIP);
-    mesh->bufferVertices();
-    mesh->bufferColors();
-    mesh->bufferIndices();
+    mesh->buffer();
 
     return mesh;
 }
@@ -26,14 +24,12 @@ Mesh::Ptr MeshUtil::generate_line_mesh(const std::vector<glm::vec3> &points, glm
     auto mesh = std::make_shared<Mesh>();
     for (int index = 0; index < points.size(); index++) {
         // make all points on line red
-        mesh->get_vertices().emplace_back(points[index].x, -points[index].y, points[index].z);
-        mesh->get_colors().push_back(color);
-        mesh->get_indices().push_back(index);
+        mesh->vertices.emplace_back(points[index].x, -points[index].y, points[index].z);
+        mesh->colors.push_back(color);
+        mesh->indices.push_back(index);
     }
     mesh->set_draw_mode(GL_LINE_STRIP);
-    mesh->bufferVertices();
-    mesh->bufferColors();
-    mesh->bufferIndices();
+    mesh->buffer();
 
     return mesh;
 }
@@ -62,15 +58,13 @@ Mesh::Ptr MeshUtil::generate_box_mesh_triangles(int width, int height, int lengt
 
     auto mesh = std::make_shared<Mesh>();
     for (auto vert: verts) {
-        mesh->get_vertices().push_back(vert);
-        mesh->get_colors().push_back(color);
+        mesh->vertices.push_back(vert);
+        mesh->colors.push_back(color);
     }
     for(auto index: indices)
-        mesh->get_indices().push_back(index);
+        mesh->indices.push_back(index);
     mesh->set_draw_mode(GL_TRIANGLES);
-    mesh->bufferVertices();
-    mesh->bufferColors();
-    mesh->bufferIndices();
+    mesh->buffer();
 
     return mesh;
 }
@@ -96,15 +90,13 @@ Mesh::Ptr MeshUtil::generate_box_mesh_lines(int width, int height, int length, g
 
     auto mesh = std::make_shared<Mesh>();
     for (auto vert: verts) {
-        mesh->get_vertices().push_back(vert);
-        mesh->get_colors().push_back(color);
+        mesh->vertices.push_back(vert);
+        mesh->colors.push_back(color);
     }
     for(auto index: indices)
-        mesh->get_indices().push_back(index);
+        mesh->indices.push_back(index);
     mesh->set_draw_mode(GL_LINES);
-    mesh->bufferVertices();
-    mesh->bufferColors();
-    mesh->bufferIndices();
+    mesh->buffer();
 
     return mesh;
 }
@@ -122,15 +114,13 @@ Mesh::Ptr MeshUtil::generate_quad_mesh(int width, int height, glm::vec4 color) {
     };
     auto mesh = std::make_shared<Mesh>();
     for (auto vert: verts) {
-        mesh->get_vertices().push_back(vert);
-        mesh->get_colors().push_back(color);
+        mesh->vertices.push_back(vert);
+        mesh->colors.push_back(color);
     }
     for(auto index: indices)
-        mesh->get_indices().push_back(index);
+        mesh->indices.push_back(index);
     mesh->set_draw_mode(GL_TRIANGLES);
-    mesh->bufferVertices();
-    mesh->bufferColors();
-    mesh->bufferIndices();
+    mesh->buffer();
 
     return mesh;
 }

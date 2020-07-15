@@ -25,7 +25,7 @@ class Renderer {
 public:
     void render(Camera& camera, const Map::Ptr& map);
 
-    void render_map_node(Camera& camera, MapNode::Ptr &node);
+    void render_map_node(Camera& camera, const MapNode::Ptr &node);
 
     GLFWwindow *init(const std::string& config_path, int width, int height);
 

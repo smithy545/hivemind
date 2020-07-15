@@ -19,7 +19,7 @@ public:
 
     void update(const std::vector<PhysicsBody::Ptr> &bodies, float time_step);
 private:
-    const float EPSILON{0.01}; // Numbers with abs val smaller than this are considered equal to zero
+    const float EPSILON{0.01f}; // Numbers with abs val smaller than this are considered equal to zero
     const glm::vec3 G{0, -0.1, 0}; // gravity acceleration vector
     std::unordered_map<std::string, PhysicsBody::Ptr> active_bodies;
 };

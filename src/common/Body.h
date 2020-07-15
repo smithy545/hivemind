@@ -7,6 +7,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include <string>
 
 #include "macros.h"
 #include "util/StringUtil.h"
@@ -24,8 +25,8 @@ public:
         return true;
     }
 
-    _VAR_GET(std::string, id, public){StringUtil::uuid4()};
-    _VAR_GETSET(glm::vec3, position, public, public){0}; // in meters I guess
+    CONSTVAR(std::string, id, public){StringUtil::uuid4()};
+    REFVAR(glm::vec3, position, public, public){0}; // in meters I guess
 };
 
 

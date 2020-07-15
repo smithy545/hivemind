@@ -25,8 +25,8 @@ public:
 
     PhysicsBody::Ptr get_second_body();
 
-    _MVAR_GETSET(CollisionNode::Ptr, next, public, public);
-    _BVAR_GET(alive, public){true};
+    MVAR(CollisionNode::Ptr, next, public, public);
+    BVAR_GET(alive, public){true};
 private:
     CollisionPair bodies;
 };

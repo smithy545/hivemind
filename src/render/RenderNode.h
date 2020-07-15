@@ -31,10 +31,10 @@ public:
 
     int prepare(const Camera::Ptr& camera);
 
-    _VAR_GET(GLuint, instance_buffer, public){0};
-    _REFVAR_GET(std::vector<Body::Ptr>, instances, public);
-    _MVAR_GETSET(std::string, shader_name, public, private);
-    _MVAR_GETSET(Drawable::Ptr, entity, public, public);
+    VAR_GET(GLuint, instance_buffer, public){0};
+    REFVAR_GET(std::vector<Body::Ptr>, instances, public);
+    MVAR(std::string, shader_name, public, private);
+    MVAR(Drawable::Ptr, entity, public, public);
 private:
     Ptr next;
 };
