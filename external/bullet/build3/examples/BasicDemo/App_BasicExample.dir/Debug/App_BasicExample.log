@@ -1,8 +1,0 @@
-﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/examples/BasicDemo/CMakeLists.txt
-  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/examples/BasicDemo/CMakeFiles/generate.stamp is up-to-date.
-  BasicExample.cpp
-c:\users\philip\clionprojects\society\external\bullet\examples\basicdemo\basicexample.cpp(124): warning C4316: 'BasicExample': object allocated on the heap may not be aligned 16
-  main.cpp
-  Generating Code...
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
-  App_BasicExample.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\examples\BasicDemo\Debug\App_BasicExample.exe

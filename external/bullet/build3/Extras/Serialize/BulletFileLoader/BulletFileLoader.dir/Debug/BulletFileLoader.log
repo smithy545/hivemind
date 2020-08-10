@@ -1,8 +1,0 @@
-﻿  Building Custom Rule C:/Users/Philip/CLionProjects/society/external/bullet/Extras/Serialize/BulletFileLoader/CMakeLists.txt
-  CMake does not need to re-run because C:/Users/Philip/CLionProjects/society/external/bullet/build3/Extras/Serialize/BulletFileLoader/CMakeFiles/generate.stamp is up-to-date.
-  bChunk.cpp
-  bDNA.cpp
-  bFile.cpp
-  btBulletFile.cpp
-  Generating Code...
-  BulletFileLoader.vcxproj -> C:\Users\Philip\CLionProjects\society\external\bullet\build3\lib\Debug\BulletFileLoader_Debug.lib
