@@ -1,20 +1,20 @@
 {
   "shaders": {
-    "texture": [
-      "vertex.shader",
-      "texture.fragment.shader"
-    ],
     "color": [
       "vertex.shader",
       "color.fragment.shader"
     ],
-    "instanced_texture": [
-      "vertex.instanced.shader",
-      "texture.fragment.shader"
-    ],
     "instanced_color": [
       "vertex.instanced.shader",
       "color.fragment.shader"
+    ],
+    "texture": [
+      "vertex.shader",
+      "texture.fragment.shader"
+    ],
+    "instanced_texture": [
+      "vertex.instanced.shader",
+      "texture.fragment.shader"
     ]
   },
   "textures": {

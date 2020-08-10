@@ -8,7 +8,7 @@
 #include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
-#include <tinyxml.h>
+
 
 using json = nlohmann::json;
 using namespace nlohmann::json_schema;
@@ -21,8 +21,6 @@ public:
     static char *read_resource_file(const std::string &resource_path);
 
     static json read_json_file(const std::string &json_path, const json &schema = nullptr, bool prefix_path = true);
-
-    static TiXmlDocument read_xml_file(const std::string &xml_path);
 
     static void write_json_file(const std::string &json_path, const json &data);
 

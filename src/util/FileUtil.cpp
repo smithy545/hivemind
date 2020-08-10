@@ -68,15 +68,6 @@ json FileUtil::read_json_file(const std::string &json_path, const json &schema, 
     throw std::exception(message.c_str());
 }
 
-TiXmlDocument FileUtil::read_xml_file(const std::string &xml_path) {
-    TiXmlDocument file(resource(xml_path).c_str());
-    if (file.LoadFile())
-        return file;
-
-    std::string message = fmt::format("Can't read xml file at {0}", resource(xml_path));
-    throw std::exception(message.c_str());
-}
-
 void FileUtil::write_json_file(const std::string &json_path, const json &data) {
     std::ofstream file;
     file.open(resource(json_path), std::ofstream::out);
