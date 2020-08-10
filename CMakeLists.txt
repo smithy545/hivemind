@@ -33,36 +33,42 @@ find_package(OpenGL REQUIRED)
 set(ALL_LIBS ${OPENGL_LIBRARY})
 set(ALL_INCLUDES src)
 
-### Libs in external/ directory:
-### FMT ###
+# Libs in external/ directory:
+# FMT
 add_subdirectory(external/fmt)
 set(ALL_LIBS ${ALL_LIBS} fmt)
 set(ALL_INCLUDES ${ALL_INCLUDES} external/fmt/include)
 
-### JSON ###
+# JSON
 add_subdirectory(external/json)
 add_subdirectory(external/json-schema-validator)
 set(ALL_LIBS ${ALL_LIBS} nlohmann_json_schema_validator)
 set(ALL_INCLUDES ${ALL_INCLUDES} external/json-schema-validator/src external/json/include)
 
-### GLFW (opengl window/input) ###
+# GLFW (opengl window/input)
 set(ALL_LIBS ${ALL_LIBS} ../external/glfw/lib-vc2017/glfw3)
 set(ALL_INCLUDES ${ALL_INCLUDES} external/glfw/include)
 
-### GLEW (opengl types) ###
+# GLEW (opengl types)
 add_library(GLEW STATIC external/glew/src/glew.c)
 target_link_libraries(GLEW ${OPENGL_LIBRARY})
 set(ALL_LIBS ${ALL_LIBS} GLEW)
 set(ALL_INCLUDES ${ALL_INCLUDES} external/glew/include)
 
-### GLM ###
+# GLM
 set(ALL_INCLUDES ${ALL_INCLUDES} external/glm)
 
-### CIMG ###
+# CIMG
 set(ALL_INCLUDES ${ALL_INCLUDES} external/cimg)
 
-### Source directory libs:
-### MY COMMON LIB ###
+# BULLET PHYSICS
+add_subdirectory(external/bullet)
+set(ALL_LIBS ${ALL_LIBS} BulletSoftBody BulletDynamics BulletCollision LinearMath)
+set(ALL_INCLUDES ${ALL_INCLUDES} external/bullet/src)
+
+
+# Source directory libs:
+# MY COMMON LIB
 add_library(common INTERFACE)
 target_sources(common INTERFACE
         ${PROJECT_SOURCE_DIR}/src/common/Body.h
@@ -72,7 +78,7 @@ target_sources(common INTERFACE
         ${PROJECT_SOURCE_DIR}/src/common/TopologicalNode.h)
 set(ALL_LIBS ${ALL_LIBS} common)
 
-### MY COLLISION LIB ###
+# MY COLLISION LIB
 add_library(collision STATIC
         src/collision/QuadTree.cpp
         src/collision/QuadTree.h
@@ -81,7 +87,7 @@ add_library(collision STATIC
         src/collision/Bound.h)
 set(ALL_LIBS ${ALL_LIBS} collision)
 
-### MY PATHING LIB ##
+# MY PATHING LIB
 add_library(pathing STATIC
         src/pathing/GridMap.cpp
         src/pathing/GridMap.h
@@ -91,7 +97,7 @@ add_library(pathing STATIC
         src/pathing/Pather.h)
 set(ALL_LIBS ${ALL_LIBS} pathing)
 
-### MY UTIL LIB ###
+# MY UTIL LIB
 add_library(util STATIC
         src/util/FileUtil.cpp
         src/util/FileUtil.h
@@ -105,7 +111,7 @@ add_library(util STATIC
         src/util/MeshUtil.h)
 set(ALL_LIBS ${ALL_LIBS} util)
 
-### MY RENDERER LIB ###
+# MY RENDERER LIB
 add_library(render STATIC
         src/render/Camera.cpp
         src/render/Camera.h
@@ -118,13 +124,13 @@ add_library(render STATIC
         src/render/Drawable.h)
 set(ALL_LIBS ${ALL_LIBS} render)
 
-### MY UI LIB ####
+# MY UI LIB
 add_library(ui STATIC
         src/interface/InterfaceNode.cpp
         src/interface/InterfaceNode.h)
 set(ALL_LIBS ${ALL_LIBS} ui)
 
-### CORE ENGINE/STRUCTURES ###
+# CORE ENGINE/STRUCTURES
 add_library(engine STATIC
         src/engine/State.cpp
         src/engine/State.h
@@ -138,7 +144,7 @@ add_library(world STATIC
         src/world/Actor.h)
 set(ALL_LIBS ${ALL_LIBS} world engine)
 
-### CUDA STUFF ###
+# CUDA STUFF
 add_subdirectory(src/cuda)
 set(ALL_LIBS ${ALL_LIBS} cuda_stuff)
 
